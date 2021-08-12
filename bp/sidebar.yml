@@ -1,0 +1,145 @@
+---
+section: bp
+title: ベストプラクティス
+entries:
+- title: Azure NetApp Files を使用した Microsoft Azure 上の SAP アプリケーション
+  url: https://www.netapp.com/us/media/tr-4746.pdf
+- title: Cloud Volumes ONTAP を使用した Microsoft Azure 上の SAP アプリケーション
+  url: https://www.netapp.com/us/media/tr-4757.pdf
+- title: "『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』"
+  type: solutions
+  entries:
+  - title: はじめに
+    url: "/bp/saphana_aff_fc_introduction.html"
+  - title: アーキテクチャ
+    url: "/bp/saphana_aff_fc_architecture.html"
+  - title: ストレージのサイジング
+    url: "/bp/saphana_aff_fc_storage_sizing.html"
+  - title: インフラのセットアップと設定
+    entries:
+    - title: インフラのセットアップと設定の概要
+      url: "/bp/saphana_aff_fc_infrastructure_setup_and_configuration_overview.html"
+    - title: SAN ファブリックのセットアップ
+      url: "/bp/saphana_aff_fc_san_fabric_setup.html"
+    - title: 時刻の同期
+      url: "/bp/saphana_aff_fc_time_synchronization.html"
+    - title: ストレージコントローラのセットアップ
+      url: "/bp/saphana_aff_fc_storage_controller_setup.html"
+    - title: SAP HANA Storage Connector API
+      url: "/bp/saphana_aff_fc_sap_hana_storage_connector_api.html"
+    - title: ホストのセットアップ
+      url: "/bp/saphana_aff_fc_host_setup.html"
+    - title: SAP HANA の I/O スタック構成
+      url: "/bp/saphana_aff_fc_i_o_stack_configuration_for_sap_hana.html"
+    - title: SAP HANA ソフトウェアのインストール
+      url: "/bp/saphana_aff_fc_sap_hana_software_installation.html"
+    - title: SAP HANA シングルホストシステムのデータボリュームパーティションを追加します
+      url: "/bp/saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html"
+  - title: 追加情報の参照先
+    url: "/bp/saphana_aff_fc_where_to_find_additional_information.html"
+- title: "『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』"
+  type: solutions
+  entries:
+  - title: はじめに
+    url: "/bp/saphana_aff_nfs_introduction.html"
+  - title: アーキテクチャ
+    url: "/bp/saphana_aff_nfs_architecture.html"
+  - title: ストレージのサイジング
+    url: "/bp/saphana_aff_nfs_storage_sizing.html"
+  - title: インフラのセットアップと設定
+    entries:
+    - title: インフラのセットアップと設定の概要
+      url: "/bp/saphana_aff_nfs_infrastructure_setup_and_configuration_overview.html"
+    - title: ネットワークセットアップ
+      url: "/bp/saphana_aff_nfs_network_setup.html"
+    - title: 時刻の同期
+      url: "/bp/saphana_aff_nfs_time_synchronization.html"
+    - title: ストレージコントローラのセットアップ
+      url: "/bp/saphana_aff_nfs_storage_controller_setup.html"
+    - title: ホストのセットアップ
+      url: "/bp/saphana_aff_nfs_host_setup.html"
+    - title: NFSv4 用の SAP HANA インストールの準備
+      url: "/bp/saphana_aff_nfs_sap_hana_installation_preparations_for_nfsv4.html"
+    - title: SAP HANA 向けの I/O スタック構成
+      url: "/bp/saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html"
+    - title: SAP HANA データボリュームのサイズ
+      url: "/bp/saphana_aff_nfs_sap_hana_data_volume_size.html"
+    - title: SAP HANA ソフトウェアのインストール
+      url: "/bp/saphana_aff_nfs_sap_hana_software_installation.html"
+    - title: データボリュームのパーティションを追加しています
+      url: "/bp/saphana_aff_nfs_adding_additional_data_volume_partitions.html"
+  - title: 追加情報の参照先
+    url: "/bp/saphana_aff_nfs_where_to_find_additional_information.html"
+- title: "『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』"
+  type: solutions
+  entries:
+  - title: はじめに
+    url: "/bp/saphana-fas-nfs_introduction.html"
+  - title: アーキテクチャ
+    url: "/bp/saphana-fas-nfs_architecture.html"
+  - title: ストレージのサイジング
+    url: "/bp/saphana-fas-nfs_storage_sizing.html"
+  - title: インフラのセットアップと設定
+    entries:
+    - title: インフラのセットアップと設定の概要
+      url: "/bp/saphana-fas-nfs_infrastructure_setup_and_configuration_overview.html"
+    - title: ネットワークセットアップ
+      url: "/bp/saphana-fas-nfs_network_setup.html"
+    - title: 時刻の同期
+      url: "/bp/saphana-fas-nfs_time_synchronization.html"
+    - title: ストレージコントローラのセットアップ
+      url: "/bp/saphana-fas-nfs_storage_controller_setup.html"
+    - title: ホストのセットアップ
+      url: "/bp/saphana-fas-nfs_host_setup.html"
+    - title: NFSv4 用の SAP HANA インストールの準備
+      url: "/bp/saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html"
+    - title: SAP HANA 向けの I/O スタック構成
+      url: "/bp/saphana-fas-nfs_i_o_stack_configuration_for_sap_hana.html"
+    - title: SAP HANA データボリュームのサイズ
+      url: "/bp/saphana-fas-nfs_sap_hana_data_volume_size.html"
+    - title: SAP HANA ソフトウェアのインストール
+      url: "/bp/saphana-fas-nfs_sap_hana_software_installation.html"
+    - title: データボリュームのパーティションを追加しています
+      url: "/bp/saphana-fas-nfs_adding_additional_data_volume_partitions.html"
+  - title: 追加情報の参照先
+    url: "/bp/saphana-fas-nfs_where_to_find_additional_information.html"
+- title: "『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください"
+  type: solutions
+  entries:
+  - title: はじめに
+    url: "/bp/saphana_fas_fc_introduction.html"
+  - title: アーキテクチャ
+    url: "/bp/saphana_fas_fc_architecture.html"
+  - title: ストレージのサイジング
+    url: "/bp/saphana_fas_fc_storage_sizing.html"
+  - title: インフラのセットアップと設定
+    entries:
+    - title: インフラのセットアップと設定の概要
+      url: "/bp/saphana_fas_fc_infrastructure_setup_and_configuration_overview.html"
+    - title: SAN ファブリックのセットアップ
+      url: "/bp/saphana_fas_fc_san_fabric_setup.html"
+    - title: 時刻の同期
+      url: "/bp/saphana_fas_fc_time_synchronization.html"
+    - title: ストレージコントローラのセットアップ
+      url: "/bp/saphana_fas_fc_storage_controller_setup.html"
+    - title: SAP HANA Storage Connector API
+      url: "/bp/saphana_fas_fc_sap_hana_storage_connector_api.html"
+    - title: ホストのセットアップ
+      url: "/bp/saphana_fas_fc_host_setup.html"
+    - title: SAP HANA 向けの I/O スタック構成
+      url: "/bp/saphana_fas_fc_i_o_stack_configuration_for_sap_hana.html"
+    - title: SAP HANA ソフトウェアのインストール
+      url: "/bp/saphana_fas_fc_sap_hana_software_installation.html"
+    - title: SAP HANA シングルホストシステムのデータボリュームパーティションを追加します
+      url: "/bp/saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html"
+  - title: 追加情報の参照先
+    url: "/bp/saphana_fas_fc_where_to_find_additional_information.html"
+- title: VMware vSphere 上の SAP HANA と、 NetApp FAS 上の SAP HANA と、すべての SAP HANA Flash
+    FAS システム
+  url: https://www.netapp.com/us/media/tr-4338.pdf
+- title: IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します
+  url: https://www.netapp.com/us/media/tr-4821.pdf
+- title: UNIX および NFS を使用する NetApp clustered Data ONTAP での SAP と Oracle の運用 Data ONTAP
+  url: https://www.netapp.com/us/media/tr-4250.pdf
+- title: Windows 環境で clustered Data を使用して SAP と Microsoft SQL Server を運用 ONTAP
+  url: https://www.netapp.com/us/media/tr-4467.pdf

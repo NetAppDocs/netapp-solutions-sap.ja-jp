@@ -1,0 +1,61 @@
+---
+section: backup
+title: バックアップ、リストア、ディザスタリカバリ
+entries:
+- title: Azure NetApp Files を使用した SAP HANA ディザスタリカバリ
+  type: solutions
+  entries:
+  - title: データ保護の概要
+    url: "/backup/saphana-dr-anf_data_protection_overview_overview.html"
+  - title: ディザスタリカバリ解決策の比較
+    url: "/backup/saphana-dr-anf_disaster_recovery_solution_comparison.html"
+  - title: SAP HANA を使用した ANF のクロスリージョンレプリケーション
+    entries:
+    - title: SAP HANA によるクロスリージョンレプリケーションの概要
+      url: "/backup/saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html"
+    - title: SAP HANA によるクロスリージョンレプリケーションの設定オプション
+      url: "/backup/saphana-dr-anf_configuration_options_for_cross-region_replication_with_sap_hana.html"
+    - title: 要件およびベストプラクティス
+      url: "/backup/saphana-dr-anf_requirements_and_best_practices.html"
+    - title: ラボのセットアップ
+      url: "/backup/saphana-dr-anf_lab_setup.html"
+    - title: ANF クロスリージョンレプリケーションの設定手順
+      url: "/backup/saphana-dr-anf_configuration_steps_for_anf_cross-region_replication.html"
+    - title: ANF のクロスリージョンレプリケーションを監視しています
+      url: "/backup/saphana-dr-anf_monitoring_anf_cross-region_replication.html"
+  - title: ディザスタリカバリのテスト
+    entries:
+    - title: ディザスタリカバリテストの概要
+      url: "/backup/hana-dr-anf_disaster_recovery_testing_overview.html"
+    - title: ターゲットホストを準備します
+      url: "/backup/saphana-dr-anf_prepare_the_target_host.html"
+    - title: ディザスタリカバリサイトでの Snapshot バックアップに基づいて新しいボリュームを作成します
+      url: "/backup/saphana-dr-anf_create_new_volumes_based_on_snapshot_backups_at_the_disaster_recovery_site.html"
+    - title: ターゲットホストに新しいボリュームをマウントします
+      url: "/backup/saphana-dr-anf_mount_the_new_volumes_at_the_target_host.html"
+    - title: HANA データベースのリカバリ
+      url: "/backup/saphana-dr-anf_hana_database_recovery.html"
+  - title: ディザスタリカバリフェイルオーバー
+    entries:
+    - title: ディザスタリカバリフェイルオーバーの概要
+      url: "/backup/saphana-dr-anf_disaster_recovery_failover_overview.html"
+    - title: ターゲットホストを準備します
+      url: "/backup/saphana-dr-anf_prepare_the_target_host_01.html"
+    - title: レプリケーションピアリングを解除して削除します
+      url: "/backup/saphana-dr-anf_break_and_delete_replication_peering.html"
+    - title: ターゲットホストにボリュームをマウントします
+      url: "/backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html"
+    - title: HANA データベースのリカバリ
+      url: "/backup/saphana-dr-anf_hana_database_recovery_01.html"
+- title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
+  url: https://www.netapp.com/us/media/tr-4614.pdf
+- title: SAP HANA Disaster Recovery with Storage Replication 』を参照してください
+  url: https://www.netapp.com/us/media/tr-4646.pdf
+- title: SnapCenter を使用した SAP HANA システムのレプリケーション、バックアップ、リカバリ
+  url: https://www.netapp.com/us/media/tr-4719.pdf
+- title: Snap Creator を使用した SAP HANA のバックアップとリカバリ
+  url: https://www.netapp.com/us/media/tr-4313.pdf
+- title: ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア
+  url: https://www.netapp.com/us/media/tr-4711.pdf
+- title: "『 SAP HANA on NetApp All SAN Array 』 - 最新 SAN 、データ保護、ディザスタリカバリ"
+  url: https://www.netapp.com/us/media/nva-1147-design.pdf

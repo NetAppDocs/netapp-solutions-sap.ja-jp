@@ -1,0 +1,11 @@
+---
+sidebar:
+  entries:
+  - title: SAP ソリューション
+    url: "/index.html"
+  - section: bp
+  - section: backup
+  - section: lifecycle
+  - section: briefs
+  - title: ネットアップのソリューション
+    url: https://docs.netapp.com/us-en/netapp-solutions/
