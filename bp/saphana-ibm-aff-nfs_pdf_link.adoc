@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: bp/saphana-ibm-aff-nfs_pdf_link.html 
+keywords: tr-4821, pdf, sap, hana, ibm, aff, nfs 
+summary: IBM Power Systems は、 SAP HANA などの大量のデータを処理するミッションクリティカルなワークロード向けに設計されています。IBM Power Systems は、優れた仮想化と柔軟性、高速なプロビジョニング、手頃な価格の拡張性、アップタイムの最大化という 4 つの主要機能を提供することで、 SAP HANA の導入を簡易化し、高速化します。NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定され、 IBM Power Systems を完全に補完します。このドキュメントでは、 NetApp ONTAP と AFF 製品ファミリーおよび IBM Power Systems を使用した NAS （ NFS ）ストレージのセットアップに関するベストプラクティスについて説明します。 
+---
+= TR-4821 ：『 SAP HANA on IBM Power Systems and NetApp AFF Systems with NFS 』
+:firstname: : hardbreaks:
+:author: : hardbreaks:
+:authorinitials: :
+:authors: : hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+Tobias Brandl 、ネットアップ Carsten Deterle 、 IBM
+
+IBM Power Systems は、 SAP HANA などの大量のデータを処理するミッションクリティカルなワークロード向けに設計されています。IBM Power Systems は、優れた仮想化と柔軟性、高速なプロビジョニング、手頃な価格の拡張性、最大限のアップタイムという 4 つの主要機能を提供することで、 SAP HANA の導入を簡易化し、高速化します。NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定され、 IBM Power Systems を完全に補完します。このドキュメントでは、 NetApp ONTAP と AFF 製品ファミリーおよび IBM Power Systems を使用した NAS （ NFS ）ストレージのセットアップに関するベストプラクティスについて説明します。
+
+link:https://www.netapp.com/pdf.html?item=/media/19887-TR-4821.pdf["https://www.netapp.com/pdf.html?item=/media/19887-TR-4821.pdf"]

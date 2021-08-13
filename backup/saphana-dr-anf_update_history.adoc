@@ -12,6 +12,8 @@ summary:
 :imagesdir: ./../media/
 
 
+link:saphana-dr-anf_hana_database_recovery_01.html["Previous ： HANA データベースのリカバリ。"]
+
 この解決策の初版以降には、次の技術的な変更が加えられています。
 
 [cols="25,25,50"]

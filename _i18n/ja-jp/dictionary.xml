@@ -1042,9 +1042,7 @@
   <block id="a08e3f55ac1bf243274ee454a477749b" category="admonition">このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定または機能を変更すると、原因のパフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更は、ネットアップのサポートから助言された場合にのみ実施</block>
   <block id="9ba59bf1b64e9d129b41dbb49f3c385f" category="paragraph">NFS システムと NetApp FAS システムを使用する AFF システムの構成ガイドは、次のリンクから入手できます。</block>
   <block id="6e309be8793679276c5f6a7bdd2bfdfa" category="inline-link">FCP を使用した NetApp FAS システムでの SAP HANA</block>
-  <block id="a97b81af827cac8f6fc96ff5fd050cef" category="list-text"><block ref="a97b81af827cac8f6fc96ff5fd050cef" category="inline-link-rx"></block></block>
   <block id="794aa68d1e6abb7bdd6b9ecf4a1125fd" category="inline-link">NFS を使用した NetApp FAS システムでの SAP HANA</block>
-  <block id="67e6170d592e035f22adeaeafd8e5bf0" category="list-text"><block ref="67e6170d592e035f22adeaeafd8e5bf0" category="inline-link-rx"></block></block>
   <block id="4300aba024439d53329726e8ecb7f77b" category="list-text"><block ref="4300aba024439d53329726e8ecb7f77b" category="inline-link-rx"></block></block>
   <block id="5f6e041a9634120ceb1ee084f6acde8a" category="inline-link">SAP Note 2235581 – SAP HANA Supported Operating Systems 』</block>
   <block id="10fba2fd8d2b0860517a92eefbfce26b" category="paragraph">SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオーバー時にフェンシングを提供するために、標準の SAP HANA ストレージコネクタが使用されます。オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、必ず該当する SAP ノートを参照してください。詳細については、を参照してください<block ref="362348e4aadbc3b1dc4fa3ddcce8fb65" category="inline-link-rx"></block>。</block>
@@ -1055,7 +1053,6 @@
   <block id="14a31d6554fa48b10cc86d1aaf656a07" category="inline-link">『 SAP HANA Tailored Data Center Integration Frequently Asked Questions 』</block>
   <block id="9282f2106e2ecc166cf241e78c58163e" category="list-text"><block ref="9282f2106e2ecc166cf241e78c58163e" category="inline-link-rx"></block></block>
   <block id="44cbaf598c2b8895a3d3a875dd63203f" category="list-text"><block ref="44cbaf598c2b8895a3d3a875dd63203f" category="inline-link-rx"></block></block>
-  <block id="81a6e6e2054e1487904d95d256858b04" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください <block ref="846cdc8efe03205214c60d3335302f99" category="inline-link-macro-rx"></block>。</block>
   <block id="677ab22de36ea7a11313727ef07c5d64" category="inline-link-macro">前の手順： SAP HANA シングルホストシステムのデータボリュームパーティションを追加</block>
   <block id="8743d46cf40e9841fd4d7a036d38956c" category="paragraph"><block ref="8743d46cf40e9841fd4d7a036d38956c" category="inline-link-macro-rx"></block></block>
   <block id="156ab83547a69207813015793bfe2332" category="paragraph"><block ref="156ab83547a69207813015793bfe2332" category="inline-link-rx"></block></block>
@@ -1911,10 +1908,7 @@
   <block id="c8ff9dc5c718603eec8564e06ee7b058" category="sidebar">『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください</block>
   <block id="f2d541ac92b4dd83f2be5b932a057952" category="sidebar">VMware vSphere 上の SAP HANA と、 NetApp FAS 上の SAP HANA と、すべての SAP HANA Flash FAS システム</block>
   <block id="00495563450af6bcde40cb96d650076e" category="sidebar">IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します</block>
-  <block id="0a2866cc3e2ba203c7e2e3ebeca395be" category="sidebar">UNIX および NFS を使用する NetApp clustered Data ONTAP での SAP と Oracle の運用 Data ONTAP</block>
-  <block id="89447eb7454239e11376250fa04a88f7" category="sidebar">Windows 環境で clustered Data を使用して SAP と Microsoft SQL Server を運用 ONTAP</block>
   <block id="d5d6ed7727f0e542e6846a58af1d02ba" category="sidebar">SAP HANA Lifecycle Management の略</block>
-  <block id="860f557086688c7e6d76bea17bc3f84b" category="sidebar">SAP HANA Backup Recovery の各サービスに</block>
   <block id="68cc439f4e585883d2aaa26a4e3bcef2" category="sidebar">SAP HANA ディザスタリカバリ</block>
   <block id="fa532045e834ec2fac1200964a189516" category="sidebar">ライフサイクル管理</block>
   <block id="1e83c49aed775d711f6d1a9a0a6a7060" category="sidebar">SnapCenter SAP HANA プラグインを使用した SAP システムのコピーの自動化</block>
@@ -1926,8 +1920,89 @@
   <block id="6db8771af1e20f8b4493135fb9b2465f" category="sidebar">ディザスタリカバリフェイルオーバーの概要</block>
   <block id="f41a551d63cd5cff04cf3c09ee2c3dea" category="sidebar">SnapCenter を使用した SAP HANA のバックアップとリカバリ</block>
   <block id="dd0dec62b557e33c38d24dc3cbaed4bc" category="sidebar">SAP HANA Disaster Recovery with Storage Replication 』を参照してください</block>
-  <block id="d3d2800b62efdcf08b498a4f144f186d" category="sidebar">SnapCenter を使用した SAP HANA システムのレプリケーション、バックアップ、リカバリ</block>
   <block id="fceb9e9a7a8e75da09a45b74960f3ce3" category="sidebar">Snap Creator を使用した SAP HANA のバックアップとリカバリ</block>
   <block id="0f1df2d5d1f6e9db4283f9e9814fa12a" category="sidebar">ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア</block>
-  <block id="ea5de62271a19413e72ed12bacc30e65" category="sidebar">『 SAP HANA on NetApp All SAN Array 』 - 最新 SAN 、データ保護、ディザスタリカバリ</block>
+  <block id="3993b517d983222c5b766976180367f0" category="inline-link-macro">前へ（ Previous ）：追加情報を検索する場所。</block>
+  <block id="e20ed0e735d698ee86acdf1151e6e451" category="paragraph"><block ref="e20ed0e735d698ee86acdf1151e6e451" category="inline-link-macro-rx"></block></block>
+  <block id="53b99ad408aca79aba1e0bcc607cde85" category="paragraph"><block ref="53b99ad408aca79aba1e0bcc607cde85" category="inline-link-macro-rx"></block></block>
+  <block id="c1fd2d028e3fff9cae781db6954eb52b" category="summary">本ドキュメントでは、 Windows 環境で Microsoft SQL Server を実行する SAP Business Suite ソリューションをサポートする NetApp ONTAP の導入に関するベストプラクティスについて、お客様とパートナー様に説明します。</block>
+  <block id="c5dacd8b175c8c2367525c37eea1dc59" category="doc">TR-4467 ：『 SAP with Microsoft SQL Server on Windows 』 - 『 Best Practices Using NetApp ONTAP and SnapCenter 』</block>
+  <block id="611a4a6b98272a717f8e1f6bf5ba787b" category="paragraph">Marco Schoen 、ネットアップ</block>
+  <block id="3be0224caa6f122d821c38b09efdbac7" category="inline-link-macro"><block ref="3be0224caa6f122d821c38b09efdbac7" category="inline-link-rx"></block></block>
+  <block id="386b4fc148c87ad6a824fb6645fff9ca" category="paragraph"><block ref="386b4fc148c87ad6a824fb6645fff9ca" category="inline-link-macro-rx"></block></block>
+  <block id="3b85cb8f62d84ee8a4e0891315a3af26" category="paragraph"><block ref="3b85cb8f62d84ee8a4e0891315a3af26" category="inline-link-macro-rx"></block></block>
+  <block id="77856469e4786d81c487dfc174833e29" category="summary">TR-4757 では、 Azure NetApp Files for SAP Applications と SAP HANA の導入に関するベストプラクティスを紹介しています。また、 SAP 共有ファイルシステムのさまざまなユースケースについても詳しく説明しています。本ドキュメントでは、 SAP アプリケーションと SAP HANA 環境に NetApp Cloud Volumes ONTAP を活用するためのベストプラクティスを紹介します。SAP 共有ファイルシステムとは異なるユースケースや、 Cloud Volumes ONTAP 上の SAP HANA での固有のパフォーマンスに関する考慮事項があります。</block>
+  <block id="0e03d1132f9763756b2e5e8f46c33610" category="doc">TR-4757 ：『 SAP Applications on Microsoft Azure - Using NetApp Cloud Volumes ONTAP 』</block>
+  <block id="b6dd7e76887eb00cfd6d1dfadf3e9af4" category="paragraph">Bert Herth 、 Tobias Brandl 、 Nils Bauer 、ネットアップ、 Bratton 、 Geert van Teylingen 、 Microsoft 社</block>
+  <block id="bc2f77b802672aed5e74bfb91aa5eee4" category="inline-link-macro"><block ref="bc2f77b802672aed5e74bfb91aa5eee4" category="inline-link-rx"></block></block>
+  <block id="8e3940acd5b42b2156bc15a3fdf1827d" category="paragraph"><block ref="8e3940acd5b42b2156bc15a3fdf1827d" category="inline-link-macro-rx"></block></block>
+  <block id="05b3eeeac64d4f0f9123deacdf9c3fcf" category="paragraph"><block ref="05b3eeeac64d4f0f9123deacdf9c3fcf" category="inline-link-macro-rx"></block></block>
+  <block id="5176c066b53609fe56eb537ca7fcac89" category="summary">IBM Power Systems は、 SAP HANA などの大量のデータを処理するミッションクリティカルなワークロード向けに設計されています。IBM Power Systems は、優れた仮想化と柔軟性、高速なプロビジョニング、手頃な価格の拡張性、アップタイムの最大化という 4 つの主要機能を提供することで、 SAP HANA の導入を簡易化し、高速化します。NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定され、 IBM Power Systems を完全に補完します。このドキュメントでは、 NetApp ONTAP と AFF 製品ファミリーおよび IBM Power Systems を使用した NAS （ NFS ）ストレージのセットアップに関するベストプラクティスについて説明します。</block>
+  <block id="f20a40b88879c634d62a1183049bd409" category="doc">TR-4821 ：『 SAP HANA on IBM Power Systems and NetApp AFF Systems with NFS 』</block>
+  <block id="1645b6f0a7adb1dc7df46dc7fec9625a" category="paragraph">Tobias Brandl 、ネットアップ Carsten Deterle 、 IBM</block>
+  <block id="68708a2f0db2622048ef976e3d1ceb61" category="paragraph">IBM Power Systems は、 SAP HANA などの大量のデータを処理するミッションクリティカルなワークロード向けに設計されています。IBM Power Systems は、優れた仮想化と柔軟性、高速なプロビジョニング、手頃な価格の拡張性、最大限のアップタイムという 4 つの主要機能を提供することで、 SAP HANA の導入を簡易化し、高速化します。NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定され、 IBM Power Systems を完全に補完します。このドキュメントでは、 NetApp ONTAP と AFF 製品ファミリーおよび IBM Power Systems を使用した NAS （ NFS ）ストレージのセットアップに関するベストプラクティスについて説明します。</block>
+  <block id="25c8459cf1533ecc02d4453baf422ef2" category="inline-link-macro"><block ref="25c8459cf1533ecc02d4453baf422ef2" category="inline-link-rx"></block></block>
+  <block id="5223a61d48ab537c433cb2cd2b7238ff" category="paragraph"><block ref="5223a61d48ab537c433cb2cd2b7238ff" category="inline-link-macro-rx"></block></block>
+  <block id="6382b55c5f4c721a7046327b2675c2a6" category="summary">本ドキュメントでは、 Oracle データベースを使用して SAP Business Suite 製品をサポートするストレージソリューションを設計する際の課題について説明します。ストレージインフラの設計、導入、運用、管理を中心に、最新世代の SAP ソリューションの利用に際して経営陣や IT 部門責任者が一般に直面する課題について、その対処方法を示します。本書で紹介する推奨事項は、特定の SAP アプリケーションに限定したものではなく、規模や範囲に関係なくさまざまな SAP 環境に応用できます。</block>
+  <block id="205c68d6779218d7af7da356dc6a9da2" category="doc">TR-4250 ：『 SAP with Oracle on UNIX and NFS with NetApp ONTAP and SnapManager for SAP 3.4 』</block>
+  <block id="bb8cd3f7aec777de29cee988f4ade068" category="paragraph">ネットアップ Nils Bauer</block>
+  <block id="4a889ac1eab815e3cc9e7d0066d4360d" category="paragraph">本ドキュメントでは、 Oracle データベースを使用して SAP Business Suite 製品をサポートするストレージソリューションを設計する際の課題について説明します。ストレージインフラの設計、導入、運用、管理を中心に、最新世代の SAP ソリューションの利用に際して経営陣や IT 部門責任者が一般に直面する課題について、その対処方法を示します。本書で紹介する推奨事項は、特定の SAP アプリケーションに限定したものではなく、規模や範囲に関係なくさまざまな SAP 環境に応用できます。本ドキュメントは、ネットアップ製品および SAP 製品のテクノロジと運用に関する基本的な知識があることを前提としています。本ドキュメントは、ネットアップ、 SAP 、 Oracle 、およびお客様の技術スタッフの協力のもとに作成されました。</block>
+  <block id="72b1d38d81a57d1482ce5708d98653f1" category="inline-link-macro"><block ref="72b1d38d81a57d1482ce5708d98653f1" category="inline-link-rx"></block></block>
+  <block id="d30f42b2a88310780291191529d76b18" category="paragraph"><block ref="d30f42b2a88310780291191529d76b18" category="inline-link-macro-rx"></block></block>
+  <block id="c9d1db03ff9188655c6df6826c9cec88" category="list-text"><block ref="c9d1db03ff9188655c6df6826c9cec88" category="inline-link-rx"></block></block>
+  <block id="172a4f6be2e5258ba785f0fbe99140f7" category="list-text"><block ref="172a4f6be2e5258ba785f0fbe99140f7" category="inline-link-rx"></block></block>
+  <block id="d76e7542f28a5b74ef246f360a1518d6" category="list-text"><block ref="d76e7542f28a5b74ef246f360a1518d6" category="inline-link-rx"></block></block>
+  <block id="1c00cdc071680932dbe093eee9f348e7" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください <block ref="0f1147a043e687692dc16c07b278ec3b" category="inline-link-macro-rx"></block>。</block>
+  <block id="6578ba8f8050606717eb26d6e9c36396" category="list-text"><block ref="6578ba8f8050606717eb26d6e9c36396" category="inline-link-rx"></block></block>
+  <block id="9e2f7b0947eed9e36a3d84200631ce7d" category="list-text"><block ref="9e2f7b0947eed9e36a3d84200631ce7d" category="inline-link-rx"></block></block>
+  <block id="34e60068300e9e3f871d48a33ffba1f1" category="summary">TR-4746 は、 Azure NetApp Files for SAP Applications および SAP HANA 環境を使用する際のベストプラクティスを示しています。また、 Azure NetApp Files 上の SAP HANA を使用した SAP 共有ファイルシステムから SAP HANA の完全な導入環境、特定のパフォーマンス、データ保護、移行に関する考慮事項まで、さまざまなユースケースについて詳しく説明します。</block>
+  <block id="6c6f4f0cd3ae1860ad7019d5cd6b2796" category="doc">TR-4746 ：『 SAP Applications on Microsoft Azure 』</block>
+  <block id="56f60b697a28b5549f7fe646776153ad" category="paragraph">Nils Bauer 、 Tobias Brandl 、 Bernd Herth 、 Kevin Morris 、 Geert van Teyllingen ネットアップ、 Bratton 、 Ralf Klahr 、 Amish Patel 、 Juergen Thomas Microsoft</block>
+  <block id="30e3a0469c18bb800da3893853205ac6" category="inline-link-macro"><block ref="30e3a0469c18bb800da3893853205ac6" category="inline-link-rx"></block></block>
+  <block id="23d3d60e0f75128aa4f637d0049d0f60" category="paragraph"><block ref="23d3d60e0f75128aa4f637d0049d0f60" category="inline-link-macro-rx"></block></block>
+  <block id="81c2f60fe1cd3484018d62f2addc343a" category="summary">このリファレンスアーキテクチャドキュメントでは、 VMware vSphere 仮想マシン（ VM ）および NetApp FAS および All Flash FAS （ AFF ）ストレージシステム上に SAP HANA シングルホストおよびマルチホストソリューションを設計し、導入する方法を説明します。</block>
+  <block id="fc21beda63f542908cf6ffb86e8a9b91" category="doc">TR-4338 ：『 SAP HANA on VMware vSphere with NetApp-FAS and All Flash FAS Systems 』</block>
+  <block id="b3ed4b37e21fee2e164f97668ea1afae" category="paragraph">VMware 、 Bhumik Patel 、 NetApp Erik Rieger 、 Tobias Brandl 氏</block>
+  <block id="492dbdbda06cf15ce343cbe404369a3d" category="paragraph">このリファレンスアーキテクチャドキュメントでは、 VMware vSphere 仮想マシン（ VM ）および NetApp FAS および All Flash FAS （ AFF ）ストレージシステム上に SAP HANA シングルホストおよびマルチホストソリューションを設計し、導入する方法を説明します。このリファレンスアーキテクチャは、 VMware とネットアップの既存のお客様のエクスペリエンス、実際のシミュレーション、ネットアップのエンジニアリングラボでの検証に基づいて、導入と文書化が行われた解決策です。このドキュメントでは、要件評価、解決策設計、インストール、管理など、プロジェクトのライフサイクル全体を通じてお客様を支援します。</block>
+  <block id="07d3b62fe245f06a68daa5268016da79" category="inline-link-macro"><block ref="07d3b62fe245f06a68daa5268016da79" category="inline-link-rx"></block></block>
+  <block id="234856f07739c90d237a9a99b3d9e24c" category="paragraph"><block ref="234856f07739c90d237a9a99b3d9e24c" category="inline-link-macro-rx"></block></block>
+  <block id="1b957531101399d0f744aec724e69fa1" category="summary">ネットアップは、 SAP Landscape Management （ SAP LaMa ）など、 SAP 管理者が日々の運用で使用するツールに完全に統合されたライフサイクル管理解決策を提供することで、機能の実装が遅いという課題や、自動化の欠如、生産性の低下に対処しています。プリプロセスからポストプロセスまで、プロビジョニングのワークフローを簡易化することを目的としています。本番用システムのコピーを作成するために必要なソフトウェアレイヤとストレージレイヤのタスクもすべて含みます。この解決策を使用すると、管理者はマウスを数回クリックするだけで開発およびテスト環境を作成できるため、ライフサイクル管理が向上します。</block>
+  <block id="643fa590028dacc026f165afdf4fb795" category="doc">SB-3978 ：『 Lifecycle Management for SAP HANA 』</block>
+  <block id="2302484597c5b4089c4a24a850b7f489" category="inline-link-macro"><block ref="2302484597c5b4089c4a24a850b7f489" category="inline-link-rx"></block></block>
+  <block id="33876e03541db5898b573e9322b655e7" category="paragraph"><block ref="33876e03541db5898b573e9322b655e7" category="inline-link-macro-rx"></block></block>
+  <block id="3616b54049026f3c3013256a38ff9c91" category="summary">このドキュメントでは、ネットアップの SAP HANA 向けバックアップ / リカバリ解決策のインストールと構成について説明します。解決策は、 NetApp Snap Creator フレームワークと、 SAP HANA 向け Snap Creator プラグインに基づいています。この解決策は、認定済みの Cisco SAP HANA マルチノードアプライアンスをネットアップストレージと組み合わせて使用した場合にサポートされます。この解決策は、 TDI プロジェクトのシングルノードおよびマルチノードの SAP HANA システムでもサポートされています。</block>
+  <block id="b20847dfaf8bda0f5d26c73527a7a402" category="doc">TR-4313 ：『 SAP HANA Backup and Recovery by Using Snap Creator 』</block>
+  <block id="a696566e7ab3f2276919a2f7c509c31b" category="paragraph">TR-4313 は、 SAP HANA 向けのネットアップのバックアップおよびリカバリ解決策のインストールと構成について説明しています。解決策は、 NetApp Snap Creator フレームワークと、 SAP HANA 向け Snap Creator プラグインに基づいています。この解決策は、認定済みの Cisco SAP HANA マルチノードアプライアンスをネットアップストレージと組み合わせて使用した場合にサポートされます。この解決策は、 TDI プロジェクトのシングルノードおよびマルチノードの SAP HANA システムでもサポートされています。</block>
+  <block id="2447c9d3e154873d9458d9f21f9d9e82" category="inline-link-macro"><block ref="2447c9d3e154873d9458d9f21f9d9e82" category="inline-link-rx"></block></block>
+  <block id="c48a0c69bdeb4ba64f1a756390dd148d" category="paragraph"><block ref="c48a0c69bdeb4ba64f1a756390dd148d" category="inline-link-macro-rx"></block></block>
+  <block id="7b84e8d1abd1ca9b58ab3e77d620c832" category="summary">TR-4711 は、 Commvault IntelliSnap Snapshot 管理テクノロジとネットアップの Snapshot テクノロジを含む、ネットアップと Commvault 解決策 for SAP HANA の設計をまとめたものです。解決策は、ネットアップストレージと Commvault データ保護スイートを基盤としています。</block>
+  <block id="8fb21969b8486293a6e9aad64bfdce52" category="doc">TR-4711 ：『 SAP HANA Backup and Recovery Using NetApp Storage Systems and Commvault Software 』</block>
+  <block id="f3d4ee1709d5425d89d8314836e60519" category="paragraph">Marco Schoen 、ネットアップCommVault Systems 、 Tristan Daude 氏</block>
+  <block id="6b6da8403e50e999c81fff1b93ddd075" category="inline-link-macro"><block ref="6b6da8403e50e999c81fff1b93ddd075" category="inline-link-rx"></block></block>
+  <block id="974fc1d6f48a5236cf23f9d95df8992c" category="paragraph"><block ref="974fc1d6f48a5236cf23f9d95df8992c" category="inline-link-macro-rx"></block></block>
+  <block id="39655610b54fc1717a4bc2a8dc4ca1ac" category="paragraph"><block ref="39655610b54fc1717a4bc2a8dc4ca1ac" category="inline-link-macro-rx"></block></block>
+  <block id="1991f9bd90d7f79579e13fb5b25da162" category="summary">この NetApp Verified Architecture は、 Brocade FC SAN ファブリックを使用した、ネットアップオール SAN アレイ（ ASA ）ストレージシステム上の SAP システムの最新化と SAP HANA の運用に関する解説です。バックアップとリカバリ、ディザスタリカバリ、データ保護が含まれます。</block>
+  <block id="6f0f948f8224ca6abd264e8990372af6" category="doc">NVA-1147 - 設計： NetApp All SAN Array 上の SAP HANA - 最新 SAN 、データ保護、ディザスタリカバリ</block>
+  <block id="cc396fc030ef4980e68d8d063e3bcd5a" category="paragraph">Nils Bauer 、 Roland Wartenberg 、 Darryl Clinkmars 、 Daniel Hohman 、 Marco Schö en 、 Steve Botkin 、 Michael Peppers 、 Vidula Aiyer 、 Steve Collins 、 Pavan Jhamnani 、 Lee Dorrier 、 NetApp Jim Zucchero 、 Naem Saafein 、 Ph. D. 、 Broadcom Brocade</block>
+  <block id="bd3a2bd89a649bf3f808ac6c8cc752ef" category="paragraph">この NetApp Verified Architecture は、 Brocade FC SAN ファブリックを使用した、ネットアップオール SAN アレイ（ ASA ）ストレージシステム上の SAP システムの最新化と SAP HANA の運用に関する解説です。バックアップとリカバリ、ディザスタリカバリ、データ保護が含まれます。解決策は、 NetApp SnapCenter を活用して、 SAP HANA のバックアップ、リストアとリカバリ、クローニングのワークフローを自動化します。ディザスタリカバリの設定、テスト、およびフェイルオーバーのシナリオについては、同期の NetApp SnapMirror データレプリケーションソフトウェアを使用して説明します。また、 Commvault を使用した SAP データ保護の概要も記載します。</block>
+  <block id="731764091ffe7cacd12c33c9048bfd8f" category="inline-link-macro"><block ref="731764091ffe7cacd12c33c9048bfd8f" category="inline-link-rx"></block></block>
+  <block id="a064ef72c49c2eebe828ed0cd3a38305" category="paragraph"><block ref="a064ef72c49c2eebe828ed0cd3a38305" category="inline-link-macro-rx"></block></block>
+  <block id="1d5e541dc8524e30bb2781003f0d8400" category="paragraph"><block ref="1d5e541dc8524e30bb2781003f0d8400" category="inline-link-macro-rx"></block></block>
+  <block id="cf609e4fa30936be5f8dfd92fb076afe" category="summary">テクニカルレポート TR-4614 に、 NetApp SnapCenter を使用した SAP HANA データ保護のベストプラクティスを示します。このドキュメントでは、 SnapCenter の概念、設定に関する推奨事項、設定やバックアップ処理などの運用ワークフローについて説明します。 リストア処理とリカバリ処理を行うことができます。</block>
+  <block id="47f5c5f7b80224cb7832ed3973296f38" category="doc">TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』</block>
+  <block id="fcd16ddc69c35eca3711f2163e64ac8c" category="paragraph">TR-4616 は、 SAP HANA のディザスタリカバリ保護のオプションの概要を示しています。詳細なセットアップ情報、および同期および非同期の NetApp SnapMirror ストレージレプリケーションをベースとした 3 サイトディザスタリカバリ解決策のユースケース概要が含まれます。説明されている解決策では、データベースの整合性を管理するために、 NetApp SnapCenter と SAP HANA プラグインを使用します。</block>
+  <block id="432caa999eec7b9c7ddcabb7fe098139" category="inline-link-macro"><block ref="432caa999eec7b9c7ddcabb7fe098139" category="inline-link-rx"></block></block>
+  <block id="f122cfeb37e2d3200cb4806af587b661" category="paragraph"><block ref="f122cfeb37e2d3200cb4806af587b661" category="inline-link-macro-rx"></block></block>
+  <block id="8132c1d54d27cf7a67ac0e563e82c329" category="summary">TR-4646 では、 SAP HANA 向けのディザスタリカバリ保護オプションの概要を説明しています。詳細なセットアップ情報、および同期および非同期の NetApp SnapMirror ストレージレプリケーションをベースとした 3 サイトディザスタリカバリ解決策のユースケース概要が含まれます。説明されている解決策では、データベースの整合性を管理するために、 NetApp SnapCenter と SAP HANA プラグインを使用します。</block>
+  <block id="c79cdf002876c8be8a196f93f344a33f" category="inline-link-macro"><block ref="c79cdf002876c8be8a196f93f344a33f" category="inline-link-rx"></block></block>
+  <block id="d925ae253e076ec94fce589bf0750a31" category="paragraph"><block ref="d925ae253e076ec94fce589bf0750a31" category="inline-link-macro-rx"></block></block>
+  <block id="e12451ca8917b29faae9e966a7ef40f6" category="summary">TR-4719 は、 SAP HANA システムレプリケーション環境で、 NetApp SnapCenter テクノロジと SAP HANA プラグインを使用したバックアップとリカバリの方法を説明しています。</block>
+  <block id="ef5cc7c8780ee87a124c0fd66dd44867" category="doc">TR-4719 ：『 SAP HANA System Replication - Backup and Recovery with SnapCenter 』</block>
+  <block id="1a7acb5247a596ecf14f6381a5824bd7" category="inline-link-macro"><block ref="1a7acb5247a596ecf14f6381a5824bd7" category="inline-link-rx"></block></block>
+  <block id="d5dfc6464276a185ca9edd33cbc78835" category="paragraph"><block ref="d5dfc6464276a185ca9edd33cbc78835" category="inline-link-macro-rx"></block></block>
+  <block id="aabf604423d1b54f70e80a6e69d7cc9b" category="sidebar">UNIX および NFS 上で稼働する Oracle を使用する SAP と NetApp ONTAP</block>
+  <block id="41af34746c13d49348031a1fca6a2938" category="sidebar">Windows で ONTAP を使用して SAP と Microsoft SQL Server を運用</block>
+  <block id="9feb66d55a80dea870deeb88fab704c9" category="sidebar">SAP HANA のバックアップとリカバリ</block>
+  <block id="556e7469391c18d85f90a695dc28f80e" category="sidebar">SnapCenter を使用した SAP HANA システムのレプリケーション、バックアップ、リカバリ</block>
+  <block id="eeb338bfcd3ad35ad6983ecfa31efba2" category="sidebar">『 SAP HANA on NetApp All SAN Array 』 - 最新 SAN 、データ保護、ディザスタリカバリ</block>
 </blocks>

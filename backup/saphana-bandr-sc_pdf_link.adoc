@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-bandr-sc_pdf_link.html 
+keywords: tr-4313, pdf, sap, hana, backup, recovery, disaster, dr, snap creator 
+summary: このドキュメントでは、ネットアップの SAP HANA 向けバックアップ / リカバリ解決策のインストールと構成について説明します。解決策は、 NetApp Snap Creator フレームワークと、 SAP HANA 向け Snap Creator プラグインに基づいています。この解決策は、認定済みの Cisco SAP HANA マルチノードアプライアンスをネットアップストレージと組み合わせて使用した場合にサポートされます。この解決策は、 TDI プロジェクトのシングルノードおよびマルチノードの SAP HANA システムでもサポートされています。 
+---
+= TR-4313 ：『 SAP HANA Backup and Recovery by Using Snap Creator 』
+:firstname: : hardbreaks:
+:author: : hardbreaks:
+:authorinitials: :
+:authors: : hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+ネットアップ Nils Bauer
+
+TR-4313 は、 SAP HANA 向けのネットアップのバックアップおよびリカバリ解決策のインストールと構成について説明しています。解決策は、 NetApp Snap Creator フレームワークと、 SAP HANA 向け Snap Creator プラグインに基づいています。この解決策は、認定済みの Cisco SAP HANA マルチノードアプライアンスをネットアップストレージと組み合わせて使用した場合にサポートされます。この解決策は、 TDI プロジェクトのシングルノードおよびマルチノードの SAP HANA システムでもサポートされています。
+
+link:https://www.netapp.com/pdf.html?item=/media/19779-tr-4313.pdf["https://www.netapp.com/pdf.html?item=/media/19779-tr-4313.pdf"]

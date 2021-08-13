@@ -25,9 +25,9 @@ NOTE: このホワイトペーパーで説明している構成は、 SAP HANA �
 
 NFS システムと NetApp AFF システムを使用する FAS システムの構成ガイドは、次のリンクから入手できます。
 
-* https://docs.netapp.com/us-en/netapp-solutions_main/ent-apps-db/saphana_aff_fc_introduction.html["『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください"^]
-* https://docs.netapp.com/us-en/netapp-solutions_main/ent-apps-db/saphana-fas-nfs_introduction.html["NFS を使用した NetApp FAS システムでの SAP HANA"^]
-* https://docs.netapp.com/us-en/netapp-solutions_main/ent-apps-db/saphana_aff_nfs_introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana_aff_fc_introduction.html["『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana-fas-nfs_introduction.html["NFS を使用した NetApp FAS システムでの SAP HANA"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana_aff_nfs_introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"^]
 
 
 SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオーバー時にフェンシングを提供するために、標準の SAP HANA ストレージコネクタが使用されます。オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、該当する SAP ノートを参照してください。詳細については、を参照してください https://launchpad.support.sap.com/["SAP Note 2235581 – SAP HANA Supported Operating Systems 』"^]。

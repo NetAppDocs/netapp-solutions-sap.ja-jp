@@ -26,7 +26,7 @@ entries:
   - title: ディザスタリカバリのテスト
     entries:
     - title: ディザスタリカバリテストの概要
-      url: "/backup/hana-dr-anf_disaster_recovery_testing_overview.html"
+      url: "/backup/saphana-dr-anf_disaster_recovery_testing_overview.html"
     - title: ターゲットホストを準備します
       url: "/backup/saphana-dr-anf_prepare_the_target_host.html"
     - title: ディザスタリカバリサイトでの Snapshot バックアップに基づいて新しいボリュームを作成します
@@ -47,15 +47,17 @@ entries:
       url: "/backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html"
     - title: HANA データベースのリカバリ
       url: "/backup/saphana-dr-anf_hana_database_recovery_01.html"
+  - title: 履歴を更新します
+    url: "/backup/saphana-dr-anf_update_history.html"
 - title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
-  url: https://www.netapp.com/us/media/tr-4614.pdf
+  url: "/backup/saphana-br-sc_pdf_link.html"
 - title: SAP HANA Disaster Recovery with Storage Replication 』を参照してください
-  url: https://www.netapp.com/us/media/tr-4646.pdf
+  url: "/backup/saphana-dr-sr_pdf_link.html"
 - title: SnapCenter を使用した SAP HANA システムのレプリケーション、バックアップ、リカバリ
-  url: https://www.netapp.com/us/media/tr-4719.pdf
+  url: backup/saphana-sr_pdf_link.html
 - title: Snap Creator を使用した SAP HANA のバックアップとリカバリ
-  url: https://www.netapp.com/us/media/tr-4313.pdf
+  url: "/backup/saphana-bandr-sc_pdf_link.html"
 - title: ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア
-  url: https://www.netapp.com/us/media/tr-4711.pdf
+  url: "/backup/saphana-commvault_pdf_link.html"
 - title: "『 SAP HANA on NetApp All SAN Array 』 - 最新 SAN 、データ保護、ディザスタリカバリ"
-  url: https://www.netapp.com/us/media/nva-1147-design.pdf
+  url: "/backup/saphana-san_pdf_link.html"

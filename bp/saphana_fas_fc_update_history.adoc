@@ -12,6 +12,8 @@ summary:
 :imagesdir: ./../media/
 
 
+link:saphana_fas_fc_where_to_find_additional_information.html["前へ（ Previous ）：追加情報を検索する場所。"]
+
 この解決策の初版以降には、次の技術的な変更が加えられています。
 
 [cols="25,25,50"]
