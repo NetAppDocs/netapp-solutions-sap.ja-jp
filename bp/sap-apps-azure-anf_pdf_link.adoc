@@ -15,7 +15,9 @@ summary: TR-4746 は、 Azure NetApp Files for SAP Applications および SAP HA
 :imagesdir: ./../media/
 
 
-Nils Bauer 、 Tobias Brandl 、 Bernd Herth 、 Kevin Morris 、 Geert van Teyllingen ネットアップ、 Bratton 、 Ralf Klahr 、 Amish Patel 、 Juergen Thomas Microsoft
+Nils Bauer 、 Tobias Brandl 、 Bernd Herth 、 Kevin Morris 、 Geert van Teylingen NetApp からご連絡ください
+
+Will Bratton 氏、 Ralf Klahr 氏、 Amish Patel 氏、 Juergen Thomas Microsoft 氏
 
 TR-4746 は、 Azure NetApp Files for SAP Applications および SAP HANA 環境を使用する際のベストプラクティスを示しています。また、 Azure NetApp Files 上の SAP HANA を使用した SAP 共有ファイルシステムから SAP HANA の完全な導入環境、特定のパフォーマンス、データ保護、移行に関する考慮事項まで、さまざまなユースケースについて詳しく説明します。
 

@@ -12,7 +12,9 @@ summary: TR-4711 は、 Commvault IntelliSnap Snapshot 管理テクノロジと�
 :imagesdir: ./../media/
 
 
-Marco Schoen 、ネットアップCommVault Systems 、 Tristan Daude 氏
+Marco Schoen 、ネットアップ
+
+博士CommVault Systems 、 Tristan Daude 氏
 
 TR-4711 は、 Commvault IntelliSnap Snapshot 管理テクノロジとネットアップの Snapshot テクノロジを含む、ネットアップと Commvault 解決策 for SAP HANA の設計をまとめたものです。解決策は、ネットアップストレージと Commvault データ保護スイートを基盤としています。
 

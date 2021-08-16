@@ -3,7 +3,7 @@ section: briefs
 title: 解決策概要
 entries:
 - title: SAP HANA Lifecycle Management の略
-  url: "/briefs/backup/saphana-lm-sb_pdf_link.html"
+  url: "/briefs/saphana-lm-sb_pdf_link.html"
 - title: SAP HANA のバックアップとリカバリ
   url: https://www.netapp.com/us/media/sb-3965.pdf
 - title: SAP HANA ディザスタリカバリ
