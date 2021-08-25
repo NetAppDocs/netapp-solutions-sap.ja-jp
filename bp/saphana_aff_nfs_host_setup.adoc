@@ -49,8 +49,6 @@ NFSv3 を使用してストレージを接続する場合は、「 /etc/modprobe
 ....
 options sunrpc tcp_max_slot_table_entries=128
 ....
-nConnect マウントオプションを使用する場合、この値を 256 から 512 に増やすことができます。
-
 
 
 == Red Hat Enterprise Linux 7.2 以降の構成パラメータ
@@ -62,8 +60,6 @@ SAP HANA で生成されるワークロードに合わせて、各 SAP HANA ホ�
 ....
 options sunrpc tcp_max_slot_table_entries=128
 ....
-nConnect マウントオプションを使用する場合、この値を 256 から 512 に増やすことができます。
-
 Red Hat Enterprise Linux 7.2 以降では、 /etc/sysctl.d` ディレクトリにある構成ファイルでカーネルパラメータを設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。
 
 ....
@@ -132,6 +128,7 @@ sapcc-hana-tst-06:/ # mkdir -p /hana/data/NF2/mnt00001
 sapcc-hana-tst-06:/ # mkdir -p /hana/log/NF2/mnt00001
 sapcc-hana-tst-06:/ # mkdir -p /hana/shared
 sapcc-hana-tst-06:/ # mkdir -p /usr/sap/NF2
+
 sapcc-hana-tst-06:/ # chmod –R 777 /hana/log/NF2
 sapcc-hana-tst-06:/ # chmod –R 777 /hana/data/NF2
 sapcc-hana-tst-06:/ # chmod -R 777 /hana/shared
@@ -151,6 +148,7 @@ sapcc-hana-tst-06:~ # mkdir -p /hana/log/NF2/mnt00001
 sapcc-hana-tst-06:~ # mkdir -p /hana/log/NF2/mnt00002
 sapcc-hana-tst-06:~ # mkdir -p /hana/shared
 sapcc-hana-tst-06:~ # mkdir -p /usr/sap/NF2
+
 sapcc-hana-tst-06:~ # chmod -R 777 /hana/log/NF2
 sapcc-hana-tst-06:~ # chmod -R 777 /hana/data/NF2
 sapcc-hana-tst-06:~ # chmod -R 777 /hana/shared
@@ -166,6 +164,7 @@ sapcc-hana-tst-07:~ # mkdir -p /hana/log/NF2/mnt00001
 sapcc-hana-tst-07:~ # mkdir -p /hana/log/NF2/mnt00002
 sapcc-hana-tst-07:~ # mkdir -p /hana/shared
 sapcc-hana-tst-07:~ # mkdir -p /usr/sap/NF2
+
 sapcc-hana-tst-07:~ # chmod -R 777 /hana/log/NF2
 sapcc-hana-tst-07:~ # chmod -R 777 /hana/data/NF2
 sapcc-hana-tst-07:~ # chmod -R 777 /hana/shared
@@ -181,6 +180,7 @@ sapcc-hana-tst-08:~ # mkdir -p /hana/log/NF2/mnt00001
 sapcc-hana-tst-08:~ # mkdir -p /hana/log/NF2/mnt00002
 sapcc-hana-tst-08:~ # mkdir -p /hana/shared
 sapcc-hana-tst-08:~ # mkdir -p /usr/sap/NF2
+
 sapcc-hana-tst-08:~ # chmod -R 777 /hana/log/NF2
 sapcc-hana-tst-08:~ # chmod -R 777 /hana/data/NF2
 sapcc-hana-tst-08:~ # chmod -R 777 /hana/shared
@@ -247,7 +247,7 @@ NOTE: NFSv4 の場合、 ONTAP 9.8 以降、ネットアップで NFSv4.1 の nc
 sapcc-hana-tst-06:/ # cat /etc/fstab
 <storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,bg,noatime,nolock 0 0
 <storage-vif-log01>:/NF2_log_mnt00001 /hana/log/NF2/mnt00001 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,bg,noatime,nolock 0 0
-<storage-vif-data01>:/NF2_shared/usr- sap /usr/sap/NF2 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_shared/usr-sap /usr/sap/NF2 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,bg,noatime,nolock 0 0
 <storage-vif-data01>:/NF2_shared/shared /hana/shared nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,bg,noatime,nolock 0 0
 ....
 . Run `ount – a を実行して、すべてのホストのファイルシステムをマウントします。

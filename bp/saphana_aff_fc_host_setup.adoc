@@ -136,19 +136,19 @@ stlrx300s8-6:/ # cat /etc/multipath.conf
 multipaths {
         multipath {
                 wwid    3600a098038304436392b4d442d6f534f
-                alias   hana- SS3_data_mnt00001
+                alias   hana-SS3_data_mnt00001
         }
         multipath {
                 wwid    3600a098038304436375d4d442d753879
-                alias   hana- SS3_data_mnt00002
+                alias   hana-SS3_data_mnt00002
         }
         multipath {
                 wwid    3600a098038304436375d4d442d753878
-                alias   hana- SS3_log_mnt00001
+                alias   hana-SS3_log_mnt00001
         }
         multipath {
                 wwid    3600a098038304436392b4d442d6f5350
-                alias   hana- SS3_log_mnt00002
+                alias   hana-SS3_log_mnt00002
         }
 
 }
@@ -226,10 +226,12 @@ NOTE: LVM ベースのセットアップの場合は、前のセクションで�
 +
 ....
 pvcreate /dev/mapper/hana-FC5_data_mnt00001
-pvcreate /dev/mapper/hana-FC5_data2_mnt00001pvcreate /dev/mapper/hana-FC5_data_mnt00002
+pvcreate /dev/mapper/hana-FC5_data2_mnt00001
+pvcreate /dev/mapper/hana-FC5_data_mnt00002
 pvcreate /dev/mapper/hana-FC5_data2_mnt00002
 pvcreate /dev/mapper/hana-FC5_log_mnt00001
-pvcreate /dev/mapper/hana-FC5_log2_mnt00001pvcreate /dev/mapper/hana-FC5_log_mnt00002
+pvcreate /dev/mapper/hana-FC5_log2_mnt00001
+pvcreate /dev/mapper/hana-FC5_log_mnt00002
 pvcreate /dev/mapper/hana-FC5_log2_mnt00002
 ....
 . 各データパーティションとログパーティションのボリュームグループを作成します。
@@ -310,11 +312,11 @@ NOTE: 複数ホストのコマンド例には、 2+1 のマルチホスト HANA 
 
 
 ....
-stlrx300s8- 6:/ # mkdir -p /hana/data/SS3/mnt00001
-stlrx300s8- 6:/ # mkdir -p /hana/log/SS3/mnt00001
-stlrx300s8- 6:/ # mkdir -p /hana/shared
-stlrx300s8- 6:/ # chmod –R 777 /hana/log/SS3
-stlrx300s8- 6:/ # chmod –R 777 /hana/data/SS3
+stlrx300s8-6:/ # mkdir -p /hana/data/SS3/mnt00001
+stlrx300s8-6:/ # mkdir -p /hana/log/SS3/mnt00001
+stlrx300s8-6:/ # mkdir -p /hana/shared
+stlrx300s8-6:/ # chmod –R 777 /hana/log/SS3
+stlrx300s8-6:/ # chmod –R 777 /hana/data/SS3
 stlrx300s8-6:/ # chmod 777 /hana/shared
 ....
 * マルチホストシステムの場合は、権限を設定し、すべてのワーカーホストとスタンバイホストにマウントポイントを作成します。
@@ -324,13 +326,13 @@ stlrx300s8-6:/ # chmod 777 /hana/shared
 NOTE: 以下のコマンド例は、 2+1 のマルチホスト HANA システムを示しています。
 
 ....
-stlrx300s8- 6:/ # mkdir -p /hana/data/SS3/mnt00001
-stlrx300s8- 6:/ # mkdir -p /hana/log/SS3/mnt00001
-stlrx300s8- 6:/ # mkdir -p /hana/data/SS3/mnt00002
-stlrx300s8- 6:/ # mkdir -p /hana/log/SS3/mnt00002
-stlrx300s8- 6:/ # mkdir -p /hana/shared
-stlrx300s8- 6:/ # chmod –R 777 /hana/log/SS3
-stlrx300s8- 6:/ # chmod –R 777 /hana/data/SS3
+stlrx300s8-6:/ # mkdir -p /hana/data/SS3/mnt00001
+stlrx300s8-6:/ # mkdir -p /hana/log/SS3/mnt00001
+stlrx300s8-6:/ # mkdir -p /hana/data/SS3/mnt00002
+stlrx300s8-6:/ # mkdir -p /hana/log/SS3/mnt00002
+stlrx300s8-6:/ # mkdir -p /hana/shared
+stlrx300s8-6:/ # chmod –R 777 /hana/log/SS3
+stlrx300s8-6:/ # chmod –R 777 /hana/data/SS3
 stlrx300s8-6:/ # chmod 777 /hana/shared
 ....
 

@@ -921,7 +921,6 @@
   <block id="95df6f6c376792473a459235195a79dd" category="paragraph">SUSE Linux Enterprise Server 12 SP1 以降、カーネルパラメータは /etc/sysctl.d` ディレクトリの構成ファイルで設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。</block>
   <block id="ec0668f7ae6dba074f0862485b7b15f8" category="admonition">これらの値は、 SLES for SAP OS のバージョンに含まれている saptune を使用して設定できます。詳細については、を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="c60051ea586d490f1e69166ac39409e5" category="paragraph">NFSv3 を使用してストレージを接続する場合は、「 /etc/modprobe.d/sunrpc.conf 」に「 `unrpc.tcp_max_slot_table_entries 」を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
-  <block id="f0ded98122b7aeb2413673f23e0cf2d9" category="paragraph">nConnect マウントオプションを使用する場合、この値を 256 から 512 に増やすことができます。</block>
   <block id="179a425489e8da15ef704b42e37645c8" category="section-title">Red Hat Enterprise Linux 7.2 以降の構成パラメータ</block>
   <block id="e19cf298e039e5acff1dbe7e98090d84" category="paragraph">SAP HANA で生成されるワークロードに合わせて、各 SAP HANA ホストで追加のカーネルパラメータと構成パラメータを調整する必要があります。</block>
   <block id="7a093f47a350c0e9b97c0070054a7d01" category="paragraph">ストレージの接続に NFSv3 を使用する場合は、 /etc/modprobe.d/sunrpc.conf のパラメータ 'unrpc.tcp_max_slot_table_entries を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
@@ -1155,7 +1154,6 @@
   <block id="1800d8919a8de7dbf0bdd4d4ef0a94f4" category="paragraph">SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオーバー時にフェンシングを提供するために、標準の SAP HANA ストレージコネクタが使用されます。オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、該当する SAP ノートを参照してください。詳細については、を参照してください<block ref="362348e4aadbc3b1dc4fa3ddcce8fb65" category="inline-link-rx"></block>。</block>
   <block id="324c1541e14a4687bde362da7f340662" category="paragraph">NetApp FAS ストレージコントローラは、 NFS （ NAS ）プロトコルとファイバチャネル（ SAN ）プロトコルを使用した、 SAP HANA の TDI プログラムで認定されています。これらは、シングルホスト構成またはマルチホスト構成の SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、任意の SAP HANA シナリオに導入できます。SAP HANA での使用が認定されているサーバは、認定ストレージの解決策と組み合わせることができます。アーキテクチャの概要については、次の図を参照してください。</block>
   <block id="edf706df3a1da44f680d9aeb650d6f07" category="paragraph"><block ref="edf706df3a1da44f680d9aeb650d6f07" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="77d248262c4913bdbb243f5ab783f804" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください<block ref="9ea324ddb9f7511fb783cc61e9aee7e8" category="inline-link-rx"></block>。</block>
   <block id="2119e51f96366de40a69723f79096b89" category="paragraph">raw デバイスマッピング（ RDM ）、 FCP データストア、または FCP を使用する VVol データストアもサポートされます。どちらのデータストアオプションも、本番環境で使用するためにデータストアに格納する SAP HANA データボリュームまたはログボリュームは 1 つだけです。また、 SnapCenter がオーケストレーションする Snapshot ベースのバックアップとリカバリ、および SAP システムのクローニングなどに基づくソリューションは実装できません。</block>
   <block id="b8d262c1ae7b810ad38a6e608b89ffa6" category="paragraph"><block ref="b8d262c1ae7b810ad38a6e608b89ffa6" category="inline-link-macro-rx"></block></block>
   <block id="3823dde38e881edb5563cdd3b64099ba" category="summary">SAP HANA のソフトウェアインストールの要件は次のとおりです。</block>
@@ -2024,4 +2022,11 @@
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">オープンソース</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">通知ファイルには、ネットアップソフトウェアで使用されるサードパーティの著作権およびライセンスに関する情報が記載されています。</block>
   <block id="d648f2a68a54fd1b3329efc3cf24d29c" category="sidebar">法的通知</block>
+  <block id="716757e4f3fb9dcb1e2980b92d42e652" category="cell">バージョン 5.8 以降</block>
+  <block id="03b575c94f6241e48ac06a45c8ae1da0" category="cell">バージョン 3.6 以降</block>
+  <block id="bca5b2fa001874580bf261991fd79806" category="cell">ONTAP 9.8 以降で NFSv4.1 の nconnect がサポートされるようになりました。新しいバージョンの SAP HANA がリリースされました</block>
+  <block id="2f1608c7920dcb5d09df4373ee6cef94" category="cell">バージョン 3.7 以降</block>
+  <block id="896435116179bed2dde76b00414b4fa5" category="cell">ネットアップストレージシステムが新しく追加されると、ホストネットワークの設定が変更されます。軽微な変更が</block>
+  <block id="7e0efdf8314ae57608296d0f91d73af0" category="list-text">シングル・ホスト・システムの場合は '/hana/shared-volume をマウントし 'hared' サブディレクトリと usr-sap サブディレクトリを作成します</block>
+  <block id="8d4c28e332eb5d0e100502eb8922957f" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください<block ref="5860d5b399407cf49d81a6277de3a895" category="inline-link-rx"></block>。</block>
 </blocks>

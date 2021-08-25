@@ -70,4 +70,7 @@ link:saphana-fas-nfs_where_to_find_additional_information.html["前へ（ Previo
 
 
 | バージョン 5.7 以降 | 2021年2月 | ホストのネットワーク設定の変更やその他の軽微な変更 
+
+
+| バージョン 5.8 以降 | 2021年4月 | VMware vSphere 固有の情報を追加しました 
 |===

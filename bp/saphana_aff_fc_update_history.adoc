@@ -43,4 +43,10 @@ link:saphana_aff_fc_where_to_find_additional_information.html["前へ（ Previou
 
 
 | バージョン 3.3 以降 | 2020 年 6 月 | 追加情報オプションの機能に関するマイナーアップデート 
+
+
+| バージョン 4.0 以降 | 2021年2月 | 新しいネットアップストレージシステムをサポートする Linux LVM （ SLES15SP2 、 RHEL 8 ） 
+
+
+| バージョン 4.1 以降 | 2021年4月 | VMware vSphere 固有の情報を追加しました 
 |===
