@@ -1036,7 +1036,6 @@
   <block id="e4509a748ae3ce7cb528662f2f9f7e10" category="paragraph">認定は、次のモデルで有効です。</block>
   <block id="47230a2a4e3598c31d12840cfd054ac9" category="list-text">AFF A220 、 AFF A250 、 AFF A300 、 AFF A320 、 AFF A400 、 AFF A700s 、 AFF A700 、 AFF A800</block>
   <block id="130c9ce9d2909449cb229a98c66f9d29" category="inline-link">認定およびサポートされている SAP HANA ハードウェアディレクトリ</block>
-  <block id="47a36a94edc53cd5187c3a1d7d414368" category="list-text">ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800 SAP HANA 向けのネットアップ認定ストレージソリューションの詳細については、を参照してください<block ref="4863cb1d1ac806ba02e335dda429f580" category="inline-link-rx"></block>。</block>
   <block id="171ad4663cdfb492651e0357292fbe82" category="paragraph">本ドキュメントでは、 Fibre Channel Protocol （ FCP ；ファイバチャネルプロトコル）を使用した AFF 構成について説明します。</block>
   <block id="a08e3f55ac1bf243274ee454a477749b" category="admonition">このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定または機能を変更すると、原因のパフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更は、ネットアップのサポートから助言された場合にのみ実施</block>
   <block id="9ba59bf1b64e9d129b41dbb49f3c385f" category="paragraph">NFS システムと NetApp FAS システムを使用する AFF システムの構成ガイドは、次のリンクから入手できます。</block>
@@ -2029,4 +2028,6 @@
   <block id="896435116179bed2dde76b00414b4fa5" category="cell">ネットアップストレージシステムが新しく追加されると、ホストネットワークの設定が変更されます。軽微な変更が</block>
   <block id="7e0efdf8314ae57608296d0f91d73af0" category="list-text">シングル・ホスト・システムの場合は '/hana/shared-volume をマウントし 'hared' サブディレクトリと usr-sap サブディレクトリを作成します</block>
   <block id="8d4c28e332eb5d0e100502eb8922957f" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください<block ref="5860d5b399407cf49d81a6277de3a895" category="inline-link-rx"></block>。</block>
+  <block id="e77c85b25faef8527c1bed07eff03a8d" category="list-text">ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800</block>
+  <block id="e8c22b9c2b65a7fdd51c6f6fa0a68202" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="4863cb1d1ac806ba02e335dda429f580" category="inline-link-rx"></block>。</block>
 </blocks>

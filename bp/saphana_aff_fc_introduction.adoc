@@ -23,8 +23,10 @@ NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との
 認定は、次のモデルで有効です。
 
 * AFF A220 、 AFF A250 、 AFF A300 、 AFF A320 、 AFF A400 、 AFF A700s 、 AFF A700 、 AFF A800
-* ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800 SAP HANA 向けのネットアップ認定ストレージソリューションの詳細については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/enterprise-storage.html["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
+* ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800
 
+
+SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/enterprise-storage.html["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
 
 本ドキュメントでは、 Fibre Channel Protocol （ FCP ；ファイバチャネルプロトコル）を使用した AFF 構成について説明します。
 
