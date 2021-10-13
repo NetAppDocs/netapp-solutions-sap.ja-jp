@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-version-history.html 
+keywords:  
+summary:  
+---
+= バージョン履歴
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-backup-anf-additional-information.html["前へ：追加情報。"]
+
+|===
+| バージョン | 日付 | ドキュメントのバージョン履歴 
+
+
+| バージョン 1.0 以降 | 2021年10月 | 初版リリース 
+|===

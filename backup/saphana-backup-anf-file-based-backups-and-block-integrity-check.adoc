@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-file-based-backups-and-block-integrity-check.html 
+keywords: file-based, backup, block integrity, check, 
+summary: SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。SnapCenter サービスでは、バックアップタイプとしてファイルベースのバックアップを選択するポリシーを使用して、ブロック整合性チェックの実行をサポートします。 
+---
+= ファイルベースのバックアップとブロックの整合性チェック
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-backup-anf-sap-hana-database-snapshot-backups.html["Previous ： SAP HANA データベースの Snapshot バックアップ。"]
+
+SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。SnapCenter サービスでは、バックアップタイプとしてファイルベースのバックアップを選択するポリシーを使用して、ブロック整合性チェックの実行をサポートします。
+
+ファイルベースのバックアップは、 HANA データボリュームの Snapshot バックアップに加えて、セカンダリバックアップコピーにも使用されます。これらのファイルベースのバックアップは、プライマリデータボリュームが完全に失われた場合のリストア処理とリカバリ処理に使用できます。
+
+このポリシーを使用してバックアップをスケジュールすると、 SnapCenter サービスによって、システムデータベースとすべてのテナントデータベース用の標準の SAP HANA ファイルのバックアップが作成されます。
+
+SnapCenter サービスでは、 Snapshot ベースのバックアップと同じ方法でファイルベースのバックアップが表示されません。代わりに、最新のファイルベースのバックアップだけが表示されます。ファイルベースのバックアップの成功または失敗は、ジョブモニタビューに表示されます。
+
+image:saphana-backup-anf-image51.png["エラー：グラフィックイメージがありません"]
+
+SAP HANA のバックアップカタログには、システムデータベースとテナントデータベースの両方のエントリが表示されます。次の図に、システムデータベースのバックアップカタログにおける SnapCenter サービスブロックの整合性チェックを示します。
+
+image:saphana-backup-anf-image58.png["エラー：グラフィックイメージがありません"]
+
+ブロック整合性チェックが成功すると、標準の SAP HANA データバックアップファイルが作成されます。SnapCenter サービスは、ファイルベースのデータのバックアップ処理に、 HANA データベースで設定されているバックアップパスを使用します。
+
+....
+vm-pr1:/hanabackup/PR1/file # ls -al *
+DB_PR1:
+total 1743736
+drwxr-xr-- 2 pr1adm sapsys       4096 Jun  6 05:12 .
+drwxr-x--- 4 pr1adm sapsys       4096 Jan 31 18:59 ..
+-rw-r----- 1 pr1adm sapsys     155648 Jun  6 05:00 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_0_1
+-rw-r----- 1 pr1adm sapsys   83894272 Jun  6 05:01 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_2_1
+-rw-r----- 1 pr1adm sapsys 1694507008 Jun  6 05:02 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_3_1
+SYSTEMDB:
+total 1562788
+drwxr-xr-- 2 pr1adm sapsys       4096 Jun  6 05:12 .
+drwxr-x--- 4 pr1adm sapsys       4096 Jan 31 18:59 ..
+-rw-r----- 1 pr1adm sapsys     159744 Jun  6 05:00 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_0_1
+-rw-r----- 1 pr1adm sapsys 1593843712 Jun  6 05:02 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_1_1
+....
+
+
+== ファイルベースのバックアップを使用したリストアとリカバリ
+
+HANA Studio または HANA Cockpit で標準の HANA リカバリ処理を使用して、 SnapCenter 外部でファイルベースのバックアップのリストア処理とリカバリ処理を実行する必要があります。
+
+link:saphana-backup-anf-restore-and-recovery.html["次の手順：リストアとリカバリ"]

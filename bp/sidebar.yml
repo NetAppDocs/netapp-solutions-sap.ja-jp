@@ -4,8 +4,6 @@ title: ベストプラクティス
 entries:
 - title: Azure NetApp Files を使用した Microsoft Azure 上の SAP アプリケーション
   url: "/bp/sap-apps-azure-anf_pdf_link.html"
-- title: Cloud Volumes ONTAP を使用した Microsoft Azure 上の SAP アプリケーション
-  url: "/bp/sap-apps-azure-cvo_pdf_link.html"
 - title: "『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』"
   type: solutions
   entries:
@@ -142,9 +140,6 @@ entries:
     url: "/bp/saphana_fas_fc_where_to_find_additional_information.html"
   - title: 履歴を更新します
     url: "/bp/saphana_fas_fc_update_history.html"
-- title: VMware vSphere 上の SAP HANA と、 NetApp FAS 上の SAP HANA と、すべての SAP HANA Flash
-    FAS システム
-  url: "/bp/saphana-vsphere-fas-aff_pdf_link.html"
 - title: IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します
   url: "/bp/saphana-ibm-aff-nfs_pdf_link.html"
 - title: UNIX および NFS 上で稼働する Oracle を使用する SAP と NetApp ONTAP

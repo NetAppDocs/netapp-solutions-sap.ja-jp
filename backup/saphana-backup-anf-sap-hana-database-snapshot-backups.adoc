@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-sap-hana-database-snapshot-backups.html 
+keywords: Snapshot, policy, schedule, on-demand, UI, API 
+summary: 通常、 SnapCenter サービスでは、ポリシーで定義されたスケジュールに従ってデータベースのバックアップが実行されます。SnapCenter サービス UI または REST API を使用して、オンデマンドデータベースバックアップを実行することもできます。 
+---
+= SAP HANA データベースの Snapshot バックアップ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-backup-anf-backup-configuration-of-global-non-data-volumes.html["Previous ：グローバルな非データボリュームのバックアップ設定を指定します。"]
+
+通常、 SnapCenter サービスでは、ポリシーで定義されたスケジュールに従ってデータベースのバックアップが実行されます。SnapCenter サービス UI または REST API を使用して、オンデマンドデータベースバックアップを実行することもできます。
+
+
+
+== SAP HANA Studio での SnapCenter サービスのデータバックアップについて理解する
+
+SAP HANA Systems ビューのコンテキストメニューで、 View Backups を選択してバックアップの概要を開きます。
+
+image:saphana-backup-anf-image46.png["エラー：グラフィックイメージがありません"]
+
+バックアップの概要には、 SnapCenter サービスを使用して作成されたバックアップのリストが表示されます。次の図に、使用可能なバックアップを示します。最新のバックアップが強調表示されています。
+
+image:saphana-backup-anf-image47.png["エラー：グラフィックイメージがありません"]
+
+SAP HANA MDC システムのストレージ Snapshot コピーを使用してバックアップを実行する場合は、データボリュームの Snapshot コピーが作成されます。このデータボリュームには、システムデータベースのデータおよびすべてのテナントデータベースのデータが含まれます。この物理アーキテクチャを反映するために、 SnapCenter サービスによって Snapshot バックアップがトリガーされるたびに、 SAP HANA はシステムデータベースとすべてのテナントデータベースの統合バックアップを内部的に実行します。その結果、 SAP HANA のバックアップカタログに、システムデータベース用とテナントデータベース用に 1 つずつ、合計複数のバックアップエントリが作成されます。
+
+
+NOTE: SAP HANA シングルコンテナシステムの場合、データベースボリュームにはデータベースが 1 つだけ格納され、 SAP HANA のバックアップカタログにはエントリが 1 つしかありません。
+
+SAP HANA のバックアップカタログでは、 SnapCenter サービスのバックアップ名が Comment フィールドと External Backup ID （ EBID ）フィールドに格納されます。次の図は、システムデータベースとテナントデータベース PR1 を示しています。どちらの図も、 ［ コメント ］ フィールドと ［ EBID ］ フィールドに保存されている SnapCenter サービスのバックアップ名を示しています。
+
+image:saphana-backup-anf-image48.png["エラー：グラフィックイメージがありません"]
+
+image:saphana-backup-anf-image49.png["エラー：グラフィックイメージがありません"]
+
+
+NOTE: SnapCenter サービスで認識されるのは、自身のバックアップだけです。SAP HANA Studio などで作成された追加のバックアップは、 SAP HANA のカタログには表示されますが、 SnapCenter サービスには表示されません。
+
+
+
+== Azure NetApp Files ボリューム上の SnapCenter サービスのバックアップを特定します
+
+SnapCenter サービスでバックアップ名として使用されるものと同じ名前が、 Azure NetApp Files ボリュームの Snapshot バックアップ名としても使用されます。次の図に、 Azure portal と Snapshot backups for the database data volume を示します。
+
+image:saphana-backup-anf-image50.png["エラー：グラフィックイメージがありません"]
+
+
+
+== データボリューム以外のバックアップをリストします
+
+HANA システムのバックアップビューで、非データボリュームを選択して、次の図に示すように非データボリュームのバックアップのリストを表示します。
+
+image:saphana-backup-anf-image51.png["エラー：グラフィックイメージがありません"]
+
+HANA 用の Azure NetApp Files ボリュームを共有した場合、 Snapshot コピーには SnapCenter サービスと同じ名前が付けられます。
+
+image:saphana-backup-anf-image52.png["エラー：グラフィックイメージがありません"]
+
+
+
+== オンデマンドデータベースバックアップ
+
+オンデマンドデータベースバックアップを作成するには、次の手順を実行します。
+
+. SAP HANA システムビューで、コンテキストメニューからオンデマンドバックアップを選択します。データボリュームまたは非データボリュームを選択することもできます。データベースのバックアップについては、 [ データボリューム ] を選択する必要があります。
++
+image:saphana-backup-anf-image53.png["エラー：グラフィックイメージがありません"]
+
+. オンデマンドバックアップダイアログで、ポリシー：なし、または HANA システムに割り当てたいずれかのポリシーを選択します。
++
+ポリシーなしを選択した場合は、特定のバックアップに使用する特定の保持期間を定義できます。HANA システムに割り当てられているポリシーを選択した場合、このポリシーを使用するスケジュールされたバックアップと同じ保持がこのバックアップに適用されます。
+
++
+次の例では、既存のポリシーが選択されています。
+
++
+image:saphana-backup-anf-image54.png["エラー：グラフィックイメージがありません"]
+
++
+image:saphana-backup-anf-image55.png["エラー：グラフィックイメージがありません"]
+
+. バックアップワークフローを開始するには、 [ バックアップの作成 ] をクリックします。
++
+バックアップ処理のジョブ ID が画面に表示されます。
+
+. ジョブの詳細画面を開くには、ジョブ ID をクリックします。
++
+image:saphana-backup-anf-image56.png["エラー：グラフィックイメージがありません"]
+
++
+ジョブモニタには、さまざまなワークフローステップ、ステップの実行時間、および合計操作実行時間が表示されます。次の例では、バックアップ処理に 19 秒かかります。
+
++
+image:saphana-backup-anf-image57.png["エラー：グラフィックイメージがありません"]
+
+
+
+link:saphana-backup-anf-file-based-backups-and-block-integrity-check.html["次：ファイルベースのバックアップとブロックの整合性チェック。"]

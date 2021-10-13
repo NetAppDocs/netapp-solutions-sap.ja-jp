@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html 
+keywords: configuration, database, backups, MDC 
+summary: このセクションでは、シングルホスト SAP HANA MDC のシングルテナントシステム PR1 の設定手順について説明します。複数のテナントを持つ MDC システムの場合の手順は同じです。シングルコンテナシステムとマルチホストシステムの違いは、対応する設定手順に反映されます。 
+---
+= SAP HANA データベースのバックアップ構成
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-backup-anf-snapcenter-service-snapshot-backup-configuration-overview.html["Previous ： SnapCenter サービスの Snapshot バックアップ設定の概要を示します。"]
+
+このセクションでは、シングルホスト SAP HANA MDC のシングルテナントシステム PR1 の設定手順について説明します。複数のテナントを持つ MDC システムの場合の手順は同じです。シングルコンテナシステムとマルチホストシステムの違いは、対応する設定手順に反映されます。
+
+
+
+== SAP HANA のバックアップユーザ
+
+SnapCenter サービスでバックアップ処理を実行するには、 HANA データベースに専用のデータベースユーザを設定することを推奨します。SnapCenter サービスの HANA システム構成では、このバックアップユーザの HANA データベースのユーザストアキーが設定され、このユーザストアキーを使用して HANA システムと通信します。
+
+次の図は、バックアップユーザの作成に使用できる SAP HANA Studio のスクリーンショットです。
+
+
+NOTE: SAP HANA 2.0 SPS5 リリースで変更された必要な権限： backup admin 、 catalog read 、 database backup admin 、および database recovery operator以前のリリースの場合は、バックアップ管理者とカタログの読み取りで十分です。
+
+SAP HANA MDC システムの場合は、シングルテナントまたは複数テナントの場合は、システムデータベース内にユーザを作成する必要があります。これは、システムデータベースとテナントデータベースのバックアップコマンドはすべて、システムデータベースを使用して実行されるためです。
+
+image:saphana-backup-anf-image19.png["エラー：グラフィックイメージがありません"]
+
+
+
+== SnapCenter サービスでの SAP HANA システム構成
+
+SnapCenter サービスで SAP HANA システム PR1 を設定するには、次の手順を実行します。
+
+. SAP HANA Systems に移動し、 Add をクリックします。
+. System Details （システムの詳細）画面で、システムタイプ、 HANA Single Container （ HANA シングルコンテナ）、または Multitenant Database Container （マルチテナントデータベースコンテナ）を選択します。HANA システムの SID を指定し、システム名として任意のテキストを入力します。
+. HANA データベースのユーザストアキーを追加するには、 Add Keys をクリックします。
++
+image:saphana-backup-anf-image20.png["エラー：グラフィックイメージがありません"]
+
+. HANA データベースのユーザストアキーを設定するための情報を入力します。任意の名前をキー名として指定できます。
++
+システムの詳細には 'hdbsql クライアントを使用してシステム・データベースと通信する IP アドレスとポートが含まれますSAP HANA MDC のシングルテナント構成では、ポート「 3 」はシステムデータベースへの SQL アクセス用の標準ポートです。SAP HANA シングルコンテナセットアップの場合、ポート「 3<instanceNo>15 」はインデックスサーバへの SQL アクセス用の標準ポートであり、構成で使用する必要があります。SAP HANA マルチホストを設定する場合は、すべてのホストにユーザストアキーを設定する必要があります。SnapCenter サービスは、指定された各キーを使用してデータベースへの接続を試みます。そのため、異なるホストへの SAP HANA サービスのフェイルオーバーとは独立して動作します。
+
++
+以前に設定したシステムデータベースに、データベースユーザのユーザ名とパスワードを入力する必要があります。SnapCenter は、この情報を使用してユーザストアキーを自動的に作成し、そのキーを使用して HANA データベースと通信します。
+
+. 続行するには、 [ 追加 ] をクリックします。
++
+image:saphana-backup-anf-image21.png["エラー：グラフィックイメージがありません"]
+
+. ストレージ設置面積の設定に進むには、 Continue （続行）をクリックします。
++
+image:saphana-backup-anf-image22.png["エラー：グラフィックイメージがありません"]
+
+. HANA システムのストレージボリュームの情報を入力します。
++
+HANA システムの Azure NetApp Files ボリュームに使用する作業環境とネットアップアカウントを選択します。HANA システムのデータ・ボリュームを選択します（例： PR1_data_mnt00001 ）
+
++
+SAP HANA マルチホストシステムの場合は、システムに属するすべての HANA ホストのデータボリュームを選択する必要があります。
+
++
+image:saphana-backup-anf-image23.png["エラー：グラフィックイメージがありません"]
+
++
+image:saphana-backup-anf-image24.png["エラー：グラフィックイメージがありません"]
+
+. Continue をクリックします。 .
++
+image:saphana-backup-anf-image25.png["エラー：グラフィックイメージがありません"]
+
+. HANA システムを追加するには、追加をクリックします。
++
+image:saphana-backup-anf-image26.png["エラー：グラフィックイメージがありません"]
+
+. 保護設定を続行するには、 [ 続行 ] をクリックします。
++
+image:saphana-backup-anf-image27.png["エラー：グラフィックイメージがありません"]
+
++
+画面には、 SnapCenter サービスで設定されているすべてのポリシーが表示されます。
+
++
+image:saphana-backup-anf-image28.png["エラー：グラフィックイメージがありません"]
+
+. 割り当てるポリシーを選択します。たとえば、以前に作成された「 S napshotEvery4h 」ポリシーと「 BlockIntegrityCheckEverySunday 」ポリシーが選択されます。
+. HANA システムにポリシーを割り当てるには、 Protect （保護）をクリックします。
++
+image:saphana-backup-anf-image29.png["エラー：グラフィックイメージがありません"]
+
++
+HANA システムの概要画面には、 HANA システムと割り当てられたポリシーが表示されます。
+
++
+image:saphana-backup-anf-image30.png["エラー：グラフィックイメージがありません"]
+
+
+
+link:saphana-backup-anf-backup-configuration-of-sap-hana-non-data-volumes.html["次の例： SAP HANA の非データボリュームのバックアップ構成"]

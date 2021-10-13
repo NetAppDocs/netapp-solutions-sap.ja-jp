@@ -1897,13 +1897,11 @@
   <block id="fcf140abed196b8eba71c45f21312bce" category="sidebar">ネットアップのソリューション</block>
   <block id="cd47dd01745339787e4c7300389401f2" category="sidebar">ベストプラクティス</block>
   <block id="e5704579323eb4f2edeee34d84f8ebd5" category="sidebar">Azure NetApp Files を使用した Microsoft Azure 上の SAP アプリケーション</block>
-  <block id="e1f56e42e145c79ff6fde2314ed0e9db" category="sidebar">Cloud Volumes ONTAP を使用した Microsoft Azure 上の SAP アプリケーション</block>
   <block id="88aa48beec8729be73be99084cd76b79" category="sidebar">『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』</block>
   <block id="87aea504b228b108e5161db60e63e422" category="sidebar">インフラのセットアップと設定の概要</block>
   <block id="a1893b920bc48a028abc56e282719481" category="sidebar">『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』</block>
   <block id="566e71293623024943bf4c66fa54d2c8" category="sidebar">『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』</block>
   <block id="c8ff9dc5c718603eec8564e06ee7b058" category="sidebar">『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください</block>
-  <block id="f2d541ac92b4dd83f2be5b932a057952" category="sidebar">VMware vSphere 上の SAP HANA と、 NetApp FAS 上の SAP HANA と、すべての SAP HANA Flash FAS システム</block>
   <block id="00495563450af6bcde40cb96d650076e" category="sidebar">IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します</block>
   <block id="d5d6ed7727f0e542e6846a58af1d02ba" category="sidebar">SAP HANA Lifecycle Management の略</block>
   <block id="68cc439f4e585883d2aaa26a4e3bcef2" category="sidebar">SAP HANA ディザスタリカバリ</block>
@@ -2030,4 +2028,505 @@
   <block id="8d4c28e332eb5d0e100502eb8922957f" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください<block ref="5860d5b399407cf49d81a6277de3a895" category="inline-link-rx"></block>。</block>
   <block id="e77c85b25faef8527c1bed07eff03a8d" category="list-text">ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800</block>
   <block id="e8c22b9c2b65a7fdd51c6f6fa0a68202" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="4863cb1d1ac806ba02e335dda429f580" category="inline-link-rx"></block>。</block>
+  <block id="657da3820ae1c5b9809d428c8a98c5dc" category="doc">SnapCenter サービスポリシーの設定</block>
+  <block id="c8bd1be803a63781351772f4b3214600" category="inline-link-macro">Previous ：このレポートで使用するラボのセットアップ。</block>
+  <block id="b380171206568b54cc93ead5c4bb837b" category="paragraph"><block ref="b380171206568b54cc93ead5c4bb837b" category="inline-link-macro-rx"></block></block>
+  <block id="80bf104cdee8b8f9c92f9e4ff0972dab" category="inline-link-macro">「データ保護戦略」</block>
+  <block id="0d76506ce590842642ec084812fb392b" category="paragraph">の項で説明したように <block ref="6dfb9c5e5a91b956ae6fd79a2cc54865" category="inline-link-macro-rx"></block> ポリシーは通常、リソースとは別に設定され、複数の SAP HANA データベースで使用できます。</block>
+  <block id="c578586071a895e1a24fdb22dd828e77" category="paragraph">一般的な最小構成は、次のポリシーで構成されます。</block>
+  <block id="44a1c45f1cd946c3ff7dab49a5e1d69b" category="list-text">1 時間ごとの Snapshot バックアップのポリシー。</block>
+  <block id="c925be62973ad8668e1044d5e1e518ab" category="paragraph">たとえば、「 S napshotEvery4h 」のようになります</block>
+  <block id="80e7374b1ae5af56c20cec0a07ff5099" category="list-text">ファイルベースのバックアップを使用した、週単位のブロック整合性チェックのポリシー。</block>
+  <block id="4dcc42ee87f97d7296fddd11cafdf045" category="paragraph">たとえば、「 BlockIntegrityCheckEverySunday 」と入力します</block>
+  <block id="994217b8d2a1bb1a5e7afd46125f4f57" category="paragraph">以降のセクションでは、これら 2 つのポリシーの設定について説明します。</block>
+  <block id="1a738a5297df57433f24d32effcccf4f" category="section-title">1 時間ごとの Snapshot バックアップのポリシー</block>
+  <block id="b23f36870137f20a703be85990d6ccf0" category="paragraph">1 時間ごとの Snapshot バックアップのポリシーを作成するには、次の手順を実行します。</block>
+  <block id="3e3976aaf937733fcbbb7732058967a2" category="list-text">[ ポリシー ] に移動し、 [ ポリシーの追加 ] をクリックします。</block>
+  <block id="f35ad3eb3bdb12f0e61a22d7fbc4c0b6" category="paragraph"><block ref="f35ad3eb3bdb12f0e61a22d7fbc4c0b6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c12aa0956e37d8e56b1de4f41dd11ea4" category="list-text">Create Policy （ポリシーの作成）画面に、ポリシー名、バックアップタイプ、バックアップ命名規則、スケジュールと保持の詳細が表示されます。</block>
+  <block id="a51c9cd5029de9a06971dde0239e76ad" category="paragraph"><block ref="a51c9cd5029de9a06971dde0239e76ad" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e2da36f48591ae1a2e0ed2c7b5eaa8dc" category="paragraph">たとえば、次の図では、 Snapshot バックアップのスケジュールを 4 時間ごと、開始時刻を 10 AM に設定しています。保持期間は 3 日間で 18 日に設定されます。</block>
+  <block id="6c535fe97a4a2f0f9084fac8949b39b6" category="paragraph"><block ref="6c535fe97a4a2f0f9084fac8949b39b6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1dbbbee609fcebacc44fff8b2749cd48" category="list-text">[ カスタム・バックアップ名 ] ウィンドウでは、バックアップの命名規則を変更し、カスタム・プレフィックスを追加できます。</block>
+  <block id="369f021e71b454527303c6e31c293d54" category="paragraph"><block ref="369f021e71b454527303c6e31c293d54" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0a2ae5b43bfa4e22cf3cc58b3f7258d3" category="list-text">新しいポリシーを作成するには、 [ 追加 ] をクリックします。</block>
+  <block id="069d2a93143b34ad6bad9f7298411ae3" category="section-title">週単位のブロック整合性チェックのポリシー</block>
+  <block id="0a07be8ca3d23badfcef7579623ff09d" category="paragraph">週単位のブロック整合性チェック用のポリシーを作成するには、次の手順を実行します。</block>
+  <block id="664b0ff647825df5251cffdfe7aa2013" category="list-text">Create Policy （ポリシーの作成）画面で、ポリシー名、バックアップタイプ、バックアップ命名規則、およびスケジュールと保持の詳細を入力します。</block>
+  <block id="2b0f6638a8bd4007b8acd40ae23a2915" category="paragraph"><block ref="2b0f6638a8bd4007b8acd40ae23a2915" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b2264bb8d2d665cb70a23e37bcd51220" category="paragraph">次の図に、設定されているポリシーの概要を示します。</block>
+  <block id="3e9601fb60651562515738604dfd6b17" category="paragraph"><block ref="3e9601fb60651562515738604dfd6b17" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="28ec531f8b380c5dd0bcdc7fe2c2710c" category="inline-link-macro">次： SnapCenter サービス Snapshot バックアップ設定の概要</block>
+  <block id="ef42524d7c4f41fd9a354cbcd9b269a8" category="paragraph"><block ref="ef42524d7c4f41fd9a354cbcd9b269a8" category="inline-link-macro-rx"></block></block>
+  <block id="bad5ffeae5823a1ddf87624bc2cb1b62" category="summary">このセクションでは、 SAP HANA 非データボリュームのバックアップ構成を実行するために必要な手順を説明します。</block>
+  <block id="70ca7602c160a399201c98906dded213" category="doc">グローバルな非データボリュームのバックアップ構成</block>
+  <block id="2d099c6b211fc47562d2437c26d7fbed" category="inline-link-macro">前のバージョン： SAP HANA の非データボリュームのバックアップ構成。</block>
+  <block id="87d6ddfcb16bcc88faf10be2949e64f6" category="paragraph"><block ref="87d6ddfcb16bcc88faf10be2949e64f6" category="inline-link-macro-rx"></block></block>
+  <block id="7f46c0544a2f295f9fbfe1ca42984b53" category="paragraph">グローバルな非データボリュームのバックアップ設定を設定するには、次の手順を実行します。</block>
+  <block id="ecb80f209682d7fea859be16cd6635fd" category="list-text">SAP HANA Systems に移動し、 Add をクリックします。</block>
+  <block id="4303f49db9c81034b7d1c3e4abb54573" category="list-text">[ システムの詳細 ] 画面で、システムタイプとして [ グローバル非データボリューム ] を選択します。グローバルボリュームに関連付けられている SID をカンマで区切って指定できます。選択したシステム名を入力し、 [ 続行 ] をクリックします。</block>
+  <block id="2545f6cc147814ca8ed894bd4a25fdff" category="paragraph"><block ref="2545f6cc147814ca8ed894bd4a25fdff" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3dd603730152c8fd8ce81de887a8336c" category="list-text">ボリュームを選択し、 Continue （続行）をクリックします。</block>
+  <block id="77b244ec5c5affdab7cecd341e553817" category="paragraph"><block ref="77b244ec5c5affdab7cecd341e553817" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1dbe43ca80d44abbf871801ea5aefb93" category="list-text">Continue をクリックします。 .</block>
+  <block id="7ade5977e75da2f40790638e6483e26f" category="paragraph"><block ref="7ade5977e75da2f40790638e6483e26f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1bb250fbf1946dd1bd7ad228032f8803" category="list-text">追加をクリックします。</block>
+  <block id="1a22f075528c48b204b8d9fd0941aba2" category="paragraph"><block ref="1a22f075528c48b204b8d9fd0941aba2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cd84f29f4deb1ed9ce6282df0d63c26b" category="list-text">保護を設定するには、 [ 続行 ] をクリックします。</block>
+  <block id="0635a906eda8166a41db809ce35d859d" category="paragraph"><block ref="0635a906eda8166a41db809ce35d859d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd08c7f3c47626f7bfed99493b2fff63" category="list-text">ポリシーを選択して、 [ 保護 ] をクリックします。</block>
+  <block id="8a359217431402d80cc46cdffaa77ab2" category="paragraph"><block ref="8a359217431402d80cc46cdffaa77ab2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5eefa04bb01d8e54380a0db4bf4b406b" category="list-text">HANA システムのリストに、グローバルな非データボリュームとして Transport Directory が表示されるようになりました。</block>
+  <block id="87a68ccaf45a3043c383038f4d72c44c" category="paragraph"><block ref="87a68ccaf45a3043c383038f4d72c44c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1915b44d66f621431b3763a5191d09a3" category="inline-link-macro">次の例は、 SAP HANA データベースの Snapshot バックアップです。</block>
+  <block id="0e5039d400bc4c719ac070cd3c34847a" category="paragraph"><block ref="0e5039d400bc4c719ac070cd3c34847a" category="inline-link-macro-rx"></block></block>
+  <block id="f6a738f75f76f62a241636eca02cd87d" category="doc">バージョン履歴</block>
+  <block id="8216d7034579e5d01a6ef172c0ade4a6" category="inline-link-macro">前へ：追加情報。</block>
+  <block id="4987011ed1027adb747b828c1efe8100" category="paragraph"><block ref="4987011ed1027adb747b828c1efe8100" category="inline-link-macro-rx"></block></block>
+  <block id="8002bc13927c65b5f265b031079ce1d4" category="cell">ドキュメントのバージョン履歴</block>
+  <block id="a5f3f63c2f6e1d6d4605650633b9ce8a" category="cell">2021年10月</block>
+  <block id="ea9349a37bfee247df0f87cbcacca796" category="cell">初版リリース</block>
+  <block id="0f68b904e33d9ac04605aecc958bcf52" category="doc">追加情報</block>
+  <block id="4c28efc16ec0589f9fb25a451feba324" category="inline-link-macro">Previous ：リストアとリカバリを実行します。</block>
+  <block id="4f6b276c14acce5792e8927470a89fc2" category="paragraph"><block ref="4f6b276c14acce5792e8927470a89fc2" category="inline-link-macro-rx"></block></block>
+  <block id="7d5b957cd473f6eaf5ad335a9c63c4ff" category="paragraph">このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。</block>
+  <block id="7c772753c7284e99dbe27f289ed15ed8" category="list-text">TR-4746 ：『 SAP Applications on Microsoft Azure Using Azure NetApp Files 』</block>
+  <block id="446b501084665b809e4de5c4d5f563f9" category="paragraph"><block ref="446b501084665b809e4de5c4d5f563f9" category="inline-link-rx"></block></block>
+  <block id="7ad9bddd7e56c8ed9b71a1fb79aca09a" category="inline-link-macro">TR-4891 ：『 SAP HANA disaster recovery with Azure NetApp Files 』</block>
+  <block id="8163cd5e840d189977f85a9f427fe208" category="list-text"><block ref="8163cd5e840d189977f85a9f427fe208" category="inline-link-macro-rx"></block></block>
+  <block id="a43c7ca8f7e6a4a034f6a940ec7566f5" category="inline-link-macro">次へ：バージョン履歴。</block>
+  <block id="c09b6dae8f20a2cfc323acd2010a7398" category="paragraph"><block ref="c09b6dae8f20a2cfc323acd2010a7398" category="inline-link-macro-rx"></block></block>
+  <block id="3d98d7360fccf25b78b6a352a624ce91" category="summary">SnapCenter サービスは、アプリケーションと整合性のあるデータ保護を実現する拡張性に優れたユニファイドプラットフォームです。SnapCenter サービスでは、一元的な管理と監視が可能です。一方で、アプリケーション固有のバックアップおよびリストア処理の管理を各ユーザに委譲することもできます。</block>
+  <block id="b22fa0f9ea3be611862901cc6be29585" category="doc">SnapCenter サービスアーキテクチャ</block>
+  <block id="fb937e093b78fbf36895f69195197187" category="inline-link-macro">Previous ： NetApp 解決策をクリックします。</block>
+  <block id="c4261b4a719d4bf266ddec36cff9724b" category="paragraph"><block ref="c4261b4a719d4bf266ddec36cff9724b" category="inline-link-macro-rx"></block></block>
+  <block id="d7e9a840abc3cb177353e706a8a85d9a" category="paragraph">SnapCenter サービスは、 NetApp Cloud Manager ソフトウェアを UI として利用し、 Azure NetApp Files のクレデンシャルを管理します。SnapCenter サービスは Kubernetes クラスタ内で実行され、 Cloud Manager Connector を通じて NetApp Cloud Manager と通信します。SnapCenter サービスは、 Azure NetApp Files 管理 API を使用して、 HANA hdbsql クライアントと Azure NetApp Files ストレージの処理を使用して、 HANA データベースの処理をトリガーします。</block>
+  <block id="b0ecfafd025c5ea54480a65db32023f9" category="paragraph">次の 2 つの図に示すように、 SnapCenter サービス Kubernetes クラスタと Cloud Manager コネクタは、別のサービス VNet または SAP HANA システムと同じ VNet に導入できます。</block>
+  <block id="69a81fe994f478aae6ce14f3b3482818" category="paragraph"><block ref="69a81fe994f478aae6ce14f3b3482818" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2656fed356c8a44a7e4b684243530461" category="paragraph"><block ref="2656fed356c8a44a7e4b684243530461" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f5cc3104a7ecee8b07f982a1056746ec" category="paragraph">SnapCenter サービスのインストールには、少なくとも 2 つの仮想マシン（ VM ）が必要です。 1 つは Cloud Manager Connector 用、もう 1 つは Kubernetes クラスタを非 HA 構成で実行する必要があります。SnapCenter サービスがハイアベイラビリティ（ HA ）構成でセットアップされている場合は、 VM が 2 台追加で必要です。</block>
+  <block id="c7cd8012111bd2c086467ba00c0c1234" category="paragraph"><block ref="c7cd8012111bd2c086467ba00c0c1234" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="22383b841d76fb4fcc4605588b7c676f" category="inline-link-macro">次に、 SnapCenter サービス SAP HANA バックアップ解決策を実行します。</block>
+  <block id="b2ddb4dbeb2dc3c5555031ee75d2431c" category="paragraph"><block ref="b2ddb4dbeb2dc3c5555031ee75d2431c" category="inline-link-macro-rx"></block></block>
+  <block id="e02ba160215a0ecf393c368ccc7d0a1e" category="summary">通常、 SnapCenter サービスでは、ポリシーで定義されたスケジュールに従ってデータベースのバックアップが実行されます。SnapCenter サービス UI または REST API を使用して、オンデマンドデータベースバックアップを実行することもできます。</block>
+  <block id="e6a7b93e369619e5e4e140800841dcb9" category="doc">SAP HANA データベースの Snapshot バックアップ</block>
+  <block id="893ee2ea964970ac6b3dbf6714d47b80" category="inline-link-macro">Previous ：グローバルな非データボリュームのバックアップ設定を指定します。</block>
+  <block id="803079412ea5fa7e5eda07dbc5c1d974" category="paragraph"><block ref="803079412ea5fa7e5eda07dbc5c1d974" category="inline-link-macro-rx"></block></block>
+  <block id="ab257e47c39d86a16bd3b4957cbcec07" category="section-title">SAP HANA Studio での SnapCenter サービスのデータバックアップについて理解する</block>
+  <block id="86b06efe2b1040b24db2db1e3834aeca" category="paragraph">SAP HANA Systems ビューのコンテキストメニューで、 View Backups を選択してバックアップの概要を開きます。</block>
+  <block id="ccf3933dd902c69d18eaa647992cd4fd" category="paragraph"><block ref="ccf3933dd902c69d18eaa647992cd4fd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cec96174584f2015ff8e6c8d47fbd6ef" category="paragraph">バックアップの概要には、 SnapCenter サービスを使用して作成されたバックアップのリストが表示されます。次の図に、使用可能なバックアップを示します。最新のバックアップが強調表示されています。</block>
+  <block id="18fb8082962031e7f5f9fcd4c9923307" category="paragraph"><block ref="18fb8082962031e7f5f9fcd4c9923307" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="987058b2592da78d68009095f2897e7a" category="paragraph">SAP HANA MDC システムのストレージ Snapshot コピーを使用してバックアップを実行する場合は、データボリュームの Snapshot コピーが作成されます。このデータボリュームには、システムデータベースのデータおよびすべてのテナントデータベースのデータが含まれます。この物理アーキテクチャを反映するために、 SnapCenter サービスによって Snapshot バックアップがトリガーされるたびに、 SAP HANA はシステムデータベースとすべてのテナントデータベースの統合バックアップを内部的に実行します。その結果、 SAP HANA のバックアップカタログに、システムデータベース用とテナントデータベース用に 1 つずつ、合計複数のバックアップエントリが作成されます。</block>
+  <block id="1bb1525b78068520375b742e06ad78e6" category="admonition">SAP HANA シングルコンテナシステムの場合、データベースボリュームにはデータベースが 1 つだけ格納され、 SAP HANA のバックアップカタログにはエントリが 1 つしかありません。</block>
+  <block id="773ea02e32b15b40f651bf11fd6b1e47" category="paragraph">SAP HANA のバックアップカタログでは、 SnapCenter サービスのバックアップ名が Comment フィールドと External Backup ID （ EBID ）フィールドに格納されます。次の図は、システムデータベースとテナントデータベース PR1 を示しています。どちらの図も、 ［ コメント ］ フィールドと ［ EBID ］ フィールドに保存されている SnapCenter サービスのバックアップ名を示しています。</block>
+  <block id="681d54c1e8a5a69e25bd163b6012a082" category="paragraph"><block ref="681d54c1e8a5a69e25bd163b6012a082" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="576155af4e1dfe8a7e66dd2818de9afd" category="paragraph"><block ref="576155af4e1dfe8a7e66dd2818de9afd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3d67b7277b86d04475973c87937fc544" category="admonition">SnapCenter サービスで認識されるのは、自身のバックアップだけです。SAP HANA Studio などで作成された追加のバックアップは、 SAP HANA のカタログには表示されますが、 SnapCenter サービスには表示されません。</block>
+  <block id="1d9dba18dabf1278d87c3f0faaab4a6a" category="section-title">Azure NetApp Files ボリューム上の SnapCenter サービスのバックアップを特定します</block>
+  <block id="c7f8cd8a11a9e4995496bf8655caddc7" category="paragraph">SnapCenter サービスでバックアップ名として使用されるものと同じ名前が、 Azure NetApp Files ボリュームの Snapshot バックアップ名としても使用されます。次の図に、 Azure portal と Snapshot backups for the database data volume を示します。</block>
+  <block id="948a6cc39ae19226e7d085f7d9a76f28" category="paragraph"><block ref="948a6cc39ae19226e7d085f7d9a76f28" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3ddb255fc643972c1653785429e8c89a" category="section-title">データボリューム以外のバックアップをリストします</block>
+  <block id="c6a0eadeedd717aee8a5f23a66fa22bd" category="paragraph">HANA システムのバックアップビューで、非データボリュームを選択して、次の図に示すように非データボリュームのバックアップのリストを表示します。</block>
+  <block id="08476800ee3046a8d37ae1da8cf733ce" category="paragraph"><block ref="08476800ee3046a8d37ae1da8cf733ce" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="abbde25b6b6ca0d3e6bcf82513eefcd5" category="paragraph">HANA 用の Azure NetApp Files ボリュームを共有した場合、 Snapshot コピーには SnapCenter サービスと同じ名前が付けられます。</block>
+  <block id="26e877fe3175841338a5e22b9c1783ae" category="paragraph"><block ref="26e877fe3175841338a5e22b9c1783ae" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="218b43887e5917792a34b127171b6eff" category="section-title">オンデマンドデータベースバックアップ</block>
+  <block id="34057a6389ae0142f1cf7b2a9bbc13dc" category="paragraph">オンデマンドデータベースバックアップを作成するには、次の手順を実行します。</block>
+  <block id="cb542f3d98a4af3b394e8e2ac08b3dbb" category="list-text">SAP HANA システムビューで、コンテキストメニューからオンデマンドバックアップを選択します。データボリュームまたは非データボリュームを選択することもできます。データベースのバックアップについては、 [ データボリューム ] を選択する必要があります。</block>
+  <block id="3e3cb4722c0ba6ef2cf8ab0c119cb7b9" category="paragraph"><block ref="3e3cb4722c0ba6ef2cf8ab0c119cb7b9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7258579a735797fcead35da13d4760bc" category="list-text">オンデマンドバックアップダイアログで、ポリシー：なし、または HANA システムに割り当てたいずれかのポリシーを選択します。</block>
+  <block id="29640b9e4873dce9073d936d56540e4d" category="paragraph">ポリシーなしを選択した場合は、特定のバックアップに使用する特定の保持期間を定義できます。HANA システムに割り当てられているポリシーを選択した場合、このポリシーを使用するスケジュールされたバックアップと同じ保持がこのバックアップに適用されます。</block>
+  <block id="b60ac14d39394b4c16b9aef79f22b2ec" category="paragraph">次の例では、既存のポリシーが選択されています。</block>
+  <block id="84a7d7c49aea2f989b4814f147c7d14d" category="paragraph"><block ref="84a7d7c49aea2f989b4814f147c7d14d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="37bbe2ce16288dd81e2442a6bb178409" category="paragraph"><block ref="37bbe2ce16288dd81e2442a6bb178409" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="060ab7d1d6d9de282832a28a822bf9cb" category="list-text">バックアップワークフローを開始するには、 [ バックアップの作成 ] をクリックします。</block>
+  <block id="64a8bfec4e5b1f8c26555ca9ccec4c1e" category="paragraph">バックアップ処理のジョブ ID が画面に表示されます。</block>
+  <block id="fdf1bb554f59537a7cf1310078a93088" category="list-text">ジョブの詳細画面を開くには、ジョブ ID をクリックします。</block>
+  <block id="8fa672da8297042c6911bc92964e8c08" category="paragraph"><block ref="8fa672da8297042c6911bc92964e8c08" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2791eb518a49badace3628a628900f88" category="paragraph">ジョブモニタには、さまざまなワークフローステップ、ステップの実行時間、および合計操作実行時間が表示されます。次の例では、バックアップ処理に 19 秒かかります。</block>
+  <block id="941558c17d2932f8ff5104e01219bc9e" category="paragraph"><block ref="941558c17d2932f8ff5104e01219bc9e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="82c20634bc918fc671026ec6e0e0560b" category="inline-link-macro">次：ファイルベースのバックアップとブロックの整合性チェック。</block>
+  <block id="61f5286d84210daf051a05f1611de51b" category="paragraph"><block ref="61f5286d84210daf051a05f1611de51b" category="inline-link-macro-rx"></block></block>
+  <block id="7d0b77f24a0815a4689c94808f0c3040" category="doc">SnapCenter サービスの概念とベストプラクティス</block>
+  <block id="4c0896911e3c95a2b3757f0d0a78041e" category="inline-link-macro">前のバージョン： SnapCenter サービス SAP HANA バックアップ解決策。</block>
+  <block id="c3d900907aff82e5d0d71d7666d2d302" category="paragraph"><block ref="c3d900907aff82e5d0d71d7666d2d302" category="inline-link-macro-rx"></block></block>
+  <block id="f97a9615a6fd001bdf5fbaad3e762adc" category="section-title">データ保護戦略</block>
+  <block id="1fa068175a2a7c34e7158fd825e93b55" category="paragraph">SnapCenter サービスを設定する前に、各種 SAP システムの RTO と RPO の要件に基づいてデータ保護戦略を定義する必要があります。</block>
+  <block id="b02aece9e47a65d17a12859d410988d1" category="paragraph">一般的なアプローチとしては、本番システム、開発システム、テストシステム、サンドボックスシステムなどのシステムタイプを定義します。通常、システムタイプが同じ SAP システムのデータ保護パラメータはすべて同じです。</block>
+  <block id="5fc82bb0e81eaa252b8a1e3c3629f488" category="paragraph">次のパラメータを定義する必要があります。</block>
+  <block id="0681806147e4b361440800bf0108bb6e" category="list-text">Snapshot バックアップを実行する頻度</block>
+  <block id="a100334cdf72592a996bd7acd4ff062d" category="list-text">Snapshot バックアップを保持する期間</block>
+  <block id="5b3290827c5b12b0a9c6f98e3b421968" category="list-text">ブロック整合性チェック（ファイルベースのバックアップ）を実行する頻度</block>
+  <block id="c9e25451e7d95713032d435165a4f029" category="list-text">ブロック整合性チェックのバックアップ（ファイルベースのバックアップ）を保持する期間</block>
+  <block id="45514e257a69305d2f054180d49e4ed7" category="paragraph">次の表に、システムタイプの本番、開発、およびテストのデータ保護パラメータの例を示します。本番用システムでは、高いバックアップ頻度が定義され、週単位のファイルベースのバックアップが実行されます。テスト用システムと開発用システムの要件は低く、 Snapshot バックアップのスケジュールも設定頻度が低くなっています。</block>
+  <block id="3225a10b07f1580f10dee4abc3779e6c" category="cell">パラメータ</block>
+  <block id="04184473c3677aaa3fdc23c8adf9ab11" category="cell">本番用システム</block>
+  <block id="6598f2cf94bde191c18961b9844ea3b8" category="cell">開発システム</block>
+  <block id="58973466166271c2e12475c970facc8b" category="cell">システムをテストする</block>
+  <block id="3c19b01776c1146dd0d9cdca6fa370b9" category="cell">Snapshot のバックアップ頻度</block>
+  <block id="c913695f49476696caed8e3ec2a9fbbc" category="cell">4 時間ごと</block>
+  <block id="ccd21fd3ff614e4ea81e358d4b9dad4f" category="cell">6 時間ごと</block>
+  <block id="92d06747b703033cc28f7b6f8b948f63" category="cell">12 時間ごと</block>
+  <block id="277750ba0d33ce72f10cd2f42343fd24" category="cell">Snapshot バックアップの保持</block>
+  <block id="45fe0d3293152fa29cf10ef8a3c1871d" category="cell">3 日</block>
+  <block id="a42e014c4de4440fde4a5c383e0b75f1" category="cell">ブロック整合性チェックの頻度</block>
+  <block id="27b749b17e9dce038e22b1cb63840cfd" category="cell">週に 1 回</block>
+  <block id="505dfdb84387a954ec1d18d65e9d99c0" category="cell">ブロック整合性チェックの保持</block>
+  <block id="8f87e65f532c04d89e784906f0b37cb4" category="cell">4 週間</block>
+  <block id="a1c7389b873d4d6c6e94194ba775e512" category="cell">2 週間</block>
+  <block id="705fbbd6e1667845569c00fd7523d343" category="cell">1 週間</block>
+  <block id="669e5aba0d347a992636fb3b761987a0" category="paragraph">次の表に、 Snapshot バックアップ処理のデータ保護パラメータに設定する必要があるポリシーを示します。</block>
+  <block id="d57f1f0e7257bb9bef3d08b183569191" category="cell">Policy SnapshotEvery4h 」を参照してください</block>
+  <block id="da948b84a45b7caf9ff33a47816e413c" category="cell">Policy SnapshotEvery6h に追加されました</block>
+  <block id="ec091c65fd47fb4fcfbaea2e7cdf5768" category="cell">Policy SnapshotEvery12h 」を参照してください</block>
+  <block id="a3c82f66d39159c3e9d428cd534beb34" category="cell">バックアップタイプ</block>
+  <block id="a45a544d986358b5b0ffb73a477b8ffb" category="cell">Snapshot コピーベース</block>
+  <block id="2c6e889b47fa41bcf771096052af130b" category="cell">スケジュールタイプ</block>
+  <block id="7f6d38d7d0f6e5ede0664468079dfb06" category="cell">保持</block>
+  <block id="47695586bffbfd971b4d92aabdff020f" category="cell">カウント = 18</block>
+  <block id="bfe4cb821fcce8a234fb6991bc72e925" category="cell">カウント = 12</block>
+  <block id="4338f6486dc5d5a5832b758c3d22518e" category="cell">カウント = 3</block>
+  <block id="6cffbd716866d6f73e9ce7962119e4f4" category="cell">バックアップスケジュール</block>
+  <block id="72c213a0f39bfda02fdca3cd75fe88c1" category="paragraph">次の表に、ファイルベースのバックアップ処理のデータ保護パラメータに設定する必要があるポリシーを示します。</block>
+  <block id="4d95c98d07a2262c023b8198da4857b9" category="cell">Policy FileBased4Week の 2 つのグループがあります</block>
+  <block id="313e73dc232b2d2a9d1788028e804763" category="cell">ポリシー FileBased2Weeks</block>
+  <block id="36d44d9b2ed5e1413139cb8c342b7033" category="cell">Policy FileBased1Week のいずれかです</block>
+  <block id="5cd0336074a40ef0493567cff8dc3eb0" category="cell">ファイルベース</block>
+  <block id="6c25e6a6da95b3d583c6ec4c3f82ed4d" category="cell">毎週</block>
+  <block id="167f769f93203b0da90a2b5fd93fb7ab" category="cell">カウント = 4</block>
+  <block id="bd330fd6ea27bb4498197a54153ed87f" category="cell">カウント = 2</block>
+  <block id="eaf6efa0c22d2f77a7e8c84b08564fa8" category="cell">count = 1</block>
+  <block id="fb6e32609f770af78e316b2a516f0458" category="cell">毎週日曜日</block>
+  <block id="20939e9e6436cd19d7119a31c8efadc5" category="section-title">SnapCenter サービスポリシー</block>
+  <block id="1776b5f092f80878003195b5a08eecf5" category="paragraph">SnapCenter サービスでは、単一の保護ポリシーに次のパラメータが含まれています。</block>
+  <block id="606394dacb02e565fa3a13247a44091f" category="list-text">Snapshot ベース</block>
+  <block id="50ad91cfa4175b59f67983ab95c77aca" category="list-text">ファイルベース</block>
+  <block id="39709989a702dd9ca02103fae12d5469" category="list-text">スケジュールと保持</block>
+  <block id="29f9def1417e811770e92a903909a1e3" category="list-text">スケジュール：毎時、毎日、毎週、毎月。1 つのポリシーに複数のスケジュールを設定できます。</block>
+  <block id="f54f153525073accd05c535e13863b74" category="list-text">各スケジュールについて、開始時間または終了時間と頻度を設定します。</block>
+  <block id="f6dec8da755198018d08ffccac96777c" category="list-text">保持期間はスケジュールごとに設定します。保持期間には時間ベースのデータとカウンタベースのデータがあります。</block>
+  <block id="862bcb3bce1ef04969173da076bc05e2" category="paragraph">次の図は、ポリシーの設定のスクリーンショットです。</block>
+  <block id="e7c7c0ead110b5e0656460f4785bebf0" category="section-title">バックアップ処理</block>
+  <block id="a2655c62687504e1a1a26684711a3660" category="paragraph">SAP は、 HANA 2.0 SPS4 を使用する MDC のマルチテナントシステムの Snapshot バックアップをサポートするようになりました。SAP HANA MDC システムでは、テナント構成が静的であるとは限りません。テナントを追加または削除できます。SnapCenter サービスは、 HANA データベースが SnapCenter に追加されたときに検出された構成に依存しません。SnapCenter サービスは、バックアップ処理の実行時点で利用可能なテナントを把握しておく必要があります。</block>
+  <block id="acadf962f26526aefd97208028d226a3" category="paragraph">したがって、バックアップ処理を実行するたびに、テナント情報を取得する必要があります。次のステップは、 Snapshot バックアップ処理そのものです。この手順には、 HANA のバックアップセーブポイント、 Azure NetApp Files の Snapshot バックアップ、および HANA のバックアップセーブポイントを閉じる SQL コマンドが含まれています。close コマンドを使用すると、システムデータベースと各テナントのバックアップカタログが HANA データベースによって更新されます。</block>
+  <block id="43e6569b52fe76a3f2f6e68ae12ba5af" category="admonition">SAP では、 1 つ以上のテナントが停止している場合に MDC システムの Snapshot バックアップ処理はサポートされません。</block>
+  <block id="b9406b8cb36e5bdce93da9bc33cd91c0" category="paragraph">データバックアップの保持管理と HANA のバックアップカタログ管理のために、 SnapCenter サービスでは、最初の手順で特定されたシステムデータベースとすべてのテナントデータベースに対してカタログ削除処理を実行する必要があります。ログバックアップの場合と同様に、 SnapCenter サービスワークフローは、バックアップ処理の一部であった各テナントに対して実行する必要があります。</block>
+  <block id="3e736a3cbf8d29dd995a15423e614970" category="paragraph">次の図に、バックアップワークフローの概要を示します。</block>
+  <block id="acc96a5d78c219cf554612da13a728d8" category="paragraph"><block ref="acc96a5d78c219cf554612da13a728d8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="373d0b19f95f30915a259780f1e42683" category="section-title">HANA データベースの Snapshot バックアップのワークフロー</block>
+  <block id="c435a12542336072de90e3f2e32593af" category="paragraph">SnapCenter サービスは、 SAP HANA データベースのバックアップを次の順序で実行します。</block>
+  <block id="bc9b6623e0577748259b2b42332f0812" category="list-text">HANA データベースからテナントのリストを読み取ります。</block>
+  <block id="870951e4ae4a536d464e304e825f5314" category="list-text">バックアップ処理のために、テナント情報を SnapCenter サービスメタデータに格納します。</block>
+  <block id="c7ed4f99b7c3d96a8f1ad59a25f8020b" category="list-text">SAP HANA のグローバル同期バックアップセーブポイントをトリガーして、整合性のあるデータベースイメージを永続性レイヤに作成します。</block>
+  <block id="f58510d4a156fd4282b57786353b448b" category="paragraph">SAP HANA MDC のシングルまたはマルチテナントシステムの場合は、システムデータベースと各テナントデータベースの同期されたグローバルバックアップセーブポイントが作成されます。</block>
+  <block id="127899a90685a4752c60a15ef66a32dc" category="list-text">HANA システム用に構成されたすべてのデータボリュームの Azure NetApp Files Snapshot コピーを作成します。このシングルホスト HANA データベースの例には、データボリュームが 1 つしかありません。SAP HANA マルチホストデータベースには、複数のデータボリュームがあります。</block>
+  <block id="a456e1bb67f511db53f41e0b13fc139a" category="list-text">SAP HANA バックアップカタログに Azure NetApp Files Snapshot バックアップを登録します。</block>
+  <block id="7057b0a9b05c5dc697990f1f789b5747" category="list-text">SAP HANA のバックアップセーブポイントを削除します。</block>
+  <block id="935e24123094910a8dcaf0b0e9280639" category="list-text">バックアップ用に定義された保持ポリシーに基づいて、データベースおよび SAP HANA バックアップカタログから Azure NetApp Files Snapshot コピーとバックアップエントリを削除します。HANA のバックアップカタログ処理は、システムデータベースとすべてのテナントに対して実行されます。</block>
+  <block id="f054e2b9315548327bf9f9c88322a6ff" category="list-text">ファイルシステムと SAP HANA のバックアップカタログにある、 SAP HANA のバックアップカタログにある最も古いデータバックアップよりも古いすべてのログバックアップを削除します。これらの処理はシステムデータベースおよびすべてのテナントに対して実行されます。</block>
+  <block id="6f57f256df1b508ce741be6998f13777" category="section-title">ブロック整合性チェック処理のバックアップワークフロー</block>
+  <block id="b10f86a1c8ce7d0e390038b00b9a2080" category="paragraph">SnapCenter サービスは、次の順序でブロック整合性チェックを実行します。</block>
+  <block id="20718c29db6b1b57b66787bd4d0cafd3" category="list-text">システムデータベースおよび各テナントに対してファイルベースのバックアップ処理をトリガーします。</block>
+  <block id="e0f389716faaabb87b7ee2edf04f27c8" category="list-text">ブロック整合性チェック処理用に定義された保持ポリシーに基づいて、データベース、ファイルシステム、および SAP HANA のバックアップカタログからファイルベースのバックアップを削除します。ファイルシステムと HANA のバックアップカタログに関するバックアップの削除は、システムデータベースとすべてのテナントに対して実行されます。</block>
+  <block id="6a01bd07e34e6ee4ae8c5d876de38f3e" category="section-title">バックアップ保持管理、および不要なデータバックアップとログバックアップの削除</block>
+  <block id="accf13547b16c3c9fd9acf3d9b951a7b" category="paragraph">データバックアップ保持管理とログバックアップの不要ファイルの削除は、次の保持管理を含む 4 つのメイン領域に分割できます。</block>
+  <block id="763103c23d2971476388452c55a9291c" category="list-text">Snapshot バックアップ</block>
+  <block id="4c86e375d8017415e5820e0dda39bc9b" category="list-text">ファイルベースのバックアップ</block>
+  <block id="437fd9c44077715ae57f9988105650f3" category="list-text">SAP HANA のバックアップカタログでのデータのバックアップ</block>
+  <block id="23fabc748ef59beac69090d6468dbf50" category="list-text">SAP HANA のバックアップカタログとファイルシステムにバックアップを記録します</block>
+  <block id="9ba5c6960af3983228e48ddca02fcc8a" category="paragraph">次の図は、各種ワークフローの概要と各処理の依存関係を示しています。以降のセクションでは、さまざまな処理について詳しく説明します。</block>
+  <block id="04b354fd89d6f31a599bbf642357396d" category="paragraph"><block ref="04b354fd89d6f31a599bbf642357396d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="655271c16961cb3846dbea196199bdca" category="section-title">Snapshot バックアップの保持管理</block>
+  <block id="bb5e2a765a6c5ccd3323267d2002aa80" category="paragraph">SnapCenter で Snapshot バックアップを手動で削除することもできます。</block>
+  <block id="c86bb70cd07f9b1870bd94c202cc545e" category="section-title">ファイルベースのバックアップの保持管理</block>
+  <block id="b5a6b396fa7194bf45899323b84c9733" category="paragraph">SnapCenter サービスは、 SnapCenter サービスのバックアップポリシーで定義された保持設定に従って、ファイルシステム上のバックアップを削除することで、ファイルベースのバックアップを削除します。</block>
+  <block id="30045cea939eb38d6a07ae386520d93f" category="section-title">SAP HANA のバックアップカタログ内でのデータバックアップの保持管理</block>
+  <block id="c50372394664aaadf16de9ac94470039" category="paragraph">SnapCenter サービスがバックアップ（ Snapshot またはファイルベース）を削除すると、このデータバックアップは SAP HANA のバックアップカタログからも削除されます。</block>
+  <block id="576bd3a8485aa05c1d0ffd6e07cdc22e" category="section-title">ログバックアップの保持管理</block>
+  <block id="ad55e29b285f391746a7617dc2491e24" category="paragraph">SAP HANA データベースでは、ログバックアップが自動的に作成されます。このログバックアップでは、 SAP HANA で構成されたバックアップディレクトリに、個々の SAP HANA サービスごとにバックアップファイルが作成されます。</block>
+  <block id="5099a5a8e9d5368a7adb39b288dc7a07" category="paragraph">最新のデータバックアップよりも古いログバックアップはフォワードリカバリには不要になり、削除することができます。</block>
+  <block id="711f793b3caba5769af7cfeb9f8cf5df" category="paragraph">SnapCenter サービスは、ファイルシステムレベルおよび SAP HANA バックアップカタログでの不要なログファイルバックアップの削除を次のタスクで処理します。</block>
+  <block id="d4ffe9ab22d61f3444e8ea27c79a59e3" category="list-text">SAP HANA のバックアップカタログを読み取り、成功した最も古いファイルベースバックアップまたは Snapshot バックアップのバックアップ ID を取得します。</block>
+  <block id="4e9e1a0c91d53a9ed294df295bf86f3b" category="list-text">このバックアップ ID よりも古い SAP HANA カタログとファイルシステムのすべてのログバックアップを削除します。</block>
+  <block id="7b5c1828592d73d3ef07fb2e65af7a07" category="paragraph">SnapCenter サービスは、 SnapCenter で作成されたバックアップの不要な削除のみを処理します。SnapCenter の外部で追加のファイルベースのバックアップを作成する場合は、ファイルベースのバックアップがバックアップカタログから削除されていることを確認する必要があります。このようなデータバックアップがバックアップカタログから手動で削除されないと、最も古いデータバックアップになる可能性があります。また、このファイルベースのバックアップが削除されるまで、古いログバックアップは削除されません。</block>
+  <block id="57e67e945c18ccb1029a4cd1b87a7ef6" category="admonition">現在のリリースの SnapCenter サービスでは、ログバックアップの保持管理をオフにすることはできません。</block>
+  <block id="09de968635c1dc837bf4362d72aa3f9c" category="section-title">Snapshot バックアップに必要な容量</block>
+  <block id="496ce6bf6b50261c4c0ae7931efba4aa" category="paragraph">従来のデータベースの変更率と比較して、ストレージレイヤのブロック変更率が高いことを考慮する必要があります。列ストアの HANA テーブルのマージプロセスにより、テーブル全体が変更されたブロックだけでなくディスクに書き込まれます。1 日に複数の Snapshot バックアップを作成した場合、顧客ベースから得られるデータの日次変更率は 20~50% です。</block>
+  <block id="eeb2adc294f1aca1611da227af816916" category="inline-link-macro">次：このレポートに使用するラボのセットアップ。</block>
+  <block id="3eaa5715bb909f46d49e277cac77d6b1" category="paragraph"><block ref="3eaa5715bb909f46d49e277cac77d6b1" category="inline-link-macro-rx"></block></block>
+  <block id="e11d37c5e481b4ef1806fbde045376a6" category="summary">このセクションでは、 HANA MDC のシングルホストシングルテナントシステムのリストアとリカバリのワークフローについて説明します。複数ホストシステムの違いについて説明します。</block>
+  <block id="6be8f3086a30e59e908d53eb620b51dd" category="doc">リストアとリカバリ</block>
+  <block id="a69a8a7062038d2d54b43459272ac495" category="inline-link-macro">Previous ：ファイルベースのバックアップとブロックの整合性チェック。</block>
+  <block id="2e0581b2e489fb8e11c7410c9bb9927d" category="paragraph"><block ref="2e0581b2e489fb8e11c7410c9bb9927d" category="inline-link-macro-rx"></block></block>
+  <block id="da023c138a07a7aa53068d5ed6b2c27a" category="paragraph">次のセクションでは、 HANA MDC のシングルホストシングルテナントシステムのリストアとリカバリのワークフローについて説明します。複数ホストシステムの違いについて説明します。</block>
+  <block id="5c5969d7d247bd15dfa1e7c7fc56100f" category="paragraph">以下の例では、手動リカバリを実行するツールとして SAP HANA Studio を使用しています。リカバリ処理には、 SAP HANA Cockpit または HANA の SQL ステートメントを使用することもできます。</block>
+  <block id="d33bc9fb38c14de24d3022367d116ca2" category="paragraph">SAP HANA Studio および SnapCenter サービスを使用して SAP HANA MDC のシングルテナントシステムをリストアおよびリカバリするには、次の手順を実行します。</block>
+  <block id="6ce7acfe97d30fdc19c079a65ba07e22" category="list-text">SAP HANA Studio でリストアとリカバリのプロセスを準備します。</block>
+  <block id="9ff1c74f9b4ae68bac35d8943d361fd2" category="list-text">システムデータベースのリカバリを選択し、 SAP HANA システムのシャットダウンを確認します。</block>
+  <block id="217b91e8b34ae4d89f6ce0aea3eae3e0" category="list-text">リカバリタイプとログのバックアップ先を選択します。</block>
+  <block id="1c403676f05ea1d9c9093e413591a8e7" category="paragraph">データバックアップのリストが表示されます。</block>
+  <block id="fbca6691078939a6429244cc281e46f5" category="list-text">該当するバックアップを選択し、外部バックアップ ID を確認します。</block>
+  <block id="c6bd81a286f7e71a35705e5d646dbc93" category="list-text">HANA データボリュームをアンマウントします。</block>
+  <block id="1abfc09750a3ed8ac5db576c78a83b2a" category="list-text">SnapCenter サービスでリストアプロセスを実行します。</block>
+  <block id="db61f8a8f9153584fd1fa08c725f5087" category="list-text">バックアップビューで、 SAP HANA Studio の外部バックアップの ID またはコメントフィールドに一致するバックアップを選択します。</block>
+  <block id="de386ac70b4bb9a8c4489cac754e2c2e" category="list-text">リストア処理を開始するには、コンテキストメニューでリストアを選択します。</block>
+  <block id="72fd4053c46a59001d1fb08b992a0ec3" category="list-text">HANA データボリュームをマウント</block>
+  <block id="6f1c0c39a0a9457611f720a7e3f727f0" category="list-text">SAP HANA Studio を使用して、システムデータベースのリカバリプロセスを実行します。</block>
+  <block id="3290aa29be79f07d8193b526384a1119" category="list-text">バックアップ・リストから [ 更新 ] をクリックし ' リカバリに使用できるバックアップを選択します（緑色のアイコンが表示されます）</block>
+  <block id="cdb50d400dd4c6710aface8597dd8fcd" category="list-text">リカバリ処理を開始します。</block>
+  <block id="edf4a2131e251be4171c30b826cc5bb6" category="paragraph">リカバリ処理が完了すると、システムデータベースが起動します。</block>
+  <block id="2fc425e07c82682fe2a27c132290ee3a" category="list-text">SAP HANA Studio を使用してテナントデータベースのリカバリプロセスを実行します。</block>
+  <block id="864972bbadf73d1b9129bd44ce27a736" category="list-text">[Recover Tenant Database] を選択して、リカバリするテナントを選択します。</block>
+  <block id="7ad370e8bb1a6a31a8adee36405ff407" category="paragraph">データバックアップのリストが表示されます。データボリュームはすでにリストアされているため、テナントのバックアップには使用可能（緑）と表示されます。</block>
+  <block id="2250ddf88e1e90285f5442665539d9bb" category="list-text">バックアップを選択し、リカバリプロセスを開始します。リカバリプロセスが完了すると、テナントデータベースが自動的に起動します。</block>
+  <block id="766ee28fe7f074e26b372edbe6ff57b9" category="paragraph">以下に、 HANA システム PR1 のリストア処理とリカバリ処理の手順について説明します。</block>
+  <block id="644ed683627f0b88659e99f9600f2bbc" category="list-text">システムデータベースのリカバリを開始するには、 SAP HANA Studio で、 Backup and Recovery Recover System Database オプションに移動します。</block>
+  <block id="c03f44abd4c391c91945e5f027c47a2b" category="paragraph"><block ref="c03f44abd4c391c91945e5f027c47a2b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d224ae0a4d51e7c29e63a7687b30517d" category="list-text">リカバリタイプを選択して、 Next （次へ）をクリックします。</block>
+  <block id="c0d8eaad7afb8d53148ca017d566e656" category="paragraph"><block ref="c0d8eaad7afb8d53148ca017d566e656" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c3b11a2f5f2eee64b9649be717bb5932" category="list-text">バックアップカタログの場所を指定し、 [ 次へ ] をクリックします。</block>
+  <block id="66c7d176e3ac49c07400fb7b0f8d7afb" category="paragraph"><block ref="66c7d176e3ac49c07400fb7b0f8d7afb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f1be70d779bfe9f5e384e26df5bd4d3d" category="list-text">HANA のバックアップカタログの内容に基づいて、使用可能なバックアップのリストが表示されます。必要なバックアップを選択し、次のスクリーンショットに示すように外部バックアップの ID をメモします。</block>
+  <block id="1d845ad6654e5c16e4300a358539f410" category="paragraph"><block ref="1d845ad6654e5c16e4300a358539f410" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="86a3a7022ed0b6c13289fcbf758e3d5d" category="list-text">すべてのデータボリュームをアンマウントします。</block>
+  <block id="a8a8c29399914360aa0968fdf37e2219" category="admonition">SAP HANA マルチホストシステムの場合は、各ホストのすべてのデータボリュームをアンマウントする必要があります。</block>
+  <block id="0e35bd4c6c1b4a63794d2268e7c835bc" category="list-text">SnapCenter サービス UI で、 SAP HANA システムビューのコンテキストメニューから View Backups を選択します。</block>
+  <block id="97b0bd92e4b8b6d860f972cd482f41a3" category="list-text">リストア処理を開始するには、バックアップビューで、 HANA Studio にも表示される最新のバックアップを選択し、コンテキストメニューからリストアを選択します。</block>
+  <block id="30c071f3c4d8f5ad05b0f10df6dbd6df" category="paragraph"><block ref="30c071f3c4d8f5ad05b0f10df6dbd6df" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f624d0fc47fb7d44b5774c6ba424158c" category="list-text">復元操作を確認するには、 [ はい ] 、 [ 復元 ] をクリックします。</block>
+  <block id="5271ae47dc2dfea8d58b8cb4752234e4" category="paragraph"><block ref="5271ae47dc2dfea8d58b8cb4752234e4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3db84a9b9316478367df535fc63160eb" category="paragraph">SnapCenter サービスのジョブログには、リストア処理の進捗状況が表示されます。</block>
+  <block id="9c0baa809e05650c8da5a36b81455a2e" category="paragraph"><block ref="9c0baa809e05650c8da5a36b81455a2e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e8c7e3d5b53e81261bf9d39c3a7358a6" category="list-text">リストアプロセスが完了するまで待ちます。各データベースホストで、すべてのデータボリュームをマウントします。次の例では、データベースホスト上でボリュームを 1 つだけ再マウントする必要があります。</block>
+  <block id="6de35e17b3d7ec4d425e7b19b4ef1aa5" category="list-text">使用可能なバックアップのリストを更新するには、 SAP HANA Studio に移動して、更新をクリックします。SnapCenter サービスでリストアされたバックアップは、バックアップのリストに緑のアイコンで表示されます。バックアップを選択し、 Next （次へ）をクリックします。</block>
+  <block id="2a1df9c58609b1d30dbf364df7767826" category="paragraph"><block ref="2a1df9c58609b1d30dbf364df7767826" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="71cb1faebb7f639c1b5a4238f49846f4" category="list-text">ログバックアップの場所を指定します。次へをクリックします。</block>
+  <block id="9e72622921b746a1794d861e49f6e887" category="paragraph"><block ref="9e72622921b746a1794d861e49f6e887" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="498b10487f14bcddf044e9c0ce0997fb" category="list-text">必要に応じて、他の設定を選択します。［ デルタバックアップを使用 ］ が選択されていないことを確認します。次へをクリックします。</block>
+  <block id="31d7924f74cb914c0f52f576ffd3c5eb" category="paragraph"><block ref="31d7924f74cb914c0f52f576ffd3c5eb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ac359853b48f05fcb2cdd263bd2d14e2" category="list-text">リカバリ設定を確認し、 [ 完了 ] をクリックします。</block>
+  <block id="342d0d030660de334229a40496e46793" category="paragraph"><block ref="342d0d030660de334229a40496e46793" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2e40b2a74f9689cc8abbd4feebd9b496" category="paragraph">リカバリプロセスが開始されます。システムデータベースのリカバリが完了するまで待ちます。</block>
+  <block id="63c53061b2952aa7a0f0bfc31344276d" category="paragraph"><block ref="63c53061b2952aa7a0f0bfc31344276d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3400b6c6717824a99d529787a811bfb7" category="list-text">SAP HANA Studio で、システムデータベースのエントリを選択し、 Backup and Recovery Recover Tenant Database に移動します。</block>
+  <block id="6c20b9c1c4259c34703968f843bb6fca" category="paragraph"><block ref="6c20b9c1c4259c34703968f843bb6fca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="52f086817629608d1c9271f5b8ecd51d" category="list-text">リカバリするテナントを選択し、 Next （次へ）をクリックします。</block>
+  <block id="3bc7b20284dab349ac88aa38720e9107" category="paragraph"><block ref="3bc7b20284dab349ac88aa38720e9107" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fc49bdb5ad0943d1647fac2e1b0c5944" category="list-text">リカバリタイプを指定して、 Next （次へ）をクリックします。</block>
+  <block id="ea2714922f936c9e999984b4b1ed58b9" category="paragraph"><block ref="ea2714922f936c9e999984b4b1ed58b9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cc9536c3856cee6b3ae895ffe692fc31" category="list-text">バックアップカタログの場所を確認し、 Next （次へ）をクリックします。</block>
+  <block id="684dba2c7e8f885b96f8f2cef063347b" category="paragraph"><block ref="684dba2c7e8f885b96f8f2cef063347b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="57f97e9e6892dd6ef20f4c4bb68ab888" category="list-text">テナントデータベースがオフラインであることを確認します。[OK] をクリックして続行します。</block>
+  <block id="019c95922fb2b4a26a8f449c44bc0c19" category="paragraph"><block ref="019c95922fb2b4a26a8f449c44bc0c19" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f266cc3ce16008c4e3f629fa74579163" category="paragraph">システムデータベースのリカバリ前にデータボリュームのリストアが実行されたため、テナントバックアップをすぐに使用できます。</block>
+  <block id="b670ee95daf251f747e87e791876ebd5" category="list-text">緑色でハイライトされたバックアップを選択し、次へをクリックします。</block>
+  <block id="18f2d7291e77742af783d746ab3afe79" category="paragraph"><block ref="18f2d7291e77742af783d746ab3afe79" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ae0a00cc6d706f8a9fea3f175b6629a1" category="list-text">ログのバックアップ先を確認し、 Next （次へ）をクリックします。</block>
+  <block id="b04e03b5536cb93f14e156bb28bd561a" category="paragraph"><block ref="b04e03b5536cb93f14e156bb28bd561a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="de623cc32790df551f7b50fbbc195f12" category="paragraph"><block ref="de623cc32790df551f7b50fbbc195f12" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e4fdc1fd67853318f040ef298f53dde3" category="list-text">[ 完了 ] をクリックして、リカバリ設定を確認し、テナントデータベースのリカバリプロセスを開始します。</block>
+  <block id="6d1c48b4e2ba01195303c40a610d14c5" category="paragraph"><block ref="6d1c48b4e2ba01195303c40a610d14c5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b3eba0eb79b198a3876779400c4884c7" category="list-text">リカバリが完了してテナントデータベースが起動するまで待ちます。</block>
+  <block id="6d415b67428190a30ada85b11108acd2" category="paragraph"><block ref="6d415b67428190a30ada85b11108acd2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a05d610051777823f28850102c89dd02" category="paragraph">SAP HANA システムは稼働中です。</block>
+  <block id="dfa6ffe50ff057f481ec772ceb2e431d" category="paragraph">複数のテナントを使用する SAP HANA MDC システムの場合は、テナントごとに手順 15~24 を繰り返す必要があります。</block>
+  <block id="bfb282dc8d718854b136129631167b4c" category="paragraph"><block ref="bfb282dc8d718854b136129631167b4c" category="inline-link-macro-rx"></block></block>
+  <block id="2da06d509fa82d9f4e048f53fdd59f2f" category="summary">このテクニカルレポートでは、 NetApp SnapCenter サービスと Azure NetApp Files を使用した SAP HANA データ保護のベストプラクティスについて説明します。SnapCenter サービスの概念、設定に関する推奨事項、バックアップ、リストア、リカバリ処理などの運用ワークフローについて説明します。</block>
+  <block id="84f6a50de79d49013e595a0b9fd524e0" category="doc">TR-4905 ：『 SAP HANA backup and recovery on Azure NetApp Files with SnapCenter Service 』</block>
+  <block id="2090e19c47d41004ac9d83b4c834c1d8" category="paragraph">今日の企業には、 SAP アプリケーションを中断なく継続的に利用できることが求められています。データ量が増え続け、システムバックアップなどの日常的な保守作業が必要になった場合に、一貫したパフォーマンスレベルが期待されます。SAP データベースのバックアップは重要な作業であり、本番用 SAP システムのパフォーマンスに大きく影響する可能性があります。</block>
+  <block id="26c67fe7078b8352435776ec2a49de01" category="paragraph">バックアップウィンドウは短くなっている一方で、バックアップするデータの量は増加しています。そのため、ビジネスプロセスへの影響を最小限に抑えながらバックアップを実行できるタイミングを見つけ出すのは困難です。本番環境と非本番環境の SAP システムのダウンタイムは、データの損失とビジネスコストを削減するために最小化する必要があるため、 SAP システムのリストアとリカバリに要する時間が重要になります。</block>
+  <block id="ce081e1ccd185ea759e068ff2571ccb5" category="paragraph">SAP のバックアップとリカバリに関する課題を以下にまとめます。</block>
+  <block id="e11f2988b7e8f11f425c365fe8cf0392" category="list-text">* 本番用 SAP システムのパフォーマンスへの影響。 * 通常、従来のコピーベースのバックアップは、データベースサーバ、ストレージシステム、ストレージネットワークに大きな負荷がかかるため、本番用 SAP システムのパフォーマンスが大幅に低下します。</block>
+  <block id="cab54e2b3d87df10220254fdc951d470" category="list-text">* バックアップ・ウィンドウの短縮 * 従来のバックアップは 'SAP システムでの対話またはバッチ・アクティビティが少ない場合にのみ可能ですSAP システムが 24 時間稼働していると、バックアップのスケジュール設定がさらに難しくなります。</block>
+  <block id="f0e5827e00cf900f71151c63c4f3a68b" category="list-text">* データの急増。 * データの急増とバックアップ・ウィンドウの短縮には、バックアップ・インフラへの継続的な投資が必要です。つまり、追加のバックアップディスクスペースを確保し、より高速なバックアップネットワークを構築する必要があります。また、これらのバックアップ資産の格納と管理に要する継続的なコストについても説明する必要があります。こうした問題には差分バックアップで対処することもできますが、リストアプロセスが煩雑で非常に時間がかかるうえ、複雑なため検証も難しくなります。このようなシステムでは、通常、 Recovery Time Objective （ RTO ；目標復旧時間）と Recovery Point Objective （ RPO ；目標復旧時点）が長くなり、ビジネスには受け入れられません。</block>
+  <block id="a8f8133e051f5ce157248709bac6d380" category="list-text">* ダウンタイムのコスト増加。 * SAP システムの計画外のダウンタイムは、通常、ビジネスの財務に影響を及ぼします。計画外停止の大部分は、 SAP システムのリストアとリカバリの要件に応じて消費されます。そのため、必要な RTO は、バックアップとリカバリのアーキテクチャの設計を決定します。</block>
+  <block id="2a6ae4b4f6c920b26c01df5da7c2e422" category="list-text">* SAP アップグレード・プロジェクトのバックアップ / リカバリ時間。 * SAP アップグレードのプロジェクト計画には、 SAP データベースのバックアップが 3 つ以上含まれています。これらのバックアップにより、アップグレードプロセスにかかる時間が大幅に短縮されます。通常、続行するかどうかは、以前に作成したバックアップからデータベースをリストアおよびリカバリするのに要する時間に基づいて判断します。システムを以前の状態にリストアするだけでなく、アップグレード中に発生する可能性のある問題を迅速にリストアすることで解決できます。</block>
+  <block id="3832f1c8100626d5606baa43010da686" category="inline-link-macro">次のステップ： NetApp 解決策</block>
+  <block id="523311d19489c634134a844c08cfdd4a" category="paragraph"><block ref="523311d19489c634134a844c08cfdd4a" category="inline-link-macro-rx"></block></block>
+  <block id="3fd29387f9151afeae7fb72e1419477e" category="summary">SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。SnapCenter サービスでは、バックアップタイプとしてファイルベースのバックアップを選択するポリシーを使用して、ブロック整合性チェックの実行をサポートします。</block>
+  <block id="93e2686766814c09b5773b4bc9467df9" category="doc">ファイルベースのバックアップとブロックの整合性チェック</block>
+  <block id="1830b7a119817f1be2fbefa47a5d60a7" category="inline-link-macro">Previous ： SAP HANA データベースの Snapshot バックアップ。</block>
+  <block id="b14f52f44d650226534da579ab12d173" category="paragraph"><block ref="b14f52f44d650226534da579ab12d173" category="inline-link-macro-rx"></block></block>
+  <block id="349b9e102bc4c27c4f7bf9c185c52fc6" category="paragraph">ファイルベースのバックアップは、 HANA データボリュームの Snapshot バックアップに加えて、セカンダリバックアップコピーにも使用されます。これらのファイルベースのバックアップは、プライマリデータボリュームが完全に失われた場合のリストア処理とリカバリ処理に使用できます。</block>
+  <block id="1ecf27ace69a8487e0fa649877c42f4b" category="paragraph">このポリシーを使用してバックアップをスケジュールすると、 SnapCenter サービスによって、システムデータベースとすべてのテナントデータベース用の標準の SAP HANA ファイルのバックアップが作成されます。</block>
+  <block id="aa8e9e288845da1b828d099261d561b8" category="paragraph">SnapCenter サービスでは、 Snapshot ベースのバックアップと同じ方法でファイルベースのバックアップが表示されません。代わりに、最新のファイルベースのバックアップだけが表示されます。ファイルベースのバックアップの成功または失敗は、ジョブモニタビューに表示されます。</block>
+  <block id="fb0c452464358115312ce694704b6373" category="paragraph">SAP HANA のバックアップカタログには、システムデータベースとテナントデータベースの両方のエントリが表示されます。次の図に、システムデータベースのバックアップカタログにおける SnapCenter サービスブロックの整合性チェックを示します。</block>
+  <block id="3fa4041f04e4590fa0580cd42c4c783a" category="paragraph"><block ref="3fa4041f04e4590fa0580cd42c4c783a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ab5b3f98ad1cc43aa8ebfca737a36237" category="paragraph">ブロック整合性チェックが成功すると、標準の SAP HANA データバックアップファイルが作成されます。SnapCenter サービスは、ファイルベースのデータのバックアップ処理に、 HANA データベースで設定されているバックアップパスを使用します。</block>
+  <block id="dea00757bf17037a8068b8445f472594" category="section-title">ファイルベースのバックアップを使用したリストアとリカバリ</block>
+  <block id="8228eb025e7f95062dce982fe8d427d7" category="paragraph">HANA Studio または HANA Cockpit で標準の HANA リカバリ処理を使用して、 SnapCenter 外部でファイルベースのバックアップのリストア処理とリカバリ処理を実行する必要があります。</block>
+  <block id="be9e9053814c56ed7be9898ed6a1a281" category="inline-link-macro">次の手順：リストアとリカバリ</block>
+  <block id="67fcbd21265c17bc300ebcce68a6d678" category="paragraph"><block ref="67fcbd21265c17bc300ebcce68a6d678" category="inline-link-macro-rx"></block></block>
+  <block id="dc152e6bc8e0b3680d01e03c301c2da0" category="summary">このレポートで使用するラボのセットアップには、 SAP HANA システム PR1 - SAP HANA シングルホスト MDC シングルテナントシステムと SnapCenter サービスコンポーネントが含まれます。</block>
+  <block id="f811314d17a1d16a1faad0f452dc6860" category="doc">このレポートで使用するラボのセットアップ</block>
+  <block id="5e3c62c116ec5c6fd1d08e2d22b3e001" category="inline-link-macro">以前： SnapCenter サービスの概念とベストプラクティス</block>
+  <block id="7772f65577029ab4bfd37804fdd86e1a" category="paragraph"><block ref="7772f65577029ab4bfd37804fdd86e1a" category="inline-link-macro-rx"></block></block>
+  <block id="7bced5ce4a70dee57c450effc91fd383" category="paragraph">このレポートで使用するラボ環境は、次の図に示すように、 SAP HANA システム PR1 - SAP HANA シングルホスト MDC シングルテナントシステムと SnapCenter サービスコンポーネントで構成されます。</block>
+  <block id="9f8756b45fa4ae6c4343206361b20a11" category="paragraph"><block ref="9f8756b45fa4ae6c4343206361b20a11" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7ca7720ed4b71e8fd5792b4ec247667c" category="inline-link-macro">次の例は、 SnapCenter サービスポリシーの設定です。</block>
+  <block id="e9937190d410dfaba7bb4712b958bad8" category="paragraph"><block ref="e9937190d410dfaba7bb4712b958bad8" category="inline-link-macro-rx"></block></block>
+  <block id="18bc9c751e71d66a9ef9dca3e42c7aec" category="doc">SnapCenter サービスの Snapshot バックアップ設定</block>
+  <block id="ce1186e2a3e921541555dcfe246e2ee2" category="summary">データボリューム以外のボリュームのバックアップは、 SnapCenter サービスに統合されています。データベースインストールリソースと必要なログが残っていれば、データベースデータボリュームを保護して SAP HANA データベースを特定の時点にリストアおよびリカバリするだけで十分です。</block>
+  <block id="b1b1956d8b55eab5638f173ac97e856e" category="doc">SAP HANA の非データボリュームのバックアップ構成</block>
+  <block id="5d4ff74e89a913876a3835bcffd233da" category="inline-link-macro">Previous ： SAP HANA データベースのバックアップの構成をバックアップします。</block>
+  <block id="bb530c74ed28a35f5595f936132577e0" category="paragraph"><block ref="bb530c74ed28a35f5595f936132577e0" category="inline-link-macro-rx"></block></block>
+  <block id="db57ac9c50cde3563821cde8b40d9ffb" category="paragraph">他のデータファイルのリストアが必要な状況からリカバリするには、 SAP HANA データベースのバックアップを補うために、これらのボリュームに対する追加のバックアップ戦略を開発することを推奨します。固有の要件に応じて、非データボリュームのバックアップはスケジュールの頻度と保持の設定が異なる場合があります。また、ファイルを変更する頻度も考慮する必要があります。たとえば、 HANA ボリューム「 /hana/shared 」には、実行可能ファイルと SAP HANA トレースファイルが格納されています。実行ファイルが変更されるのは SAP HANA データベースがアップグレードされた場合だけですが、 SAP HANA で問題の状況を分析できるように、 SAP HANA のトレースファイルには高いバックアップ頻度が必要になる場合があります。</block>
+  <block id="23e71eb09a1d06c5d415f99d14f94e62" category="paragraph">SnapCenter サービスの非データボリュームバックアップを使用すると、関連するすべてのボリュームの Snapshot コピーを数秒で作成でき、 SAP HANA データベースのバックアップと同じスペース効率化を実現できます。違いは、 SAP HANA データベースとの SQL 通信は必要ないということです。</block>
+  <block id="3d5a89d96e487e64a7df9cda1d6b4328" category="paragraph">次の手順は、 SAP HANA データベース PR1 の HANA 共有ボリュームを保護する方法を示しています。</block>
+  <block id="29aef264cdadf1d5bfd6fa0779b71f9b" category="list-text">SAP HANA システムビューで、画面右側のコンテキストメニューから非データボリュームの追加を選択します。</block>
+  <block id="fe3d1cd060bbfa5d242d8fb48b11ec1a" category="paragraph"><block ref="fe3d1cd060bbfa5d242d8fb48b11ec1a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="72c7fa65ac4bbdef40ecd4b74de34dba" category="list-text">Add Storage をクリックします。</block>
+  <block id="fc0160270fbe9775bad847e749ca1f53" category="paragraph"><block ref="fc0160270fbe9775bad847e749ca1f53" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8c2ea23fcf0b083533118522253d2377" category="list-text">HANA 共有ボリュームを選択し、 Add Storage をクリックします。</block>
+  <block id="9e7702c3e0615fbedfb5f7f34518ce37" category="paragraph"><block ref="9e7702c3e0615fbedfb5f7f34518ce37" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9e51c87e9ccb2af660fb72fedcaa4eb8" category="list-text">非データボリュームを追加するには、 Add をクリックします。</block>
+  <block id="6169ddfda82960e9db805e1ce2c4c02c" category="paragraph"><block ref="6169ddfda82960e9db805e1ce2c4c02c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a84f3e353c2257433de09e98ccf7c779" category="paragraph">SAP HANA Systems の概要の保護列に、非データボリュームが HANA システムに追加されたことを示す 2 つ目のアイコンが表示されます。</block>
+  <block id="22771eec141341f910f714ae0f706b10" category="paragraph"><block ref="22771eec141341f910f714ae0f706b10" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d23dfe5eed416e1f036bddd57b4111cf" category="list-text">右側のコンテキストメニューで、 Protect &gt; Non-Data Volumes （保護 &gt; 非データボリューム）を選択します。</block>
+  <block id="d9ce3c733e6a50fc2f3c8f7e90b272a0" category="paragraph"><block ref="d9ce3c733e6a50fc2f3c8f7e90b272a0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2691edda03a73a56a38b7b5fdd51394c" category="list-text">データボリューム以外のボリュームにポリシーを割り当てます。次の例では、「 S napshotEvery4h 」ポリシーが HANA 共有ボリュームに割り当てられています。</block>
+  <block id="dccadaf61da296d618c181668397d8a9" category="paragraph"><block ref="dccadaf61da296d618c181668397d8a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="403b1dee114c14b33d53d9628f57c8bc" category="inline-link-macro">次の例：グローバルな非データボリュームの設定をバックアップします。</block>
+  <block id="498639a31ef79067f1bbe5ccad9c82f2" category="paragraph"><block ref="498639a31ef79067f1bbe5ccad9c82f2" category="inline-link-macro-rx"></block></block>
+  <block id="bbbe98dc1924e05205b7d8954b150305" category="doc">SnapCenter サービス Snapshot バックアップ設定の概要</block>
+  <block id="b519eda6cf69a8b32372670e638b102a" category="inline-link-macro">Previous ： SnapCenter サービスポリシーの設定。</block>
+  <block id="e0ec2d5f8315f02824a4bfd033856630" category="paragraph"><block ref="e0ec2d5f8315f02824a4bfd033856630" category="inline-link-macro-rx"></block></block>
+  <block id="b6144f3b95cf59f5689819959aa59d46" category="paragraph">SnapCenter サービスでは、 2 種類の Snapshot バックアップ処理がサポートされます。</block>
+  <block id="b61689b96ea75bf4026dedfc8b567fcc" category="list-text">Snapshot 処理による SAP HANA データのバックアップ。</block>
+  <block id="897b29802c161cd736a5bc8dc373840a" category="paragraph">データベースの整合性を確保するための HANA SQL ステートメントと、 Azure NetApp Files の Snapshot 処理を使用したバックアップカタログ管理を組み合わせた、 SAP HANA データベースのデータボリュームのバックアップ。</block>
+  <block id="17ff1079073f7fed3317b9cdb6a7867b" category="list-text">Snapshot バックアップ処理による、非構造化データを含むボリュームのバックアップ。</block>
+  <block id="8ee85cf1a38c0efceab143ec9eaee02d" category="paragraph">バイナリや構成ファイルなどのバックアップ。 HANA データベースとのやり取りは不要です。バックアップは、 Azure NetApp Files の Snapshot バックアップ処理を使用して実行されます。SnapCenter サービスでは、 2 つのサブタイプを使用して、ボリュームが特定の HANA システムに属しているか、または複数の HANA システムで使用されるグローバル共有ボリュームであるかを定義します。</block>
+  <block id="0b42c9c1827377c956f0fdf85f1086f1" category="list-text">SAP HANA データベースの非データボリュームのバックアップ</block>
+  <block id="2f9372e4723a17072ac5eb0432e55ebe" category="paragraph">HANA 共有ボリュームなど、特定の HANA システムに関連付けられたボリュームのバックアップ。</block>
+  <block id="a88ba96aad2a53b4201d1d8898f055ca" category="list-text">グローバルな非データボリュームのバックアップ</block>
+  <block id="8040d5adaedf83bde0844e646f5c5e96" category="paragraph">SAP 転送ディレクトリなど、特定の HANA システムに関連付けられていないボリュームのバックアップ。</block>
+  <block id="e9568bed4d837cfe32f16bb134cb0270" category="paragraph">以降のセクションでは、 3 種類のバックアップの構成について説明します。</block>
+  <block id="efad5c087ed8d41f44a02a1fe7bcb31d" category="inline-link-macro">Next ： SAP HANA データベースのバックアップ構成をバックアップします。</block>
+  <block id="feeff373f3bfd36983cdd472d1812090" category="paragraph"><block ref="feeff373f3bfd36983cdd472d1812090" category="inline-link-macro-rx"></block></block>
+  <block id="aef2c20bec8df18ad7f201971cb999aa" category="summary">このセクションでは、 SnapCenter サービスバックアップ解決策でカバーされる領域について説明します。</block>
+  <block id="e4e22e5727008ed7198e0471dd02ebe0" category="doc">SnapCenter サービス SAP HANA バックアップ解決策</block>
+  <block id="711f2c5fd344a06b04d321851a822969" category="inline-link-macro">以前のバージョン： SnapCenter サービスアーキテクチャ。</block>
+  <block id="f81b79b6d11e8478469d746c222aef3c" category="paragraph"><block ref="f81b79b6d11e8478469d746c222aef3c" category="inline-link-macro-rx"></block></block>
+  <block id="7e897f23ed71aef1c0a8acf1ae54e9e4" category="section-title">解決策コンポーネント</block>
+  <block id="1ca7bcc72a6ddff63918db5b821014b6" category="paragraph">解決策 Service Backup SnapCenter for SAP HANA には、次の領域があります。</block>
+  <block id="01b841fc3abde7f02e3fc6d20ce2490e" category="list-text">ストレージベースの Snapshot コピーを使用した SAP HANA データのバックアップ：</block>
+  <block id="b91349a37c07cbc607967b352d27ac85" category="list-text">バックアップのスケジュール設定</block>
+  <block id="b6c4f276386f651e000864d5fe061514" category="list-text">オンデマンドバックアップ</block>
+  <block id="3dff72048413a2d2a95ad3e613d65664" category="list-text">保持管理</block>
+  <block id="868fc3042a779c3102d74797f55dbcb8" category="list-text">不要な SAP HANA バックアップカタログの削除</block>
+  <block id="08982f6d9b754b9de2af69edceefff75" category="list-text">リストア処理を実行します</block>
+  <block id="460e33183b7d64982fd96a73e43bec96" category="list-text">ストレージベースの Snapshot コピーを使用した、データボリューム以外のバックアップ</block>
+  <block id="805a3e49bb7c7bdafb52c12416271ab6" category="list-text">SnapCenter は、 HANA 共有ボリュームなどの特定の HANA システムに属するデータ以外のボリュームと、特定の HANA システムに属さないグローバル非データボリューム（ SAP 転送ディレクトリなど）を区別します。</block>
+  <block id="81584dbbda01b0be23a0bdbacb7e3689" category="list-text">ファイルベースのバックアップ：データベースのブロック整合性チェック、または 2 番目の場所へのバックアップ：</block>
+  <block id="43390268352d31fc3a2bfe63eda69144" category="list-text">HANA データベースログバックアップの保持管理：</block>
+  <block id="f3afcc2a29b00a45585e1d8c2259abaf" category="list-text">データバックアップの保持に基づく保持管理</block>
+  <block id="bc79a3302d6565afb99239abeacee778" category="paragraph">SnapCenter サービスを使用して Snapshot データのバックアップを実行します。その際、ストレージレイヤで作成された Snapshot コピーが SAP HANA データベースの整合性のあるイメージに基づいて作成されるように、 SAP HANA データベースのバックアップセーブポイントがトリガーされます。</block>
+  <block id="b707f98d0f22b5de7ba09c3e06d57e6f" category="paragraph">SAP HANA 関連のすべてのリソースを完全にバックアップするために、 SnapCenter サービスでは、ストレージベースの Snapshot コピーを使用して、データ以外のすべてのボリュームをバックアップすることもできます。非データボリュームをデータベースデータバックアップとは別にスケジュール設定して、個別の保持ポリシーや保護ポリシーを有効にすることができます。</block>
+  <block id="ad305722a053549e7fac7e43c03cddf9" category="paragraph">SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。SnapCenter 内からブロック整合性チェックを実行できます。ブロック整合性チェック（ファイルベース）バックアップは、バックアップを別の格納場所にオフロードする目的でも使用されます。</block>
+  <block id="45c315ec8e60e0097bfd08a60887ba10" category="paragraph">設定可能な保持ポリシーに基づいて、 SnapCenter サービスは不要なデータバックアップ、ログバックアップ、および SAP HANA バックアップカタログの削除を管理します。</block>
+  <block id="954d628cf490da232f6a4ac2863aad8e" category="paragraph">次の図は、バックアップ解決策をまとめたものです。</block>
+  <block id="d982d341f6527622733bcb2242fdc5f7" category="paragraph"><block ref="d982d341f6527622733bcb2242fdc5f7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="54a37a8ffca763460f1c42da13095c17" category="paragraph">データボリューム以外のボリュームに対してストレージベースの Snapshot バックアップを実行する場合、 SnapCenter サービスは次のタスクを実行します。</block>
+  <block id="c8b12d773f20ab4488e9932c89593115" category="list-text">データボリューム以外のストレージ Snapshot コピーを作成します。</block>
+  <block id="ca6d840804fcdb545005c89b11c39633" category="list-text">定義した保持ポリシーに基づいてストレージ Snapshot コピーを削除します。</block>
+  <block id="b6f5a0d86266d876b5f9daa85e69d5c0" category="paragraph">SAP HANA データベースのストレージベースの Snapshot バックアップを実行する場合、 SnapCenter サービスは次のタスクを実行します。</block>
+  <block id="d2e951ca13f9e58621f474ee64f428fc" category="list-text">SAP HANA のバックアップセーブポイントを作成して、永続性レイヤに整合性のあるイメージを作成します。</block>
+  <block id="112655e890c92e138e4566ac869fe122" category="list-text">データボリュームのストレージ Snapshot コピーを作成します。</block>
+  <block id="1725e19786612d1400818458b63e58d7" category="list-text">SAP HANA バックアップカタログにストレージの Snapshot バックアップを登録します。</block>
+  <block id="ca1b46a6963bec99dbe20ebc6424435b" category="list-text">SAP HANA のバックアップセーブポイントを解放します。</block>
+  <block id="f9cdcd84078b2b2649ac85030780933e" category="list-text">定義された保持ポリシーに基づいて、 SAP HANA のバックアップカタログのエントリを削除します。</block>
+  <block id="5ca3489e80f6152b2d8aecfe53ccc9dc" category="list-text">データバックアップが手動で削除された場合、または保持ポリシーに基づいて削除された場合、 SnapCenter サービスは、最も古いデータバックアップよりも古いすべてのログバックアップを削除します。ログバックアップは、ファイルシステムと SAP HANA のバックアップカタログから削除されます。</block>
+  <block id="8c58572df982588195422e103d78a3e6" category="section-title">サポートされている SAP HANA リリースと構成</block>
+  <block id="b323a1d0dcf8738aa7b338c866b95b06" category="paragraph">SnapCenter サービスは、 Azure NetApp Files ボリュームに接続された SAP HANA シングルホスト構成とマルチホスト構成をサポートしています。</block>
+  <block id="3ffc2027ba87c86efc55d7dc1595eef5" category="paragraph">SnapCenter サービスは、次の SAP HANA アーキテクチャとリリースをサポートしています。</block>
+  <block id="d0082d9d42295191298725dfc4b3f13f" category="list-text">SAP HANA シングルコンテナ：</block>
+  <block id="b36898c984276a65e01650b8d66dba2c" category="list-text">SAP HANA 1.0 SPS12</block>
+  <block id="7f03f048fc01e029f9de2b2040cda627" category="list-text">シングルテナントまたは複数テナントの SAP HANA マルチテナントデータベースコンテナ（ MDC ）：</block>
+  <block id="9fc3ca038c1021071d24bcaa3d340a5e" category="list-text">SAP HANA 2.0 SPS4 以降</block>
+  <block id="8881e88674192057b3be14c6b7788169" category="admonition">MDC システムの Snapshot バックアップのサポートは、シングルテナントシステムでは SAP with HANA 2.0 SP1 、マルチテナントシステムでは HANA 2.0 SPS4 に対応しています。</block>
+  <block id="02f47ec656d99bcbbf1da968e37ee0e4" category="paragraph">データ Snapshot バックアップと SnapCenter サービスおよびログバックアップと BACKINT 解決策を使用した組み合わせはサポートされません。ログバックアップをファイルシステムに書き込むように設定する必要があります。</block>
+  <block id="4173c1afddd00a3ca50614f2a63fbfde" category="inline-link-macro">次： SnapCenter サービスの概念とベストプラクティス</block>
+  <block id="5d44e6cfd5a684453ca96f2624512d40" category="paragraph"><block ref="5d44e6cfd5a684453ca96f2624512d40" category="inline-link-macro-rx"></block></block>
+  <block id="c5cf6d1aaefb48b7ecce6b76b7bf4377" category="summary">このセクションでは、シングルホスト SAP HANA MDC のシングルテナントシステム PR1 の設定手順について説明します。複数のテナントを持つ MDC システムの場合の手順は同じです。シングルコンテナシステムとマルチホストシステムの違いは、対応する設定手順に反映されます。</block>
+  <block id="1e0b0af2e5976ca0d68476842f63a961" category="doc">SAP HANA データベースのバックアップ構成</block>
+  <block id="85eb46da43feae66242b434b2bb46bd0" category="inline-link-macro">Previous ： SnapCenter サービスの Snapshot バックアップ設定の概要を示します。</block>
+  <block id="8997eb19bab9f8431c6dc9b6c1783d32" category="paragraph"><block ref="8997eb19bab9f8431c6dc9b6c1783d32" category="inline-link-macro-rx"></block></block>
+  <block id="96fd386fc78511ec708b5f89a5e85c93" category="section-title">SAP HANA のバックアップユーザ</block>
+  <block id="ae5cc33fb02346fe0cfec7ae6d846748" category="paragraph">SnapCenter サービスでバックアップ処理を実行するには、 HANA データベースに専用のデータベースユーザを設定することを推奨します。SnapCenter サービスの HANA システム構成では、このバックアップユーザの HANA データベースのユーザストアキーが設定され、このユーザストアキーを使用して HANA システムと通信します。</block>
+  <block id="323057ceab34358b57b52c92a656eddb" category="paragraph">次の図は、バックアップユーザの作成に使用できる SAP HANA Studio のスクリーンショットです。</block>
+  <block id="706ab08e71b4ef3e93a8e6554d43abac" category="admonition">SAP HANA 2.0 SPS5 リリースで変更された必要な権限： backup admin 、 catalog read 、 database backup admin 、および database recovery operator以前のリリースの場合は、バックアップ管理者とカタログの読み取りで十分です。</block>
+  <block id="155e4efaa10fc07a830e4493452fe728" category="paragraph">SAP HANA MDC システムの場合は、シングルテナントまたは複数テナントの場合は、システムデータベース内にユーザを作成する必要があります。これは、システムデータベースとテナントデータベースのバックアップコマンドはすべて、システムデータベースを使用して実行されるためです。</block>
+  <block id="1bd4aa52f31e2d00c3dd83de61553497" category="paragraph"><block ref="1bd4aa52f31e2d00c3dd83de61553497" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b151fd7ea7a9adade0edeca2c426a5e3" category="section-title">SnapCenter サービスでの SAP HANA システム構成</block>
+  <block id="e7b0b924b5ed369d4e99d4d3eaa3e0ee" category="paragraph">SnapCenter サービスで SAP HANA システム PR1 を設定するには、次の手順を実行します。</block>
+  <block id="5797aade36d870ca1067f0dfcd56a065" category="list-text">System Details （システムの詳細）画面で、システムタイプ、 HANA Single Container （ HANA シングルコンテナ）、または Multitenant Database Container （マルチテナントデータベースコンテナ）を選択します。HANA システムの SID を指定し、システム名として任意のテキストを入力します。</block>
+  <block id="613d8b8cb114bc11b685bc96403de15b" category="list-text">HANA データベースのユーザストアキーを追加するには、 Add Keys をクリックします。</block>
+  <block id="40b46241283410e33c54e30319bb6338" category="paragraph"><block ref="40b46241283410e33c54e30319bb6338" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c94e84cfd2c8f1c453fc3c2381229819" category="list-text">HANA データベースのユーザストアキーを設定するための情報を入力します。任意の名前をキー名として指定できます。</block>
+  <block id="43d191ac766077c43ced8115cca3a9a6" category="paragraph">システムの詳細には 'hdbsql クライアントを使用してシステム・データベースと通信する IP アドレスとポートが含まれますSAP HANA MDC のシングルテナント構成では、ポート「 3 」はシステムデータベースへの SQL アクセス用の標準ポートです。SAP HANA シングルコンテナセットアップの場合、ポート「 3&lt;instanceNo&gt;15 」はインデックスサーバへの SQL アクセス用の標準ポートであり、構成で使用する必要があります。SAP HANA マルチホストを設定する場合は、すべてのホストにユーザストアキーを設定する必要があります。SnapCenter サービスは、指定された各キーを使用してデータベースへの接続を試みます。そのため、異なるホストへの SAP HANA サービスのフェイルオーバーとは独立して動作します。</block>
+  <block id="57d0d87d5e1f9f0e3077c4e0130c2396" category="paragraph">以前に設定したシステムデータベースに、データベースユーザのユーザ名とパスワードを入力する必要があります。SnapCenter は、この情報を使用してユーザストアキーを自動的に作成し、そのキーを使用して HANA データベースと通信します。</block>
+  <block id="4199e35f9107a5b135bef7d955a407e5" category="list-text">続行するには、 [ 追加 ] をクリックします。</block>
+  <block id="f1d2f1ce56b2bb8d06b1abc1d2135ff6" category="paragraph"><block ref="f1d2f1ce56b2bb8d06b1abc1d2135ff6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="46fdcb6f81375bebee02fe50b677ece1" category="list-text">ストレージ設置面積の設定に進むには、 Continue （続行）をクリックします。</block>
+  <block id="2dd05f70f18a5bb23c378d5fbbe2e42e" category="paragraph"><block ref="2dd05f70f18a5bb23c378d5fbbe2e42e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd824238a9ba64f6ef264d08ffac7e6d" category="list-text">HANA システムのストレージボリュームの情報を入力します。</block>
+  <block id="2c4bda86dd6050d761eb53c6b714006c" category="paragraph">HANA システムの Azure NetApp Files ボリュームに使用する作業環境とネットアップアカウントを選択します。HANA システムのデータ・ボリュームを選択します（例： PR1_data_mnt00001 ）</block>
+  <block id="68dc07d3e66bb8b9f2f47a7738efb57c" category="paragraph">SAP HANA マルチホストシステムの場合は、システムに属するすべての HANA ホストのデータボリュームを選択する必要があります。</block>
+  <block id="39c12777853784dcb05f66bd28e07c0f" category="paragraph"><block ref="39c12777853784dcb05f66bd28e07c0f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3996d49b22d9c9c24453e24f665d066d" category="paragraph"><block ref="3996d49b22d9c9c24453e24f665d066d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7c45c4239510799b1244b2416d09d676" category="paragraph"><block ref="7c45c4239510799b1244b2416d09d676" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8821bc68198d2bee69fc0c059d5c7074" category="list-text">HANA システムを追加するには、追加をクリックします。</block>
+  <block id="918fa8308dcf70523aacedcd6ed64ef4" category="paragraph"><block ref="918fa8308dcf70523aacedcd6ed64ef4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f2959ceb3422f00c5120421079814379" category="list-text">保護設定を続行するには、 [ 続行 ] をクリックします。</block>
+  <block id="317038b7d8cdb65d7fb252dd409d5749" category="paragraph"><block ref="317038b7d8cdb65d7fb252dd409d5749" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e250e698b6248c7c2871de43fd559d22" category="paragraph">画面には、 SnapCenter サービスで設定されているすべてのポリシーが表示されます。</block>
+  <block id="c6260cbe3279e7f723b7c93f8a651e2f" category="paragraph"><block ref="c6260cbe3279e7f723b7c93f8a651e2f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fc11b711059f89fd2ffd442417b8bec0" category="list-text">割り当てるポリシーを選択します。たとえば、以前に作成された「 S napshotEvery4h 」ポリシーと「 BlockIntegrityCheckEverySunday 」ポリシーが選択されます。</block>
+  <block id="828828865ca7da7b88b4a545cba55ab3" category="list-text">HANA システムにポリシーを割り当てるには、 Protect （保護）をクリックします。</block>
+  <block id="9afa7a3390d4dba10e8eee239a0ef9bf" category="paragraph"><block ref="9afa7a3390d4dba10e8eee239a0ef9bf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5a40f08077205a6f76619d7b1b6a603a" category="paragraph">HANA システムの概要画面には、 HANA システムと割り当てられたポリシーが表示されます。</block>
+  <block id="244ec2ad0516b8cdacf9a313213eccef" category="paragraph"><block ref="244ec2ad0516b8cdacf9a313213eccef" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="935034bf0f6fc4e906c592b2a172da74" category="inline-link-macro">次の例： SAP HANA の非データボリュームのバックアップ構成</block>
+  <block id="e270771c723507efb499bdb7d9cf1403" category="paragraph"><block ref="e270771c723507efb499bdb7d9cf1403" category="inline-link-macro-rx"></block></block>
+  <block id="f6abb193bba1d93cd1d8efa634a2329a" category="summary">Azure NetApp Files の NetApp Snapshot テクノロジを使用すれば、データベースのバックアップを数秒で作成できます。Snapshot コピーではストレージプラットフォーム上の物理データブロックは移動されないため、 Snapshot コピーの作成に要する時間はデータベースのサイズに左右されません。</block>
+  <block id="c8d591b036c6345c614160fd9eb8e2b7" category="doc">NetApp 解決策の略</block>
+  <block id="c0db72d078098472051229dbdb83118e" category="inline-link-macro">前へ：概要。</block>
+  <block id="161c61888b85cc170fb1a432b9f1747e" category="paragraph"><block ref="161c61888b85cc170fb1a432b9f1747e" category="inline-link-macro-rx"></block></block>
+  <block id="aec8962c842fceb721f710238c647339" category="paragraph">Azure NetApp Files の NetApp Snapshot テクノロジを使用すれば、データベースのバックアップを数秒で作成できます。Snapshot コピーではストレージプラットフォーム上の物理データブロックは移動されないため、 Snapshot コピーの作成に要する時間はデータベースのサイズに左右されません。また、 Snapshot テクノロジを使用しても、稼働中の SAP システムのパフォーマンスには影響しません。そのため、対話形式またはバッチでのアクティビティのピーク期間を考慮せずに、 Snapshot コピーの作成をスケジュールできます。Azure NetApp Files を使用する SAP のお客様は、通常、複数のオンライン Snapshot バックアップを毎日実行するようにスケジュールを設定します。たとえば、一般的には 4 時間おきにバックアップを実行します。作成された Snapshot バックアップをプライマリストレージシステムに 3~5 日間保持しています。</block>
+  <block id="2ebb083abaceade8f44332cae5485ba2" category="paragraph">Snapshot コピーは、リストア処理とリカバリ処理にも大きなメリットがあります。ボリュームのリバート処理を使用すると、使用可能な Snapshot コピーに基づいて、任意の時点までのデータベース全体をリストアできます。このようなリストアプロセスは、データベースのサイズに関係なく数秒で完了します。オンラインの Snapshot バックアップは 1 日に数回作成されるため、従来のバックアップ方式に比べて、リカバリプロセスに要する時間が大幅に短縮されます。24 時間以内ではなく数時間前の Snapshot コピーを使用してリストア処理を実行できるため、適用するトランザクションログの数を少なくする必要があります。そのため、従来のシングルサイクルバックアップでは数時間かかっていた RTO が数分に短縮されます。</block>
+  <block id="e81a23c90bcd08439a9b2d05e1beb7e9" category="paragraph">Snapshot コピーバックアップは、アクティブなオンラインデータと同じディスクシステムに格納されます。セカンダリストレージへのバックアップに代わる手段としてではなく、補助的な用途で使用することを推奨します。リストアとリカバリのほとんどはプライマリストレージシステムでボリュームリバート処理を使用して実行されます。セカンダリストレージからのリストアが必要になるのは、 Snapshot コピーが格納されているプライマリストレージシステムが損傷している場合のみです。セカンダリストレージは、 Snapshot コピーから削除したバックアップをリストアする必要がある場合に使用できます。</block>
+  <block id="801c4dbc93a2380fd76a696d4d2cbaef" category="paragraph">HANA の追加のファイルベースのバックアップを使用して、セカンダリサイトにバックアップできます。このようなファイルベースのバックアップは、実行頻度を大幅に低くしてスケジュールを設定できるため、本番用システムのパフォーマンスへの影響も少なくなります。</block>
+  <block id="d12697a8436cf2e3a402762a77a048c0" category="paragraph">ディザスタリカバリに Azure NetApp Files のクロスリージョンレプリケーションを使用すると、すべての Snapshot バックアップがディザスタリカバリサイトにもレプリケートされ、その後、オフロードされたセカンダリバックアップとしても使用できるようになります。も参照してください <block ref="740f3adf0802fd87853d8b9936383548" category="inline-link-macro-rx"></block>。</block>
+  <block id="7e3fab300f8b9c27df359d4f37143388" category="paragraph">Azure AzCopy ツールを使用して、長期保持用の Snapshot コピーを Azure BLOB ストレージにオフロードすることもできます。これには、 SnapCenter サービス外で追加のスクリプトを作成する必要があります。</block>
+  <block id="68abaa409daa7276f9a376de2b9f6392" category="paragraph">次の図に、 Snapshot バックアップとファイルベースのバックアップを使用したデータ保護構成の例を示します。</block>
+  <block id="603d9f91994411bb7967e675e77311ee" category="paragraph"><block ref="603d9f91994411bb7967e675e77311ee" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="923600a8a9a4e2aae6be8141e3fc623d" category="section-title">Snapshot バックアップの実行時間</block>
+  <block id="39d0292dad0b1a2340ddde83310663f0" category="paragraph">次の図は、ネットアップストレージ上で SAP HANA を実行しているお客様の HANA Studio のスクリーンショットです。お客様が、 NetApp Snapshot コピーを使用して HANA データベースをバックアップしている。この図に示すように、 Snapshot バックアップテクノロジを使用して、 HANA データベース（約 2.3TB ）を 2 分 11 秒でバックアップしています。</block>
+  <block id="0728953f27abcfcf0f5a48611f023e7b" category="paragraph">全体的なバックアップワークフローランタイムの最大の部分は、 HANA のバックアップセーブポイント処理の実行に必要な時間です。この手順は、 HANA データベースの負荷によって異なります。ストレージ Snapshot バックアップ自体は、数秒で完了します。</block>
+  <block id="669ab851eeb3a8411d3d7ae76e96ee39" category="paragraph"><block ref="669ab851eeb3a8411d3d7ae76e96ee39" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e5efbe10bb7701eb586ebee707440780" category="section-title">目標復旧時間の比較</block>
+  <block id="20225b7353738f995acfabb75d63c79e" category="paragraph">このセクションでは、ファイルベースとストレージベースの Snapshot バックアップの RTO 比較を示します。RTO は、データベースのリストアに必要な時間と、データベースの起動およびリカバリに必要な時間の合計によって定義されます。</block>
+  <block id="3595bb49b6abd88938e481ccc0d97119" category="section-title">データベースのリストアに必要な時間</block>
+  <block id="2086c34c5fcb78e99ca4048120bc7110" category="paragraph">ファイルベースのバックアップでは、リストアに要する時間はデータベースのサイズとバックアップインフラによって異なり、リストアにかかる時間は 1 秒あたりのメガバイト数（ MBps ）で定義されます。たとえば、インフラで 250MBps の高速なリストア処理がサポートされている場合、データベースのサイズが 1TB にリストアされるまでに約 1 時間 10 分かかります。</block>
+  <block id="734c0257edd444ea4e4a4c7244dd3a70" category="paragraph">ストレージ Snapshot コピーバックアップでは、リストア時間はデータベースのサイズに左右されず、プライマリストレージからのリストアを実行できる数秒の範囲になります。ファイルベースのバックアップからのリストアが必要になるのは、プライマリストレージが使用できなくなったときに災害が発生した場合だけです。</block>
+  <block id="9abaa35fafe6af9114d3f925f652af20" category="section-title">データベースの起動に必要な時間</block>
+  <block id="9401d20567357a55fcb926176c55cd2c" category="paragraph">データベースの開始時間は、行および列ストアのサイズによって異なります。列ストアの場合、開始時間は、データベースの起動時にプリロードされるデータの量によっても異なります。次の例では、開始時間は 30 分であると想定しています。開始時刻は、ファイルベースのリストアとリカバリ、および Snapshot コピーに基づくリストアとリカバリで同じです。</block>
+  <block id="60ea11645c6193ef1631453b24f6f3ca" category="section-title">データベースのリカバリに要する時間</block>
+  <block id="5cec17cdb7f328cdc9f69b7b0a90d673" category="paragraph">リカバリ時間は、リストア後に適用する必要があるログの数によって異なります。この数は、データバックアップを実行する頻度によって決まります。</block>
+  <block id="9f2b4e5d673b11f5fdf4bcfddcf48a04" category="paragraph">ファイルベースのデータバックアップでは、通常、バックアップスケジュールは 1 日に 1 回となります。バックアップによって本番環境のパフォーマンスが低下するため、通常はバックアップ頻度を高くすることはできません。したがって、最悪の場合は、フォワードリカバリ時に 1 日中に書き込まれたすべてのログを適用する必要があります。</block>
+  <block id="c8fc17a4b5cbe5712cf0e2c5646fab70" category="paragraph">ストレージ Snapshot コピーのデータバックアップは、通常、 SAP HANA データベースのパフォーマンスに影響しないため、頻繁にスケジュールされます。たとえば、 Snapshot コピーのバックアップが 6 時間ごとにスケジュールされている場合、最悪の場合、ファイルベースのバックアップに関しては、リカバリ時間の 4 分の 1 （ 6 時間 /24 時間 = 1/4 ）になります。</block>
+  <block id="bd187d40a614fe4ea78dfa6fca960882" category="paragraph">次の図に、ファイルベースのデータバックアップを使用する場合の 1TB データベースの RTO の例を示します。この例では、バックアップが 1 日に 1 回作成されます。RTO は、リストアとリカバリの実行タイミングによって異なります。バックアップの作成直後にリストアとリカバリを実行した場合の RTO は、主にリストア時間に基づきます。この例では、 1 時間 10 分です。リカバリ時間は、次のバックアップが作成される直前にリストアとリカバリが実行され、最大 RTO は 4 時間 30 分になりました。</block>
+  <block id="4b5d9b19b6c0f5b959bb24c931e6069d" category="paragraph"><block ref="4b5d9b19b6c0f5b959bb24c931e6069d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="05aa3d0c2261d11a19a1f1c4213701ec" category="paragraph">次の図に、 Snapshot バックアップの使用時の 1TB データベースの RTO の例を示します。ストレージベースの Snapshot バックアップでは、データベースのサイズに関係なく数秒でリストアが完了するため、 RTO はデータベースの開始時間と転送リカバリ時間にのみ左右されます。また、リストアとリカバリの実行時間によってもフォワードリカバリの時間が長くなりますが、バックアップの頻度が高いため（この例では 6 時間ごと）、転送リカバリの時間は最大 43 分です。この例では、最大 RTO は 1 時間 13 分です。</block>
+  <block id="bbe02f6f76f1d01967dd1f8c204911f8" category="paragraph"><block ref="bbe02f6f76f1d01967dd1f8c204911f8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a61c800d17b38f8aa5ba586ab3ca9a7b" category="paragraph">次の図に、データベースサイズや Snapshot バックアップの頻度に応じた、ファイルベースとストレージベースの Snapshot バックアップの RTO 比較を示します。緑のバーは、ファイルベースのバックアップを示しています。その他のバーには、バックアップ頻度が異なる Snapshot コピーのバックアップが表示されます。</block>
+  <block id="58f1809e35b97ffff67002917b1f346b" category="paragraph">1 日に 1 回の Snapshot コピーでデータをバックアップする RTO は、ファイルベースのデータバックアップに比べてすでに 40% 短縮されています。1 日に 4 つの Snapshot バックアップを作成すると、削減率は 70% になります。また、 Snapshot のバックアップ頻度を 1 日あたり 4~6 個の Snapshot バックアップに増やすと、この図ではフラットな状態になります。したがって、お客様は通常、 1 日に 4~6 個の Snapshot バックアップを作成します。</block>
+  <block id="0468ca46027d9922a194531c6a1af892" category="paragraph"><block ref="0468ca46027d9922a194531c6a1af892" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e646dcbc21c9386c4319fc66342eaed2" category="paragraph">このグラフには、 HANA サーバの RAM サイズが表示されます。メモリ内のデータベースサイズは、サーバの RAM サイズの半分になるように計算されます。</block>
+  <block id="27a5339355631306e0eeb66ec61f8aaf" category="paragraph">リストアとリカバリの時間は、次の前提に基づいて計算されます。データベースは 250MBps でリストアできます。 1 日にリストアできるログファイルの数は、データベースサイズの 50% です（たとえば、 1TB のデータベースで 1 日に 500MB のログファイルが作成されます）。 リカバリは 100Mbps で実行できます。</block>
+  <block id="c8935e1beb0848eefbbd5cda10297089" category="inline-link-macro">次の例は、 SnapCenter サービスアーキテクチャです。</block>
+  <block id="60443fe21455bdcdcd0c21760abd95cd" category="paragraph"><block ref="60443fe21455bdcdcd0c21760abd95cd" category="inline-link-macro-rx"></block></block>
+  <block id="6abf73ac39531a37ff136074cc08335d" category="sidebar">SnapCenter サービスを使用した Azure NetApp Files での SAP HANA のバックアップとリカバリ</block>
 </blocks>

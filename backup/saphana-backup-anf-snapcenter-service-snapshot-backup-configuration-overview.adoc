@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-snapcenter-service-snapshot-backup-configuration-overview.html 
+keywords:  
+summary:  
+---
+= SnapCenter サービス Snapshot バックアップ設定の概要
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-backup-anf-snapcenter-service-policy-configuration.html["Previous ： SnapCenter サービスポリシーの設定。"]
+
+SnapCenter サービスでは、 2 種類の Snapshot バックアップ処理がサポートされます。
+
+* Snapshot 処理による SAP HANA データのバックアップ。
++
+データベースの整合性を確保するための HANA SQL ステートメントと、 Azure NetApp Files の Snapshot 処理を使用したバックアップカタログ管理を組み合わせた、 SAP HANA データベースのデータボリュームのバックアップ。
+
+* Snapshot バックアップ処理による、非構造化データを含むボリュームのバックアップ。
++
+バイナリや構成ファイルなどのバックアップ。 HANA データベースとのやり取りは不要です。バックアップは、 Azure NetApp Files の Snapshot バックアップ処理を使用して実行されます。SnapCenter サービスでは、 2 つのサブタイプを使用して、ボリュームが特定の HANA システムに属しているか、または複数の HANA システムで使用されるグローバル共有ボリュームであるかを定義します。
+
++
+** SAP HANA データベースの非データボリュームのバックアップ
++
+HANA 共有ボリュームなど、特定の HANA システムに関連付けられたボリュームのバックアップ。
+
+** グローバルな非データボリュームのバックアップ
++
+SAP 転送ディレクトリなど、特定の HANA システムに関連付けられていないボリュームのバックアップ。
+
++
+以降のセクションでは、 3 種類のバックアップの構成について説明します。
+
+
+
+
+
+link:saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html["Next ： SAP HANA データベースのバックアップ構成をバックアップします。"]
