@@ -4,7 +4,7 @@ permalink: backup/saphana-backup-anf-additional-information.html
 keywords: references 
 summary:  
 ---
-= 追加情報
+= 追加情報の参照先
 :hardbreaks:
 :nofooter: 
 :icons: font

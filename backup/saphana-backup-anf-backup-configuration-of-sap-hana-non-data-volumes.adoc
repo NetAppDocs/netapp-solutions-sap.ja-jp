@@ -34,6 +34,9 @@ image:saphana-backup-anf-image32.png["エラー：グラフィックイメージ
 +
 image:saphana-backup-anf-image33.png["エラー：グラフィックイメージがありません"]
 
++
+image:saphana-backup-anf-image34.png["エラー：グラフィックイメージがありません"]
+
 . 非データボリュームを追加するには、 Add をクリックします。
 +
 image:saphana-backup-anf-image35.png["エラー：グラフィックイメージがありません"]
