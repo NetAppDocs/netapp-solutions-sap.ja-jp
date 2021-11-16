@@ -1,0 +1,20 @@
+---
+sidebar: sidebar 
+permalink: sap-lcm-tools.html 
+summary: SAP Lifecycle Management のツールとヒント 
+keywords: netapp, solutions, SAP, lifecycle, management, lcm, tools 
+---
+= SAP Lifecycle Management 用ツール
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:table-stripes: odd
+:imagesdir: ./media/
+
+
+[role="lead"]
+SAP ライフサイクル管理ソリューション用ツールとソリューション関連資料の概要
+
+* link:https://mysupport.netapp.com/site/tools/tool-eula/ssc-sap["SAP LaMa 対応の Storage Services Connector （ SSC"]
+

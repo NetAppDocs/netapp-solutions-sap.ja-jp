@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: sap-dr-videos.html 
+summary: SAP のバックアップ、リストア、ディザスタリカバリに関する一連のビデオとデモ 
+keywords: netapp, solutions, SAP, backup, restore, disaster recover, dr, videos, demos 
+---
+= SAP のバックアップ、リストア、ディザスタリカバリに関するビデオとデモ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:table-stripes: odd
+:imagesdir: ./media/
+
+
+[role="lead"]
+SAP のバックアップ、リストア、ディザスタリカバリに関するビデオとデモの概要
+
+
+
+=== SAP のバックアップ、リストア、ディザスタリカバリに関するビデオとデモ
+
+* link:https://www.netapp.tv/details/25592["SAP アプリケーションの可用性を確保し、ダウンタイムを最小限に抑えます"]
+* link:https://www.netapp.tv/details/28399["Azure NetApp Files で SAP HANA 向けのデータ保護を最適化"]
+* link:https://www.netapp.tv/details/28398["SAP HANA のディザスタリカバリオプション"]
+* link:https://www.netapp.tv/details/28406["ANF を使用した SAP HANA ディザスタリカバリとリージョン間レプリケーション"]
+

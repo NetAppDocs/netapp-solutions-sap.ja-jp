@@ -1,0 +1,20 @@
+---
+sidebar: sidebar 
+permalink: sap-dr-tools.html 
+summary: SAP のバックアップ、リストア、ディザスタリカバリソリューション向けのツールとトップを提供します 
+keywords: netapp, solutions, SAP, backup, restore, dr, disaster recovery, tools 
+---
+= SAP のバックアップ、リストア、ディザスタリカバリを行うためのツール
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:table-stripes: odd
+:imagesdir: ./media/
+
+
+[role="lead"]
+SAP のバックアップ、リストア、ディザスタリカバリのためのツールと、各種ソリューション資料の概要
+
+* link:https://automationstore.netapp.com/snap-list.shtml["MaxDB 、 DB2 、 ASE 用 SnapCenter カスタムプラグイン"]
+

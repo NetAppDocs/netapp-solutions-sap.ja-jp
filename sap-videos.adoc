@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: sap-videos.html 
+summary: SAP ソリューションを紹介する一連のビデオとデモ 
+keywords: netapp, solutions, SAP, videos, demos 
+---
+= SAP 解決策のビデオとデモ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:table-stripes: odd
+:imagesdir: ./media/
+
+
+[role="lead"]
+SAP ソリューションを紹介するビデオとデモの概要
+
+
+
+=== SAP Configuration Best Practices ビデオおよびデモをご覧ください
+
+* link:https://www.netapp.tv/details/28149["SAP HANA は、ネットアップインフラで最適なソリューションを実現します"]
+* link:https://www.netapp.tv/details/28189["『 SAP on Azure NetApp Files ： Overview and Updates 』"]
+* link:https://www.netapp.tv/details/28402["ネットアップのブロックストレージとオブジェクトストレージを使用した SAP データインテリジェンス"]
+
+
+
+
+=== SAP のバックアップ、リストア、ディザスタリカバリに関するビデオとデモ
+
+* link:https://www.netapp.tv/details/25592["SAP アプリケーションの可用性を確保し、ダウンタイムを最小限に抑えます"]
+* link:https://www.netapp.tv/details/28399["Azure NetApp Files で SAP HANA 向けのデータ保護を最適化"]
+* link:https://www.netapp.tv/details/28398["SAP HANA のディザスタリカバリオプション"]
+* link:https://www.netapp.tv/details/28406["ANF を使用した SAP HANA ディザスタリカバリとリージョン間レプリケーション"]
+
+
+
+
+=== SAP ライフサイクル管理のビデオとデモ
+
+* link:https://www.netapp.tv/details/25588["リスクを軽減し 'SAP プロジェクトの品質を向上"]
+* link:https://www.netapp.tv/details/25595["予期しないイベントに備えて、基幹業務の継続性を確保します"]
+* link:https://www.netapp.tv/details/28400["SnapCenter のユースケース"]
+* link:https://www.netapp.tv/details/28401["Libelle と SnapCenter を使用した SAP システムのコピー"]
+

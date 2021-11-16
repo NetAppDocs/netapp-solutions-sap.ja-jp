@@ -1,7 +1,9 @@
 ---
+layout: astra 
 sidebar: sidebar 
 permalink: index.html 
-summary: SAP ビジネスアプリケーションと SAP HANA データベースソリューションの集合体 
+summary: ネットアップでは、 SAP と SAP HANA に関するテクニカルレポート、検証済みの設計、ビデオ、ブログ、解決策概要を幅広くご用意しています。 
+lead: NetApp has an extensive collection of technical reports, validated designs, videos, blogs and solution briefs for SAP and SAP HANA. 
 keywords: netapp, solutions, SAP, HANA 
 ---
 = SAP Business Application と SAP HANA Database ソリューション
@@ -12,12 +14,4 @@ keywords: netapp, solutions, SAP, HANA
 :table-stripes: odd
 :imagesdir: ./media/
 
-
-[role="lead"]
-ネットアップでは、 SAP と SAP HANA に関するテクニカルレポート、検証済みの設計、解決策概要を幅広く提供しています。これらは、次の 4 つのカテゴリに分類されており、左側のサイドバーから展開して詳細を確認できます。
-
-* 『 SAP on NetApp Configuration Best Practices 』を参照してください
-* バックアップとリカバリおよびディザスタリカバリ
-* SAP ライフサイクル管理
-* 解決策概要
 
