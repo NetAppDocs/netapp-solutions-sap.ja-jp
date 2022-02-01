@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html 
+keywords: Snapshot, storage, backup, primary host, sql 
+summary: バックアップ処理は常にプライマリ SAP HANA ホストで実行されます。バックアップ処理に必要な SQL コマンドをセカンダリ SAP HANA ホストで実行することはできません。 
+---
+= ストレージ Snapshot バックアップと SAP システムレプリケーション
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-sr-scs-sap-hana-system-replication-overview.html["前のバージョン： SAP HANA システムレプリケーションの概要"]
+
+バックアップ処理は常にプライマリ SAP HANA ホストで実行されます。バックアップ処理に必要な SQL コマンドをセカンダリ SAP HANA ホストで実行することはできません。
+
+SAP HANA のバックアップ処理では、プライマリとセカンダリの SAP HANA ホストが単一のエンティティになります。バックアップがプライマリ SAP HANA ホストとセカンダリ SAP HANA ホストのどちらで作成されたかに関係なく、 SAP HANA は同じバックアップカタログを共有し、リストアとリカバリにバックアップを使用します。
+
+いずれかのバックアップをリストアに使用したり、両方のホストからログバックアップを使用してリカバリを転送したりするには、両方のホストからアクセスできる共有ログバックアップの場所が必要です。共有ストレージボリュームを使用することを推奨します。ただし、ログバックアップのデスティネーションは、共有ボリューム内のサブディレクトリに分ける必要があります。
+
+各 SAP HANA ホストには、独自のストレージボリュームがあります。ストレージベースの Snapshot を使用してバックアップを実行すると、データベースと整合性のある Snapshot がプライマリ SAP HANA ホストのストレージボリューム上に作成されます。
+
+image:saphana-sr-scs-image3.png["エラー：グラフィックイメージがありません"]
+
+ホスト 2 へのフェイルオーバーが実行されると、ホスト 2 がプライマリホストになり、ホスト 2 でバックアップが実行され、ホスト 2 のストレージボリュームに Snapshot バックアップが作成されます。
+
+ホスト 2 で作成されたバックアップは、ストレージレイヤで直接リストアできます。ホスト 1 に作成したバックアップを使用する場合は、ホスト 1 のストレージボリュームからホスト 2 のストレージボリュームにバックアップをコピーする必要があります。フォワードリカバリでは、両方のホストからのログバックアップが使用されます。
+
+image:saphana-sr-scs-image4.png["エラー：グラフィックイメージがありません"]
+
+link:saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html["次： SAP システムレプリケーションの SnapCenter 構成オプション"]

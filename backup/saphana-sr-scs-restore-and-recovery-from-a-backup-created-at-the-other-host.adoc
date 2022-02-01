@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html 
+keywords: restore, backup, recovery 
+summary: 他の SAP HANA ホストで作成されたバックアップからのリストア処理は、両方の SnapCenter 構成オプションで有効なシナリオです。 
+---
+= もう一方のホストで作成されたバックアップからのリストアとリカバリ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html["Previous ：単一のリソースを使用する SnapCenter 構成。"]
+
+他の SAP HANA ホストで作成されたバックアップからのリストア処理は、両方の SnapCenter 構成オプションで有効なシナリオです。
+
+次の図に、このセクションで説明するリストアとリカバリのシナリオの概要を示します。
+
+T1 のホスト 1 にバックアップが作成されました。ホスト 2 へのフェイルオーバーが実行されました。現在の時点では、ホスト 2 がプライマリホストになります。
+
+. 障害が発生したため、 T1 のホスト 1 で作成されたバックアップにリストアする必要があります。
+. プライマリホスト（ホスト 1 ）がシャットダウンされます。
+. ホスト 1 のバックアップデータ T1 は、ホスト 2 に復元されます。
+. フォワードリカバリは、ホスト 1 およびホスト 2 のログを使用して実行されます。
+. ホスト 1 が開始され、ホスト 1 のシステムレプリケーションの再同期が自動的に開始されます。
+
+
+image:saphana-sr-scs-image48.png["エラー：グラフィックイメージがありません"]
+
+次の図は、 SAP HANA のバックアップカタログを示しており、リストア処理とリカバリ処理に使用した、ホスト 1 で作成されたバックアップを強調表示しています。
+
+image:saphana-sr-scs-image49.png["エラー：グラフィックイメージがありません"]
+
+リストア処理には次の手順が含まれます。
+
+. ホスト 1 で作成したバックアップからクローンを作成します。
+. クローンボリュームをホスト 2 にマウントします。
+. クローンボリュームのデータを元の場所にコピーします。
+
+
+SnapCenter で、バックアップが選択され、クローニング処理が開始されます。
+
+image:saphana-sr-scs-image50.png["エラー：グラフィックイメージがありません"]
+
+クローンサーバおよび NFS エクスポートの IP アドレスを指定する必要があります。
+
+
+NOTE: SnapCenter のシングルリソース構成では、 SAP HANA プラグインはデータベースホストにインストールされません。SnapCenter のクローニングワークフローを実行するには、 HANA プラグインがインストールされたすべてのホストをクローンサーバとして使用できます。
+
++ 別々のリソースを使用する SnapCenter 構成では、 HANA データベースホストがクローンサーバとして選択され、マウントスクリプトを使用してクローンがターゲットホストにマウントされます。
+
+image:saphana-sr-scs-image51.png["エラー：グラフィックイメージがありません"]
+
+クローンボリュームのマウントに必要なジャンクションパスを特定するには、次の図に示すように、クローニングジョブのジョブログを確認します。
+
+image:saphana-sr-scs-image52.png["エラー：グラフィックイメージがありません"]
+
+これで、クローンボリュームをマウントできるようになります。
+
+....
+stlrx300s8-5:/mnt/tmp # mount 192.168.173.101:/Scc373da37-00ff-4694-b1e1-8153dbd46caf /mnt/tmp
+....
+クローンボリュームには、 HANA データベースのデータが含まれています。
+
+....
+stlrx300s8-5:/mnt/tmp/# ls –al
+drwxr-x--x 2 ssradm sapsys 4096 Jun 27 11:12 hdb00001
+drwx------ 2 ssradm sapsys 4096 Jun 21 09:38 hdb00002.00003
+drwx------ 2 ssradm sapsys 4096 Jun 27 11:12 hdb00003.00003
+-rw-r--r-- 1 ssradm sapsys   22 Jun 27 11:12 nameserver.lck
+....
+データが元の場所にコピーされます。
+
+....
+stlrx300s8-5:/mnt/tmp # cp -Rp hdb00001 /hana/data/SSR/mnt00001/
+stlrx300s8-5:/mnt/tmp # cp -Rp hdb00002.00003/ /hana/data/SSR/mnt00001/
+stlrx300s8-5:/mnt/tmp # cp -Rp hdb00003.00003/ /hana/data/SSR/mnt00001/
+....
+SAP HANA Studio を使用したリカバリが、の説明に従って実行されます link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html#snapcenter-restore-of-the-valid-backup-only["有効なバックアップの SnapCenter リストアのみを実行してください"]。
+
+link:saphana-sr-scs-where-to-find-additional-information_overview.html["次へ：追加情報の検索場所。"]

@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html 
+keywords: configuration, snapcenter, virtual ip, auto-discovery 
+summary: このページでは、 SAP システムレプリケーションの設定オプションについて説明します。 
+---
+= SAP システムレプリケーションの SnapCenter 設定オプション
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html["Previous ：ストレージの Snapshot バックアップと SAP システムのレプリケーション。"]
+
+SAP HANA システムレプリケーション環境で NetApp SnapCenter ソフトウェアを使用してデータ保護を設定するには、次の 2 つの方法があります。
+
+* SnapCenter リソースグループ。 SAP HANA ホストと SnapCenter バージョン 4.6 以降を使用した自動検出の両方が含まれます。
+* 仮想 IP アドレスを使用する、両方の SAP HANA ホスト用の単一の SnapCenter リソース。
+
+
+image:saphana-sr-scs-image5.png["エラー：グラフィックイメージがありません"]
+
+SnapCenter 4.6 以降では、 HANA システムレプリケーション関係で設定された HANA システムの自動検出が SnapCenter でサポートされます。各ホストは、物理 IP アドレス（ホスト名）とストレージレイヤ上の個々のデータボリュームを使用して設定されます。2 つの SnapCenter リソースが 1 つのリソースグループにまとめられ、プライマリまたはセカンダリのホストが SnapCenter によって自動的に識別され、必要なバックアップ処理が適宜実行されます。SnapCenter で作成された Snapshot とファイルベースのバックアップの保持の管理は両方のホストで実行されるため、現在のセカンダリホストでも古いバックアップを削除できます。
+
+両方の SAP HANA ホストに単一リソース構成を使用する場合、単一の SnapCenter リソースは、 SAP HANA システムレプリケーションホストの仮想 IP アドレスを使用して構成されます。SAP HANA ホストの両方のデータボリュームが SnapCenter リソースに含まれています。SnapCenter のリソースは 1 つであるため、 SnapCenter で作成された Snapshot とファイルベースのバックアップの保持管理は、現在プライマリとセカンダリのどちらのホストにも依存しません。このオプションは、すべての SnapCenter リリースで使用できます。
+
+次の表に、 2 つの設定オプションの主な違いをまとめます。
+
+|===
+|  | SnapCenter 4.6 を使用したリソースグループ | 単一の SnapCenter リソースと仮想 IP アドレス 
+
+
+| バックアップ処理（ Snapshot およびファイルベース） | リソースグループ内のプライマリホストの自動識別 | 仮想 IP アドレスを自動的に使用する 
+
+
+| 保持管理（ Snapshot とファイルベース） | 両方のホストで自動的に実行されます | 単一のリソースを自動的に使用します 
+
+
+| バックアップ容量の要件 | バックアップはプライマリホストボリュームでのみ作成されます | バックアップは両方のホストボリュームで常に作成されます。2 番目のホストのバックアップはクラッシュ整合性のみであり、ロールフォワードには使用できません。 
+
+
+| リストア処理を実行します | 現在のアクティブホストのバックアップをリストア処理に使用できます | リストアに使用できる有効なバックアップを特定するためのバックアップ前スクリプト 
+
+
+| リカバリ処理 | 自動検出されたすべてのリソースと同じリカバリオプションを使用できます | 手動でリカバリする必要があります 
+|===
+
+NOTE: 一般に、リソースグループ構成オプションを SnapCenter 4.6 に設定して、 HANA システムのレプリケーションを有効にして HANA システムを保護することを推奨します。単一の SnapCenter リソース構成が必要になるのは、 SnapCenter の処理アプローチが中央のプラグインホストに基づいており、 HANA プラグインが HANA データベースホストに導入されていない場合だけです。
+
+この 2 つのオプションについては、以降のセクションで詳しく説明します。
+
+link:saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html["次に、リソースグループを使用した SnapCenter 4.6 の設定を行います。"]

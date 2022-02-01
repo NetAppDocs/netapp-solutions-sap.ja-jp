@@ -2607,4 +2607,255 @@
   <block id="d57e0763c47c99218375572fbdd307a1" category="sidebar">すべての SAP ソリューション</block>
   <block id="91770f038cd944a1d3b9b347edeb2b10" category="sidebar">新機能</block>
   <block id="cd0aa799857a204938b1d6cabb99618f" category="doc">SAP の新機能</block>
+  <block id="093a45d87b6b8692e6c9a73c1a04c137" category="doc">追加情報およびバージョン履歴の参照先</block>
+  <block id="0a0c1759064aa4f9f09c1efae7e5497c" category="inline-link-macro">Previous ：もう一方のホストで作成されたバックアップからリストアとリカバリを実行します。</block>
+  <block id="9336d28943665078fed40ddbea21b0c3" category="paragraph"><block ref="9336d28943665078fed40ddbea21b0c3" category="inline-link-macro-rx"></block></block>
+  <block id="243e854b0d7da6e16a4a87f0f9ea87ba" category="paragraph">このドキュメントに記載されている情報の詳細については、次のドキュメントを参照してください。</block>
+  <block id="b1cd4632a9cd8998e7a0017f528fcc5b" category="list-text">SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化</block>
+  <block id="210b71749fc2f7d24034c09eef132638" category="paragraph"><block ref="210b71749fc2f7d24034c09eef132638" category="inline-link-macro-rx"></block></block>
+  <block id="36352fdf713e8c1508666c9640668e0a" category="summary">SnapCenter 4.6 では、 HANA システムレプリケーションが設定された HANA システムの自動検出がサポートされます。SnapCenter 4.6 には、バックアップ処理中にプライマリおよびセカンダリの HANA ホストを識別し、両方の HANA ホスト間で保持管理を処理するロジックが含まれています。</block>
+  <block id="8b1c808eafbee9527d4e168ef1f16c09" category="doc">リソースグループを使用した SnapCenter 4.6 の設定</block>
+  <block id="d1dc4a7aad3c7160c6649b5e3c9591f0" category="inline-link-macro">Previous ： SAP システムレプリケーションの SnapCenter 構成オプション</block>
+  <block id="a1d763646bbddba03e82d23f2d098717" category="paragraph"><block ref="a1d763646bbddba03e82d23f2d098717" category="inline-link-macro-rx"></block></block>
+  <block id="b39fd9047d2089b24c418d3512b8c903" category="paragraph">SnapCenter 4.6 では、 HANA システムレプリケーションが設定された HANA システムの自動検出がサポートされます。SnapCenter 4.6 には、バックアップ処理中にプライマリおよびセカンダリの HANA ホストを識別し、両方の HANA ホスト間で保持管理を処理するロジックが含まれています。また、 HANA システムレプリケーション環境でも自動リストアと自動リカバリが利用できるようになりました。</block>
+  <block id="6a24c6a18054ecbcf8919b90f4ff5eb8" category="section-title">SnapCenter 4.6 HANA システムレプリケーション環境の構成</block>
+  <block id="ef7979296ea2465331699c64e5450ad0" category="paragraph">次の図に、この章で使用するラボのセットアップを示します。HANA システムレプリケーションを使用して、 HANA ホストを 2 台、 HANA を 3 台、 HANA を 4 台構成しました。</block>
+  <block id="3ca4a9c5f67351b7924bb2876dc1e870" category="paragraph">HANA システムデータベース用のデータベースユーザ「 SnapCenter 」が作成され、バックアップおよびリカバリ処理を実行するために必要な権限が付与されています（を参照）<block ref="ec9daba0660d1e2512cb8193f8c16297" category="inline-link-rx"></block>）。HANA のユーザストアキーは、上記のデータベースユーザを使用して両方のホストで設定する必要があります。</block>
+  <block id="3719dabf545d56e27391b4c1bb73b944" category="paragraph">SnapCenter で HANA システムのレプリケーションを設定するには、大まかに見て次の手順を実行する必要があります。</block>
+  <block id="bc1873525b8d9ae5c49626cd6b47592c" category="list-text">HANA プラグインをプライマリホストとセカンダリホストにインストールします。自動検出が実行され、各プライマリホストまたはセカンダリホストで HANA システムのレプリケーションステータスが検出されます。</block>
+  <block id="3b7407b92790f4d78d820c6ebd3e159d" category="list-text">SnapCenter の configure database を実行し 'hdbuserstore キーを指定しますさらに自動検出操作が実行されます。</block>
+  <block id="93564a49cedf2137deead20877f792cd" category="list-text">両方のホストを含むリソースグループを作成し、保護を設定します。</block>
+  <block id="59d72e64253c8467af99838d40400078" category="paragraph"><block ref="59d72e64253c8467af99838d40400078" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b9e7f8ca0dd679eb7244d3b0c456f58e" category="paragraph">両方の HANA ホストに SnapCenter HANA プラグインをインストールすると、他の自動検出されたリソースと同じように、 HANA システムが SnapCenter リソースビューに表示されます。SnapCenter 4.6 以降では、追加の列に HANA システムレプリケーション（有効 / 無効、プライマリ / セカンダリ）のステータスが表示されます。</block>
+  <block id="6510b37e0aa52b9177b46d7048e004b0" category="paragraph"><block ref="6510b37e0aa52b9177b46d7048e004b0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d6fc9c8644818503f282251021723ef4" category="paragraph">リソースをクリックすると、 SnapCenter は HANA システムの HANA ユーザストアキーを要求します。</block>
+  <block id="2d44da370270eab693da74c47ec83061" category="paragraph"><block ref="2d44da370270eab693da74c47ec83061" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8b0bc5e36095bf09eb695be9b8de1862" category="paragraph">追加の自動検出ステップが実行され、 SnapCenter にリソースの詳細が表示されます。SnapCenter 4.6 では、システムレプリケーションのステータスとセカンダリサーバがこのビューに表示されます。</block>
+  <block id="d19657916dcd1afc21e008c24fe75407" category="paragraph"><block ref="d19657916dcd1afc21e008c24fe75407" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="28fd5edae03b34a5e3181325d18aaf9b" category="paragraph">2 つ目の HANA リソースに対して同じ手順を実行すると、自動検出プロセスが完了し、両方の HANA リソースが SnapCenter で構成されます。</block>
+  <block id="2683deb5c42609367ecfaad1b5fef47f" category="paragraph"><block ref="2683deb5c42609367ecfaad1b5fef47f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3a6aa9f1c27d2d807b9c4b5cc15c0c66" category="paragraph">HANA システムレプリケーションを有効にしたシステムでは、両方の HANA リソースを含む SnapCenter リソースグループを設定する必要があります。</block>
+  <block id="b0fcf7bdbcef70574c2315aee4c7bd44" category="paragraph"><block ref="b0fcf7bdbcef70574c2315aee4c7bd44" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="78110de010c4ee1945de37cc79b3b7cf" category="paragraph">Snapshot 名には、ホスト名、ポリシー、スケジュールなどを含めるカスタムの名前形式を使用することを推奨します。</block>
+  <block id="ab5827f336cb4c48fe8b5bd0f31a12be" category="paragraph"><block ref="ab5827f336cb4c48fe8b5bd0f31a12be" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7ca4e5c2fcfa31585e0bf441458f2cfc" category="paragraph">リソースグループに両方の HANA ホストを追加する必要があります。</block>
+  <block id="0137252606945b276a3e75410b8c8cdc" category="paragraph"><block ref="0137252606945b276a3e75410b8c8cdc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ed775f1c4384259d73349821be6c2694" category="paragraph">リソースグループにはポリシーとスケジュールが設定されます。</block>
+  <block id="91804b09f65a1f54267e7fa96cbfd6f1" category="admonition">ポリシーで定義された保持設定は、両方の HANA ホストで使用されます。たとえば、ポリシーで保持数が 10 に定義されている場合、両方のホストのバックアップの合計がバックアップ削除の基準として使用されます。SnapCenter は、現在のプライマリホストまたはセカンダリホストに作成された最も古いバックアップを個別に削除します。</block>
+  <block id="b7d5f7a64153eda186c820a5953bdc24" category="paragraph"><block ref="b7d5f7a64153eda186c820a5953bdc24" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d963f6f8f451d72b26442e3c2c35bcf1" category="paragraph">これでリソースグループの設定が終了し、バックアップを実行できるようになります。</block>
+  <block id="557673722dfb11ceac9abea3c56b3f0c" category="paragraph"><block ref="557673722dfb11ceac9abea3c56b3f0c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd9995518117cdb8133215d354a99249" category="paragraph"><block ref="fd9995518117cdb8133215d354a99249" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fb04e74862dcc89c849934898ae20df8" category="section-title">Snapshot のバックアップ処理</block>
+  <block id="c14b7fc8184ded19e7d1d53f9e7ab803" category="paragraph">リソースグループのバックアップ処理が実行されると、 SnapCenter はどのホストがプライマリであるかを識別し、プライマリホストでのみバックアップをトリガーします。つまり、プライマリホストのデータボリュームのみが Snapshot されます。この例では、 HANA 3 が現在のプライマリホストであり、このホストでバックアップが実行されています。</block>
+  <block id="7f8aba1af0cb84f6ad2df2c0fe1b0d13" category="paragraph"><block ref="7f8aba1af0cb84f6ad2df2c0fe1b0d13" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="779618797296fde495820a84f779ecab" category="paragraph">SnapCenter ジョブログには、識別処理と、現在のプライマリホスト HANA でのバックアップの実行が表示されます。</block>
+  <block id="49a1ffdf6282e694b7744f45751cfdee" category="paragraph"><block ref="49a1ffdf6282e694b7744f45751cfdee" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c652f5e24fbe7fb888911613189b45da" category="paragraph">これで、プライマリ HANA リソースに Snapshot バックアップが作成されました。バックアップ名に含まれるホスト名は HANA - 3 と表示されます。</block>
+  <block id="ac88926a1485953a491829ab4b5850cb" category="paragraph"><block ref="ac88926a1485953a491829ab4b5850cb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bcb05d93e0f8deb7992f97c99b67a704" category="paragraph">HANA のバックアップカタログにも同じ Snapshot バックアップが表示されます。</block>
+  <block id="b9ff4f01a529d6b564f0f7bc11b15cd3" category="paragraph"><block ref="b9ff4f01a529d6b564f0f7bc11b15cd3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="227417a294975cfdd600c953a7227e0a" category="paragraph">テイクオーバー処理が実行されると、それ以降の SnapCenter バックアップで元のセカンダリホスト（ Hana-4 ）がプライマリとして識別され、 Hana-4 でバックアップ処理が実行されるようになります。ここでも、新しいプライマリホスト（ HANA - 4 ）のデータボリュームのみが Snapshot されています。</block>
+  <block id="126fd58f4273ad597cbcab66140a53bf" category="admonition">SnapCenter 識別ロジックで対応しているのは、 HANA ホストがプライマリとセカンダリの関係にあるシナリオと、 HANA ホストの 1 つがオフラインになっているシナリオだけです。</block>
+  <block id="7d59e4b6f8bc59ccfda2c21ab1f5d4a5" category="paragraph"><block ref="7d59e4b6f8bc59ccfda2c21ab1f5d4a5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="146a3e54d7baf77bf5f24736862b2e87" category="paragraph">SnapCenter ジョブログには、識別処理と、現在のプライマリホスト HANA でのバックアップの実行が表示されます。</block>
+  <block id="cdce16c69115cd1993e3774f2d45f042" category="paragraph"><block ref="cdce16c69115cd1993e3774f2d45f042" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bbd4f4df2e21b1ce421727b7362f417b" category="paragraph">これで、プライマリ HANA リソースに Snapshot バックアップが作成されました。バックアップ名に含まれているホスト名は、 HANA のホスト名です。</block>
+  <block id="295e7a62ef846e05b78001f65287d3b9" category="paragraph"><block ref="295e7a62ef846e05b78001f65287d3b9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="386b96f6053bd85647b9d68016068eb5" category="paragraph"><block ref="386b96f6053bd85647b9d68016068eb5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4964ef2f01ba430e3456e779528b2769" category="section-title">ファイルベースのバックアップを使用したブロック整合性チェック処理</block>
+  <block id="b69253be3260fc04bd3bfddc522b4fc4" category="paragraph">SnapCenter 4.6 では、ファイルベースのバックアップでブロック整合性チェック処理を実行する場合と同じロジックを使用します。SnapCenter は現在のプライマリ HANA ホストを識別し、このホストに対してファイルベースのバックアップを実行します。保持管理も両方のホスト間で実行されるため、現在プライマリになっているホストに関係なく、最も古いバックアップが削除されます。</block>
+  <block id="6856414db85233a8e045263f695b175e" category="section-title">SnapVault レプリケーション</block>
+  <block id="061d3cb22e674e47881a1e516fec08eb" category="paragraph">テイクオーバー時に透過的なバックアップ処理を可能にし、現在プライマリホストになっている HANA ホストに依存しないようにするには、両方のホストのデータボリュームに SnapVault 関係を設定する必要があります。SnapCenter は、バックアップの実行ごとに、現在のプライマリホストに対して SnapVault 更新処理を実行します。</block>
+  <block id="6d2237ec4d6cf324b50a6aa67d5813d6" category="admonition">セカンダリホストへのテイクオーバーが長時間実行されない場合、セカンダリホストでの最初の SnapVault 更新で変更されたブロック数は多くなります。</block>
+  <block id="8bcfb1be8ac0f60d97f95518b3e7f466" category="paragraph">SnapVault ターゲットの保持管理は ONTAP by SnapCenter の外部で管理されるため、両方の HANA ホスト間で処理することはできません。そのため、テイクオーバー前に作成されたバックアップは、以前のセカンダリではバックアップ処理によって削除されません。これらのバックアップは、元のプライマリが再びプライマリになるまで保持されます。これらのバックアップによってログバックアップの保持管理がブロックされないように、 SnapVault ターゲットまたは HANA のバックアップカタログから手動で削除する必要があります。</block>
+  <block id="e16ff6e568f8eb35263ae87e0b2fb4c7" category="admonition">1 つの SnapVault コピーが同期ポイントとしてブロックされるため、すべての Snapshot コピーのクリーンアップを実行できません。最新の Snapshot コピーも削除する必要がある場合は、 SnapVault レプリケーション関係を削除してください。この場合は、 HANA のバックアップカタログ内のバックアップを削除して、ログのバックアップ保持管理のブロックを解除することを推奨します。</block>
+  <block id="0e048ce853fa09ec76d5dacb494e68c4" category="paragraph"><block ref="0e048ce853fa09ec76d5dacb494e68c4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dc89ca90a524118bdb23dfe95009d16c" category="paragraph">SnapCenter 4.6 は、両方の HANA ホストで Snapshot バックアップ、ブロック整合性チェック処理、 HANA バックアップカタログのエントリ、ログバックアップ（無効になっていない場合）の保持を管理できるため、どちらのホストが現在プライマリであるかセカンダリであるかは関係ありません。削除処理が現在のプライマリホストとセカンダリホストのどちらで必要かに関係なく、定義された保持設定に基づいて HANA カタログのバックアップ（データとログ）とエントリが削除されます。つまり、テイクオーバー処理を実行した場合や、レプリケーションが反対方向に設定されている場合は、手動での操作は必要ありません。</block>
+  <block id="b622880d7effd20d409afc8f9d337338" category="paragraph">SnapVault レプリケーションがデータ保護戦略の一部である場合は、特定のシナリオで手動による操作が必要です。詳細については、を参照してください <block ref="d418ccf14dbb0e729818939bd00e84be" category="inline-xref-macro-rx"></block>。</block>
+  <block id="6db8f8c174516b1dc5a1f3305fe43190" category="paragraph">次の図は、複数のテイクオーバーが実行され、両方のサイトに Snapshot バックアップが作成された場合のシナリオを示しています。現在のステータスでは、ホスト HA-3 がプライマリホスト、最新のバックアップは T4 であり、これはホスト HA-3 で作成されています。リストアおよびリカバリ処理を実行する必要がある場合、バックアップ T1 および T4 は SnapCenter のリストアとリカバリに使用できます。ホスト HA-4 （ T2 、 T3 ）で作成されたバックアップは、 SnapCenter を使用してリストアできません。リカバリのために、これらのバックアップを HANA のデータボリュームに手動でコピーする必要があります。</block>
+  <block id="320176f9e489dcceb76831b66fbd7f35" category="paragraph"><block ref="320176f9e489dcceb76831b66fbd7f35" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="801b7a55bf3ed44abb2d821602e1c449" category="paragraph">SnapCenter 4.6 リソースグループ構成のリストアおよびリカバリ操作は ' 自動検出されたシステム以外のレプリケーション設定と同じですリストアと自動リカバリのすべてのオプションを使用できます。詳細については、テクニカルレポートを参照してください<block ref="f91ad5f72ca89ecac47641fa01cbfa5f" category="inline-link-rx"></block>。</block>
+  <block id="50ff1d24fad3646f6fdf9aea77002929" category="inline-link-macro">他のホストで作成されたバックアップからのリストアとリカバリ</block>
+  <block id="6f14e8618cb532fa598b498e9c3fc455" category="paragraph">もう一方のホストで作成されたバックアップからのリストア処理については、を参照してください <block ref="383e6e7e7573de7f2a0f06e6daaee412" category="inline-link-macro-rx"></block>。</block>
+  <block id="bba05b1a991c5925ab68cab0b8987cbc" category="inline-link-macro">次の例：単一のリソースを使用する SnapCenter 構成。</block>
+  <block id="9b599e23e279b030519f6f24e213957a" category="paragraph"><block ref="9b599e23e279b030519f6f24e213957a" category="inline-link-macro-rx"></block></block>
+  <block id="1fd25d525832cdf3655a067856ae6010" category="summary">SnapCenter リソースは、 HANA システムレプリケーション環境の仮想 IP アドレス（ホスト名）で構成されます。このアプローチでは、ホスト 1 とホスト 2 のどちらがプライマリかに関係なく、 SnapCenter は常にプライマリホストと通信します。</block>
+  <block id="260f08a78b9b41762b41f2772c1cda65" category="doc">単一のリソースを使用する SnapCenter 構成</block>
+  <block id="6f9a98f7009a1ee5777f92bba3d3ca80" category="inline-link-macro">前のバージョン：リソースグループを使用した SnapCenter 4.6 の設定。</block>
+  <block id="04dcd1081c91e99bae759a46231ea277" category="paragraph"><block ref="04dcd1081c91e99bae759a46231ea277" category="inline-link-macro-rx"></block></block>
+  <block id="5411f416854228c6901553a528a29ad7" category="paragraph">SnapCenter リソースは、 HANA システムレプリケーション環境の仮想 IP アドレス（ホスト名）で構成されます。このアプローチでは、ホスト 1 とホスト 2 のどちらがプライマリかに関係なく、 SnapCenter は常にプライマリホストと通信します。両方の SAP HANA ホストのデータボリュームは、 SnapCenter リソースに含まれています。</block>
+  <block id="d223d6e73fef21ec370c1a5c0e109630" category="admonition">仮想 IP アドレスは常にプライマリ SAP HANA ホストにバインドされているものとします。仮想 IP アドレスのフェイルオーバーは、 HANA システムレプリケーションのフェイルオーバーワークフローの一環として、 SnapCenter の外部で実行されます。</block>
+  <block id="6f723c4c9a56249ef6ad0fc5205452b8" category="paragraph">ホスト 1 をプライマリホストとするバックアップを実行すると、データベースと整合性のある Snapshot バックアップがホスト 1 のデータボリュームに作成されます。ホスト 2 のデータボリュームは SnapCenter リソースの一部であるため、このボリュームに対してもう 1 つの Snapshot コピーが作成されます。この Snapshot コピーはデータベースの整合性を維持するのではなく、セカンダリホストのクラッシュイメージにすぎません。</block>
+  <block id="748f9383138a6d21a5f9dc95cf69b88c" category="paragraph">SAP HANA のバックアップカタログと SnapCenter リソースには、ホスト 1 で作成されたバックアップが含まれています。</block>
+  <block id="97a1bf3e5cbe14f9b60224db75b4418c" category="paragraph"><block ref="97a1bf3e5cbe14f9b60224db75b4418c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9b9c7d8b5c0d0fafbea9ea847faf4e80" category="paragraph">次の図に、ホスト 2 へのフェイルオーバーおよびホスト 2 からホスト 1 へのレプリケーション後のバックアップ処理を示します。SnapCenter は、 SnapCenter リソースに設定されている仮想 IP アドレスを使用して、ホスト 2 と自動的に通信します。これで、ホスト 2 にバックアップが作成されます。SnapCenter によって 2 つの Snapshot コピーが作成されます。ホスト 2 のデータボリュームにあるデータベースと整合性のあるバックアップと、ホスト 1 のデータボリュームにあるクラッシュイメージの Snapshot コピーです。SAP HANA のバックアップカタログと SnapCenter リソースに、ホスト 1 で作成されたバックアップとホスト 2 で作成されたバックアップが含まれるようになりました。</block>
+  <block id="2b26158b4aff092cc0728d277d344a5a" category="paragraph">不要なデータバックアップやログバックアップは、定義された SnapCenter 保持ポリシーに基づいて削除され、プライマリまたはセカンダリのホストに関係なく、バックアップは削除されます。</block>
+  <block id="8f051c9b2bafb13696b25fd6f436a556" category="paragraph"><block ref="8f051c9b2bafb13696b25fd6f436a556" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b3c7f675aa9e386d0aaa73f2de847188" category="inline-link-macro">ストレージ Snapshot バックアップと SAP システムレプリケーション</block>
+  <block id="102f334e96097bebfae58a079388d7f2" category="paragraph">の項で説明したように <block ref="570e066d63188ae45a45b07d6865440b" category="inline-link-macro-rx"></block>ストレージベースの Snapshot バックアップを使用したリストア処理は、リストアするバックアップによって異なります。ローカル・ストレージ・ボリュームでリストアを実行できるかどうか、または他のホストのストレージ・ボリュームでリストアを実行する必要があるかどうかを判断するには、バックアップが作成されたホストを特定することが重要です。</block>
+  <block id="76668f896551ee021941705402feda3b" category="paragraph">シングルリソースの SnapCenter 構成では、バックアップがどこに作成されたかが SnapCenter で認識されません。そのため、 SnapCenter のバックアップワークフローにバックアップ前のスクリプトを追加して、現在プライマリ SAP HANA ホストになっているホストを特定することを推奨します。</block>
+  <block id="bb9f6626d16fda2d847f88dabedc7961" category="paragraph">次の図は、バックアップホストの ID を示しています。</block>
+  <block id="70e6889eeb72975a0660142211d133ac" category="paragraph"><block ref="70e6889eeb72975a0660142211d133ac" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4b152f4bba0a5ca6345daa47736e4622" category="section-title">SnapCenter 構成</block>
+  <block id="32423786e97f4f83fdc90f030727503b" category="paragraph">次の図は、ラボでのセットアップと必要な SnapCenter 構成の概要を示しています。</block>
+  <block id="3cfc873aaec262d66172e9ff275d4389" category="paragraph"><block ref="3cfc873aaec262d66172e9ff275d4389" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c1968668fc5cbc2c5e8b49c18c362b55" category="paragraph">どの SAP HANA ホストがプライマリであっても、 1 つのホストがダウンしている場合でもバックアップ処理を実行するには、 SnapCenter SAP HANA プラグインを中央のプラグインホストに導入する必要があります。今回のラボ環境では、 SnapCenter サーバを中央プラグインホストとして使用し、 SnapCenter サーバに SAP HANA プラグインを導入しました。</block>
+  <block id="bd5c6333eef324e59a3de18aa6e29173" category="paragraph">HANA データベースに、バックアップ処理を実行するユーザを作成しました。SAP HANA プラグインがインストールされている SnapCenter サーバにユーザストアキーが設定されている。ユーザーストアキーには、 SAP HANA システムレプリケーションホスト（ SSR-VIP ）の仮想 IP アドレスが含まれます。</block>
+  <block id="5a2cdf3fb46c8f521d96d7e7bc4c9b2f" category="paragraph">SAP HANA プラグインの導入オプションとユーザストアの構成の詳細については、テクニカルレポート TR-4614 を参照してください。<block ref="ec9daba0660d1e2512cb8193f8c16297" category="inline-link-rx"></block>。</block>
+  <block id="d7e2061a39f4790783431f1963349b9b" category="paragraph">SnapCenter では ' 次の図に示すように ' リソースは ' 前に構成されたユーザー・ストア・キーと SnapCenter サーバを 'hdbsql' 通信ホストとして構成されます</block>
+  <block id="6fa9e53701a1c7daddbc7f621164665e" category="paragraph"><block ref="6fa9e53701a1c7daddbc7f621164665e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2a64b18e126555fa2ca4e7fb0bf3bc37" category="paragraph">次の図に示すように、両方の SAP HANA ホストのデータボリュームがストレージ設置面積構成に含まれています。</block>
+  <block id="f349bc5106429125b1ece6199df508c3" category="paragraph"><block ref="f349bc5106429125b1ece6199df508c3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="90323af735fbe3861cb8bc49a36914b1" category="paragraph">前述したように、 SnapCenter はバックアップがどこで作成されたかを認識しません。したがって、 SnapCenter バックアップワークフローにバックアップ前のスクリプトを追加して、現在プライマリ SAP HANA ホストとなっているホストを特定することを推奨します。この識別は、次の図に示すように、バックアップワークフローに追加された SQL ステートメントを使用して実行できます。</block>
+  <block id="a8b9f97ba8782fd76582d42b533aa232" category="paragraph"><block ref="a8b9f97ba8782fd76582d42b533aa232" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0b345bf9ce49cf6e06f2ca4c412deff5" category="section-title">SnapCenter バックアップ処理</block>
+  <block id="82e7650ccab95a6d3386e10752618019" category="paragraph">バックアップ処理が通常どおり実行されるようになりました。不要なデータバックアップとログバックアップの削除は、プライマリまたはセカンダリの SAP HANA ホストとは無関係に実行されます。</block>
+  <block id="d0c6300a20b1a2c2c3b854a631ac2e32" category="paragraph">バックアップジョブログには SQL ステートメントの出力が含まれており、バックアップが作成された SAP HANA ホストを特定できます。</block>
+  <block id="6354370842f86dd420800ec685504912" category="paragraph">次の図に、ホスト 1 をプライマリホストとするバックアップジョブログを示します。</block>
+  <block id="bcb58afb89609d906c95964f746f4de7" category="paragraph"><block ref="bcb58afb89609d906c95964f746f4de7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="21707873392b599f402b6c2e8519e23a" category="paragraph">この図は、ホスト 2 がプライマリホストであるバックアップジョブログを示しています。</block>
+  <block id="5fe0de453194cc3da32e5f1e04d39d67" category="paragraph"><block ref="5fe0de453194cc3da32e5f1e04d39d67" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="13dea575ccfa5ca9cd3d63c2e68f6d10" category="paragraph">次の図は、 SAP HANA Studio の SAP HANA バックアップカタログを示しています。SAP HANA データベースがオンラインの場合、バックアップが作成された SAP HANA ホストが SAP HANA Studio に表示されます。</block>
+  <block id="193b24cf7c478d099c4fbbe19f8ad124" category="admonition">リストア処理とリカバリ処理で使用されるファイルシステム上の SAP HANA バックアップカタログに、バックアップが作成されたホスト名は含まれません。データベースがダウンしているときにホストを識別する唯一の方法は、バックアップカタログのエントリと、両方の SAP HANA ホストの「 backup.log 」ファイルを組み合わせることです。</block>
+  <block id="373d32b62b1d826732c4a18f8312353b" category="paragraph"><block ref="373d32b62b1d826732c4a18f8312353b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2e0e4fbbcdc158520c486ebd1cb95f4e" category="paragraph">前述したように、必要なリストア処理を定義するために、選択したバックアップの作成先を特定できる必要があります。SAP HANA データベースがオンラインのままの場合は、 SAP HANA Studio を使用して、バックアップが作成されたホストを特定できます。データベースがオフラインの場合、情報は SnapCenter バックアップジョブログでのみ確認できます。</block>
+  <block id="ec3a3d8d3490fe3ecd7daa9a92d23e25" category="paragraph">次の図に、選択したバックアップに応じたリストア処理を示します。</block>
+  <block id="f3f8ad38930fbe26474c020c9937d5e0" category="paragraph">タイムスタンプ T3 の後にリストア処理を実行する必要があり、ホスト 1 がプライマリである場合は、 SnapCenter を使用して T1 または T3 で作成されたバックアップをリストアできます。これらの Snapshot バックアップは、ホスト 1 に接続されているストレージボリュームで使用できます。</block>
+  <block id="a039a31368090cbccac747771d4314fe" category="paragraph">ホスト 2 （ T2 ）に作成されたバックアップを使用してリストアする必要がある場合は、ホスト 2 のストレージボリュームにある Snapshot コピーを使用する必要があります。このバックアップを利用するには、バックアップから NetApp FlexClone コピーを作成し、 FlexClone コピーをホスト 1 にマウントし、データを元の場所にコピーします。</block>
+  <block id="110682bcbc84e2b26e25965736a6ce46" category="paragraph"><block ref="110682bcbc84e2b26e25965736a6ce46" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cc77c2d84c4d0532580c7648fb527068" category="paragraph">単一の SnapCenter リソース構成では、両方の SAP HANA システムレプリケーションホストの両方のストレージボリュームに Snapshot コピーが作成されます。フォワードリカバリに使用できるのは、プライマリ SAP HANA ホストのストレージボリュームに作成された Snapshot バックアップのみです。セカンダリ SAP HANA ホストのストレージボリュームに作成された Snapshot コピーは、フォワードリカバリに使用できないクラッシュイメージです。</block>
+  <block id="914fe0e173ea134cf6a261a23bb9be7c" category="paragraph">SnapCenter でのリストア処理は、次の 2 つの方法で実行できます。</block>
+  <block id="da47f45ee3786a65f83ac527b48e3368" category="list-text">有効なバックアップのみをリストアしてください</block>
+  <block id="efa0a43a073fecc57325043414b7410e" category="list-text">有効なバックアップとクラッシュ・イメージを含む ' リソース全体をリストアする以下のセクションでは '2 つの異なるリストア・オペレーションについて詳細に説明します</block>
+  <block id="cae4c5e22b0e817592c5813faad601cf" category="paragraph">次の図は、単一の SnapCenter リソース構成を使用したリストア処理を示しています。</block>
+  <block id="e5e18ed760ed51854f8cf556564f1d8a" category="paragraph"><block ref="e5e18ed760ed51854f8cf556564f1d8a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="999b37dc80676993381a9707924e29c3" category="section-title">有効なバックアップの SnapCenter リストアのみを実行してください</block>
+  <block id="f17433ab3965bf2e142fb4e1dff405e2" category="paragraph">次の図に、このセクションで説明するリストアとリカバリのシナリオの概要を示します。</block>
+  <block id="36859b36c1aed5070a33950066055b92" category="paragraph">T1 のホスト 1 にバックアップが作成されました。ホスト 2 へのフェイルオーバーが実行されました。特定の時点で、ホスト 1 へのフェイルオーバーが再度実行されます。現在の時点では、ホスト 1 がプライマリホストになります。</block>
+  <block id="880f2e960b16f01349f2ca3486d1bd6a" category="list-text">障害が発生したため、 T1 のホスト 1 で作成されたバックアップにリストアする必要があります。</block>
+  <block id="4af51d00fac3b893eeec6663c152d51a" category="list-text">セカンダリホスト（ホスト 2 ）はシャットダウンされますが、リストア処理は実行されません。</block>
+  <block id="7ded02ea0206a70a9c98edbe7828dcdb" category="list-text">ホスト 1 のストレージボリュームは、 T1 で作成されたバックアップに復元されます。</block>
+  <block id="dd764570723e348d81f59c7841180784" category="list-text">フォワードリカバリは、ホスト 1 およびホスト 2 のログを使用して実行されます。</block>
+  <block id="209c12c254cf841cccc9a950309a933e" category="list-text">ホスト 2 が開始され、ホスト 2 のシステムレプリケーションの再同期が自動的に開始されます。</block>
+  <block id="10f06444eb9ad361b94842dcd1d07f91" category="paragraph"><block ref="10f06444eb9ad361b94842dcd1d07f91" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c37725f2a48f8baeb00c03c364ea3a90" category="paragraph">次の図は、 SAP HANA Studio の SAP HANA バックアップカタログを示しています。強調表示されたバックアップは、 T1 のホスト 1 で作成されたバックアップを示しています。</block>
+  <block id="20e08948845c7f57b4f19b8c6d62dedf" category="paragraph"><block ref="20e08948845c7f57b4f19b8c6d62dedf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5b426b49c093dba7596721df7ef7ef47" category="paragraph">リストア処理とリカバリ処理は SAP HANA Studio で開始されます。次の図に示すように、バックアップが作成されたホストの名前はリストアとリカバリのワークフローには表示されません。</block>
+  <block id="f608de875db67dd46fec88060326d0b1" category="admonition">テストシナリオでは、データベースがオンラインのままの場合、 SAP HANA Studio で正しいバックアップ（ホスト 1 で作成されたバックアップ）を特定できました。データベースを使用できない場合は、 SnapCenter バックアップジョブログで適切なバックアップを特定する必要があります。</block>
+  <block id="9e47f487ab6c5d1b77d41f104eb57710" category="paragraph"><block ref="9e47f487ab6c5d1b77d41f104eb57710" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="53b821249032276c494242cb38256d19" category="paragraph">SnapCenter では、バックアップが選択され、ファイルレベルのリストア処理が実行されます。ファイルレベルのリストア画面では、有効なバックアップのみがリストアされるように、ホスト 1 のボリュームのみが選択されます。</block>
+  <block id="59d1491be762fd48a25b2420384f08b4" category="paragraph"><block ref="59d1491be762fd48a25b2420384f08b4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b01c5d1bb46aad41f5286805bebfd4f0" category="paragraph">リストア処理が完了すると、 SAP HANA Studio でバックアップが緑色で強調表示されます。ホスト 1 とホスト 2 のログバックアップのファイルパスがバックアップカタログに含まれているため、追加のログバックアップの場所を入力する必要はありません。</block>
+  <block id="c856693eb2fac53b282a7876fc383731" category="paragraph"><block ref="c856693eb2fac53b282a7876fc383731" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f286578015316aaefdf2a9d71504270e" category="paragraph">フォワードリカバリが完了すると、セカンダリホスト（ホスト 2 ）が起動し、 SAP HANA システムレプリケーションの再同期が開始されます。</block>
+  <block id="4fb7470490997c95ffa1c5600ec5ecd3" category="admonition">セカンダリホストが最新の状態である（ホスト 2 に対してリストア処理が実行されていない）場合でも、 SAP HANA はすべてのデータの完全なレプリケーションを実行します。この動作は、 SAP HANA システムレプリケーションを使用したリストア処理とリカバリ処理後に標準で実行されます。</block>
+  <block id="30951caa04f9b919b2494a0f6f8be109" category="paragraph"><block ref="30951caa04f9b919b2494a0f6f8be109" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="79dc576ddf59dc20fca6834461f7ac09" category="section-title">有効なバックアップとクラッシュイメージの SnapCenter リストア</block>
+  <block id="da1933d80ef83cf1ec0c167fcc7d7f1e" category="list-text">セカンダリホスト（ホスト 2 ）がシャットダウンされ、 T1 クラッシュイメージが復元されます。</block>
+  <block id="184f8e362eb69a36b78d905cfdd2bf4e" category="list-text">ホスト 2 が開始され、ホスト 2 のシステムレプリケーションの再同期が自動的に開始されます。</block>
+  <block id="8a993f24e02842ba2d1d5f79c4856c17" category="paragraph"><block ref="8a993f24e02842ba2d1d5f79c4856c17" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="95069540deba789e6c51a01cc226e5b2" category="paragraph">SAP HANA Studio でのリストアとリカバリの処理は、のセクションで説明する手順と同じです <block ref="873b82be62d7406e4e13ae8683307096" category="inline-link-macro-rx"></block>。</block>
+  <block id="ce7fc220814189df737dd5a85d9ec6fe" category="paragraph">リストア処理を実行するには、 SnapCenter でリソースを完全に選択してください。両方のホストのボリュームがリストアされます。</block>
+  <block id="056b602d58a8966b7b63ac3a6ebc5ba8" category="paragraph"><block ref="056b602d58a8966b7b63ac3a6ebc5ba8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a2d30341e8760144a82505e4f2584b74" category="paragraph">フォワードリカバリが完了すると、セカンダリホスト（ホスト 2 ）が起動し、 SAP HANA システムレプリケーションの再同期が開始されます。すべてのデータの完全なレプリケーションが実行されます。</block>
+  <block id="583e9ba0a822a77e1226f1eb7ab4c414" category="paragraph"><block ref="583e9ba0a822a77e1226f1eb7ab4c414" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1f2e2708a4cb2228c40c0919e9fc4deb" category="inline-link-macro">次へ：もう一方のホストで作成されたバックアップからリストアとリカバリを実行します。</block>
+  <block id="99c19b4112a8eb56423d73b25136b497" category="paragraph"><block ref="99c19b4112a8eb56423d73b25136b497" category="inline-link-macro-rx"></block></block>
+  <block id="8b882a288d6cd3bd9c486a64d890100d" category="summary">他の SAP HANA ホストで作成されたバックアップからのリストア処理は、両方の SnapCenter 構成オプションで有効なシナリオです。</block>
+  <block id="9256b11afc32bceb372c74dfeeb3433a" category="doc">もう一方のホストで作成されたバックアップからのリストアとリカバリ</block>
+  <block id="730ab62aba9f1e37ab14624e5e1d85c4" category="inline-link-macro">Previous ：単一のリソースを使用する SnapCenter 構成。</block>
+  <block id="db9fb51585abfdfc58e046a57e5e016c" category="paragraph"><block ref="db9fb51585abfdfc58e046a57e5e016c" category="inline-link-macro-rx"></block></block>
+  <block id="a45630ea5c1a78685a85cc9991055838" category="paragraph">T1 のホスト 1 にバックアップが作成されました。ホスト 2 へのフェイルオーバーが実行されました。現在の時点では、ホスト 2 がプライマリホストになります。</block>
+  <block id="7f7f6d932a287ba353121a42032e859c" category="list-text">プライマリホスト（ホスト 1 ）がシャットダウンされます。</block>
+  <block id="08ab08de2b84a1abeec853852fbb270b" category="list-text">ホスト 1 のバックアップデータ T1 は、ホスト 2 に復元されます。</block>
+  <block id="54a006a73eb9494b19b57e09390aac49" category="list-text">フォワードリカバリは、ホスト 1 およびホスト 2 のログを使用して実行されます。</block>
+  <block id="61eb913111b23af6c5cbbc8dbc814cc4" category="list-text">ホスト 1 が開始され、ホスト 1 のシステムレプリケーションの再同期が自動的に開始されます。</block>
+  <block id="b81038ea00f0038ea05ad622788d5612" category="paragraph"><block ref="b81038ea00f0038ea05ad622788d5612" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="420b1e4ee829dd3eb714e9041891238b" category="paragraph">次の図は、 SAP HANA のバックアップカタログを示しており、リストア処理とリカバリ処理に使用した、ホスト 1 で作成されたバックアップを強調表示しています。</block>
+  <block id="5551467de000a8b6e4643a76c3372938" category="paragraph"><block ref="5551467de000a8b6e4643a76c3372938" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cd5d505ca2373cdc7d18efb2869033ed" category="paragraph">リストア処理には次の手順が含まれます。</block>
+  <block id="2d08d5136ddc4086894bda34d14b24d0" category="list-text">ホスト 1 で作成したバックアップからクローンを作成します。</block>
+  <block id="6043974c0cea7ef12e2b91ac16162035" category="list-text">クローンボリュームをホスト 2 にマウントします。</block>
+  <block id="451bde33fa7b247f83d7b14fd93c467a" category="list-text">クローンボリュームのデータを元の場所にコピーします。</block>
+  <block id="9fcc4360269dfed6a58662eaaff3f7a4" category="paragraph">SnapCenter で、バックアップが選択され、クローニング処理が開始されます。</block>
+  <block id="453eaeaa8c790bd63f7a4520d7e9ecd6" category="paragraph"><block ref="453eaeaa8c790bd63f7a4520d7e9ecd6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3b8d6cba3e9f1c4ec4c62eaa46003ff0" category="paragraph">クローンサーバおよび NFS エクスポートの IP アドレスを指定する必要があります。</block>
+  <block id="50d76361ddca8e22e3d17e0f39e45c9c" category="admonition">SnapCenter のシングルリソース構成では、 SAP HANA プラグインはデータベースホストにインストールされません。SnapCenter のクローニングワークフローを実行するには、 HANA プラグインがインストールされたすべてのホストをクローンサーバとして使用できます。</block>
+  <block id="59edb5bba2c252f423a3013c5a80ed7a" category="paragraph">+ 別々のリソースを使用する SnapCenter 構成では、 HANA データベースホストがクローンサーバとして選択され、マウントスクリプトを使用してクローンがターゲットホストにマウントされます。</block>
+  <block id="d80c5ce20d24da7129e1f053b85b14a9" category="paragraph"><block ref="d80c5ce20d24da7129e1f053b85b14a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fe739341f732db5aff63cb28381d9cdc" category="paragraph">クローンボリュームのマウントに必要なジャンクションパスを特定するには、次の図に示すように、クローニングジョブのジョブログを確認します。</block>
+  <block id="e5dec5069f1f7102326e78e2fc5f4222" category="paragraph"><block ref="e5dec5069f1f7102326e78e2fc5f4222" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a5f909bb980ebce8c8c504b2b21da69a" category="paragraph">これで、クローンボリュームをマウントできるようになります。</block>
+  <block id="c5dcd428c947792bd217fd89ee812f51" category="paragraph">クローンボリュームには、 HANA データベースのデータが含まれています。</block>
+  <block id="1f20a3a37744f93109db368fed3d4d72" category="paragraph">データが元の場所にコピーされます。</block>
+  <block id="691b6e8cda25aff0ec57af52318e1685" category="paragraph">SAP HANA Studio を使用したリカバリが、の説明に従って実行されます <block ref="873b82be62d7406e4e13ae8683307096" category="inline-link-macro-rx"></block>。</block>
+  <block id="6f687960a3c4d1594e6b79f66918e95a" category="paragraph"><block ref="6f687960a3c4d1594e6b79f66918e95a" category="inline-link-macro-rx"></block></block>
+  <block id="cb014ba864354c430b0d6d7e306d1c0c" category="summary">このページでは、 SAP システムレプリケーションの設定オプションについて説明します。</block>
+  <block id="76c0a8113c74eb76e36c8c87f7095211" category="doc">SAP システムレプリケーションの SnapCenter 設定オプション</block>
+  <block id="dd0e039d4e26c48a6dd3f7b3d4414a25" category="inline-link-macro">Previous ：ストレージの Snapshot バックアップと SAP システムのレプリケーション。</block>
+  <block id="61f99bf9b57fd4bab17beadc9b01e359" category="paragraph"><block ref="61f99bf9b57fd4bab17beadc9b01e359" category="inline-link-macro-rx"></block></block>
+  <block id="b65fb91c7466f471e73d7a165cddad8f" category="paragraph">SAP HANA システムレプリケーション環境で NetApp SnapCenter ソフトウェアを使用してデータ保護を設定するには、次の 2 つの方法があります。</block>
+  <block id="a6161fc735dff46e0f1e300b07198882" category="list-text">SnapCenter リソースグループ。 SAP HANA ホストと SnapCenter バージョン 4.6 以降を使用した自動検出の両方が含まれます。</block>
+  <block id="27cd07c42b7b1163d4ec30ce77a50ba7" category="list-text">仮想 IP アドレスを使用する、両方の SAP HANA ホスト用の単一の SnapCenter リソース。</block>
+  <block id="26f65af2f58b8f28da27697016899223" category="paragraph"><block ref="26f65af2f58b8f28da27697016899223" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8cf962f6ac56a026f883cf2e827b0423" category="paragraph">SnapCenter 4.6 以降では、 HANA システムレプリケーション関係で設定された HANA システムの自動検出が SnapCenter でサポートされます。各ホストは、物理 IP アドレス（ホスト名）とストレージレイヤ上の個々のデータボリュームを使用して設定されます。2 つの SnapCenter リソースが 1 つのリソースグループにまとめられ、プライマリまたはセカンダリのホストが SnapCenter によって自動的に識別され、必要なバックアップ処理が適宜実行されます。SnapCenter で作成された Snapshot とファイルベースのバックアップの保持の管理は両方のホストで実行されるため、現在のセカンダリホストでも古いバックアップを削除できます。</block>
+  <block id="cbcfd6defd0fc62b33d3178fca9312bf" category="paragraph">両方の SAP HANA ホストに単一リソース構成を使用する場合、単一の SnapCenter リソースは、 SAP HANA システムレプリケーションホストの仮想 IP アドレスを使用して構成されます。SAP HANA ホストの両方のデータボリュームが SnapCenter リソースに含まれています。SnapCenter のリソースは 1 つであるため、 SnapCenter で作成された Snapshot とファイルベースのバックアップの保持管理は、現在プライマリとセカンダリのどちらのホストにも依存しません。このオプションは、すべての SnapCenter リリースで使用できます。</block>
+  <block id="56360ee768eb6691b2c48a27f2d5295a" category="paragraph">次の表に、 2 つの設定オプションの主な違いをまとめます。</block>
+  <block id="624d27e661ea476c564f0a0e3d4759da" category="cell">SnapCenter 4.6 を使用したリソースグループ</block>
+  <block id="26fa56c884b002243efdac83893ee4ce" category="cell">単一の SnapCenter リソースと仮想 IP アドレス</block>
+  <block id="99f1744d8b70ed4b0920b180edf0fcaf" category="cell">バックアップ処理（ Snapshot およびファイルベース）</block>
+  <block id="b683f173eb3a957cb9fcf3dee8b98d20" category="cell">リソースグループ内のプライマリホストの自動識別</block>
+  <block id="d0a2e35f97d84456638a2e94141fefe0" category="cell">仮想 IP アドレスを自動的に使用する</block>
+  <block id="cba3252df7023060b9d2ea4794c05c95" category="cell">保持管理（ Snapshot とファイルベース）</block>
+  <block id="d7689d65ad93f6364ea756a32efbf386" category="cell">両方のホストで自動的に実行されます</block>
+  <block id="8d7c7381c71c46d6b299eed1ea14ad55" category="cell">単一のリソースを自動的に使用します</block>
+  <block id="c8fa3fe6d9be52e4e17b9869fed3de64" category="cell">バックアップ容量の要件</block>
+  <block id="5bb47a2dec0018ff60254946131850c6" category="cell">バックアップはプライマリホストボリュームでのみ作成されます</block>
+  <block id="0bd97517cd8fd61a12818f7ae5a32550" category="cell">バックアップは両方のホストボリュームで常に作成されます。2 番目のホストのバックアップはクラッシュ整合性のみであり、ロールフォワードには使用できません。</block>
+  <block id="9ab07fad125b53ff193b9837f7d654bb" category="cell">現在のアクティブホストのバックアップをリストア処理に使用できます</block>
+  <block id="85afbaa0de4ef1ff6c48b160c1b340ff" category="cell">リストアに使用できる有効なバックアップを特定するためのバックアップ前スクリプト</block>
+  <block id="8d5e0cfc83e98d36864aa5b7f1ba6186" category="cell">リカバリ処理</block>
+  <block id="a92469fe3f104489efc5db9c40bbbea5" category="cell">自動検出されたすべてのリソースと同じリカバリオプションを使用できます</block>
+  <block id="54bdadbafa35816a3af014e9c09e968a" category="cell">手動でリカバリする必要があります</block>
+  <block id="bae3dca5f2cc89808cfbe3a06c9cb114" category="admonition">一般に、リソースグループ構成オプションを SnapCenter 4.6 に設定して、 HANA システムのレプリケーションを有効にして HANA システムを保護することを推奨します。単一の SnapCenter リソース構成が必要になるのは、 SnapCenter の処理アプローチが中央のプラグインホストに基づいており、 HANA プラグインが HANA データベースホストに導入されていない場合だけです。</block>
+  <block id="075a31e8a9e4995876239319585370dc" category="paragraph">この 2 つのオプションについては、以降のセクションで詳しく説明します。</block>
+  <block id="fd379de989694996f5de797e5014f4ba" category="inline-link-macro">次に、リソースグループを使用した SnapCenter 4.6 の設定を行います。</block>
+  <block id="0764f827a402f9e923a503628fba8701" category="paragraph"><block ref="0764f827a402f9e923a503628fba8701" category="inline-link-macro-rx"></block></block>
+  <block id="02d0cc60ddfcc9dc29916a6b5d3b6cf2" category="summary">バックアップ処理は常にプライマリ SAP HANA ホストで実行されます。バックアップ処理に必要な SQL コマンドをセカンダリ SAP HANA ホストで実行することはできません。</block>
+  <block id="8acd7da6dce942a7c8148e0a6e5875e2" category="doc">ストレージ Snapshot バックアップと SAP システムレプリケーション</block>
+  <block id="72a310aab90ac8db8720965336308077" category="inline-link-macro">前のバージョン： SAP HANA システムレプリケーションの概要</block>
+  <block id="af1d1bf542c91a5272a15cd218689ee6" category="paragraph"><block ref="af1d1bf542c91a5272a15cd218689ee6" category="inline-link-macro-rx"></block></block>
+  <block id="1d3a0cbc6231799f2858090710d6f945" category="paragraph">SAP HANA のバックアップ処理では、プライマリとセカンダリの SAP HANA ホストが単一のエンティティになります。バックアップがプライマリ SAP HANA ホストとセカンダリ SAP HANA ホストのどちらで作成されたかに関係なく、 SAP HANA は同じバックアップカタログを共有し、リストアとリカバリにバックアップを使用します。</block>
+  <block id="c492ffff6ae308c1f530d6498d7ecfe5" category="paragraph">いずれかのバックアップをリストアに使用したり、両方のホストからログバックアップを使用してリカバリを転送したりするには、両方のホストからアクセスできる共有ログバックアップの場所が必要です。共有ストレージボリュームを使用することを推奨します。ただし、ログバックアップのデスティネーションは、共有ボリューム内のサブディレクトリに分ける必要があります。</block>
+  <block id="0dc8552d7c114c04ba4721d2bfce22a8" category="paragraph">各 SAP HANA ホストには、独自のストレージボリュームがあります。ストレージベースの Snapshot を使用してバックアップを実行すると、データベースと整合性のある Snapshot がプライマリ SAP HANA ホストのストレージボリューム上に作成されます。</block>
+  <block id="d60e21c67d65d3194c204fa9a2e5277b" category="paragraph"><block ref="d60e21c67d65d3194c204fa9a2e5277b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="20298f12913ee9159d89657f340f41d0" category="paragraph">ホスト 2 へのフェイルオーバーが実行されると、ホスト 2 がプライマリホストになり、ホスト 2 でバックアップが実行され、ホスト 2 のストレージボリュームに Snapshot バックアップが作成されます。</block>
+  <block id="ec9f7dc4c9415267c560fe9756643a87" category="paragraph">ホスト 2 で作成されたバックアップは、ストレージレイヤで直接リストアできます。ホスト 1 に作成したバックアップを使用する場合は、ホスト 1 のストレージボリュームからホスト 2 のストレージボリュームにバックアップをコピーする必要があります。フォワードリカバリでは、両方のホストからのログバックアップが使用されます。</block>
+  <block id="87b45a585e45776e4cb007923331c4e5" category="paragraph"><block ref="87b45a585e45776e4cb007923331c4e5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d4e624f6176a09b7b1fb6ef3ea9d8b34" category="inline-link-macro">次： SAP システムレプリケーションの SnapCenter 構成オプション</block>
+  <block id="247dc46544c919fa59a6baedb439288d" category="paragraph"><block ref="247dc46544c919fa59a6baedb439288d" category="inline-link-macro-rx"></block></block>
+  <block id="d53230f85b50903f17f7e6099737f107" category="summary">SAP HANA システムレプリケーションは、一般に、 SAP HANA データベースの高可用性またはディザスタリカバリ解決策として使用されます。SAP HANA システムレプリケーションには、ユースケースや可用性の要件に応じて、さまざまな動作モードが用意されています。</block>
+  <block id="ac95c867fdf2157d0248719b002ae0f0" category="paragraph">組み合わせて使用できる主なユースケースは次の 2 つです。</block>
+  <block id="c34a01f37570a68dbcba0f7ef58b79c6" category="list-text">専用のセカンダリ SAP HANA ホストを使用した、ゼロの Recovery Point Objective （ RPO ；目標復旧時点）と最小の Recovery Time Objective （ RTO ；目標復旧時間）による高可用性。</block>
+  <block id="d824f0f483d8766968c3873c43c7e813" category="list-text">遠隔地での災害復旧。セカンダリ SAP HANA ホストは、通常運用時の開発やテストにも使用できます。</block>
+  <block id="f5c1fbf48c6494a4f2e5ddc50e73ce6e" category="section-title">RPO がゼロで RTO が最小限のハイアベイラビリティ</block>
+  <block id="af656bf36a5e2d1cdf132f7992f06b9e" category="paragraph">システムレプリケーションでは、セカンダリ SAP HANA ホストのメモリにプリロードされたテーブルを使用して同期レプリケーションが設定されます。この高可用性解決策を使用して、ハードウェアやソフトウェアの障害に対処できるほか、 SAP HANA ソフトウェアのアップグレード中の計画的停止（ダウンタイムはほぼゼロ）を軽減できます。</block>
+  <block id="1634b98ad5173e165735c803c11fe9d5" category="paragraph">フェイルオーバー処理は、多くの場合、サードパーティ製のクラスタソフトウェアを使用するか、 SAP Landscape Management ソフトウェアでワンクリックで実行することで自動化されます。</block>
+  <block id="3d3f4f563a8744c58df8ea6e38510f02" category="paragraph">バックアップ要件の観点では、どの SAP HANA ホストがプライマリまたはセカンダリであるかに関係なく、バックアップを作成できる必要があります。バックアップを作成したホストに関係なく、共有バックアップインフラを使用してバックアップがリストアされます。</block>
+  <block id="511a3a3dfd265b06ef79626d79c520e7" category="paragraph">このドキュメントの残りの部分では、ハイアベイラビリティ解決策として構成された SAP システムレプリケーションを使用したバックアップ処理について説明します。</block>
+  <block id="f58f587cb199854e0bd3b18a53d5c804" category="paragraph"><block ref="f58f587cb199854e0bd3b18a53d5c804" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="24d82a388e886346237cd51fe934aa03" category="section-title">遠隔地での災害復旧</block>
+  <block id="118abb1eac5a98e2067a4403636320af" category="paragraph">システムレプリケーションは、セカンダリホストのメモリにテーブルがプリロードされていない非同期レプリケーションで構成できます。この解決策はデータセンターの障害に対処するために使用され、通常は手動でフェイルオーバー処理が実行されます。</block>
+  <block id="6daa00da4eeb35d26853e03f23ef0546" category="paragraph">バックアップ要件に関しては、データセンター 1 での通常運用中、およびデータセンター 2 でのディザスタリカバリ中に、バックアップを作成できる必要があります。データセンター 1 と 2 には独立したバックアップインフラがあり、ディザスタフェイルオーバーの一環としてバックアップ処理がアクティブ化されます。通常、バックアップインフラは共有されません。もう一方のデータセンターで作成されたバックアップをリストアすることはできません。</block>
+  <block id="ff732da203a83da376d0205d280f1894" category="paragraph"><block ref="ff732da203a83da376d0205d280f1894" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="733df4de2f76b685d2b28b68f07516a4" category="inline-link-macro">Next ：ストレージ Snapshot バックアップと SAP システムレプリケーション。</block>
+  <block id="09b8937df74fc30b4d98cda19a606cf2" category="paragraph"><block ref="09b8937df74fc30b4d98cda19a606cf2" category="inline-link-macro-rx"></block></block>
+  <block id="0d29acf224f492a80bc68566c1ad4948" category="paragraph"><block ref="0d29acf224f492a80bc68566c1ad4948" category="inline-link-macro-rx"></block></block>
+  <block id="0844bd2427e754de1d07ca91d15284a5" category="cell">ドキュメントバージョン履歴</block>
+  <block id="77fce67ff1ced73f063cdd19c439b627" category="cell">2018 年 10 月</block>
+  <block id="b9365bb9132d1eb8770275a763fc5d69" category="cell">2022 年 1 月</block>
+  <block id="bc86535b64f45ec20770222ebaa5ca21" category="cell">SnapCenter 4.6 HANA システムレプリケーションのサポートに対応するように更新</block>
+  <block id="02fa3d38f575ae1d4c7d0f5663a0d3ed" category="sidebar">SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ</block>
+  <block id="4bb12dc6461f1d5fa4e11ed67fdeef9e" category="sidebar">SAP HANA システムレプリケーションの概要</block>
 </blocks>

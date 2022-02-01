@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: sap-whatsnew.html 
 summary: SAP 解決策ポートフォリオに新たに追加された機能 
-keywords: netapp, solutions, SAP, what's new 
+keywords: 'netapp, solutions, SAP, what"s new' 
 ---
 = SAP の新機能
 :hardbreaks:

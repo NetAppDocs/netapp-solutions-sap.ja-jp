@@ -2,6 +2,25 @@
 section: backup
 title: バックアップ、リストア、ディザスタリカバリ
 entries:
+- title: SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
+  type: solutions
+  entries:
+  - title: SAP HANA システムレプリケーションの概要
+    url: "/backup/saphana-sr-scs-sap-hana-system-replication-overview.html"
+  - title: ストレージ Snapshot バックアップと SAP システムレプリケーション
+    url: "/backup/saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html"
+  - title: SAP システムレプリケーションの SnapCenter 設定オプション
+    url: "/backup/saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html"
+  - title: リソースグループを使用した SnapCenter 4.6 の設定
+    url: "/backup/saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html"
+  - title: 単一のリソースを使用する SnapCenter 構成
+    url: "/backup/saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html"
+  - title: もう一方のホストで作成されたバックアップからのリストアとリカバリ
+    url: "/backup/saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html"
+  - title: 追加情報の参照先
+    url: "/backup/saphana-sr-scs-where-to-find-additional-information_overview.html"
+  - title: バージョン履歴
+    url: "/backup/saphana-sr-scs-version-history.html"
 - title: Azure NetApp Files を使用した SAP HANA ディザスタリカバリ
   type: solutions
   entries:

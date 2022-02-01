@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html 
 keywords: mount, volume, target, host, sap, hana, azure 
-summary: これで ' 以前に作成した /etc/fstab ファイルに基づいて ' ボリュームをターゲット・ホストにマウントできるようになります 
+summary: 'これで " 以前に作成した /etc/fstab ファイルに基づいて " ボリュームをターゲット・ホストにマウントできるようになります' 
 ---
 = ターゲットホストにボリュームをマウントします
 :hardbreaks:
