@@ -109,8 +109,6 @@ entries:
   url: "/backup/saphana-br-sc_pdf_link.html"
 - title: SAP HANA Disaster Recovery with Storage Replication 』を参照してください
   url: "/backup/saphana-dr-sr_pdf_link.html"
-- title: SnapCenter を使用した SAP HANA システムのレプリケーション、バックアップ、リカバリ
-  url: "/backup/saphana-sr_pdf_link.html"
 - title: Snap Creator を使用した SAP HANA のバックアップとリカバリ
   url: "/backup/saphana-bandr-sc_pdf_link.html"
 - title: ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア
