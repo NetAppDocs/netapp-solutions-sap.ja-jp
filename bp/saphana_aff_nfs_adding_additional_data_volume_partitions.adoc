@@ -199,11 +199,11 @@ NFSv4.1 を使用するシングルホストシステムの場合は、次の例
 +
 ....
 <storage-vif-data02>:/SID_data2_mnt00001 /hana/data2/SID/mnt00001 nfs rw, vers=4
-minorversion=1,hard,timeo=600,rsize=1048576,wsize=1048576,bg,noatime,lock 0 0
+minorversion=1,hard,timeo=600,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
 ....
 +
 
-NOTE: ボリュームごとに異なる TCP セッションを使用するために、各データボリュームの接続には異なる SVM 仮想インターフェイスを使用します
+NOTE: 各データボリュームを接続するために異なるストレージ仮想インターフェイスを使用して、ボリュームごとに異なる TCP セッションを使用するか、使用している OS で利用可能な場合は nConnect マウントオプションを使用します。
 
 . 「 mount – a 」コマンドを実行して、ファイルシステムをマウントします。
 

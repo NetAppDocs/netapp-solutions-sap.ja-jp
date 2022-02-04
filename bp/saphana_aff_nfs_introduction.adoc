@@ -18,14 +18,12 @@ NetApp AFF システム製品ファミリーは、 TDI プロジェクトの SAP
 
 この認定は、次のモデルで有効です。
 
-* AFF A220 、 AFF A250 、 AFF A300 、 AFF A320 、 AFF A400 、 AFF A700s 、 AFF A700 、 AFF A800
+* AFF A220 、 AFF A250 、 AFF A300 、 AFF A320 、 AFF A400 、 AFF A700s 、 AFF A700 、 AFF A800 、 AFF A900
 
 
-SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/enterprise-storage.html["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
+SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
 
-このドキュメントでは、 NFS プロトコルバージョン 3 （ NFSv3 ）または NFS プロトコルバージョン 4 （ NFSv4.0 および NFSv4.1 ）の ONTAP 構成要件について説明します。
-
-このドキュメントの残りの部分では、 NFSv4 は NFSv4.0 と NFSv4.1 の両方を意味します。
+本ドキュメントでは、 NFS プロトコルバージョン 3 （ NFSv3 ）または NFS プロトコルバージョン 4 （ NFSv4.1 ）の ONTAP 設定要件について説明します。
 
 
 NOTE: このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定または機能を変更すると、原因のパフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更は、ネットアップのサポートから助言された場合にのみ実施
