@@ -628,10 +628,8 @@
   <block id="a1577ab4439c333a27d3a1daf67efe55" category="cell">advanced 権限レベルの nfs modify -vserver &lt;vserver_name&gt;-v4-lease-seconds 10 set admin を設定します</block>
   <block id="ffea0284d7bfb3aad7e0d7a07765b424" category="cell">NFSv4 数値 ID を無効にする</block>
   <block id="96adb5308418a0e6a16e78f391a5725d" category="cell">nfs modify -vserver &lt;vserver_name&gt;-v4-numeric-ids disabled</block>
-  <block id="c153016d304829102496ce3ee4c66867" category="admonition">NFS バージョン 4 の場合。0 、 4 を置き換えます。以前のコマンドでは '1' には '4.0' が含まれていますNFSv4.0 はサポートされていますが、 NFSv4.1 を使用することを推奨します。</block>
   <block id="4a762e476d9eda379d2de2de4266fb64" category="inline-link-macro">NFSv4 用の SAP HANA インストールの準備</block>
   <block id="ad357b093f7cd3e6d382bfe20cd1f2bd" category="admonition">NFSv4 ドメイン ID は、すべての Linux サーバ（ /etc/idmapd.conf ）と SVM で同じ値に設定する必要があります（を参照） <block ref="7cbf1992917906c8f8c329ad679d4886" category="inline-link-macro-rx"></block></block>
-  <block id="7fe6e3db98dfe3477134c69fb6a1a8e6" category="admonition">NFSv4.1 を使用している場合、 pNFS は有効になっており、デフォルトで使用されます（推奨）。</block>
   <block id="8a497c5d71c93d9fb0f969b97af6bf05" category="paragraph">SAP HANA マルチホストシステムを使用している場合は、次の表に示すように、 SVM で NFSv4 リース時間を設定します。</block>
   <block id="3228e5563c749aee2e3aacd329eadf42" category="cell">NFSv4 リース時間を設定する</block>
   <block id="0a1cdfe3de7f309f6c0b04a185658b15" category="paragraph">HANA 2.0 SPS4 以降では、フェイルオーバーの動作を制御するためのパラメータが用意されています。SVM レベルでリース時間を設定する代わりに、これらの HANA パラメータを使用することを推奨します。これらのパラメータは ' 次の表に示すように nameserver.ini` 内にありますこれらのセクションでは、デフォルトの再試行間隔を 10 秒に設定します。</block>
@@ -699,20 +697,15 @@
   <block id="93827363c57822e58dfbd5f05b9beac8" category="paragraph">ONTAP 9 では、 NFS 転送サイズを最大 1MB に設定できます。具体的には、 40GbE 以上でのストレージシステムへの接続では、スループットの期待値を達成するために転送サイズを 1MB に設定する必要があります。</block>
   <block id="6f5e55da455474f8c585cb463a2d639e" category="cell">共通パラメータ</block>
   <block id="5b12ee0369243579651edca43ff65c85" category="cell">NFSv3</block>
-  <block id="de841868c2911da76b8ae2da9fa3166d" category="cell">NFSv4.1</block>
   <block id="0614a261ce2e53d5987e97a60496a434" category="cell">ONTAP 9 での NFS 転送サイズ</block>
   <block id="54b941646e65c3622af659cd9d965169" category="cell">ONTAP 8 での NFS 転送サイズ</block>
   <block id="1017e4c4798ba77b88c85f3b8c6fdf03" category="cell">rw 、 bg 、 hard 、 timeo = 600 、 noatime 、</block>
   <block id="7f4fbd9239422e6cbff6a5c40524adb3" category="cell">バー = 3 、 nolock 、</block>
-  <block id="16523b39871af16af52009bc15a2673c" category="cell">vers=4 、 minorversion=0 、 lock です</block>
   <block id="5ce2764cf9f6ed7aadfe7ba01b6b29a4" category="cell">vers=4 、 minorversion=1 、 lock です</block>
-  <block id="4d883abf7f72dbd8b8458ae706f6b358" category="cell">rsize=1048576 、 wsize=1048576 、</block>
   <block id="7d7894f31c9b83146d2bc22185ed5db0" category="cell">rsize=65536 、 wsize=65536 、</block>
   <block id="15ae6c88c5781cc59702ffce23dbc9c4" category="admonition">NFSv3 の読み取りパフォーマンスを向上させるには、「 nConnect=n 」マウントオプションを使用することをお勧めします。このオプションは、 SUSE Linux Enterprise Server 12 SP4 以降および RedHat Enterprise Linux （ RHEL ） 8.3 以降で使用できます。</block>
   <block id="5af44f409fcf1d822ee94e4abf92a132" category="admonition">パフォーマンス・テストでは 'nConnect=8' の読み取り結果が良好であることが示されていますログの書き込みには 'nConnect=2.' など ' セッション数が少ないことがメリットとなります NFS サーバからの最初のマウント（ IP アドレス）では、使用されるセッションの量が定義されることに注意してください。それ以降のマウントでは 'nConnect' に異なる値が使用されていても ' この値は変更されません</block>
-  <block id="be650784c43282affe1d47ff0ef4386a" category="admonition">ONTAP 9.8 および SUSE SLES15SP2 または Red Hat RHEL 8.3 以降では、ネットアップで NFSv4.1 の nConnect オプションがサポートされます。追加情報については、 Linux ベンダーのマニュアルを参照してください。</block>
   <block id="ae2c578e6abfee06e6c468fd4e7cb392" category="paragraph">/etc/fstab 構成ファイルを使用してシステムのブート中にファイル・システムをマウントするには ' 次の手順を実行します</block>
-  <block id="c86f68d88b3987101672c79c058d3f8f" category="paragraph">次の例は、 SID=NF2 で、 NFSv3 を使用し、 NFS 転送サイズが 1MB の、シングルホスト SAP HANA データベースを示しています。</block>
   <block id="f731bd3074578aba0a3c1b5ab0ca78ee" category="list-text">必要なファイル・システムを /etc/fstab 構成ファイルに追加します</block>
   <block id="aff8bbab4f16423ec5907aed644aead6" category="list-text">Run `ount – a を実行して、すべてのホストのファイルシステムをマウントします。</block>
   <block id="8ffd511efff2f95144ac621432b751cd" category="paragraph">次の例は、 SID=NF2 で、データファイルシステムとログファイルシステムに NFSv4.1 を使用し、「 /hana/shared 」ファイルシステムと「 /usr/sap/nf2 」ファイルシステムに NFSv3 を使用する、マルチホスト SAP HANA データベースを示しています。使用される NFS 転送サイズは 1MB です。</block>
@@ -1231,8 +1224,6 @@
   <block id="ea2a5017e6cdb7eff470cc58152d6c96" category="doc">TR-4290 ：『 SAP HANA on NetApp FAS systems with NFS Configuration Guide 』</block>
   <block id="3ba2c0f2dd07fd36730e20b6bcba3d0a" category="paragraph">この認定は現在、次のモデルでのみ有効です。</block>
   <block id="ae9c01e101eba86b0e6ff092df062fae" category="inline-link">認定およびサポートされている SAP HANA ハードウェアディレクトリ</block>
-  <block id="319205843b22e5ac2d3a538e9da3a938" category="list-text">FAS2720 、 FAS2750 、 FAS8300 、 FAS8700 、 FAS9000SAP HANA 向けネットアップ認定ストレージソリューションの完全なリストは、から入手できます<block ref="1f1391b4a4e3510e52fedc44ebc619dc" category="inline-link-rx"></block>。</block>
-  <block id="b4c89f05de6c3fe24965b0e343289e75" category="paragraph">このドキュメントでは、 NFS バージョン 3 （ NFSv3 ）プロトコルまたは NFS バージョン 4 （ NFSv4.0 および NFSv4.1 ）プロトコルの ONTAP 構成要件について説明します。このドキュメントの残りの部分では、 NFSv4 は NFSv4.0 と NFSv4.1 の両方を意味します。</block>
   <block id="134a6ecca2c7d98e325ad00ee461d25a" category="admonition">このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定または機能を変更すると、原因のパフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更は、ネットアップのサポートから指示された場合にのみ実施</block>
   <block id="c79fca4f33a4c23e62509e315c7a3415" category="paragraph">FCP を使用する NetApp FAS システム、および NFS または FC を使用する AFF システムの構成ガイドは、次のリンクから入手できます。</block>
   <block id="90a239e164a24bfe58142290491d6a2c" category="paragraph">SAP HANA シングルホストシステム、またはホストの自動フェイルオーバーを使用しない複数のホストでは、 NFSv3 と NFSv4 がサポートされます。</block>
@@ -2859,4 +2850,11 @@
   <block id="5f99a6ad54bfd8d0c68c8cc9f709365b" category="inline-link">SAP ノート 1900823</block>
   <block id="8e473bb8179de06c9675fded85db8531" category="paragraph">SAP HANA の容量要件の詳細な概要については、を参照してください<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> ホワイトペーパー。</block>
   <block id="0b65064648e048922c198e4d6e2cafc1" category="admonition">各データボリュームを接続するために異なるストレージ仮想インターフェイスを使用して、ボリュームごとに異なる TCP セッションを使用するか、使用している OS で利用可能な場合は nConnect マウントオプションを使用します。</block>
+  <block id="4a09ae73b23148acb0508b47589e3623" category="cell">rsize=1048576 、 wsize=262144 、</block>
+  <block id="1aee368bcb2be0cdb87c1fb6bbdfe17d" category="admonition">ONTAP 9.8 および SUSE SLES15SP2 または Red Hat RHEL 8.4 以降では、ネットアップで NFSv4.1 の nConnect オプションがサポートされます。追加情報については、 Linux ベンダーのマニュアルを参照してください。</block>
+  <block id="f9d7623ba6cc83509340e737618f63c2" category="paragraph">次の例は、 SID=NF2 で、 NFSv3 を使用し、書き込みの場合は NFS 転送サイズが 1MB 、読み取りの場合は 256K の、シングルホスト SAP HANA データベースを示しています。</block>
+  <block id="b6002aa673859c29cc8fc6915c01cf54" category="paragraph">次の例は、 SID=NF2 で、データファイルシステムとログファイルシステムに NFSv4.1 を使用し、「 /hana/shared 」ファイルシステムと「 /usr/sap/nf2 」ファイルシステムに NFSv3 を使用する、マルチホスト SAP HANA データベースを示しています。書き込みでは、読み取りの場合は 1MB 、書き込みの場合は 256K の NFS 転送サイズが使用されます。</block>
+  <block id="4ba3e1c058ef7fff97064b76f2483b24" category="paragraph">SAP HANA の容量要件の詳細な概要については、を参照してください<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> ホワイトペーパーを添付。</block>
+  <block id="257f17de4aa60411125a8899104c5927" category="list-text">FAS2720 、 FAS2750 、 FAS8300 、 FAS8700 、 FAS9000SAP HANA 向けネットアップ認定ストレージソリューションの完全なリストは、から入手できます<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>。</block>
+  <block id="45bb1f13b573370e5659e113eaa6e2a7" category="paragraph">本ドキュメントでは、 NFS バージョン 3 （ NFSv3 ）プロトコルまたは NFS バージョン 4 （ NFSv4.1 ）プロトコルの ONTAP 設定要件について説明します。</block>
 </blocks>
