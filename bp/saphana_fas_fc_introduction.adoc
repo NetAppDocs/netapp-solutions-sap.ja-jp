@@ -16,7 +16,7 @@ NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との
 * FAS2720 、 FAS2750 、 FAS8200 、 FAS8300 、 FAS8700 、 FAS9000
 
 
-SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/enterprise-storage.html["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
+SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
 
 本ドキュメントでは、 Fibre Channel Protocol （ FCP ；ファイバチャネルプロトコル）を使用した FAS 構成について説明します。
 

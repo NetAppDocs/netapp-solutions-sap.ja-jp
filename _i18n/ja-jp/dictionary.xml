@@ -164,7 +164,6 @@
   <block id="1d8d1934499ced39732f5c5099083c6b" category="paragraph">SAP パフォーマンステストツールを使用して、すでに他のワークロードに使用されている既存のストレージコントローラで追加の SAP HANA ホストを実行できるかどうかを確認する必要があります。SAP アプリケーションサーバは、 SAP HANA データベースと同じストレージコントローラやアグリゲートに安全に配置できます。</block>
   <block id="8025837196ec3641307b0ebcb276143c" category="section-title">容量に関する考慮事項</block>
   <block id="244d98fed97800c3bc8073163dc1e3b2" category="inline-link">SAP HANA のストレージ要件</block>
-  <block id="30babbb47792d5801024c3a51ce97d61" category="paragraph">SAP HANA の容量要件の詳細な概要については、を参照してください<block ref="ae8b2f435e0615ecc6234e8baafe37d2" category="inline-link-rx"></block> ホワイトペーパー。</block>
   <block id="bbce32f30700e8b905762b8cfd022bc5" category="admonition">複数の SAP HANA システムで構成される SAP 環境全体の容量サイジングは、ネットアップの SAP HANA ストレージサイジングツールを使用して決定する必要があります。ストレージのサイジングプロセスを検証し、適切なサイズのストレージ環境を構築するには、ネットアップまたはネットアップパートナーの営業担当者にお問い合わせください。</block>
   <block id="46fcaad64094e886321a215ecd47a4b6" category="section-title">パフォーマンステストツールの設定</block>
   <block id="e69e9d3f5ed6c444c36582f4128ffd41" category="paragraph">SAP HANA 1.0 SPS10 以降、 I/O 動作を調整し、使用中のファイルシステムとストレージシステムのデータベースを最適化するためのパラメータが導入されています。これらのパラメータは、 SAP パフォーマンステストツールでストレージのパフォーマンスをテストするときにも設定する必要があります。</block>
@@ -371,7 +370,6 @@
   <block id="45c48cce2e2d7fbdea1afc51c7c6ad26" category="cell">9.</block>
   <block id="2b496b69f4c7aea7a8d59474a9bf6c8a" category="admonition">この計算は、使用しているストレージコントローラには依存しません。ディスクシェルフを追加しても、ストレージコントローラでサポートできる SAP HANA ホストの最大数は増加しません。</block>
   <block id="58913e61815b0d5b4ebf09a2dbba07e5" category="section-title">NS224 NVMe シェルフ</block>
-  <block id="fb7b6fa1858a95ebd1dfe3c33b7d43fa" category="paragraph">1 台目のシェルフの最小 12 本の NVMe SSD で、最大 16 台の SAP HANA ホストをサポートできます。フル装備のシェルフは、最大 34 台の SAP HANA ホストをサポートします。</block>
   <block id="8bcf6b78575503f1caaf3d70970f3855" category="admonition">ディスクシェルフを追加しても、ストレージコントローラでサポートできる SAP HANA ホストの最大数は増加しません。</block>
   <block id="e2725d07d4b4cbeaff651e403b9ed0c2" category="paragraph">SAP HANA ワークロードとその他のアプリケーションワークロードを、同じストレージコントローラまたは同じアグリゲートに導入することもできます。その場合は、混在ワークロード環境内で SAP HANA に対して適切なパフォーマンスが確保されていることを確認する必要があります。また、 Quality of Service （ QoS ；サービス品質）パラメータを使用して、 SAP HANA アプリケーションに対する他のアプリケーションの影響を制御し、 SAP HANA アプリケーションのスループットを保証することも推奨します。</block>
   <block id="39d8b74e0095310309063c02410f6a20" category="paragraph">SAP HCMT テストツールを使用して、他のワークロードにすでに使用されている既存のストレージコントローラで、追加の SAP HANA ホストを実行できるかどうかを確認する必要があります。SAP アプリケーションサーバは、 SAP HANA データベースと同じストレージコントローラやアグリゲートに安全に配置できます。</block>
@@ -1022,7 +1020,6 @@
   <block id="3582e9217fbd3de24b2e5ecfb0fc97b4" category="paragraph">ネットアップ、 Nils Bauer 、 Marco Schoen</block>
   <block id="0b79795d3efc95b9976c7c5b933afce2" category="section-title">はじめに</block>
   <block id="e4509a748ae3ce7cb528662f2f9f7e10" category="paragraph">認定は、次のモデルで有効です。</block>
-  <block id="47230a2a4e3598c31d12840cfd054ac9" category="list-text">AFF A220 、 AFF A250 、 AFF A300 、 AFF A320 、 AFF A400 、 AFF A700s 、 AFF A700 、 AFF A800</block>
   <block id="130c9ce9d2909449cb229a98c66f9d29" category="inline-link">認定およびサポートされている SAP HANA ハードウェアディレクトリ</block>
   <block id="171ad4663cdfb492651e0357292fbe82" category="paragraph">本ドキュメントでは、 Fibre Channel Protocol （ FCP ；ファイバチャネルプロトコル）を使用した AFF 構成について説明します。</block>
   <block id="a08e3f55ac1bf243274ee454a477749b" category="admonition">このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定または機能を変更すると、原因のパフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更は、ネットアップのサポートから助言された場合にのみ実施</block>
@@ -1131,7 +1128,6 @@
   <block id="088c8c258db90c09658a39d2839f52b0" category="doc">TR-4384 ：『 SAP HANA on NetApp FAS Systems with Fibre Channel Protocol Configuration Guide 』</block>
   <block id="d505ac9d8d6e21d17ef8d33d547be191" category="list-text">FAS2720 、 FAS2750 、 FAS8200 、 FAS8300 、 FAS8700 、 FAS9000</block>
   <block id="42eb56ae1e83db3afce70f056a668205" category="inline-link">認定およびサポートされている SAP HANA ハードウェアディレクトリ</block>
-  <block id="e722e7b3a802520d055b584591aecb34" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="4ad366ef77d40c13190de08fae8e4fc8" category="inline-link-rx"></block>。</block>
   <block id="b448d121930edfc4a956027d7533c403" category="paragraph">本ドキュメントでは、 Fibre Channel Protocol （ FCP ；ファイバチャネルプロトコル）を使用した FAS 構成について説明します。</block>
   <block id="bd06b22fab5b6b92f9bf2b53d26f4805" category="admonition">このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定を変更したり、機能を使用したりすると、パフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更を実施するのは、ネットアップのサポートから助言さ</block>
   <block id="b33f6954e7bec0569d3be6ef5cea4d1d" category="paragraph">NFS システムと NetApp AFF システムを使用する FAS システムの構成ガイドは、次のリンクから入手できます。</block>
@@ -2003,8 +1999,6 @@
   <block id="896435116179bed2dde76b00414b4fa5" category="cell">ネットアップストレージシステムが新しく追加されると、ホストネットワークの設定が変更されます。軽微な変更が</block>
   <block id="7e0efdf8314ae57608296d0f91d73af0" category="list-text">シングル・ホスト・システムの場合は '/hana/shared-volume をマウントし 'hared' サブディレクトリと usr-sap サブディレクトリを作成します</block>
   <block id="8d4c28e332eb5d0e100502eb8922957f" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください<block ref="5860d5b399407cf49d81a6277de3a895" category="inline-link-rx"></block>。</block>
-  <block id="e77c85b25faef8527c1bed07eff03a8d" category="list-text">ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800</block>
-  <block id="e8c22b9c2b65a7fdd51c6f6fa0a68202" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="4863cb1d1ac806ba02e335dda429f580" category="inline-link-rx"></block>。</block>
   <block id="657da3820ae1c5b9809d428c8a98c5dc" category="doc">SnapCenter サービスポリシーの設定</block>
   <block id="c8bd1be803a63781351772f4b3214600" category="inline-link-macro">Previous ：このレポートで使用するラボのセットアップ。</block>
   <block id="b380171206568b54cc93ead5c4bb837b" category="paragraph"><block ref="b380171206568b54cc93ead5c4bb837b" category="inline-link-macro-rx"></block></block>
@@ -2857,4 +2851,8 @@
   <block id="4ba3e1c058ef7fff97064b76f2483b24" category="paragraph">SAP HANA の容量要件の詳細な概要については、を参照してください<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> ホワイトペーパーを添付。</block>
   <block id="257f17de4aa60411125a8899104c5927" category="list-text">FAS2720 、 FAS2750 、 FAS8300 、 FAS8700 、 FAS9000SAP HANA 向けネットアップ認定ストレージソリューションの完全なリストは、から入手できます<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>。</block>
   <block id="45bb1f13b573370e5659e113eaa6e2a7" category="paragraph">本ドキュメントでは、 NFS バージョン 3 （ NFSv3 ）プロトコルまたは NFS バージョン 4 （ NFSv4.1 ）プロトコルの ONTAP 設定要件について説明します。</block>
+  <block id="bc3bbc9b5df10cfc4c9d9747e9b15e4f" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="2585df8f0f74fb3d91dc9a930fa3213b" category="inline-link-rx"></block>。</block>
+  <block id="fa880fcc81edcdb201d07b92940b6c2c" category="paragraph">1 台目のシェルフの最小 12 本の NVMe SSD で、最大 16 台の SAP HANA ホストをサポートできます。フル装備のシェルフは、最大 48 台の SAP HANA ホストをサポートします。</block>
+  <block id="eb08d46fa92fc78a1fd6730ec46042b6" category="list-text">ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800 ASA AFF A900 の略</block>
+  <block id="97bfb54320c9268725cfbb374a5168fb" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="a3976abaebe3520fd66c465c4d7747d7" category="inline-link-rx"></block>。</block>
 </blocks>
