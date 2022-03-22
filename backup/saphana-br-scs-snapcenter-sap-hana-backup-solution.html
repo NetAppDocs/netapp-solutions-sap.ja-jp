@@ -1,35 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head class="at-element-marker">
-  <title>TR-4746 ：『 SAP Applications on Microsoft Azure 』</title>
+  <title>SnapCenter SAP HANA Backup 解決策 の略</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="TR-4746 ：『 SAP Applications on Microsoft Azure 』" />
+  <meta property="og:title" content="SnapCenter SAP HANA Backup 解決策 の略" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/bp/sap-apps-azure-anf_pdf_link.html" />
-	<meta property="og:description" content="TR-4746 は、 Azure NetApp Files for SAP Applications および SAP HANA 環境を使用する際のベストプラクティスを示しています。また、 Azure NetApp Files 上の SAP HANA を使用した SAP 共有ファイルシステムから SAP HANA ..." />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html" />
+	<meta property="og:description" content="このセクションでは、この解決策 で使用されているコンポーネント、サポートされている SAP HANA のリリースと構成、および SnapCenter 4.6 の拡張機能について説明します。" />
   <meta property="og:image" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/>
-  
-  <meta name="description" content="TR-4746 は、 Azure NetApp Files for SAP Applications および SAP HANA 環境を使用する際のベストプラクティスを示しています。また、 Azure NetApp Files 上の SAP HANA を使用した SAP 共有ファイルシステムから SAP HANA ...">
-  <meta name="keywords" content=" tr-4746, pdf, sap, applications, apps, hana, azure netapp files">
-  
-  
-
-  <!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="このセクションでは、この解決策 で使用されているコンポーネント、サポートされている SAP HANA のリリースと構成、および SnapCenter 4.6 の拡張機能について説明します。">
+  <meta name="keywords" content=" solution components, supported releases, configuration, enhancements"><!-- Icons -->
   <link rel="icon" href="/ja-jp/netapp-solutions-sap/images/favicon.ico" type="image/x-icon">
 
-  <!-- RSS Feed -->
-  
-
-  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
 
   <!-- Elastic Search -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
@@ -59,27 +50,11 @@
   
   <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/landing-page.css" type="text/css">
   <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/tabbed-blocks.css" type="text/css">
-  <link rel="stylesheet" href='/ja-jp/netapp-solutions-sap/css/product-family.css' type="text/css">
-  
-
-  
-  <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/na-feature.css' type='text/css'>
-  
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/na-feature.css' type='text/css'><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-  <!-- Used to import Promise for IE. Required for SearchKit -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
-  
-    <script src='/ja-jp/netapp-solutions-sap/js/na-search.js'></script>
-  
 
-  
-  <script src='/ja-jp/netapp-solutions-sap/js/na-pagenav.js'></script>
-  
-
-  <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/prism.css' type='text/css'>
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/netapp-solutions-sap/js/na-search.js'></script><script src='/ja-jp/netapp-solutions-sap/js/na-pagenav.js'></script><link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/prism.css' type='text/css'>
   <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/prism-netapp.css' type='text/css'>
 
 
@@ -97,9 +72,7 @@
   <script src='/ja-jp/netapp-solutions-sap/js/jquery.navgoco.min.js'></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src='/ja-jp/netapp-solutions-sap/js/toc.js'></script>
-  <script src='/ja-jp/netapp-solutions-sap/js/customscripts.js'></script>
-
-  <script>
+  <script src='/ja-jp/netapp-solutions-sap/js/customscripts.js'></script><script>
       $(document).ready(function() {
           
           var collapseOnInit = true;
@@ -158,7 +131,6 @@
   }
   </script>
   <script src='/ja-jp/netapp-solutions-sap/js/version-dropdown.js'></script>
-  <script src='/ja-jp/netapp-solutions-sap/js/product-family.js'></script>
   <script src='/ja-jp/netapp-solutions-sap/js/FileSaver.min.js'></script>
   <script src='/ja-jp/netapp-solutions-sap/js/jszip-utils.min.js'></script>
   <script src='/ja-jp/netapp-solutions-sap/js/jszip.min.js'></script>
@@ -171,6 +143,25 @@
       <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
       <div class="n-off-canvas-menu__content-wrap">
         <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/issues/new?body=Page%3A%20[SnapCenter SAP HANA Backup 解決策 の略](https://docs.netapp.com/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/blob/main/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/netapp-solutions-sap/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
   <!-- Start top_hat -->
   <div class="n-top-hat">
     <div class="n-container">
@@ -281,13 +272,13 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/netapp-solutions-sap/bp/sap-apps-azure-anf_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                  <a href="https://docs.netapp.com/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/netapp-solutions-sap/bp/sap-apps-azure-anf_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  <a href="https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/netapp-solutions-sap/bp/sap-apps-azure-anf_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                  <a href="https://docs.netapp.com/zh-cn/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/netapp-solutions-sap/bp/sap-apps-azure-anf_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                  <a href="https://docs.netapp.com/ko-kr/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -359,17 +350,6 @@
             ベストプラクティス
           </a>
           
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/ja-jp/netapp-solutions-sap/pdfs/pages/bp/sap-apps-azure-anf_pdf_link.pdf" >
-    <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
-
-
 
     
       <ul class="subfolders" style="display:none;">
@@ -690,6 +670,65 @@
             バックアップ、リストア、ディザスタリカバリ
           </a>
           
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_を使用した_SAP_HANA_のバックアップとリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SnapCenter を使用した SAP HANA のバックアップとリカバリ
+          </a>
+          
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/ja-jp/netapp-solutions-sap/pdfs/pages/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.pdf" >
+    <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
 
     
       <ul class="subfolders" style="display:none;">
@@ -1051,9 +1090,7 @@
       </a></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> ベストプラクティス</div>
       </a>
-      <ul><li class="  active "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/sap-apps-azure-anf_pdf_link.html">
-        Azure NetApp Files を使用した Microsoft Azure 上の SAP アプリケーション
-      </a></li><li class="subfolders "><a href="#">
+      <ul><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html">
@@ -1203,6 +1240,37 @@
         <div class="na-navbar-padding"> バックアップ、リストア、ディザスタリカバリ</div>
       </a>
       <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SnapCenter を使用した SAP HANA のバックアップとリカバリ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-architecture.html">
+        SnapCenter アーキテクチャ
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html">
+        SnapCenter SAP HANA Backup 解決策 の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-concepts-and-best-practices.html">
+        SnapCenter の概念とベストプラクティス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-lab-setup-used-for-this-report.html">
+        このレポートで使用するラボのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-configuration.html">
+        SnapCenter 構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-initial-configuration.html">
+        SnapCenter の初期設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html">
+        SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html">
+        データボリューム以外のバックアップ用の SnapCenter リソース固有の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-database-backups.html">
+        データベースのバックアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-block-integrity-check.html">
+        ブロック整合性チェック
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-restore-and-recovery.html">
+        リストアとリカバリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-advanced-configuration-and-tuning.html">
+        高度な設定と調整
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-where-to-find-additional-information.html">
+        追加情報およびバージョン履歴の参照先
+      </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-sap-hana-system-replication-overview.html">
@@ -1357,26 +1425,22 @@
   
 
   <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
-    <!-- Begin of page container -->
-    <article class="page-content">
+    <!-- Begin of page container --><article class="page-content">
       <div class="ie-utility">
   <div class="ie-menu">
     <div class="n-breadcrumb">
       <ul class="n-breadcrumb__list">
         <li class="n-breadcrumb__list-item">
-          <a href="https://www.netapp.com">ホーム</a>
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
         </li>
-        <li class="n-breadcrumb__list-item">
-          <a href="https://docs.netapp.com">ドキュメント</a>
-        </li>
+        
+
         
 
         <li class="n-breadcrumb__list-item">
           <a href="/ja-jp/netapp-solutions-sap/">NetApp&nbsp;Solutions&nbsp;SAP</a>
         </li>
-        <li class="n-breadcrumb__list-item">
-          TR-4746 ：『 SAP Applications on Microsoft Azure 』
-        </li>
+
       </ul>
     </div>
     <div style="clear: both"></div><!-- Main needs to have height -->
@@ -1398,62 +1462,262 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">TR-4746 ：『 SAP Applications on Microsoft Azure 』</h1>
+  <h1 class="n-doc__component-detail-heading">SnapCenter SAP HANA Backup 解決策 の略</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-02-09 21:32:13 +0000">02/09/2022</time>
+    <time datetime="2022-03-22 19:36:40 +0000">03/22/2022</time>
     
   
-
-<span>寄稿者
-</span>
 
 
 </p>
 
-
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>Nils Bauer 、 Tobias Brandl 、 Bernd Herth 、 Kevin Morris 、 Geert van Teylingen NetApp からご連絡ください</p>
+<p><a href="saphana-br-scs-snapcenter-architecture.html">"以前のバージョン： SnapCenter アーキテクチャ。"</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="解決策コンポーネント">解決策コンポーネント</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SnapCenter Backup 解決策 for SAP HANA には、次の領域があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ストレージベースの Snapshot コピーを使用した SAP HANA データのバックアップ：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>バックアップのスケジュール設定</p>
+</li>
+<li>
+<p>保持管理</p>
+</li>
+<li>
+<p>不要な SAP HANA バックアップカタログの削除</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>非データ・ボリューム（例： /hana/shared ）バックアップとストレージ・ベースの Snapshot コピー：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>バックアップのスケジュール設定</p>
+</li>
+<li>
+<p>保持管理</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>オフサイトのバックアップまたはディザスタリカバリロケーションへのレプリケーション：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>SAP HANA データの Snapshot バックアップ</p>
+</li>
+<li>
+<p>データボリューム以外のボリューム</p>
+</li>
+<li>
+<p>オフサイトのバックアップストレージに保持管理を設定</p>
+</li>
+<li>
+<p>不要な SAP HANA バックアップカタログの削除</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>ファイルベースのバックアップを使用したデータベースブロックの整合性チェック：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>バックアップのスケジュール設定</p>
+</li>
+<li>
+<p>保持管理</p>
+</li>
+<li>
+<p>不要な SAP HANA バックアップカタログの削除</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>HANA データベースログバックアップの保持管理：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>データバックアップの保持に基づく保持管理</p>
+</li>
+<li>
+<p>不要な SAP HANA バックアップカタログの削除</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>HANA データベースの自動検出</p>
+</li>
+<li>
+<p>リストアとリカバリの自動化</p>
+</li>
+<li>
+<p>SAP HANA マルチテナントデータベースコンテナ（ MDC ）システムを使用したシングルテナントのリストア処理</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Will Bratton 氏、 Ralf Klahr 氏、 Amish Patel 氏、 Juergen Thomas Microsoft 氏</p>
+<p>データベースデータファイルのバックアップは、 SnapCenter と SAP HANA 向けプラグインを組み合わせて実行されます。このプラグインは、 SAP HANA データベースのバックアップ保存ポイントをトリガーして、プライマリストレージシステムで作成された Snapshot コピーが SAP HANA データベースの整合性のあるイメージに基づいて作成されるようにします。</p>
 </div>
 <div class="paragraph">
-<p>TR-4746 は、 Azure NetApp Files for SAP Applications および SAP HANA 環境を使用する際のベストプラクティスを示しています。また、 Azure NetApp Files 上の SAP HANA を使用した SAP 共有ファイルシステムから SAP HANA の完全な導入環境、特定のパフォーマンス、データ保護、移行に関する考慮事項まで、さまざまなユースケースについて詳しく説明します。</p>
+<p>SnapCenter では、 SnapVault または NetApp SnapMirror を使用して、整合性のあるデータベースイメージをオフサイトのバックアップまたはディザスタリカバリロケーションにレプリケートできます。フィーチャー（ Feature ）：通常は、プライマリストレージとオフサイトのバックアップストレージに異なる保持ポリシーが定義されます。SnapCenter はプライマリストレージでの保持を処理し、 ONTAP はオフサイトのバックアップストレージでの保持を処理します。</p>
 </div>
 <div class="paragraph">
-<p><a href="https://www.netapp.com/pdf.html?item=/media/17152-tr4746.pdf">https://www.netapp.com/pdf.html?item=/media/17152-tr4746.pdf</a></p>
+<p>SnapCenter では、 SAP HANA 関連のすべてのリソースを完全にバックアップするために、ストレージベースの Snapshot コピーを使用して SAP HANA プラグインを使用し、データ以外のすべてのボリュームをバックアップすることもできます。非データ・ボリュームは、データベース・データ・バックアップとは別にスケジュール設定できるため、保持ポリシーや保護ポリシーを個別に設定することができます。</p>
+</div>
+<div class="paragraph">
+<p>SAP HANA データベースは、ログバックアップを自動的に実行します。目標復旧時点に応じて、ログ・バックアップの保存場所に関するいくつかのオプションがあります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ログバックアップは、 NetApp MetroCluster ハイアベイラビリティ（ HA ）およびディザスタリカバリストレージソフトウェアを使用してデータを別の場所に同期的にミラーリングするストレージシステムに書き込まれます。</p>
+</li>
+<li>
+<p>ログバックアップのデスティネーションは、同じプライマリストレージシステムで設定し、 SnapMirror によって同期または非同期でセカンダリストレージにレプリケートできます。</p>
+</li>
+<li>
+<p>ログバックアップのデスティネーションは、 SnapVault を使用してデータベースバックアップをレプリケートする、同じオフサイトのバックアップストレージに設定できます。この構成では、オフサイトのバックアップストレージに、ログバックアップをオフサイトのバックアップストレージに書き込むことができるように、プライマリストレージと同様の可用性要件があります。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。ブロック整合性チェックは、 SnapCenter 内から実行できます。設定可能な保持ポリシーに基づいて、 SnapCenter は、プライマリストレージでのデータファイルバックアップの削除、ログファイルバックアップ、および SAP HANA のバックアップカタログを管理します。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/netapp-solutions-sap/images/note.svg" alt="注記">
+</td>
+<td class="content">
+SnapCenter はプライマリストレージでの保持を処理し、 ONTAP はセカンダリバックアップの保持を管理します。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>次の図に、データベースとログのバックアップ構成の概要を示します。この図では、ログバックアップがオフサイトのバックアップストレージの NFS マウントに書き込まれます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/saphana-br-scs-image7.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+<div class="paragraph">
+<p>SnapCenter では、データボリューム以外のボリュームのストレージベースの Snapshot バックアップを実行する際に、次のタスクを実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>データボリューム以外のストレージ Snapshot コピーの作成。</p>
+</li>
+<li>
+<p>データボリュームの SnapVault 更新または SnapMirror 更新の実行（設定されている場合）。</p>
+</li>
+<li>
+<p>定義された保持ポリシーに基づいて、プライマリストレージのストレージ Snapshot コピーを削除します。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>SAP HANA データベースのストレージベースの Snapshot バックアップを実行する場合、 SnapCenter は次のタスクを実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>SAP HANA バックアップ保存ポイントを作成して、永続性レイヤに整合性のあるイメージを作成する。</p>
+</li>
+<li>
+<p>データボリュームのストレージ Snapshot コピーの作成。</p>
+</li>
+<li>
+<p>SAP HANA バックアップカタログへのストレージ Snapshot バックアップの登録。</p>
+</li>
+<li>
+<p>SAP HANA バックアップセーブポイントのリリース。</p>
+</li>
+<li>
+<p>データボリュームの SnapVault 更新または SnapMirror 更新の実行（設定されている場合）。</p>
+</li>
+<li>
+<p>定義された保持ポリシーに基づいて、プライマリストレージのストレージ Snapshot コピーを削除します。</p>
+</li>
+<li>
+<p>プライマリまたはオフサイトのバックアップストレージにバックアップが存在しなくなった場合は、 SAP HANA のバックアップカタログのエントリを削除します。</p>
+</li>
+<li>
+<p>保持ポリシーに基づいてバックアップが削除された場合、または手動で削除された場合、 SnapCenter は最も古いデータバックアップよりも古いログバックアップをすべて削除します。ログバックアップは、ファイルシステムと SAP HANA のバックアップカタログから削除されます。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="サポートされている-sap-hana-リリースと構成">サポートされている SAP HANA リリースと構成</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SnapCenter は、 NFS または FC 接続のネットアップストレージシステム（ AFF および FAS ）を使用した SAP HANA シングルホスト構成とマルチホスト構成、および NFS を使用した AWS 、 Azure 、 Google Cloud Platform 、 AWS FSX ONTAP で Cloud Volumes ONTAP を実行している SAP HANA システムをサポートしています。</p>
+</div>
+<div class="paragraph">
+<p>SnapCenter は、次の SAP HANA アーキテクチャとリリースをサポートしています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SAP HANA の単一コンテナ： SAP HANA 1.0 SPS12</p>
+</li>
+<li>
+<p>SAP HANA マルチテナントデータベースコンテナ（ MDC ）のシングルテナント： SAP HANA 2.0 SPS3 以降</p>
+</li>
+<li>
+<p>SAP HANA マルチテナントデータベースコンテナ（ MDC ）の複数のテナント： SAP HANA 2.0 SPS4 以降</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="snapcenter-4-6-の機能強化">SnapCenter 4.6 の機能強化</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>バージョン 4.6 以降の SnapCenter では、 HANA システムレプリケーション関係で設定された HANA システムの自動検出がサポートされます。各ホストは、物理 IP アドレス（ホスト名）とストレージレイヤ上の個々のデータボリュームを使用して設定されます。2 つの SnapCenter リソースが 1 つのリソースグループに統合されている場合、 SnapCenter はプライマリまたはセカンダリのホストを自動的に識別し、必要なバックアップ処理を適宜実行します。SnapCenter で作成された Snapshot とファイルベースのバックアップの保持の管理は、両方のホストで実行されます。これにより、現在のセカンダリホストでも古いバックアップが削除されるようになります。次の図に概要を示します。SnapCenter の HANA システムレプリケーション対応 HANA システムの構成と運用の詳細概要 については、を参照してください <a href="https://www.netapp.com/us/media/tr-4719.pdf" target="_blank" rel="noopener">"TR-4719 『 SAP HANA System Replication 、 Backup and Recovery with SnapCenter 』"</a>。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/saphana-br-scs-image8.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+<div class="paragraph">
+<p><a href="saphana-br-scs-snapcenter-concepts-and-best-practices.html">"次： SnapCenter の概念とベストプラクティス"</a></p>
+</div>
+</div>
 </div>
 
     </article>
     <!-- Page Container -->
   </div>
 
-  
-  <!-- Start Page Toolbar -->
-  <div class="page-nav-toolbar">
-    <div id="version-dropdown"></div>
-    <div class="page-nav-contribute"  >
-      <a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/issues/new?body=Page%3A%20[TR-4746 ：『 SAP Applications on Microsoft Azure 』](https://docs.netapp.com/ja-jp/netapp-solutions-sap/bp/sap-apps-azure-anf_pdf_link.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
-      <a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/blob/main/bp/sap-apps-azure-anf_pdf_link.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
-      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/netapp-solutions-sap/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
-    </div>
-    <div class="page-nav-container">
-      <nav class="page-nav-fixed">
-        <div class="page-nav-title">このページ</div>
-        <div class="page-nav-links">
-          <ul class="page-nav-inner" id="page-menu"></ul>
-        </div>
-      </nav>
-    </div>
-  </div>
-  
-  <div style="clear: both"></div><!-- Main needs to have height -->
-</div>
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
 
         </main>
 
@@ -1555,9 +1819,7 @@
 </div>
 </footer>
 
-      </div>
-
-      <!-- Elasticsearch JS -->
+      </div><!-- Elasticsearch JS -->
       <script type="text/javascript" src='/ja-jp/netapp-solutions-sap/js/bundle.js'></script>
 
       <!-- Syntax Highlighting -->
@@ -1572,7 +1834,4 @@
     </script>
     <script src='/ja-jp/netapp-solutions-sap/js/www-ntap.js'></script>
     <script src='/ja-jp/netapp-solutions-sap/js/tabbed-blocks.js'></script>
-  </body>
-
-  
-</html>
+  </body></html>
