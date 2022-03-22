@@ -2,6 +2,37 @@
 section: backup
 title: バックアップ、リストア、ディザスタリカバリ
 entries:
+- title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
+  type: solutions
+  entries:
+  - title: 概要
+    url: "/backup/saphana-br-scs-overview.html"
+  - title: SnapCenter アーキテクチャ
+    url: "/backup/saphana-br-scs-snapcenter-architecture.html"
+  - title: SnapCenter SAP HANA Backup 解決策 の略
+    url: "/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html"
+  - title: SnapCenter の概念とベストプラクティス
+    url: "/backup/saphana-br-scs-snapcenter-concepts-and-best-practices.html"
+  - title: このレポートで使用するラボのセットアップ
+    url: "/backup/saphana-br-scs-lab-setup-used-for-this-report.html"
+  - title: SnapCenter 構成
+    url: "/backup/saphana-br-scs-snapcenter-configuration.html"
+  - title: SnapCenter の初期設定
+    url: "/backup/saphana-br-scs-snapcenter-initial-configuration.html"
+  - title: SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成
+    url: "/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html"
+  - title: データボリューム以外のバックアップ用の SnapCenter リソース固有の設定
+    url: "/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html"
+  - title: データベースのバックアップ
+    url: "/backup/saphana-br-scs-database-backups.html"
+  - title: ブロック整合性チェック
+    url: "/backup/saphana-br-scs-block-integrity-check.html"
+  - title: リストアとリカバリ
+    url: "/backup/saphana-br-scs-restore-and-recovery.html"
+  - title: 高度な設定と調整
+    url: "/backup/saphana-br-scs-advanced-configuration-and-tuning.html"
+  - title: 追加情報およびバージョン履歴の参照先
+    url: "/backup/saphana-br-scs-where-to-find-additional-information.html"
 - title: SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
   type: solutions
   entries:

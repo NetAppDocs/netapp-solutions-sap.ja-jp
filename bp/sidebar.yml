@@ -2,8 +2,6 @@
 section: bp
 title: ベストプラクティス
 entries:
-- title: Azure NetApp Files を使用した Microsoft Azure 上の SAP アプリケーション
-  url: "/bp/sap-apps-azure-anf_pdf_link.html"
 - title: "『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』"
   type: solutions
   entries:

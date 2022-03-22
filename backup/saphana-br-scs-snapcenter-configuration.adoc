@@ -1,0 +1,77 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-br-scs-snapcenter-configuration.html 
+keywords: configuration, resource-specific, dependencies, storage system, credentials, hosts, policies 
+summary: SnapCenter の設定は、初期設定とリソース固有の設定の 2 つの主要な領域に分けることができます。 
+---
+= SnapCenter 構成
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-br-scs-lab-setup-used-for-this-report.html["Previous ：このレポートで使用するラボのセットアップ。"]
+
+SnapCenter の設定は、次の 2 つの主要な領域に分けることができます。
+
+* * 初期構成。 * 個々の SAP HANA データベースに依存しない一般的な構成を取り上げます。リソース固有の設定を実行する際に選択される、ストレージシステム、中央 HANA プラグインホスト、ポリシーなどの構成。
+* * リソース固有の構成。 * SAP HANA システム固有の構成を対象としており、各 SAP HANA データベースに対して実行する必要があります。
+
+
+次の図に、構成コンポーネントとその依存関係の概要を示します。緑のボックスは、 SnapCenter の外部で実行する必要がある設定手順を示しています。青いボックスは、 SnapCenter GUI を使用して実行する手順を示しています。
+
+image:saphana-br-scs-image22.png["エラー：グラフィックイメージがありません"]
+
+初期設定では、次のコンポーネントがインストールおよび設定されます。
+
+* * ストレージシステム。 * SAP HANA システムで使用されるすべての SVM のクレデンシャル設定。通常は、プライマリストレージ、オフサイトバックアップストレージ、ディザスタリカバリストレージを構成します。
+
+
+
+NOTE: ストレージクラスタのクレデンシャルは、個々の SVM のクレデンシャルの代わりにを設定することもできます。
+
+* * 資格情報。 * SAP HANA プラグインをホストに導入するために使用する資格情報の設定。
+* * ホスト（中央 HANA プラグインホスト用）。 * SAP HANA プラグインの導入。SAP HANA hdbclient ソフトウェアのホストへのインストールSAP hdbclient ソフトウェアは手動でインストールする必要があります
+* * ポリシー。 * バックアップタイプ、保持、およびレプリケーションの構成。通常、ローカル Snapshot コピー用、 SnapVault レプリケーション用、およびファイルベースのバックアップ用に、少なくとも 1 つのポリシーが必要です。
+
+
+リソース固有の設定は、 SAP HANA データベースごとに実行する必要があります。これには、次の設定が含まれます。
+
+* SAP HANA の非データボリュームのリソース構成：
++
+** ストレージシステムおよびボリューム
+
+
+* SAP hdbuserstore キーの設定：
++
+** 特定の SAP HANA データベースの SAP hdbuserstore キー設定は、 HANA プラグインの導入場所に応じて、中央のプラグインホストまたは HANA データベースホストのいずれかで実行する必要があります。
+
+
+* 自動検出された SAP HANA データベースのリソース：
++
+** データベースホストへの SAP HANA プラグインの導入
+** hdbuserstore キーを入力します
+
+
+* SAP HANA データベースの手動リソース構成：
++
+** SAP HANA データベースの SID 、プラグインホスト、 hdbuserstore キー、ストレージシステム、ボリューム
+
+
+* リソース保護の構成：
++
+** 必要なポリシーを選択できます
+** 各ポリシーのスケジュールの定義
+
+
+* ONTAP データ保護構成：
++
+** バックアップをオフサイトのバックアップストレージにレプリケートする場合にのみ必要です。
+** 関係と保持の定義。
+
+
+
+
+link:saphana-br-scs-snapcenter-initial-configuration.html["次の手順： SnapCenter の初期設定"]

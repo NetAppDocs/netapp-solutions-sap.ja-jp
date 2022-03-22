@@ -16,10 +16,6 @@ link:saphana-backup-anf-restore-and-recovery.html["Previous ：リストアと�
 
 このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
 
-* TR-4746 ：『 SAP Applications on Microsoft Azure Using Azure NetApp Files 』
-+
-https://www.netapp.com/us/media/tr-4746.pdf[]
-
 * link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_main/backup/saphana-dr-anf_data_protection_overview_overview.html["TR-4891 ：『 SAP HANA disaster recovery with Azure NetApp Files 』"]
 
 

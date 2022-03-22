@@ -1,0 +1,115 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-br-scs-database-backups.html 
+keywords: sap hana studio, on-demand backup, replication 
+summary: SnapCenter では、一般に、各 HANA データベースのリソース保護構成で定義されたスケジュールを使用してデータベースのバックアップが実行されます。オンデマンドデータベースバックアップを実行するには、 SnapCenter GUI 、 PowerShell コマンドライン、または REST API を使用します。 
+---
+= データベースのバックアップ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html["Previous ：データボリューム以外のバックアップの SnapCenter リソース固有の設定。"]
+
+SnapCenter では、一般に、各 HANA データベースのリソース保護構成で定義されたスケジュールを使用してデータベースのバックアップが実行されます。
+
+オンデマンドデータベースバックアップを実行するには、 SnapCenter GUI 、 PowerShell コマンドライン、または REST API を使用します。
+
+
+
+== SAP HANA Studio での SnapCenter バックアップの識別
+
+SnapCenter のリソーストポロジには、 SnapCenter を使用して作成されたバックアップのリストが表示されます。次の図に、プライマリストレージ上のバックアップと、最新のバックアップを示します。
+
+image:saphana-br-scs-image82.png["エラー：グラフィックイメージがありません"]
+
+SAP HANA MDC システムのストレージ Snapshot コピーを使用したバックアップを実行する場合は、データボリュームの Snapshot コピーが作成されます。このデータボリュームには、システムデータベースのデータおよびすべてのテナントデータベースのデータが含まれます。この物理アーキテクチャを反映するため、 SnapCenter によって Snapshot バックアップがトリガーされるたびに、 SAP HANA はシステムデータベースとすべてのテナントデータベースの統合バックアップを内部的に実行します。その結果、 SAP HANA のバックアップカタログに、システムデータベース用とテナントデータベース用に 1 つずつ、合計複数のバックアップエントリが作成されます。
+
+
+NOTE: SAP HANA シングルコンテナシステムの場合、データベースボリュームにはデータベースが 1 つだけ格納され、 SAP HANA のバックアップカタログにはエントリが 1 つしかありません。
+
+SAP HANA のバックアップ・カタログでは、 SnapCenter のバックアップ名は「 Comment 」フィールドと「 External Backup ID （ EBID ）」フィールドとして保存されます。システムデータベースの次のスクリーンショットと、テナントデータベース SS1 のスクリーンショットに表示されています。どちらの図も、コメントフィールドに格納されている SnapCenter バックアップ名と EBID を示しています。
+
+
+NOTE: Snapshot ベースのバックアップについては、 HANA 2.0 SPS4 （リビジョン 40 および 41 ）リリースでは常にバックアップサイズがゼロになっています。これは、リビジョン 42 で修正されました。詳細については、『 SAP ノート』を参照してください https://launchpad.support.sap.com/["https://launchpad.support.sap.com/#/notes/2795010"^]。
+
+image:saphana-br-scs-image83.png["エラー：グラフィックイメージがありません"]
+
+image:saphana-br-scs-image84.png["エラー：グラフィックイメージがありません"]
+
+
+NOTE: SnapCenter で認識されるのは、それ自体のバックアップだけです。SAP HANA Studio などで作成された追加のバックアップは、 SAP HANA のカタログには表示されますが、 SnapCenter には表示されません。
+
+
+
+== ストレージシステム上での SnapCenter バックアップの特定
+
+ストレージレイヤのバックアップを表示するには、 NetApp OnCommand System Manager を使用して、 SVM のボリュームビューでデータベースボリュームを選択します。下部の Snapshot コピータブには、ボリュームの Snapshot コピーが表示されます。次のスクリーンショットは ' プライマリ・ストレージで使用可能なデータベース・ボリューム SS1_data_mnt00001 のバックアップを示しています強調表示されているバックアップは、前のイメージの SnapCenter と SAP HANA Studio に表示されているバックアップで、同じ命名規則が使用されています。
+
+image:saphana-br-scs-image85.png["エラー：グラフィックイメージがありません"]
+
+次のスクリーンショットは、セカンダリ・ストレージ・システムにあるレプリケーション・ターゲット・ボリューム「 hana_sa1_data_mnt00001_dest 」で使用可能なバックアップを示しています。
+
+image:saphana-br-scs-image86.png["エラー：グラフィックイメージがありません"]
+
+
+
+== プライマリストレージでのオンデマンドのデータベースバックアップ
+
+. リソースビューでリソースを選択し、その行をダブルクリックしてトポロジビューに切り替えます。
++
+リソーストポロジビューには、 SnapCenter を使用して作成された、使用可能なすべてのバックアップの概要が表示されます。上部の領域には、プライマリストレージ上のバックアップ（ローカルコピー）と、オフサイトのバックアップストレージ（バックアップコピー）にあるバックアップ（バックアップコピー）が表示されます。
+
++
+image:saphana-br-scs-image86.5.png["エラー：グラフィックイメージがありません"]
+
+. 一番上の行で、 Back Up Now （今すぐバックアップ）アイコンを選択して、オンデマンドバックアップを開始します。ドロップダウン・リストから ' バックアップ・ポリシー LocalSnap を選択し '[Backup] をクリックして ' オンデマンド・バックアップを開始します
++
+image:saphana-br-scs-image87.png["エラー：グラフィックイメージがありません"]
+
++
+バックアップジョブが開始されます。トポロジビューの下のアクティビティ領域に、前の 5 つのジョブのログが表示されます。バックアップが完了すると、トポロジビューに新しいエントリが表示されます。バックアップ名は、セクションで定義した Snapshot 名と同じ命名規則に従っています link:saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html#resource-protection-configuration["「リソース保護の設定」"]
+
++
+
+NOTE: トポロジビューを閉じてから再度開いて、更新されたバックアップリストを確認する必要があります。
+
++
+image:saphana-br-scs-image88.png["エラー：グラフィックイメージがありません"]
+
+. ジョブの詳細は、 [ アクティビティ ] 領域でジョブのアクティビティ行をクリックすると表示されます。ログの表示をクリックすると、詳細なジョブログを開くことができます。
+. SAP HANA Studio では、バックアップカタログに新しいバックアップが表示されます。バックアップカタログのコメントフィールドと EBID フィールドには、 SnapCenter と同じバックアップ名が使用されます。
+
+
+
+
+== SnapVault レプリケーションを使用したオンデマンドのデータベースバックアップ
+
+. リソースビューでリソースを選択し、その行をダブルクリックしてトポロジビューに切り替えます。
+. 一番上の行で [Backup Now] アイコンを選択して、オンデマンド・バックアップを開始します。ドロップダウン・リストから ' バックアップ・ポリシー LocalSnapAndSnapVault' を選択し '[Backup] をクリックして ' オン・デマンド・バックアップを開始します
++
+image:saphana-br-scs-image90.png["エラー：グラフィックイメージがありません"]
+
+. ジョブの詳細は、 [ アクティビティ ] 領域でジョブのアクティビティ行をクリックすると表示されます。
++
+image:saphana-br-scs-image91.png["エラー：グラフィックイメージがありません"]
+
+. バックアップが完了すると、トポロジビューに新しいエントリが表示されます。バックアップ名は、セクションで定義した Snapshot 名と同じ命名規則に従っています link:saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html#resource-protection-configuration["「リソース保護の設定」"]
++
+
+NOTE: トポロジビューを閉じてから再度開いて、更新されたバックアップリストを確認する必要があります。
+
++
+image:saphana-br-scs-image92.png["エラー：グラフィックイメージがありません"]
+
+. バックアップコピーを選択すると、セカンダリストレージのバックアップが表示されます。レプリケートされたバックアップの名前は、プライマリストレージのバックアップ名と同じです。
++
+image:saphana-br-scs-image93.png["エラー：グラフィックイメージがありません"]
+
+. SAP HANA Studio では、バックアップカタログに新しいバックアップが表示されます。バックアップカタログのコメントフィールドと EBID フィールドには、 SnapCenter と同じバックアップ名が使用されます。
+
+
+link:saphana-br-scs-block-integrity-check.html["次の例は、ブロックの整合性チェックです。"]

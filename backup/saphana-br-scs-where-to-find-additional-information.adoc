@@ -1,0 +1,108 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-br-scs-where-to-find-additional-information.html 
+keywords:  
+summary:  
+---
+= 追加情報およびバージョン履歴の参照先
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-br-scs-advanced-configuration-and-tuning.html["前の手順：高度な設定と調整。"]
+
+このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
+
+* SnapCenter のリソースページ
++
+https://www.netapp.com/us/documentation/snapcenter-software.aspx["https://www.netapp.com/us/documentation/snapcenter-software.aspx"^]
+
+* SnapCenter ソフトウェアのドキュメント
++
+https://docs.netapp.com/us-en/snapcenter/index.html["https://docs.netapp.com/us-en/snapcenter/index.html"^]
+
+* TR-4667 ：『 Automating SAP System Copies Using the SnapCenter 』
++
+https://www.netapp.com/pdf.html?item=/media/17111-tr4667pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17111-tr4667pdf.pdf"^]
+
+* TR-4719 ：『 SAP HANA System Replication 、 Backup and Recovery with SnapCenter 』
++
+https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf"^]
+
+* TR-4018 ：『 Integrating NetApp ONTAP Systems with SAP Landscape Management 』
++
+https://www.netapp.com/pdf.html?item=/media/17195-tr4018pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17195-tr4018pdf.pdf"^]
+
+* TR-4646 ：『 SAP HANA Disaster Recovery with Storage Replication 』
++
+https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf["https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf"^]
+
+
+
+
+
+=== バージョン履歴
+
+|===
+| バージョン | 日付 | ドキュメントのバージョン履歴 
+
+
+| バージョン 1.0 以降 | 2017年7月  a| 
+* 初版リリース
+
+
+
+
+| バージョン 1.1 以降 | 2017 年 9 月  a| 
+* 「高度な設定とチューニング」の項を追加しました。
+* 微修正。
+
+
+
+
+| バージョン 2.0 以降 | 2018 年 3 月  a| 
+* SnapCenter 4.0 に対応した更新：新しいデータボリュームリソースにより、単一ファイルの SnapRestore 操作が改善されました
+
+
+
+
+| バージョン 3.0 以降 | 2020年1月  a| 
+* 「 SnapCenter の概念とベストプラクティス」の項を追加。
+* SnapCenter 4.3 に対応するように更新されました。 HANA MDC の複数テナントの自動検出リストアとリカバリのサポートシングルテナントリストア処理
+
+
+
+
+| バージョン 3.1 以降 | 2020 年 7 月  a| 
+* 軽微な更新および修正： SnapCenter 4.3.1 での NFSv4 サポート IBM Power での SSL 通信用 Central プラグインの導入設定
+
+
+
+
+| バージョン 3.2 以降 | 2020年11月  a| 
+* HANA 2.0 SPS5 に必要なデータベースユーザー権限を追加。
+
+
+
+
+| バージョン 3.3 以降 | 2021年5月  a| 
+* SSL hdbsql 設定セクションを更新しました。
+* Linux LVM のサポートが追加されました。
+
+
+
+
+| バージョン 3.4 以降 | 2021年8月  a| 
+* 自動検出を無効にする設定の概要 が追加されました。
+
+
+
+
+| バージョン 3.5 以降 | 2022 年 2 月  a| 
+* SnapCenter 4.6 に対応したマイナーアップデートと、 HANA システムレプリケーション対応 HANA システムの自動検出サポート。
+
+
+|===

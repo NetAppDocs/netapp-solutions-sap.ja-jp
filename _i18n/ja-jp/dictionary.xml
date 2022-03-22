@@ -1870,7 +1870,6 @@
   <block id="677f2e7e550075f7bbbdac91e0918f2f" category="sidebar">SAP ソリューション</block>
   <block id="fcf140abed196b8eba71c45f21312bce" category="sidebar">ネットアップのソリューション</block>
   <block id="cd47dd01745339787e4c7300389401f2" category="sidebar">ベストプラクティス</block>
-  <block id="e5704579323eb4f2edeee34d84f8ebd5" category="sidebar">Azure NetApp Files を使用した Microsoft Azure 上の SAP アプリケーション</block>
   <block id="88aa48beec8729be73be99084cd76b79" category="sidebar">『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』</block>
   <block id="87aea504b228b108e5161db60e63e422" category="sidebar">インフラのセットアップと設定の概要</block>
   <block id="a1893b920bc48a028abc56e282719481" category="sidebar">『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』</block>
@@ -1922,10 +1921,6 @@
   <block id="1c00cdc071680932dbe093eee9f348e7" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください <block ref="0f1147a043e687692dc16c07b278ec3b" category="inline-link-macro-rx"></block>。</block>
   <block id="6578ba8f8050606717eb26d6e9c36396" category="list-text"><block ref="6578ba8f8050606717eb26d6e9c36396" category="inline-link-rx"></block></block>
   <block id="9e2f7b0947eed9e36a3d84200631ce7d" category="list-text"><block ref="9e2f7b0947eed9e36a3d84200631ce7d" category="inline-link-rx"></block></block>
-  <block id="34e60068300e9e3f871d48a33ffba1f1" category="summary">TR-4746 は、 Azure NetApp Files for SAP Applications および SAP HANA 環境を使用する際のベストプラクティスを示しています。また、 Azure NetApp Files 上の SAP HANA を使用した SAP 共有ファイルシステムから SAP HANA の完全な導入環境、特定のパフォーマンス、データ保護、移行に関する考慮事項まで、さまざまなユースケースについて詳しく説明します。</block>
-  <block id="6c6f4f0cd3ae1860ad7019d5cd6b2796" category="doc">TR-4746 ：『 SAP Applications on Microsoft Azure 』</block>
-  <block id="30e3a0469c18bb800da3893853205ac6" category="inline-link-macro"><block ref="30e3a0469c18bb800da3893853205ac6" category="inline-link-rx"></block></block>
-  <block id="23d3d60e0f75128aa4f637d0049d0f60" category="paragraph"><block ref="23d3d60e0f75128aa4f637d0049d0f60" category="inline-link-macro-rx"></block></block>
   <block id="81c2f60fe1cd3484018d62f2addc343a" category="summary">このリファレンスアーキテクチャドキュメントでは、 VMware vSphere 仮想マシン（ VM ）および NetApp FAS および All Flash FAS （ AFF ）ストレージシステム上に SAP HANA シングルホストおよびマルチホストソリューションを設計し、導入する方法を説明します。</block>
   <block id="fc21beda63f542908cf6ffb86e8a9b91" category="doc">TR-4338 ：『 SAP HANA on VMware vSphere with NetApp-FAS and All Flash FAS Systems 』</block>
   <block id="492dbdbda06cf15ce343cbe404369a3d" category="paragraph">このリファレンスアーキテクチャドキュメントでは、 VMware vSphere 仮想マシン（ VM ）および NetApp FAS および All Flash FAS （ AFF ）ストレージシステム上に SAP HANA シングルホストおよびマルチホストソリューションを設計し、導入する方法を説明します。このリファレンスアーキテクチャは、 VMware とネットアップの既存のお客様のエクスペリエンス、実際のシミュレーション、ネットアップのエンジニアリングラボでの検証に基づいて、導入と文書化が行われた解決策です。このドキュメントでは、要件評価、解決策設計、インストール、管理など、プロジェクトのライフサイクル全体を通じてお客様を支援します。</block>
@@ -1971,8 +1966,6 @@
   <block id="0fe8d96b1dd92fcd41aeaaf94ec6c574" category="paragraph">Microsoft 、 Geert van Teylingen 、 Will Bratton 氏</block>
   <block id="d6633c3fd7420c2f783b59852cc68ab9" category="paragraph">Tobias Brandl 、ネットアップ</block>
   <block id="67c23a99113cb53a26c871037cc3aecb" category="paragraph">Carsten Deterle 、 IBM</block>
-  <block id="65657a38c0375ec66c6c2c0eaa74c664" category="paragraph">Nils Bauer 、 Tobias Brandl 、 Bernd Herth 、 Kevin Morris 、 Geert van Teylingen NetApp からご連絡ください</block>
-  <block id="c8adee742d446b58fda58dad45eec4ed" category="paragraph">Will Bratton 氏、 Ralf Klahr 氏、 Amish Patel 氏、 Juergen Thomas Microsoft 氏</block>
   <block id="6df44a680ca61b7eccab052d48393798" category="paragraph">VMware 、 Bhumik Patel 、 Erik Rieger 氏</block>
   <block id="d5e52e7c60516c9c717f30e59670240a" category="paragraph">博士CommVault Systems 、 Tristan Daude 氏</block>
   <block id="2e124ed9e2276f17c5884e19b5087b92" category="paragraph">Nils Bauer 、 Roland Wartenberg 、 Darryl Clinkmars 、 Daniel Hohman 、 Marco Schö en 、 Steve Botkin 、 Michael Peppers 、 Vidula Aiyer 、 Steve Collins 、 Pavan Jhamnani 、 ネットアップ、 Lee Dorrior</block>
@@ -2061,8 +2054,6 @@
   <block id="4c28efc16ec0589f9fb25a451feba324" category="inline-link-macro">Previous ：リストアとリカバリを実行します。</block>
   <block id="4f6b276c14acce5792e8927470a89fc2" category="paragraph"><block ref="4f6b276c14acce5792e8927470a89fc2" category="inline-link-macro-rx"></block></block>
   <block id="7d5b957cd473f6eaf5ad335a9c63c4ff" category="paragraph">このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。</block>
-  <block id="7c772753c7284e99dbe27f289ed15ed8" category="list-text">TR-4746 ：『 SAP Applications on Microsoft Azure Using Azure NetApp Files 』</block>
-  <block id="446b501084665b809e4de5c4d5f563f9" category="paragraph"><block ref="446b501084665b809e4de5c4d5f563f9" category="inline-link-rx"></block></block>
   <block id="7ad9bddd7e56c8ed9b71a1fb79aca09a" category="inline-link-macro">TR-4891 ：『 SAP HANA disaster recovery with Azure NetApp Files 』</block>
   <block id="8163cd5e840d189977f85a9f427fe208" category="list-text"><block ref="8163cd5e840d189977f85a9f427fe208" category="inline-link-macro-rx"></block></block>
   <block id="a43c7ca8f7e6a4a034f6a940ec7566f5" category="inline-link-macro">次へ：バージョン履歴。</block>
@@ -2855,4 +2846,988 @@
   <block id="fa880fcc81edcdb201d07b92940b6c2c" category="paragraph">1 台目のシェルフの最小 12 本の NVMe SSD で、最大 16 台の SAP HANA ホストをサポートできます。フル装備のシェルフは、最大 48 台の SAP HANA ホストをサポートします。</block>
   <block id="eb08d46fa92fc78a1fd6730ec46042b6" category="list-text">ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800 ASA AFF A900 の略</block>
   <block id="97bfb54320c9268725cfbb374a5168fb" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="a3976abaebe3520fd66c465c4d7747d7" category="inline-link-rx"></block>。</block>
+  <block id="71eda0c30c9b341a4814ddd0954d1862" category="summary">このセクションでは ' ストレージ・システム ' 認証情報 ' ホスト 'hdbsql クライアント ' ポリシーなどの SnapCenter の初期設定について説明します</block>
+  <block id="4386d3e7902f293404d64c4abe1e295d" category="doc">SnapCenter の初期設定</block>
+  <block id="ae761b61a995424271b47f19d2f45b5c" category="inline-link-macro">前のバージョン： SnapCenter の設定。</block>
+  <block id="7c9f2659d3e5cffd0a8d57f6ea17df34" category="paragraph"><block ref="7c9f2659d3e5cffd0a8d57f6ea17df34" category="inline-link-macro-rx"></block></block>
+  <block id="a68a95b40735fd6822c60b05c35bb544" category="paragraph">初期設定には、次の手順が含まれます。</block>
+  <block id="2139fe384d5ae165545994dff01961d9" category="list-text">ストレージシステムの構成：</block>
+  <block id="a3d3f6c9fdb623aaaa9ab78bf4af2a18" category="list-text">プラグインのインストールに使用するクレデンシャルの設定</block>
+  <block id="9a6b88f68b9503b8b8210d2f30184988" category="list-text">中央の HANA プラグインホストの場合：</block>
+  <block id="d1f6ddc617c4c51ad270c9463ed06d40" category="list-text">ホスト構成と SAP HANA プラグインの導入</block>
+  <block id="2911ecfc915016f253bcd0e0c564fe74" category="list-text">SAP HANA hdbsql クライアントソフトウェアのインストールと設定</block>
+  <block id="912ee21b90ba32aba0daa8f0d8e4e314" category="list-text">ポリシー設定</block>
+  <block id="d8243d84dff5ee3bd86e7f3bae3587b5" category="paragraph">以降のセクションでは、初期設定手順について説明します。</block>
+  <block id="24f5e840a11590fca0575cc142d6ef35" category="list-text">SnapCenter サーバ GUI にログインします。</block>
+  <block id="a4f7c9a4244e522ab4e24ec6ac3f8355" category="paragraph"><block ref="a4f7c9a4244e522ab4e24ec6ac3f8355" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="29ca4e3da48110ba26ba87b3d9a90f16" category="list-text">[ ストレージシステム ] を選択します。</block>
+  <block id="29e64158d13453d65dbd12eb9c6f1d75" category="admonition">画面では、 ONTAP SVM または ONTAP クラスタなどのストレージシステムタイプを選択できます。ストレージシステムを SVM レベルで構成する場合は、各 SVM に対して管理 LIF を設定する必要があります。代わりに、クラスタレベルで SnapCenter 管理アクセスを使用することもできます。SVM 管理を使用する例を次に示します。</block>
+  <block id="a81a4d85708a68a0258875c84bec8caa" category="paragraph"><block ref="a81a4d85708a68a0258875c84bec8caa" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="70e5fd718721e814176b70aa732f9153" category="list-text">New をクリックしてストレージシステムを追加し、必要なホスト名とクレデンシャルを入力します。</block>
+  <block id="3f20bb8d817b9e6936e5c249b6c113be" category="inline-link">SnapCenter インストールガイド</block>
+  <block id="b8bc58e2f5a80c623945771af4f0a8b2" category="admonition">スクリーンショットに示されているように、 SVM ユーザを vsadmin ユーザにする必要はありません。通常、ユーザは SVM 上で設定し、バックアップとリストアの処理を実行するために必要な権限を割り当てます。必要な権限の詳細については、を参照してください<block ref="7b715dbc2fecfcb275c5209e8e720c86" category="inline-link-rx"></block> 「 Minimum ONTAP Privileges Required 」の項を参照してください。</block>
+  <block id="454dbd491f1f77c2a88687b1c7de19be" category="paragraph"><block ref="454dbd491f1f77c2a88687b1c7de19be" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="99e1f8e6cfae3062c90ba4e3fe852eee" category="list-text">[ その他のオプション ] をクリックして、ストレージプラットフォームを構成します。</block>
+  <block id="bf28bc3620d2e85e431236bc6ef90022" category="paragraph">ストレージプラットフォームは、 FAS 、 AFF 、 ONTAP Select 、 Cloud Volumes ONTAP のいずれかです。</block>
+  <block id="22563a02dd4dab831f4bae0ae56cf40e" category="admonition">SnapVault ターゲットまたは SnapMirror ターゲットとして使用されているシステムの場合は、セカンダリアイコンを選択します。</block>
+  <block id="7eaa05e0d5d149f0611ff002c935cbbe" category="paragraph"><block ref="7eaa05e0d5d149f0611ff002c935cbbe" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7a09a8e6339e45c4ca4a38a196028cb4" category="list-text">必要に応じてストレージシステムを追加この例では、追加のオフサイトバックアップストレージとディザスタリカバリ用ストレージが追加されています。</block>
+  <block id="795827cbd5210999c6abc0dd1660d95e" category="paragraph"><block ref="795827cbd5210999c6abc0dd1660d95e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9a54594daffa2c01e5e883a01cf1f6f5" category="section-title">クレデンシャルの設定</block>
+  <block id="6ebb04d93cddc56ead5028b5dc46876e" category="list-text">[ 設定 ] に移動し、 [ 資格情報 ] を選択して、 [ 新規 ] をクリックします</block>
+  <block id="e83f62658bd9676358ef215e383f2733" category="paragraph"><block ref="e83f62658bd9676358ef215e383f2733" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0f3e3833c619c41b3967f317840dbd8d" category="list-text">Linux システムへのプラグインのインストールに使用するユーザのクレデンシャルを入力します。</block>
+  <block id="c56512c10a121e4b53bd7813b28443ee" category="paragraph"><block ref="c56512c10a121e4b53bd7813b28443ee" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a848ef1fa53d291c03c4cf559f500322" category="list-text">Windows システムへのプラグインのインストールに使用するユーザのクレデンシャルを入力します。</block>
+  <block id="5569faef49aa21b03471bea70a59f0ae" category="paragraph"><block ref="5569faef49aa21b03471bea70a59f0ae" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="47f3c6b42d0334c31137562aca2a0b88" category="paragraph">次の図に、設定されたクレデンシャルを示します。</block>
+  <block id="cc0a0f536a9164f25798c2a9749c479f" category="paragraph"><block ref="cc0a0f536a9164f25798c2a9749c479f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="13755548f18d3df287a2229ebd3d97dc" category="section-title">中央のプラグインホストへの SAP HANA プラグインのインストール</block>
+  <block id="8d4bd2a661b6281b4d82cc00590252be" category="paragraph">ラボのセットアップでは、 SnapCenter サーバは中央の HANA プラグインホストとしても使用されます。SnapCenter サーバを実行する Windows ホストがホストとして追加され、 SAP HANA プラグインが Windows ホストにインストールされます。</block>
+  <block id="be95026bc00e897261477d1bef0c1058" category="admonition">SAP HANA プラグインには、 Java 64 ビットバージョン 1.8 が必要です。SAP HANA プラグインを導入する前に、ホストに Java をインストールする必要があります。</block>
+  <block id="bf0373d0d66d725186d3e84024b089fd" category="list-text">Hosts に移動し、 Add をクリックします。</block>
+  <block id="ce8868a5b960a702bf27c8c24e24a4a4" category="paragraph"><block ref="ce8868a5b960a702bf27c8c24e24a4a4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fb8a6d76e5ad5c489027a82c42ccd333" category="list-text">必要なホスト情報を指定します。Submit をクリックします。</block>
+  <block id="b23393ffa17e5c49c92f6e59f2d2c820" category="paragraph"><block ref="b23393ffa17e5c49c92f6e59f2d2c820" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3da08ec555eef13b285f865100858ba8" category="paragraph">次の図は、 HANA プラグインの導入後に構成されたすべてのホストを示しています。</block>
+  <block id="a7463e5afef0e8b0337129a92fafa0d9" category="paragraph"><block ref="a7463e5afef0e8b0337129a92fafa0d9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ff1e6c37ad8f4f2e8e74ab59aea74c3f" category="inline-link">SAP サポートポータル</block>
+  <block id="c057c768d3ac32304fd365c3084c8fa9" category="paragraph">SAP HANA hdbsql クライアントソフトウェアは、 SAP HANA プラグインがインストールされているホストと同じホストにインストールする必要があります。ソフトウェアはからダウンロードできます<block ref="fbd74ee0e1039f20414be5f6472224aa" category="inline-link-rx"></block>。</block>
+  <block id="4b9d3e971ab2f9958c9a94799f2fe172" category="paragraph">リソース設定中に設定された HDBSQL OS ユーザは、 hdbsql 実行可能ファイルを実行できる必要があります。hdbsql 実行ファイルへのパスは 'hana.properties` ファイルで設定する必要があります</block>
+  <block id="140710a8dd48496a1ea3b09f2799c408" category="list-text">Windows の場合</block>
+  <block id="82c6ab7bfe1f9fbf789b4f7f57b56c24" category="list-text">Linux ：</block>
+  <block id="60ed9fa3660d9d3970b9500659efd5cd" category="section-title">ポリシー設定</block>
+  <block id="4750513b209adc2889d7e8846336ec09" category="paragraph">の項で説明したように <block ref="632aac3b144bda24e7e889a956825abd" category="inline-link-macro-rx"></block> ポリシーは通常、リソースとは別に設定され、複数の SAP HANA データベースで使用できます。</block>
+  <block id="701ae19153f59cf5b064428875e644e2" category="list-text">レプリケーションを行わずに 1 時間ごとのバックアップを行うためのポリシー： LocalSnap</block>
+  <block id="c6120c0384590236fdec4fc6ebd300ae" category="list-text">SnapVault レプリケーションを使用した日次バックアップのポリシー：「 LocalSnapAndSnapVault'</block>
+  <block id="ec5a8f62de274a4de661b7a6c7a31f7b" category="list-text">ファイル・ベースのバックアップを使用した週次ブロック整合性チェックのポリシー： BlockIntegrityCheck</block>
+  <block id="a160185a60557a18fe2878ba31857c3b" category="paragraph">以降のセクションでは、これら 3 つのポリシーの設定について説明します。</block>
+  <block id="b923bc9dd59677ab62e9184acf6a8a1d" category="list-text">[ 設定 ] 、 [ ポリシー ] の順に移動し、 [ 新規 ] をクリックします</block>
+  <block id="34b5da86bf5f095ce88ebe3498ad0f6b" category="paragraph"><block ref="34b5da86bf5f095ce88ebe3498ad0f6b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="202b5482b689d83a7038543a22d23566" category="list-text">ポリシー名と概要を入力します。次へをクリックします。</block>
+  <block id="c697483089e838c6c3cbebe4b54f275f" category="paragraph"><block ref="c697483089e838c6c3cbebe4b54f275f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="03fcbdc3a76525840c5cd7acfcf003e1" category="list-text">バックアップタイプとして「 Snapshot Based 」を選択し、スケジュール頻度を選択するには「 Hourly 」を選択します。</block>
+  <block id="7a14bea65c1a6490c524b8aa489f0063" category="paragraph"><block ref="7a14bea65c1a6490c524b8aa489f0063" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9c04035bf698696ac176d8f27a3b6cbb" category="list-text">オンデマンドバックアップの保持を設定します。</block>
+  <block id="6df82090f80bcfd14f326319d13ed88d" category="paragraph"><block ref="6df82090f80bcfd14f326319d13ed88d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="56b7270384a3729bb3f980591bc67da4" category="list-text">スケジュールされたバックアップの保持を設定します。</block>
+  <block id="68a4a1a729dd3df4783ba72ad7051a26" category="paragraph"><block ref="68a4a1a729dd3df4783ba72ad7051a26" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cf97995427598a8ba429f96a4a274f02" category="list-text">レプリケーションオプションを設定します。この場合、 SnapVault または SnapMirror の更新は選択されていません。</block>
+  <block id="4ed25dfef4eb51fe5ff1d56ae7689927" category="paragraph"><block ref="4ed25dfef4eb51fe5ff1d56ae7689927" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e1147a04a00490e6c50fca223d7f0bbc" category="list-text">[ 概要 ] ページで、 [ 完了 ] をクリックします。</block>
+  <block id="6bd90fb1d10e4f04e8df4fc67ff97474" category="paragraph"><block ref="6bd90fb1d10e4f04e8df4fc67ff97474" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bf16ce3407c41ba06c774661a3399961" category="section-title">SnapVault レプリケーションを行う日次 Snapshot バックアップのポリシー</block>
+  <block id="988c161156cdc8aa843af32e88789385" category="paragraph"><block ref="988c161156cdc8aa843af32e88789385" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b312ca1a1b34e03353fb8562c080bf37" category="list-text">バックアップタイプを Snapshot ベースに、スケジュール頻度を「毎日」に設定します。</block>
+  <block id="a57e7e1b57beae2f4bc325fac67eedf5" category="paragraph"><block ref="a57e7e1b57beae2f4bc325fac67eedf5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="23726a1642f5ab2b0b2ced54b5357866" category="paragraph"><block ref="23726a1642f5ab2b0b2ced54b5357866" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="33eab0db3e803a5b489ab4fdcff22a19" category="paragraph"><block ref="33eab0db3e803a5b489ab4fdcff22a19" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5f4da9066e44ef7d68263c60abc054d7" category="list-text">ローカル Snapshot コピーの作成後に SnapVault を更新するを選択します。</block>
+  <block id="84d0ea6dd0c20f51d709dc5137c2df23" category="inline-link-macro">「オフサイトのバックアップストレージへのデータ保護の構成」</block>
+  <block id="a51c0cc379a2cff62750a2cee8f4ac4c" category="admonition">セカンダリポリシーのラベルは、ストレージレイヤのデータ保護設定の SnapMirror ラベルと同じにする必要があります。を参照してください <block ref="7a50846cc5cffdc4cbf392fe0aab93a4" category="inline-link-macro-rx"></block></block>
+  <block id="e19d6733c1687fbde8b78b2d44546a5a" category="paragraph"><block ref="e19d6733c1687fbde8b78b2d44546a5a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="41d6f4682557144cf0196f1e8ba809ce" category="paragraph"><block ref="41d6f4682557144cf0196f1e8ba809ce" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="85a1074fe49bf71488c2afb543c5d5e9" category="section-title">週次ブロック整合性チェックのポリシー</block>
+  <block id="179fdfbc7263f891cb791a6fc9760bd5" category="paragraph"><block ref="179fdfbc7263f891cb791a6fc9760bd5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9f96a4a39e01d723f3c140a0ce4c763e" category="list-text">バックアップタイプを「ファイルベース」に、スケジュール頻度を「毎週」に設定します。</block>
+  <block id="df398acbc9e3bca6106b25420f010bd1" category="paragraph"><block ref="df398acbc9e3bca6106b25420f010bd1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2571a88dd3f2ed40ba2449058564432e" category="paragraph"><block ref="2571a88dd3f2ed40ba2449058564432e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8841724ad8388ecfe98710960b798797" category="paragraph"><block ref="8841724ad8388ecfe98710960b798797" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="aab5cdb2095f59f4d769a74458e0cfce" category="paragraph"><block ref="aab5cdb2095f59f4d769a74458e0cfce" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8beb75192e7140b358078ad19ac265ba" category="inline-link-macro">次の例： SAP HANA データベースのバックアップ用に、 SnapCenter のリソース固有の構成を示します。</block>
+  <block id="75c2c7889202e62e51b88d8708f65d6b" category="paragraph"><block ref="75c2c7889202e62e51b88d8708f65d6b" category="inline-link-macro-rx"></block></block>
+  <block id="48b018e173131b38947be1f4747f02fd" category="summary">SnapCenter は、アプリケーションと整合性のあるデータ保護を実現する拡張性に優れたユニファイドプラットフォームです。SnapCenter では一元的な管理と監視が可能ですが、一方で、アプリケーション固有のバックアップ、リストア、クローニングのジョブの管理を各ユーザに委譲することができます。</block>
+  <block id="26e2418d177df1dddb008e455ce28752" category="doc">SnapCenter アーキテクチャ</block>
+  <block id="12abe1ac27a17dc9f2d02b4280e8c454" category="paragraph"><block ref="12abe1ac27a17dc9f2d02b4280e8c454" category="inline-link-macro-rx"></block></block>
+  <block id="6309043436d4e7e5bad9a81c89ff15e4" category="section-title">SnapCenter の概要</block>
+  <block id="a40bff99256d98409c3b10a71102054d" category="paragraph">SnapCenter は、アプリケーションと整合性のあるデータ保護を実現する拡張性に優れたユニファイドプラットフォームです。SnapCenter では一元的な管理と監視が可能ですが、一方で、アプリケーション固有のバックアップ、リストア、クローニングのジョブの管理を各ユーザに委譲することができます。SnapCenter を使用すれば、データベース管理者やストレージ管理者は、さまざまなアプリケーションやデータベースのバックアップ、リストア、クローニングの処理を 1 つのツールで管理できます。SnapCenter は、ネットアップのデータファブリック内のすべてのエンドポイントのデータを管理します。SnapCenter を使用して、オンプレミス環境間、オンプレミス環境とクラウド間、およびプライベートクラウド、ハイブリッドクラウド、パブリッククラウド間でデータをレプリケートできます。</block>
+  <block id="4a8478781fce30dd0844fa495323657c" category="section-title">SnapCenter コンポーネント</block>
+  <block id="6b6680d81f3584fb2812532f734ed372" category="paragraph">SnapCenter には、 SnapCenter サーバ、 Windows 用 SnapCenter プラグインパッケージ、および Linux 用 SnapCenter プラグインパッケージが含まれています。各パッケージには、さまざまなアプリケーションやインフラコンポーネント用の SnapCenter へのプラグインが含まれています。</block>
+  <block id="dd891a45b8606deb4a6fa0a063179e5f" category="paragraph">SnapCenter のカスタムプラグインを使用すると、独自のプラグインを作成し、同じ SnapCenter インターフェイスを使用してアプリケーションを保護できます。</block>
+  <block id="85c9db69d08b28f5cf1e67e13162f818" category="paragraph">次の図は、 SnapCenter のコンポーネントを示しています。</block>
+  <block id="26dfcc5f52c1171648e30d9d797bc94d" category="paragraph"><block ref="26dfcc5f52c1171648e30d9d797bc94d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="64323d52ef0d95f52c2590949297a288" category="inline-link-macro">次に、 SnapCenter SAP HANA バックアップ解決策 を実行します。</block>
+  <block id="f2ff2713f0736837770a3b3780b79742" category="paragraph"><block ref="f2ff2713f0736837770a3b3780b79742" category="inline-link-macro-rx"></block></block>
+  <block id="ee6ed0def6d0ef448ea7400a970e79c1" category="inline-link-macro">前の手順：高度な設定と調整。</block>
+  <block id="fafa0f8a27bd98abe255ef6a2431dce8" category="paragraph"><block ref="fafa0f8a27bd98abe255ef6a2431dce8" category="inline-link-macro-rx"></block></block>
+  <block id="69e46b0218eefa9aa82983c5ee743ae3" category="list-text">SnapCenter のリソースページ</block>
+  <block id="1911e0ada44759ee3994a93b354b6e23" category="inline-link"><block ref="1911e0ada44759ee3994a93b354b6e23" category="inline-link-rx"></block></block>
+  <block id="e6c902cbc294906423ce6b2ae70a10f0" category="paragraph"><block ref="e6c902cbc294906423ce6b2ae70a10f0" category="inline-link-rx"></block></block>
+  <block id="d127c7070231e882bd97e8f2760d0a4f" category="list-text">SnapCenter ソフトウェアのドキュメント</block>
+  <block id="532841fbf704673d5f6dc65db8d8cf66" category="inline-link"><block ref="532841fbf704673d5f6dc65db8d8cf66" category="inline-link-rx"></block></block>
+  <block id="5d78d056a947fb2b364bf2803792ba96" category="paragraph"><block ref="5d78d056a947fb2b364bf2803792ba96" category="inline-link-rx"></block></block>
+  <block id="5a27c7287063d118cc647ae4518ed81a" category="list-text">TR-4667 ：『 Automating SAP System Copies Using the SnapCenter 』</block>
+  <block id="61c3f6db217e13c29f8daabd6bb7f3a9" category="inline-link"><block ref="61c3f6db217e13c29f8daabd6bb7f3a9" category="inline-link-rx"></block></block>
+  <block id="eb8c30701a35524ff1074154b73fe327" category="paragraph"><block ref="eb8c30701a35524ff1074154b73fe327" category="inline-link-rx"></block></block>
+  <block id="70135b5e9cdadcbec80ac7a6b41e1166" category="list-text">TR-4719 ：『 SAP HANA System Replication 、 Backup and Recovery with SnapCenter 』</block>
+  <block id="0787319c76fa7dd713c7b5350ce28ab5" category="paragraph"><block ref="0787319c76fa7dd713c7b5350ce28ab5" category="inline-link-rx"></block></block>
+  <block id="98d29b74b4819c66a9b3a065f317875a" category="list-text">TR-4018 ：『 Integrating NetApp ONTAP Systems with SAP Landscape Management 』</block>
+  <block id="0efddc6f7a1abd249b378561d3fc08dd" category="inline-link"><block ref="0efddc6f7a1abd249b378561d3fc08dd" category="inline-link-rx"></block></block>
+  <block id="d7b3b01598dae86f75591cb7f2b59ec3" category="paragraph"><block ref="d7b3b01598dae86f75591cb7f2b59ec3" category="inline-link-rx"></block></block>
+  <block id="a71c27bab5cf27201389a84025d42bb9" category="paragraph"><block ref="a71c27bab5cf27201389a84025d42bb9" category="inline-link-rx"></block></block>
+  <block id="e66b5a3c6799dcc5dd4039a58085fb38" category="cell">2017 年 9 月</block>
+  <block id="3258056add985fc8ba4192b41052b298" category="list-text">「高度な設定とチューニング」の項を追加しました。</block>
+  <block id="0974990f1aa38ac1b1e2c8f4400eccac" category="list-text">微修正。</block>
+  <block id="74620215d33d2f9ad06a873cdf9e8acc" category="cell">2018 年 3 月</block>
+  <block id="1a2873a5ec0a90d66c68fa26956cbcbd" category="list-text">SnapCenter 4.0 に対応した更新：新しいデータボリュームリソースにより、単一ファイルの SnapRestore 操作が改善されました</block>
+  <block id="d835981d77534f5f20446d4648ad7e5b" category="cell">2020年1月</block>
+  <block id="26d5841054625c4dbc06dd193b24fcb1" category="list-text">「 SnapCenter の概念とベストプラクティス」の項を追加。</block>
+  <block id="bc72571f701d3a6cec52ab446894c3c2" category="list-text">SnapCenter 4.3 に対応するように更新されました。 HANA MDC の複数テナントの自動検出リストアとリカバリのサポートシングルテナントリストア処理</block>
+  <block id="ca82c7bf0a12e1bd7623c916688916ff" category="cell">2020 年 7 月</block>
+  <block id="519da123e1e4d0cb2656dd6dc21b7cda" category="list-text">軽微な更新および修正： SnapCenter 4.3.1 での NFSv4 サポート IBM Power での SSL 通信用 Central プラグインの導入設定</block>
+  <block id="0e347c50a0d60b8f46cb8c37cd3b5088" category="cell">2020年11月</block>
+  <block id="1ec08d2f146139e95c0cb9a18141800f" category="list-text">HANA 2.0 SPS5 に必要なデータベースユーザー権限を追加。</block>
+  <block id="0933d4dd2ad52707372be6b67b620890" category="cell">2021年5月</block>
+  <block id="e43d99222de98514f5024501d09b7a47" category="list-text">SSL hdbsql 設定セクションを更新しました。</block>
+  <block id="2e7bd301fd3aa711e492f5d75ba83f00" category="list-text">Linux LVM のサポートが追加されました。</block>
+  <block id="248f830b158797f9c038ea35ea266b89" category="cell">2021年8月</block>
+  <block id="0c8b3ad778d3f01ad1babbee4416272f" category="list-text">自動検出を無効にする設定の概要 が追加されました。</block>
+  <block id="9209b4ae424c71673a607557c64f7eb8" category="cell">2022 年 2 月</block>
+  <block id="4528f584aae52b626f3142db1586b578" category="list-text">SnapCenter 4.6 に対応したマイナーアップデートと、 HANA システムレプリケーション対応 HANA システムの自動検出サポート。</block>
+  <block id="7b41e76f621bf4b9f9ea9bbe09c2d06e" category="summary">SnapCenter の設定は、初期設定とリソース固有の設定の 2 つの主要な領域に分けることができます。</block>
+  <block id="6dad2633b12d6178b8357c7c744b9a84" category="paragraph"><block ref="6dad2633b12d6178b8357c7c744b9a84" category="inline-link-macro-rx"></block></block>
+  <block id="b1edd4b10b97c3eac95b42952c1bf03d" category="paragraph">SnapCenter の設定は、次の 2 つの主要な領域に分けることができます。</block>
+  <block id="306f5b2709c954bcbf7b6bdf2cd70705" category="list-text">* 初期構成。 * 個々の SAP HANA データベースに依存しない一般的な構成を取り上げます。リソース固有の設定を実行する際に選択される、ストレージシステム、中央 HANA プラグインホスト、ポリシーなどの構成。</block>
+  <block id="2df9975b7ffe963062b41c54fd531806" category="list-text">* リソース固有の構成。 * SAP HANA システム固有の構成を対象としており、各 SAP HANA データベースに対して実行する必要があります。</block>
+  <block id="cded40649c715307baec2ad81edb422d" category="paragraph">次の図に、構成コンポーネントとその依存関係の概要を示します。緑のボックスは、 SnapCenter の外部で実行する必要がある設定手順を示しています。青いボックスは、 SnapCenter GUI を使用して実行する手順を示しています。</block>
+  <block id="d9793117e58eebc30b58fbed204136d6" category="paragraph"><block ref="d9793117e58eebc30b58fbed204136d6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9de05392c0c4ce6f18c64aaa8a01e16e" category="paragraph">初期設定では、次のコンポーネントがインストールおよび設定されます。</block>
+  <block id="740b5ebffd57168ed255badf5f5e2302" category="list-text">* ストレージシステム。 * SAP HANA システムで使用されるすべての SVM のクレデンシャル設定。通常は、プライマリストレージ、オフサイトバックアップストレージ、ディザスタリカバリストレージを構成します。</block>
+  <block id="149b90296b82f49dfb4a9ebabe53de1e" category="admonition">ストレージクラスタのクレデンシャルは、個々の SVM のクレデンシャルの代わりにを設定することもできます。</block>
+  <block id="1e76e4d9af64a701de837e47ddaed309" category="list-text">* 資格情報。 * SAP HANA プラグインをホストに導入するために使用する資格情報の設定。</block>
+  <block id="4d2bc301f9097bb554e8b38a8ddc129a" category="list-text">* ホスト（中央 HANA プラグインホスト用）。 * SAP HANA プラグインの導入。SAP HANA hdbclient ソフトウェアのホストへのインストールSAP hdbclient ソフトウェアは手動でインストールする必要があります</block>
+  <block id="abc6b9384a85ef20a84780c190dcfc2f" category="list-text">* ポリシー。 * バックアップタイプ、保持、およびレプリケーションの構成。通常、ローカル Snapshot コピー用、 SnapVault レプリケーション用、およびファイルベースのバックアップ用に、少なくとも 1 つのポリシーが必要です。</block>
+  <block id="18234143eef999d6f137e5d529702d66" category="paragraph">リソース固有の設定は、 SAP HANA データベースごとに実行する必要があります。これには、次の設定が含まれます。</block>
+  <block id="974a71553a5ba330017cecb3d2984ece" category="list-text">SAP HANA の非データボリュームのリソース構成：</block>
+  <block id="62d13dde5f364cd839a8269393c2ee10" category="list-text">ストレージシステムおよびボリューム</block>
+  <block id="8787522e74280daf3e68d9c8596f8ffa" category="list-text">SAP hdbuserstore キーの設定：</block>
+  <block id="670a53ee9043448b355010ddd1300a1b" category="list-text">特定の SAP HANA データベースの SAP hdbuserstore キー設定は、 HANA プラグインの導入場所に応じて、中央のプラグインホストまたは HANA データベースホストのいずれかで実行する必要があります。</block>
+  <block id="4c78668de8219a6a279bac0459f8ed7b" category="list-text">自動検出された SAP HANA データベースのリソース：</block>
+  <block id="58022f952ea9031246441a94db279c4a" category="list-text">データベースホストへの SAP HANA プラグインの導入</block>
+  <block id="9902d1ebd70cb48fb95a10d3f3599577" category="list-text">hdbuserstore キーを入力します</block>
+  <block id="7c504e357529e86f997175b76982b26c" category="list-text">SAP HANA データベースの手動リソース構成：</block>
+  <block id="2e4ff7286ed5779f8bf068a582fa75c7" category="list-text">SAP HANA データベースの SID 、プラグインホスト、 hdbuserstore キー、ストレージシステム、ボリューム</block>
+  <block id="b0df6141ec744a7e465d26f70a8b3925" category="list-text">リソース保護の構成：</block>
+  <block id="3c9c3596532fc9e82b7dd3cb345f2e2d" category="list-text">必要なポリシーを選択できます</block>
+  <block id="fea5a24c8c428edda2fdbda8affc1e25" category="list-text">各ポリシーのスケジュールの定義</block>
+  <block id="18e4ec50bcd303126f2fa3c20d92e85d" category="list-text">ONTAP データ保護構成：</block>
+  <block id="751e9e7f28f705474333bcddb9460e70" category="list-text">バックアップをオフサイトのバックアップストレージにレプリケートする場合にのみ必要です。</block>
+  <block id="37dce88dd05881d1ac0110266b4dab43" category="list-text">関係と保持の定義。</block>
+  <block id="a01bf28a1387dce1d8d108f73fff949d" category="inline-link-macro">次の手順： SnapCenter の初期設定</block>
+  <block id="64676f8e2d59c22ce3340df88198ce7b" category="paragraph"><block ref="64676f8e2d59c22ce3340df88198ce7b" category="inline-link-macro-rx"></block></block>
+  <block id="be52be2434eedb68a3850faec724281a" category="summary">以降のセクションでは、 3 種類のシナリオと設定例について、リストアとリカバリのワークフローを説明します。</block>
+  <block id="aee7c53c29660d6fb221bb41df08716d" category="inline-link-macro">前のバージョン：ブロックの整合性チェック。</block>
+  <block id="1a8916e6888273694b8cac291dd9d5c8" category="paragraph"><block ref="1a8916e6888273694b8cac291dd9d5c8" category="inline-link-macro-rx"></block></block>
+  <block id="f44580ef6b3e3cb10e325c33bde13b2b" category="list-text">リストアとリカバリの自動化：</block>
+  <block id="fbc1e70493253a34b3d5c45f838561ef" category="list-text">自動検出された HANA システム SS1</block>
+  <block id="a516d8aebd78bc70b89cee03366a17b5" category="list-text">NFS を使用した SAP HANA シングルホスト MDC のシングルテナントシステム</block>
+  <block id="5e1ac231a5151a48d4cc9dbf052b0add" category="list-text">シングルテナントのリストアとリカバリ：</block>
+  <block id="3e9f1da5bf97da92f4e351c171d7c843" category="list-text">自動検出された HANA システム SM1</block>
+  <block id="4a3981ff09c013c89b6f575d709cc80f" category="list-text">SAP HANA シングルホスト MDC の NFS を使用したマルチテナントシステム</block>
+  <block id="eb5cbe641700ce67df71d411b7e4ad10" category="list-text">手動リカバリによるリストア：</block>
+  <block id="27ffcd98e45c55fb51621ebffaa5dd59" category="list-text">手動構成の HANA システム SS2</block>
+  <block id="9e522ea8faccb528a5f4b05e6f2fdea9" category="paragraph">以降のセクションでは、 SAP HANA シングルホストと複数のホストおよび Fibre Channel SAN Attached HANA システムの違いを示します。</block>
+  <block id="43e64ba823bc1d86bfae102cfdbccfac" category="paragraph">以下の例では、手動リカバリを実行するツールとして SAP HANA Studio を使用しています。SAP HANA Cockpit または HANA の SQL ステートメントを使用することもできます。</block>
+  <block id="ea97f578f1fa3dc5c59fcebd659118ba" category="section-title">リストアとリカバリの自動化</block>
+  <block id="d911b25c0cda59930d125abfb2bd7cd5" category="paragraph">SnapCenter 4.3 では、 SnapCenter によって自動検出された HANA シングルコンテナシステムまたは MDC シングルテナントシステムで自動リストア処理とリカバリ処理がサポートされています。</block>
+  <block id="4344ed84200b3882e693332ce520922b" category="paragraph">リストア処理とリカバリ処理の自動化は、次の手順で実行できます。</block>
+  <block id="d16a7b3211c17242dd4dbf5f68703753" category="list-text">リストア処理に使用するバックアップを選択します。バックアップは、次のストレージ・オプションから選択できます。</block>
+  <block id="86b11f41cdd4202ed814b1453f2dd058" category="list-text">プライマリストレージ</block>
+  <block id="e56982c0553019ef1a653c1403027b7a" category="list-text">オフサイトのバックアップストレージ（ SnapVault ターゲット）</block>
+  <block id="23d538532237d8a8aad1ec8328b20a9c" category="list-text">リストアタイプを選択します。[Complete Restore with Volume Revert or Without Volume Revert] を選択します。</block>
+  <block id="57d518b01238d5893661711dce71f42a" category="admonition">ボリュームリバートオプションを使用できるのは、プライマリストレージからのリストア処理と、 HANA データベースでストレージプロトコルとして NFS を使用している場合のみです。</block>
+  <block id="d1cb9744f6bb099dfa460ee7e6fd6f3f" category="list-text">次のオプションからリカバリタイプを選択します。</block>
+  <block id="0dea40bb05391c5e1484336ca1b9d2f8" category="list-text">を最新の状態に変更します</block>
+  <block id="d85bd207dd9f51505e34db7d28499176" category="list-text">ポイントインタイム</block>
+  <block id="e16159b7e258bed62fe7e3f6170ae607" category="list-text">特定のデータのバックアップ</block>
+  <block id="17f8b49df414bfdc7181fe5fa83d6253" category="list-text">リカバリなし</block>
+  <block id="ff7164c1629743c045a5b37e453d7a0c" category="admonition">選択したリカバリタイプは、システムとテナントデータベースのリカバリに使用されます。</block>
+  <block id="ef0f611cbdf3d8898ab0d52d76536b96" category="paragraph">次に、 SnapCenter は次の処理を実行します。</block>
+  <block id="84a899d6360c249dd29e2cbfe8043ad5" category="list-text">HANA データベースが停止します。</block>
+  <block id="102e0250e0792ade0641ba7dbb6bde8b" category="list-text">データベースがリストアされます。</block>
+  <block id="dbe89fd565f0d4bcf122bb64b452eb89" category="paragraph">選択したリストアタイプと使用するストレージプロトコルに応じて、異なる処理が実行されます。</block>
+  <block id="271593abf4b17da42855c88c0b5260cd" category="list-text">NFS と Volume Revert を選択した場合は、 SnapCenter がボリュームをアンマウントし、ストレージレイヤのボリュームベースの SnapRestore を使用してボリュームをリストアし、ボリュームをマウントします。</block>
+  <block id="0d115dbcb53c942ef1a2c278e8b04a83" category="list-text">NFS を選択し、ボリュームの復元を選択しない場合、 SnapCenter はストレージレイヤで単一ファイルの SnapRestore 操作を使用してすべてのファイルを復元します。</block>
+  <block id="b2b23725cc4472e5d3d9f090a0128d9c" category="list-text">ファイバチャネル SAN を選択した場合、 SnapCenter は LUN をアンマウントし、ストレージレイヤでの単一ファイルの SnapRestore 処理を使用して LUN をリストアし、その LUN を検出してマウントします。</block>
+  <block id="1bb7372248fe80609e0de816e9614f0a" category="list-text">データベースをリカバリします。</block>
+  <block id="7d3d3cd4a0187d7ec48c9b25fb2a67d3" category="list-text">システムデータベースがリカバリされます。</block>
+  <block id="9b2e306e1a7eea21bcbcc42bb480fd06" category="list-text">テナントデータベースがリカバリされます。</block>
+  <block id="c7be0866b1c5a3a9a9cff3b5c3857636" category="paragraph">または、 HANA のシングルコンテナシステムの場合、リカバリは 1 つの手順で実行されます。</block>
+  <block id="8a1c1220be0aeb46be469fc6f2c7238c" category="list-text">HANA データベースが起動します。</block>
+  <block id="f70441c1cb725407f3487c3ec6cd8c4b" category="admonition">リカバリなしを選択した場合は、 SnapCenter が終了し、システムとテナントデータベースのリカバリ処理を手動で実行する必要があります。</block>
+  <block id="c92ee67cd936173cf9044234db581919" category="paragraph">このセクションでは、自動検出された HANA システム SS1 （ SAP HANA シングルホスト、 NFS を使用した MDC シングルテナントシステム）の自動リストア処理とリカバリ処理の手順を説明します。</block>
+  <block id="74a4551b3bbd8432ec1407907102cc63" category="list-text">SnapCenter で、リストア処理に使用するバックアップを選択します。</block>
+  <block id="dbfa37eb1460f2612056e50c424882fd" category="admonition">プライマリまたはオフサイトのバックアップストレージからリストアを選択できます。</block>
+  <block id="9d8a35e92131187efbb8e9ecc0f781f9" category="paragraph"><block ref="9d8a35e92131187efbb8e9ecc0f781f9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="05340c1ae80d4d9d992b8ded203da341" category="paragraph"><block ref="05340c1ae80d4d9d992b8ded203da341" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ede6a2ebef849cace69b6ddea050eebb" category="list-text">リストアの範囲とタイプを選択します。</block>
+  <block id="f4b7bc700da692e66bce6ad4f37490ac" category="paragraph">次の 3 つのスクリーンショットは、 NFS を使用したプライマリからのリストア、 NFS を使用したセカンダリからのリストア、ファイバチャネル SAN を使用したプライマリからのリストアのリストアオプションを示しています。</block>
+  <block id="04d4b6f0308c909f19dd66790d3bf5cb" category="paragraph">プライマリストレージからリストアする場合のリストアタイプのオプション。</block>
+  <block id="3f37e843bef6062d9f6d21340311b067" category="admonition">ボリュームリバートオプションは、 NFS でプライマリからのリストア処理でのみ使用できます。</block>
+  <block id="aa42dee043a8b7c3f8425306888c6d6e" category="paragraph"><block ref="aa42dee043a8b7c3f8425306888c6d6e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d71f7098f62d47b862323fdd9a79c20d" category="paragraph">オフサイトのバックアップストレージからリストアする場合のリストアタイプのオプション。</block>
+  <block id="33f01f3bb4b13573c7e933e823397306" category="paragraph"><block ref="33f01f3bb4b13573c7e933e823397306" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2a531455e829eab1b5c413bdf3a9c09b" category="paragraph">ファイバチャネル SAN を使用してプライマリストレージからリストアする場合のリストアタイプのオプション。</block>
+  <block id="45c048fa007320fb083161d9a73a0b9b" category="paragraph"><block ref="45c048fa007320fb083161d9a73a0b9b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="998316bca47edd7199d19f50f506130b" category="list-text">Recovery Scope を選択し、ログバックアップとカタログバックアップの場所を指定します。</block>
+  <block id="d062aba8fc1c88e1e40c5273b2f25f70" category="admonition">SnapCenter では、 HANA の global.ini ファイルのデフォルトパスまたは変更されたパスを使用して、ログとカタログのバックアップの場所が事前に入力されます。</block>
+  <block id="3a4d619fb1d5df8fa66c0351aea7d9ad" category="paragraph"><block ref="3a4d619fb1d5df8fa66c0351aea7d9ad" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="664739985774f32e8e69169261c44cb1" category="list-text">オプションのリストア前のコマンドを入力します</block>
+  <block id="b848fa4e9f51e80dfafcdf6a72335096" category="paragraph"><block ref="b848fa4e9f51e80dfafcdf6a72335096" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="32d6abea376025ea0f7ec8c6f9308b3c" category="list-text">オプションのリストア後のコマンドを入力します。</block>
+  <block id="cca11b4b531700d6bb28a82315b50837" category="paragraph"><block ref="cca11b4b531700d6bb28a82315b50837" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d5580d32ca7142b15df13d2e13ce81e9" category="list-text">オプションの E メール設定を入力します。</block>
+  <block id="0364985d5dcf0fbc799a2fa2a1bdd59c" category="paragraph"><block ref="0364985d5dcf0fbc799a2fa2a1bdd59c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="52ffc18711958ea3b01ea643a536b477" category="list-text">リストア処理を開始するには、 [ 完了 ] をクリックします。</block>
+  <block id="47098cebe9eb96208f6d1d4b065cb8ae" category="paragraph"><block ref="47098cebe9eb96208f6d1d4b065cb8ae" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6ee1a75c79c794a6fb3f72e16da944d2" category="list-text">SnapCenter によってリストアおよびリカバリ処理が実行されます。この例は、リストアジョブとリカバリジョブのジョブの詳細を表示しています。</block>
+  <block id="98a8bc8cb2e94a5ec2fba5e483068459" category="paragraph"><block ref="98a8bc8cb2e94a5ec2fba5e483068459" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3a1aea2881bec87b5ce8e401ee0520bd" category="section-title">シングルテナントでのリストアおよびリカバリ処理</block>
+  <block id="3b15f0bc9024903dec7c4695e3155bf1" category="paragraph">SnapCenter 4.3 では、シングルテナントを使用する HANA MDC システム、または SnapCenter によって自動検出された複数のテナントを使用する場合に、シングルテナントのリストア処理がサポートされます。</block>
+  <block id="0fee49305acef3632abbf848b903631b" category="paragraph">シングルテナントのリストアおよびリカバリ処理は、次の手順で実行できます。</block>
+  <block id="67aa61a4ec3511ee190ecad019aeb30b" category="list-text">リストアおよびリカバリするテナントを停止します。</block>
+  <block id="81f028cbdbdc320fd192a487cbd1318f" category="list-text">SnapCenter でテナントをリストアします。</block>
+  <block id="c178ce48989ea0af333fc54437d692aa" category="list-text">プライマリストレージからリストアする場合、 SnapCenter は次の処理を実行します。</block>
+  <block id="29b2230e330fe45145e4b681e0046505" category="list-text">* NFS. * ストレージの単一ファイルの SnapRestore 操作は、テナントデータベースのすべてのファイルに対応しています。</block>
+  <block id="3eb4d46bdff6451fbb6f87bb525d3990" category="list-text">* SAN. * LUN のクローンを作成してデータベースホストに接続し、テナント・データベースのすべてのファイルをコピーします。</block>
+  <block id="22e20de0bb4a90e80400ce852271e09d" category="list-text">セカンダリストレージからリストアする場合、 SnapCenter は次の処理を実行します。</block>
+  <block id="4b31581f309cafd79125e4e1b91cace2" category="list-text">* nfs.* テナントデータベースのすべてのファイルに対する Storage SnapVault リストア処理</block>
+  <block id="a521a7d1f76af7e97146a07a31abc8cb" category="list-text">* SAN. * LUN のクローンを作成してデータベースホストに接続し、テナント・データベースのすべてのファイルをコピーします</block>
+  <block id="50d522157f7a37b456e3d91c1c819dd9" category="list-text">HANA Studio 、 Cockpit 、または SQL ステートメントを使用してテナントをリカバリします。</block>
+  <block id="3005119988432d4e45739c1d44b4b034" category="paragraph">このセクションでは、自動検出された HANA システム SM1 （ SAP HANA シングルホスト、 MDC マルチテナントシステム、 NFS を使用）のプライマリストレージからリストアとリカバリの処理を実行する手順を説明します。ユーザ入力の観点では、ファイバチャネル SAN の設定でセカンダリまたはリストアを実行する場合のワークフローは同じです。</block>
+  <block id="aed89660dbd87e3983762091fef0d51a" category="list-text">テナントデータベースを停止します。</block>
+  <block id="ff6ee481d440eabd7741c0967d48601f" category="paragraph"><block ref="ff6ee481d440eabd7741c0967d48601f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2fcbdfe66c07526cffaebe5176545c9c" category="list-text">リストアするテナントを選択します。</block>
+  <block id="19f018bc36fc350470a0498d5854069c" category="admonition">SnapCenter に、選択したバックアップに含まれるすべてのテナントのリストが表示されます。</block>
+  <block id="f82d0e7392b2d6527f3c77e739ae792c" category="paragraph"><block ref="f82d0e7392b2d6527f3c77e739ae792c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e1a46d5de522291f70c781fccedfcc60" category="paragraph">シングルテナントリカバリは、 SnapCenter 4.3 ではサポートされていません。リカバリは事前に選択されておらず、変更することはできません。</block>
+  <block id="e07eff7c3825d4265feb2f97e654375a" category="paragraph"><block ref="e07eff7c3825d4265feb2f97e654375a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c6056308b48907a412faf4a7dab3b28b" category="paragraph"><block ref="c6056308b48907a412faf4a7dab3b28b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="720dfcaa32518593ec523932ae9faea2" category="list-text">オプションのリストア後のコマンドを入力します。</block>
+  <block id="c01a6cd54715131f42eaad51761fc23c" category="paragraph"><block ref="c01a6cd54715131f42eaad51761fc23c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a81bb6b67295fd0c563774a83df913d4" category="paragraph"><block ref="a81bb6b67295fd0c563774a83df913d4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a603a6fab234ebc56cc26ab98688a0d5" category="paragraph"><block ref="a603a6fab234ebc56cc26ab98688a0d5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6a6e8b779757b9f75738fb3b86a61fcc" category="paragraph">リストア処理は SnapCenter によって実行されます。この例は、リストアジョブのジョブの詳細を表示します。</block>
+  <block id="bd6918e547d91c8bd603faf0218a1dce" category="paragraph"><block ref="bd6918e547d91c8bd603faf0218a1dce" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="40db8443209e5d3afbdca4a942d06143" category="admonition">テナントのリストア処理が終了すると、テナントに関連するデータのみがリストアされます。HANA データベースホストのファイルシステムで、リストアしたデータファイルとテナントの Snapshot バックアップ ID ファイルを使用できます。</block>
+  <block id="68bfc883e6b2855ddff9fdf06b94ce9b" category="list-text">HANA Studio でリカバリを開始します。</block>
+  <block id="e41b0a4b6db7999806fdfb6252b6c27e" category="paragraph"><block ref="e41b0a4b6db7999806fdfb6252b6c27e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b6845cbdd15d7a33174052df7502cf32" category="list-text">テナントを選択します。</block>
+  <block id="754d8e89709cc2c65b923529252083ec" category="paragraph"><block ref="754d8e89709cc2c65b923529252083ec" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cd8d493931d8670a43b07123d359a209" category="list-text">リカバリのタイプを選択します。</block>
+  <block id="0b3223884f68e15aad421bc1b8f5c153" category="paragraph"><block ref="0b3223884f68e15aad421bc1b8f5c153" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d37bdebf1b32778793a7b4b9e33bd5ec" category="list-text">バックアップカタログの場所を指定します。</block>
+  <block id="7f03f5baaddf1cadc8d7688813620094" category="paragraph"><block ref="7f03f5baaddf1cadc8d7688813620094" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="45d57c297fb91a30f186b33d5582b27d" category="paragraph"><block ref="45d57c297fb91a30f186b33d5582b27d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f4510f249d028c44410fdab09af35950" category="paragraph">バックアップカタログ内で、リストアされたバックアップが緑のアイコンで強調表示されます。外部バックアップ ID には、 SnapCenter で以前に選択されたバックアップ名が表示されます。</block>
+  <block id="65a02326980287a87e65dd25667b806c" category="list-text">緑のアイコンが表示されたエントリを選択し、次へをクリックします。</block>
+  <block id="ace1946cccf5545388777545ade6cd57" category="paragraph"><block ref="ace1946cccf5545388777545ade6cd57" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="eadda446e15d20ede6c5e18fd7d399ea" category="list-text">ログのバックアップ先を指定します。</block>
+  <block id="5b890196c319bb8a5d2cfb8c327e26f6" category="paragraph"><block ref="5b890196c319bb8a5d2cfb8c327e26f6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="89f845c54b2f3c2aa34761748971067c" category="list-text">必要に応じて、他の設定を選択します。</block>
+  <block id="9e15d79d09ec746cecf51f6fce2a3dfc" category="paragraph"><block ref="9e15d79d09ec746cecf51f6fce2a3dfc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="aed1891a9c84b2d526253a84689579ac" category="list-text">テナントのリカバリ処理を開始します。</block>
+  <block id="f264c7c6c7e98652837d9578d7fef1bd" category="paragraph"><block ref="f264c7c6c7e98652837d9578d7fef1bd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d723d966832e0b1bf1c67df78ba5d755" category="paragraph"><block ref="d723d966832e0b1bf1c67df78ba5d755" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f084a541788261dbb4ec0e6e892dadd4" category="section-title">手動リカバリによるリストア</block>
+  <block id="d308f035c60fda2ed0568cf9debd2c56" category="paragraph">SAP HANA Studio および SnapCenter を使用して SAP HANA MDC のシングルテナントシステムをリストアおよびリカバリするには、次の手順を実行します。</block>
+  <block id="618a329b4db7b150870ca98e5ed89642" category="list-text">システムデータベースのリカバリを選択し、 SAP HANA システムのシャットダウンを確認します。</block>
+  <block id="d435bb1a0709a5ac7a8cec5e0ef65067" category="list-text">データバックアップのリストが表示されます。外部バックアップ ID を表示するには、 Backup を選択します。</block>
+  <block id="7d5036f83c8d6e0bca40d1ddb23b8cd9" category="list-text">SnapCenter でリストアプロセスを実行します。</block>
+  <block id="109cf94e2e1d899c5cbe0ba9432f3db7" category="list-text">リソースのトポロジビューで、オフサイトのバックアップストレージからリストアする場合は、プライマリストレージまたはバックアップコピーからリストアするローカルコピーを選択します。</block>
+  <block id="66c736ed388a6ff23e9e306d983030d0" category="list-text">SAP HANA Studio の外部バックアップの ID またはコメントフィールドと一致する SnapCenter バックアップを選択します。</block>
+  <block id="eaea15be3b6bcfaa466a7e8c5adb9432" category="list-text">リストアプロセスを開始します。</block>
+  <block id="0b851616fd46128f20c0da790ae82f05" category="admonition">プライマリストレージからボリュームベースのリストアを選択した場合は、リストアプロセスの完了後に、すべての SAP HANA データベースホストからデータボリュームをアンマウントして再度マウントする必要があります。</block>
+  <block id="0f47974782affac68b494486493475f1" category="admonition">FC を使用する SAP HANA マルチホスト環境では、データベースのシャットダウンと起動のプロセスの一環として、 SAP HANA ネームサーバによってアンマウントとマウントの処理が実行されます。</block>
+  <block id="f8a1017f1d573176e0c09b77e9411ef5" category="list-text">リカバリプロセスを開始します。リカバリプロセスが完了すると、システムデータベースが起動します。</block>
+  <block id="c300d3adad469f758c239ac69abd59c2" category="paragraph">データバックアップのリストが表示されます。データボリュームはすでにリストアされているため、テナントのバックアップは使用可能（緑）と表示されます。</block>
+  <block id="1b0bc5dfa3c59bd3282488a100771bec" category="list-text">このバックアップを選択し、リカバリプロセスを開始します。リカバリプロセスが完了すると、テナントデータベースが自動的に起動します。</block>
+  <block id="655fdebc6400cdd5b7b6039edcc5ef91" category="paragraph">次のセクションでは、手動で設定した HANA システム SS2 （ SAP HANA シングルホスト、 NFS を使用した MDC マルチテナントシステム）のリストア処理とリカバリ処理の手順について説明します。</block>
+  <block id="6e07aa49ce0f008266e457437bf58618" category="list-text">SAP HANA Studio で、 Recover System Database オプションを選択して、システムデータベースのリカバリを開始します。</block>
+  <block id="6b69d4d16cfbdae168df2330b4a00d66" category="paragraph"><block ref="6b69d4d16cfbdae168df2330b4a00d66" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="da60453971d7812f926c6d4dd8faedfc" category="list-text">[OK] をクリックして、 SAP HANA データベースをシャットダウンします。</block>
+  <block id="376c6ccc70cbf4b0b208d71b7a874cba" category="paragraph"><block ref="376c6ccc70cbf4b0b208d71b7a874cba" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7ad42396d12d80544d9b21a4a3f94969" category="paragraph">SAP HANA システムがシャットダウンし、リカバリウィザードが起動します。</block>
+  <block id="fec63c1f56c1bb60239b0fac267e48c3" category="paragraph"><block ref="fec63c1f56c1bb60239b0fac267e48c3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3f845999bcd0010621bbc1e06abdc871" category="paragraph"><block ref="3f845999bcd0010621bbc1e06abdc871" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="539b55bfbf4e9a12b0b79e9c7f2264a2" category="list-text">バックアップカタログの内容に基づいて、使用可能なバックアップのリストが表示されます。必要なバックアップを選択し、外部バックアップ ID をメモします。この例では、最新バックアップを選択します。</block>
+  <block id="ade32fcefc5a617e7648e16368b03591" category="paragraph"><block ref="ade32fcefc5a617e7648e16368b03591" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7f22d467d3abf924a1d98481cc16a84c" category="admonition">NFS を使用する SAP HANA マルチホストシステムの場合は、各ホスト上のすべてのデータボリュームをアンマウントする必要があります。</block>
+  <block id="0a979fbdc691405e2ecf3f21f214f1d5" category="admonition">FC を使用する SAP HANA マルチホストセットアップでは、シャットダウンプロセスの一環として、 SAP HANA ネームサーバによってアンマウント処理が実行されます。</block>
+  <block id="0c0d64691714ab24aa54c51efccdbaf9" category="list-text">SnapCenter の GUI で、リソーストポロジビューを選択し、リストアするバックアップを選択します。この例では、最新のプライマリバックアップを選択します。リストアアイコンをクリックして、リストアを開始します。</block>
+  <block id="d4253d284b25f4023523dbf228abb40d" category="paragraph"><block ref="d4253d284b25f4023523dbf228abb40d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2504fb5831fc57db27b887bf63f0887a" category="paragraph">SnapCenter リストアウィザードが起動します。</block>
+  <block id="ad1e706a026bae5fa0e49279c3661115" category="list-text">リストア・タイプとして ［ 完全なリソース ］ または ［ ファイル・レベル ］ を選択します</block>
+  <block id="2b846cc0556dd02047bdbfb3e0f57de1" category="paragraph">ボリュームベースのリストアを使用するには、 [ リソース全体 ] を選択します。</block>
+  <block id="48bcc26aeadab5b533cec2ab472453cc" category="paragraph"><block ref="48bcc26aeadab5b533cec2ab472453cc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d14d0f2038e3d915b3534446ed6e080f" category="list-text">すべてのファイルに単一ファイルの SnapRestore 操作を使用するには、 [ ファイルレベルとすべて ] を選択します。</block>
+  <block id="b4aa9d41c5fc0b49d5e4838000060a4d" category="paragraph"><block ref="b4aa9d41c5fc0b49d5e4838000060a4d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="14e6373421e10742a1dd56374e1ba0fa" category="admonition">SAP HANA マルチホストシステムのファイルレベルのリストアを実行する場合は、すべてのボリュームを選択します。</block>
+  <block id="ae0cd9baf38fe21250ab26eef3052608" category="paragraph"><block ref="ae0cd9baf38fe21250ab26eef3052608" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7da7c0b60e307362a8634d684b76af4f" category="list-text">（オプション）中央の HANA プラグインホストで実行されている SAP HANA プラグインから実行するコマンドを指定します。次へをクリックします。</block>
+  <block id="c66600e9823ed4cd195de54444cd4a5e" category="paragraph"><block ref="c66600e9823ed4cd195de54444cd4a5e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5330486ca6a97bf88a80230a772af6d0" category="list-text">オプションのコマンドを指定し、次へをクリックします。</block>
+  <block id="b2fe1818d2617c8c138dc1ab057fb40f" category="paragraph"><block ref="b2fe1818d2617c8c138dc1ab057fb40f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fed1b6603cc6dfe60b19cf287b1aa459" category="list-text">通知設定を指定して、 SnapCenter からステータス E メールとジョブログを送信できるようにします。次へをクリックします。</block>
+  <block id="69bfb5083e6f094aab5214246e4290c8" category="paragraph"><block ref="69bfb5083e6f094aab5214246e4290c8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c261785ed15600658e731fc1cec9fdba" category="list-text">概要を確認し、 [ 完了 ] をクリックしてリストアを開始します。</block>
+  <block id="2c638b5e5945c1522edcbdf5b741009a" category="paragraph"><block ref="2c638b5e5945c1522edcbdf5b741009a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d63984aae331b3071efc01231ee47359" category="list-text">リストアジョブが開始され、アクティビティペインのログ行をダブルクリックするとジョブログが表示されます。</block>
+  <block id="671088d78cc6f3bf58603a3904b02fe0" category="paragraph"><block ref="671088d78cc6f3bf58603a3904b02fe0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bac336278522062d883ec24dccefbb40" category="list-text">リストアプロセスが完了するまで待ちます。各データベースホストで、すべてのデータボリュームをマウントします。この例では、データベースホスト上で再マウントが必要なボリュームは 1 つだけです。</block>
+  <block id="3e0dee0ba4ab61927ece723410ce2c21" category="list-text">SAP HANA Studio に移動し、 Refresh をクリックして、使用可能なバックアップのリストを更新します。SnapCenter でリストアされたバックアップは、バックアップのリストに緑のアイコンで表示されます。バックアップを選択し、 Next （次へ）をクリックします。</block>
+  <block id="5fe30b019ee638caf39a9c42d87c52db" category="paragraph"><block ref="5fe30b019ee638caf39a9c42d87c52db" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cb2afe0f8bbc88dc4c35c0ec3f5e1307" category="paragraph"><block ref="cb2afe0f8bbc88dc4c35c0ec3f5e1307" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ba9625087d6a59df7940cf67ab8cf2b1" category="paragraph"><block ref="ba9625087d6a59df7940cf67ab8cf2b1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="656bd50171abea9a3d8f8d6f52698dec" category="paragraph"><block ref="656bd50171abea9a3d8f8d6f52698dec" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4f00ff1613c2d30b52cf14b82d65ebea" category="paragraph"><block ref="4f00ff1613c2d30b52cf14b82d65ebea" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="54b5a6f76ec5eeef36ab37e5bc55ae5f" category="list-text">SAP HANA Studio で、システムデータベースのエントリを選択し、 Backup Recovery - Recover Tenant Database を開始します。</block>
+  <block id="008bea9a6c4554854550fa54e95efdca" category="paragraph"><block ref="008bea9a6c4554854550fa54e95efdca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6b0f121960c1e9d79cdeb1fcb88928ca" category="paragraph"><block ref="6b0f121960c1e9d79cdeb1fcb88928ca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c4073931147c00ec5f434c7e836899a6" category="paragraph"><block ref="c4073931147c00ec5f434c7e836899a6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="84a36ad71766c1efcba8cd0136d51313" category="paragraph"><block ref="84a36ad71766c1efcba8cd0136d51313" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="531c786c41e25cd36a83d71d5909f5a9" category="paragraph"><block ref="531c786c41e25cd36a83d71d5909f5a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9c98b915d8b8e49f33ff3f40cace1a90" category="list-text">システムデータベースのリカバリ前にデータボリュームのリストアが実行されたため、テナントバックアップをすぐに使用できます。緑色でハイライトされたバックアップを選択し、次へをクリックします。</block>
+  <block id="758de12311c943ec3ecf52b9f7f46243" category="paragraph"><block ref="758de12311c943ec3ecf52b9f7f46243" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="516652a58ddf93e58ac6826ffc610f10" category="paragraph"><block ref="516652a58ddf93e58ac6826ffc610f10" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="44dfcf6a49afa1a6d74341fdef2bb22d" category="paragraph"><block ref="44dfcf6a49afa1a6d74341fdef2bb22d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7b9df94ba8b60c4a350fec11164837ec" category="paragraph"><block ref="7b9df94ba8b60c4a350fec11164837ec" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ecbaf8bacd5aac09d9c6dd4bc3cb29c6" category="paragraph"><block ref="ecbaf8bacd5aac09d9c6dd4bc3cb29c6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="96520d7a480e70c8e9a8a478e649b690" category="admonition">複数のテナントを使用する SAP HANA MDC システムの場合は、テナントごとに手順 20~29 を繰り返す必要があります。</block>
+  <block id="2ed1e06064af3a97128046b6a324819e" category="inline-link-macro">次に、高度な設定と調整を行います。</block>
+  <block id="374b2bf6a54a2ff489d52c9a3894d37c" category="paragraph"><block ref="374b2bf6a54a2ff489d52c9a3894d37c" category="inline-link-macro-rx"></block></block>
+  <block id="42f56db89b1fd3446a0dc17a48ffcd56" category="summary">このページでは、設定と調整を完了するために必要なさまざまな操作について説明します。</block>
+  <block id="74555398f6732868f7098c16987eaf1d" category="doc">高度な設定と調整</block>
+  <block id="e83d6fb61325a7a54df5892db9d00c57" category="paragraph"><block ref="e83d6fb61325a7a54df5892db9d00c57" category="inline-link-macro-rx"></block></block>
+  <block id="ebd54efb13a29a91ee18444b4b588e62" category="paragraph">このセクションでは、 SnapCenter の設定を特定のニーズに合わせるためにお客様が使用できる設定および調整オプションについて説明します。すべての設定がすべてのお客様のシナリオに適用されるわけではありません。</block>
+  <block id="b36025dbf19c7d418acc927e3eff5726" category="section-title">HANA データベースとのセキュアな通信を有効にします</block>
+  <block id="2c26782380d64762dbb9ff64ff38f98d" category="paragraph">HANA データベースにセキュアな通信が設定されている場合、 SnapCenter によって実行される「 hdbsql 」コマンドでは、追加のコマンドラインオプションを使用する必要があります。これは、必要なオプションを指定して「 hdbsql 」を呼び出すラッパースクリプトを使用して実現できます。</block>
+  <block id="87a9192bcd59daed56e382d8005bcc6b" category="admonition">SSL 通信を設定するには、さまざまなオプションがあります。次の例では、コマンドラインオプションを使用して最も単純なクライアント設定について説明します。この場合、サーバ証明書の検証は行われません。サーバー側またはクライアント側で証明書の検証が必要な場合は、 hdbsql コマンドラインオプションを変更する必要があります。また、『 SAP HANA Security Guide 』の説明に従って、 PSE 環境を設定する必要があります。</block>
+  <block id="1c9ce72e23307b41eeb8bb0dcd7098af" category="paragraph">hana.properties` ファイルで「 hdbsql 」実行可能ファイルを設定する代わりに、ラッパースクリプトが追加されます。</block>
+  <block id="018c7398ef29574d14d403bf93e4fed2" category="paragraph">SnapCenter Windows サーバ上の中央 HANA プラグインホストの場合、「 C ： \Program Files\NetApp\SnapManager \Snapcenter Plug-in Creator\etc\hana.properties` 」に次のコンテンツを追加する必要があります。</block>
+  <block id="15cea5f6ffeca8d29ba6f7f5fc724f97" category="paragraph">ラッパースクリプト「 hdbsql-ssl.cmd 」は、必要なコマンドラインオプションを指定して「 hdbsql.exe 」を呼び出します。</block>
+  <block id="46113eeca61d4e4139d8d0796e2e1b04" category="admonition">-e-ssltrustcert'hdbsql コマンドライン・オプションは 'SSL が有効になっていない HANA システムでも機能しますそのため、すべての HANA システムで SSL が有効または無効になっているわけではなく、このオプションを中央の HANA プラグインホストでも使用できます。</block>
+  <block id="6de64d0d2282b0e94a128ee5bf587633" category="paragraph">HANA プラグインが個々の HANA データベースホストに導入されている場合は、それに応じて各 Linux ホストで設定を行う必要があります。</block>
+  <block id="29cfdb64fd85feafbf4960346572109a" category="paragraph">ラッパースクリプト「 hdbsqls 」は、必要なコマンドラインオプションを指定して「 hdbsql 」を呼び出します。</block>
+  <block id="76a5f251ab6965b0373df9022a38f5b0" category="section-title">HANA プラグインホストで自動検出を無効にします</block>
+  <block id="4ba643eff563a3bd70a8c2792ade9cc9" category="paragraph">HANA プラグインホストで自動検出を無効にするには、次の手順を実行します。</block>
+  <block id="3ed13fae46d0e665d580e7feffb0d68f" category="list-text">SnapCenter サーバで、 PowerShell を開きます。「 Open-SmConnectコネクション 」コマンドを実行して SnapCenter サーバに接続し、最初のログインウィンドウでユーザ名とパスワードを指定します。</block>
+  <block id="62b41927ef5b42e34a666d7e1082c90c" category="list-text">自動検出をディセーブルにするには、「 Set-SmConfigSettings 」コマンドを実行します。</block>
+  <block id="51c124ef9e356b1262d5226b5c08f378" category="paragraph">HANA ホストの「 HANA -2' 」の場合、このコマンドは次のようになります。</block>
+  <block id="e9caa0a68efba627b98862415aa3c29c" category="list-text">「 Get-SmConfigSettings 」コマンドを実行して、設定を確認します。</block>
+  <block id="a2fb1fe6f4b2f8a92a01bd85ef7d2568" category="paragraph">構成はホスト上のエージェント構成ファイルに書き込まれ、 SnapCenter によるプラグインのアップグレード後も引き続き使用できます。</block>
+  <block id="9e6eeb9d8e52bff7eee430478f3139b2" category="section-title">ログバックアップの自動削除を非アクティブ化します</block>
+  <block id="406b242a0620f29e2f7ecdc0b3c49c48" category="paragraph">ログバックアップの不要ファイルの削除はデフォルトで有効になっており、 HANA プラグインのホストレベルで無効にすることができます。これらの設定を変更するには、 2 つのオプションがあります。</block>
+  <block id="c0685bfe05c38d580ee61881c0233cfc" category="section-title">hana.property ファイルを編集します</block>
+  <block id="f3c9376d1332a956f0c0ed748ea89162" category="paragraph">hana.property` 構成ファイルのパラメータ log_cleanup_disable=Y' を指定すると ' この SAP HANA プラグイン・ホストを通信ホストとして使用して ' すべてのリソースのログ・バックアップ・ハウスキーピングが無効になります</block>
+  <block id="68caa1c9492156e7687e551e3e2392b8" category="list-text">Windows 上の Hdbsql 通信ホストの場合、「 hana.property` 」ファイルは C:\Program Files\NetApp\SnapCenter \Snapcenter Plug-in Creator\etc にあります。</block>
+  <block id="0c1bf009e7852817f75c886fb2271ab4" category="list-text">Linux 上の Hdbsql 通信ホストの場合、「 hana.property` 」ファイルは「 /opt/NetApp/snapcenter /sscc /etc 」にあります。</block>
+  <block id="ec202ab85e35217db2f5aefeee86d896" category="section-title">PowerShell コマンドを使用します</block>
+  <block id="7465bc608b7ba8996b13823af509a13b" category="paragraph">2 つ目のオプションでは、 SnapCenter PowerShell コマンドを使用します。</block>
+  <block id="a0045b25b946141fdf79a4f4be908511" category="list-text">SnapCenter サーバで、 PowerShell を開きます。「 Open-SmConnection 」コマンドを使用して SnapCenter サーバに接続し、最初のログインウィンドウでユーザ名とパスワードを指定します。</block>
+  <block id="3763f544e62c64c495333749f419f9c7" category="list-text">「 Set-SmConfigSettings-Plugin-hostname &lt;pluginhostname&gt;-PluginCode HANA -configSettings@{"log_cleanup_disable"="Y"}" 」コマンドを使用すると、 IP またはホスト名で指定した SAP HANA プラグインホスト「 &lt;plughostname&gt; 」に変更が設定されます（次の図を参照）。</block>
+  <block id="afa3b79060b04c55d1ccac64ed4b54ee" category="paragraph"><block ref="afa3b79060b04c55d1ccac64ed4b54ee" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f81644ea080b8fea97ed792373fba735" category="section-title">仮想環境で SAP HANA プラグインを実行する際の警告を無効にします</block>
+  <block id="fd16e3a17c275b721a8f1bca54a6e738" category="paragraph">SnapCenter は、 SAP HANA プラグインが仮想環境にインストールされているかどうかを検出します。これは、パブリッククラウドプロバイダでの VMware 環境や SnapCenter 環境の場合があります。この場合、次の図に示すように、ハイパーバイザーの設定に関する警告が SnapCenter に表示されます。</block>
+  <block id="dbc51e54d901bd82b0ada5450fb2532f" category="paragraph">この警告をグローバルに抑制することができます。この場合、 SnapCenter は仮想環境を認識しないため、警告は表示されません。</block>
+  <block id="4f12b39de0379b54307e19e7b392caf6" category="paragraph">この警告を抑制するように SnapCenter を設定するには、次の設定を適用する必要があります。</block>
+  <block id="e8677b2957270cfbd602c7fcd2b1a0b3" category="list-text">[ 設定 ] タブで、 [ グローバル設定 ] を選択します。</block>
+  <block id="3e9cb21d308ff815d97bb64f89c45e89" category="list-text">ハイパーバイザー設定で、すべてのホストに対して VM に iSCSI Direct Attached Disks または NFS を選択し、設定を更新します。</block>
+  <block id="5f4d4ed23c9791414298c9fee2cfa796" category="paragraph"><block ref="5f4d4ed23c9791414298c9fee2cfa796" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c5326c28a7f793eb7b9177f94a4a22f3" category="section-title">オフサイトのバックアップストレージとのバックアップ同期のスケジュール頻度を変更します</block>
+  <block id="898a36ba79f0029f3604d6260d953a97" category="inline-link-macro">「セカンダリ・ストレージでのバックアップの保持管理」</block>
+  <block id="ecaf1a318fab8eee654c5023aeac5d85" category="paragraph">を参照してください <block ref="91b9cafba11ac3466c041781f72e25d3" category="inline-link-macro-rx"></block> オフサイトのバックアップストレージへのデータバックアップの保持管理は ONTAP で行います。SnapCenter は、週次のデフォルトスケジュールを設定してクリーンアップジョブを実行することにより、オフサイトのバックアップストレージで ONTAP がバックアップを削除したかどうかを定期的にチェックします。</block>
+  <block id="1a397f708626e53066445f8b0a45ae95" category="paragraph">SnapCenter のクリーンアップジョブでは、オフサイトのバックアップストレージで削除したバックアップが見つかった場合に、 SnapCenter リポジトリおよび SAP HANA のバックアップカタログからバックアップが削除されます。</block>
+  <block id="b6256d5acf0a237a2bfb99c200a47e59" category="paragraph">クリーンアップジョブは、不要な SAP HANA ログバックアップの削除も実行します。</block>
+  <block id="c5b91a93b82ebe45816f5f5af37f3c7a" category="paragraph">スケジュールされたこのクリーンアップが完了するまでの間、 SAP HANA と SnapCenter では、オフサイトのバックアップストレージからすでに削除されたバックアップが引き続き表示されることがあります。</block>
+  <block id="b796643f0612d9fabdcee75233e699f9" category="admonition">その結果、オフサイトのバックアップストレージ上の対応するストレージベースの Snapshot バックアップがすでに削除されている場合でも、ログバックアップが新たに保持されることがあります。</block>
+  <block id="2971e00ac834523ed205d9baba4a1ec9" category="paragraph">次のセクションでは、この一時的な不一致を回避する 2 つの方法について説明します。</block>
+  <block id="3441a12e5d3e26f5680c6227809710fa" category="section-title">リソースレベルの手動更新</block>
+  <block id="26b8c598da47c7623949a9b89a388603" category="paragraph">リソースのトポロジビューでは、次のスクリーンショットに示すように、セカンダリバックアップを選択する際に、 SnapCenter によってオフサイトのバックアップストレージにバックアップが表示されます。SnapCenter は、更新アイコンを使用してクリーンアップ処理を実行し、このリソースのバックアップを同期します。</block>
+  <block id="cf6d55b1760d788825d606d9db51ad0f" category="paragraph"><block ref="cf6d55b1760d788825d606d9db51ad0f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fcca844280c97b2c08b17bca95637969" category="section-title">SnapCenter クリーンアップジョブの頻度を変更します</block>
+  <block id="2811d2a8313b7bec58816678a8b1bcc5" category="paragraph">SnapCenter は、 Windows タスクのスケジュールメカニズムを使用して、すべてのリソースに対してデフォルトでクリーンアップジョブ「 SnapCenter _ RemoveSecondaryBackup 」を毎週実行します。これは、 SnapCenter PowerShell コマンドレットを使用して変更できます。</block>
+  <block id="3f13831740463d1bd3841266c795f77f" category="list-text">SnapCenter サーバで PowerShell コマンドウィンドウを起動します。</block>
+  <block id="bf8c868a75dd9be9a0b1995f9695010e" category="list-text">SnapCenter サーバへの接続を開き、ログインウィンドウに SnapCenter 管理者のクレデンシャルを入力します。</block>
+  <block id="f4d6c7b45141bdd9d5a58c456296c633" category="paragraph"><block ref="f4d6c7b45141bdd9d5a58c456296c633" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ed0087c23be9dead570ee81bfe67fc40" category="list-text">スケジュールを週単位から日単位に変更するには、「 Set-SmSchedule 」コマンドレットを使用します。</block>
+  <block id="e83c1ad6099cb59a650eabeabfcc6675" category="list-text">Windows タスクスケジューラでジョブのプロパティを確認できます。</block>
+  <block id="f4b376e977a71ba2f7aad654fb2ec562" category="paragraph"><block ref="f4b376e977a71ba2f7aad654fb2ec562" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3b8bd3befee91f6ab5f2aa44d056be9f" category="paragraph"><block ref="3b8bd3befee91f6ab5f2aa44d056be9f" category="inline-link-macro-rx"></block></block>
+  <block id="fcef096381705d4bcfa467d40d0b387f" category="summary">ここでは、 SS2 および SS1 の 2 つの設定例の設定手順について説明します。</block>
+  <block id="70301bf4b26989d57e0885606679e051" category="doc">SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成</block>
+  <block id="544a4d83c38c650a3639da0e117460d3" category="inline-link-macro">前のバージョン： SnapCenter の初期設定。</block>
+  <block id="a6dc3f6dbb25d70ce9b0a6084d9eed66" category="paragraph"><block ref="a6dc3f6dbb25d70ce9b0a6084d9eed66" category="inline-link-macro-rx"></block></block>
+  <block id="f4e81e10f3cb525298be194aea42006f" category="paragraph">ここでは、 2 つの設定例の設定手順について説明します。</block>
+  <block id="fa965a3de49a71b6a12a753401775293" category="list-text">* SS2.*</block>
+  <block id="51c290b5b5c894a2107decea434365ad" category="list-text">ストレージアクセスに NFS を使用するシングルホスト SAP HANA MDC のシングルテナントシステム</block>
+  <block id="e88fef62277e0a1c147f21e0c953ba8b" category="list-text">リソースは SnapCenter で手動で設定されます。</block>
+  <block id="60b65c3fbea29f8def663cc21aafc582" category="list-text">リソースは、週単位のファイルベースのバックアップを使用して、 SAP HANA データベースのローカル Snapshot バックアップを作成し、ブロック整合性チェックを実行するように設定されています。</block>
+  <block id="255aad876f85e1c18a9907724b93daaa" category="list-text">* SS1.*</block>
+  <block id="8bc72a7150e59210f0b5463bb10e30a3" category="list-text">リソースは SnapCenter で自動検出されます。</block>
+  <block id="fc1ac30a53328dfb93dca9f7139b843b" category="list-text">リソースは、ローカル Snapshot バックアップを作成し、 SnapVault を使用してオフサイトのバックアップストレージにレプリケートし、週 1 回のファイルベースのバックアップを使用して SAP HANA データベースのブロック整合性チェックを実行するように設定されます。</block>
+  <block id="66fe6c9b122286cf99f5f0138b0fa347" category="paragraph">SAN 接続、シングルコンテナ、またはマルチホストシステムの違いは、対応する設定またはワークフローの手順に反映されます。</block>
+  <block id="bdb4ca864f28f4d4427e31fe3874148a" category="section-title">SAP HANA のバックアップユーザと hdbuserstore の設定を指定します</block>
+  <block id="51f52a019fed97257139db81ad9f7174" category="paragraph">SnapCenter でバックアップ処理を実行するには、 HANA データベースに専用のデータベースユーザを設定することを推奨します。2 番目の手順では、このバックアップユーザ用に SAP HANA ユーザストアキーが設定され、このユーザストアキーは SnapCenter SAP HANA プラグインの構成で使用されます。</block>
+  <block id="fe6f69e0a2ecafbdaceb1719bf9a1a88" category="paragraph">次の図は、バックアップユーザの作成に使用できる SAP HANA Studio を示しています。</block>
+  <block id="d485cbfafcf67fe0af5fc6229e56b0f4" category="admonition">必要な権限は、 HANA 2.0 SPS5 リリースで変更されています。 backup admin 、 catalog read 、 database backup admin 、および database recovery operator以前のリリースの場合は、バックアップ管理者とカタログの読み取りで十分です。</block>
+  <block id="9d52a4754b65c174f47d3aa970f06493" category="admonition">SAP HANA MDC システムの場合は、システムデータベース内にユーザを作成する必要があります。これは、システムデータベースを使用してシステムとテナントデータベースのバックアップコマンドがすべて実行されるためです。</block>
+  <block id="527757ca4c572af9efab2277e7c4ac6b" category="paragraph"><block ref="527757ca4c572af9efab2277e7c4ac6b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="840539751269be4e3753202d7662d8cb" category="paragraph">SAP HANA プラグインと SAP hdbsql クライアントがインストールされている HANA プラグインホストで、 userstore キーを設定する必要があります。</block>
+  <block id="38cb77d0df57e3dda9aa8b654ad92b4f" category="section-title">中央の HANA プラグインホストとして使用される SnapCenter サーバでのユーザストア設定</block>
+  <block id="bbdc83bcbc051a80322ec102a572ecdc" category="paragraph">SAP HANA プラグインと SAP hdbsql クライアントが Windows にインストールされている場合、ローカルシステムユーザーは hdbsql コマンドを実行し、デフォルトでリソース設定に設定されます。システムユーザはログオンユーザではないため、ユーザストア設定は別のユーザと「 -u &lt;User&gt;` 」オプションを使用して行う必要があります。</block>
+  <block id="b8da6948ade523d68e8ab7b8ed12826c" category="admonition">まず、 SAP HANA hdbclient ソフトウェアを Windows ホストにインストールする必要があります。</block>
+  <block id="a17a29a466ce49e9669ffdefbae9c596" category="section-title">Central HANA プラグインホストとして使用される別の Linux ホストでのユーザストア設定</block>
+  <block id="8aa0bd3330a87f410cbc39982f1764fc" category="paragraph">SAP HANA プラグインと SAP hdbsql クライアントが別の Linux ホストにインストールされている場合は、リソース設定で定義されているユーザのストア設定に次のコマンドが使用されます。</block>
+  <block id="2d952d2344e9646adbf709d2cf78e6e7" category="admonition">まず、 SAP HANA hdbclient ソフトウェアを Linux ホストにインストールする必要があります。</block>
+  <block id="fa5bf57daa02a0d0988c9193381f807d" category="section-title">HANA データベースホスト上のユーザストア設定</block>
+  <block id="5f01f23853abc5e513d49be8a5cdd096" category="paragraph">SAP HANA プラグインが HANA データベースホストに導入されている場合、ユーザストア設定には次のコマンドが使用されます。ユーザ名は「 sid&gt;adm 」です。</block>
+  <block id="5b7ab301f58dc658ec70494a737f828e" category="admonition">SnapCenter は、「 &lt;sid&gt;adm 」ユーザを使用して HANA データベースと通信します。したがって、ユーザストアキーは、データベースホスト上の &lt;%sid&gt;adm` ユーザを使用して設定する必要があります。</block>
+  <block id="cd4a470aff3703c885ad99676d16055d" category="admonition">通常、 SAP HANA hdbsql クライアントソフトウェアは、データベースサーバのインストールと一緒にインストールされます。そうでない場合は、先に hdbclient をインストールする必要があります。</block>
+  <block id="0e9fced583a2d6b1c7784b81ef75e850" category="section-title">ユーザストアの構成は、 HANA システムのアーキテクチャに応じて異なります</block>
+  <block id="3a5b6e126b997f5aebdba1d196187326" category="paragraph">SAP HANA MDC のシングルテナント構成では、ポート「 3 」はシステムデータベースへの SQL アクセス用の標準ポートであり、 hdbuserstore 構成で使用する必要があります。</block>
+  <block id="db9b1da043cd3d841d9c5c69e5a38292" category="paragraph">SAP HANA シングルコンテナ設定の場合、ポート「 3&lt;instanceNo&gt;15 」はインデックスサーバへの SQL アクセス用の標準ポートであり、 hdbuserstore 設定で使用する必要があります。</block>
+  <block id="a2e6b5aefaa377838317f8be8742bb37" category="paragraph">SAP HANA マルチホストを設定する場合は、すべてのホストのユーザストアキーを設定する必要があります。SnapCenter は指定された各キーを使用してデータベースへの接続を試みます。そのため、異なるホストへの SAP HANA サービスのフェイルオーバーとは独立して動作します。</block>
+  <block id="28de3e05c0a85df55248daad4cd4bac6" category="section-title">Userstore の構成例</block>
+  <block id="5c9181ed7362f81e962093c13840fab8" category="paragraph">このラボ環境では、 SAP HANA プラグインが混在した環境を使用します。HANA プラグインは、一部の HANA システムの SnapCenter サーバにインストールされ、他のシステムの個々の HANA データベースサーバに導入されます。</block>
+  <block id="1404381c698e4c5d564feda96aaa1c22" category="paragraph">* SAP HANA システム SS1 、 MDC のシングルテナント、インスタンス 00 *</block>
+  <block id="42579371c7eda99c5889fb9933e8ba4b" category="paragraph">HANA プラグインがデータベースホストに導入されている。したがって ' キーは 'ss1adm というユーザを持つデータベース・ホストで構成する必要があります</block>
+  <block id="18d71d1612c2658ba5936d6ca062329e" category="paragraph">* SAP HANA システム MS1 、マルチホスト MDC のシングルテナント、インスタンス 00 *</block>
+  <block id="c35984d6886a6387baba752af82f564d" category="paragraph">HANA マルチホストシステムの場合、 SnapCenter サーバを使用したセットアップでは、中央のプラグインホストが必要です。そのため、ユーザストア設定は SnapCenter サーバ上で行う必要があります。</block>
+  <block id="2abcd488c56140fe10bb20da77ecf642" category="section-title">オフサイトのバックアップストレージにデータ保護を設定する</block>
+  <block id="f262b6604cf3acf9374dd1fc6e754740" category="paragraph">SnapCenter でレプリケーションの更新を管理するには、データ保護関係および最初のデータ転送の設定を実行する必要があります。</block>
+  <block id="402aeb49864ee4345ff4480e7ff2588a" category="paragraph">次の図は、 SAP HANA システム SS1 用に設定された保護関係を示しています。この例では、 SVM 「 HANA プライマリ」のソースボリューム「 SS1_data_mnt00001 」が SVM 「 HANA - バックアップ」とターゲットボリューム「 SS1_data_mnt00001_dest 」にレプリケートされます。</block>
+  <block id="149e2b8a1b2b977e7d1afa6ea1f37c8c" category="admonition">SnapCenter によって SnapVault の更新がトリガーされるため、関係のスケジュールは None に設定する必要があります。</block>
+  <block id="3252f227bcecf210ad766958b1622603" category="paragraph"><block ref="3252f227bcecf210ad766958b1622603" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="16ded84606c10f7da418b0555b25ceee" category="paragraph">次の図に、保護ポリシーを示します。保護関係に使用される保護ポリシーでは、セカンダリストレージでのバックアップの保持に加え、 SnapMirror ラベルも定義されます。この例では ' 使用されているラベルは毎日 ' 保存期間は 5 に設定されています</block>
+  <block id="6bff56c4b3be3dc7ba60c4e339c4c8bc" category="admonition">作成するポリシーの SnapMirror ラベルは、 SnapCenter ポリシーの設定で定義されたラベルと一致する必要があります。詳細については、「」を参照してください<block ref="ee51005edf897b42e009cf6b9f820aee" category="inline-xref-macro-rx"></block>」</block>
+  <block id="5c5eeb863cdfc0db3f197c826e6c7455" category="admonition">オフサイトのバックアップストレージでのバックアップの保持は、ポリシーに定義され、 ONTAP によって制御されます。</block>
+  <block id="9a51e859b591440edf30e8fdddfcae38" category="paragraph"><block ref="9a51e859b591440edf30e8fdddfcae38" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b75893c9952bb9cfc6ec0d811541b0a6" category="section-title">HANA のリソースを手動で構成</block>
+  <block id="d744af4332930eba6c682765a5680759" category="paragraph">このセクションでは、 SAP HANA リソース SS2 と MS1 を手動で設定する方法について説明します。</block>
+  <block id="15c0aa9b657f3649ebe64bd584af2c69" category="list-text">SS2 は、シングルホスト MDC のシングルテナントシステムです</block>
+  <block id="68490ecb86f21230a0b2e95a70f95144" category="list-text">MS1 は、マルチホスト MDC のシングルテナントシステムです。</block>
+  <block id="64ba1f95653f9f05b4225cee464cf6e6" category="list-text">リソースタブで、 SAP HANA を選択し、 SAP HANA データベースの追加をクリックします。</block>
+  <block id="34606acaa040a93c19b426a780cd6775" category="list-text">SAP HANA データベースを設定するための情報を入力し、 Next （次へ）をクリックします。</block>
+  <block id="e81504623a071c0fa17c66d26729447f" category="paragraph">この例では、マルチテナントデータベースコンテナのリソースタイプを選択します。</block>
+  <block id="89d52188e7a1934360194af072002b49" category="admonition">HANA シングルコンテナシステムの場合は、リソースタイプとしてシングルコンテナを選択する必要があります。他の設定手順はすべて同じです。</block>
+  <block id="f0037094a0c5f8dbbf5c217dc5a1e743" category="paragraph">SAP HANA システムの場合、 SID は SS2 です。</block>
+  <block id="6985d624e8d700a19d4bf7d44d1d4b93" category="paragraph">この例の HANA プラグインホストは、 SnapCenter サーバです。</block>
+  <block id="4106a2fb2792b3f4515ec73bbc9eaf56" category="paragraph">hdbuserstore キーは、 HANA データベース SS2 用に設定されたキーと一致している必要があります。この例では、 SS2KEY です。</block>
+  <block id="bf12f52e453046f51d98f44f73281dd8" category="paragraph"><block ref="bf12f52e453046f51d98f44f73281dd8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b2079b5692480841bc273b4cd0072a29" category="admonition">SAP HANA マルチホストシステムの場合、次の図に示すように、すべてのホストの hdbuserstore キーを含める必要があります。SnapCenter は、リストの最初のキーとの接続を試行し、最初のキーが機能しない場合には、他のケースとの接続を続行します。これは、ワーカーホストとスタンバイホストを使用するマルチホストシステムで HANA フェイルオーバーをサポートするために必要です。</block>
+  <block id="d5badaa04f20d168d430eb6e3fc48884" category="paragraph"><block ref="d5badaa04f20d168d430eb6e3fc48884" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3a52386058c5416573960cfc63cd4aa9" category="list-text">ストレージシステム（ SVM ）とボリューム名に必要なデータを選択します。</block>
+  <block id="226abbe1a951f624aa6ed281bc3a97ca" category="paragraph"><block ref="226abbe1a951f624aa6ed281bc3a97ca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7202458df8d18d28c523bc7d656460e1" category="admonition">ファイバチャネル SAN 構成の場合は、 LUN も選択する必要があります。</block>
+  <block id="8983e0678721acf19955d152bb5e2447" category="admonition">SAP HANA マルチホストシステムの場合は、次の図に示すように、 SAP HANA システムのすべてのデータボリュームを選択する必要があります。</block>
+  <block id="b4c78e6307ad1fce6498d2cde5b01aa8" category="paragraph"><block ref="b4c78e6307ad1fce6498d2cde5b01aa8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a537d2b57b2da86f3595e0d4736c64bc" category="paragraph">リソース構成の概要画面が表示されます。</block>
+  <block id="74d979d66ea08432b6a8bf4dec81a84f" category="list-text">Finish をクリックして、 SAP HANA データベースを追加します。</block>
+  <block id="9d435f07d71989f0a782ee08a904c754" category="paragraph"><block ref="9d435f07d71989f0a782ee08a904c754" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d290fd3bf61818972a2abcb539182363" category="list-text">リソース構成が完了したら、「」の説明に従って、リソース保護の構成を実行します<block ref="25de720fdcde725d40fc657c42103828" category="inline-xref-macro-rx"></block>」</block>
+  <block id="9c4a783c592f95ccc4cecc5dd4717224" category="section-title">HANA データベースの自動検出</block>
+  <block id="e8ab1d33eb19b325a31fa06080fd52e7" category="paragraph">このセクションでは、 SAP HANA リソース SS1 （ NFS を使用するシングルホスト MDC シングルテナントシステム）の自動検出について説明します。ここで説明する手順はすべて、 HANA シングルコンテナ、 HANA MDC マルチテナントシステム、およびファイバチャネル SAN を使用する HANA システムで同じです。</block>
+  <block id="a7f41558e051c56ded21f272fe49e225" category="admonition">SAP HANA プラグインには、 Java 64 ビットバージョン 1.8 が必要です。SAP HANA プラグインを導入する前に、ホストに Java をインストールする必要があります。</block>
+  <block id="6fff1abc903305209c87f7b90f7e1b1a" category="list-text">ホストタブで、追加をクリックします。</block>
+  <block id="8970de3a2a41c242eb60c8fc5e3b607c" category="list-text">ホスト情報を入力し、インストールする SAP HANA プラグインを選択します。Submit をクリックします。</block>
+  <block id="5c52a6fd940c9c609e1b30b74dc8c8ba" category="paragraph"><block ref="5c52a6fd940c9c609e1b30b74dc8c8ba" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fa9fc54000c6f4ea50c6fde5d70c4e23" category="list-text">フィンガープリントを確認します。</block>
+  <block id="2cf275aab1c1f42c825ef8f41c353fb9" category="paragraph"><block ref="2cf275aab1c1f42c825ef8f41c353fb9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ce979c8e3f61c1ca2b3e50d9c5a0cfe1" category="paragraph">HANA プラグインと Linux プラグインのインストールが自動的に開始されます。インストールが完了すると、ホストの status 列に running と表示されます。画面には、 Linux プラグインが HANA プラグインと一緒にインストールされていることも表示されます。</block>
+  <block id="8bf1204c4436ee6b92073238719430ca" category="paragraph"><block ref="8bf1204c4436ee6b92073238719430ca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cd010989717ddfd5f977bb9b51a73a35" category="paragraph">プラグインのインストール後、 HANA リソースの自動検出プロセスが自動的に開始されます。[ リソース ] 画面で、新しいリソースが作成されます。このリソースは、赤い南京錠のアイコンでロックされていることが示されます。</block>
+  <block id="35f8f8811e136557a57edc7704ee5b22" category="list-text">を選択し、をクリックして設定を続行します。</block>
+  <block id="f50eb8052b36abc4f9b3cad6d960fd7f" category="admonition">[ リソースの更新 ] をクリックして、 [ リソース ] 画面で自動検出プロセスを手動で開始することもできます。</block>
+  <block id="5bdb39eec0b402f837e4da8966986bfc" category="paragraph"><block ref="5bdb39eec0b402f837e4da8966986bfc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fe618178f7c10f4f968b1e55e6e3d9e2" category="list-text">HANA データベースのユーザストアキーを指定します。</block>
+  <block id="230afb851ae9b2259a32e40673c239fc" category="paragraph"><block ref="230afb851ae9b2259a32e40673c239fc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="402cddec6e638b8f8c1c569ced4f1a90" category="paragraph">第 2 レベルの自動検出プロセスでは、テナントのデータとストレージのフットプリントの情報が検出されます。</block>
+  <block id="77cbb735a690f450f24356e2a1deed79" category="list-text">Details をクリックして、リソーストポロジビューで HANA リソース構成情報を確認します。</block>
+  <block id="b4109e6422f5ecf166ed27b5f7338dbe" category="paragraph"><block ref="b4109e6422f5ecf166ed27b5f7338dbe" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0c4c5bc98a1430e164d1585de73a8646" category="paragraph"><block ref="0c4c5bc98a1430e164d1585de73a8646" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="76e03c71835140195f3451e1d5443d5e" category="paragraph">リソース構成が終了したら ' 次のセクションの説明に従ってリソース保護構成を実行する必要があります</block>
+  <block id="12951e02508b48eb46e315f8d0562ff6" category="section-title">リソース保護の設定</block>
+  <block id="12aaca285ac0310e6d68d828172364e9" category="paragraph">ここでは、リソース保護の設定について説明します。リソースが自動検出されたか手動で設定されたかに関係なく、リソース保護の設定は同じです。また、すべての HANA アーキテクチャ、単一または複数のホスト、単一コンテナ、 MDC システムでも同じです。</block>
+  <block id="055d374e381cdcb3c869f3d9a80b4502" category="list-text">[ リソース ] タブで、リソースをダブルクリックします。</block>
+  <block id="5ef30ac91b203045749e324a7c953330" category="list-text">Snapshot コピーにカスタムの名前形式を設定します。</block>
+  <block id="e403c3e829dba2bfdb738b52d2d59f83" category="admonition">カスタムの Snapshot コピー名を使用して、どのバックアップがどのポリシーおよびスケジュールタイプで作成されたかを簡単に識別することを推奨します。Snapshot コピー名にスケジュールタイプを追加することで、スケジュールバックアップとオンデマンドバックアップを区別できます。オンデマンドバックアップの「スケジュール名」文字列は空ですが、スケジュールバックアップには「毎時」、「毎日」、または「毎週」という文字列が含まれます。</block>
+  <block id="b0425f359f0a3d6106d6138fde093c4a" category="paragraph">次の図に示す構成では、バックアップ名と Snapshot コピー名の形式は次のとおりです。</block>
+  <block id="6a9d47e7eeb50363e1b7a1dbe388e0ba" category="list-text">1 時間ごとのバックアップをスケジュール：「 SnapCenter _LocalSnap_Hourly_&lt;time_stamp&gt;` 」</block>
+  <block id="3355314ce177f72a1b8e8407de977cca" category="list-text">日次バックアップのスケジュール：「 SnapCenter _LocalSnapAndSnapVault_daily_&lt;time_stamp&gt;`</block>
+  <block id="6420569a9c32dd8b96c8d44895321def" category="list-text">時間単位のバックアップをオンデマンドで実行：「 SnapCenter _LocalSnap_&lt;time_stamp&gt;`</block>
+  <block id="1ea93710515eeb13cfbf2e235737b75a" category="list-text">毎日のオンデマンドバックアップ：「 SnapCenter _LocalSnapAndSnapVault_&lt;time_stamp&gt;`</block>
+  <block id="b76f8c2a7cb1e101f995e83095d6178a" category="admonition">ポリシー設定でオンデマンドバックアップに対して保持が定義されていても、不要なファイルの削除は別のオンデマンドバックアップが実行されたときにのみ実行されます。そのため、通常、 SnapCenter でオンデマンドバックアップを手動で削除して、これらのバックアップが SAP HANA バックアップカタログからも削除され、ログバックアップの不要な削除が古いオンデマンドバックアップに基づいて行われないようにする必要があります。</block>
+  <block id="17f2550bdc1520ca7036dbf70ae502ca" category="paragraph"><block ref="17f2550bdc1520ca7036dbf70ae502ca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b003a1018f70b1f4d3c1a5616cab19d4" category="list-text">[ アプリケーションの設定 ] ページで、特定の設定を行う必要はありません。次へをクリックします。</block>
+  <block id="845fd67a217c1eb62cdf41da05b0d52b" category="paragraph"><block ref="845fd67a217c1eb62cdf41da05b0d52b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="894e5b025b3245607edb9f8a43f02429" category="list-text">リソースに追加するポリシーを選択してください。</block>
+  <block id="dd57b8f6938af9891f7b8e45a5b67655" category="paragraph"><block ref="dd57b8f6938af9891f7b8e45a5b67655" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="43104f81893a1fc2c62fc00994e63831" category="list-text">LocalSnap ポリシーのスケジュールを定義します（この例では 4 時間ごと）。</block>
+  <block id="210d03a4f3297cc3ec6026ed334796d7" category="paragraph"><block ref="210d03a4f3297cc3ec6026ed334796d7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1544a621c5ea50f94ae17918bc04e3e5" category="list-text">LocalSnapAndSnapVault ポリシーのスケジュールを定義します（この例では 1 日に 1 回）。</block>
+  <block id="255b1670091dea349da542ac297e8240" category="paragraph"><block ref="255b1670091dea349da542ac297e8240" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0b4337a47e9b930f09a9cd9baec4b896" category="list-text">ブロック整合性チェックポリシーのスケジュールを定義します（この例では週に 1 回）。</block>
+  <block id="9467e305ae6b16714ff9c294b28e5a57" category="paragraph"><block ref="9467e305ae6b16714ff9c294b28e5a57" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="11b2dcbc196b4932ce3fc87795a4c761" category="list-text">E メール通知に関する情報を指定します。</block>
+  <block id="e8ef004abd60e1496242e57dc4f2131f" category="paragraph"><block ref="e8ef004abd60e1496242e57dc4f2131f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="95fa57f09a127e74223ba37594c5cd8e" category="paragraph"><block ref="95fa57f09a127e74223ba37594c5cd8e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1f073d3f1fa31a7943b90fab6d63038c" category="list-text">トポロジページでオンデマンドバックアップを作成できるようになりました。スケジュールされたバックアップは、設定に基づいて実行されます。</block>
+  <block id="bd3840c37923fa4dd571b31ee4e8ba11" category="paragraph"><block ref="bd3840c37923fa4dd571b31ee4e8ba11" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="70cc601fa82e577c081c400b88d57ee0" category="section-title">Fibre Channel SAN 環境向けのその他の設定手順</block>
+  <block id="9ed28ce680ba733c2fe37c75373d98df" category="paragraph">HANA リリースと HANA プラグインの導入方法に応じて、 SAP HANA システムがファイバチャネルと XFS ファイルシステムを使用している環境では追加の設定手順が必要です。</block>
+  <block id="8ff318fc76f9b3a3de0488ffd2d04c8e" category="admonition">これらの追加の設定手順は、 SnapCenter で手動で設定した HANA リソースにのみ必要です。また、 HANA 1.0 リリースおよび HANA 2.0 リリース（ SPS2 まで）でのみ必要です。</block>
+  <block id="c2fce189d8eec37410d2f593810352a1" category="paragraph">SAP HANA の SnapCenter によって HANA のバックアップ保存ポイントがトリガーされると、 SAP HANA は、最後の手順として、テナントとデータベースサービスごとに Snapshot ID ファイルを書き込みます（例：「 /hana/data/side/mnt00001/hdb00001/snapshot_databackup_0_1 」）。これらのファイルはストレージ上のデータボリュームの一部であるため、ストレージ Snapshot コピーの一部です。このファイルは、バックアップがリストアされる場合にリカバリを実行する際に必須です。Linux ホスト上の XFS ファイルシステムを使用してメタデータをキャッシングするため、ストレージレイヤでファイルがすぐに認識されることはありません。メタデータキャッシングの標準 XFS 設定は 30 秒です。</block>
+  <block id="f4e76c9471978aaeb772485f58e7a395" category="admonition">HANA 2.0 SPS3 では、メタデータのキャッシングが問題にならないように、 SAP はこれらの Snapshot ID ファイルの書き込み処理を同期に変更しました。</block>
+  <block id="4cc50bec1942773fad9ded9d3cd842a8" category="admonition">SnapCenter 4.3 では、 HANA プラグインがデータベースホストに導入されている場合、ストレージの Snapshot がトリガーされる前に Linux プラグインによってホスト上でファイルシステムフラッシュ処理が実行されます。この場合、メタデータのキャッシングは問題になりません。</block>
+  <block id="1f7de7fc4ca98e15318923ea006f4d57" category="paragraph">SnapCenter では 'XFS メタデータ・キャッシュがディスク・レイヤーにフラッシュされるまで待機する 'postquiesce コマンドを設定する必要があります</block>
+  <block id="2410e6cec8fb08d6ad20dfb5799dd6c7" category="paragraph">メタデータのキャッシングの実際の設定を確認するには、次のコマンドを使用します。</block>
+  <block id="ecf49e35456f017989d424036038da90" category="paragraph">「 fs.xfs.xfssyncd_centiseconds 」パラメータの 2 倍の待ち時間を使用することを推奨します。デフォルト値は 30 秒であるため、 sleep コマンドは 60 秒に設定します。</block>
+  <block id="29884ea371b02c8bba08943ed42ee409" category="paragraph">SnapCenter サーバが中央の HANA プラグインホストとして使用されている場合は、バッチファイルを使用できます。バッチファイルには、次の内容が含まれている必要があります。</block>
+  <block id="c08fa9b50927a629fa005c6dca42b302" category="paragraph">バッチファイルは、「 C ： \Program Files\NetApp\Wait60Sec.bat 」のように保存できます。リソース保護構成では、バッチファイルを [ 休止後に追加 ] コマンドとして追加する必要があります。</block>
+  <block id="5a9ee55acf58f2d318f768581181f902" category="paragraph">別の Linux ホストを中央の HANA プラグイン・ホストとして使用する場合は、 SnapCenter UI で POST Quiesce コマンドとしてコマンドの /bin/sleep 60 を設定する必要があります。</block>
+  <block id="8aa8a84f4f37f29ea89f20e3a69b300d" category="paragraph">次の図に、リソース保護設定画面での休止後のコマンドを示します。</block>
+  <block id="f84f390a7bf5ddfbf22943623b920f81" category="paragraph"><block ref="f84f390a7bf5ddfbf22943623b920f81" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4e95867fcff03f35283f90abd1d651a7" category="inline-link-macro">Next ：データボリューム以外のバックアップ用の SnapCenter リソース固有の設定。</block>
+  <block id="6b3b6382da96ba1bac82bcc5874aa2e8" category="paragraph"><block ref="6b3b6382da96ba1bac82bcc5874aa2e8" category="inline-link-macro-rx"></block></block>
+  <block id="5f41ebd846d632bd2b1a2264c1132da4" category="list-text">* データの急増。 * データの急増とバックアップ・ウィンドウの短縮には、バックアップ・インフラへの継続的な投資が必要です。つまり、より多くのテープドライブを調達し、追加のバックアップディスクスペースを確保し、より高速なバックアップネットワークを構築する必要があります。また、これらのテープ資産の格納と管理にかかる継続的なコストについても説明する必要があります。こうした問題には差分バックアップで対処することもできますが、リストアプロセスが煩雑で非常に時間がかかるうえ、複雑なため検証も難しくなります。このようなシステムでは、通常、 Recovery Time Objective （ RTO ；目標復旧時間）と Recovery Point Objective （ RPO ；目標復旧時点）が長くなり、ビジネスには受け入れられません。</block>
+  <block id="1651b50e0d1cf61dd130c805642637d7" category="paragraph">ネットアップの Snapshot テクノロジを使用すれば、データベースのバックアップを数分で作成できます。Snapshot コピーではストレージプラットフォーム上の物理データブロックは移動されないため、 Snapshot コピーの作成に要する時間はデータベースのサイズに左右されません。また、 Snapshot コピーの作成時やアクティブファイルシステムのデータが変更されたときにデータブロックの移動やコピーが NetApp Snapshot テクノロジによって行われないため、稼働中の SAP システムのパフォーマンスに影響がありません。そのため、 Snapshot コピーの作成スケジュールは、対話形式またはバッチでのアクティビティのピーク期間を気にせずに作成できます。SAP とネットアップのお客様は、通常、複数のオンライン Snapshot バックアップを 1 日に行うようにスケジュールを設定します。たとえば、一般に 4 時間ごとなどです。作成された Snapshot バックアップをプライマリストレージシステムに 3~5 日間保持しています。</block>
+  <block id="133a887f3b7a331b1bb97c917ab238b8" category="paragraph">Snapshot コピーは、リストア処理とリカバリ処理にも大きなメリットがあります。NetApp SnapRestore データリカバリソフトウェアを使用すると、データベース全体または利用可能な Snapshot コピーに基づいて、データベースの一部を任意の時点にリストアできます。このようなリストアプロセスは、データベースのサイズに関係なく数分で完了します。オンラインの Snapshot バックアップは 1 日に数回作成されるため、従来のバックアップ方式に比べて、リカバリプロセスに要する時間が大幅に短縮されます。24 時間以内ではなく数時間前の Snapshot コピーを使用してリストアできるため、適用するトランザクションログの数を少なくする必要があります。そのため、従来のシングルサイクルのテープバックアップでは数時間かかるのに対し、 RTO が数分に短縮されます。</block>
+  <block id="6888872d812bb849b73e336be754410e" category="paragraph">Snapshot コピーバックアップは、アクティブなオンラインデータと同じディスクシステムに格納されます。セカンダリストレージへのバックアップに代わる手段としてではなく、補助的な用途で使用することを推奨します。リストアとリカバリのほとんどはプライマリストレージシステムで SnapRestore を使用して実行されます。セカンダリストレージからのリストアが必要になるのは、 Snapshot コピーが格納されているプライマリストレージシステムが損傷している場合のみです。セカンダリストレージは、たとえば月末のバックアップのように、 Snapshot コピーからは提供されなくなったバックアップをリストアする必要がある場合にも使用できます。</block>
+  <block id="e608654d33837deefa07ba1970e5e003" category="paragraph">セカンダリストレージへのバックアップは、プライマリストレージに作成された Snapshot コピーがベースとなります。そのため、プライマリストレージシステムから直接データが読み取られ、 SAP データベースサーバに負荷は生成されません。プライマリストレージはセカンダリストレージと直接通信し、 NetApp SnapVault のディスクツーディスクバックアップを使用してバックアップデータをデスティネーションに送信します。</block>
+  <block id="5a83d4498ee4c3a831980e216c538942" category="paragraph">SnapVault には、従来のバックアップに比べて大きな利点があります。最初のデータ転送でソースからデスティネーションにすべてのデータが転送され、以降のバックアップでは変更されたブロックだけがセカンダリストレージにコピーされます。そのため、プライマリストレージシステムへの負荷およびフルバックアップに要する時間が大幅に削減されます。SnapVault では変更されたブロックだけがデスティネーションに格納されるため、データベースのフルバックアップに必要なディスクスペースも少なくて済みます。</block>
+  <block id="8357feb9601e96769166a4c960d3aca0" category="paragraph">解決策 は、ハイブリッドクラウド運用モデルにシームレスに拡張することもできます。ディザスタリカバリやオフサイトのバックアップを目的としたデータレプリケーションは、オンプレミスの NetApp ONTAP システムから、クラウドで実行されている Cloud Volumes ONTAP インスタンスに実施できます。SnapCenter は、 SAP HANA システムをオンプレミスで実行する場合でも、クラウドで実行する場合でも、データ保護とデータレプリケーションを一元的に管理するツールとして使用できます。次の図に、バックアップ解決策 の概要を示します。</block>
+  <block id="20937f63291584b1cbc160f7213d7183" category="paragraph"><block ref="20937f63291584b1cbc160f7213d7183" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c8c0c4fd6276899657fcf55f879b0bbb" category="paragraph">次のスクリーンショットは、ネットアップストレージ上で SAP HANA を実行しているお客様の HANA Studio を示しています。Snapshot コピーを使用して HANA データベースをバックアップしている。この図では、 Snapshot バックアップテクノロジを使用して、 HANA データベース（約 2.3TB のサイズ）を 2 分 11 秒でバックアップしています。</block>
+  <block id="1019082efe6d65534f457340d1be279a" category="admonition">全体的なバックアップワークフローランタイムの最大の部分は、 HANA のバックアップセーブポイント処理を実行するために必要な時間です。この手順は、 HANA データベースの負荷によって異なります。ストレージ Snapshot バックアップ自体は、数秒で完了します。</block>
+  <block id="6f38ecc6c5262a85c3892ec8de8653ba" category="paragraph"><block ref="6f38ecc6c5262a85c3892ec8de8653ba" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="81206476869ff48ddb7258539ced5bcc" category="section-title">目標復旧時間の比較</block>
+  <block id="37aa1a462c93cfc77a8aa63e2f8ffd5a" category="paragraph">ファイルベースのバックアップでは、リストア時間はデータベースのサイズとバックアップインフラによって異なり、リストア速度は 1 秒あたりのメガバイト数で定義されます。たとえば、インフラで 250MBps の高速なリストア処理がサポートされている場合、データベースのサイズが 1TB にリストアされるまでに約 1 時間 10 分かかります。</block>
+  <block id="852a28121e38cfc60cc3c1fa243f4eff" category="paragraph">ストレージ Snapshot コピーバックアップでは、リストア時間はデータベースのサイズに左右されず、プライマリストレージからリストアを実行できる数秒の範囲になります。セカンダリストレージからのリストアが必要になるのは、プライマリストレージが使用できなくなったときに災害が発生した場合だけです。</block>
+  <block id="1173d8912da48858e849bb3fccbf7171" category="paragraph">データベースの開始時間は、行および列ストアのサイズによって異なります。列ストアの場合、開始時間は、データベースの起動時にプリロードされるデータの量によっても異なります。次の例では、開始時間は 30 分であると想定しています。開始時刻は、ファイルベースのリストアとリカバリ、および Snapshot に基づくリストアとリカバリで同じです。</block>
+  <block id="5556b5c6ecf3f033b4ffde8d3c45eac4" category="paragraph">ファイルベースのデータバックアップでは、通常、バックアップスケジュールは 1 日に 1 回となります。バックアップによって本番環境のパフォーマンスが低下するため、通常はバックアップ頻度を高くすることはできません。したがって、最悪の場合は、フォワードリカバリ時に 1 日中に書き込まれたすべてのログを適用する必要があります。</block>
+  <block id="e1740ff2f0b2a56fc2f953f3d1be5ecb" category="paragraph">ストレージ Snapshot コピーのデータバックアップは、通常、 SAP HANA データベースのパフォーマンスに影響しないため、頻繁にスケジュールされます。たとえば、 Snapshot コピーのバックアップを 6 時間ごとに実行するようにスケジュールした場合、最大でファイルベースのバックアップのリカバリ時間の 4 分の 1 （ 6 時間 /24 時間 = ¼ ）というリカバリ時間がかかります。</block>
+  <block id="e45dd55dd335b82959ac3f733c2a6131" category="paragraph"><block ref="e45dd55dd335b82959ac3f733c2a6131" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="32378a49bfefae9d51083bafc161e544" category="paragraph">次の図に、 Snapshot バックアップの使用時の 1TB データベースの RTO の例を示します。ストレージベースの Snapshot バックアップでは、データベースのサイズに関係なく数秒でリストアが完了するため、 RTO はデータベースの開始時間と転送リカバリ時間にのみ左右されます。また、リストアとリカバリの実行タイミングによってもフォワードリカバリの時間が長くなりますが、バックアップの頻度が高い（この例では 6 時間ごと）ため、最大で 43 分までリカバリ時間が短縮されます。この例では、最大 RTO は 1 時間 13 分です。</block>
+  <block id="6ffe2094adbe4ab7b02ced59a464610c" category="paragraph"><block ref="6ffe2094adbe4ab7b02ced59a464610c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a931b15763a0d7c48777aa949bbb60e7" category="paragraph">1 日に 1 回の Snapshot コピーでデータをバックアップする RTO は、ファイルベースのデータバックアップに比べてすでに 40% 短縮されています。1 日に 4 つの Snapshot バックアップを作成すると、削減率は 70% になります。また、 Snapshot のバックアップ頻度を 1 日あたり 4~6 個の Snapshot バックアップに増やすと、この図ではフラットな状態になります。したがって、お客様は通常、 1 日に 4~6 個の Snapshot バックアップを作成します。</block>
+  <block id="c72e84faf04ce21b973198a7002830ea" category="paragraph"><block ref="c72e84faf04ce21b973198a7002830ea" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="09c2f8b288eb278a7e0b050639b8fb12" category="admonition">このグラフには、 HANA サーバの RAM サイズが表示されます。メモリ内のデータベースサイズは、サーバの RAM サイズの半分になるように計算されます。</block>
+  <block id="cc7384b3c84a0bffa3195fb822301a4a" category="admonition">リストアとリカバリの所要時間は、次の前提に基づいて計算します。データベースは 250MBps でリストアできます。1 日のログファイルの数は、データベースサイズの 50% です。たとえば、 1TB のデータベースでは、 1 日 500MB のログファイルが作成されます。リカバリは 100Mbps で実行できます。</block>
+  <block id="3b0e0a89952804a2276b13f71429e367" category="inline-link-macro">次の例は、 SnapCenter のアーキテクチャです。</block>
+  <block id="7eeaf8b085295d15c9b4d8a6a690e8e8" category="paragraph"><block ref="7eeaf8b085295d15c9b4d8a6a690e8e8" category="inline-link-macro-rx"></block></block>
+  <block id="c1665b6df297e7a2e1db92f10416b879" category="summary">SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。SnapCenter では、バックアップタイプとしてファイルベースのバックアップを選択するポリシーを使用して、ブロック整合性チェックを実行できます。</block>
+  <block id="dccc440b322ed1d3d09bf6576f0a4793" category="doc">ブロック整合性チェック</block>
+  <block id="22b2f327e23ae29669b82965a1cc8c9b" category="inline-link-macro">Previous ：データベースバックアップ。</block>
+  <block id="2a2ecc1f7d51f29c6a69e1633f6f2e31" category="paragraph"><block ref="2a2ecc1f7d51f29c6a69e1633f6f2e31" category="inline-link-macro-rx"></block></block>
+  <block id="676cfd91b13790927d9992a7d08c8828" category="paragraph">このポリシーを使用してバックアップをスケジュールすると、 SnapCenter によってシステムデータベースとテナントデータベース用の標準の SAP HANA ファイルバックアップが作成されます。</block>
+  <block id="e31898da9c6e6dc3b7af9f990b041c59" category="paragraph">SnapCenter では、 Snapshot コピーベースのバックアップと同じ方法でブロック整合性チェックが表示されません。代わりに、サマリーカードには、ファイルベースのバックアップの数と、以前のバックアップのステータスが表示されます。</block>
+  <block id="bc50a9803c7c59af624747578c693cad" category="paragraph"><block ref="bc50a9803c7c59af624747578c693cad" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3fd5edce432881c2683af2b35468c624" category="paragraph">ブロック整合性チェックのバックアップは、 SnapCenter UI では削除できませんが、 PowerShell コマンドを使用して削除することはできます。</block>
+  <block id="06a4abfaf0e161e7e3e07f7943ecd9a8" category="paragraph">SAP HANA のバックアップカタログには、システムデータベースとテナントデータベースの両方のエントリが表示されます。次の図に、システムデータベースのバックアップカタログにおける SnapCenter ブロックの整合性チェックを示します。</block>
+  <block id="a340d66aeb0511579cbd6da6d4d99a19" category="paragraph"><block ref="a340d66aeb0511579cbd6da6d4d99a19" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b2a42e5ff741a7da520a61fe7e9287fc" category="paragraph">ブロック整合性チェックが成功すると、標準の SAP HANA データバックアップファイルが作成されます。SnapCenter は、ファイルベースのデータバックアップ処理に、 HANA データベースで設定されているバックアップパスを使用します。</block>
+  <block id="15c844531d0ad20c4f2d3b0536728e69" category="paragraph"><block ref="15c844531d0ad20c4f2d3b0536728e69" category="inline-link-macro-rx"></block></block>
+  <block id="b7f33e6f09f01af6baa6ea548172f22f" category="summary">SnapCenter では、一般に、各 HANA データベースのリソース保護構成で定義されたスケジュールを使用してデータベースのバックアップが実行されます。オンデマンドデータベースバックアップを実行するには、 SnapCenter GUI 、 PowerShell コマンドライン、または REST API を使用します。</block>
+  <block id="89f8bb80ca1403422295c6ad48f8cac7" category="doc">データベースのバックアップ</block>
+  <block id="ff105e913a3c74061d54c22408f74279" category="inline-link-macro">Previous ：データボリューム以外のバックアップの SnapCenter リソース固有の設定。</block>
+  <block id="9092199ae5c2230472128959b40cc920" category="paragraph"><block ref="9092199ae5c2230472128959b40cc920" category="inline-link-macro-rx"></block></block>
+  <block id="db84dde0c00214d066c28c0fa6b20a78" category="paragraph">SnapCenter では、一般に、各 HANA データベースのリソース保護構成で定義されたスケジュールを使用してデータベースのバックアップが実行されます。</block>
+  <block id="c87782e3691915e9f853696cf50b790c" category="paragraph">オンデマンドデータベースバックアップを実行するには、 SnapCenter GUI 、 PowerShell コマンドライン、または REST API を使用します。</block>
+  <block id="d8827f346e1ca85b7ec57393df66f099" category="section-title">SAP HANA Studio での SnapCenter バックアップの識別</block>
+  <block id="44ba2e7ca4f9ce6053a12b79d760defb" category="paragraph">SnapCenter のリソーストポロジには、 SnapCenter を使用して作成されたバックアップのリストが表示されます。次の図に、プライマリストレージ上のバックアップと、最新のバックアップを示します。</block>
+  <block id="cd666682f0c5e7084cdc51922532ffc4" category="paragraph"><block ref="cd666682f0c5e7084cdc51922532ffc4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8e6a036c1dbfbcdd51099ba8e159a0f5" category="paragraph">SAP HANA MDC システムのストレージ Snapshot コピーを使用したバックアップを実行する場合は、データボリュームの Snapshot コピーが作成されます。このデータボリュームには、システムデータベースのデータおよびすべてのテナントデータベースのデータが含まれます。この物理アーキテクチャを反映するため、 SnapCenter によって Snapshot バックアップがトリガーされるたびに、 SAP HANA はシステムデータベースとすべてのテナントデータベースの統合バックアップを内部的に実行します。その結果、 SAP HANA のバックアップカタログに、システムデータベース用とテナントデータベース用に 1 つずつ、合計複数のバックアップエントリが作成されます。</block>
+  <block id="d9e26498378f71d1e41de1f3066a6505" category="admonition">SAP HANA シングルコンテナシステムの場合、データベースボリュームにはデータベースが 1 つだけ格納され、 SAP HANA のバックアップカタログにはエントリが 1 つしかありません。</block>
+  <block id="c78ea61a0643b5d1741ee698d73c8126" category="paragraph">SAP HANA のバックアップ・カタログでは、 SnapCenter のバックアップ名は「 Comment 」フィールドと「 External Backup ID （ EBID ）」フィールドとして保存されます。システムデータベースの次のスクリーンショットと、テナントデータベース SS1 のスクリーンショットに表示されています。どちらの図も、コメントフィールドに格納されている SnapCenter バックアップ名と EBID を示しています。</block>
+  <block id="763aeabe1237091e11c223fcdb6e514b" category="inline-link"><block ref="763aeabe1237091e11c223fcdb6e514b" category="inline-link-rx"></block></block>
+  <block id="017ad38ce328eda5e6b4e873a97fec93" category="admonition">Snapshot ベースのバックアップについては、 HANA 2.0 SPS4 （リビジョン 40 および 41 ）リリースでは常にバックアップサイズがゼロになっています。これは、リビジョン 42 で修正されました。詳細については、『 SAP ノート』を参照してください<block ref="0ede2af82d168becfa8e8e328919c93f" category="inline-link-rx"></block>。</block>
+  <block id="fade7cc7b21b1b7c8aa6d0e162bcecf3" category="paragraph"><block ref="fade7cc7b21b1b7c8aa6d0e162bcecf3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9c8fb965a174c4cc45d25963127e4d0c" category="paragraph"><block ref="9c8fb965a174c4cc45d25963127e4d0c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f22d323a2a4ca6a837dc9be2a7ef9849" category="admonition">SnapCenter で認識されるのは、それ自体のバックアップだけです。SAP HANA Studio などで作成された追加のバックアップは、 SAP HANA のカタログには表示されますが、 SnapCenter には表示されません。</block>
+  <block id="d97f26fcfcf75422cef96edd3166fe81" category="section-title">ストレージシステム上での SnapCenter バックアップの特定</block>
+  <block id="0b1c6a89ad613ff0c9a5e72c1a7cb7f6" category="paragraph">ストレージレイヤのバックアップを表示するには、 NetApp OnCommand System Manager を使用して、 SVM のボリュームビューでデータベースボリュームを選択します。下部の Snapshot コピータブには、ボリュームの Snapshot コピーが表示されます。次のスクリーンショットは ' プライマリ・ストレージで使用可能なデータベース・ボリューム SS1_data_mnt00001 のバックアップを示しています強調表示されているバックアップは、前のイメージの SnapCenter と SAP HANA Studio に表示されているバックアップで、同じ命名規則が使用されています。</block>
+  <block id="50fccf347ee1a3ad52633188ef09b5ea" category="paragraph"><block ref="50fccf347ee1a3ad52633188ef09b5ea" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a31d79c67df8a2b4b434b686c3882bf6" category="paragraph">次のスクリーンショットは、セカンダリ・ストレージ・システムにあるレプリケーション・ターゲット・ボリューム「 hana_sa1_data_mnt00001_dest 」で使用可能なバックアップを示しています。</block>
+  <block id="5ab506a0fb053eb3dd2f7da34cbef410" category="paragraph"><block ref="5ab506a0fb053eb3dd2f7da34cbef410" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4cbe8448ed645bcd05c25b0ed05a2ffc" category="section-title">プライマリストレージでのオンデマンドのデータベースバックアップ</block>
+  <block id="9a18d22e51d061ba9e29d3fea1cbb740" category="list-text">リソースビューでリソースを選択し、その行をダブルクリックしてトポロジビューに切り替えます。</block>
+  <block id="162a41f8614e6637ad948db15ee7bbd1" category="paragraph">リソーストポロジビューには、 SnapCenter を使用して作成された、使用可能なすべてのバックアップの概要が表示されます。上部の領域には、プライマリストレージ上のバックアップ（ローカルコピー）と、オフサイトのバックアップストレージ（バックアップコピー）にあるバックアップ（バックアップコピー）が表示されます。</block>
+  <block id="ec51671df991e848e29f16041adb35e3" category="paragraph"><block ref="ec51671df991e848e29f16041adb35e3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e12fe165bcaa4995a69a0109bbcbfa29" category="list-text">一番上の行で、 Back Up Now （今すぐバックアップ）アイコンを選択して、オンデマンドバックアップを開始します。ドロップダウン・リストから ' バックアップ・ポリシー LocalSnap を選択し '[Backup] をクリックして ' オンデマンド・バックアップを開始します</block>
+  <block id="8b2ce6a6d6243b54e1ce8ea28eef41f9" category="paragraph"><block ref="8b2ce6a6d6243b54e1ce8ea28eef41f9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="442b3eee32be51815a4de7d8303b7341" category="inline-link-macro">「リソース保護の設定」</block>
+  <block id="d1e2d1b53260ff9be6b86f50b5d63959" category="paragraph">バックアップジョブが開始されます。トポロジビューの下のアクティビティ領域に、前の 5 つのジョブのログが表示されます。バックアップが完了すると、トポロジビューに新しいエントリが表示されます。バックアップ名は、セクションで定義した Snapshot 名と同じ命名規則に従っています <block ref="2c957c35caae6e26e8174ee1dd40a357" category="inline-link-macro-rx"></block></block>
+  <block id="c88c7279bb6dbd2ece99c6b6b75a95f7" category="admonition">トポロジビューを閉じてから再度開いて、更新されたバックアップリストを確認する必要があります。</block>
+  <block id="63bf40d83edf12ce8d15898a5f5a8d75" category="paragraph"><block ref="63bf40d83edf12ce8d15898a5f5a8d75" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="495ca2710421cfca56ba2e36c09339ad" category="list-text">ジョブの詳細は、 [ アクティビティ ] 領域でジョブのアクティビティ行をクリックすると表示されます。ログの表示をクリックすると、詳細なジョブログを開くことができます。</block>
+  <block id="121b846ed404f10227b94111cb571489" category="list-text">SAP HANA Studio では、バックアップカタログに新しいバックアップが表示されます。バックアップカタログのコメントフィールドと EBID フィールドには、 SnapCenter と同じバックアップ名が使用されます。</block>
+  <block id="703c46332afd81e1946cb2ad4ce00c93" category="section-title">SnapVault レプリケーションを使用したオンデマンドのデータベースバックアップ</block>
+  <block id="dae832cbcba7d155d4c6451f7ae9587c" category="list-text">一番上の行で [Backup Now] アイコンを選択して、オンデマンド・バックアップを開始します。ドロップダウン・リストから ' バックアップ・ポリシー LocalSnapAndSnapVault' を選択し '[Backup] をクリックして ' オン・デマンド・バックアップを開始します</block>
+  <block id="cf71341a5e50f4043a5fa5aabd8f707e" category="paragraph"><block ref="cf71341a5e50f4043a5fa5aabd8f707e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8d17cf93c266a000706498696e3f4769" category="list-text">ジョブの詳細は、 [ アクティビティ ] 領域でジョブのアクティビティ行をクリックすると表示されます。</block>
+  <block id="afdc05307a2e357c2a371a561650f593" category="paragraph"><block ref="afdc05307a2e357c2a371a561650f593" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="377fa314cf452bcdcbe5809ed5765f49" category="list-text">バックアップが完了すると、トポロジビューに新しいエントリが表示されます。バックアップ名は、セクションで定義した Snapshot 名と同じ命名規則に従っています <block ref="2c957c35caae6e26e8174ee1dd40a357" category="inline-link-macro-rx"></block></block>
+  <block id="66017a0c6d8972d16dadde514d44c5a3" category="paragraph"><block ref="66017a0c6d8972d16dadde514d44c5a3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1bdd9de63a778c886f72fc6c55b69544" category="list-text">バックアップコピーを選択すると、セカンダリストレージのバックアップが表示されます。レプリケートされたバックアップの名前は、プライマリストレージのバックアップ名と同じです。</block>
+  <block id="74d07631f428cdd1ec59c71ff6ab42bd" category="paragraph"><block ref="74d07631f428cdd1ec59c71ff6ab42bd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cc4eef3601a9ce330e6f77219afa35bc" category="inline-link-macro">次の例は、ブロックの整合性チェックです。</block>
+  <block id="a7c0449bf8a45bbc5b52ecb7279895d4" category="paragraph"><block ref="a7c0449bf8a45bbc5b52ecb7279895d4" category="inline-link-macro-rx"></block></block>
+  <block id="894658d23e64b14d31e2add33d4d053b" category="summary">非データボリュームのバックアップは、 SAP HANA プラグインに統合された機能です。データベースインストールリソースと必要なログが残っていれば、データベースデータボリュームを保護して特定の時点に SAP HANA データベースをリストアおよびリカバリするだけで十分です。</block>
+  <block id="9c0fde1c8553ad85618db06581560bad" category="doc">データボリューム以外のバックアップ用の SnapCenter リソース固有の設定</block>
+  <block id="ae43b220b947c3e61bcd144f370f49c5" category="inline-link-macro">Previous ： SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成。</block>
+  <block id="1c9c02aae88d0d37d545852a2f663748" category="paragraph"><block ref="1c9c02aae88d0d37d545852a2f663748" category="inline-link-macro-rx"></block></block>
+  <block id="0226c147f6eac3c1fdb31ee7abb85e96" category="paragraph">他のデータファイルのリストアが必要な状況からリカバリするには、 SAP HANA データベースのバックアップを補うために、データボリューム以外のボリュームに対する追加のバックアップ戦略を開発することを推奨します。固有の要件に応じて、非データボリュームのバックアップはスケジュールの頻度と保持の設定が異なる場合があります。また、非データファイルを変更する頻度も考慮する必要があります。たとえば、 HANA ボリューム「 /hana/shared 」には、実行可能ファイルと SAP HANA トレースファイルが格納されています。実行ファイルが変更されるのは SAP HANA データベースがアップグレードされた場合だけですが、 SAP HANA の問題を分析するためには、 SAP HANA のトレースファイルのバックアップ頻度を高くする必要があります。</block>
+  <block id="701304aa41af17415df3aa7320be043b" category="paragraph">SnapCenter の非データボリュームバックアップを使用すると、関連するすべてのボリュームの Snapshot コピーを数秒で作成でき、 SAP HANA データベースのバックアップと同じスペース効率化を実現できます。両者の違いは、 SAP HANA データベースとの SQL 通信は不要なことです。</block>
+  <block id="e3e1681bd8a3d45858ea0fdcd572f8e5" category="section-title">データボリューム以外のリソースの構成</block>
+  <block id="e45b47ec2fca633e83f5c4385ac898c6" category="paragraph">この例では、 SAP HANA データベース SS1 の非データボリュームを保護します。</block>
+  <block id="d042be8219183ec4120acc5277a44865" category="list-text">[ リソース ] タブで、 [ データボリュームではない ] を選択し、 [ SAP HANA データベースの追加 ] をクリックします。</block>
+  <block id="901f2902d0d6815b716cce92d192d2b0" category="paragraph"><block ref="901f2902d0d6815b716cce92d192d2b0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="538fffc9423ae34761ac6ba6b5841ad7" category="list-text">SAP HANA データベースの追加ダイアログのステップ 1 で、リソースタイプリストから非データボリュームを選択します。リソースの名前、およびリソースに使用する関連 SID と SAP HANA プラグインホストを指定し、 [ 次へ ] をクリックします。</block>
+  <block id="c96787effd55f611b302e62a48b8322d" category="paragraph"><block ref="c96787effd55f611b302e62a48b8322d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dc6781ad4f01aa22d21a245f1e236533" category="list-text">SVM とストレージボリュームをストレージ容量として追加し、次へをクリックします。</block>
+  <block id="70a06bad00448b6923ff27524b0e8dd3" category="paragraph"><block ref="70a06bad00448b6923ff27524b0e8dd3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d0ff85892412dd4108d91789963c7dbd" category="list-text">概要ステップで、完了をクリックして設定を保存します。</block>
+  <block id="38a80b556382ff0e9195ad3f4496627e" category="list-text">必要なすべてのデータボリューム以外のボリュームについて、同じ手順を繰り返します。</block>
+  <block id="2decee12cecb2bc677055dacd4cdfa2f" category="list-text">新しいリソースの保護設定に進みます。</block>
+  <block id="ce9bd5c4898fb736dd8369e2b8af8944" category="admonition">非データボリュームリソースのデータ保護は、 SAP HANA データベースリソースのワークフローと同じで、個々のリソースレベルで定義できます。</block>
+  <block id="8804d3973c80da008d6c4cfb33ee6f3a" category="paragraph">次の図に、設定されているデータボリューム以外のリソースのリストを示します。</block>
+  <block id="72876e7aa7023c8a4ea76a6332a8442c" category="paragraph"><block ref="72876e7aa7023c8a4ea76a6332a8442c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="769b718779fbe38c65b122b69e0271a3" category="section-title">リソースグループ</block>
+  <block id="850f14cc800444f77599dc97d2941041" category="paragraph">リソースグループを使用すると、同じ保護ポリシーとスケジュールを必要とする複数のリソースの保護を定義できます。リソースグループの一部である単一のリソースは、個別のレベルで保護することができます。</block>
+  <block id="dbd494d169ca51a674da2e3537496d92" category="paragraph">リソースグループには次の機能があります。</block>
+  <block id="6110a61d0bf8e9160700218a475a6763" category="list-text">リソースグループには 1 つ以上のリソースを追加できます。すべてのリソースが同じ SnapCenter プラグインに属している必要があります。</block>
+  <block id="2583a6cfabdb6e8659c1e0889ef7d32a" category="list-text">保護はリソースグループレベルで定義できます。リソースグループ内のすべてのリソースは、保護されている場合は同じポリシーとスケジュールを使用します。</block>
+  <block id="c412b4321d55f6a6a2d2d6f807892920" category="list-text">SnapCenter リポジトリ内のすべてのバックアップとストレージ Snapshot コピーには、リソース保護に定義されているものと同じ名前が付けられます。</block>
+  <block id="249a5378bf40f0180cd729e65e99b9c3" category="list-text">リストア処理は、リソースグループの一部としてではなく、単一のリソースレベルに適用されます。</block>
+  <block id="e990b5c5b90ded5db7b3ca93365a81e5" category="list-text">SnapCenter を使用して、リソースグループレベルで作成されたリソースのバックアップを削除する場合、このバックアップはリソースグループ内のすべてのリソースについて削除されます。バックアップを削除する場合は、 SnapCenter リポジトリからバックアップを削除するか、ストレージ Snapshot コピーを削除します。</block>
+  <block id="b565830d52dbf51243943462fb70fe59" category="list-text">リソースグループの主なユースケースは、 SnapCenter で作成したバックアップを使用して、 SAP Landscape Management でシステムをクローニングする場合です。これについては、次のセクションで説明します。</block>
+  <block id="ba5da7a68f8cd5eca48e3df6086a98c0" category="section-title">SnapCenter と SAP ランドスケープ管理の併用</block>
+  <block id="2a728bce1ee3f9b0668ed8945b2f39dd" category="paragraph">SAP Landscape Management （ SAP LaMa ）を使用すると、オンプレミスのデータセンターやクラウドで実行されているシステムでも、複雑な SAP システム環境を管理できます。SAP LaMa は、ネットアップの Storage Services Connector （ SSC ）と連携して、 SAP システムのクローニングやレプリケーション、 Snapshot や FlexClone テクノロジを使用したコピー、更新などのストレージ運用を実行できます。そのため、ストレージクローニングテクノロジに基づいて SAP システムのコピーを完全に自動化し、必要な SAP のポストプロセスも含めて実行できます。ネットアップの SAP LaMa 対応ソリューションの詳細については、を参照してください<block ref="0fb87918d74d379028390fd706baf741" category="inline-link-rx"></block>。</block>
+  <block id="35e271fbf0a1d067faf29bb2e12cf833" category="paragraph">NetApp SSC と SAP LaMa は、 NetApp SSC を使用してオンデマンドで Snapshot コピーを直接作成できますが、 SnapCenter を使用して作成した Snapshot コピーを利用することもできます。SnapCenter バックアップをシステムのクローニング処理やコピー処理のベースとして SAP LaMa を使って実行するには、次の前提条件を満たしている必要があります。</block>
+  <block id="55fb179ba0dbaef14f4ae67701ba967c" category="list-text">SAP LaMa では、すべてのボリュームをバックアップに含める必要があります。これには、 SAP HANA のデータ、ログ、共有ボリュームが含まれます。</block>
+  <block id="a45b79d50cacf7594adf94e98d02fe12" category="list-text">ストレージの Snapshot 名はすべて同じにする必要があります。</block>
+  <block id="af1c8995ec23e1bd0ae4ec3ca3543a2d" category="list-text">ストレージスナップショット名は VCM で始める必要がある。</block>
+  <block id="090e02de1070460f7847450e0bfd801a" category="admonition">通常のバックアップ処理では、ログボリュームを含めることは推奨されません。バックアップからログボリュームをリストアすると、最後のアクティブな REDO ログが上書きされ、データベースを最後の最新状態にリカバリできなくなります。</block>
+  <block id="650ee54724b128d5e2bf7913c16163cd" category="paragraph">SnapCenter リソースグループは、上記のすべての要件を満たしています。SnapCenter では、 3 つのリソースが構成されます。各リソースはデータボリューム用、ログボリューム用、および共有ボリューム用の 1 つです。リソースはリソースグループに追加され、保護はリソースグループレベルで定義されます。リソースグループ保護では、最初に VCM を使用してカスタムスナップショット名を定義する必要がある。</block>
+  <block id="81cd2608958c3e4e413ad6bef3606da2" category="inline-link-macro">Next ：データベースバックアップ。</block>
+  <block id="32aebd1865a4b78bfbc2f337d543fd75" category="paragraph"><block ref="32aebd1865a4b78bfbc2f337d543fd75" category="inline-link-macro-rx"></block></block>
+  <block id="be212c956204f2d074911d5f5278a925" category="summary">このテクニカルレポートで使用するラボセットアップには、 5 つの SAP HANA 構成が含まれています。</block>
+  <block id="2565da4d57f87315a8ddfc63e0c18e4a" category="inline-link-macro">以前： SnapCenter の概念とベストプラクティス</block>
+  <block id="39af78998dd9972f60bdc273ab677f70" category="paragraph"><block ref="39af78998dd9972f60bdc273ab677f70" category="inline-link-macro-rx"></block></block>
+  <block id="ab37b0897f2b28bb348c68a2d7ab5a5e" category="paragraph">このテクニカルレポートで使用するラボセットアップには、次の 5 種類の SAP HANA 構成が含まれています。</block>
+  <block id="0e03eebb552b07ee65c7abe3b9c7d6f7" category="list-text">* MS1.*</block>
+  <block id="4d7bb2ec16ebf6c53a55efea4d621a37" category="list-text">SAP HANA マルチホスト MDC のシングルテナントシステム</block>
+  <block id="0afd06c83e04fc2747bb37f58375e710" category="list-text">中央のプラグインホスト（ SnapCenter サーバ）で管理</block>
+  <block id="0d93b800c7f4d39ad9b81b7892689db5" category="list-text">ストレージプロトコルとして NFS を使用します</block>
+  <block id="0f439d9c9ee319da448b6e5a32327941" category="list-text">SAP HANA シングルホスト MDC のシングルテナントシステム</block>
+  <block id="e0bb5e1697d1c4f5d7ae6d3feadaf0a3" category="list-text">HANA プラグインが HANA データベースホストにインストールされている状態で自動検出されます</block>
+  <block id="611216ecfb30bfebaa14ef82ab1dd0ec" category="list-text">* SM1. *</block>
+  <block id="ae25c66c27863e282312520ba5251cd5" category="list-text">SAP HANA シングルホスト MDC のマルチテナントシステム</block>
+  <block id="9ba0be3ffab3d754569badf1804f8d3b" category="list-text">中央のプラグインホスト（ SnapCenter サーバ）で管理</block>
+  <block id="abccdef464fcfbc9a938fd63247cb6bb" category="list-text">* SS3.*</block>
+  <block id="92047fcc565cab594e47ad89009764bd" category="list-text">ストレージプロトコルとして Fibre Channel SAN を使用します</block>
+  <block id="f87a3ba7778533e03af98316f9d823a4" category="paragraph">以降のセクションでは、設定、バックアップ、リストア、リカバリの各ワークフローについて説明します。概要 では、ローカル Snapshot バックアップに加え、 SnapVault を使用したバックアップストレージへのレプリケーションも実行できます。Storage Virtual Machine （ SVM ）は、プライマリストレージは「 HANA プライマリ」、オフサイトバックアップストレージは「 HANA プライマリ」です。</block>
+  <block id="cc70c3f1cc797c2261fb179e7b87cbb2" category="paragraph">SnapCenter サーバは、 HANA システム MS1 および SS2 の中央 HANA プラグインホストとして使用されます。</block>
+  <block id="a7bf2acab613e56927ca1ba4e586af30" category="paragraph">次の図は、ラボのセットアップを示しています。</block>
+  <block id="0d633f5ca7acb9ba65199a430e328cf2" category="paragraph"><block ref="0d633f5ca7acb9ba65199a430e328cf2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d06aeaafeb39319dd0654bdc4e51a229" category="inline-link-macro">次の例は、 SnapCenter の設定です。</block>
+  <block id="56a228a8d7efbc873a5441e1f41d5efa" category="paragraph"><block ref="56a228a8d7efbc873a5441e1f41d5efa" category="inline-link-macro-rx"></block></block>
+  <block id="94ff220590f3f56bf66ac697c81fc4cb" category="summary">このセクションでは、この解決策 で使用されているコンポーネント、サポートされている SAP HANA のリリースと構成、および SnapCenter 4.6 の拡張機能について説明します。</block>
+  <block id="44f0406e0b65477e22abb0af2670c920" category="doc">SnapCenter SAP HANA Backup 解決策 の略</block>
+  <block id="d9e466c9de2ab7357a0ecd6847fe1ac5" category="inline-link-macro">以前のバージョン： SnapCenter アーキテクチャ。</block>
+  <block id="c7446a3f8799817cb1822b9bcce855a4" category="paragraph"><block ref="c7446a3f8799817cb1822b9bcce855a4" category="inline-link-macro-rx"></block></block>
+  <block id="8dfec560491833edefc6c6f71aba9fdc" category="paragraph">SnapCenter Backup 解決策 for SAP HANA には、次の領域があります。</block>
+  <block id="0173cafa1c2bd31312469cc22b2ee819" category="list-text">非データ・ボリューム（例： /hana/shared ）バックアップとストレージ・ベースの Snapshot コピー：</block>
+  <block id="eabcd15fb0326cf97b04fef8a19fb538" category="list-text">オフサイトのバックアップまたはディザスタリカバリロケーションへのレプリケーション：</block>
+  <block id="3e736a1d51f4a0ea0f4ad47be7bd944d" category="list-text">SAP HANA データの Snapshot バックアップ</block>
+  <block id="9c6c79a2246055e9fdb39ae657f0f886" category="list-text">データボリューム以外のボリューム</block>
+  <block id="a9a8799b9193796c46f7880c75fd190c" category="list-text">オフサイトのバックアップストレージに保持管理を設定</block>
+  <block id="074c5a464474e4351975c84a84ba967c" category="list-text">ファイルベースのバックアップを使用したデータベースブロックの整合性チェック：</block>
+  <block id="7191f8de9290c359fb8c544612f38cc8" category="list-text">SAP HANA マルチテナントデータベースコンテナ（ MDC ）システムを使用したシングルテナントのリストア処理</block>
+  <block id="e4f5593c4f95fe01e9bb1e5a603a2e02" category="paragraph">データベースデータファイルのバックアップは、 SnapCenter と SAP HANA 向けプラグインを組み合わせて実行されます。このプラグインは、 SAP HANA データベースのバックアップ保存ポイントをトリガーして、プライマリストレージシステムで作成された Snapshot コピーが SAP HANA データベースの整合性のあるイメージに基づいて作成されるようにします。</block>
+  <block id="caf2cabe6654a975ccb9710e8a344950" category="paragraph">SnapCenter では、 SnapVault または NetApp SnapMirror を使用して、整合性のあるデータベースイメージをオフサイトのバックアップまたはディザスタリカバリロケーションにレプリケートできます。フィーチャー（ Feature ）：通常は、プライマリストレージとオフサイトのバックアップストレージに異なる保持ポリシーが定義されます。SnapCenter はプライマリストレージでの保持を処理し、 ONTAP はオフサイトのバックアップストレージでの保持を処理します。</block>
+  <block id="6469c7a56441c8b63be2ea158e884a33" category="paragraph">SnapCenter では、 SAP HANA 関連のすべてのリソースを完全にバックアップするために、ストレージベースの Snapshot コピーを使用して SAP HANA プラグインを使用し、データ以外のすべてのボリュームをバックアップすることもできます。非データ・ボリュームは、データベース・データ・バックアップとは別にスケジュール設定できるため、保持ポリシーや保護ポリシーを個別に設定することができます。</block>
+  <block id="e78eed5ba72730da9f47adc11f3c54db" category="paragraph">SAP HANA データベースは、ログバックアップを自動的に実行します。目標復旧時点に応じて、ログ・バックアップの保存場所に関するいくつかのオプションがあります。</block>
+  <block id="0604ebbb1e2ad7e740154a7c284f4b0c" category="list-text">ログバックアップは、 NetApp MetroCluster ハイアベイラビリティ（ HA ）およびディザスタリカバリストレージソフトウェアを使用してデータを別の場所に同期的にミラーリングするストレージシステムに書き込まれます。</block>
+  <block id="d5f00838bababddfb43beb4465ebc0cd" category="list-text">ログバックアップのデスティネーションは、同じプライマリストレージシステムで設定し、 SnapMirror によって同期または非同期でセカンダリストレージにレプリケートできます。</block>
+  <block id="c65f36922e2aff940a69761d8f5472f5" category="list-text">ログバックアップのデスティネーションは、 SnapVault を使用してデータベースバックアップをレプリケートする、同じオフサイトのバックアップストレージに設定できます。この構成では、オフサイトのバックアップストレージに、ログバックアップをオフサイトのバックアップストレージに書き込むことができるように、プライマリストレージと同様の可用性要件があります。</block>
+  <block id="4a3326877edcb379877fb00b3c8e2c5c" category="paragraph">SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。ブロック整合性チェックは、 SnapCenter 内から実行できます。設定可能な保持ポリシーに基づいて、 SnapCenter は、プライマリストレージでのデータファイルバックアップの削除、ログファイルバックアップ、および SAP HANA のバックアップカタログを管理します。</block>
+  <block id="56ed3e5a0893311ac5bc95fbcc59accd" category="admonition">SnapCenter はプライマリストレージでの保持を処理し、 ONTAP はセカンダリバックアップの保持を管理します。</block>
+  <block id="20a208d0c21644982025cf3c8b139920" category="paragraph">次の図に、データベースとログのバックアップ構成の概要を示します。この図では、ログバックアップがオフサイトのバックアップストレージの NFS マウントに書き込まれます。</block>
+  <block id="7dc5a388a7ed5c4e68257382d9e20d27" category="paragraph"><block ref="7dc5a388a7ed5c4e68257382d9e20d27" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1176d7039f3984c8be34b0ca0d74a052" category="paragraph">SnapCenter では、データボリューム以外のボリュームのストレージベースの Snapshot バックアップを実行する際に、次のタスクを実行します。</block>
+  <block id="5c724f929ca6d43af26f240326be9c07" category="list-text">データボリューム以外のストレージ Snapshot コピーの作成。</block>
+  <block id="17b1e1416624c8733a1c56a9f6e2bddf" category="list-text">データボリュームの SnapVault 更新または SnapMirror 更新の実行（設定されている場合）。</block>
+  <block id="63243cdf5e6c964519f840e76038b854" category="list-text">定義された保持ポリシーに基づいて、プライマリストレージのストレージ Snapshot コピーを削除します。</block>
+  <block id="3855d2073477072ba2b2abf3881501de" category="paragraph">SAP HANA データベースのストレージベースの Snapshot バックアップを実行する場合、 SnapCenter は次のタスクを実行します。</block>
+  <block id="d2e57dc1dee012c030a253e5b13686c5" category="list-text">SAP HANA バックアップ保存ポイントを作成して、永続性レイヤに整合性のあるイメージを作成する。</block>
+  <block id="d4878186e7d0a0eaebd235c358b6ea67" category="list-text">データボリュームのストレージ Snapshot コピーの作成。</block>
+  <block id="9c7d518082c6163c486cb2ca4ae3715a" category="list-text">SAP HANA バックアップカタログへのストレージ Snapshot バックアップの登録。</block>
+  <block id="1a8bab70f16abac5fec44eb4a5970da7" category="list-text">SAP HANA バックアップセーブポイントのリリース。</block>
+  <block id="907c11e1227f2e092d437101f5d24b18" category="list-text">プライマリまたはオフサイトのバックアップストレージにバックアップが存在しなくなった場合は、 SAP HANA のバックアップカタログのエントリを削除します。</block>
+  <block id="f81fa7e47b429a74f3c326ccbe7d623c" category="list-text">保持ポリシーに基づいてバックアップが削除された場合、または手動で削除された場合、 SnapCenter は最も古いデータバックアップよりも古いログバックアップをすべて削除します。ログバックアップは、ファイルシステムと SAP HANA のバックアップカタログから削除されます。</block>
+  <block id="02ec85da7a34534916a8902ad64c7b67" category="paragraph">SnapCenter は、 NFS または FC 接続のネットアップストレージシステム（ AFF および FAS ）を使用した SAP HANA シングルホスト構成とマルチホスト構成、および NFS を使用した AWS 、 Azure 、 Google Cloud Platform 、 AWS FSX ONTAP で Cloud Volumes ONTAP を実行している SAP HANA システムをサポートしています。</block>
+  <block id="d6ce387b294b25dfab0c447868f0594a" category="paragraph">SnapCenter は、次の SAP HANA アーキテクチャとリリースをサポートしています。</block>
+  <block id="c4f41244d46b23a479a0201aa120364f" category="list-text">SAP HANA の単一コンテナ： SAP HANA 1.0 SPS12</block>
+  <block id="52759939d5c34ced894a8edb15e47c21" category="list-text">SAP HANA マルチテナントデータベースコンテナ（ MDC ）のシングルテナント： SAP HANA 2.0 SPS3 以降</block>
+  <block id="5b969ece692bee20925041517740d2fc" category="list-text">SAP HANA マルチテナントデータベースコンテナ（ MDC ）の複数のテナント： SAP HANA 2.0 SPS4 以降</block>
+  <block id="6c176e9f73681cb91e72213cd5479748" category="section-title">SnapCenter 4.6 の機能強化</block>
+  <block id="04c675594bfdb975329fb2cae491292b" category="inline-link">TR-4719 『 SAP HANA System Replication 、 Backup and Recovery with SnapCenter 』</block>
+  <block id="aae76d22bc3f2bf6ef22eac2524e307a" category="paragraph">バージョン 4.6 以降の SnapCenter では、 HANA システムレプリケーション関係で設定された HANA システムの自動検出がサポートされます。各ホストは、物理 IP アドレス（ホスト名）とストレージレイヤ上の個々のデータボリュームを使用して設定されます。2 つの SnapCenter リソースが 1 つのリソースグループに統合されている場合、 SnapCenter はプライマリまたはセカンダリのホストを自動的に識別し、必要なバックアップ処理を適宜実行します。SnapCenter で作成された Snapshot とファイルベースのバックアップの保持の管理は、両方のホストで実行されます。これにより、現在のセカンダリホストでも古いバックアップが削除されるようになります。次の図に概要を示します。SnapCenter の HANA システムレプリケーション対応 HANA システムの構成と運用の詳細概要 については、を参照してください<block ref="38177f415a52ec30f36bcda7961c5014" category="inline-link-rx"></block>。</block>
+  <block id="7661ea25abe80b518889c00e4122ce9c" category="paragraph"><block ref="7661ea25abe80b518889c00e4122ce9c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c48cabaa34f79e36a358157b8fd6afc5" category="inline-link-macro">次： SnapCenter の概念とベストプラクティス</block>
+  <block id="737a07ea6f78d89fdf6e4d0626b68d7c" category="paragraph"><block ref="737a07ea6f78d89fdf6e4d0626b68d7c" category="inline-link-macro-rx"></block></block>
+  <block id="72180d0307c0939e956b5a3f8f96bbcb" category="summary">このセクションでは、 SnapCenter の概念と、 SAP HANA のリソース構成と導入に関連するベストプラクティスについて説明します。</block>
+  <block id="50414ea6d37e50fb2a4f48ddf4085157" category="doc">SnapCenter の概念とベストプラクティス</block>
+  <block id="604644581158e05102533fcc302f9dd4" category="inline-link-macro">前のバージョン： SnapCenter SAP HANA バックアップ解決策 。</block>
+  <block id="2c3086ac738600ae241cdf1185a2eacb" category="paragraph"><block ref="2c3086ac738600ae241cdf1185a2eacb" category="inline-link-macro-rx"></block></block>
+  <block id="d14a18b64c59033d7b1fea72542be464" category="section-title">SAP HANA のリソース構成オプションと概念</block>
+  <block id="2ae9740860217e61f2af98868b88c403" category="paragraph">SnapCenter では、 SAP HANA データベースのリソース構成を 2 つの異なるアプローチで実行できます。</block>
+  <block id="3783f6b09890c5b4eb00a25d23136015" category="list-text">* リソースを手動で構成。 * HANA のリソースとストレージの設置面積に関する情報は、手動で提供する必要があります。</block>
+  <block id="98230b8b5c2c209c0d5176357f522161" category="list-text">* HANA リソースの自動検出。 * 自動検出により、 SnapCenter での HANA データベースの設定が簡易化され、リストアとリカバリが自動化されます。</block>
+  <block id="4019aefaa340ef7fe5c0a93f7b12da28" category="paragraph">SnapCenter では、自動検出された HANA データベースのリソースのみがリストアとリカバリの自動化を有効にしていることを理解しておくことが重要です。SnapCenter で手動で設定した HANA データベースリソースは、 SnapCenter でリストア処理を実行したあとに手動でリカバリする必要があります。</block>
+  <block id="da161102bc2d2a20a78e55971ee5f20b" category="paragraph">一方、 SnapCenter による自動検出は、 HANA のすべてのアーキテクチャとインフラ構成でサポートされているわけではありません。そのため、 HANA 環境では、混在するアプローチが必要になる場合があります。一部の HANA システム（ HANA マルチホストシステム）では手動でリソース設定を行う必要があり、それ以外はすべて自動検出を使用して設定できます。</block>
+  <block id="60e1cc0fa5d2d1b50385b6799389520a" category="paragraph">リストアとリカバリの自動検出は、データベースホストで OS コマンドを実行できるかどうかによって異なります。たとえば、ファイルシステムやストレージの設置面積の検出、アンマウント、マウント、 LUN 検出などの処理が該当します。これらの処理は、 HANA プラグインと自動的に導入される SnapCenter Linux プラグインを使用して実行されます。そのため、自動検出とリストアとリカバリを可能にするためには、データベースホストに HANA プラグインを導入する必要があります。データベースホストに HANA プラグインを導入したあとに、自動検出を無効にすることもできます。この場合、リソースは手動で設定されたリソースになります。</block>
+  <block id="9d2c3ff1f6040a4a4183ab744b9bef22" category="paragraph">次の図は、依存関係をまとめたものです。HANA の導入オプションの詳細については、「 SAP HANA プラグインの導入オプション」を参照してください。</block>
+  <block id="3ec90af3f40fbd0677f4ad223bcbe676" category="paragraph"><block ref="3ec90af3f40fbd0677f4ad223bcbe676" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a368b07ff59cd175b67a373e61562ea4" category="admonition">HANA と Linux のプラグインは、現在、インテルベースのシステムでのみ使用できます。HANA データベースを IBM Power Systems で実行している場合は、中央の HANA プラグインホストを使用する必要があります。</block>
+  <block id="f1de58e649fb073c26f220815a243372" category="section-title">自動検出と自動リカバリのためにサポートされている HANA アーキテクチャ</block>
+  <block id="18719832c6436a8c008c212810bf15af" category="paragraph">SnapCenter では、ほとんどの HANA 構成で自動検出と自動リストア / リカバリがサポートされていますが、 HANA の複数ホストシステムでは手動構成が必要です。</block>
+  <block id="a63dac7fa35a6351b0737c3a29e304aa" category="paragraph">次の表に、自動検出がサポートされる HANA 構成を示します。</block>
+  <block id="c8661b037a46b69bbf45a2280dec701a" category="cell">HANA プラグインのインストール場所：</block>
+  <block id="c192c3996f72271e911ec99b804d7ab5" category="cell">HANA のアーキテクチャ</block>
+  <block id="e15f9fd62bf7801afcf46240c3232b3b" category="cell">HANA システム構成</block>
+  <block id="cba4f4cee5c6a3e6d8be8da68fa1234e" category="cell">インフラ</block>
+  <block id="a7042aff750c8ec91be377f3b217096b" category="cell">HANA データベースホスト</block>
+  <block id="df426d2e22dc5f5b5ec6c042d5e2ab75" category="cell">シングルホスト</block>
+  <block id="b9ece6356946c2ba01def7109c68c98c" category="list-text">HANA の単一コンテナ</block>
+  <block id="52860ed3c38e42893b21ee81457714b9" category="list-text">シングルテナントまたは複数テナントの SAP HANA マルチテナントデータベースコンテナ（ MDC</block>
+  <block id="b215ac6a1d54500ab9c42b936b0d6472" category="list-text">HANA システムレプリケーション</block>
+  <block id="1bde3a6d97a53256ffdc32c2e60b19e4" category="list-text">NFS のベアメタル</block>
+  <block id="bf846a752539e263277cce3a01b0ef3f" category="list-text">Linux の論理ボリュームマネージャ（ LVM ）の有無に関係なく、 XFS と FC を使用するベアメタル</block>
+  <block id="fa52887bff899f429be7e34ba0aca30e" category="list-text">VMware ： OS を直接 NFS マウント</block>
+  <block id="31d688c2c278ac8c6f2de5552c62c217" category="admonition">複数のテナントを持つ HANA MDC システムは自動検出がサポートされていますが、現在の SnapCenter リリースでの自動リストアとリカバリはサポートされていません。</block>
+  <block id="0fdb80dd2021599e02f364aec1ce87e4" category="section-title">HANA の手動リソース構成でサポートされている HANA アーキテクチャ</block>
+  <block id="df07af8094b3ee56eff56119390494b0" category="paragraph">HANA のリソースの手動構成は、すべての HANA アーキテクチャでサポートされていますが、 HANA の中央プラグインホストが必要です。中央のプラグインホストには、 SnapCenter サーバ自体、または独立した Linux または Windows ホストを使用できます。</block>
+  <block id="f3324258b431b338f35b941a24e2a31d" category="inline-link-macro">"HANA プラグインホストで自動検出を無効にします。 "</block>
+  <block id="fe07822500a559eb890b81cd9b514933" category="admonition">HANA プラグインが HANA データベースホストに導入されている場合、リソースはデフォルトで自動検出されます。自動検出を個々のホストに対して無効にして、プラグインを展開できます。たとえば、アクティブな HANA システムレプリケーションが有効になっているデータベースホストでは、自動検出がサポートされていない SnapCenter リリース 4.6 では、自動検出を無効にできます。詳細については、を参照してください <block ref="729f1a3a5995f5e1c263714177382b80" category="inline-link-macro-rx"></block></block>
+  <block id="10b043404a82561d5bb6534bc181007e" category="paragraph">次の表に、 HANA の手動リソース構成でサポートされる HANA 構成を示します。</block>
+  <block id="74827600dad7156e5af8dc96abb8b6a3" category="cell">HANA プラグインのインストール場所：</block>
+  <block id="b801de73bc166ed48262745796be6285" category="cell">中央プラグインホスト（ SnapCenter サーバまたは個別の Linux ホスト）</block>
+  <block id="d9bdea226bac10381a1614e5013be7f0" category="cell">単一または複数のホスト</block>
+  <block id="2dca46890aff26d950c7fbab0d4585ee" category="list-text">シングルテナントまたはマルチテナントの HANA MDC</block>
+  <block id="34a4c443d5ac7ef4a84362a477d590cf" category="list-text">Linux LVM の有無に関係なく、 XFS と FC を使用するベアメタル</block>
+  <block id="a0889af6f554ac5c1d81e82642a71c33" category="section-title">SAP HANA プラグインの導入オプション</block>
+  <block id="44f6084a7d2f87d42ce54d7be3882603" category="paragraph">次の図は、 SnapCenter サーバと SAP HANA データベースの論理ビューと通信を示しています。</block>
+  <block id="71ff2461408968609609ecb43a245384" category="paragraph">SnapCenter サーバは、 SAP HANA プラグインを介して SAP HANA データベースと通信します。SAP HANA プラグインは、 SAP HANA hdbsql クライアントソフトウェアを使用して、 SAP HANA データベースに対して SQL コマンドを実行します。SAP HANA の hdbuserstore は、 SAP HANA データベースにアクセスするためのユーザクレデンシャル、ホスト名、ポート情報を提供するために使用されます。</block>
+  <block id="5c65c9320df937bf18161745ea27dcdd" category="paragraph"><block ref="5c65c9320df937bf18161745ea27dcdd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="51756ae7050f110da1d8b09a97d32f4b" category="admonition">SAP HANA プラグインと SAP hdbsql クライアントソフトウェア（ hdbuserstore 設定ツールを含む）は、同じホストに一緒にインストールする必要があります。</block>
+  <block id="d2a1ba656d3714dbdff0ddf861b3b8db" category="paragraph">ホストには、 SnapCenter サーバ自体、独立した中央プラグインホスト、または個々の SAP HANA データベースホストを使用できます。</block>
+  <block id="05bc1a07fb1a47dcf559561811b1659e" category="section-title">SnapCenter サーバの高可用性</block>
+  <block id="8246a42ad0b2b0b8e76f40dfeb35457e" category="paragraph">SnapCenter は 2 ノード HA 構成でセットアップできます。このような構成では、アクティブ / パッシブモードでロードバランサ（ F5 など）を使用し、アクティブ SnapCenter ホストを指す仮想 IP アドレスを使用します。SnapCenter リポジトリ（ MySQL データベース）は、 SnapCenter データが常に同期されるように、 2 つのホスト間で SnapCenter によってレプリケートされます。</block>
+  <block id="54adf17a2b80b8860e6e1a390f90fede" category="inline-link">ネットアップのナレッジベースのページ</block>
+  <block id="2eef76e2dc4ca626269410901e4bc5b0" category="paragraph">HANA プラグインが SnapCenter サーバにインストールされている場合、 SnapCenter サーバ HA はサポートされません。HA 構成で SnapCenter をセットアップする場合は、 SnapCenter サーバに HANA プラグインをインストールしないでください。SnapCenter HA の詳細については、こちらを参照してください<block ref="7f1dbdda8b67a128ec90d71e0b35b828" category="inline-link-rx"></block>。</block>
+  <block id="a1ade406b963f3d6ec1b4f643a4cfcae" category="section-title">SnapCenter サーバを中央の HANA プラグインホストとして使用</block>
+  <block id="9b2126abefe85b2533ee827e80b78fab" category="paragraph">次の図に、 SnapCenter サーバを中央プラグインホストとして使用する場合の設定を示します。SAP HANA プラグインと SAP hdbsql クライアントソフトウェアは、 SnapCenter サーバにインストールされています。</block>
+  <block id="a4a77177701c93a8e05e117eae9dc09c" category="paragraph"><block ref="a4a77177701c93a8e05e117eae9dc09c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9c56d8a5ff7d27ff338da44c24238927" category="paragraph">HANA プラグインは、ネットワーク経由で hdbclient を使用して管理対象 HANA データベースと通信できるため、個々の HANA データベースホストに SnapCenter コンポーネントをインストールする必要はありません。SnapCenter では、管理対象データベースに対してすべてのユーザストアキーが設定された中央の HANA プラグインホストを使用して、 HANA データベースを保護できます。</block>
+  <block id="1bdf62e1b5487a7dd7db72eb38852420" category="paragraph">一方、自動検出のワークフロー自動化の強化、リストアとリカバリの自動化、 SAP システムの更新処理を行う際には、データベースホストに SnapCenter コンポーネントをインストールする必要があります。中央の HANA プラグインホストを使用している場合、これらの機能は使用できません。</block>
+  <block id="ae1e55a6af8942f681e076e6b04696a0" category="paragraph">また、 HANA プラグインが SnapCenter サーバにインストールされている場合、インビルドの HA 機能を使用した SnapCenter サーバの高可用性は使用できません。SnapCenter サーバが VMware クラスタ内の VM で実行されている場合は、 VMware HA を使用して高可用性を実現できます。</block>
+  <block id="d9dafc00f08c99f6393297b3d1b983ca" category="section-title">ホストを中央の HANA プラグインホストとして分離</block>
+  <block id="e9dbb0d4fc4947f637931ad9410ef98d" category="paragraph">次の図は、独立した Linux ホストを中央のプラグインホストとして使用した場合の構成を示しています。この場合、 SAP HANA プラグインと SAP hdbsql クライアントソフトウェアが Linux ホストにインストールされています。</block>
+  <block id="c5507abd0c0561490ba4a8e034538a25" category="admonition">また、個別の中央プラグインホストを Windows ホストにすることもできます。</block>
+  <block id="4c13683a89da6a44e9b2f7e60f9a377c" category="paragraph"><block ref="4c13683a89da6a44e9b2f7e60f9a377c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a8c9df7032e6000ae2f56966f3b52ce3" category="paragraph">前のセクションで説明した機能の可用性に関する同様の制限は、別の中央プラグインホストにも適用されます。</block>
+  <block id="b9e255186906a3f1053b2bc79578cec3" category="paragraph">ただし、この導入オプションでは、 SnapCenter サーバに組み込みの HA 機能を設定できます。また、 Linux クラスタ解決策 などを使用して、中央のプラグインホストも HA である必要があります。</block>
+  <block id="0852f3b4e2c4f30c1da041b7a6cbb8e9" category="section-title">HANA プラグインを個々の HANA データベースホストに導入</block>
+  <block id="9df69c7673fc042e431370931c5527f4" category="paragraph">次の図は、 SAP HANA プラグインが各 SAP HANA データベースホストにインストールされた構成を示しています。</block>
+  <block id="59b722c0d01d607478dd81f3ea1d44bc" category="paragraph"><block ref="59b722c0d01d607478dd81f3ea1d44bc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a46c7fbab71d45b271c59c0623549af4" category="paragraph">HANA プラグインを各 HANA データベースホストにインストールすると、自動検出やリストアとリカバリの自動化などのすべての機能を使用できるようになります。また、 SnapCenter サーバは HA 構成でセットアップできます。</block>
+  <block id="3bab1e1695b59a134fd6c85c6900b00c" category="section-title">HANA 混在プラグイン環境をサポート</block>
+  <block id="43dd12e51388565e1a7e3256290d13f0" category="paragraph">このセクションの冒頭で説明したように、マルチホストシステムなど、一部の HANA システム構成には、中央のプラグインホストが必要です。そのため、ほとんどの SnapCenter 構成では HANA プラグインを混在させる必要があります。</block>
+  <block id="31c391cfa19f4e529aad8e9d4304322f" category="paragraph">自動検出がサポートされているすべての HANA システム構成に対して、 HANA プラグインを HANA データベースホストに導入することを推奨します。マルチホスト構成などの他の HANA システムは、中央の HANA プラグインホストで管理する必要があります。</block>
+  <block id="ebfc18223a0e2c918bcdaaee89afe3bf" category="paragraph">次の 2 つの図に、 SnapCenter サーバまたは別の Linux ホストを中央プラグインホストとして使用したプラグインの混在環境を示します。どちらの構成の場合も、オプションの HA 構成だけが違います。</block>
+  <block id="e439001cbac253a2327e2ea7ae95be2e" category="paragraph"><block ref="e439001cbac253a2327e2ea7ae95be2e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1eff7ff04717eef2af895105165cd161" category="paragraph"><block ref="1eff7ff04717eef2af895105165cd161" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e0975370dd4a6ada2fcb1cbc16ba5346" category="section-title">まとめと推奨事項</block>
+  <block id="8c0f51e6e3ddaf2d16c747d639bf6fb7" category="paragraph">一般に、使用可能なすべての SnapCenter HANA 機能を有効にし、ワークフローの自動化を強化するために、各 SAP HANA ホストに HANA プラグインを導入することを推奨します。</block>
+  <block id="ea49e9eedab2cd5fc40ad3a270f323db" category="admonition">HANA と Linux のプラグインは、現在、インテルベースのシステムでのみ使用できます。HANA データベースを IBM Power Systems で実行している場合は、中央の HANA プラグインホストを使用する必要があります。</block>
+  <block id="c93f3a94956cde8bfff88029a06934b7" category="paragraph">HANA マルチホスト構成など、自動検出がサポートされない HANA 構成では、追加の中央 HANA プラグインホストを設定する必要があります。VMware HA を SnapCenter HA に利用できる場合は、中央のプラグインホストを SnapCenter サーバにすることができます。SnapCenter の組み込みの HA 機能を使用する場合は、別の Linux プラグインホストを使用します。</block>
+  <block id="cafaa0fef59b4334c5f9e83b6a6ec3fb" category="paragraph">次の表は、さまざまな導入オプションをまとめたものです。</block>
+  <block id="338113d1d9bb30138663dfbe65b5a954" category="cell">導入オプション</block>
+  <block id="896f4eaa4f12972b56ed9cdd9a90b949" category="cell">依存関係</block>
+  <block id="158ab554bd198cf5eb6712352227ee0d" category="cell">SnapCenter サーバに中央 HANA プラグインホストプラグインがインストールされている</block>
+  <block id="1e25b3e432a986250c9e36b20847a657" category="cell">長所： * シングル HANA プラグイン、中央 HDB ユーザストア構成 * 個別の HANA データベースホストに SnapCenter ソフトウェアコンポーネントは不要 * すべての HANA アーキテクチャのサポート * 手動リソース構成 * 手動リカバリ * シングルテナントリストアのサポートなし * 中央プラグインホストでのプリスクリプトとポストスクリプトの手順の実行 * インビルド SnapCenter ハイアベイラビリティはサポートされていません * SID とテナント名の組み合わせは、すべての管理対象 HANA データベースで一意である * ログ すべての管理対象 HANA データベースでバックアップ保持管理が有効 / 無効になっています</block>
+  <block id="e467947c25a4c0cfa9c7160a5e4ea52b" category="cell">別々の Linux サーバまたは Windows サーバにインストールされた中央 HANA プラグインホストプラグイン</block>
+  <block id="6c913ab6553fe3bff0293d92d17dc0d7" category="cell">長所： * シングル HANA プラグイン、中央 HDB ユーザストア構成 * 個別の HANA データベースホストに SnapCenter ソフトウェアコンポーネントは不要 * すべての HANA アーキテクチャのサポート * インビルド SnapCenter 高可用性サポートされる構成： * 手動リソース構成 * 手動リカバリ * シングルテナントリストアのサポートなし * 中央プラグインホストで実行されるプリスクリプトとポストスクリプトの手順 * SID とテナント名の組み合わせは、すべての管理対象 HANA データベースで一意である * ログバックアップの保持管理が有効 / 無効になっているすべての管理対象です HANA データベース</block>
+  <block id="ad06c241b2be44672e9861be7573e369" category="cell">HANA データベースサーバに個別の HANA プラグインをインストール</block>
+  <block id="fb0c19e084fab4e216faf2a038f47a4f" category="cell">長所： * HANA リソースの自動検出 * リストアとリカバリの自動化 * シングルテナントリストア * SAP システム更新のためのプレスクリプトとポストスクリプトの自動化 * インビルド SnapCenter 高可用性サポート * 各 HANA データベースのログバックアップ保持管理を有効 / 無効にできます。 * HANA のアーキテクチャによってはサポートされていません。HANA マルチホストシステムには、追加の中央プラグインホストが必要です。* HANA プラグインは、 HANA データベースの各ホストに導入する必要があります</block>
+  <block id="5fc8b5e93f497b93c0162f3924292d57" category="paragraph">SnapCenter と SAP HANA プラグインを設定する前に、各種 SAP システムの RTO と RPO の要件に基づいてデータ保護戦略を定義する必要があります。</block>
+  <block id="bb58cd0ced0eb681e1b03e006fcf14a7" category="paragraph">定義する必要があるパラメータは次のとおりです。</block>
+  <block id="20c4f7e2184f40e0c70515cc13e74929" category="list-text">Snapshot バックアップを実行する頻度</block>
+  <block id="a9790aa832bdfe05ae357e9742498021" category="list-text">Snapshot コピーバックアップをプライマリストレージシステムに保存する期間</block>
+  <block id="d27abbb31946413047160ed17a49cef6" category="list-text">ブロック整合性チェックはどのくらいの頻度で実行する必要がありますか。</block>
+  <block id="fb5978d888365df302c5a4d4ab45a6d0" category="list-text">プライマリバックアップをオフサイトのバックアップサイトにレプリケートする必要があるか。</block>
+  <block id="15bb013c8042cd30e50b101536a819ac" category="list-text">バックアップをオフサイトのバックアップストレージに保管する期間</block>
+  <block id="a76fbe238755f54f2cc8ad0ef1e50790" category="paragraph">次の表に、システムタイプの本番、開発、およびテストのデータ保護パラメータの例を示します。本番用システムでは、高いバックアップ頻度が定義されており、バックアップはオフサイトのバックアップサイトに 1 日に 1 回レプリケートされます。テスト用システムの要件は低く、バックアップのレプリケーションはありません。</block>
+  <block id="4e92547e997fe98c132fd1cfb873bc65" category="cell">バックアップ頻度</block>
+  <block id="336d382a0ace20046f30116decc1a58b" category="cell">プライマリの保持</block>
+  <block id="0359f5661845e7cea5b46bee1591ba1f" category="cell">2 日</block>
+  <block id="859dfafd0d5f98d972cbef18f555a178" category="cell">オフサイトのバックアップサイトへのレプリケーション</block>
+  <block id="28187cfc0c9b8d99a69446b85d6836f9" category="cell">1 日に 1 回</block>
+  <block id="9f671a43519ba35ba07e5cc7fd68ea1e" category="cell">オフサイトへのバックアップの保持</block>
+  <block id="a9adf02fea7b0107b5a712a45e51076a" category="cell">2 週間</block>
+  <block id="e681a3b45989b468533c4b90ee960bf9" category="cell">該当なし</block>
+  <block id="d40d1bfa53df32e86debc960673d124c" category="paragraph">次の表に、データ保護パラメータに設定する必要があるポリシーを示します。</block>
+  <block id="23b66e99cd6ba31940d72ec834e12a16" category="cell">PolicyLocalSnap というプロンプトに対して表示され</block>
+  <block id="57d76f4b223551090681c2d3d087b612" category="cell">PolicyLocalSnapAndSnapVault</block>
+  <block id="8086e83684ef6d0154834ccea000d123" category="cell">PolicyBlockIntegrityCheck 」を参照してください</block>
+  <block id="eb5e64a6ddbc74a072fcf0bbf2472273" category="cell">Snapshot ベース</block>
+  <block id="f65710a865ee85dd3e4b8394da061f2a" category="cell">スケジュール頻度</block>
+  <block id="e23d3690726ce7e0baec7f3e456f2d11" category="paragraph">LocalSnapshot ポリシーは ' 本番システム ' 開発システム ' およびテスト・システムに使用され '2 日間の保持期間を持つローカル Snapshot バックアップをカバーします</block>
+  <block id="aacaec8f3c328fa76a33359dd411858a" category="paragraph">リソース保護設定では、スケジュールはシステムタイプごとに異なります。</block>
+  <block id="e443afc7dea88a72ac5d95deb950a430" category="list-text">* 製造 * 4 時間ごとにスケジュールを設定します。</block>
+  <block id="258d77a49c4d5819dfead3dccee318a9" category="list-text">* 開発。 * 4 時間ごとにスケジュールを設定します。</block>
+  <block id="2e743186e90f3e121e96136221ff58f5" category="list-text">* テスト * 4 時間ごとにスケジュールを設定します。</block>
+  <block id="511f903aab4f11abd60bb71f0cb0a9c5" category="paragraph">「 LocalSnapAndSnapVault' 」ポリシーは、本番システムおよび開発システムで、オフサイトのバックアップストレージへの日次レプリケーションをカバーするために使用されます。</block>
+  <block id="30eeb20f202457a8361e6337268b5d10" category="paragraph">リソース保護構成では、スケジュールは本番環境と開発環境に対して定義されます。</block>
+  <block id="b8aa0eddba68c4b5a67e4b59d7c54dc1" category="list-text">* 生産。 * 毎日スケジュールを設定します。</block>
+  <block id="f20f3a1d7e3572bd81183a3c1f9633d5" category="list-text">* 開発。 * 毎日スケジュールを設定します。</block>
+  <block id="6b012e8cfab09dc8484b04ce2f914df2" category="paragraph">「 BlockIntegrityCheck 」ポリシーは、本番システムおよび開発システムで、ファイルベースのバックアップを使用した週次ブロック整合性チェックをカバーするために使用されます。</block>
+  <block id="e8530a36631f0403c3fcc21b5cd70abc" category="list-text">* 生産。 * 毎週スケジュールを設定します。</block>
+  <block id="2169c09d81c725a1f3131276107d3db2" category="list-text">* 開発。 * 毎週スケジュールを設定します。</block>
+  <block id="8fef54544250744aa553b98687de9f40" category="paragraph">オフサイトのバックアップポリシーを使用する個々の SAP HANA データベースに対して、ストレージレイヤで保護関係を設定する必要があります。保護関係は、レプリケートされるボリュームとバックアップの保持をオフサイトのバックアップストレージで定義します。</block>
+  <block id="8870e02513ebfc93b4625271f6e5eede" category="paragraph">この例では、本番用システムと開発用システムごとに、オフサイトのバックアップストレージに 2 週間のデータ保持期間を定義します。</block>
+  <block id="a858d77b86373ca0b7cdae460153a0e8" category="admonition">この例では、 SAP HANA データベースのリソースと非データボリュームのリソースの保護ポリシーと保持方法は異なりますが、</block>
+  <block id="51a5bb1295ec95e66a60bbb918690373" category="paragraph">SAP は、 HANA 2.0 SPS4 を使用する MDC のマルチテナントシステムの Snapshot バックアップをサポートするようになりました。SnapCenter は、複数のテナントを持つ HANA MDC システムの Snapshot バックアップ処理をサポートしています。SnapCenter は、 HANA MDC システムの 2 つの異なるリストア処理もサポートしています。システム全体、システム DB 、およびすべてのテナントをリストアすることも、テナントを 1 つだけリストアすることもできます。SnapCenter でこれらの処理を実行するための前提条件がいくつかあります。</block>
+  <block id="4698c998854cf1f3f7f0982109f67d65" category="paragraph">MDC システムでは、テナント設定が静的であるとは限りません。テナントを追加したり、テナントを削除したりできます。SnapCenter は、 HANA データベースが SnapCenter に追加されたときに検出された構成に依存しません。バックアップ処理の実行時に使用可能なテナントを SnapCenter が把握しておく必要があります。</block>
+  <block id="491c6a51dcb7a300a2eeff899d3420f0" category="paragraph">シングルテナントのリストア処理を有効にするには、各 Snapshot バックアップに含まれるテナントが SnapCenter に認識されている必要があります。また、 Snapshot バックアップに含まれる各テナントにどのファイルおよびディレクトリが属するかを把握しておく必要があります。</block>
+  <block id="e8ab2d6ac8e55a17560a37dec1e4938f" category="paragraph">したがって、バックアップ処理を実行するたびに、テナント情報を取得する必要があります。これには、テナント名、および対応するファイルとディレクトリの情報が含まれます。シングルテナントのリストア処理をサポートできるようにするには、このデータを Snapshot バックアップのメタデータに格納する必要があります。次のステップは、 Snapshot バックアップ処理そのものです。この手順には、 HANA のバックアップセーブポイント、ストレージの Snapshot バックアップ、および SQL コマンドをトリガーして Snapshot 処理を終了する SQL コマンドが含まれています。close コマンドを使用すると、 HANA データベースがシステム DB と各テナントのバックアップカタログを更新します。</block>
+  <block id="53f017ef2e2913c1affe326e6d58147d" category="paragraph">データバックアップの保持管理と HANA のバックアップカタログ管理のために、 SnapCenter では、最初の手順で特定されたシステムデータベースとすべてのテナントデータベースに対してカタログ削除処理を実行する必要があります。ログバックアップの場合と同様に、 SnapCenter ワークフローは、バックアップ処理の一部であった各テナントに対して実行する必要があります。</block>
+  <block id="f89cb8dbff3661973620ba006d228a5f" category="paragraph"><block ref="f89cb8dbff3661973620ba006d228a5f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="87d2bd3ffe470713cfe8f85f66872001" category="paragraph">SnapCenter では、次の順序で SAP HANA データベースがバックアップされます。</block>
+  <block id="c431a2b730735975215b43173bf6d91e" category="list-text">SnapCenter が HANA データベースからテナントのリストを読み取ります。</block>
+  <block id="bbaec7daa0b136f892a8e18b3c38d0f0" category="list-text">SnapCenter は、各テナントのファイルとディレクトリを HANA データベースから読み取ります。</block>
+  <block id="fd4f9437bcf770e6f4b4b5b2c53ed88c" category="list-text">テナント情報は、このバックアップ処理の SnapCenter メタデータに格納されます。</block>
+  <block id="388052672cabc52a6671bee667609de4" category="list-text">SnapCenter が SAP HANA のグローバル同期バックアップ保存ポイントをトリガーし、整合性が取れたデータベースイメージを永続性レイヤに作成します。</block>
+  <block id="79cf1027a83c90d2e6216fec04575789" category="admonition">SAP HANA MDC のシングルまたはマルチテナントシステムの場合は、システムデータベースと各テナントデータベースの同期されたグローバルバックアップの保存ポイントが作成されます。</block>
+  <block id="a61afd60d46e728ee82e2e6d96469475" category="list-text">SnapCenter は、リソースに対して設定されたすべてのデータボリュームのストレージ Snapshot コピーを作成します。このシングルホスト HANA データベースの例には、データボリュームが 1 つしかありません。SAP HANA マルチホストデータベースには、複数のデータボリュームがあります。</block>
+  <block id="177edc528df877c70e8b0192fbc99b54" category="list-text">SnapCenter を使用して、ストレージ Snapshot バックアップが SAP HANA バックアップカタログに登録されます。</block>
+  <block id="1f6807835340f29ecafd981b7a0921ab" category="list-text">SnapCenter によって、 SAP HANA のバックアップ保存ポイントが削除されます。</block>
+  <block id="04f1db44df5ec237cae0e9c588ac120b" category="list-text">SnapCenter は、リソース内に設定されているすべてのデータボリュームに対して SnapVault または SnapMirror の更新を開始します。</block>
+  <block id="2066b7a8e7b635126a83d5d0b7e1ef31" category="admonition">この手順は、選択したポリシーに SnapVault または SnapMirror のレプリケーションが含まれている場合にのみ実行されます。</block>
+  <block id="f3a7fa0f01c591ef532e61f9aa267de5" category="list-text">SnapCenter は、プライマリストレージで定義されたバックアップの保持ポリシーに基づいて、データベース内のストレージ Snapshot コピーとバックアップエントリ、および SAP HANA のバックアップカタログを削除します。HANA のバックアップカタログ処理は、システムデータベースとすべてのテナントに対して実行されます。</block>
+  <block id="bbd0b34cf66469256e79a07516383b10" category="admonition">バックアップがセカンダリストレージに残っている場合、 SAP HANA のカタログのエントリは削除されません。</block>
+  <block id="30f926688a4ab105b79243923a23e688" category="list-text">SnapCenter は、ファイルシステムと SAP HANA のバックアップカタログにある、 SAP HANA のバックアップカタログにある最も古いデータバックアップよりも古いすべてのログバックアップを削除します。これらの処理はシステムデータベースおよびすべてのテナントに対して実行されます。</block>
+  <block id="d7b12b1b6c96a142344e59506ea8eb16" category="admonition">この手順は、ログバックアップの不要ファイルの削除が無効になっていない場合にのみ実行します。</block>
+  <block id="12dc7f50145a958b80895e61e0dc9d4e" category="paragraph">SnapCenter は、次の順序でブロック整合性チェックを実行します。</block>
+  <block id="6499fcfd02abec50ac59cc0e7da2ac2b" category="list-text">SnapCenter は、システムデータベースと各テナントに対してファイルベースのバックアップ処理をトリガーします。</block>
+  <block id="ac0e3469b6536d2a3f561f868db15f69" category="list-text">SnapCenter は、ブロック整合性チェック処理用に定義された保持ポリシーに基づいて、データベース、ファイルシステム、および SAP HANA のバックアップカタログからファイルベースのバックアップを削除します。ファイルシステムと HANA のバックアップカタログに関するバックアップの削除は、システムデータベースとすべてのテナントに対して実行されます。</block>
+  <block id="ca5d71be6f3f63979efa5c8e27395b80" category="paragraph">データバックアップ保持管理とログバックアップの不要ファイルの削除は、次の保持管理を含む 5 つのメイン領域に分割できます。</block>
+  <block id="90cb263080fdc60abfd71e3449e03aa2" category="list-text">プライマリストレージでのローカルバックアップ</block>
+  <block id="d130f8b5cd745779ae15b9fb88645075" category="list-text">セカンダリストレージでバックアップを実行する</block>
+  <block id="3d1bc495a1e32a4ae34aa4777dc325f3" category="paragraph"><block ref="3d1bc495a1e32a4ae34aa4777dc325f3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="96716c544304319656c23d4bd613d02a" category="section-title">プライマリストレージでのローカルバックアップの保持管理</block>
+  <block id="8ad39493f65893bc4270bde100245f14" category="paragraph">SnapCenter は、 SnapCenter バックアップポリシーに定義された保持設定に従って、プライマリストレージと SnapCenter リポジトリの Snapshot コピーを削除することで、 SAP HANA データベースのバックアップと非データボリュームのバックアップを削除します。</block>
+  <block id="edd5176847fe9cdca52d5020294a02ad" category="admonition">SnapCenter では、スケジュールされたバックアップとオンデマンドバックアップの両方で保持管理を個別に処理できることに注意してください。</block>
+  <block id="6e3969ad88d0fc23326c45dbf0aaa083" category="paragraph">プライマリストレージのローカルバックアップは、 SnapCenter で手動で削除することもできます。</block>
+  <block id="0ca384dce310ffb08f5955561d1f27cf" category="paragraph">SnapCenter は、 SnapCenter バックアップポリシーに定義された保持設定に従ってファイルシステム上のバックアップを削除することで、ファイルベースのバックアップを削除します。</block>
+  <block id="344a187b4604a60989c916b3113d9f35" category="admonition">スケジュールバックアップまたはオンデマンドバックアップでは、 SnapCenter で保持管理を個別に実行できることに注意してください。</block>
+  <block id="4ccde41240784b8793e1a64b542f9ac3" category="section-title">セカンダリストレージでのバックアップの保持管理</block>
+  <block id="1efb946fa11931ea4d152ed87661fa40" category="paragraph">セカンダリストレージでのバックアップの保持管理は、 ONTAP 保護関係に定義された保持設定に基づいて ONTAP によって処理されます。</block>
+  <block id="79b3fea1775e45a010e1441bb92a4a7f" category="paragraph">SnapCenter リポジトリ内のセカンダリストレージでこれらの変更内容を同期するために、 SnapCenter ではスケジュールされたクリーンアップジョブを使用します。このクリーンアップジョブは、すべての SnapCenter プラグインとすべてのリソースについて、すべてのセカンダリストレージのバックアップを SnapCenter リポジトリと同期します。</block>
+  <block id="98fdd1840e4c60a7aea08cc51e60e00c" category="paragraph">デフォルトでは、クリーンアップジョブは週に 1 回スケジュールされます。この週次スケジュールでは、 SnapCenter および SAP HANA Studio でのバックアップの削除は、セカンダリストレージですでに削除されているバックアップと比較して遅延します。この不整合を回避するために、 1 日に 1 回など、スケジュールを高い頻度に変更することができます。</block>
+  <block id="6650411a4183dbf558fd1208e2c9841c" category="admonition">リソースのトポロジビューで更新ボタンをクリックして、個々のリソースのクリーンアップジョブを手動でトリガーすることもできます。</block>
+  <block id="24bcff4ae11dafd8b12386259a025073" category="inline-link-macro">「オフサイトバックアップストレージとのバックアップ同期のスケジューリング頻度を変更します。」</block>
+  <block id="e18583184a386e10d64baafd02652bfc" category="paragraph">クリーンアップジョブのスケジュールを変更する方法、または手動で更新を開始する方法については、を参照してください <block ref="223c7cf787f11ffa6eb121c4877faa87" category="inline-link-macro-rx"></block></block>
+  <block id="40d811c159a7ac26c3d925c44e5f1b3b" category="paragraph">SnapCenter がバックアップ、ローカル Snapshot またはファイルベースを削除した場合、またはセカンダリストレージでバックアップの削除を特定した場合は、 SAP HANA のバックアップカタログからこのデータバックアップも削除されます。</block>
+  <block id="480e97c8fce55ceacfe516da2b28e4b0" category="paragraph">SnapCenter は、プライマリストレージでローカル Snapshot バックアップの SAP HANA カタログエントリを削除する前に、セカンダリストレージにバックアップが残っているかどうかを確認します。</block>
+  <block id="6c7719cbfa68d680a5f8e9eaf41834c0" category="paragraph">最新のデータバックアップよりも古いログバックアップはフォワードリカバリで不要になり、削除可能です。</block>
+  <block id="0f8ca98038ea7609903b53ed9775429b" category="paragraph">SnapCenter は、ファイルシステムレベルおよび SAP HANA のバックアップカタログでの不要なログファイルバックアップの削除を次の手順で処理します。</block>
+  <block id="b74aa809ad4d4bf579ac16558af9e82c" category="list-text">SnapCenter は、 SAP HANA のバックアップカタログを読み取り、成功した最も古いファイルベースバックアップまたは Snapshot バックアップのバックアップ ID を取得します。</block>
+  <block id="77bca62e752a7e53551ce5ca4c0cc56e" category="list-text">SnapCenter は、 SAP HANA カタログ内のすべてのログバックアップと、このバックアップ ID よりも古いファイルシステムを削除します。</block>
+  <block id="4fd7cb34c055677c7845e0e0eddb1866" category="admonition">SnapCenter では、 SnapCenter で作成されたバックアップの不要な削除のみが処理されます。SnapCenter の外部で追加のファイルベースのバックアップを作成する場合は、ファイルベースのバックアップがバックアップカタログから削除されていることを確認する必要があります。このようなデータバックアップがバックアップカタログから手動で削除されないと、最も古いデータバックアップになる可能性があります。また、このファイルベースのバックアップが削除されるまで、古いログバックアップは削除されません。</block>
+  <block id="b95762f66ee55056931b793e886c1e3b" category="admonition">ポリシー設定でオンデマンドバックアップに対して保持が定義されていても、不要なファイルの削除は別のオンデマンドバックアップが実行されたときにのみ実行されます。そのため、通常、 SnapCenter でオンデマンドバックアップを手動で削除して、これらのバックアップが SAP HANA バックアップカタログからも削除され、ログバックアップの不要な削除が古いオンデマンドバックアップに基づいていないことを確認する必要があります。</block>
+  <block id="436253a305ed14a9c781f5fb23de131a" category="paragraph">ログバックアップ保持管理は、デフォルトで有効になっています。必要に応じて、の説明に従って無効にすることができます <block ref="729f1a3a5995f5e1c263714177382b80" category="inline-link-macro-rx"></block></block>
+  <block id="197793c26e17cc5efd62568eaffb6624" category="paragraph">従来のデータベースの変更率と比較して、ストレージレイヤのブロック変更率が高いことを考慮する必要があります。列ストアの HANA テーブルのマージプロセスにより、テーブル全体が変更されたブロックだけでなくディスクに書き込まれます。</block>
+  <block id="af3abf38f2c084a1935b333f9ba155b9" category="paragraph">1 日に複数の Snapshot バックアップを作成した場合、顧客ベースから得られるデータの日次変更率は 20~50% です。SnapVault ターゲットでレプリケーションを 1 日に 1 回しか実行しない場合、通常は日単位の変更率が小さくなります。</block>
+  <block id="a9c5176056bc688c2b5d249e742fdf00" category="section-title">リストア処理とリカバリ処理</block>
+  <block id="ff1aa6965291c159da72f82aca64bc82" category="section-title">SnapCenter を使用したリストア処理</block>
+  <block id="9c9e0fed6239589a5da391c8e31d6e68" category="paragraph">HANA データベースに関しては、 SnapCenter は 2 つの異なるリストア処理をサポートしています。</block>
+  <block id="45f0626024dd5af174d07f4f74d4aa7b" category="list-text">* リソース全体のリストア。 * HANA システムのすべてのデータがリストアされます。HANA システムに 1 つ以上のテナントがある場合は、システムデータベースのデータとすべてのテナントのデータがリストアされます。</block>
+  <block id="9dd9f3619476df5c4a0c5a56c9bedbcb" category="list-text">* 単一テナントのリストア。 * 選択したテナントのデータのみがリストアされます。</block>
+  <block id="a5e7df954560d21487e5fa2e03adaf43" category="paragraph">ストレージに関して言えば、上記のリストア処理は、使用するストレージプロトコル（ NFS またはファイバチャネル SAN ）、設定されているデータ保護（プライマリストレージにオフサイトのバックアップストレージがあるかどうかに関係なく）、それぞれ別の方法で実行する必要があります。 また、リストア処理に使用するバックアップを選択します（プライマリまたはオフサイトのバックアップストレージからリストアします）。</block>
+  <block id="903b0347fbc98572431542d78c9c5054" category="section-title">プライマリストレージからのリソース全体のリストア</block>
+  <block id="7aea2eb041f9eff72ead2cd294f80186" category="paragraph">プライマリストレージからリソース全体をリストアする場合、 SnapCenter では、リストア処理を実行するために 2 つの異なる ONTAP 機能がサポートされます。次の 2 つの機能から選択できます。</block>
+  <block id="1cd3a846077636ddc693f619ce7088f0" category="list-text">* ボリューム・ベース SnapRestore 。 * ボリューム・ベースの SnapRestore は、ストレージ・ボリュームの内容を、選択した Snapshot バックアップの状態に戻します。</block>
+  <block id="be41c2cd74a9f110ff20720143d3bf81" category="list-text">NFS を使用して自動検出されたリソースで利用可能なボリュームリバートチェックボックス。</block>
+  <block id="e3ebff15becb67ef4948427fc7491f81" category="list-text">手動で構成されたリソースの [Complete Resource] オプションボタン。</block>
+  <block id="534800278e6bf7ba0bef69f2122dfba8" category="list-text">* ファイル・ベースの SnapRestore * 単一ファイル SnapRestore とも呼ばれるファイル・ベースの SnapRestore は ' すべての個別ファイル（ NFS ）またはすべての LUN （ SAN ）をリストアします</block>
+  <block id="dfaf64eeed2495c2699fc12771706533" category="list-text">自動検出されたリソースのデフォルトのリストア方法。NFS のボリュームリバートチェックボックスを使用して変更できます。</block>
+  <block id="90e702706a64d8e3634ef3f8e3aaa1ac" category="list-text">手動で構成されたリソース用のファイルレベルオプションボタン。</block>
+  <block id="85a98b4a30ff802cd7b2a3ba93cc0821" category="paragraph">次の表に、各種のリストア方式の比較を示します。</block>
+  <block id="3f20050e38321d186cb4ef82c159cd57" category="cell">ボリュームベース SnapRestore</block>
+  <block id="d739125500200d5a4441aaac492be125" category="cell">ファイルベースの SnapRestore</block>
+  <block id="2e04633adac71ae9581b86c49821647c" category="cell">リストア処理の速度</block>
+  <block id="a48a9c2e0ec922b419ab2b2d9f9da767" category="cell">ボリュームサイズに関係なく、非常に高速です</block>
+  <block id="396bb30537b6cf03c5e8eb139b15ecc6" category="cell">リストア処理は非常に高速ですが、ストレージシステムでバックグラウンドコピージョブが使用されるため、新しい Snapshot バックアップの作成がブロックされます</block>
+  <block id="56b5076d3adb0c7e2bc3d51a22eb96d7" category="cell">Snapshot バックアップ履歴</block>
+  <block id="ce671637bb895c1d526f778b09f0658d" category="cell">古い Snapshot バックアップにリストアすると、新しい Snapshot バックアップがすべて削除されます。</block>
+  <block id="a053bc35a63576c7a170f33ff67297f2" category="cell">影響はありません</block>
+  <block id="a054e062f75a92a1754c560097c4fae7" category="cell">ディレクトリ構造のリストア</block>
+  <block id="a9d00c75e7901626b56ba90d58b35a50" category="cell">ディレクトリ構造もリストアされます</block>
+  <block id="35bae59ed941fa0c4d38db0eb565658f" category="cell">nfs ：個々のファイルのみをリストアし、ディレクトリ構造はリストアしません。ディレクトリ構造も失われた場合は、リストア処理の実行前に手動で作成する必要があります。 SAN ：ディレクトリ構造もリストアされます</block>
+  <block id="49d21bd8b9bbd6ecf06a49b6bb034d75" category="cell">オフサイトのバックアップストレージにレプリケーションするように構成されたリソース</block>
+  <block id="426c45e16d0b6c2ccc80cd5f47659d55" category="cell">ボリュームベースのリストアを、 SnapVault 同期に使用されている Snapshot コピーよりも古い Snapshot コピーバックアップには実行できません</block>
+  <block id="877b742de992b43acf10192ba5e8f616" category="cell">Snapshot バックアップを選択できます</block>
+  <block id="d8f15654a7ecfd80ce41d20cf09409ad" category="section-title">オフサイトのバックアップストレージから完全なリソースをリストア</block>
+  <block id="cc813ee1ea3959cc775bcd6ae8201cfe" category="paragraph">オフサイトのバックアップストレージからのリストアは、必ず SnapVault リストア処理を使用して実行します。この場合、ストレージボリュームのすべてのファイルまたはすべての LUN が、 Snapshot バックアップの内容で上書きされます。</block>
+  <block id="c65cfccc27dad897a6ee52d7f025e91d" category="section-title">単一テナントのリストア</block>
+  <block id="29dcd697b97e7e87cd810ff0c0274566" category="paragraph">単一のテナントをリストアするには、ファイルベースのリストア処理が必要です。使用するストレージプロトコルに応じて、 SnapCenter で実行されるリストアワークフローは異なります。</block>
+  <block id="7369fcede1216c5a449bffa4016f597a" category="list-text">NFS ：</block>
+  <block id="91954bd3c94d4f4f72e4c3007d6d4c09" category="list-text">プライマリストレージ。ファイルベースの SnapRestore 処理は、テナントデータベースのすべてのファイルに対して実行されます。</block>
+  <block id="341fc1f6fde1c01ceb9c0e121cb8aaee" category="list-text">オフサイトのバックアップストレージ： SnapVault リストア処理は、テナントデータベースのすべてのファイルに対して実行されます。</block>
+  <block id="85e9e72057a18b950343000578489311" category="list-text">SAN ：</block>
+  <block id="b3c57720ef183814a9674313373c9377" category="list-text">プライマリストレージ。LUN をクローニングしてデータベースホストに接続し、テナントデータベースのすべてのファイルをコピーします。</block>
+  <block id="52e32a19625ab4545a5954161ac46893" category="list-text">オフサイトのバックアップストレージ。LUN をクローニングしてデータベースホストに接続し、テナントデータベースのすべてのファイルをコピーします。</block>
+  <block id="43b75ec27fb52d4870e6f47cad818a7f" category="section-title">自動検出された HANA シングルコンテナおよび MDC シングルテナントシステムのリストアとリカバリ</block>
+  <block id="27ae2d5fdcf3c08eb8f123d6c1b7eed0" category="paragraph">自動検出された HANA シングルコンテナシステムと HANA MDC シングルテナントシステムは、 SnapCenter を使用した自動リストアとリカバリが有効になります。これらの HANA システムについては、次の図に示すように、 SnapCenter では 3 種類のリストアとリカバリのワークフローがサポートされています。</block>
+  <block id="a512c46a13eca7d22567426830119dbb" category="list-text">* シングルテナントで手動リカバリ * 。シングルテナントのリストア処理を選択すると、選択した Snapshot バックアップに含まれるすべてのテナントが SnapCenter に表示されます。テナントデータベースは手動で停止してリカバリする必要があります。SnapCenter でのリストア処理は、 NFS での単一ファイルの SnapRestore 処理、または SAN 環境でのクローニング、マウント、コピーの処理で行われます。</block>
+  <block id="cfae0f5adb05d26e7f81eb470db45103" category="list-text">* 自動リカバリ機能を備えた完全なリソース。 * 完全なリソースのリストア操作と自動リカバリを選択した場合、 SnapCenter により完全なワークフローが自動化されます。SnapCenter では、最新の状態、ポイントインタイム、または特定のバックアップリカバリ処理がサポートされます。選択したリカバリ処理は、システムとテナントデータベースに使用されます。</block>
+  <block id="203194d065313487cfd7ffa63c9ba2c0" category="list-text">* 手動リカバリを伴う完全なリソース。 * リカバリなしを選択すると、 SnapCenter は HANA データベースを停止し、必要なファイルシステム（アンマウント、マウント）およびリストア処理を実行します。システムデータベースとテナントデータベースを手動でリカバリする必要があります。</block>
+  <block id="b9644b21446dc2d702645e6e6e2cbb49" category="paragraph"><block ref="b9644b21446dc2d702645e6e6e2cbb49" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c162464cff3cb9771674cd84e513d789" category="section-title">自動検出された HANA MDC のマルチテナントシステムのリストアとリカバリ</block>
+  <block id="05ec573421455228e9a6f35c31cc4d8b" category="paragraph">複数のテナントを持つ HANA MDC システムは自動的に検出されますが、自動リストアとリカバリは現在の SnapCenter リリースではサポートされていません。複数のテナントを持つ MDC システムの場合は、次の図に示すように、 SnapCenter では 2 つの異なるリストアとリカバリのワークフローがサポートされています。</block>
+  <block id="ce9f584a687168c594173020f153bccb" category="list-text">シングルテナントと手動リカバリ</block>
+  <block id="da2e94d85e230dc9ba2a260a5dab3781" category="list-text">手動リカバリでリソースを完全にリカバリ</block>
+  <block id="66c227f4c6b143b23ab683bee1e2aa88" category="paragraph">ワークフローは、前のセクションで説明したものと同じです。</block>
+  <block id="ac7a575c7f1f5c77f1698ba95f8de3db" category="paragraph"><block ref="ac7a575c7f1f5c77f1698ba95f8de3db" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a648c0c28f1f9e0a64434fefbcc6a68f" category="section-title">手動で構成した HANA リソースのリストアとリカバリ</block>
+  <block id="72758f6f86b5537b8bd7bd5417cd9bb2" category="paragraph">手動構成の HANA リソースは、リストアとリカバリの自動化が有効になっていません。また、シングルテナントまたは複数テナントの MDC システムでは、単一テナントのリストア処理はサポートされていません。</block>
+  <block id="8d2b5d00efaa377631e838bf988ca953" category="paragraph">構成した HANA の手動リソースの場合、 SnapCenter では、次の図に示すように手動リカバリのみがサポートされます。手動リカバリのワークフローは、前のセクションで説明したものと同じです。</block>
+  <block id="c4e3be2ba3aada8dd40f5c021eb541f0" category="paragraph"><block ref="c4e3be2ba3aada8dd40f5c021eb541f0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3cf5b4d5940056fb37b1db43a2f24a02" category="section-title">リストア処理とリカバリ処理の概要</block>
+  <block id="9a363bf2d0172f00374a64753398a456" category="paragraph">次の表は、 SnapCenter の HANA リソース構成に応じたリストア処理とリカバリ処理をまとめたものです。</block>
+  <block id="eafac937ca579dd3ce0b4dd532e2c8e3" category="cell">SnapCenter リソース構成</block>
+  <block id="9abf603644887736e44b05da99235ce3" category="cell">リストアとリカバリのオプション</block>
+  <block id="a743a25fccef3ac17ddcd779c402fdbd" category="cell">HANA データベースを停止します</block>
+  <block id="874c3404431451fc560e43c2af62ff91" category="cell">マウント前にアンマウントし、リストア後にマウントします</block>
+  <block id="9ca7026f0c05a889d43d668c61a8a1eb" category="cell">自動検出単一コンテナ MDC のシングルテナント</block>
+  <block id="7e8db99e35f3a54c8dfa0a30be5f006b" category="list-text">どちらかを使用してリソースを完了します</block>
+  <block id="fa1b1897eea412c9728e599e116e7c1c" category="list-text">デフォルト（すべてのファイル）</block>
+  <block id="44127b3908ec00df1f97444914d5bce5" category="list-text">ボリュームのリバート（プライマリストレージからの NFS のみ）</block>
+  <block id="a54c3b8a5e1c3a02d1b445d0e6a72b1b" category="list-text">自動リカバリが選択されました</block>
+  <block id="4e6fc046b6021c44b0bc83312f59b2d4" category="cell">SnapCenter による自動化</block>
+  <block id="cf458e0c5f16417e392686a3c916a31b" category="list-text">リカバリが選択されていません</block>
+  <block id="e1ba155a9f2e8c3be94020eef32a0301" category="cell">手動</block>
+  <block id="908b61fb2167f81e0a639da67ff266b5" category="list-text">テナントのリストア</block>
+  <block id="25a8d668beb192aabdbff9bfeafd2ee7" category="cell">MDC の複数のテナントを自動検出</block>
+  <block id="7a2c38503258c11c1a26b160c05baf30" category="list-text">自動リカバリはサポートされていません</block>
+  <block id="f3b7e79bd9c82eafaec1c6c93745bc65" category="cell">すべての手動設定リソース</block>
+  <block id="329b6d7a4d53380c2598ad10c6779f08" category="list-text">完全なリソース（ = ボリュームの復元、 NFS および SAN でプライマリストレージからのみ使用可能）</block>
+  <block id="c6487658bd5c74c99c6b1ad10eda7e67" category="list-text">ファイルレベル（すべてのファイル）</block>
+  <block id="6a7a37ab9e89af68799737e9713d5e7c" category="paragraph"><block ref="6a7a37ab9e89af68799737e9713d5e7c" category="inline-link-macro-rx"></block></block>
+  <block id="0a3b81cd04b7ee3bbb79ae9a19dc8656" category="sidebar">SnapCenter を使用した SAP HANA のバックアップとリカバリ</block>
+  <block id="d7ca353f8f69588ea48c2bafac41c0d7" category="sidebar">SnapCenter の初期設定</block>
 </blocks>
