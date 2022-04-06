@@ -344,9 +344,6 @@ advanced 権限レベルの nfs modify -vserver <vserver-name> -v3-tcp-max-read-
 | NFSv4 の書き込み委譲を無効にする | nfs modify -vserver <vserver_name>-v4.1-write-delegation disabled 
 
 
-| NFSv4 リース時間を設定する | advanced 権限レベルの nfs modify -vserver <vserver_name>-v4-lease-seconds 10 set admin を設定します 
-
-
 | NFSv4 数値 ID を無効にする | nfs modify -vserver <vserver_name>-v4-numeric-ids disabled 
 |===
 
