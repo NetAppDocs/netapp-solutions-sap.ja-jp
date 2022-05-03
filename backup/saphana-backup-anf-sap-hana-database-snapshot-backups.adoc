@@ -6,6 +6,7 @@ summary: 通常、 SnapCenter サービスでは、ポリシーで定義され�
 ---
 = SAP HANA データベースの Snapshot バックアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

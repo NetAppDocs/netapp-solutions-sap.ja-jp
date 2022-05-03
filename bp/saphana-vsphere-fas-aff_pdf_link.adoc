@@ -5,6 +5,7 @@ keywords: tr-4338, pdf, sap, hana, vmware, vsphere, aff, fas, all flash, fabric 
 summary: このリファレンスアーキテクチャドキュメントでは、 VMware vSphere 仮想マシン（ VM ）および NetApp FAS および All Flash FAS （ AFF ）ストレージシステム上に SAP HANA シングルホストおよびマルチホストソリューションを設計し、導入する方法を説明します。 
 ---
 = TR-4338 ：『 SAP HANA on VMware vSphere with NetApp-FAS and All Flash FAS Systems 』
+:allow-uri-read: 
 :firstname: : hardbreaks:
 :author: : hardbreaks:
 :authorinitials: :

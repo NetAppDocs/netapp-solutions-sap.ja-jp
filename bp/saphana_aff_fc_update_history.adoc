@@ -6,6 +6,7 @@ summary:
 ---
 = 履歴を更新します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

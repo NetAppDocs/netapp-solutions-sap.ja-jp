@@ -6,6 +6,7 @@ summary: 以下は、 HANA データベースのリカバリ手順を示して�
 ---
 = HANA データベースのリカバリ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

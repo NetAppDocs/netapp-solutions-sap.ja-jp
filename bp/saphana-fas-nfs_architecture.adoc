@@ -6,6 +6,7 @@ summary: SAP HANA ホストは、冗長 10GbE 以上のネットワークイン�
 ---
 = アーキテクチャ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

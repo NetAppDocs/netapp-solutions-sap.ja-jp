@@ -6,6 +6,7 @@ summary: また、使用している Linux バージョンに固有のマルチ�
 ---
 = ホストのセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

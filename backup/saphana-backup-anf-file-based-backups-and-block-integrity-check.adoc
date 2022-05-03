@@ -6,6 +6,7 @@ summary: SAP では、ブロックの整合性チェックを実行するため�
 ---
 = ファイルベースのバックアップとブロックの整合性チェック
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

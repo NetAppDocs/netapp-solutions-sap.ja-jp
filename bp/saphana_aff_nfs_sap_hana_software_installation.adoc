@@ -6,6 +6,7 @@ summary: このセクションでは、シングルホストシステムとマ�
 ---
 = SAP HANA ソフトウェアのインストール
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: このセクションでは、 HANA MDC のシングルホストシン�
 ---
 = リストアとリカバリ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 他の SAP HANA ホストで作成されたバックアップからの�
 ---
 = もう一方のホストで作成されたバックアップからのリストアとリカバリ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

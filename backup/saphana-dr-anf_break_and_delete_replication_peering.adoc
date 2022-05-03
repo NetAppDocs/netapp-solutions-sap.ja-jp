@@ -6,6 +6,7 @@ summary: 災害発生時にフェイルオーバーする場合は、ターゲ�
 ---
 = レプリケーションピアリングを解除して削除します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

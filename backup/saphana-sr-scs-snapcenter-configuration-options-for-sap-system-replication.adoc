@@ -6,6 +6,7 @@ summary: このページでは、 SAP システムレプリケーションの設
 ---
 = SAP システムレプリケーションの SnapCenter 設定オプション
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

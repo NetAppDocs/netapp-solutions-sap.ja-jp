@@ -6,6 +6,7 @@ keywords: netapp, solutions, SAP, best practices, videos, demos
 ---
 = SAP Configuration Best Practices ビデオおよびデモをご覧ください
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

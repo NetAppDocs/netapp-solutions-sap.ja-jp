@@ -6,6 +6,7 @@ summary: SnapCenter の設定は、初期設定とリソース固有の設定の
 ---
 = SnapCenter 構成
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

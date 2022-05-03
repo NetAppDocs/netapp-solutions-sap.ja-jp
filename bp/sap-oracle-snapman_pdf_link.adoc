@@ -5,6 +5,7 @@ keywords: tr-4250, pdf, sap, hana, oracle, unix, nfs, dr, snap creator
 summary: 本ドキュメントでは、 Oracle データベースを使用して SAP Business Suite 製品をサポートするストレージソリューションを設計する際の課題について説明します。ストレージインフラの設計、導入、運用、管理を中心に、最新世代の SAP ソリューションの利用に際して経営陣や IT 部門責任者が一般に直面する課題について、その対処方法を示します。本書で紹介する推奨事項は、特定の SAP アプリケーションに限定したものではなく、規模や範囲に関係なくさまざまな SAP 環境に応用できます。 
 ---
 = TR-4250 ：『 SAP with Oracle on UNIX and NFS with NetApp ONTAP and SnapManager for SAP 3.4 』
+:allow-uri-read: 
 :firstname: : hardbreaks:
 :author: : hardbreaks:
 :authorinitials: :

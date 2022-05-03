@@ -5,6 +5,7 @@ keywords: sap, hana, fas, systems, nfs, configuration, guide
 summary: NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージシステムには、 NetApp ONTAP ソフトウェアが搭載されています。 
 ---
 = TR-4290 ：『 SAP HANA on NetApp FAS systems with NFS Configuration Guide 』
+:allow-uri-read: 
 
 
 ネットアップ、 Nils Bauer 、 Marco Sch ö n

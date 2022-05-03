@@ -6,6 +6,7 @@ summary: このセクションでは、 SAP HANA 非データボリュームの�
 ---
 = グローバルな非データボリュームのバックアップ構成
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

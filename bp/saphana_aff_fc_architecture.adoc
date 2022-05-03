@@ -6,6 +6,7 @@ summary:
 ---
 = アーキテクチャ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

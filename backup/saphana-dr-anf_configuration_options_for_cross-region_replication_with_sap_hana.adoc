@@ -6,6 +6,7 @@ summary: 次の図は、 ANF クロスリージョンレプリケーションを
 ---
 = SAP HANA によるクロスリージョンレプリケーションの設定オプション
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

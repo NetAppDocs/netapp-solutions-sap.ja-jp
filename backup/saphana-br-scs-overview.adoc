@@ -6,6 +6,7 @@ summary: 今日の企業には、 SAP アプリケーションを中断なく継
 ---
 = TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

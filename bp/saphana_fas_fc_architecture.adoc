@@ -6,6 +6,7 @@ summary: SAP HANA ホストは、冗長 FCP インフラとマルチパスソフ
 ---
 = アーキテクチャ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

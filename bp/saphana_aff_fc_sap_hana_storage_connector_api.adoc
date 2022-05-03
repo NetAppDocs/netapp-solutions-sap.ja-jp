@@ -6,6 +6,7 @@ summary: ストレージコネクタは、フェイルオーバー機能を備�
 ---
 = SAP HANA Storage Connector API
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

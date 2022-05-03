@@ -6,6 +6,7 @@ summary: このセクションでは、シングルホスト SAP HANA MDC のシ
 ---
 = SAP HANA データベースのバックアップ構成
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ keywords: netapp, solutions, SAP, backup, restore, disaster recover, dr, videos,
 ---
 = SAP のバックアップ、リストア、ディザスタリカバリに関するビデオとデモ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

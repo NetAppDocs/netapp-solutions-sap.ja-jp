@@ -6,6 +6,7 @@ summary: 非データボリュームのバックアップは、 SAP HANA プラ�
 ---
 = データボリューム以外のバックアップ用の SnapCenter リソース固有の設定
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: このレポートで使用するラボのセットアップには、 S
 ---
 = このレポートで使用するラボのセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HA
 ---
 = TR-4436 ：『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

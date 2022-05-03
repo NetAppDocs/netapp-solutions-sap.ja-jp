@@ -6,6 +6,7 @@ summary: 以降のセクションでは、 3 種類のシナリオと設定例�
 ---
 = リストアとリカバリ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

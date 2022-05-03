@@ -6,6 +6,7 @@ summary: テクニカルレポート TR-4614 に、 NetApp SnapCenter を使用�
 ---
 = TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

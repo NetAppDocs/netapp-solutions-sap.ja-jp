@@ -6,6 +6,7 @@ summary: TR-4646 では、 SAP HANA 向けのディザスタリカバリ保護�
 ---
 = TR-4646 ：『 SAP HANA Disaster Recovery with Storage Replication 』
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: バックアップ処理は常にプライマリ SAP HANA ホストで�
 ---
 = ストレージ Snapshot バックアップと SAP システムレプリケーション
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

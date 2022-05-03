@@ -6,6 +6,7 @@ summary: SnapCenter 4.6 では、 HANA システムレプリケーションが�
 ---
 = リソースグループを使用した SnapCenter 4.6 の設定
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

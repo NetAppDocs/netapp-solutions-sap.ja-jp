@@ -6,6 +6,7 @@ summary: ここでは、 SS2 および SS1 の 2 つの設定例の設定手順�
 ---
 = SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

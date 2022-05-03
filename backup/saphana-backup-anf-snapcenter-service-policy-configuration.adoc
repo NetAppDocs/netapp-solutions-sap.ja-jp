@@ -6,6 +6,7 @@ summary:
 ---
 = SnapCenter サービスポリシーの設定
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

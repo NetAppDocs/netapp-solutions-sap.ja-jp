@@ -6,6 +6,7 @@ summary: このセクションでは、 SnapCenter の概念と、 SAP HANA の�
 ---
 = SnapCenter の概念とベストプラクティス
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

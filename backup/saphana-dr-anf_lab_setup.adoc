@@ -6,6 +6,7 @@ summary: 解決策の検証は、 SAP HANA シングルホストシステムで�
 ---
 = ラボのセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

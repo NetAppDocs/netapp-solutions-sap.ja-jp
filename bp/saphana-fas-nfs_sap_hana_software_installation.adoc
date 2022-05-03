@@ -6,6 +6,7 @@ summary: SAP HANA のソフトウェアインストールの要件は次のと�
 ---
 = SAP HANA ソフトウェアのインストール
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: このページでは、設定と調整を完了するために必要�
 ---
 = 高度な設定と調整
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

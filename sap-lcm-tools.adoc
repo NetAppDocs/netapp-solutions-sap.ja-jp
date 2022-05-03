@@ -6,6 +6,7 @@ keywords: netapp, solutions, SAP, lifecycle, management, lcm, tools
 ---
 = SAP Lifecycle Management 用ツール
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

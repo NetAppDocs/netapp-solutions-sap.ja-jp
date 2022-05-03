@@ -6,6 +6,7 @@ summary: このセクションで説明するすべての手順は、物理サ�
 ---
 = ホストのセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

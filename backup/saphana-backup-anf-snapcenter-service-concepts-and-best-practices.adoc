@@ -6,6 +6,7 @@ summary:
 ---
 = SnapCenter サービスの概念とベストプラクティス
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

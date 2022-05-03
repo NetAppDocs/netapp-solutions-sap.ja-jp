@@ -6,6 +6,7 @@ summary: 次のセクションでは、 SAP HANA 用のストレージシステ�
 ---
 = ストレージのサイジング
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

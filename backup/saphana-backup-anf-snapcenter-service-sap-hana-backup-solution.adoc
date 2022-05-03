@@ -6,6 +6,7 @@ summary: このセクションでは、 SnapCenter サービスバックアッ�
 ---
 = SnapCenter サービス SAP HANA バックアップ解決策
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

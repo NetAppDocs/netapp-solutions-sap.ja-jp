@@ -6,6 +6,7 @@ summary: NFS バージョン 4 以降では、ユーザ認証が必要です。�
 ---
 = NFSv4 用の SAP HANA インストールの準備
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

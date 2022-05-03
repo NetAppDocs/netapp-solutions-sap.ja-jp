@@ -6,6 +6,7 @@ summary: このセクションでは、 SAP HANA ホスト専用のストレー�
 ---
 = ネットワークセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

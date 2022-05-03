@@ -6,6 +6,7 @@ summary: 各 SAP HANA サーバには、最低 8Gbps の帯域幅の冗長 FCP S
 ---
 = SAN ファブリックのセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

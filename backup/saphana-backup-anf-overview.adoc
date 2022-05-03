@@ -6,6 +6,7 @@ summary: このテクニカルレポートでは、 NetApp SnapCenter サービ�
 ---
 = TR-4905 ：『 SAP HANA backup and recovery on Azure NetApp Files with SnapCenter Service 』
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

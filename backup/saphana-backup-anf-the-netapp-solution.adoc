@@ -6,6 +6,7 @@ summary: Azure NetApp Files の NetApp Snapshot テクノロジを使用すれ�
 ---
 = NetApp 解決策の略
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

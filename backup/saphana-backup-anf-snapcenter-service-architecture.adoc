@@ -6,6 +6,7 @@ summary: SnapCenter サービスは、アプリケーションと整合性のあ
 ---
 = SnapCenter サービスアーキテクチャ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

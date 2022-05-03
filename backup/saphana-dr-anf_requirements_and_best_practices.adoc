@@ -6,6 +6,7 @@ summary: Microsoft Azure では、作成時や割り当て解除された VM の
 ---
 = 要件およびベストプラクティス
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

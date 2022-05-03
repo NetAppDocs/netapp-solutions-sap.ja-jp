@@ -6,6 +6,7 @@ summary: 次に示す 3 つのスクリーンショットは、データ、ロ�
 ---
 = ANF のクロスリージョンレプリケーションを監視しています
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

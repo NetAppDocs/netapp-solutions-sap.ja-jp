@@ -6,6 +6,7 @@ summary: SAP HANA 1.0 SPS10 以降、 I/O 動作を調整し、使用中のフ�
 ---
 = SAP HANA の I/O スタック構成
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

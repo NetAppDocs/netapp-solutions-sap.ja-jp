@@ -6,6 +6,7 @@ summary: データボリューム以外のボリュームのバックアップ�
 ---
 = SAP HANA の非データボリュームのバックアップ構成
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

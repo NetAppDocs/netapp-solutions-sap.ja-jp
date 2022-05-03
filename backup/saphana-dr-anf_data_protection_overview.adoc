@@ -6,6 +6,7 @@ summary:
 ---
 = データ保護の概要
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

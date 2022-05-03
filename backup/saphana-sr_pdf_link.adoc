@@ -6,6 +6,7 @@ summary: TR-4719 は、 SAP HANA システムレプリケーション環境で�
 ---
 = TR-4719 ：『 SAP HANA System Replication - Backup and Recovery with SnapCenter 』
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

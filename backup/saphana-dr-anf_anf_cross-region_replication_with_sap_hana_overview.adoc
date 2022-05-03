@@ -6,6 +6,7 @@ summary: アプリケーションに依存しないクロスリージョンレ�
 ---
 = SAP HANA を使用した ANF のクロスリージョンレプリケーション
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

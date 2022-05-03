@@ -6,6 +6,7 @@ summary: SnapCenter では、一般に、各 HANA データベースのリソー
 ---
 = データベースのバックアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ keywords: netapp, solutions, SAP, blogs
 ---
 = SAP 解決策ブログ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
