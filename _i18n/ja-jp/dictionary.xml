@@ -3831,4 +3831,427 @@
   <block id="0a3b81cd04b7ee3bbb79ae9a19dc8656" category="sidebar">SnapCenter を使用した SAP HANA のバックアップとリカバリ</block>
   <block id="d7ca353f8f69588ea48c2bafac41c0d7" category="sidebar">SnapCenter の初期設定</block>
   <block id="65b5051ec5b2187399e784008897baff" category="paragraph"><block ref="65b5051ec5b2187399e784008897baff" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c50aa3f02a43d1792d7198bd3766142c" category="summary">このセクションでは、ONTAP ファイルシステムのFSXとピアSVMを作成する方法、ターゲットボリュームを作成する方法、SnapMirrorポリシーを作成する方法、SnapMirror関係を作成する方法、およびSnapMirrorを初期化する方法について説明します。</block>
+  <block id="dbf9d2787d072a4fd34082b47aacfe77" category="doc">ONTAP ファイルシステムのレプリケーション関係をFSXに設定します</block>
+  <block id="1352ecc16336d5708103acd36138f3ca" category="inline-link-macro">Previous：Overview：SnapVault によるバックアップ・レプリケーション</block>
+  <block id="882a79d8ed451130b65c7f4757896bf2" category="paragraph"><block ref="882a79d8ed451130b65c7f4757896bf2" category="inline-link-macro-rx"></block></block>
+  <block id="98651d7cc1c378d485ba8f375d4d7dbd" category="inline-link">SnapMirrorレプリケーションのワークフロー（netapp.com）</block>
+  <block id="b5beb3cfb3b1b16081425e9d6e52d915" category="paragraph">SnapMirrorの設定オプションに関する追加情報 については、ONTAP のドキュメントを参照してください<block ref="a679b656ad5513b2e5948e853501b769" category="inline-link-rx"></block>。</block>
+  <block id="35271451318f12e2f5cc52cc3a8a6d22" category="list-text">ONTAP ファイルシステムのソースFSX :`FSxId00fa9e3c784b6abb`</block>
+  <block id="5936d785731bc7c4b4fb1addddd3c4ae" category="list-text">ソースSVM：「sapcc-sana-svm</block>
+  <block id="83473822e15b41d9976df9e62816bf1e" category="list-text">ONTAP ファイル・システム用のターゲットFSX：FsxId05f7f00af49dc7a3e</block>
+  <block id="184d9d97bac5976851f8d3d29c6eb7b3" category="list-text">ターゲットSVM：sapcc-backup-target-zone5`</block>
+  <block id="13a408d84a52802ccb7fc9d194ec03a6" category="section-title">ONTAP ファイルシステム用のピアFSX</block>
+  <block id="0b06a3f79e2e9507c1505d7e5ecbd420" category="admonition">「peer-addrs」は、デスティネーションクラスタのクラスタIPです。</block>
+  <block id="bce6381c4cea64c81cbc9ed883116e79" category="section-title">SVMをピアリング</block>
+  <block id="eb9a4a5509950dc1c19cc313a888ad57" category="section-title">ターゲットボリュームを作成します</block>
+  <block id="78ba09c1e6974a1fb593d751fc2ae60f" category="paragraph">レプリケーションターゲットとしてフラグを設定するには、「dp」タイプのターゲットボリュームを作成する必要があります。</block>
+  <block id="55d42bd9ef30094c89253387e26ced80" category="section-title">SnapMirror ポリシーを作成する</block>
+  <block id="d26ad042aedd077c7d434fe094c98f8d" category="paragraph">SnapMirrorポリシーと追加ルールで保持とSnapMirrorラベルを定義し、レプリケートするSnapshotを特定します。あとでSnapCenter ポリシーを作成するときは、同じラベルを使用する必要があります。</block>
+  <block id="4e9cf532300b4450e6f840b010b2f183" category="section-title">SnapMirror関係を作成</block>
+  <block id="07cfc8eda6d55b5eb0fb5db40ea9fa3c" category="paragraph">これで、ソースボリュームとターゲットボリュームの関係に加え、XDPタイプと前の手順で作成したポリシーが定義されます。</block>
+  <block id="c5d142fafd8837228c0357960c716915" category="section-title">SnapMirrorを初期化</block>
+  <block id="3a30d9da07e9c53ea40e049da7fc7fdc" category="paragraph">このコマンドを使用すると、最初のレプリケーションが開始されます。これは、ソースボリュームからターゲットボリュームへのすべてのデータのフル転送です。</block>
+  <block id="86a1f7ab04e42924fc2f5709b4b53d19" category="paragraph">レプリケーションのステータスは'snapmirror showコマンドを使用して確認できます</block>
+  <block id="afaa23b2ed1b8fc27f00e296c09842c2" category="inline-link-macro">次の手順：SnapCenter にバックアップSVMを追加します。</block>
+  <block id="900bcd14629ec77bc4e8314fb7a4239a" category="paragraph"><block ref="900bcd14629ec77bc4e8314fb7a4239a" category="inline-link-macro-rx"></block></block>
+  <block id="ab5c6d77e6be89dfafd62072722d1f8d" category="summary">このセクションでは、SnapCenter にバックアップSVMを追加する方法について説明します。</block>
+  <block id="3e3ce5c2a6c9e71dd944b379b54040fc" category="doc">SnapCenter にバックアップSVMを追加</block>
+  <block id="25eb595a41dcaf86c42a684d57bfd667" category="inline-link-macro">Previous：ONTAP ファイルシステムのレプリケーション関係をFSXで設定します。</block>
+  <block id="a5490459e02c6b0fb7bd9078cbdc01d6" category="paragraph"><block ref="a5490459e02c6b0fb7bd9078cbdc01d6" category="inline-link-macro-rx"></block></block>
+  <block id="be7788774fa38e42c5b2c6ad478f7e0d" category="paragraph">SnapCenter にバックアップSVMを追加するには、次の手順を実行します。</block>
+  <block id="69a827a353f1759f83d4d29038339b5e" category="list-text">SnapVault ターゲットボリュームが配置されているSVMをSnapCenter に設定します。</block>
+  <block id="abd2312dbf29f3719e4c10b997b8ef32" category="paragraph"><block ref="abd2312dbf29f3719e4c10b997b8ef32" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7ff3bfb984e16ba0e9ddeea3a9675aba" category="list-text">[その他のオプション]ウィンドウで、プラットフォームとして[すべてのFlash FAS ]を選択し、[セカンダリ]を選択します。</block>
+  <block id="4d9cbf0937260f562f28ad6bf395051f" category="paragraph"><block ref="4d9cbf0937260f562f28ad6bf395051f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="17a507a9ef1c4ff633b35e3f95052658" category="paragraph">これで、SVMをSnapCenter で使用できるようになります。</block>
+  <block id="009e7bd5c10430df0e40f71649d3dddb" category="paragraph"><block ref="009e7bd5c10430df0e40f71649d3dddb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="58507822576395a28fe0d32750be7493" category="inline-link-macro">次の手順：バックアップレプリケーションの新しいSnapCenter ポリシーを作成します。</block>
+  <block id="19d218f1b1a6af37502fa77b905665c7" category="paragraph"><block ref="19d218f1b1a6af37502fa77b905665c7" category="inline-link-macro-rx"></block></block>
+  <block id="594405c63145846b5ef5da75637c651c" category="summary">ここでは、オンデマンドのSnapshotバックアップの作成方法と、オンデマンドのブロック整合性チェック処理について説明します。</block>
+  <block id="ecc57313124902e4c42227ae61bb9bf1" category="doc">SnapCenter バックアップ処理</block>
+  <block id="c92f9b3ef03c3febfc6024da76033aeb" category="paragraph"><block ref="c92f9b3ef03c3febfc6024da76033aeb" category="inline-link-macro-rx"></block></block>
+  <block id="fd2e55c1e41efe9b784a15be371759b1" category="section-title">オンデマンドのSnapshotバックアップを作成します</block>
+  <block id="7657283c697ca0582f3be9790868181b" category="paragraph">オンデマンドのSnapshotバックアップを作成するには、次の手順を実行します。</block>
+  <block id="056e429fcb2f6a7c1a53fbbc544c6426" category="list-text">リソースビューで、リソースを選択し、行をダブルクリックしてトポロジビューに切り替えます。</block>
+  <block id="2ac85cad7240f8f0669e69bab5c0fddc" category="paragraph">リソーストポロジビューには、SnapCenter を使用して作成された、使用可能なすべてのバックアップの概要が表示されます。上部には、プライマリストレージのバックアップ（ローカルコピー）と、オフサイトのバックアップストレージ（バックアップコピー）のバックアップトポロジが表示されます。</block>
+  <block id="80ccdc0d27069c1ff7eda00fad9ce630" category="list-text">一番上の行で、 Back Up Now （今すぐバックアップ）アイコンを選択して、オンデマンドバックアップを開始します。</block>
+  <block id="a4add3607bef17315ff36a36896cd8a5" category="paragraph"><block ref="a4add3607bef17315ff36a36896cd8a5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd5d1357b318fbf4e649f0de7314c3f9" category="list-text">ドロップダウン・リストから'バックアップ・ポリシーLocalSnapを選択し'[Backup]をクリックして'オンデマンド・バックアップを開始します</block>
+  <block id="3e8bdc12d234c131867b6bf206139e8f" category="paragraph"><block ref="3e8bdc12d234c131867b6bf206139e8f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f6acf71ad860c83647bf8fba05a3d9c6" category="paragraph"><block ref="f6acf71ad860c83647bf8fba05a3d9c6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="25f3c4b4983c7aeeea861e3dbda6f2e4" category="paragraph">前の5つのジョブのログは、Topologyビューの下部にあるActivity領域に表示されます。</block>
+  <block id="8748d7533b9ff0f8de956dca869cf164" category="list-text">ジョブの詳細は、 [ アクティビティ ] 領域でジョブのアクティビティ行をクリックすると表示されます。ログの表示をクリックすると、詳細なジョブログを開くことができます</block>
+  <block id="7b34de8bc935f20d0be7ac12ef0d7e66" category="paragraph"><block ref="7b34de8bc935f20d0be7ac12ef0d7e66" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0ba847d81f910709c3c09aa75fa0ad47" category="inline-link-macro">「HANAリソースを構成して保護する」</block>
+  <block id="5517e803e46e8dd4074b86328ea2116e" category="paragraph">バックアップが完了すると、トポロジビューに新しいエントリが表示されます。バックアップ名は、セクションで定義した Snapshot 名と同じ命名規則に従っています <block ref="21266aca09e91497bf9e47ec98f61bc4" category="inline-link-macro-rx"></block></block>
+  <block id="564f24a6d42bc11862b656800bf71003" category="paragraph"><block ref="564f24a6d42bc11862b656800bf71003" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="886f063ff3cbce042bd5354957ab45fe" category="paragraph">SAP HANA のバックアップ・カタログでは、 SnapCenter のバックアップ名は「 Comment 」フィールドと「 External Backup ID （ EBID ）」フィールドとして保存されます。次の図に、システムデータベースとテナントデータベースPFXの次の図を示します。</block>
+  <block id="51828a3b8dd3d5bacedec913cc887921" category="paragraph"><block ref="51828a3b8dd3d5bacedec913cc887921" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="40213481fe2e7fef53342a0b6f79f03e" category="paragraph"><block ref="40213481fe2e7fef53342a0b6f79f03e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b0fea066e4357286d1022c0f348cda79" category="paragraph">ONTAP ファイルシステムのFSXでは、SVMのコンソールに接続してSnapshotバックアップを表示できます。</block>
+  <block id="a8b02af2d15bda403394c0199a693bf0" category="section-title">オンデマンドのブロック整合性チェック処理を作成する</block>
+  <block id="32b5fe8164d6968ffd17b6d1728e1103" category="paragraph">ポリシーBlockIntegrityCheckを選択すると、Snapshotバックアップジョブと同様にオンデマンドでブロック整合性チェック処理が実行されます。このポリシーを使用してバックアップをスケジュールすると、 SnapCenter によってシステムデータベースとテナントデータベース用の標準の SAP HANA ファイルバックアップが作成されます。</block>
+  <block id="32ab6e3e05856c24cf63fc8aa5c3c55d" category="paragraph"><block ref="32ab6e3e05856c24cf63fc8aa5c3c55d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="268b5b314e7cb02e490d79d6472802d3" category="paragraph"><block ref="268b5b314e7cb02e490d79d6472802d3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d8cb7b1a283deec84411bd00723fc925" category="paragraph"><block ref="d8cb7b1a283deec84411bd00723fc925" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ba7aeca897359e25127ed4621d0fedba" category="paragraph">SAP HANA のバックアップカタログには、システムデータベースとテナントデータベースの両方のエントリが表示されます。次の図は、システムとテナントデータベースのバックアップカタログ内のSnapCenter ブロックの整合性チェックを示しています。</block>
+  <block id="9ac5d8a243a32a4076f42e0a04f5d292" category="paragraph"><block ref="9ac5d8a243a32a4076f42e0a04f5d292" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="51c4bd9388ab1af79f6d53daaa966ffd" category="paragraph"><block ref="51c4bd9388ab1af79f6d53daaa966ffd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3453b83e04ff7c4b2293244874e7dd53" category="paragraph">ブロック整合性チェックが成功すると、標準の SAP HANA データバックアップファイルが作成されます。SnapCenter では、ファイルベースのデータバックアップ処理に、HANAデータベースで設定されたバックアップパスが使用されます。</block>
+  <block id="70d36fb87c76f6389689df766a8dd993" category="inline-link-macro">次：非データボリュームのバックアップ。</block>
+  <block id="736930fbc1537a04133455311a8f2cbe" category="paragraph"><block ref="736930fbc1537a04133455311a8f2cbe" category="inline-link-macro-rx"></block></block>
+  <block id="fa8e9c099eedc452a4d7a73d21130c08" category="summary">このセクションでは、リソース保護にポリシーを追加する方法について説明します。</block>
+  <block id="f6e2ee2d6349e048bf2c27a62ae4e46c" category="doc">リソースの保護にポリシーを追加します</block>
+  <block id="e80a0fb7205c27d9ab26b846c47f929b" category="inline-link-macro">Previous：バックアップレプリケーション用の新しいSnapCenter ポリシーを作成します。</block>
+  <block id="ac7edf08792f5b8800208039d2e56cfd" category="paragraph"><block ref="ac7edf08792f5b8800208039d2e56cfd" category="inline-link-macro-rx"></block></block>
+  <block id="1da64551d06b94d7b482063dbb2e35e1" category="paragraph">次の図に示すように、新しいポリシーをHANAのリソース保護構成に追加する必要があります。</block>
+  <block id="8f7d93ab25ce5e59a3884b721bf8a1bb" category="paragraph"><block ref="8f7d93ab25ce5e59a3884b721bf8a1bb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8d6efb0dba912228a4f9680328b7569b" category="paragraph">セットアップでは、日次スケジュールを定義します。</block>
+  <block id="d1cd804a2ab976022034998372527589" category="paragraph"><block ref="d1cd804a2ab976022034998372527589" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="079b889dbfa247456ae4e9ddfea1e623" category="inline-link-macro">次の手順：レプリケーションを含むバックアップを作成します。</block>
+  <block id="cb388287d7dd57ba45d740fed1ce0eb0" category="paragraph"><block ref="cb388287d7dd57ba45d740fed1ce0eb0" category="inline-link-macro-rx"></block></block>
+  <block id="8d672d6879c8db3a9c37e06acd4d7571" category="summary">このテクニカルレポートでは、Amazon FSX上でNetApp ONTAP とNetApp SnapCenter を使用したSAP HANAデータ保護のベストプラクティスについて説明します。このドキュメントでは、 SnapCenter の概念、設定に関する推奨事項、設定やバックアップ処理などの運用ワークフローについて説明します。 リストア処理とリカバリ処理を行うことができます。</block>
+  <block id="042f7a2c227ce333d4132cb3d2f72c1a" category="doc">TR-4926：『SAP HANA on Amazon FSX for NetApp ONTAP - Backup and Recovery with SnapCenter 』</block>
+  <block id="945a22530e2c0bc909fe7bd733744001" category="paragraph">今日の企業には、 SAP アプリケーションを中断なく継続的に利用できることが求められています。データ量が増え続け、システムバックアップなどの日常的な保守作業が必要になった場合に、一貫したパフォーマンスレベルが期待されます。SAPデータベースのバックアップは重要な作業であり、本番用SAPシステムのパフォーマンスに大きく影響する可能性があります。</block>
+  <block id="22eb5cd58a9c358396971f25290eeb1e" category="paragraph">バックアップウィンドウは短くなっている一方で、バックアップするデータの量は増え続けています。そのため、バックアップを実行してもビジネスプロセスへの影響を最小限に抑えることができれば、時間を見つけることは困難です。本番環境と非本番環境のSAPシステムのダウンタイムは、ビジネスコストを削減するために最小化する必要があるため、SAPシステムのリストアとリカバリに要する時間は重要です。</block>
+  <block id="9bf7f5887c6c4a274f85ea1eb16b6c64" category="inline-link-macro">次の例：ONTAP 対応のAmazon FSXを使用したバックアップとリカバリ</block>
+  <block id="c0afbf27fa14fece1360d59a0fce5e77" category="paragraph"><block ref="c0afbf27fa14fece1360d59a0fce5e77" category="inline-link-macro-rx"></block></block>
+  <block id="a93f4cc43678f9ab3b805d2bb40079f2" category="summary">ベースのSnapCenter 構成とHANAリソースの保護については、このセクションの手順を実行する必要があります。</block>
+  <block id="60fcb2c80bab22c5d0be2bf13e9dc00b" category="paragraph"><block ref="60fcb2c80bab22c5d0be2bf13e9dc00b" category="inline-link-macro-rx"></block></block>
+  <block id="359afa6593b15e77c26003b8273f9004" category="section-title">設定手順の概要</block>
+  <block id="0960b23dd4a17a6020075c6227b9232f" category="paragraph">ベースSnapCenter 構成とHANAリソースの保護について、次の手順を実行する必要があります。各手順の詳細については、以降の章で説明します。</block>
+  <block id="caa4a49314502e7c0e18c5dab680cc2b" category="list-text">SAP HANAバックアップユーザとhdbuserstoreキーを設定します。hdbsqlクライアントでHANAデータベースにアクセスするために使用します。</block>
+  <block id="feba79381e14c9bc7a08ea5d266dc327" category="list-text">SnapCenter でストレージを設定します。SnapCenter からONTAP SVMのFSXにアクセスするためのクレデンシャル</block>
+  <block id="709b936bce2a1736edd0f031dc27af83" category="list-text">プラグイン導入のクレデンシャルを設定する。必要なSnapCenter プラグインをHANAデータベースホストに自動的に導入してインストールするために使用します。</block>
+  <block id="21df4d6c65c5d1b22f73da36d70707b2" category="list-text">SnapCenter にHANAホストを追加します。必要なSnapCenter プラグインを導入してインストールします。</block>
+  <block id="224a7e7662399b8780f32fdc84c2ae1b" category="list-text">ポリシーを設定する。バックアップ処理のタイプ（Snapshot、ファイル）、保持設定、およびSnapshotバックアップのオプションレプリケーションを定義します。</block>
+  <block id="215c8d01e52220d94bfc06b2ff7c04f6" category="list-text">HANAのリソース保護を設定する。hdbuserstoreキーを入力し、HANAリソースにポリシーとスケジュールを適用します。</block>
+  <block id="e55ff41af170b5ea45b9f0f5d18c388e" category="paragraph">次の図は、バックアップユーザの作成に使用できるSAP HANA Studioを示しています</block>
+  <block id="81301f8e5191357519759b3297ce2d44" category="paragraph">必要な権限は、HANA 2.0 SPS5リリースで変更されています。backup admin、catalog read、database backup admin、およびdatabase recovery operator以前のリリースの場合は、バックアップ管理者とカタログの読み取りで十分です。</block>
+  <block id="0fc753b520c4227f940435dc5b8f402a" category="paragraph">SAP HANA MDCシステムの場合は、システムデータベースにユーザを作成する必要があります。これは、システムデータベースとテナントデータベースのすべてのバックアップコマンドがシステムデータベースを使用して実行されるためです。</block>
+  <block id="892da7911635cd7da42c07b854d8b1a1" category="paragraph"><block ref="892da7911635cd7da42c07b854d8b1a1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="75cb7cd589bf636cc5ca574de687f7b2" category="paragraph">次のコマンドは'&lt;sid&gt;adm`ユーザを使用したユーザストア設定に使用されます</block>
+  <block id="1d18928f61e38eb05e7e01ba72ddd5e3" category="paragraph">SnapCenter は、「 &lt;sid&gt;adm 」ユーザを使用して HANA データベースと通信します。したがって、ユーザストアキーは、データベースホスト上の&lt;%sid&gt;adm`ユーザを使用して設定する必要があります。通常、 SAP HANA hdbsql クライアントソフトウェアは、データベースサーバのインストールと一緒にインストールされます。そうでない場合は、先にhdbclientをインストールする必要があります。</block>
+  <block id="47359db53576b27891d283bf529b35d5" category="paragraph">SAP HANA MDCの設定では、ポート「3&lt;instanceNo&gt;13」はシステムデータベースへのSQLアクセス用の標準ポートであり、hdbuserstoreの設定で使用する必要があります。</block>
+  <block id="d73493837316727c01ae9815d9355939" category="paragraph">SAP HANA マルチホストを設定する場合は、すべてのホストにユーザストアキーを設定する必要があります。SnapCenter は指定された各キーを使用してデータベースへの接続を試みます。そのため、異なるホストへのSAP HANAサービスのフェイルオーバーとは独立して動作します。ラボのセットアップでは、システムPFXのユーザ「pfxadm」のユーザストアキーを設定しました。これは、シングルテナントのシングルホストHANA MDCシステムです。</block>
+  <block id="92b9d3db3fdb1957b4c4d34e73939c5d" category="paragraph">キーを使用するHANAシステムデータベースへのアクセスは、「hdbsql」コマンドで確認できます。</block>
+  <block id="fcc101f2c66262c23387819df7a461c8" category="paragraph">SnapCenter でストレージを設定するには、次の手順を実行します。</block>
+  <block id="578d00099c13466294fdf336b017f275" category="list-text">SnapCenter UIで、ストレージシステムを選択します。</block>
+  <block id="6d456b30427299ffa927cb4c13e0a8c3" category="paragraph"><block ref="6d456b30427299ffa927cb4c13e0a8c3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="72ff7091ffb09be1df45aed0830b1c03" category="paragraph">ストレージシステムのタイプとして、ONTAP SVMまたはONTAP クラスタを選択できます。次の例では、SVM管理を選択しています。</block>
+  <block id="026daff7da6da40281861fb592305d53" category="paragraph"><block ref="026daff7da6da40281861fb592305d53" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8604e4985adf9ff19cf645c562016a2c" category="list-text">ストレージシステムを追加し、必要なホスト名とクレデンシャルを入力するには、Newをクリックします。</block>
+  <block id="21de7574224c54d506a9f9f69185f1bd" category="paragraph">次の図に示すように、SVMユーザをvsadminユーザにする必要はありません。通常、ユーザは SVM 上で設定し、バックアップとリストアの処理を実行するために必要な権限を割り当てます。必要な権限については、を参照してください<block ref="7b715dbc2fecfcb275c5209e8e720c86" category="inline-link-rx"></block> 「 Minimum ONTAP Privileges Required 」の項を参照してください。</block>
+  <block id="b5fbdcdea815bdd8c08d2ddc460334eb" category="paragraph"><block ref="b5fbdcdea815bdd8c08d2ddc460334eb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ac0a876fac34b08db6fd053849b9a61c" category="list-text">ストレージプラットフォームを構成するには、[その他のオプション]をクリックします。</block>
+  <block id="eb29cb32fb88ca7c229236d5f25dce2a" category="list-text">ストレージシステムとしてAll Flash FAS を選択して、FSX for ONTAP に含まれているライセンスがSnapCenter で使用可能になっていることを確認します。</block>
+  <block id="dbcb811a4af9b71c69c99ac2293abd94" category="paragraph"><block ref="dbcb811a4af9b71c69c99ac2293abd94" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="299439100d029701f59616597606d753" category="paragraph">SVM「sapcc-sana-svm」がSnapCenter で設定されました。</block>
+  <block id="8b0162abcec24fa373c1f3436dc0ccdf" category="paragraph"><block ref="8b0162abcec24fa373c1f3436dc0ccdf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0572ed1f74a831bbe0d08a962826f1d9" category="section-title">プラグイン導入用のクレデンシャルを作成します</block>
+  <block id="cfc5ece26f0c93a92ccccb43983e85df" category="paragraph">SnapCenter を有効にして必要なプラグインをHANAホストに導入できるようにするには、ユーザクレデンシャルを設定する必要があります。</block>
+  <block id="dd5315f14b8e5deb9617f6d7f8ecb09f" category="paragraph"><block ref="dd5315f14b8e5deb9617f6d7f8ecb09f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="200a5ea310bf58e32ff8608924910f7f" category="list-text">ラボのセットアップでは、プラグインの導入に使用されるHANAホストに新しいユーザー「SnapCenter 」を設定しました。次の図に示すように、sudo prvileeを有効にする必要があります。</block>
+  <block id="916c5c5ed4ac91c38ac77424452d62a3" category="paragraph"><block ref="916c5c5ed4ac91c38ac77424452d62a3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1517d504e38dc374c8f101f4e81ef219" category="section-title">SAP HANAホストを追加します</block>
+  <block id="c6c86914a12d68144f1f2b237b771ca3" category="paragraph">SAP HANAホストを追加すると、SnapCenter によって必要なプラグインがデータベースホストに導入され、自動検出処理が実行されます。</block>
+  <block id="db0309ae0b66c918b50e10cf960adac6" category="paragraph">SAP HANA プラグインには、 Java 64 ビットバージョン 1.8 が必要です。ホストをSnapCenter に追加する前に、ホストにJavaをインストールする必要があります。</block>
+  <block id="51a98b038742fddf88a6bf0cac86fe16" category="paragraph">OpenJDKまたはOracle JavaはSnapCenter でサポートされています。</block>
+  <block id="f92f162575ca24726f81e3984b27fd2c" category="paragraph">SAP HANAホストを追加するには、次の手順を実行します。</block>
+  <block id="2c2d4f6f66bff6974d391f5b47aa6bcd" category="paragraph"><block ref="2c2d4f6f66bff6974d391f5b47aa6bcd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e6eb4529d88150ea453b906dca520246" category="paragraph"><block ref="e6eb4529d88150ea453b906dca520246" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d50f8da07a47cf2bd81d2c52efe31d8e" category="paragraph"><block ref="d50f8da07a47cf2bd81d2c52efe31d8e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e56209b057aa06956c0e0556d62be7c1" category="paragraph">HANAとLinuxプラグインのインストールが自動的に開始されます。インストールが完了すると、ホストのステータス列にConfigure VMware Plug-inと表示されます。SnapCenter は、 SAP HANA プラグインが仮想環境にインストールされているかどうかを検出します。これは、VMware環境か、パブリッククラウドプロバイダの環境です。この場合、SnapCenter はハイパーバイザーを設定するように警告を表示します。</block>
+  <block id="01c8adc0940fc944d6bceb0a58335832" category="paragraph">この警告メッセージを削除するには、次の手順を実行します。</block>
+  <block id="4ed121e2d9bd6bb4b6ed37f0389621b2" category="paragraph"><block ref="4ed121e2d9bd6bb4b6ed37f0389621b2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="690583402e73138cf43fe0e6a07a913c" category="paragraph"><block ref="690583402e73138cf43fe0e6a07a913c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="43511a4b3774fe4d02144fe4b86b3dd8" category="paragraph">画面にLinuxプラグインとHANAプラグインのステータスがrunningと表示されます。</block>
+  <block id="d2c792ca82e6b9299ebb51fb653b5bd9" category="paragraph"><block ref="d2c792ca82e6b9299ebb51fb653b5bd9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ac4361253d885faaf895a0d0cd05c3d8" category="section-title">ポリシーを設定する</block>
+  <block id="3988ca38d0149c3c196796f887611cb5" category="paragraph">ポリシーは通常、リソースとは別に設定され、複数のSAP HANAデータベースで使用できます。</block>
+  <block id="f3583ef14178cc77a72623a9cd8acb5d" category="list-text">レプリケーションを行わずに1時間ごとのバックアップを行うためのポリシー：LocalSnap</block>
+  <block id="2235861b5bc201f918f6b8a7947301ba" category="list-text">ファイル・ベースのバックアップを使用した週次ブロック整合性チェックのポリシー：BlockIntegrityCheck</block>
+  <block id="2b07d6a7b5422b0cd9352398b1459ccc" category="paragraph">以降のセクションでは、これらのポリシーの設定について説明します。</block>
+  <block id="e7e20c907bb0cf2de077b4f92cc87879" category="section-title">Snapshotバックアップのポリシー</block>
+  <block id="270658685f14f40df5a97dcb443d187d" category="paragraph">Snapshotバックアップポリシーを設定するには、次の手順を実行します。</block>
+  <block id="fcc31f5acb3bb2bac613dbd42129dd9b" category="paragraph"><block ref="fcc31f5acb3bb2bac613dbd42129dd9b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3d19a5d9c48a0bc54690ec2f0ff596d0" category="paragraph"><block ref="3d19a5d9c48a0bc54690ec2f0ff596d0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4e25858bd60001cd50bf9600bc16960f" category="paragraph">スケジュール自体は、あとでHANAのリソース保護構成で設定します。</block>
+  <block id="84c489bc680b4176503373772376d884" category="paragraph"><block ref="84c489bc680b4176503373772376d884" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a686976145be6b4ec8ceff4680c2ae97" category="paragraph"><block ref="a686976145be6b4ec8ceff4680c2ae97" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="190fa107ba472e0eb7388fad0dc9f98e" category="paragraph"><block ref="190fa107ba472e0eb7388fad0dc9f98e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="825c50adfec5430df0e6715daa04d245" category="paragraph"><block ref="825c50adfec5430df0e6715daa04d245" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="aa785cec21110ee3100d934df3f27610" category="paragraph">これで新しいポリシーが設定されました。</block>
+  <block id="a4559da56a5bbdb3f26b333ddb8baf01" category="paragraph"><block ref="a4559da56a5bbdb3f26b333ddb8baf01" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2cb5b15e3797f553ddf112b4b3cd651d" category="section-title">ブロック整合性チェックのポリシー</block>
+  <block id="1e4b633df036aab42607fbc95a2850e6" category="paragraph">ブロック整合性チェックポリシーを設定する手順は、次のとおりです。</block>
+  <block id="c896af46bd74548a98a99d065225bccc" category="paragraph"><block ref="c896af46bd74548a98a99d065225bccc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="882e8132f9d8c5b34f622bd048180933" category="list-text">バックアップタイプを「ファイルベース」に、スケジュール頻度を「毎週」に設定します。スケジュール自体は、あとでHANAのリソース保護構成で設定します。</block>
+  <block id="2e7a1460232d945757813bbd27f9b4fd" category="paragraph"><block ref="2e7a1460232d945757813bbd27f9b4fd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fbd4b9f628fc33b7d90164cd34ebb578" category="paragraph"><block ref="fbd4b9f628fc33b7d90164cd34ebb578" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2a445bccf884e2de000a654a04fcae6c" category="paragraph"><block ref="2a445bccf884e2de000a654a04fcae6c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0aaaa7c76233c96a87f771620929b12f" category="paragraph"><block ref="0aaaa7c76233c96a87f771620929b12f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="587169b2c69633c66fc254ec91d39015" category="section-title">HANAリソースを構成して保護</block>
+  <block id="36413444bdd59e22d0fe3054f9903db8" category="paragraph">プラグインのインストール後、 HANA リソースの自動検出プロセスが自動的に開始されます。[ リソース ] 画面で、新しいリソースが作成されます。このリソースは、赤い南京錠のアイコンでロックされていることが示されます。新しいHANAリソースを設定して保護するには、次の手順を実行します。</block>
+  <block id="ba685f1a08fe226c2c3c7e97f7fd46c4" category="list-text">を選択し、リソースをクリックして設定を続行します。</block>
+  <block id="2455bdad114eb0bbce54e418891ecb1c" category="paragraph">[リソースの更新]をクリックして、[リソース]画面で自動検出プロセスを手動で開始することもできます。</block>
+  <block id="a38a05e04bad0f4bb3800192f1927d0a" category="paragraph"><block ref="a38a05e04bad0f4bb3800192f1927d0a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b62cca965ac7a7f8b9aa48ec195b7a47" category="paragraph"><block ref="b62cca965ac7a7f8b9aa48ec195b7a47" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="83c4968ab2385345cca17e0266355f0d" category="paragraph"><block ref="83c4968ab2385345cca17e0266355f0d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4e68ac8b42a88c9359693badb698d1d5" category="list-text">[リソース]タブで、リソースをダブルクリックしてリソース保護を構成します。</block>
+  <block id="948da424b6b1931de2b422e798240a92" category="paragraph"><block ref="948da424b6b1931de2b422e798240a92" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f3f2fb3a8df9cea2f8322063989dc4cf" category="paragraph">カスタムの Snapshot コピー名を使用して、どのバックアップがどのポリシーおよびスケジュールタイプで作成されたかを簡単に識別することを推奨します。Snapshot コピー名にスケジュールタイプを追加することで、スケジュールバックアップとオンデマンドバックアップを区別できます。オンデマンドバックアップの「スケジュール名」文字列は空ですが、スケジュールバックアップには「毎時」、「毎日」、または「毎週」という文字列が含まれます。</block>
+  <block id="e82fd6f71708a6f6cd8f71ba22f6989e" category="paragraph"><block ref="e82fd6f71708a6f6cd8f71ba22f6989e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="61efa00efc19f6d0cad868b7f1d7ffa1" category="paragraph"><block ref="61efa00efc19f6d0cad868b7f1d7ffa1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0ac613f5fa2d93f0cbc1cd158f2eaf95" category="list-text">リソースに追加するポリシーを選択してください。</block>
+  <block id="45a912931ace3636beee93178c4035e1" category="paragraph"><block ref="45a912931ace3636beee93178c4035e1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="27329ed143fb9e6ad1bec7a9798ec09a" category="list-text">ブロック整合性チェックポリシーのスケジュールを定義します。</block>
+  <block id="bb679512107983b315a700d36f774e12" category="paragraph">この例では、週に1回に設定されています。</block>
+  <block id="f95d0594caebf47e056264e2764cad7c" category="paragraph"><block ref="f95d0594caebf47e056264e2764cad7c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f6f370ad34b914bb9b3188cab95579f6" category="list-text">ローカルSnapshotポリシーのスケジュールを定義します。</block>
+  <block id="01d64140a5b79b3220671ec24e5355a7" category="paragraph">この例では、6時間ごとに設定されています。</block>
+  <block id="c0d6af2403ce1b9675338671e65758a5" category="paragraph"><block ref="c0d6af2403ce1b9675338671e65758a5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b7dfac81d29f1deee31d252e8c95de36" category="paragraph"><block ref="b7dfac81d29f1deee31d252e8c95de36" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b854707cc3132b3ad49cf824f2bbcd3b" category="paragraph"><block ref="b854707cc3132b3ad49cf824f2bbcd3b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6f4a321c621aa39d5ac85d3cddcb95de" category="paragraph"><block ref="6f4a321c621aa39d5ac85d3cddcb95de" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="91f8b9395cad8e2a4e4239c12d3319b4" category="paragraph">HANAのリソース構成が完了し、バックアップを実行できるようになります。</block>
+  <block id="fa51a27b6ba798c75e9c404ec3343e19" category="paragraph"><block ref="fa51a27b6ba798c75e9c404ec3343e19" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="94f31dc89c951410793a7b22a3ca3fed" category="inline-link-macro">Next：SnapCenter バックアップ処理</block>
+  <block id="ac196e12287b0c54e5e07b2bc41e68ab" category="paragraph"><block ref="ac196e12287b0c54e5e07b2bc41e68ab" category="inline-link-macro-rx"></block></block>
+  <block id="de6dd6d03f10c361d7fa2eaeb8b1332b" category="summary">非データボリュームのバックアップは、SnapCenter とSAP HANAプラグインに統合された機能です。データベースインストールリソースと必要なログが残っていれば、データベースデータボリュームを保護して特定の時点にSAP HANAデータベースをリストアおよびリカバリするだけで十分です。</block>
+  <block id="93f9c08757a13da54247af8b021689ae" category="doc">データボリューム以外のボリュームのバックアップ</block>
+  <block id="20940b5a8ce4a20b4ae55a0f6ebc3635" category="inline-link-macro">Previous：SnapCenter バックアップ処理</block>
+  <block id="a7bee54f39b3a6371cd8ac23ef21462d" category="paragraph"><block ref="a7bee54f39b3a6371cd8ac23ef21462d" category="inline-link-macro-rx"></block></block>
+  <block id="63b3090ea38e707b917b2d7c7901b50f" category="section-title">データボリューム以外のリソースを設定</block>
+  <block id="0c7ab37fcc2da596254c60c409d69fb1" category="paragraph">データボリューム以外のリソースを設定するには、次の手順を実行します。</block>
+  <block id="cb13e36dbad0de46510e77982a0357c5" category="list-text">[リソース]タブで、[データボリュームではない]を選択し、[ SAP HANAデータベースの追加]をクリックします。</block>
+  <block id="d6d4ac7ae9d9dd1c447bac74bfd65632" category="paragraph"><block ref="d6d4ac7ae9d9dd1c447bac74bfd65632" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd24b11ffe2f4e6437e44b159cc48068" category="list-text">SAP HANAデータベースの追加ダイアログのステップ1で、リソースタイプリストから非データボリュームを選択します。リソースの名前、およびリソースに使用する関連SIDとSAP HANAプラグインホストを指定し、[次へ]をクリックします。</block>
+  <block id="dfee2b138827b42e1b8ab71a26868f9b" category="paragraph"><block ref="dfee2b138827b42e1b8ab71a26868f9b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="586cfb64fc5c86207c129c82742ba3c6" category="paragraph"><block ref="586cfb64fc5c86207c129c82742ba3c6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d4a9e6880ccfcdaaffcc00b27a10adbc" category="list-text">設定を保存するには、概要手順で[完了]をクリックします。</block>
+  <block id="6b9c62493529099da50469bb6b198e12" category="paragraph"><block ref="6b9c62493529099da50469bb6b198e12" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4e92aeb0662fdfc2cddbde8f13e067b2" category="paragraph">これで、新しい非データボリュームがSnapCenter に追加されます。新しいリソースをダブルクリックして、リソースの保護を実行します。</block>
+  <block id="dc82972ff43859c38d55ce9ddbace67c" category="paragraph"><block ref="dc82972ff43859c38d55ce9ddbace67c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="56be9f03e68466dab79c0aec2f1a21f7" category="paragraph">リソースの保護は、HANAデータベースのリソースで前述した方法と同じ方法で行われます。</block>
+  <block id="fac7e42fec45827c4ca846b9834a929d" category="list-text">[今すぐバックアップ]をクリックして、バックアップを実行できるようになりました。</block>
+  <block id="ac7657ee791eed4de1a8d7dfd7f9253b" category="paragraph"><block ref="ac7657ee791eed4de1a8d7dfd7f9253b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a4035f853527d3ecaeb2ba0b5da4093d" category="list-text">ポリシーを選択し、バックアップ処理を開始します。</block>
+  <block id="faa8ff8930a21071b0cc0b888144462e" category="paragraph"><block ref="faa8ff8930a21071b0cc0b888144462e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fbda5ff558f836b18d5d4e20f084fd07" category="paragraph">SnapCenter ジョブログには、個々のワークフロー手順が表示されます。</block>
+  <block id="43e823ac8e9020a3b4d84ab2a7136eff" category="paragraph"><block ref="43e823ac8e9020a3b4d84ab2a7136eff" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cd424c5779cf104249372c575c7dfa1d" category="paragraph">これで、新しいバックアップがデータボリューム以外のリソースのリソースビューに表示されます。</block>
+  <block id="88a2e083438c34003f38a5881c3a7702" category="paragraph"><block ref="88a2e083438c34003f38a5881c3a7702" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2ed820e22ac1859d1d70e21fb5f5db6d" category="section-title">リストアとリカバリ</block>
+  <block id="309955e6ebf3cb366a5302796b9cf4aa" category="paragraph">SnapCenter では、単一テナントのHANAシングルホストMDCシステムに対して自動リストア処理とリカバリ処理がサポートされます。複数のテナントを持つマルチホストシステムまたはMDCシステムの場合は、SnapCenter はリストア処理のみを実行し、手動でリカバリを実行する必要があります。</block>
+  <block id="1ddfdb636c7165392bd902ed21e074b0" category="list-text">リストア処理に使用するバックアップを選択します。</block>
+  <block id="0e24c2d90fa54d4601108fb362e0b7c0" category="list-text">データベースがリストアされます。選択したリストアタイプに応じて、異なる処理が実行されます。</block>
+  <block id="9898ecb46e5451d2bf61de3e6a37843c" category="list-text">ボリューム復元が選択されている場合、SnapCenter はボリュームをアンマウントし、ストレージレイヤのボリュームベースSnapRestore を使用してボリュームを復元し、ボリュームをマウントします。</block>
+  <block id="175b25afe5701244ebfd4e3aef8a4a89" category="list-text">ボリュームリバートを選択しない場合、SnapCenter は、ストレージレイヤで単一ファイルのSnapRestore 処理を使用してすべてのファイルをリストアします。</block>
+  <block id="8305b5f7e8f850be2950a98f0074e981" category="list-text">システムデータベースをリカバリする</block>
+  <block id="6932a35ded8eb84abf9b46e82e789050" category="list-text">テナントデータベースをリカバリします</block>
+  <block id="cb63172a234cdd6be152a658ab722417" category="list-text">HANAデータベースを起動しています</block>
+  <block id="656b4cf8c72df02c9118b8b812768e29" category="paragraph">No Recoveryを選択すると、SnapCenter が終了し、システムとテナントデータベースのリストア処理を手動で実行する必要があります。</block>
+  <block id="95e2f3ab294570e9b8011f00cff5422a" category="paragraph">手動でリストアを実行するには、次の手順を実行します。</block>
+  <block id="97adb537524dd318691188b75af52153" category="paragraph"><block ref="97adb537524dd318691188b75af52153" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="813110ab7918deb5018070a177f6acea" category="inline-link">リストアとリカバリ（netapp.com）</block>
+  <block id="dcc2b41889853e2270c3727afc5c80fe" category="paragraph">HANA MDCのシングルテナントシステムの標準的なシナリオは、ボリュームをリバートしてリソース全体を使用する場合です。複数のテナントを使用するHANA MDCシステムでは、単一のテナントのみをリストアできます。シングルテナントのリストアの詳細については、を参照してください<block ref="47d580635c2571be2d4bc74d513a0e35" category="inline-link-rx"></block>。</block>
+  <block id="deca927322be0c6a839467cc2369dd02" category="paragraph"><block ref="deca927322be0c6a839467cc2369dd02" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0b216691a52e4b2a672849ba2af7a819" category="paragraph">SnapCenter では、HANAのglobal.iniファイルでデフォルトのパスまたは変更したパスを使用して、ログやカタログのバックアップの場所を事前に取り込むことができます。</block>
+  <block id="b03297b116d68d92bc537333d060688f" category="paragraph"><block ref="b03297b116d68d92bc537333d060688f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1cfdcd6cdad2d50d440ba1078e2b38c2" category="list-text">オプションのリストア前のコマンドを入力します。</block>
+  <block id="91a5a4b42d68a161f4418dc6c9feceed" category="paragraph"><block ref="91a5a4b42d68a161f4418dc6c9feceed" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fdc6fabfb6a3bf7acef4e2e973a76781" category="paragraph"><block ref="fdc6fabfb6a3bf7acef4e2e973a76781" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="311b39381cb4c4ef0d982f67ce82c886" category="list-text">リストアおよびリカバリ操作を開始するには'[完了]をクリックします</block>
+  <block id="f2bfafa1d265848935d75e1575a2f473" category="paragraph"><block ref="f2bfafa1d265848935d75e1575a2f473" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="08120f01e764ae8f6a8a1a639dfcc04f" category="paragraph"><block ref="08120f01e764ae8f6a8a1a639dfcc04f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="149506589f08a3b9c195efedfb665eba" category="inline-link-macro">次の手順：概要- SnapVault によるバックアップレプリケーション。</block>
+  <block id="79e4ca96e58647fe593cec084e113c49" category="paragraph"><block ref="79e4ca96e58647fe593cec084e113c49" category="inline-link-macro-rx"></block></block>
+  <block id="354f6659b1577f8f6917db07330c0738" category="doc">SnapVault を使用したバックアップレプリケーション</block>
+  <block id="bbde47426fa7874d15811aa09d0a9ca3" category="summary">このセクションでは、セカンダリストレージからリストアおよびリカバリする方法について説明します。</block>
+  <block id="2d4a8328bc7032e3e3d3f8b982312d2d" category="doc">セカンダリストレージからリストアおよびリカバリする</block>
+  <block id="248a377f828df477da6b651f5873504d" category="inline-link-macro">Previous：レプリケーションを含むバックアップを作成します。</block>
+  <block id="b687af1b52282884290e49814c4c0885" category="paragraph"><block ref="b687af1b52282884290e49814c4c0885" category="inline-link-macro-rx"></block></block>
+  <block id="addd18eb81f4ef4def30d433ebedffac" category="paragraph">セカンダリストレージからリストアおよびリカバリするには、次の手順を実行します。</block>
+  <block id="ad39bf07e2f0970a49e91b6d7bc08b73" category="paragraph">セカンダリストレージ上のすべてのバックアップのリストを取得するには、SnapCenter トポロジビューでVault Copies（ヴォールトコピー）をクリックし、バックアップを選択してRestore（復元）をクリックします。</block>
+  <block id="6633d1d1b495da9e959a08c19402a0cb" category="paragraph"><block ref="6633d1d1b495da9e959a08c19402a0cb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c320657b7f9ae00d117b826103a60570" category="paragraph">リストアダイアログにセカンダリの場所が表示されます。</block>
+  <block id="de9336bc37770787a889535d36adbf94" category="paragraph"><block ref="de9336bc37770787a889535d36adbf94" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d66def06f615a91837537eafad25ce09" category="paragraph">さらに、リストアとリカバリの手順は、プライマリストレージにあるSnapshotバックアップでこれまで説明されていた手順と同じです。</block>
+  <block id="fa85857e13e0f6d7620479158c9f3416" category="inline-link-macro">次へ：追加情報 およびバージョン履歴の参照先。</block>
+  <block id="56f6941618e23c94e44b86955c13815c" category="paragraph"><block ref="56f6941618e23c94e44b86955c13815c" category="inline-link-macro-rx"></block></block>
+  <block id="9b7e589c27568a1ba1e20a07bd4bf384" category="summary">SnapCenter は、アプリケーションと整合性のあるデータ保護を実現する拡張性に優れたユニファイドプラットフォームです。SnapCenter では一元的な管理と監視が可能ですが、一方で、アプリケーション固有のバックアップ、リストア、クローニングのジョブの管理を各ユーザに委譲することができます。SnapCenter を使用すれば、データベース管理者やストレージ管理者は、さまざまなアプリケーションやデータベースのバックアップ、リストア、クローニングの処理を 1 つのツールで管理できます。SnapCenter は、ネットアップのデータファブリック内のすべてのエンドポイントのデータを管理します。</block>
+  <block id="b7f61892b22ba215673bbeb57a614cb0" category="inline-link-macro">Previous：Amazon FSX for ONTAP を使用したバックアップとリカバリ。</block>
+  <block id="4b2b680f393dd1bb003f424f9f039c89" category="paragraph"><block ref="4b2b680f393dd1bb003f424f9f039c89" category="inline-link-macro-rx"></block></block>
+  <block id="3eb62999f248332cd1da44e30cd485bc" category="paragraph">SnapCenter は、アプリケーションと整合性のあるデータ保護を実現する拡張性に優れたユニファイドプラットフォームです。SnapCenter では一元的な管理と監視が可能ですが、一方で、アプリケーション固有のバックアップ、リストア、クローニングのジョブの管理を各ユーザに委譲することができます。SnapCenter を使用すれば、データベース管理者やストレージ管理者は、さまざまなアプリケーションやデータベースのバックアップ、リストア、クローニングの処理を 1 つのツールで管理できます。SnapCenter は、ネットアップのデータファブリック内のすべてのエンドポイントのデータを管理します。SnapCenter を使用して、オンプレミス環境間、オンプレミス環境とクラウド間、およびプライベートクラウド、ハイブリッドクラウド、パブリッククラウド間でデータをレプリケートできます。</block>
+  <block id="a3e2fc88c7b51a05fbb9c57347e8b0e7" category="paragraph">SnapCenter には、SnapCenter サーバ、SnapCenter Plug-in Package for Windows、およびSnapCenter Plug-in Package for Linuxが含まれています。各パッケージには、さまざまなアプリケーションやインフラコンポーネント用の SnapCenter へのプラグインが含まれています。</block>
+  <block id="dc325c8c455577fa2633b21e50213e6a" category="paragraph"><block ref="dc325c8c455577fa2633b21e50213e6a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b48d82447a4abda007d79854b3f6646a" category="list-text">バックアップ処理、スケジュール設定、保持の管理</block>
+  <block id="fbb95408c5973fc141dcf2b7b46bd0ec" category="list-text">ストレージベースのSnapshotコピーを使用したSAP HANAデータのバックアップ</block>
+  <block id="3d270926656ce5648382eaa1719bf92d" category="list-text">ストレージ・ベースのSnapshotコピーを使用した非データ・ボリューム・バックアップ（例：/hana/shared）</block>
+  <block id="ce7f855add0a7ede117b2101e9828d12" category="list-text">ファイルベースのバックアップを使用したデータベースブロックの整合性チェック</block>
+  <block id="b576b60679bf39b7899eedc0ff5dafd1" category="list-text">オフサイトのバックアップまたはディザスタリカバリロケーションへのレプリケーション</block>
+  <block id="e44df3eb7c1e201337b8ee7ea6f5aafd" category="list-text">HANAデータのバックアップ（Snapshotとファイルベース）</block>
+  <block id="ae56dd7000a0b955a430ea3ff10dd48d" category="list-text">HANAのログバックアップ</block>
+  <block id="6f359fd609acebab5d18f381e4c19f39" category="list-text">SAP HANA（MDC）システムのシングルテナントのリストア処理</block>
+  <block id="bea1b4e87998a4b25b42721d198aacd7" category="paragraph">データベースデータファイルのバックアップは、 SnapCenter と SAP HANA 向けプラグインを組み合わせて実行されます。このプラグインは、SAP HANAデータベースのバックアップ保存ポイントをトリガーして、プライマリストレージシステムで作成されたSnapshotコピーがSAP HANAデータベースの整合性のあるイメージに基づいて作成されるようにします。</block>
+  <block id="20a189b6aeebb9db007cacab85408f24" category="paragraph">SnapCenter では、SnapVault またはSnapMirror機能を使用して、整合性のあるデータベースイメージをオフサイトのバックアップまたはディザスタリカバリロケーションにレプリケートできます。通常は、プライマリストレージとオフサイトのバックアップストレージに異なる保持ポリシーが定義されます。SnapCenter はプライマリストレージでの保持を処理し、 ONTAP はオフサイトのバックアップストレージでの保持を処理します。</block>
+  <block id="bf9380471a3b02146d5e51719d0940b1" category="paragraph">SnapCenter では、SAP HANA関連のすべてのリソースを完全にバックアップするために、ストレージベースのSnapshotコピーにSAP HANAプラグインを使用して、データ以外のすべてのボリュームをバックアップすることもできます。非データボリュームをデータベースデータバックアップとは別にスケジュール設定して、個別の保持ポリシーや保護ポリシーを有効にすることができます。</block>
+  <block id="0541043f71b51f3409fd5ad4a1cbec95" category="paragraph">SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。SnapCenter 内からブロック整合性チェックを実行できます。設定された保持ポリシーに基づいて、SnapCenter は、プライマリストレージでのデータファイルバックアップの削除、ログファイルのバックアップ、およびSAP HANAのバックアップカタログの管理を行います。</block>
+  <block id="44492b7c8fce340f84cc4ee3e74208ea" category="paragraph">SnapCenter はプライマリストレージで保持を処理し、FSX for ONTAP はセカンダリバックアップの保持を管理します。</block>
+  <block id="866f9a05b82b0824f1a0e87ecde3fb71" category="paragraph">次の図は、SnapCenter のバックアップおよび保持の管理処理の概要を示しています。</block>
+  <block id="b0f315b1d81470185bd92855a7bef20c" category="paragraph"><block ref="b0f315b1d81470185bd92855a7bef20c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bebd9be6fafde148cc61bd43c11e27e9" category="list-text">SAP HANAのバックアップ保存ポイントを作成し、永続性レイヤに整合性のあるイメージを作成します。</block>
+  <block id="a745daee4619d54f16ae0f1c2d0962f8" category="list-text">データボリュームのストレージベースのSnapshotコピーを作成します。</block>
+  <block id="527348cba8a7343779b6f59ba4c06ce9" category="list-text">ストレージベースのSnapshotバックアップをSAP HANAバックアップカタログに登録します。</block>
+  <block id="f6357d7d7209510612ac9d41b805083f" category="list-text">SAP HANAのバックアップ保存ポイントを解放します。</block>
+  <block id="53d1d7d25d4bf41a740607083db85f90" category="list-text">データ・ボリュームに対してSnapVault またはSnapMirrorの更新を実行します（設定されている場合）。</block>
+  <block id="f26d0e3da2e083562d626efdb0a80db1" category="list-text">定義された保持ポリシーに基づいて、プライマリストレージのストレージSnapshotコピーを削除します。</block>
+  <block id="297347c174657fe437156fe1d919b49d" category="list-text">プライマリまたはオフサイトのバックアップストレージにバックアップが存在しなくなった場合は、SAP HANAのバックアップカタログのエントリを削除します。</block>
+  <block id="5d63204692887e644e79ad4f6fa6c268" category="list-text">保持ポリシーに基づいてバックアップが削除された場合、または手動で削除された場合、SnapCenter は、最も古いデータバックアップよりも古いすべてのログバックアップも削除します。ログバックアップは、ファイルシステムと SAP HANA のバックアップカタログから削除されます。</block>
+  <block id="76cc02267bf656e283d3a17bcd99260e" category="section-title">本ドキュメントの内容</block>
+  <block id="434c79c7fab66fb3f1020892b6f3be08" category="inline-link">SnapCenter の概念とベストプラクティス（netapp.com）</block>
+  <block id="59a5fb4fb61646bb0b75bc11415a63cd" category="paragraph">このドキュメントでは、ONTAP 用FSXでシングルテナントを使用するSAP HANA MDCシングルホストシステムの最も一般的なSnapCenter 構成オプションについて説明します。その他の構成オプションも使用できます。また、場合によっては、複数ホストシステムの場合など、特定のSAP HANAシステムに必要な構成オプションもあります。その他の設定オプションに関する概要 の詳細については、を参照してください<block ref="cff4a980adbb6cc05ec53083e0ffe5b6" category="inline-link-rx"></block>。</block>
+  <block id="625979e29cea5b42dff162a508041627" category="inline-link">Amazon FSX for ONTAP （netapp.com）の詳細</block>
+  <block id="befc1f68b82fd5acedbe7594e276b75a" category="paragraph">このドキュメントでは、Amazon Web Services（AWS）コンソールとFSX for ONTAP CLIを使用して、ストレージレイヤで必要な設定手順を実行します。また、NetApp Cloud Managerを使用してONTAP 向けのFSXを管理することもできますが、これは本ドキュメントの対象外です。ONTAP でのFSXに対するNetApp Cloud Managerの使用については、を参照してください<block ref="d44e3137c0d20662e292194c800b788f" category="inline-link-rx"></block>。</block>
+  <block id="352f3d46cad062540fff3f31dc5869fb" category="paragraph">次の図は、FSX for ONTAP 上のSAP HANAの一般的なバックアップアーキテクチャを示しています。HANAシステムは、AWSアベイラビリティゾーン1にあり、同じアベイラビリティゾーン内でONTAP ファイルシステム用のFSXを使用しています。Snapshotバックアップ処理は、HANAデータベースのデータと共有ボリュームに対して実行されます。3～5日間保持されるローカルSnapshotバックアップに加えて、バックアップは長期保存用にオフサイトのストレージにもレプリケートされます。オフサイトバックアップストレージは、別のAWSアベイラビリティゾーンに配置されたONTAP ファイルシステム用の2番目のFSXです。HANAデータと共有ボリュームのバックアップは、SnapVault を使用して2番目のONTAP ファイルシステムのFSXにレプリケートされ、2~3週間保持されます。</block>
+  <block id="a7a965db03a84cae2848f2da30ba2c88" category="paragraph"><block ref="a7a965db03a84cae2848f2da30ba2c88" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d9a905f2855845662704261034b8e519" category="paragraph">SnapCenter を設定する前に、各種SAPシステムのRTOとRPOの要件に基づいてデータ保護戦略を定義する必要があります。</block>
+  <block id="c96aeaa3bbed44a4eb6e491bd825b114" category="paragraph">次のパラメータを定義する必要があります。</block>
+  <block id="add54c6c694f1dea873fa725229c4ff6" category="paragraph">次の表に、本番、開発、テストの各システムタイプのデータ保護パラメータの例を示します。本番用システムでは、高いバックアップ頻度が定義されており、バックアップはオフサイトのバックアップサイトに 1 日に 1 回レプリケートされます。テスト用システムの要件は低く、バックアップのレプリケーションはありません。</block>
+  <block id="d784a4ef3efe213e4ffce2a3b8aab638" category="cell">ポリシーLocalSnapです</block>
+  <block id="cf95b8ba53e47289df481c76a0fc1e7c" category="cell">ポリシーLocalSnapAndSnapVault</block>
+  <block id="b651fe1ef6a54eadfe7ec046c5fb3610" category="cell">ポリシーブロック整合性チェック</block>
+  <block id="4470d7231c03ea61b48270dd4e89c7c2" category="list-text">プロダクション：4時間ごとにスケジュールを設定します。</block>
+  <block id="8756cc378f32be7606a311cc58e42116" category="list-text">開発：4時間ごとにスケジュールを設定</block>
+  <block id="3f16a4dae07b31412bf1f7d6fd53fb55" category="list-text">Test：4時間ごとにスケジュールを設定します。</block>
+  <block id="1d3a5ab2affa87cd97d667df12d08f19" category="list-text">本番：毎日スケジュールを設定します。</block>
+  <block id="cc77ff8683600a5f70dc5c80c8a4112c" category="list-text">開発：毎日スケジュールを設定します。本番システムおよび開発システムでは、ファイルベースのバックアップを使用して、週単位のブロック整合性チェックをカバーするために「BlockIntegrityCheck」ポリシーを使用します。</block>
+  <block id="22356469ac5ca8aeafb4a4cd5aaa2346" category="list-text">プロダクション：毎週スケジュールを設定します。</block>
+  <block id="68b554bfef8312da6a9ba9bba23937d5" category="list-text">開発：毎週スケジュールを設定します。</block>
+  <block id="cb6a15450e2fa9cea2ea31aa4a510c0d" category="paragraph">オフサイトのバックアップポリシーを使用する個々のSAP HANAデータベースに対して、ストレージレイヤで保護関係を設定する必要があります。保護関係は、レプリケートされるボリュームとバックアップの保持をオフサイトのバックアップストレージで定義します。</block>
+  <block id="9d0b24c01af3a2a587574b46fceb72d3" category="paragraph">次の例では、本番用システムと開発用システムごとに、オフサイトのバックアップストレージに2週間の保持を定義します。</block>
+  <block id="0197c9098f672a502b8fb0ea4af8c88a" category="paragraph">この例では、SAP HANAデータベースのリソースと非データボリュームのリソースの保護ポリシーと保持方法は異なります。</block>
+  <block id="38a5161bfaecb6377c969b8c970a6677" category="section-title">ラボのセットアップ例</block>
+  <block id="4acdc8775ab5d93ca83720de28826682" category="paragraph">このあとのセクションでは、以下のラボ環境の設定例を使用しました。</block>
+  <block id="2edcc43e604ebe03c9e589e03ad59509" category="paragraph">HANAシステムPFX：</block>
+  <block id="e246c6ca2a43b0011a7139e737f72e94" category="list-text">シングルテナントのシングルホストMDCシステム</block>
+  <block id="11da4dfde153724b26d00bd0b8eef4c1" category="list-text">HANA 2.0 SPS 6リビジョン60</block>
+  <block id="c07320955ae27fabbb4794368ec16c12" category="list-text">SLES for SAP 15SP3』を参照してください</block>
+  <block id="18d457f56413972c18dd88f5456dedd9" category="paragraph">SnapCenter ：</block>
+  <block id="50c86c9536ac5a750f7b41adb4073361" category="list-text">バージョン4.6</block>
+  <block id="906753eafa96e59604253afc13b16762" category="list-text">HANAデータベースホストに導入されたHANAとLinuxのプラグイン</block>
+  <block id="27dd1f0ad2cb3dde55ff3aaa438b942f" category="paragraph">ONTAP ファイルシステムのFSx：</block>
+  <block id="f656ee2a8422f6074720c983ae791ddb" category="list-text">ONTAP ファイルシステム用のFSX 2（単一のStorage Virtual Machine（SVM））</block>
+  <block id="a1ac29fe64b1ca0654c85b2f60b211a1" category="list-text">異なるAWSアベイラビリティゾーンにあるONTAP システムの各FSX</block>
+  <block id="48eba9fd649acf4be2ae35cea201d48a" category="list-text">ONTAP ファイルシステム用の2番目のFSXにHANAデータボリュームがレプリケートされます</block>
+  <block id="b72a5be0072bf415d1c0ff9a40a5cfb4" category="paragraph"><block ref="b72a5be0072bf415d1c0ff9a40a5cfb4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4237019695c161beca8a937cda37a609" category="paragraph"><block ref="4237019695c161beca8a937cda37a609" category="inline-link-macro-rx"></block></block>
+  <block id="b7868c33a653d5e8748fca10e512fdc7" category="summary">このラボ環境では、2つ目のAWSアベイラビリティゾーンでFSX for ONTAP ファイルシステムを2つ目にして、HANAデータボリュームのバックアップレプリケーションを紹介します。</block>
+  <block id="95ea3387767393eddc1336a2154175d9" category="doc">概要- SnapVault によるバックアップレプリケーション</block>
+  <block id="aa358bfc362579777a74f1c62e6ae922" category="inline-link-macro">Previous：非データボリュームのバックアップ。</block>
+  <block id="c42762d73edc5694fb95406baf733e5f" category="paragraph"><block ref="c42762d73edc5694fb95406baf733e5f" category="inline-link-macro-rx"></block></block>
+  <block id="86aba40e8759c5f3a79b7b6b23617ed9" category="inline-link-macro">「データ保護戦略」</block>
+  <block id="532b5caf6d2f2df226e8b398d9b30a66" category="paragraph">第章で説明したように <block ref="be68466d3e3fcc946680f447c790913d" category="inline-link-macro-rx"></block>では'レプリケーション・ターゲットは'別のアベイラビリティ・ゾーンのONTAP ファイル・システム用の2番目のFSXである必要がありますこれは'プライマリFSX for ONTAP ファイル・システムの障害から保護されるためですまた、HANA共有ボリュームをONTAP ファイルシステムのセカンダリFSXにレプリケートする必要があります。</block>
+  <block id="8913ab6041dfb8e85d12eddd1acaa5ca" category="section-title">設定手順の概要</block>
+  <block id="07f30226d3c2baca5e7519c8b103a270" category="paragraph">FSX for ONTAP レイヤで実行する必要がある設定手順はいくつかあります。これは、NetApp Cloud ManagerまたはONTAP コマンドラインのFSXで実行できます。</block>
+  <block id="81641f60f8074d2777e22d31d1d5477e" category="list-text">ONTAP ファイルシステム用のピアFSX。ONTAP ファイルシステムのFSXは、相互のレプリケーションを許可するためにピア関係を設定する必要があります。</block>
+  <block id="04f9fb453a5b3f03dcfa9eb4b47daca4" category="list-text">SVMをピアリングSVM間のレプリケーションを許可するには、SVM間にピア関係を設定する必要があります。</block>
+  <block id="62318a8b11e534add7ef07b26c1ace60" category="list-text">ターゲットボリュームを作成します。ターゲットSVMにボリュームタイプ「DP」を指定してボリュームを作成します。レプリケーション・ターゲット・ボリュームとして使用するには'DP'タイプが必要です</block>
+  <block id="f3db679e572cae36c0e32cb0946bc5b9" category="list-text">SnapMirrorポリシーを作成する。これは' vaultタイプのレプリケーションのポリシーを作成するために使用されます</block>
+  <block id="001de0baa772b4eb02137ea1838ecbad" category="list-text">ポリシーにルールを追加します。このルールには、セカンダリサイトでのバックアップのSnapMirrorラベルと保持に関する情報が含まれています。このラベルが含まれているソースボリュームにSnapCenter によってSnapshotバックアップが作成されるように、SnapCenter ポリシーの後半で同じSnapMirrorラベルを設定する必要があります。</block>
+  <block id="dd1b188f97236bc65d266b713b0a2c3c" category="list-text">SnapMirror関係を作成ソースボリュームとターゲットボリュームの間のレプリケーション関係を定義し、ポリシーを適用します。</block>
+  <block id="33ff9e19a0a8c2a53edafdfe10646c3d" category="list-text">SnapMirrorを初期化最初のレプリケーションが開始され、ソースのすべてのデータがターゲットボリュームに転送されます。</block>
+  <block id="caed6b5eec6c8a3a2d223a3896adeebc" category="paragraph">ボリュームレプリケーションの設定が完了したら、SnapCenter で次のようにバックアップレプリケーションを設定する必要があります。</block>
+  <block id="12ed731fe0ebb2ea71878d5e9c029f69" category="list-text">ターゲットSVMをSnapCenter に追加します。</block>
+  <block id="02b70400ae992d29c68f4e654dee405e" category="list-text">SnapshotバックアップとSnapVault レプリケーション用に新しいSnapCenter ポリシーを作成します。</block>
+  <block id="650e26d413499d7020a3e2e477999428" category="list-text">HANAのリソース保護にポリシーを追加します。</block>
+  <block id="9505d7775b4aa534ceeeb23744ed09e7" category="list-text">新しいポリシーを使用してバックアップを実行できるようになりました。</block>
+  <block id="4b7d520e2b58478a0dd3736b31c461d8" category="paragraph">以降の章では、個々の手順について詳しく説明します。</block>
+  <block id="f20af1cfe8582cbfc0161d926ff8241d" category="inline-link-macro">次の手順：ONTAP ファイルシステムのレプリケーション関係をFSXで設定します。</block>
+  <block id="77fbf754ff73b16178b03c9d3688fe17" category="paragraph"><block ref="77fbf754ff73b16178b03c9d3688fe17" category="inline-link-macro-rx"></block></block>
+  <block id="af6c6acd72965555d34e33c0b507962b" category="summary">このセクションでは、レプリケーションを使用してバックアップを作成する方法について説明します。</block>
+  <block id="1975e970c6735fe42f83f63430773bce" category="doc">レプリケーションを使用してバックアップを作成します</block>
+  <block id="58c47b96b780f211f95c10bcb76348b4" category="inline-link-macro">前の手順：リソース保護にポリシーを追加します。</block>
+  <block id="252a73daf19a196ad7399fd17fd29a34" category="paragraph"><block ref="252a73daf19a196ad7399fd17fd29a34" category="inline-link-macro-rx"></block></block>
+  <block id="fe963cc53fa6ca91332135a0fdf394ce" category="paragraph">バックアップは、ローカルSnapshotコピーと同じ方法で作成します。</block>
+  <block id="220f06985b74a5091aad99541552d38f" category="paragraph">レプリケーションを伴うバックアップを作成するには、バックアップレプリケーションを含むポリシーを選択し、バックアップをクリックします。</block>
+  <block id="50650c28ef007817b8f518829f05932f" category="paragraph"><block ref="50650c28ef007817b8f518829f05932f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="873a3b33f12dee6fcd571bc7c855da4e" category="paragraph">SnapCenter ジョブログには、SnapVault 更新処理を開始するセカンダリアップデートステップが表示されます。レプリケーションによって変更されたブロックがソースボリュームからターゲットボリュームにレプリケートされます。</block>
+  <block id="a18e8c9b6a6498d7b848e3d17ee1e57d" category="paragraph"><block ref="a18e8c9b6a6498d7b848e3d17ee1e57d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bd72bb66cc1f6c0274f2b9a01b88f988" category="paragraph">ONTAP ファイル・システムのFSXでは、SnapCenter ポリシーで設定されているように、SnapMirrorラベル「SnapCenter 」を使用してソース・ボリューム上のSnapshotが作成されます。</block>
+  <block id="ca557f776bfcc035900f10add0a5a68f" category="paragraph">ターゲットボリュームに、同じ名前のSnapshotコピーが作成されます。</block>
+  <block id="913ca500d383f0ef7e31451f47e06ba9" category="paragraph">HANAのバックアップカタログにも新しいSnapshotバックアップが表示されます。</block>
+  <block id="4b0953bc21876f1eb89bcc365e29298d" category="paragraph"><block ref="4b0953bc21876f1eb89bcc365e29298d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="536d39b1788aafe77a33dea12db6f000" category="paragraph">SnapCenter では、トポロジビューのバックアップコピーをクリックして、レプリケートされたバックアップのリストを表示できます。</block>
+  <block id="b89209aee8e5f4c0f9105ca0d10aad27" category="paragraph"><block ref="b89209aee8e5f4c0f9105ca0d10aad27" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="53e3819b8a9a5808ee0384e18bdccb1d" category="inline-link-macro">次の手順：セカンダリストレージからリストアとリカバリを実行します。</block>
+  <block id="43be71a8439ae6d2178888aa495dd2fb" category="paragraph"><block ref="43be71a8439ae6d2178888aa495dd2fb" category="inline-link-macro-rx"></block></block>
+  <block id="46f7f3d3c0b3afe7e5a1e026b2079c7d" category="summary">このセクションでは、バックアップレプリケーションのポリシーを設定する方法について説明します。</block>
+  <block id="b950bdfd30a0ab3d80a5aba7d93af29e" category="doc">バックアップレプリケーション用の新しいSnapCenter ポリシーを作成します</block>
+  <block id="20354d92a33c57c6b0ee58c66103ed6a" category="inline-link-macro">前の手順：SnapCenter にバックアップSVMを追加します。</block>
+  <block id="86b9b4b8ddd407d59265a342cf9e8a0b" category="paragraph"><block ref="86b9b4b8ddd407d59265a342cf9e8a0b" category="inline-link-macro-rx"></block></block>
+  <block id="3025c1bc51ebfd7060cc53e320af06b3" category="paragraph">バックアップレプリケーションのポリシーは次のように設定する必要があります。</block>
+  <block id="8b8b965fb7ffc307bea22e16dc282653" category="list-text">ポリシーの名前を指定します。</block>
+  <block id="c5240e59969f5a1ffada137485e1a04b" category="paragraph"><block ref="c5240e59969f5a1ffada137485e1a04b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="255926c246407f59e63874cdf162bfe1" category="list-text">Snapshotバックアップとスケジュール頻度を選択します。通常、Dailyはバックアップのレプリケーションに使用されます。</block>
+  <block id="1928b034a8791cf4d0602fe4e21806fc" category="paragraph"><block ref="1928b034a8791cf4d0602fe4e21806fc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a509d11a422413094074cecbf0366aca" category="list-text">Snapshotバックアップの保持期間を選択します。</block>
+  <block id="9c3bbe5329d1961144ff4c511fb183c2" category="paragraph"><block ref="9c3bbe5329d1961144ff4c511fb183c2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d8d1327fe7287b0a0153e98b18253c34" category="paragraph">これは、プライマリストレージで作成された日単位のSnapshotバックアップの保持です。SnapVault ターゲットでのセカンダリバックアップの保持設定は、ONTAP レベルでadd ruleコマンドを使用してすでに設定されています。「ONTAP ファイルシステムのFSXでのレプリケーション関係の構成」（xref）を参照してください。</block>
+  <block id="9ddff7fc898a1159866a9ff2e11a70ba" category="paragraph"><block ref="9ddff7fc898a1159866a9ff2e11a70ba" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0f3c758f3ba480dbff88c44bceab01e8" category="list-text">Update SnapVault フィールドを選択し、カスタムラベルを指定します。</block>
+  <block id="8f610812cd49bd366c9638bef3fce744" category="paragraph">このラベルは、「add rule」コマンドでONTAP レベルで指定されたSnapMirrorラベルと一致する必要があります。</block>
+  <block id="a26d27fc6bbe5d9d50c78f8918701e3a" category="paragraph"><block ref="a26d27fc6bbe5d9d50c78f8918701e3a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5cfd42e3c15df5714db4f1968e5d3c26" category="paragraph"><block ref="5cfd42e3c15df5714db4f1968e5d3c26" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ec5c19062711162507c65806ea542ac5" category="paragraph">これで新しいSnapCenter ポリシーが設定されました。</block>
+  <block id="90f0a45cd8da1fee79c7571738e602e8" category="paragraph"><block ref="90f0a45cd8da1fee79c7571738e602e8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="18aa1b1ec1244de711c458e7e517b814" category="inline-link-macro">次の手順：リソース保護にポリシーを追加します。</block>
+  <block id="91da4077727a5c39056f1eaf5a87dd7a" category="paragraph"><block ref="91da4077727a5c39056f1eaf5a87dd7a" category="inline-link-macro-rx"></block></block>
+  <block id="eb04119e7b1674cd267ce6b996cbe795" category="inline-link-macro">Previous：セカンダリストレージからリストアとリカバリを実行します。</block>
+  <block id="1bbc107e118c0ac47c4a044863d97272" category="paragraph"><block ref="1bbc107e118c0ac47c4a044863d97272" category="inline-link-macro-rx"></block></block>
+  <block id="2c0b1092a288f5d67050f3fbf404d5f8" category="list-text">『FSX for NetApp ONTAP user guide—What is Amazon FSX for NetApp ONTAP ？』</block>
+  <block id="d82c21a48349085e4fd93fb6712e3789" category="paragraph"><block ref="d82c21a48349085e4fd93fb6712e3789" category="inline-link-rx"></block></block>
+  <block id="3306e00cec668497714eaadcd7aa6ac8" category="list-text">SnapCenter のリソースページ</block>
+  <block id="7608e75619cff3eeb4e8bce40481b456" category="list-text">SnapCenter ソフトウェアのドキュメント</block>
+  <block id="7a3492bffc26e95ce3669b39a1f14422" category="list-text">TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』</block>
+  <block id="57ba5a9f523a8e4c04a3d8c97ceb0512" category="paragraph"><block ref="57ba5a9f523a8e4c04a3d8c97ceb0512" category="inline-link-rx"></block></block>
+  <block id="3c191542e46a4ce9d7eb2f662380cb07" category="list-text">TR-4719：『SAP HANA System Replication—Backup and Recovery with SnapCenter 』</block>
+  <block id="fdb11e662eb4102170cd8c688e5f636e" category="inline-link"><block ref="fdb11e662eb4102170cd8c688e5f636e" category="inline-link-rx"></block></block>
+  <block id="1abbabb28000113cac5f8ec1cb3265ee" category="paragraph"><block ref="1abbabb28000113cac5f8ec1cb3265ee" category="inline-link-rx"></block></block>
+  <block id="b56a5394775a9f077c12cb3e770d913c" category="cell">2022年5月</block>
+  <block id="baaebabde318c3efac57f4b4eaf80541" category="summary">NetApp Snapshotテクノロジを使用すれば、データベースのバックアップを数分で作成できます。Snapshot コピーではストレージプラットフォーム上の物理データブロックは移動されないため、 Snapshot コピーの作成に要する時間はデータベースのサイズに左右されません。</block>
+  <block id="a72020b2f4b19541a1ec28f5c06dd28d" category="doc">Amazon FSX for ONTAP を使用したバックアップとリカバリ</block>
+  <block id="a190df99d0777f04495171bfcf390a1c" category="paragraph"><block ref="a190df99d0777f04495171bfcf390a1c" category="inline-link-macro-rx"></block></block>
+  <block id="60b8c7b8372a3f1b6d91f7f758119c91" category="paragraph">NetApp Snapshotテクノロジを使用すれば、データベースのバックアップを数分で作成できます。Snapshot コピーではストレージプラットフォーム上の物理データブロックは移動されないため、 Snapshot コピーの作成に要する時間はデータベースのサイズに左右されません。また、 Snapshot テクノロジを使用しても、稼働中の SAP システムのパフォーマンスには影響しません。そのため、対話形式またはバッチでのアクティビティのピーク期間を考慮せずに、 Snapshot コピーの作成をスケジュールできます。SAPとネットアップのお客様は、通常、複数のオンラインSnapshotバックアップを1日に行うようにスケジュールを設定します。たとえば、一般的には6時間おきにバックアップを作成します。作成されたSnapshotバックアップは、通常、長期間保持するために低コストのストレージに移動したり、削除される前にプライマリストレージシステムに3~5日間保持されています。</block>
+  <block id="2025d4d57c2a7727e45b8c27669d1766" category="paragraph">Snapshot コピーは、リストア処理とリカバリ処理にも大きなメリットがあります。NetApp SnapRestore テクノロジを使用すると、データベース全体またはデータベースの一部を、現在使用可能なSnapshotコピーに基づいて任意の時点にリストアすることができます。このようなリストアプロセスは、データベースのサイズに関係なく数秒で完了します。オンラインのSnapshotバックアップは1日に複数作成できるため、リカバリプロセスに要する時間は、従来の1日1回のバックアップ方式に比べて大幅に短縮されます。24時間以内ではなく数時間前のSnapshotコピーを使用してリストアできるため、フォワードリカバリで適用するトランザクションログの数を少なくします。そのため、従来のストリーミングバックアップでは数時間かかるのに対し、RTOが数分に短縮されます。</block>
+  <block id="a2a3e9da861c9ea2a98377b12083c9dd" category="paragraph">Snapshot コピーバックアップは、アクティブなオンラインデータと同じディスクシステムに格納されます。セカンダリストレージへのバックアップに代わる手段としてではなく、補助的な用途で使用することを推奨します。リストア処理とリカバリ処理のほとんどは、プライマリストレージシステムでSnapRestore を使用して管理されます。セカンダリストレージからのリストアが必要になるのは、 Snapshot コピーが格納されているプライマリストレージシステムが損傷している場合のみです。プライマリロケーションで使用できなくなったバックアップをリストアする必要がある場合は、セカンダリロケーションも使用できます。</block>
+  <block id="8dcd926cbf875d3253a284078f4d4d97" category="paragraph">セカンダリストレージへのバックアップは、プライマリストレージに作成された Snapshot コピーがベースとなります。そのため、プライマリストレージシステムから直接データが読み取られ、 SAP データベースサーバに負荷は生成されません。プライマリストレージは、セカンダリストレージと直接通信し、NetApp SnapVault 機能を使用してバックアップデータをデスティネーションにレプリケートします。</block>
+  <block id="5b20f618fc45fa395c10c6521e4740bb" category="paragraph">SnapVault には、従来のバックアップに比べて大きな利点があります。最初のデータ転送でソースからデスティネーションにすべてのデータが転送されると、以降のバックアップコピーでは、変更されたブロックだけがセカンダリストレージに移動されます。そのため、プライマリストレージシステムへの負荷およびフルバックアップに要する時間が大幅に削減されます。SnapVault では変更されたブロックだけがデスティネーションに格納されるため、データベースのフルバックアップを追加するとディスクスペースの消費量を大幅に削減できます。</block>
+  <block id="cba657bc8a28e8aa3d4ccf36fee09f3d" category="section-title">Snapshotバックアップおよびリストア処理の実行時間</block>
+  <block id="f2d966c4c76183b95a2dd4aab1cc183f" category="paragraph">次の図に、Snapshotバックアップ操作を使用したお客様のHANA Studioを示します。図に示すように、HANAデータベース（約4TBのサイズ）は、Snapshotバックアップテクノロジを使用して1分20秒以内にバックアップされ、ファイルベースのバックアップ処理を実行して4時間以上経過しています。</block>
+  <block id="c7e7d45d7e845928548b3e543ca10436" category="paragraph">全体的なバックアップワークフローランタイムの最大の部分は、HANAのバックアップ保存ポイント処理を実行するために必要な時間です。この手順は、HANAデータベースの負荷によって異なります。ストレージ Snapshot バックアップ自体は、数秒で完了します。</block>
+  <block id="afb33cda7e9fa5a9602e4269ff11419c" category="paragraph"><block ref="afb33cda7e9fa5a9602e4269ff11419c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="193fec5a460def18c358af628c0b33be" category="paragraph">ここでは、ファイルベースとストレージベースのSnapshotバックアップのRecovery Time Objective（RTO；目標復旧時間）を比較します。RTOは、データベースのリストア、リカバリ、および起動に必要な時間の合計によって定義されます。</block>
+  <block id="7beb9f884b7fd71d5e5a785cdeb855ae" category="paragraph">ファイルベースのバックアップでは、リストア時間はデータベースのサイズとバックアップインフラによって異なり、リストア速度は 1 秒あたりのメガバイト数で定義されます。たとえば、インフラで250MBpsの高速なリストア処理がサポートされている場合、4 TBのデータベースを永続性を維持した状態でリストアするには約4.5時間かかります。</block>
+  <block id="a743491c215755ced1d249728d4c59cf" category="paragraph">ストレージSnapshotコピーバックアップでは、リストア時間はデータベースのサイズに左右されず、常に数秒の範囲になります。</block>
+  <block id="beb19f37eae3085fec5f4641f0033384" category="paragraph">データベースの開始時間は、データベースのサイズと、データをメモリにロードするのに必要な時間によって異なります。次の例では、データを1000Mbpsでロードできると仮定しています。4TBのメモリをメモリに装着するには、約1時間10分かかります。開始時間は、ファイルベースおよびSnapshotベースのリストア処理とリカバリ処理の場合と同じです。</block>
+  <block id="2c68d79a149075de78266c5882a42d2d" category="paragraph">Snapshotバックアップは通常、SAP HANAデータベースのパフォーマンスに影響しないため、頻繁にスケジュールされます。たとえば、Snapshotバックアップが6時間ごとにスケジュールされている場合、最悪の場合、ファイルベースのバックアップに関しては、リカバリ時間の4分の1（6時間/24時間=.25）になります。</block>
+  <block id="43f14ff1b246267a64206adbdba0de5d" category="paragraph">次の図に、リストア処理とリカバリ処理の比較を示します。毎日のファイルベースのバックアップとSnapshotバックアップでスケジュールが異なります。</block>
+  <block id="30073284d63b6f33c78286326400021c" category="paragraph">最初の2つのバーは、1日に1つのSnapshotバックアップを作成した場合でも、Snapshotバックアップからのリストア処理の速度が原因で、リストアとリカバリが43%に削減されることを示しています。1日に複数のSnapshotバックアップを作成すると、フォワードリカバリで適用するログが少なくなるため、ランタイムがさらに短縮されます。</block>
+  <block id="0d381e697a62c19da0662e14a0677b91" category="paragraph">また、次の図では、1日に4~6つのSnapshotバックアップを作成することを推奨しています。頻度を高くしても、全体的な実行時間に大きな影響はありません。</block>
+  <block id="ccf3e344f067ed03b2c47a1809ab0053" category="paragraph"><block ref="ccf3e344f067ed03b2c47a1809ab0053" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f098f2578c0983f1b7aa54ffbce45c14" category="section-title">バックアップとクローニング処理の高速化のユースケースと価値</block>
+  <block id="e7a11550e1b499ff6585bb500fe016d4" category="paragraph">バックアップの実行は、あらゆるデータ保護戦略に欠かせない要素です。バックアップは定期的にスケジュールされ、システム障害からリカバリできます。これは最も分かりやすいユースケースですが、SAPライフサイクル管理タスクにはバックアップとリカバリの高速化が不可欠なものもあります。</block>
+  <block id="d7b2a02b60c22dabdbb3d85e7896c825" category="paragraph">SAP HANAシステムのアップグレードは、たとえば、アップグレード前のオンデマンドバックアップと、アップグレードが失敗した場合のリストア処理が計画的停止全体に大きく影響する例です。4TBのデータベースの例を使用すると、Snapshotベースのバックアップおよびリストア処理を使用して、計画的なダウンタイムを8時間短縮できます。</block>
+  <block id="3771b614a6d8a93c16146fea5ac011a7" category="paragraph">別のユースケース例としては、一般的なテストサイクルが挙げられます。このテストサイクルでは、異なるデータセットまたはパラメータを使用して複数のイテレーションを行ってテストを実施する必要があります。高速バックアップおよびリストア操作を利用すると、テストサイクル内にセーブポイントを簡単に作成し、テストに失敗した場合やテストを繰り返す必要がある場合に、システムをこれらの以前のセーブポイントのいずれかにリセットできます。これにより、テストを早期に完了させることも、より多くのテストを同時に実行してテスト結果を改善することもできます。</block>
+  <block id="59512cf908870ec0273a50e175f168a9" category="paragraph"><block ref="59512cf908870ec0273a50e175f168a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9b0edbbb4b880bc3149ad74e530b34e3" category="paragraph">Snapshotバックアップを実装したら、HANAデータベースのコピーを必要とするその他の複数のユースケースに対応できます。FSX for ONTAP を使用すると、使用可能な任意のSnapshotバックアップの内容に基づいて新しいボリュームを作成できます。この処理は、ボリュームのサイズに関係なく数秒で実行されます。</block>
+  <block id="664899847ba43249fa67d3faf26a8593" category="paragraph">最も一般的なユースケースはSAPシステムの更新です。本番用システムのデータをテストシステムまたはQAシステムにコピーする必要があります。FSX for ONTAP クローニング機能を利用すると、本番用システムの任意のSnapshotコピーから、わずか数秒でテストシステム用のボリュームをプロビジョニングできます。その後、新しいボリュームをテストシステムに接続し、HANAデータベースをリカバリする必要があります。</block>
+  <block id="b87a6bb157820948a8a8c214af4e0062" category="paragraph">2つ目のユースケースは、リペアシステムを作成したもので、本番システムでの論理的な破損に対処するために使用されます。この場合、本番用システムの古いSnapshotバックアップを使用して修復システムが開始されます。これは、破損が発生する前のデータと同一の、本番システムのクローンです。その後、リペアシステムを使用して問題を分析し、破損する前に必要なデータをエクスポートします。</block>
+  <block id="c7b35ad7f0a4691a80ff05970187ddeb" category="paragraph">最後のユースケースは、レプリケーションを停止することなくディザスタリカバリのフェイルオーバーテストを実行できるため、ディザスタリカバリの設定のRTOとRecovery Point Objective（RPO；目標復旧時点）に影響を及ぼすことなく、FSX for ONTAP NetApp SnapMirrorレプリケーションを使用してデータをディザスタリカバリサイトにレプリケートすると、本番用Snapshotバックアップをディザスタリカバリサイトでも使用できるようになり、ディザスタリカバリテスト用の新しいボリュームを作成できるようになります。</block>
+  <block id="265110f4d7e59b2f94484d2789a052ba" category="paragraph"><block ref="265110f4d7e59b2f94484d2789a052ba" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="95097e935fdf6be438e5789d41bb9589" category="paragraph"><block ref="95097e935fdf6be438e5789d41bb9589" category="inline-link-macro-rx"></block></block>
+  <block id="0a6bfe5423e343fa9ae1504fcfa72370" category="sidebar">Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ</block>
 </blocks>

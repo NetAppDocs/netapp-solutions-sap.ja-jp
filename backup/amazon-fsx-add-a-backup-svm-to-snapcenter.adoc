@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: backup/amazon-fsx-add-a-backup-svm-to-snapcenter.html 
+keywords: svm, backup, snapcenter 
+summary: このセクションでは、SnapCenter にバックアップSVMを追加する方法について説明します。 
+---
+= SnapCenter にバックアップSVMを追加
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html["Previous：ONTAP ファイルシステムのレプリケーション関係をFSXで設定します。"]
+
+SnapCenter にバックアップSVMを追加するには、次の手順を実行します。
+
+. SnapVault ターゲットボリュームが配置されているSVMをSnapCenter に設定します。
++
+image:amazon-fsx-image76.png["エラー：グラフィックイメージがありません"]
+
+. [その他のオプション]ウィンドウで、プラットフォームとして[すべてのFlash FAS ]を選択し、[セカンダリ]を選択します。
++
+image:amazon-fsx-image77.png["エラー：グラフィックイメージがありません"]
+
+
+
+これで、SVMをSnapCenter で使用できるようになります。
+
+image:amazon-fsx-image78.png["エラー：グラフィックイメージがありません"]
+
+link:amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html["次の手順：バックアップレプリケーションの新しいSnapCenter ポリシーを作成します。"]

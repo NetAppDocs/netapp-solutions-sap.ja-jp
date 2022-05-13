@@ -2,6 +2,39 @@
 section: backup
 title: バックアップ、リストア、ディザスタリカバリ
 entries:
+- title: Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ
+  type: solutions
+  entries:
+  - title: 概要
+    url: "/backup/amazon-fsx-overview.html"
+  - title: Amazon FSX for ONTAP を使用したバックアップとリカバリ
+    url: "/backup/amazon-fsx-backup-and-recovery-using-amazon-fsx-for-ontap.html"
+  - title: SnapCenter アーキテクチャ
+    url: "/backup/amazon-fsx-snapcenter-architecture.html"
+  - title: SnapCenter 構成
+    url: "/backup/amazon-fsx-snapcenter-configuration.html"
+  - title: SnapCenter バックアップ処理
+    url: "/backup/amazon-fsx-snapcenter-backup-operations.html"
+  - title: データボリューム以外のボリュームのバックアップ
+    url: "/backup/amazon-fsx-backup-of-non-data-volumes.html"
+  - title: SnapVault を使用したバックアップレプリケーション
+    entries:
+    - title: 概要
+      url: "/backup/amazon-fsx-backup-replication-with-snapvault_overview.html"
+    - title: ONTAP ファイルシステムのレプリケーション関係をFSXに設定します
+      url: "/backup/amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html"
+    - title: SnapCenter にバックアップSVMを追加
+      url: "/backup/amazon-fsx-add-a-backup-svm-to-snapcenter.html"
+    - title: バックアップレプリケーション用の新しいSnapCenter ポリシーを作成します
+      url: "/backup/amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html"
+    - title: リソースの保護にポリシーを追加します
+      url: "/backup/amazon-fsx-add-a-policy-to-resource-protection.html"
+    - title: レプリケーションを使用してバックアップを作成します
+      url: "/backup/amazon-fsx-create-a-backup-with-replication.html"
+    - title: セカンダリストレージからリストアおよびリカバリする
+      url: "/backup/amazon-fsx-restore-and-recover-from-secondary-storage.html"
+  - title: 追加情報およびバージョン履歴の参照先
+    url: "/backup/amazon-fsx-where-to-find-additional-information.html"
 - title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
   type: solutions
   entries:

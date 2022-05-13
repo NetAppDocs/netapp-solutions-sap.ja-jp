@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: backup/amazon-fsx-backup-replication-with-snapvault_overview.html 
+keywords: overview, configuration, 
+summary: このラボ環境では、2つ目のAWSアベイラビリティゾーンでFSX for ONTAP ファイルシステムを2つ目にして、HANAデータボリュームのバックアップレプリケーションを紹介します。 
+---
+= 概要- SnapVault によるバックアップレプリケーション
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:amazon-fsx-backup-of-non-data-volumes.html["Previous：非データボリュームのバックアップ。"]
+
+このラボ環境では、2つ目のAWSアベイラビリティゾーンでFSX for ONTAP ファイルシステムを2つ目にして、HANAデータボリュームのバックアップレプリケーションを紹介します。
+
+第章で説明したように link:amazon-fsx-snapcenter-architecture.html#data-protection-strategy["「データ保護戦略」"]では'レプリケーション・ターゲットは'別のアベイラビリティ・ゾーンのONTAP ファイル・システム用の2番目のFSXである必要がありますこれは'プライマリFSX for ONTAP ファイル・システムの障害から保護されるためですまた、HANA共有ボリュームをONTAP ファイルシステムのセカンダリFSXにレプリケートする必要があります。
+
+image:amazon-fsx-image8.png["エラー：グラフィックイメージがありません"]
+
+
+
+=== 設定手順の概要
+
+FSX for ONTAP レイヤで実行する必要がある設定手順はいくつかあります。これは、NetApp Cloud ManagerまたはONTAP コマンドラインのFSXで実行できます。
+
+. ONTAP ファイルシステム用のピアFSX。ONTAP ファイルシステムのFSXは、相互のレプリケーションを許可するためにピア関係を設定する必要があります。
+. SVMをピアリングSVM間のレプリケーションを許可するには、SVM間にピア関係を設定する必要があります。
+. ターゲットボリュームを作成します。ターゲットSVMにボリュームタイプ「DP」を指定してボリュームを作成します。レプリケーション・ターゲット・ボリュームとして使用するには'DP'タイプが必要です
+. SnapMirrorポリシーを作成する。これは' vaultタイプのレプリケーションのポリシーを作成するために使用されます
++
+.. ポリシーにルールを追加します。このルールには、セカンダリサイトでのバックアップのSnapMirrorラベルと保持に関する情報が含まれています。このラベルが含まれているソースボリュームにSnapCenter によってSnapshotバックアップが作成されるように、SnapCenter ポリシーの後半で同じSnapMirrorラベルを設定する必要があります。
+
+
+. SnapMirror関係を作成ソースボリュームとターゲットボリュームの間のレプリケーション関係を定義し、ポリシーを適用します。
+. SnapMirrorを初期化最初のレプリケーションが開始され、ソースのすべてのデータがターゲットボリュームに転送されます。
+
+
+ボリュームレプリケーションの設定が完了したら、SnapCenter で次のようにバックアップレプリケーションを設定する必要があります。
+
+. ターゲットSVMをSnapCenter に追加します。
+. SnapshotバックアップとSnapVault レプリケーション用に新しいSnapCenter ポリシーを作成します。
+. HANAのリソース保護にポリシーを追加します。
+. 新しいポリシーを使用してバックアップを実行できるようになりました。
+
+
+以降の章では、個々の手順について詳しく説明します。
+
+link:amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html["次の手順：ONTAP ファイルシステムのレプリケーション関係をFSXで設定します。"]
