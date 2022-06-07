@@ -1,0 +1,176 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-automation-example-scripts.html 
+keywords: example script, automation, clone create, clone delete 
+summary: 本ドキュメントでは、SnapCenter クローンの作成処理とクローンの削除処理をさらに自動化するために、2つのスクリプトを使用しています。 
+---
+= 自動化スクリプトの例
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html["前のバージョン：ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー"]
+
+本ドキュメントでは、SnapCenter クローンの作成処理とクローンの削除処理をさらに自動化するために、2つのスクリプトを使用しています。
+
+* スクリプト「sc-system-refresh.sh」は、システムの更新およびシステムクローンワークフローに使用され、HANAデータボリュームのマウントおよびアンマウント操作の実行、およびHANAデータベースのリカバリおよびシャットダウン操作に使用されます。
+* スクリプト「sc-mount-volume.sh」は、システムクローンワークフローでHANA共有ボリュームのマウントおよびアンマウント操作を実行するために使用します。
+
+
+
+NOTE: このサンプルスクリプトは現状のまま提供されており、ネットアップではサポートしていません。スクリプトは、mailto：ng-sapcc@netapp.com [ ng-sapcc@netapp.com ^]にEメールで送信してください。
+
+
+
+== スクリプトsc-system-refresh.sh
+
+サンプルスクリプト「sc-system-refresh.sh」は、SAP HANAデータボリュームのマウントおよびアンマウント操作の実行、およびリカバリおよびシャットダウン操作に使用されます。次の図に示すように、SnapCenter ワークフローでは、clone createおよびclone deleteの中から特定のコマンドラインオプションを指定してスクリプトを呼び出します。
+
+スクリプトは汎用的なものであり、SID固有の構成ファイルと環境変数で構成されます。これらの変数は、スクリプト実行時にSnapCenter で使用できるようになります。スクリプトと構成ファイルは、システムの更新処理のターゲットホストにある必要があります。スクリプトを複数のターゲットホストに使用する場合は、すべてのターゲットホストでスクリプトを使用できるようにするNFS共有を指定できます。
+
+
+NOTE: スクリプトの現在のバージョンでは、単一コンテナ、MDCのシングルテナント構成、またはMDCのマルチテナント構成のシングルホストシステムをサポートしています。SAP HANAマルチホストシステムはサポートされていません。
+
+
+NOTE: ストレージプロトコルとしてNFSまたはFibre Channel（FC）を使用するHANAシステムをサポートするスクリプトです。
+
+image:sc-copy-clone-image13.png["エラー：グラフィックイメージがありません"]
+
+
+
+=== サポートされているテナントリカバリ処理
+
+を参照してください link:sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html["「ストレージスナップショットバックアップを使用したSAP HANAシステムの更新操作ワークフロー」"] ターゲットシステムで実行可能なテナントリカバリ処理は、ソースシステムのテナント構成によって異なります。スクリプト「sc-system-refresh.sh」は、次の表に示すように、ソース・システムの構成によって可能なすべてのテナント・リカバリ・オペレーションをサポートします。
+
+ターゲットシステムで別のテナント名が必要な場合は、リカバリ処理後にテナントの名前を手動で変更する必要があります。
+
+|===
+| HANAシステム | ソースシステムでのテナント構成 | ターゲットシステムでのテナント構成 
+
+
+| 単一のコンテナ | 該当なし | 該当なし 
+
+
+| MDCのシングルテナント | ソースのテナント名がソースのSIDと同じです | ターゲットテナント名はターゲットSIDと同じです 
+
+
+| MDCのシングルテナント | ソーステナント名がソースSIDと同じではありません | ターゲットテナント名はソーステナント名と同じです 
+
+
+| MDCの複数のテナント | 任意のテナント名 | 最初のテナントのみがリカバリされ、ソーステナントと同じ名前になります。 
+|===
+
+
+=== SID固有の構成ファイル
+
+このスクリプトは、構成ファイルを使用して、ターゲットシステム固有のいくつかのパラメータを設定します。コンフィギュレーションファイルには、SID固有のファイル名「sc-system-refresh-sid.cfg」が必要です。
+
+
+NOTE: ターゲット・システムのhdbuserstoreキーを使用して構成されたデータベース・ユーザは'ソース・データベースに存在し'データベース・リカバリを許可するための適切な権限を持っている必要があります
+
+構成ファイルのパラメータを次の表に示します。
+
+|===
+| パラメータ |  | 説明 
+
+
+| キーを押します | 例：QS1KEY | SAP HANA hdbuserstoreキー。ターゲットのSAP HANAデータベースのリカバリ処理に使用します。ターゲットホスト上のユーザ<SID>admにキーを設定する必要があります。 
+
+
+| プロトコル | NFSまたはFCP | HANAデータベースのデータボリュームの接続に使用されるストレージプロトコル。 
+|===
+次の出力は、「SID=QS1」のSAP HANAシステムの構成ファイルの例を示しています。
+
+....
+ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh> cat sc-system-refresh-QS1.cfg
+# ---------------------------------------------
+# Target database specific parameters
+# ---------------------------------------------
+# hdbuserstore key, which should be used to connect to the target database
+KEY="QS1KEY"
+# Used storage protocol, NFS or FCP
+PROTOCOL="NFS"
+ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh>
+....
+
+
+=== SnapCenter 環境変数
+
+SnapCenter には、ターゲットホストで実行されるスクリプト内で使用可能な一連の環境変数が用意されています。スクリプトはこれらの変数を使用して、関連する構成設定を決定します。
+
+* スクリプト変数「hana_architecture」は、単一コンテナまたはMDCシステムのいずれかで必要なリカバリ操作を決定するために使用されます。
++
+** 「hana_database-type」環境変数から派生します
+** たとえば、「MDC\SS1_HA_database]=「multiple_containers」と入力します
+
+
+* スクリプト変数'tenant'source_tenant''および'source_SID'は'リカバリ・オペレーションのターゲット・テナント名の決定に使用されます
++
+** 「tenant_database-names」環境変数から派生します
+** たとえば、「MDC\SM1_tenant_database-names=TENANT1、TENANT2」のようになります
+
+
+* スクリプト変数'storage, junction-path 'は'マウント操作に使用されます
++
+** 「cloned_volume_mount_path」環境変数から派生します
+** 例：
+
+
+
+
+....
+CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_data_mnt00001_Clone_05112206115489411
+....
+
+
+== スクリプトsc-mount-volume.sh
+
+スクリプト例のsc-mount-volume.sh'は'すべてのボリュームのマウントとアンマウントを実行するために使用されますスクリプトを使用して、HANA共有ボリュームをSAP HANAシステムのクローニング処理でマウントします。次の図に示すように、SnapCenter ワークフローでは、clone createおよびclone deleteの中から特定のコマンドラインオプションを指定してスクリプトを呼び出します。
+
+
+NOTE: このスクリプトは、NFSをストレージプロトコルとして使用するHANAシステムをサポートしています。
+
+image:sc-copy-clone-image14.png["エラー：グラフィックイメージがありません"]
+
+
+
+=== SnapCenter 環境変数
+
+SnapCenter には、ターゲットホストで実行されるスクリプト内で使用可能な一連の環境変数が用意されています。スクリプトはこれらの変数を使用して、関連する構成設定を決定します。
+
+* スクリプト変数'storage, junction-path 'は'マウント操作に使用されます
++
+** 「cloned_volume_mount_path」環境変数から派生したものです。
+** 例：
+
+
+
+
+....
+CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_shared_Clone_05112206115489411
+....
+
+
+== SnapCenter 環境変数を取得するスクリプト
+
+自動化スクリプトを使用せず、手順を手動で実行する必要がある場合は、FlexCloneボリュームのストレージシステムのジャンクションパスを把握しておく必要があります。ジャンクションパスはSnapCenter 内では表示されないため、ストレージシステムで直接ジャンクションパスを検索するか、ターゲットホストにSnapCenter 環境変数を提供する単純なスクリプトを使用する必要があります。このスクリプトは、SnapCenter のクローン作成処理にマウント処理スクリプトとして追加する必要があります。
+
+....
+ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh> cat get-env.sh
+#!/bin/bash
+rm /tmp/env-from-sc.txt
+env > /tmp/env-from-sc.txt
+ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh>
+....
+「env-from-ssc.txt」ファイル内で、変数「cloned_volume_mount_path」を検索して、FlexCloneボリュームのストレージシステムのIPアドレスとジャンクションパスを取得します。
+
+例：
+
+....
+CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_data_mnt00001_Clone_05112206115489411
+....
+link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html["次の例：SnapCenter でSAP HANAシステムを更新"]

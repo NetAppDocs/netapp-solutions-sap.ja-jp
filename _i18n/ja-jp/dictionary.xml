@@ -1946,11 +1946,7 @@
   <block id="731764091ffe7cacd12c33c9048bfd8f" category="inline-link-macro"><block ref="731764091ffe7cacd12c33c9048bfd8f" category="inline-link-rx"></block></block>
   <block id="a064ef72c49c2eebe828ed0cd3a38305" category="paragraph"><block ref="a064ef72c49c2eebe828ed0cd3a38305" category="inline-link-macro-rx"></block></block>
   <block id="1d5e541dc8524e30bb2781003f0d8400" category="paragraph"><block ref="1d5e541dc8524e30bb2781003f0d8400" category="inline-link-macro-rx"></block></block>
-  <block id="cf609e4fa30936be5f8dfd92fb076afe" category="summary">テクニカルレポート TR-4614 に、 NetApp SnapCenter を使用した SAP HANA データ保護のベストプラクティスを示します。このドキュメントでは、 SnapCenter の概念、設定に関する推奨事項、設定やバックアップ処理などの運用ワークフローについて説明します。 リストア処理とリカバリ処理を行うことができます。</block>
   <block id="47f5c5f7b80224cb7832ed3973296f38" category="doc">TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』</block>
-  <block id="fcd16ddc69c35eca3711f2163e64ac8c" category="paragraph">TR-4616 は、 SAP HANA のディザスタリカバリ保護のオプションの概要を示しています。詳細なセットアップ情報、および同期および非同期の NetApp SnapMirror ストレージレプリケーションをベースとした 3 サイトディザスタリカバリ解決策のユースケース概要が含まれます。説明されている解決策では、データベースの整合性を管理するために、 NetApp SnapCenter と SAP HANA プラグインを使用します。</block>
-  <block id="432caa999eec7b9c7ddcabb7fe098139" category="inline-link-macro"><block ref="432caa999eec7b9c7ddcabb7fe098139" category="inline-link-rx"></block></block>
-  <block id="f122cfeb37e2d3200cb4806af587b661" category="paragraph"><block ref="f122cfeb37e2d3200cb4806af587b661" category="inline-link-macro-rx"></block></block>
   <block id="8132c1d54d27cf7a67ac0e563e82c329" category="summary">TR-4646 では、 SAP HANA 向けのディザスタリカバリ保護オプションの概要を説明しています。詳細なセットアップ情報、および同期および非同期の NetApp SnapMirror ストレージレプリケーションをベースとした 3 サイトディザスタリカバリ解決策のユースケース概要が含まれます。説明されている解決策では、データベースの整合性を管理するために、 NetApp SnapCenter と SAP HANA プラグインを使用します。</block>
   <block id="c79cdf002876c8be8a196f93f344a33f" category="inline-link-macro"><block ref="c79cdf002876c8be8a196f93f344a33f" category="inline-link-rx"></block></block>
   <block id="d925ae253e076ec94fce589bf0750a31" category="paragraph"><block ref="d925ae253e076ec94fce589bf0750a31" category="inline-link-macro-rx"></block></block>
@@ -4254,4 +4250,692 @@
   <block id="265110f4d7e59b2f94484d2789a052ba" category="paragraph"><block ref="265110f4d7e59b2f94484d2789a052ba" category="inline-image-macro-rx" type="image"></block></block>
   <block id="95097e935fdf6be438e5789d41bb9589" category="paragraph"><block ref="95097e935fdf6be438e5789d41bb9589" category="inline-link-macro-rx"></block></block>
   <block id="0a6bfe5423e343fa9ae1504fcfa72370" category="sidebar">Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ</block>
+  <block id="2520bc20ed8f06d07a35a217bc3733db" category="summary">SAPコピーのワークフローは、システムの更新ワークフローの初期手順と似ています。SnapCenter を使用したワークフローは、次の図に示す5つの主要な手順で構成されます。</block>
+  <block id="1766338061a6090980d332c6df579283" category="doc">SnapCenter を使用したSAPシステムのコピーワークフローの概要</block>
+  <block id="b6116a64497b5ba6c67fb76d9af72ed6" category="inline-link-macro">Previous：SnapCenter を使用したSAPシステムの更新ワークフローの概要を示します。</block>
+  <block id="75f42676f7f050918715361d6edc2142" category="paragraph"><block ref="75f42676f7f050918715361d6edc2142" category="inline-link-macro-rx"></block></block>
+  <block id="7aa8b886cbd1e8e0f72f49cd8f14f5e1" category="list-text">ターゲットシステムの初期インストールと準備を行う。</block>
+  <block id="170367c3a1937dad3cc726eb6d0fc622" category="list-text">SnapCenter クローンの作成ワークフローを次に示します。</block>
+  <block id="c7f9bfe1b7700991d822d31d7701e893" category="list-text">SnapCenter クローンスプリットのワークフロー（オプション）。</block>
+  <block id="71c5a4c3d62b2754b16c0e0374d9853c" category="list-text">SAPの後処理（手動または他社製ツールを使用）</block>
+  <block id="501bdef8be53a1b43a09160704c1c22b" category="list-text">新しいシステムはテスト/ QAシステムとして使用できます。</block>
+  <block id="1a3fd559c45e149503b7a31b829fdf49" category="paragraph"><block ref="1a3fd559c45e149503b7a31b829fdf49" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="66d001ab3b7a3d143dd245e768e15278" category="inline-link-macro">次：SnapCenter を使用したSAPシステムのクローニングワークフローの概要</block>
+  <block id="948583a001036270348ac4ab87cea998" category="paragraph"><block ref="948583a001036270348ac4ab87cea998" category="inline-link-macro-rx"></block></block>
+  <block id="b68813bdd3217ea1e1219746a10db990" category="summary">FlexCloneテクノロジを使用すると、修復システムは通常短時間しか使用されないため、高速なプロビジョニングプロセスが可能になり、容量を大幅に削減できます。</block>
+  <block id="4918362f7575b370dea00cbbd262d325" category="doc">SnapCenter を使用したSAPシステムのクローニングワークフローの概要</block>
+  <block id="8a20d61d3aac46d0eeb266f2c9885b6a" category="inline-link-macro">Previous：SnapCenter を使用したSAPシステムのコピーワークフローの概要を示します。</block>
+  <block id="2ac9ff14c7b83b146bc16bbe15c97f27" category="paragraph"><block ref="2ac9ff14c7b83b146bc16bbe15c97f27" category="inline-link-macro-rx"></block></block>
+  <block id="c2ffacf5c155f02a34cc584126f3c6fd" category="paragraph">前のセクションで説明したように、SnapCenter は、任意の既存のSnapshotバックアップからデータセットのクローンを管理し、これらのデータセットを任意のターゲットシステムに迅速にプロビジョニングできます。論理的な破損に対処するために、リペアシステムに本番データを迅速にプロビジョニングすることが重要です。これは、多くの場合、リペアシステムをリセットし、別の本番データセットを選択する必要があるためです。FlexCloneテクノロジを使用すると、修復システムは通常短時間しか使用されないため、高速なプロビジョニングプロセスが可能になり、容量を大幅に削減できます。</block>
+  <block id="df8b846e57e91f637f1a98c60c3d4e4e" category="paragraph">次の図は、SnapCenter を使用したSAPシステムのクローニング処理に必要な手順をまとめたものです。</block>
+  <block id="6c6b1904ee50bc5e034aac55ab21693e" category="list-text">HANA共有ボリュームのSnapCenter クローン作成ワークフロー</block>
+  <block id="093ee2daaf21be64a5bb2ed4343fb467" category="list-text">SAP HANAサービスを開始します。</block>
+  <block id="657fb933950024a575e9f7b1b8e010a3" category="list-text">データベースリカバリを含むHANAデータボリュームのSnapCenter クローン作成ワークフロー</block>
+  <block id="13ec00296afef73e5f8d0b209af5d984" category="list-text">HANAシステムを修復システムとして使用できるようになりました。</block>
+  <block id="3b93426fba5c9b07ba74ba6c905b1eff" category="admonition">システムを別のSnapshotバックアップにリセットする必要がある場合は、手順6と手順4で十分です。HANA共有ボリュームは引き続きマウントできます。</block>
+  <block id="369cc9284a0690b16f7e5e6fc7eedd89" category="paragraph">システムが不要になった場合は、次の手順でクリーンアッププロセスを実行します。</block>
+  <block id="c8db5d0b568841f0c7edd14c95272fe9" category="list-text">データベースのシャットダウンを含む、HANAデータボリュームのSnapCenter クローンの削除ワークフロー。</block>
+  <block id="d220a66485a5f2da02d8844477577f2d" category="list-text">SAP HANAサービスを停止します。</block>
+  <block id="75553bbd45118bc9af4f506ea0928b95" category="list-text">HANA共有ボリュームのSnapCenter クローンの削除ワークフロー</block>
+  <block id="af85c76e749d10207fb237a6cbbfc8d8" category="paragraph"><block ref="af85c76e749d10207fb237a6cbbfc8d8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="babe89dd8942b06138b66c6f4c3f3fff" category="inline-link-macro">「SnapCenter を使用したSAPシステムのクローン作成」</block>
+  <block id="6e9193241d90d638068ce0f269752a62" category="paragraph">を参照してください <block ref="a4506d7466a9fbf36dd3c26b9a984ae5" category="inline-link-macro-rx"></block> システムクローンワークフローの詳細なステップバイステップの概要 を示します。</block>
+  <block id="ebeb3766d89000ac9872a8b7520bf8d9" category="inline-link-macro">次の例：ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー</block>
+  <block id="38f88b2ecd6a609a52423cbe7ac403dd" category="paragraph"><block ref="38f88b2ecd6a609a52423cbe7ac403dd" category="inline-link-macro-rx"></block></block>
+  <block id="f354a9cadcf2f6a3fe818f35cc2127ae" category="summary">SAP HANAシステムの更新を実行するために必要な手順は、次の図に示すように、ソースシステムのテナント構成と、ターゲットシステムで必要なテナント名によって異なります。</block>
+  <block id="cf67a3b9648300993952961c0bddddd8" category="doc">ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー</block>
+  <block id="8b76c8a3768220da668f990ff1165166" category="inline-link-macro">Previous：SnapCenter を使用したSAPシステムのクローニングワークフローの概要を示します。</block>
+  <block id="affbe4753bad7d53b5f7401d82aeb3b9" category="paragraph"><block ref="affbe4753bad7d53b5f7401d82aeb3b9" category="inline-link-macro-rx"></block></block>
+  <block id="6c2ff06798395ff7e93405fe680e438b" category="paragraph">システムデータベースにはテナント名が設定されているため、システムデータベースのリカバリ後にターゲットシステムでもソースシステムのテナント名を使用できます。そのため、次の図のオプション1に示すように、ターゲットシステムのテナントはソーステナントと同じ名前でのみリカバリできます。ターゲットシステムでテナント名を異なる名前にする必要がある場合は、最初にソーステナントと同じ名前でテナントをリカバリし、必要なターゲットテナント名に変更する必要があります。次の図のオプション2です。</block>
+  <block id="bc6be1b4b97d1163c8a0bea0b3e493be" category="paragraph">このルールの例外は、シングルテナントのHANAシステムです。テナント名はシステムSIDと同じです。この構成は、HANAの初期インストール後のデフォルトです。この構成にはHANAデータベースにフラグが設定されます。この場合、ターゲットシステムでのテナントリカバリは、ターゲットシステムのテナント名を使用して実行できます。この名前は、ターゲットシステムのシステムSIDと同じである必要もあります。このワークフローを次の図のオプション3に示します。</block>
+  <block id="f210346b47439daee1d54fff79a1a9a8" category="admonition">テナントの作成、名前変更、または削除処理がソースシステムで実行されると、この設定フラグはHANAデータベースによってすぐに削除されます。したがって、構成をTenant = SIDの状態に戻しても、フラグは使用できなくなり、ワークフロー3でのテナントのリカバリに関する例外は実行できなくなります。この場合、必要なワークフローはオプション2です。</block>
+  <block id="6b398b121f328682662cbb74d8d5903d" category="paragraph"><block ref="6b398b121f328682662cbb74d8d5903d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="29352ddc2d68fa9b97c559469efda55e" category="paragraph">次の図は、MDCの最初のシングルテナントインストール用の構成フラグを示しています。</block>
+  <block id="5d10a4f5ad861e984a9902fef04c507f" category="paragraph"><block ref="5d10a4f5ad861e984a9902fef04c507f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="253d82f9b93da7ff55b70dd2e851bab6" category="inline-link-macro">次は、自動化のサンプルスクリプトです。</block>
+  <block id="e0ce6621ebfffd823749b743f208b616" category="paragraph"><block ref="e0ce6621ebfffd823749b743f208b616" category="inline-link-macro-rx"></block></block>
+  <block id="35728520c8c65fa51d15b44dc8c6d6e5" category="summary">SnapCenter には、既存のSnapshotバックアップからデータセットのクローンを管理するためのワークフローが用意されています。このクローンデータセットはFlexCloneボリュームで、ソースシステムからHANAデータボリュームを迅速にプロビジョニングしてターゲットシステムに接続するために使用できます。したがって、QA、テスト、サンドボックス、またはトレーニングシステムのシステム更新処理を実行する場合に最適です。</block>
+  <block id="5567a4429aece8d2bfac765da9d65e55" category="doc">SnapCenter を使用したSAPシステムの更新ワークフローの概要</block>
+  <block id="0c89e3a21ff737e84bc62ed3d0cb4b03" category="inline-link-macro">Previous：システムの更新とクローニングのユースケース</block>
+  <block id="d7ae53cc518da7684e6b5305f3918c10" category="paragraph"><block ref="d7ae53cc518da7684e6b5305f3918c10" category="inline-link-macro-rx"></block></block>
+  <block id="33948d0127a19507f5aeec9c99ba322c" category="paragraph">SnapCenter クローニングワークフローは、ストレージレイヤで必要なすべての処理を処理します。また、スクリプトを使用して拡張し、ホスト固有の処理とHANAデータベース固有の処理を実行することもできます。このドキュメントでは、スクリプトを使用して、ターゲットホストでマウントおよびアンマウントの処理を実行するほか、HANAデータベースのリカバリとシャットダウンの処理を実行します。SnapCenter ワークフローにスクリプトを使用してさらに自動化を進めることで、必要なHANAデータベースの処理はすべて処理されますが、SAPの後処理の手順については説明しません。SAPの後処理は、手動またはサードパーティのツールを使用して実行する必要があります。</block>
+  <block id="07bf829af468c554b26b886107d2e8a9" category="inline-link-macro">「自動化スクリプトの例」</block>
+  <block id="71bac6ae0cfe28a058c25a8f51c50d6d" category="admonition">スクリプトを使用して自動化されたすべての手順を手動で実行することもできます。ただし、ターゲットホストでのマウント処理については、FlexCloneボリュームのストレージシステムのジャンクションパスを把握しておく必要があります。ジャンクションパスはSnapCenter 内では表示されないため、ジャンクションパスをストレージシステムで直接検索するか、ターゲットホストにSnapCenter 環境変数を提供する単純なスクリプトを使用する必要があります。詳細については、を参照してください <block ref="f09e683370135f6dedfca208b8dde8fa" category="inline-link-macro-rx"></block></block>
+  <block id="76ff2412c1a96785e74a3945950a922a" category="paragraph">SnapCenter を使用したSAPシステムの更新ワークフローは、次の図に示す5つの主要な手順で構成されています。</block>
+  <block id="2398bee7e215208312bd1fd15c402a64" category="list-text">ターゲットシステムの初期インストールと準備を1回だけ行います。</block>
+  <block id="82e05f9cb002e0a1f14937e1b4384cd8" category="list-text">SAPの後処理（手動または他社製ツールを使用）</block>
+  <block id="3f522cf6b00c62989892f56696f4f462" category="list-text">システムはテスト/ QAシステムとして使用できます。</block>
+  <block id="d3f74aca91e434f8f77657bb30f4b01f" category="list-text">新しいシステムの更新が要求されると、SnapCenter クローンの削除ワークフローを使用してFlexCloneボリュームが削除され、ステップ2で更新が再開されます。</block>
+  <block id="4126d00521b83457dbb104ecdd088631" category="paragraph"><block ref="4126d00521b83457dbb104ecdd088631" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ce0b1ecb3f8bfc806a477a8dfa431ea0" category="paragraph">ほとんどの場合、テスト/ QA用のターゲットシステムは2週間以上使用され、1~2週間後にはFlexCloneによる容量削減は維持されなくなりました。ソースシステムのSnapshotバックアップをFlexCloneボリュームから解放して、SnapCenter の保持管理によって削除できるようにすることが重要です。そのため、FlexCloneボリュームはただちに、または数日後にスプリットすることを推奨します。クローンスプリット処理ではクローンボリュームの使用はブロックされないため、HANAデータベースの使用中にいつでも実行できます。</block>
+  <block id="0056927d09a94ad9d99ae19f1ae65777" category="admonition">FlexCloneボリュームをスプリットすると、SnapCenter はターゲットシステムに作成されたすべてのバックアップを削除します。</block>
+  <block id="d7042db521c3031288a499b741210224" category="paragraph">クローンスプリットを含む更新処理は、次の手順で構成されます（次の図）。</block>
+  <block id="837c1a7092ca06093a81099db86da8c1" category="list-text">ターゲットシステムの1回限りの初期インストールと準備を行います。</block>
+  <block id="8aebb15edb2abfa5d96c34de17486875" category="list-text">SnapCenter クローンの作成ワークフロー</block>
+  <block id="5196a2cb5b7533ecf4e268c7b346a1b3" category="list-text">SnapCenter クローンスプリットのワークフロー</block>
+  <block id="770d2ecd0548c9ea7ceb18483bdeb137" category="list-text">システムをテスト/ QAシステムとして使用できるようになりました。</block>
+  <block id="d8a1945286ed5528fa3bf3bf82aa14eb" category="list-text">新しいシステムの更新が要求されると、シャットダウンとアンマウントの追加手順でSnapCenter クローン作成ワークフローが使用されます。</block>
+  <block id="2f02093c9e2d7667a513ad0bebeed79c" category="admonition">以前にスプリットされていた古いデータボリュームは、ストレージシステムで手動で削除する必要があります。</block>
+  <block id="61cecf1f6d2b65f9db95504f9c3b5c20" category="paragraph">次の図は、クローンスプリットを使用したSnapCenter でのSAPシステムの更新ワークフローの概要を示しています。</block>
+  <block id="e411a494be4f2c10b3faa22a1dc3b34e" category="paragraph"><block ref="e411a494be4f2c10b3faa22a1dc3b34e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bf2ace2832642b55dc83b6716197376d" category="inline-link-macro">「SnapCenter でSAP HANAシステムを更新」</block>
+  <block id="83f3645d9ca2a90e24d8292c68c44ee9" category="paragraph">を参照してください <block ref="03ef541d09405ce284f5845fef8fc171" category="inline-link-macro-rx"></block> に、両方のシステム更新ワークフローの詳しい手順概要 を示します。</block>
+  <block id="7860ef82c3a73e48496bf7f7c2c1fbc6" category="inline-link-macro">次：SnapCenter を使用したSAPシステムのコピーワークフローの概要</block>
+  <block id="dbc042458790742f8dee8d9fc6b64bfc" category="paragraph"><block ref="dbc042458790742f8dee8d9fc6b64bfc" category="inline-link-macro-rx"></block></block>
+  <block id="dc5972f4834e498bc24fcfa79ab4832e" category="summary">このセクションでは、SAPシステムのクローニング処理の手順ごとの概要 を示します。このを使用して、論理的な破損に対処するための修復システムをセットアップできます。</block>
+  <block id="91e262c7cc6612696dc2e8b343ccd3fa" category="doc">SnapCenter によるSAPシステムのクローニング</block>
+  <block id="85ceb795d362bf1c3abfb6dd78898968" category="inline-link-macro">前：SAP HANAシステムはSnapCenter で更新されました。</block>
+  <block id="7945ec735fc6b8e4e7fbeffb9c05cb16" category="paragraph"><block ref="7945ec735fc6b8e4e7fbeffb9c05cb16" category="inline-link-macro-rx"></block></block>
+  <block id="ffefa136567c9bce814e06e202bf39a5" category="admonition">ラボのセットアップと検証では、SAPアプリケーションサービスは対象外です。ただし、SAPアプリケーションサービスに必要な手順については、このドキュメントで説明しています。</block>
+  <block id="52f78b138165376783e782c4e6583ca9" category="section-title">前提条件および制限事項</block>
+  <block id="941aff5aa3403626a81cc9bdeda3c978" category="paragraph">以降のセクションで説明するワークフローには、HANAシステムアーキテクチャとSnapCenter 構成に関するいくつかの前提条件と制限事項があります。</block>
+  <block id="0690296e4fd61fa9dded075121c912fc" category="list-text">ここで説明するワークフローは、シングルテナントを使用するシングルホストSAP HANA MDCシステムに対して有効です。</block>
+  <block id="ec3932ac89d1c96f286080a9337e4278" category="list-text">自動化スクリプトを実行できるようにするには、SnapCenter HANAプラグインをターゲットホストに導入する必要があります。HANAプラグインをHANAソースシステムホストにインストールする必要はありません。</block>
+  <block id="ee3fbfdb1dd6cd4597f33c1efa4f0758" category="list-text">NFSのワークフローが検証されました。自動化スクリプト「sc-mount-volume.sh」は、HANA共有ボリュームのマウントに使用され、FCPをサポートしていません。この手順は、手動で実行するか、スクリプトを拡張して実行する必要があります。</block>
+  <block id="782706ac0958bde2b750e3de0b75550a" category="list-text">記述されたワークフローは、SnapCenter 4.6 P1リリース以降でのみ有効です。以前のリリースでは、ワークフローが若干異なります。</block>
+  <block id="622b9f9f92968ade655dadd32b7f91a9" category="paragraph">次の図は、システムのクローニング処理に使用するラボ環境のセットアップを示しています。</block>
+  <block id="3722e4213a96d42e9f9a969b7f28bf9c" category="paragraph">使用したソフトウェアバージョンは次のとおりです。</block>
+  <block id="7cc7838ef5244a98d6f64a04dd4aeed6" category="list-text">SnapCenter 4.6：P1</block>
+  <block id="178d83362e608d5b686e6f83e46db144" category="list-text">HANAシステム：HANA 2.0 SPS6 rev.61</block>
+  <block id="3a8852ac51fa4936260676a40523e314" category="list-text">VMware 6.7.0</block>
+  <block id="742f3621a1fbf8a6a061df1aa75f1b03" category="list-text">SLES 15 SP2</block>
+  <block id="629a677a12d5ce146953ce7f089d9494" category="inline-link">NFSを使用したNetApp AFF システムでのSAP HANA</block>
+  <block id="ff7ee7b7ca8351554223b4200c6564dc" category="list-text">ONTAP 9.7P7すべてのHANAシステムは、構成ガイドに基づいて構成されています<block ref="9042a1cec9cc6f21384e148006094985" category="inline-link-rx"></block>。SnapCenter リソースとHANAリソースは、ベストプラクティスガイドに基づいて構成されています<block ref="f70d28502828defa3eb13d3b730673fb" category="inline-link-rx"></block>。</block>
+  <block id="ef025a7d89bd64ae2fa7dff71373d950" category="paragraph"><block ref="ef025a7d89bd64ae2fa7dff71373d950" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="311d495fe9e684d64927a5a6c5ea754b" category="section-title">ターゲットホストの準備</block>
+  <block id="45bdd686062a6e366f360ed4be35e2d6" category="paragraph">ここでは、システムクローンターゲットとして使用するサーバで必要な準備手順について説明します。</block>
+  <block id="d13d26ea3c2e52e2bba8c90daf3e6966" category="paragraph">通常運用時は、HANAのQAやテスト用システムなど、別の目的にターゲットホストを使用することもできます。したがって、前述のほとんどの手順は、システムクローン処理が要求されたときに実行する必要があります。一方、関連する構成ファイルは、「/etc/fstab」や「/usr/sap/sapservices」のように準備し、構成ファイルをコピーするだけで運用に移すことができます。</block>
+  <block id="dc7033e5c84635d07cf8825b6e15c568" category="paragraph">ターゲットホストの準備には、HANAのQAまたはテストシステムのシャットダウンも含まれます。</block>
+  <block id="b69071a45ad28f853ea645b7bdce7c78" category="admonition">ターゲットサーバが他のシステムと通信できないように、ターゲットサーバの適切なフェンシングを確立する必要があります。適切なフェンシングが設定されていないと、クローニングされた本番用システムは他の本番用システムとデータを交換する可能性があります。</block>
+  <block id="d47c82608e9c54c2177ab011e592cd3a" category="admonition">このラボ環境では、ターゲットシステム側から見て、ターゲットシステムのホスト名を内部的にのみ変更しました。ホストの外部からは、ホスト名として「HANA -7」を使用してアクセスできました。ホストにログインすると、ホスト自体がHANAです。</block>
+  <block id="36845bdd5a76b6bbbf4d901da04ec5f4" category="paragraph">SnapCenter のホストの追加処理を使用して、SnapCenter HANAプラグインをターゲットホストに導入する必要があります。</block>
+  <block id="11ba9045ace190d52590b95322ebbe99" category="section-title">ログとログのバックアップボリュームを準備</block>
+  <block id="c3dc73ef5b64395a593922e549e1489c" category="paragraph">ログボリュームをソースシステムからクローニングする必要はなく、clear logオプションを使用してリカバリを実行するため、空のログボリュームをターゲットホストで準備しておく必要があります。</block>
+  <block id="3480283b2df2bb5abbf5fc8dc0d3334c" category="paragraph">ソースシステムには独立したログバックアップボリュームが設定されているため、空のログバックアップボリュームを準備し、ソースシステムと同じマウントポイントにマウントする必要があります。</block>
+  <block id="f589ee4577bcd9213118347f1cc22d38" category="paragraph">ログボリュームhdb*内では、ソース・システムと同じ方法でサブディレクトリを作成する必要があります。</block>
+  <block id="83706c0c7217c1bc161fae80897bb12f" category="paragraph">ログバックアップボリュームには、システムとテナントデータベースのサブディレクトリを作成する必要があります。</block>
+  <block id="b0801fc20ca88c457d0193f04f91045f" category="paragraph">データおよび共有ボリュームのマウントポイントを準備しておく必要があります。</block>
+  <block id="c8b581f04f2da2cf41b3514fa8deddee" category="paragraph">この例では'/hana/data/ss1/mnt00001'/hana/shared'およびusr/sap/ss1'ディレクトリを作成する必要があります</block>
+  <block id="e739a1d8673a03b9e93493bce7137da3" category="section-title">SnapCenter スクリプト用にSID固有の構成ファイルを準備します</block>
+  <block id="cd25e1af49bc0a863b5c3acf8d919782" category="paragraph">SnapCenter 自動化スクリプト「sc-system-refresh.sh」の構成ファイルを作成する必要があります。</block>
+  <block id="7a509a4c06e4915ff64b195bf2803fb5" category="section-title">HANA共有ボリュームのクローニング</block>
+  <block id="c2e6f34ab0c3137d404e7be7870fa00a" category="list-text">ソース・システムSS1共有ボリュームからSnapshotバックアップを選択し、Clone from Backupをクリックします。</block>
+  <block id="9479cade44efcb27b3c0a62f4208885b" category="paragraph"><block ref="9479cade44efcb27b3c0a62f4208885b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="89691fc0f16a91d4901d2a4d7164493e" category="list-text">ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDはソースシステムと同じSIDを保持するため、この例ではSS1です。</block>
+  <block id="2472cb70469d0fcc59ea579a34dc1340" category="paragraph"><block ref="2472cb70469d0fcc59ea579a34dc1340" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8ae991813efd55da49ac68bbc88f63ba" category="list-text">必要なコマンドラインオプションを指定して、マウントスクリプトを入力します。</block>
+  <block id="b0704925bc5bea80a03806a5f5017568" category="admonition">HANAシステムは、構成ガイドで推奨されているように、単一のボリュームを「/hana/shared」と「/usr/sap/ss1」に使用し、サブディレクトリで区切られます<block ref="b7649e38f11c8b09b37711f6fbcf2088" category="inline-link-rx"></block>。スクリプトのsc-mount-volume.sh'は'マウント・パスに特別なコマンド・ライン・オプションを使用して'この構成をサポートしていますマウント・パス・コマンド・ライン・オプションがusr-sap-and -sharedと等しい場合'スクリプトは'それに応じて'ボリューム内のサブディレクトリであるsharedとusr-sapをマウントします</block>
+  <block id="db82954a5439eff4f1d679234ca68295" category="paragraph"><block ref="db82954a5439eff4f1d679234ca68295" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cc896021fb024f9f0a119749d16f42c6" category="list-text">SnapCenter のジョブ詳細画面に処理の進捗状況が表示されます。</block>
+  <block id="b963046719df96770d7ddc1c5af67d7d" category="paragraph"><block ref="b963046719df96770d7ddc1c5af67d7d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="72d3e9e22bd36b3b46999b7f5b9aa1a7" category="list-text">sc-mount-volume.shスクリプトのログファイルには'マウント操作に対して実行されるさまざまな手順が示されています</block>
+  <block id="3354083e1ade3f55174dd1aec90b6e10" category="list-text">SnapCenter ワークフローが終了すると'usr/sap/ss1'および'/hana/shareed'ファイルシステムがターゲット・ホストにマウントされます</block>
+  <block id="fb14d9cdc6b29f21dde7c843415b0e30" category="list-text">SnapCenter では、クローニングされたボリュームの新しいリソースが表示されます。</block>
+  <block id="5184f4a4fdc0d636e0c4439f7d0d530a" category="paragraph"><block ref="5184f4a4fdc0d636e0c4439f7d0d530a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="787798927a9e01f37cf1f2b12782268c" category="list-text">「/hana/shared」ボリュームが使用可能になったので、SAP HANAサービスを開始できます。</block>
+  <block id="00b4aea8ca661a80df56438138e5a6ef" category="list-text">SAPホストエージェントとsapstartsrvプロセスが開始されました。</block>
+  <block id="e75e233d1a0d5dfc08414007ca9b4ddb" category="section-title">追加のSAPアプリケーションサービスのクローニング</block>
+  <block id="29a0134a82b203378a4fec07c8d30065" category="paragraph">SAP HANA共有ボリュームと同じ方法で、追加のSAPアプリケーションサービスのクローンを作成できます（を参照）<block ref="5b1d1e8204f1ce06ab667e6607dd71e0" category="inline-xref-macro-rx"></block>」 もちろん、SAPアプリケーションサーバに必要なストレージボリュームもSnapCenter で保護する必要があります。</block>
+  <block id="79b2df01271f96878cbcb0ea44bbd7a0" category="paragraph">必要なサービスエントリを/usr/sap/sapservicesに追加し'ポート'ユーザ'ファイルシステムマウントポイント(たとえば'/usr/sap/sid')を準備する必要があります</block>
+  <block id="2184a1291c65d3b3b536d54f7d596a25" category="section-title">データボリュームのクローニングとHANAデータベースのリカバリ</block>
+  <block id="409067f391f0443fce74e99eafe8a1ee" category="list-text">ソースシステムSS1からHANA Snapshotバックアップを選択します。</block>
+  <block id="8981362219ab300b1e0063c0374ae662" category="paragraph"><block ref="8981362219ab300b1e0063c0374ae662" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="69cdd6e77df0fcbd8187dadbf5e5c0b3" category="list-text">ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDはソースシステムと同じSIDを保持します。この例では、SS1です。</block>
+  <block id="c19176afcd3227597520e8b7875b93e6" category="paragraph"><block ref="c19176afcd3227597520e8b7875b93e6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1a647d84638cf480b069da0b497b7e5d" category="list-text">必要なコマンドラインオプションを指定して、マウントスクリプトとクローニング後スクリプトを入力します。</block>
+  <block id="15d48db8dbfbe71e50402d54efb10365" category="admonition">リカバリ処理のスクリプトは、HANAデータベースをSnapshot処理の時点までリカバリします。フォワードリカバリは実行しません。特定の時点までのフォワードリカバリが必要な場合は、リカバリを手動で実行する必要があります。手動フォワードリカバリでは、ソースシステムのログバックアップをターゲットホストで利用できることも必要です。</block>
+  <block id="a0c9bab045b9ddad34300cf37b8411e9" category="paragraph"><block ref="a0c9bab045b9ddad34300cf37b8411e9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="08998266f7cb1a354e3febc706e98833" category="paragraph"><block ref="08998266f7cb1a354e3febc706e98833" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="96d0be67148d5ea0b988513277fca416" category="paragraph">sc-system-refresh.shスクリプトのログファイルには'マウントおよびリカバリ操作で実行されるさまざまなステップが示されています</block>
+  <block id="9371d9155ae7adbf26a3481b9528e6d9" category="paragraph">マウント処理とリカバリ処理が完了すると、ターゲットホストにHANAデータボリュームがマウントされます。</block>
+  <block id="b13431d1ac2704ecb1fb9ec732bca88c" category="paragraph">HANAシステムが使用可能になり、修理システムなどとして使用できるようになります。</block>
+  <block id="4eac001af3d1f40cda8f969719f95a37" category="paragraph"><block ref="4eac001af3d1f40cda8f969719f95a37" category="inline-link-macro-rx"></block></block>
+  <block id="ed29f17df3580cba5cb6856890544444" category="inline-link-macro">前の例：LSC、AzAcSnap、およびAzure NetApp Files でSAP HANAシステムが更新されます。</block>
+  <block id="5e31d7709a40af6bb91217169aa2d912" category="paragraph"><block ref="5e31d7709a40af6bb91217169aa2d912" category="inline-link-macro-rx"></block></block>
+  <block id="bc4fe2352063642d68529f2aa0ca7ca3" category="list-text">ネットアップの製品マニュアル</block>
+  <block id="fa4af55c3fdbce23e96d2cf73261fa5b" category="inline-link"><block ref="fa4af55c3fdbce23e96d2cf73261fa5b" category="inline-link-rx"></block></block>
+  <block id="2e85fc867cab94d246e0bf6043b361cd" category="paragraph"><block ref="2e85fc867cab94d246e0bf6043b361cd" category="inline-link-rx"></block></block>
+  <block id="36098c0d1c3de71d8727b1543bace633" category="cell">2022 年 4 月</block>
+  <block id="c75e5611c366c76c5c9a0af0a9532fb4" category="summary">SAPシステムのコピーという用語は、SAPシステムの更新、SAPシステムのコピー、SAPシステムのクローニングの3つの処理を同義語としてよく使用されます。ワークフローとユースケースはそれぞれ異なるため、異なる処理を区別することが重要です。</block>
+  <block id="14eeebfaf0a3f6c3f31d03561a918d1d" category="doc">SAPシステムのコピー、更新、クローニングのシナリオ</block>
+  <block id="5231f9fa4d08024f4620b759f83d0e97" category="inline-link-macro">前へ：はじめに。</block>
+  <block id="be4c22f337eb68c56fde2725e2d8ef93" category="paragraph"><block ref="be4c22f337eb68c56fde2725e2d8ef93" category="inline-link-macro-rx"></block></block>
+  <block id="63d77ab1313f4f81998ac664534d61f8" category="paragraph">SAPシステムの更新、SAPシステムのコピー、SAPシステムのクローニングの3つのプロセスの同義語としてよく使用されます。ワークフローとユースケースはそれぞれ異なるため、異なる処理を区別することが重要です。</block>
+  <block id="2524d9452b0a981704b4a6ee5d325ae9" category="list-text">* SAPシステムの更新。* SAPシステムの更新は、ソースSAPシステムのデータを使用した既存のターゲットSAPシステムの更新です。ターゲットシステムは、通常、品質管理システムなどのSAP転送環境の一部であり、本番用システムのデータで更新されます。ソース・システムとターゲット・システムでは、ホスト名、インスタンス番号、およびSIDが異なります。</block>
+  <block id="70163042bd4905ce5700fc7a0ebfb1ab" category="list-text">* SAPシステムのコピー。* SAPシステムのコピーとは、ソースSAPシステムのデータを含む新しいターゲットSAPシステムのセットアップを指します。たとえば、本番用システムのデータを含む追加のテストシステムを新しいターゲットシステムとして使用できます。ソース・システムとターゲット・システムでは、ホスト名、インスタンス番号、およびSIDが異なります。</block>
+  <block id="9d987abf3f9fb4867efa110ffee16b77" category="list-text">* SAPシステムのクローン。* SAPシステムのクローンは、ソースSAPシステムの同一クローンです。SAPシステムクローンは、一般に論理的な破損に対処したり、ディザスタリカバリのシナリオをテストしたりするのに使用されます。システムのクローニング処理では、ホスト名、インスタンス番号、およびSIDの値は変更されません。そのため、本番環境と通信できないように、ターゲットシステムの適切なネットワークフェンシングを設定することが重要です。</block>
+  <block id="17b4b3b92e56681d19761a021d9cfa3b" category="paragraph">次の図に、システムの更新、システムのコピー、またはシステムのクローン処理中に実行する必要がある主な手順を示します。青のボックスはSnapCenter で自動化できる手順を示し、緑のボックスは手動またはサードパーティのツールを使用してSnapCenter の外部で実行する必要がある手順を示しています。</block>
+  <block id="2a39adbe314ab2d3ca27f709c77c853a" category="inline-link">NetApp ONTAP システムとSAP Landscape Managementの統合</block>
+  <block id="67d7a5531f7d837d39bf473ae02fb0b0" category="paragraph">3つの運用はすべて、SAP LaMaとネットアップのStorage Services Connectorを使って完全に自動化できます。詳細については、を参照してください<block ref="a13d781a0803b9540621516c1b4376a3" category="inline-link-rx"></block>。</block>
+  <block id="bddc59e4f7f67a4d785497bfd06f2fd6" category="inline-link-macro">Libelle SystemCopyによるSAPシステムコピー処理の自動化</block>
+  <block id="740197237f4608b855d01d89dd68880c" category="inline-link">www.libelle.com</block>
+  <block id="e4f10763472c63e1fd6c7a6d8ebb7526" category="paragraph">ネットアップはLibelleでも協力してきました<block ref="6162d527da418b61f12bbe43cff5a2df" category="inline-link-rx"></block> SnapCenter クローニングをLibelle SystemCopyと統合して、SAPのプリ/ポストプロセスを自動化すること。詳細な 解決策 概要 については、を参照してください <block ref="1ae2635161bddbc5be99b75be3f2bd9a" category="inline-link-macro-rx"></block>。</block>
+  <block id="734f6d6122e9b0d740289d0d0a3e6555" category="paragraph"><block ref="734f6d6122e9b0d740289d0d0a3e6555" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6dd7afca2990fac3059f0f7d5ed29893" category="inline-link-macro">次：システムの更新とクローニングのユースケース</block>
+  <block id="f9e5e578866efa8531bfe353445ab2b4" category="paragraph"><block ref="f9e5e578866efa8531bfe353445ab2b4" category="inline-link-macro-rx"></block></block>
+  <block id="bf71c2f30ce593737e5676b615d679b7" category="summary">このセクションでは、LSCをNetApp SnapCenter に統合する方法について説明します。LSCとSnapCenter の統合では、SAPでサポートされるすべてのデータベースがサポートされます。ただし、SAP HANAはSAP AnyDBでは使用できない中央通信ホストを提供するため、SAP AnyDBとSAP HANAを区別する必要があります。</block>
+  <block id="1a69541a93d21817ebaad2102f643fb1" category="doc">LSCおよびSnapCenter でSAP HANAシステムが更新されます</block>
+  <block id="d18ef09b6c394f166f0c0fd7ca87fcb6" category="paragraph"><block ref="d18ef09b6c394f166f0c0fd7ca87fcb6" category="inline-link-macro-rx"></block></block>
+  <block id="d6a68c1e93d6606c28c5465a88d436c9" category="paragraph">このセクションでは、LSCをNetApp SnapCenter に統合する方法について説明します。LSCとSnapCenter の統合では、SAPでサポートされるすべてのデータベースがサポートされます。ただし、SAP HANAはSAP AnyDBでは使用できない中央通信ホストを提供するため、SAP AnyDBとSAP HANAを区別する必要があります。</block>
+  <block id="deb112a96121fb1b1188979dcbf067d3" category="paragraph">SAP AnyDB用のデフォルトのSnapCenter エージェントとデータベースプラグインのインストールは、データベースサーバ用の対応するデータベースプラグインに加えて、SnapCenter エージェントからのローカルインストールです。</block>
+  <block id="a6013c0e984d4c44e03b3e7a74e5aeb0" category="paragraph">このセクションでは、例として、LSCとSnapCenter の統合についてSAP HANAデータベースを使用して説明します。前述したSAP HANAの場合、SnapCenter エージェントとSAP HANAデータベースプラグインのインストール方法は2つあります。</block>
+  <block id="bcbedc871164d34fd83bbf2db3afbfbe" category="list-text">*標準のSnapCenter エージェントとSAP HANA Plug-inのインストール。*標準のインストールでは、SnapCenter エージェントとSAP HANAプラグインはSAP HANAデータベースサーバにローカルでインストールされます。</block>
+  <block id="c4e5652d7c6756098b7fa87e73bd054c" category="list-text">*中央通信ホストを使用するSnapCenter のインストール。*中央通信ホストは、SnapCenter エージェント、SAP HANAプラグイン、および複数のSAP HANAシステムのSAP HANAデータベースのバックアップとリストアに必要なすべてのデータベース関連操作を処理するHANAデータベースクライアントとともにインストールされます。したがって、中央通信ホストに完全なSAP HANAデータベースシステムをインストールする必要はありません。</block>
+  <block id="b4414ea38c77a0a3ee9e47059486f3e2" category="paragraph">これらの異なるSnapCenter エージェントとSAP HANAデータベースプラグインのインストールオプションの詳細については、テクニカルレポートを参照してください<block ref="dcc70b4da54279e83b2675b3331c54b4" category="inline-link-rx"></block>。</block>
+  <block id="a0e8a8955d20c8fc657e47b2296ed8c1" category="paragraph">次の項では、標準インストールまたは中央通信ホストを使用したLSCとSnapCenter の統合の違いについて説明します。特に、インストールオプションと使用するデータベースに関係なく、強調表示されない設定手順はすべて同じです。</block>
+  <block id="cc1cd0a0f9eb582d235ae4d0f6e8342b" category="paragraph">ソースデータベースからSnapshotコピーベースの自動バックアップを実行し、新しいターゲットデータベースのクローンを作成するには、LSCとSnapCenter の説明された統合では、で説明されている設定オプションとスクリプトが使用されます<block ref="cd920b3d7d4dc41443c1d02db576233a" category="inline-link-rx"></block>。</block>
+  <block id="2859fee4a02ffd846470095dc466260c" category="paragraph">次の図に、LSCを使用しないSnapCenter によるSAPシステムの更新ライフサイクルの一般的なワークフローを示します。</block>
+  <block id="052eec788d8241d56e540b703047914e" category="list-text">手動前処理（ライセンス、ユーザー、プリンターなどのエクスポート）。</block>
+  <block id="7e1b2dbe7aeb5bb0dae54646fc7b068f" category="list-text">必要に応じて、ターゲットシステム上の既存のクローンを削除します。</block>
+  <block id="1ec54762821f370d94ab59973a242731" category="list-text">ソースシステムの既存のSnapshotコピーを、SnapCenter によって実行されるターゲットシステムにクローニングすること。</block>
+  <block id="a2f01cea3186adcc7a8299f963129bef" category="list-text">SAP後処理の手動操作（ライセンスのインポート、ユーザー、プリンタ、バッチジョブの無効化など）。</block>
+  <block id="15ede771c76a381ce180a8a5b016a9e5" category="list-text">その後、システムをテストシステムまたはQAシステムとして使用できます。</block>
+  <block id="0b1431f9973ec538c4929da23ef2df09" category="list-text">新しいシステムの更新が要求されると、手順2でワークフローが再開されます。</block>
+  <block id="dad719ad8230b28731f943672a4d5160" category="paragraph">SAPをご利用のお客様は、次の図に示す手動の手順が緑で表示されているため、時間がかかり、ミスが発生しやすくなっています。LSCとSnapCenter の統合を使用する場合、これらの手動手順は、信頼性の高い反復可能な方法でLSCを使用して実行されます。この方法では、内部および外部の監査に必要なすべてのログが使用されます。</block>
+  <block id="a1ac4d20408e8685f13f991ede187151" category="paragraph">次の図は、SnapCenterベースのSAPシステム更新手順 の概要を示しています。</block>
+  <block id="869fe55c49ecfa0988d906053ce583af" category="paragraph"><block ref="869fe55c49ecfa0988d906053ce583af" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dfafb60fecb9c84a71b2f57e43572aa4" category="paragraph">次の前提条件を満たしている必要があります。</block>
+  <block id="e6dc24f83de456eb68d52ebe06229756" category="list-text">SnapCenter をインストールする必要があります。ソースシステムとターゲットシステムは、標準インストールまたは中央通信ホストを使用して、SnapCenter で設定する必要があります。Snapshotコピーはソースシステム上に作成できます。</block>
+  <block id="4030bd38003569b0aa03679aacb58d03" category="list-text">次の図に示すように、SnapCenter でストレージバックエンドが正しく設定されている必要があります。</block>
+  <block id="adae505ddc244f688a2eeaaeb9747fcd" category="paragraph"><block ref="adae505ddc244f688a2eeaaeb9747fcd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="783367908b6fad41041132e4e731f814" category="paragraph">次の2つの図は、SnapCenter エージェントとSAP HANAプラグインが各データベースサーバでローカルにインストールされる標準インストールを示しています。</block>
+  <block id="716491e046b3f9f90b117da16c013072" category="paragraph">SnapCenter エージェントと適切なデータベースプラグインをソースデータベースにインストールする必要があります。</block>
+  <block id="552a0bcabdfc469737bf3ecab5bf1221" category="paragraph"><block ref="552a0bcabdfc469737bf3ecab5bf1221" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f57e5828892c745a8a32aaeda8baade2" category="paragraph">SnapCenter エージェントと適切なデータベースプラグインをターゲット・データベースにインストールする必要があります。</block>
+  <block id="1cc339903a9de0cee515084a102d7427" category="paragraph"><block ref="1cc339903a9de0cee515084a102d7427" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6263b2edbc1c1dcb7a51621051498083" category="paragraph">次の図は、SnapCenter エージェント、SAP HANAプラグイン、およびSAP HANAデータベースクライアントが一元化されたサーバ（SnapCenter サーバなど）にインストールされ、ランドスケープ内の複数のSAP HANAシステムを管理する、中央通信ホスト環境を示しています。</block>
+  <block id="cb782b8498178806c8212caf20778a66" category="paragraph">SnapCenter エージェント、SAP HANAデータベースプラグイン、およびHANAデータベースクライアントが、中央の通信ホストにインストールされている必要があります。</block>
+  <block id="b0557394f16a976cbfb1216651de50b3" category="paragraph"><block ref="b0557394f16a976cbfb1216651de50b3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="eef8c7a6c890ac29bbfadeef31ec706a" category="paragraph">Snapshotコピーを正常に作成できるように、SnapCenter でソースデータベースのバックアップが適切に設定されている必要があります。</block>
+  <block id="f15452ba714a2595ed7feef9bca8e82b" category="paragraph"><block ref="f15452ba714a2595ed7feef9bca8e82b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="370b67a38ee79201ffeff4eeef17db78" category="paragraph">LSCマスターおよびLSCワーカーがSAP環境にインストールされている必要があります。この展開では、SnapCenter サーバにLSCマスターをインストールし、ターゲットのSAPデータベースサーバにLSCワーカーをインストールします。このサーバは更新する必要があります。詳細については、「」を参照してください<block ref="c48fa9372da5e679296fa19c382bd1c1" category="inline-xref-macro-rx"></block>」</block>
+  <block id="de1921a90d14a58282dcb74904bfbc87" category="paragraph">ドキュメント：</block>
+  <block id="c804e38e267ab7e08a61f3e791e5a99a" category="inline-link">SnapCenter ドキュメントセンター</block>
+  <block id="5f238be6282547752bdf3926f1af44c2" category="list-text"><block ref="5f238be6282547752bdf3926f1af44c2" category="inline-link-rx"></block></block>
+  <block id="550ff411af842971b5bef45c5d9d1a59" category="inline-link">TR-4700 ：『 SnapCenter Plug-in for Oracle Database 』</block>
+  <block id="2c7b4a7cfd7910e959b3899cdd539867" category="list-text"><block ref="2c7b4a7cfd7910e959b3899cdd539867" category="inline-link-rx"></block></block>
+  <block id="4d0488fb3017f2f14273ce8765843a99" category="list-text"><block ref="4d0488fb3017f2f14273ce8765843a99" category="inline-link-rx"></block></block>
+  <block id="3d6ce96c053ea7e9b5b5760fe4e75ae7" category="list-text"><block ref="3d6ce96c053ea7e9b5b5760fe4e75ae7" category="inline-link-rx"></block></block>
+  <block id="56f5eeda3975435c8530355bc5441429" category="inline-link">TR-4769：『SnapCenter Best Practices and Sizing Guidelines』</block>
+  <block id="025547de09dae9dc145b97701e1b973f" category="list-text"><block ref="025547de09dae9dc145b97701e1b973f" category="inline-link-rx"></block></block>
+  <block id="6be1ed7d0e35cab2dd490a58f13d3761" category="inline-link">SnapCenter 4.6コマンドレットリファレンスガイド</block>
+  <block id="76f3b0f8b6a51710bcff71e212056376" category="list-text"><block ref="76f3b0f8b6a51710bcff71e212056376" category="inline-link-rx"></block></block>
+  <block id="6273877c694f4875c4ab83bf5ef28e30" category="paragraph">このセクションでは、デモデータセンターでセットアップされたアーキテクチャの例について説明します。セットアップは、標準的なインストールと、中央の通信ホストを使用したインストールに分かれています。</block>
+  <block id="e0090e5eeb1da23a2924e8a8913a9bf8" category="section-title">標準インストール</block>
+  <block id="18500288570633595d57fbe40cf00d2d" category="paragraph">次の図に、SnapCenter エージェントとデータベースプラグインが、ソースおよびターゲットのデータベースサーバ上にローカルにインストールされた標準インストールを示します。このラボ環境では、SAP HANA Plug-inをインストールしました。また、ターゲットサーバにLSCワーカーもインストールされています。簡素化と仮想サーバ数の削減のために、SnapCenter サーバにLSCマスターをインストールしました。次の図は、各種コンポーネント間の通信を示しています。</block>
+  <block id="10f64e56801423087c6c3e687fdcfa77" category="paragraph"><block ref="10f64e56801423087c6c3e687fdcfa77" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="007661ea1b3047cae7c25cb610ab167c" category="section-title">セントラルコミュニケーションホスト</block>
+  <block id="404683c0fc052e1bb3f98c2e3b837701" category="paragraph">次の図に、中央通信ホストを使用した設定を示します。この構成では、SnapCenter エージェントとSAP HANA Plug-inおよびHANAデータベースクライアントを専用サーバにインストールしました。このセットアップでは、SnapCenter サーバを使用して中央通信ホストをインストールしました。さらに、LSCワーカーが再びターゲットサーバにインストールされました。簡素化と仮想サーバ数の削減のため、SnapCenter サーバにLSCマスターもインストールすることにしました。次の図に、異なるコンポーネント間の通信を示します。</block>
+  <block id="b7e24114bfa31b185d5e58d75816b5a4" category="paragraph"><block ref="b7e24114bfa31b185d5e58d75816b5a4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="37e133ea70387ff2d153dfd4610277a9" category="section-title">Libelle SystemCopyの初期1回限りの準備手順</block>
+  <block id="e2a4a6c5862a5dd11da8456a71cb4213" category="paragraph">LSCインストールには、次の3つの主要コンポーネントがあります。</block>
+  <block id="239ee2a2c55f17e70845f88c9c4b5dcc" category="list-text">*LSC master.*という名前が示すように、Libelleベースのシステムコピーの自動ワークフローを制御するマスターコンポーネントです。デモ環境では、LSCマスターがSnapCenter サーバにインストールされています。</block>
+  <block id="4126f3ecfcea5aa9990a2aa8cd1332ef" category="list-text">* LSCワーカー。* LSCワーカーは、通常はターゲットSAPシステムで実行されるLibelleソフトウェアの一部であり、自動システムコピーに必要なスクリプトを実行します。デモ環境では、ターゲットのSAP HANAアプリケーションサーバにLSCワーカーがインストールされています。</block>
+  <block id="5e6c40f175398bcd638cb9750798878a" category="list-text">* LSC衛星。* LSC衛星は、それ以降のスクリプトを実行する必要があるサードパーティシステム上で実行されるLibelleソフトウェアの一部です。LSCマスターは、LSCサテライトシステムの役割も同時に果たすことができます。</block>
+  <block id="58ab23d5a0e0f21a7077556a4a2aeccb" category="paragraph">次の図に示すように、最初にLSC内のすべての関連システムを定義しました。</block>
+  <block id="fc732f49b72c2472c6b8643d5353f2ec" category="list-text">* 172.30.15.35.* SAPソースシステムとSAP HANAソースシステムのIPアドレス。</block>
+  <block id="9179a1ee6a75d729452f54f714900f9d" category="list-text">*172.30.15.3.*この構成のLSCマスターおよびLSCサテライトシステムのIPアドレス。SnapCenter サーバにLSCマスターをインストールしたため、SnapCenter サーバのインストール時にインストールされたSnapCenter 4.x PowerShellコマンドレットは、このWindowsホストですでに使用できます。そのため、このシステムに対してLSCサテライトロールを有効にし、このホストですべてのSnapCenter PowerShellコマンドレットを実行することにしました。別のシステムを使用する場合は、SnapCenter のマニュアルに従って、このホストにSnapCenter PowerShellコマンドレットをインストールしてください。</block>
+  <block id="f2e8e2175c9da79f9518268cae7290b7" category="list-text">*172.30.15.36* SAPデスティネーションシステム、SAP HANAデスティネーションシステム、およびLSCワーカーのIPアドレス。</block>
+  <block id="9dbe0511fc1dcc2f05099fa37692c272" category="paragraph">IPアドレス、ホスト名、完全修飾ドメイン名の代わりに使用することもできます。</block>
+  <block id="f6ec8e3f7e5bd6f3e424a8845be503ac" category="paragraph">次の図は、マスタ、ワーカー、サテライト、SAPソース、SAPターゲットのLSC構成を示しています。 ソースデータベースおよびターゲットデータベース。</block>
+  <block id="cb599f228f1d14851d0a5f2dafacfcac" category="paragraph"><block ref="cb599f228f1d14851d0a5f2dafacfcac" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b79cd6f4ffb52ea19abfc129a1113b1f" category="paragraph">メイン統合のためには、設定手順を標準インストールと中央通信ホストを使用したインストールに再度分ける必要があります。</block>
+  <block id="f79c000ff76c1c3fcccfde48d40ae022" category="paragraph">このセクションでは、SnapCenter エージェントと必要なデータベースプラグインがソースシステムとターゲットシステムにインストールされている標準インストールを使用する場合に必要な設定手順について説明します。標準インストールを使用する場合は、クローンボリュームのマウントおよびターゲットシステムのリストアとリカバリに必要なすべてのタスクが、サーバ自体のターゲットデータベースシステムで実行されているSnapCenter エージェントから実行されます。これにより、SnapCenter エージェントの環境変数を使用して、クローン関連の詳細情報にアクセスできるようになります。したがって、LSCコピーフェーズでは、追加のタスクを1つだけ作成する必要があります。このタスクでは、ソース・データベース・システムでSnapshotコピーの処理を実行し、ターゲット・データベース・システムでクローンおよびリストアおよびリカバリの処理を実行します。SnapCenter に関連するすべてのタスクは、LSCタスク「NTAP_SYSTEM_CLONE」に入力されたPowerShellスクリプトを使用してトリガーされます。</block>
+  <block id="ffdc08e8ba0dbaa69cfc632f5ee35d2d" category="paragraph">次の図は、コピーフェーズのLSCタスクの設定を示しています。</block>
+  <block id="b90365d7ef9c42485ea70fa6f24acade" category="paragraph"><block ref="b90365d7ef9c42485ea70fa6f24acade" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7247a3044be0984304dbbf83efd3d439" category="paragraph">次の図は'NTAP_SYSTEM_CLONEプロセスの構成を示していますPowerShellスクリプトを実行するため、このWindows PowerShellスクリプトはサテライトシステム上で実行されます。この場合、これは、サテライトシステムとしても機能する、インストールされたLSCマスターを持つSnapCenter サーバです。</block>
+  <block id="2bddad8660ff97972a3a646d5fd4fab5" category="paragraph"><block ref="2bddad8660ff97972a3a646d5fd4fab5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d290af93396c45593291e7d4ffdddab8" category="paragraph">LSCは、Snapshotコピー、クローニング、およびリカバリ処理が成功したかどうかを認識する必要があるため、少なくとも2つの戻りコードタイプを定義する必要があります。次の図に示すように、1つのコードはスクリプトを正常に実行するためのもので、もう1つのコードはスクリプトの実行に失敗するためのものです。</block>
+  <block id="14dfdadc5a95fdee64c51fc0968f9aa3" category="list-text">実行が成功した場合は、スクリプトから標準出力に「LSC：OK」を書き込む必要があります。</block>
+  <block id="cf6b0a784c583f2e4731ee8103199cbf" category="list-text">実行に失敗した場合は、スクリプトから標準出力に「LSC：error」を書き込む必要があります。</block>
+  <block id="2a061633d48387d221dbff6e2a9b5b3e" category="paragraph"><block ref="2a061633d48387d221dbff6e2a9b5b3e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2d7a6e0aa948c67c2dfbc5d04b2f328d" category="paragraph">次の図は、ソースデータベースシステムでSnapshotベースのバックアップを実行し、ターゲットデータベースシステムでクローンを実行する、PowerShellスクリプトの一部です。このスクリプトは、完全なものではありません。このスクリプトでは、LSCとSnapCenter の統合がどのように表示されるか、および設定がどの程度簡単かを示します。</block>
+  <block id="28c9fb9d6a170c4b19c09bbdf04f0051" category="paragraph"><block ref="28c9fb9d6a170c4b19c09bbdf04f0051" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="54895eed2981e39cc9de40355230f8a2" category="paragraph">スクリプトはLSCマスター（サテライトシステムでもある）上で実行されるため、SnapCenter サーバ上のLSCマスターは、SnapCenter でバックアップおよびクローニング操作を実行するための適切な権限を持つWindowsユーザとして実行する必要があります。ユーザに適切な権限があるかどうかを確認するには、SnapCenter UIでSnapshotコピーとクローンを実行できる必要があります。</block>
+  <block id="d99842a2f1f1c478453bfb614fad5f06" category="paragraph">SnapCenter サーバ自体でLSCマスターおよびLSCサテライトを実行する必要はありません。LSCマスターおよびLSCサテライトは、任意のWindowsマシンで実行できます。LSCサテライトでPowerShellスクリプトを実行するための前提条件は、SnapCenter PowerShellコマンドレットがWindowsサーバにインストールされていることです。</block>
+  <block id="473556daf85d0d3ed30051948502a319" category="paragraph">中央通信ホストを使用してLSCとSnapCenter の間で統合する場合、コピーフェーズで実行する必要がある調整のみが実行されます。Snapshotコピーとクローンは、中央通信ホスト上のSnapCenter エージェントを使用して作成されます。したがって、新しく作成されたボリュームに関するすべての詳細情報は、ターゲットデータベースサーバではなく、中央通信ホストでのみ使用できます。ただし、これらの詳細は、クローンボリュームをマウントしてリカバリを実行するために、ターゲットデータベースサーバ上に必要です。これは、コピーフェーズで追加のタスクが2つ必要になる理由です。1つのタスクが中央通信ホストで実行され、1つのタスクがターゲットデータベースサーバで実行されます。これら2つのタスクを次の図に示します。</block>
+  <block id="6a89e29d4743cfea15787c6664a35855" category="list-text">* NTAP _ SYSTEM_CLONE_CP。このタスクでは、中央通信ホストで必要なSnapCenter 機能を実行するPowerShellスクリプトを使用して、Snapshotコピーおよびクローンを作成します。したがって、このタスクはLSCサテライト上で実行されます。この場合、このインスタンスはWindows上で実行されるLSCマスターです。このスクリプトは、クローンおよび新しく作成されたボリュームに関するすべての詳細を収集し、2番目のタスク「NTAP_Mnt_RECOVER_CP」に渡します。このタスクは、ターゲットデータベースサーバで実行されるLSCワーカーで実行されます。</block>
+  <block id="943cadb1083368f2707a68ed586e7923" category="list-text">* NTAP_Mnt_RECOVER_CP。*このタスクは、ターゲットSAPシステムとSAP HANAデータベースを停止し、古いボリュームをアンマウントして、前のタスク「NTAP_SYSTEM_CLONE_CP」から渡されたパラメータに基づいて、新しく作成されたストレージクローンボリュームをマウントします。その後、ターゲットのSAP HANAデータベースがリストアおよびリカバリされます。</block>
+  <block id="bc8b34a4e5d18ac4bbf5e5921a5d2d4c" category="paragraph"><block ref="bc8b34a4e5d18ac4bbf5e5921a5d2d4c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cf6d8bd1cac77f539772c0247b9b04d9" category="paragraph">次の図は'タスク'NTAP_SYSTEM_CLONE_CP'の構成を示していますこれは、サテライトシステムで実行されるWindows PowerShellスクリプトです。この場合、サテライトシステムは、インストールされたLSCマスターを持つSnapCenter サーバになります。</block>
+  <block id="3ad23eb87367de9983f9f8bbca87ad5b" category="paragraph"><block ref="3ad23eb87367de9983f9f8bbca87ad5b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="22285bc33a6c217be29249f174091652" category="paragraph">LSCは、Snapshotコピーおよびクローニング処理が成功したかどうかを認識する必要があるため、次の図に示すように、少なくとも2つの戻りコードタイプを定義する必要があります。スクリプトを正常に実行するには1つの戻りコードタイプ、スクリプトの実行に失敗するにはもう1つの戻りコードタイプです。</block>
+  <block id="62ebeb472f2a01a7c37858ef5040ad0e" category="list-text">実行に失敗した場合は、スクリプトから標準出力に「LSC：error」を書き込む必要があります。</block>
+  <block id="91791a18364624ee4c97a0153e618877" category="paragraph"><block ref="91791a18364624ee4c97a0153e618877" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1fc5d3b1a8e8ad8e070bac1db2755b14" category="paragraph">次の図は、中央通信ホスト上のSnapCenter エージェントを使用してSnapshotコピーとクローンを実行するために実行する必要があるPowerShellスクリプトの一部を示しています。このスクリプトは完了することを意図したものではありません。代わりに、スクリプトを使用して、LSCとSnapCenter の統合がどのように見えるか、および設定がどの程度簡単かを示します。</block>
+  <block id="c3949176e6b94bf9a01a76dbcbae1af7" category="paragraph"><block ref="c3949176e6b94bf9a01a76dbcbae1af7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="82a941dabf24a9e7993a0dfd0b019266" category="paragraph">前述したように、クローンボリュームの名前を次のタスク「NTAP_Mnt_RECOVER_CP」に渡して、ターゲットサーバでクローンボリュームをマウントする必要があります。クローン・ボリュームの名前（ジャンクション・パスとも呼ばれます）は変数「$JunctionalPath」に格納されます。後続のLSCタスクへの引き渡しは、カスタムのLSC変数によって行われます。</block>
+  <block id="49e000ffe321ceb1a70d82ea78d0c6bd" category="paragraph">スクリプトはLSCマスター（サテライトシステムでもある）上で実行されるため、SnapCenter サーバ上のLSCマスターは、SnapCenter でバックアップおよびクローニング操作を実行するための適切な権限を持つWindowsユーザとして実行する必要があります。適切な権限があるかどうかを確認するには、ユーザがSnapCenter GUIでSnapshotコピーとクローンを実行できる必要があります。</block>
+  <block id="ea8d68751393b58709f3ea40ba70acb6" category="paragraph">次の図は'NTAP_Mnt_RECOVER_CP'タスクの構成を示していますLinuxシェルスクリプトを実行するため、これはターゲットデータベースシステムで実行されるコマンドスクリプトです。</block>
+  <block id="7417e1023d3ac8f7b1e0964a22dbdb80" category="paragraph"><block ref="7417e1023d3ac8f7b1e0964a22dbdb80" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c4b5d16f882636f7442e3048f2324b72" category="paragraph">LSCは、クローンボリュームのマウントを認識し、ターゲットデータベースのリストアとリカバリが成功したかどうかを確認する必要があるため、少なくとも2つの戻りコードタイプを定義する必要があります。1つはスクリプトを正常に実行するためのコードで、1つはスクリプトの実行に失敗したコードです。次の図に示します。</block>
+  <block id="04f898f9a2ca1daab101a5cde1ccfaba" category="paragraph"><block ref="04f898f9a2ca1daab101a5cde1ccfaba" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2e3f585a020dfdc63a988e48a87104dd" category="paragraph">次の図に、Linux Shellスクリプトの一部を示します。このスクリプトでは、ターゲットデータベースの停止、古いボリュームのアンマウント、クローンボリュームのマウント、ターゲットデータベースのリストアとリカバリを行います。前のタスクでは、ジャンクションパスがLSC変数に書き込まれました。次のコマンドはこのLSC変数を読み取り、値をLinuxシェルスクリプトの「$JunctionalPath」変数に格納します。</block>
+  <block id="732504ea297afd88dd03368c58912f84" category="paragraph">ターゲットシステム上のLSCワーカーは「&lt;sidaadm&gt;`」として実行されますが、マウントコマンドはrootユーザとして実行する必要があります。したがって'central_plugin_host_wrapper_script.shを作成する必要がありますスクリプト「central_plugin_host_wrapper_script.sh」は、「sudo」コマンドを使用して「NTAP_Mnt_recovery_CP」タスクから呼び出されます。スクリプトは'sudoコマンドを使用してUID 0で実行され'古いボリュームのアンマウント'クローンボリュームのマウント'ターゲット・データベースのリストアとリカバリなど'以降のすべての手順を実行できますsudoを使用してスクリプト実行を有効にするには'/etc/sudoers'に次の行を追加する必要があります</block>
+  <block id="0f94a1dc80013e0240a47f7a16d90e6e" category="paragraph"><block ref="0f94a1dc80013e0240a47f7a16d90e6e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8194823b374a03595ee2ee92861dfa5c" category="section-title">SAP HANAシステムの更新処理</block>
+  <block id="fd4570f5dbab54ff8215f97356cef84a" category="paragraph">LSCとNetApp SnapCenter の間の必要な統合タスクがすべて実行されたので、完全に自動化されたSAPシステム更新を開始するのはワンクリックタスクです。</block>
+  <block id="cc5747bb54ae81e815234f4894e61642" category="paragraph">次の図は'標準インストールにおけるNTAP `_`SYSTEM`_CLONE」タスクを示していますこの出力からわかるように、Snapshotコピーとクローンを作成し、クローンボリュームをターゲットデータベースサーバにマウントし、ターゲットデータベースのリストアとリカバリには約14分かかりました。SnapshotとNetApp FlexCloneテクノロジを使用すれば、ソースデータベースのサイズに関係なく、このタスクの所要時間はほぼ同じです。</block>
+  <block id="94660e32faf98b602eb41f1b3e5752c8" category="paragraph"><block ref="94660e32faf98b602eb41f1b3e5752c8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7ae2a6447550be2b8594e4607e4a7453" category="paragraph">次の図に、セントラル通信ホストを使用する場合の「NTAP_SYSTEM_CLONE_CP」と「NTAP_Mnt_RECOVERY_CP」の2つのタスクを示します。この出力からわかるように、Snapshotコピー、クローン、ターゲットデータベースサーバへのクローンボリュームのマウント、ターゲットデータベースのリストアとリカバリには約12分かかりました。これは、標準インストールを使用する場合に、これらの手順を実行するのに必要な時間と同じか、それより短くなります。繰り返しになりますが、SnapshotとNetApp FlexCloneテクノロジを使用すれば、ソースデータベースのサイズに関係なく、これらのタスクを短時間で一貫して実行できます。</block>
+  <block id="70cba9cd73b22ae39380d2cbcf53ac6d" category="paragraph"><block ref="70cba9cd73b22ae39380d2cbcf53ac6d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="be11ef66465253bb5e82ea68df2bfaf4" category="inline-link-macro">次の例：SAP HANAシステムがLSC、AzAcSnap、およびAzure NetApp Files で更新されます。</block>
+  <block id="003f3b5f26d7c92f147b8716fc4c2add" category="paragraph"><block ref="003f3b5f26d7c92f147b8716fc4c2add" category="inline-link-macro-rx"></block></block>
+  <block id="0b0165f536fb34f552053dcf6d4b7e0e" category="inline-link-macro">Previous：SnapCenter を使用したSAPシステムのクローニング</block>
+  <block id="acc7922f74e3f36f3c0b8e1f0fcfebec" category="paragraph"><block ref="acc7922f74e3f36f3c0b8e1f0fcfebec" category="inline-link-macro-rx"></block></block>
+  <block id="362c26abf7af5442c5d449bb2075123f" category="inline-link"><block ref="362c26abf7af5442c5d449bb2075123f" category="inline-link-rx"></block></block>
+  <block id="428b7c3b557c016c4e280ca7305fafbe" category="paragraph"><block ref="428b7c3b557c016c4e280ca7305fafbe" category="inline-link-rx"></block></block>
+  <block id="e61238a14181b36aa57a53b7e2f1ce7e" category="list-text"><block ref="e61238a14181b36aa57a53b7e2f1ce7e" category="inline-link-rx"></block></block>
+  <block id="5abea00f163fbfaf287f7d7bf3d56515" category="inline-link"><block ref="5abea00f163fbfaf287f7d7bf3d56515" category="inline-link-rx"></block></block>
+  <block id="08d3e53921f22babd48e40151c9c8a2d" category="paragraph"><block ref="08d3e53921f22babd48e40151c9c8a2d" category="inline-link-rx"></block></block>
+  <block id="385733e4132cdcc96b0a35704a97d643" category="list-text"><block ref="385733e4132cdcc96b0a35704a97d643" category="inline-link-rx"></block></block>
+  <block id="3f50f7ed267e090adcfbab165f2e5c47" category="list-text">TR-4436：『SAP HANA on NetApp All Flash FAS Systems with Fibre Channel Protocol』</block>
+  <block id="4c361fcdd2690df8b614197d1376ce01" category="inline-link"><block ref="4c361fcdd2690df8b614197d1376ce01" category="inline-link-rx"></block></block>
+  <block id="12c13219923113504598b1314ea3454c" category="paragraph"><block ref="12c13219923113504598b1314ea3454c" category="inline-link-rx"></block></block>
+  <block id="abb522bb2ca57b2c5746580a64109029" category="list-text">TR-4435：『SAP HANA on NetApp All Flash FAS Systems with NFS』</block>
+  <block id="f493247973297a32e1c0884f990577fe" category="inline-link"><block ref="f493247973297a32e1c0884f990577fe" category="inline-link-rx"></block></block>
+  <block id="114424331356280012de3c1ecdc95bf0" category="paragraph"><block ref="114424331356280012de3c1ecdc95bf0" category="inline-link-rx"></block></block>
+  <block id="6b41430e7ec93dd6cafb0e46de268b8c" category="list-text">ネットアップのSAPソフトウェアソリューションの製品紹介ページ</block>
+  <block id="4fe93d029c188ed918aa4e4a2498ecb0" category="inline-link"><block ref="4fe93d029c188ed918aa4e4a2498ecb0" category="inline-link-rx"></block></block>
+  <block id="48f967e98dd7651648ec4b74e1c56b13" category="paragraph"><block ref="48f967e98dd7651648ec4b74e1c56b13" category="inline-link-rx"></block></block>
+  <block id="c7b0e86345062bedaccd6a5198bf3a08" category="section-title">バージョン履歴</block>
+  <block id="95798f037b7bacec7599a19423a6bb64" category="cell">2018 年 2 月</block>
+  <block id="4a6be73b305b889cfd4f3834bd0f1680" category="cell">SnapCenter 4.3および改良された自動化スクリプトを対象とした完全な書き換えシステムの更新処理およびシステムのクローニング処理で使用する新しいワークフロー概要 です。</block>
+  <block id="23bb02d00145cbbee811d75260628934" category="cell">SnapCenter 4.6 P1のワークフローを更新しました。</block>
+  <block id="ad60b8b05274e402a4498c82d95225d1" category="summary">次の図に示すように、SAP HANAデータベースとライフサイクル管理ツールにSAPのライフサイクル管理を最適化するネットアップのソリューションが統合されています。効率的なアプリケーション統合データプロテクションに、SAPのテストシステムを柔軟にプロビジョニングすることができます。</block>
+  <block id="856228be68913d2211ee02f22a38e8e9" category="paragraph">今日のダイナミックなビジネス環境では、企業は継続的なイノベーションを提供し、変化する市場に迅速に対応する必要があります。このような競争の激しい状況下で、業務プロセスの柔軟性を高める企業は、市場の需要に効果的に対応できます。</block>
+  <block id="69c3a79c1804cbae032d6195f6cacac7" category="paragraph">市場ニーズの変化は、企業のSAP環境にも影響を及ぼし、定期的な統合、変更、更新が必要になります。IT部門は、これらの変更を、より少ないリソースでより短い期間で実装する必要があります。変更を導入する際のリスクを最小限に抑えるには、テストとトレーニングを徹底的に実施する必要があります。テストとトレーニングを実施するには、本番環境の実際のデータを使用してSAP</block>
+  <block id="3f764a0345ec7999f352204a5b3fdddd" category="paragraph">従来のSAPライフサイクル管理アプローチでは、このようなシステムは主に手動プロセスに基づいてプロビジョニングされます。このような手動プロセスは、ミスを避けられず、時間もかかることが多く、イノベーションの遅れやビジネス要件への対応の遅れにつながります。</block>
+  <block id="a5ddf82af10e90e54f80f1c95a97c3f4" category="paragraph"><block ref="a5ddf82af10e90e54f80f1c95a97c3f4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b3994c00931c89a0a503c3ac46453065" category="section-title">アプリケーションと統合されたSnapshotバックアップ処理</block>
+  <block id="6243c53e13fe45e2f2d8139d84df9fc3" category="paragraph">アプリケーションと整合性のあるNetApp Snapshotバックアップをストレージレイヤに作成する機能は、本ドキュメントで説明するシステムコピー処理とシステムクローン処理の基盤となります。ストレージベースのSnapshotバックアップは、SAP HANA用のNetApp SnapCenter プラグインと、SAP HANAデータベースが提供するインターフェイスを使用して作成します。SnapCenter は、SnapshotバックアップをSAP HANAバックアップカタログに登録して、リストアやリカバリ、クローニング処理に使用できるようにします。</block>
+  <block id="a401037b1fd939681f3b1d35a4cf1871" category="section-title">オフサイトバックアップやディザスタリカバリのデータレプリケーションを実行できます</block>
+  <block id="1330cf26bb73ed79d4f5ce73055208da" category="paragraph">アプリケーションと整合性のあるSnapshotバックアップを、ストレージレイヤから、SnapCenter の制御下にあるオフサイトのバックアップサイトやディザスタリカバリサイトにレプリケートします。レプリケーションはブロック変更に基づいているため、スペースと帯域幅を効率的に使用できます。</block>
+  <block id="c080449f164d4f10c7e09760a05892b1" category="section-title">SAPシステムのコピー処理やクローニング処理には、Snapshotバックアップを使用します</block>
+  <block id="081ba012afe11bcd1b8a6bd63696006b" category="paragraph">ネットアップのテクノロジとソフトウェアの統合により、ソースシステムのSnapshotバックアップを利用してSAPシステムのコピーやクローニングを実行することができます。このSnapshotバックアップは、SAP本番用システムと同じストレージ、オフサイトのバックアップ用ストレージ、またはディザスタリカバリサイトのストレージから選択できます。この柔軟性により、必要に応じて開発用システムとテスト用システムを本番用システムと分離し、ディザスタリカバリサイトでのディザスタリカバリのテストなど、さまざまなシナリオに対応することができます。</block>
+  <block id="9a44f200391ceb970e5a7d2117387553" category="section-title">統合による自動化</block>
+  <block id="56d0fbc6603d3792bb6ace3eeba4640c" category="paragraph">SAPテストシステムのプロビジョニングにはさまざまなシナリオとユースケースがあり、自動化のレベルに関してもさまざまな要件が存在する場合があります。ネットアップのSAP向けソフトウェア製品は、SAPのデータベースやライフサイクル管理製品と統合されているため、さまざまなシナリオや自動化のレベルに対応できます。</block>
+  <block id="9faeb8f5b5338bf989de461d80bdda01" category="paragraph">NetApp SnapCenter とSAP HANA向けプラグインを使用して、アプリケーションと整合性のあるSnapshotバックアップに基づいて必要なストレージボリュームをプロビジョニングし、開始されたSAP HANAデータベースまで、必要なホストおよびデータベースのすべての処理を実行します。SAPシステムのコピー、システムクローン、システムの更新、SAPのポストプロセスなどの追加の手動手順が必要になる場合があります。詳細については、次のセクションで説明します。</block>
+  <block id="dee484fd236b3a8c6df508ff1a995b0b" category="paragraph">SAP Landscape Management（LaMa）を使用すれば、SAPテストシステムを完全に自動化されたエンドツーエンドのプロビジョニングを実行できます。ネットアップのStorage Services Connectorは、SAP LaMaに統合されており、SAP LaMaに求められる運用をストレージレイヤで実現します。詳細については、を参照してください<block ref="a13d781a0803b9540621516c1b4376a3" category="inline-link-rx"></block>。</block>
+  <block id="6acc785ae1308d6bb0b3f0b0cb8369d1" category="inline-link-macro">次は、SAPシステムのコピー、更新、クローニングのシナリオです。</block>
+  <block id="71efe2c700906d471bf80e4148c1a6e9" category="paragraph"><block ref="71efe2c700906d471bf80e4148c1a6e9" category="inline-link-macro-rx"></block></block>
+  <block id="51804259bd2554b5e3aed937261760cc" category="summary">本ドキュメントでは、SnapCenter クローンの作成処理とクローンの削除処理をさらに自動化するために、2つのスクリプトを使用しています。</block>
+  <block id="d648af91bd5d8a9bfbf67955f22a64fc" category="doc">自動化スクリプトの例</block>
+  <block id="a3a71941bb3a83836bb851db62d40419" category="inline-link-macro">前のバージョン：ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー</block>
+  <block id="2df1c0d4eaff18bd93a47926a806e873" category="paragraph"><block ref="2df1c0d4eaff18bd93a47926a806e873" category="inline-link-macro-rx"></block></block>
+  <block id="f7766c06cfb3d8eda8ed33fc1adc40c2" category="list-text">スクリプト「sc-system-refresh.sh」は、システムの更新およびシステムクローンワークフローに使用され、HANAデータボリュームのマウントおよびアンマウント操作の実行、およびHANAデータベースのリカバリおよびシャットダウン操作に使用されます。</block>
+  <block id="86f2aadf0f2fc8e480ba7d3db06806f7" category="list-text">スクリプト「sc-mount-volume.sh」は、システムクローンワークフローでHANA共有ボリュームのマウントおよびアンマウント操作を実行するために使用します。</block>
+  <block id="98d5cd937b8c3364f24d00295990f0bf" category="admonition">このサンプルスクリプトは現状のまま提供されており、ネットアップではサポートしていません。スクリプトは、mailto：ng-sapcc@netapp.com [ ng-sapcc@netapp.com ^]にEメールで送信してください。</block>
+  <block id="1895adf39b38ef18443a63aa503d8314" category="section-title">スクリプトsc-system-refresh.sh</block>
+  <block id="d914d56d7c4dbe25fe358724cadd161c" category="paragraph">サンプルスクリプト「sc-system-refresh.sh」は、SAP HANAデータボリュームのマウントおよびアンマウント操作の実行、およびリカバリおよびシャットダウン操作に使用されます。次の図に示すように、SnapCenter ワークフローでは、clone createおよびclone deleteの中から特定のコマンドラインオプションを指定してスクリプトを呼び出します。</block>
+  <block id="9fc49ab8b12deb9a63ed3abcc0c81388" category="paragraph">スクリプトは汎用的なものであり、SID固有の構成ファイルと環境変数で構成されます。これらの変数は、スクリプト実行時にSnapCenter で使用できるようになります。スクリプトと構成ファイルは、システムの更新処理のターゲットホストにある必要があります。スクリプトを複数のターゲットホストに使用する場合は、すべてのターゲットホストでスクリプトを使用できるようにするNFS共有を指定できます。</block>
+  <block id="689a66fe0c7eeb024e2d965566e00fd1" category="admonition">スクリプトの現在のバージョンでは、単一コンテナ、MDCのシングルテナント構成、またはMDCのマルチテナント構成のシングルホストシステムをサポートしています。SAP HANAマルチホストシステムはサポートされていません。</block>
+  <block id="37f03f9473f314543df0c566e5f574d7" category="admonition">ストレージプロトコルとしてNFSまたはFibre Channel（FC）を使用するHANAシステムをサポートするスクリプトです。</block>
+  <block id="b101fedc7521206f4f9ba31bb8e44827" category="paragraph"><block ref="b101fedc7521206f4f9ba31bb8e44827" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9f44c7e376181d4ca0921e1d3a50fda8" category="section-title">サポートされているテナントリカバリ処理</block>
+  <block id="f7c6da6e7aefea19fdfc498a2ec0bc76" category="inline-link-macro">「ストレージスナップショットバックアップを使用したSAP HANAシステムの更新操作ワークフロー」</block>
+  <block id="7b4411b02c60488071d427057429a2e8" category="paragraph">を参照してください <block ref="d94d29d329c6f57fb83f9f1927159f1b" category="inline-link-macro-rx"></block> ターゲットシステムで実行可能なテナントリカバリ処理は、ソースシステムのテナント構成によって異なります。スクリプト「sc-system-refresh.sh」は、次の表に示すように、ソース・システムの構成によって可能なすべてのテナント・リカバリ・オペレーションをサポートします。</block>
+  <block id="8d56fe5a88639964171b4bbd96f2e00a" category="paragraph">ターゲットシステムで別のテナント名が必要な場合は、リカバリ処理後にテナントの名前を手動で変更する必要があります。</block>
+  <block id="90c9f514d641c6546821f3d099ea3057" category="cell">HANAシステム</block>
+  <block id="6fdfd09c74753f84071cba9ce0611394" category="cell">ソースシステムでのテナント構成</block>
+  <block id="30132596f3bd792ed24a69cf1fdae843" category="cell">ターゲットシステムでのテナント構成</block>
+  <block id="44209cba336c1d303fb4e247025f798c" category="cell">単一のコンテナ</block>
+  <block id="004c7f829dcf842443fd006747d3de9f" category="cell">MDCのシングルテナント</block>
+  <block id="c71db1f0ff2bac482804f98b63405342" category="cell">ソースのテナント名がソースのSIDと同じです</block>
+  <block id="d929ba5e22f3284a57126c2edcb90be7" category="cell">ターゲットテナント名はターゲットSIDと同じです</block>
+  <block id="fa8fc5ef8247db89b09a5feb3ba454cd" category="cell">ソーステナント名がソースSIDと同じではありません</block>
+  <block id="7f0af4df67950a3197c9553be6bc7ba8" category="cell">ターゲットテナント名はソーステナント名と同じです</block>
+  <block id="78872edb0be427b181e6e8e7190de742" category="cell">MDCの複数のテナント</block>
+  <block id="82a6e1233b922d8cab83fc7d0256ab6a" category="cell">任意のテナント名</block>
+  <block id="fa75de1ed62040e81bcf2dbd0bef5d62" category="cell">最初のテナントのみがリカバリされ、ソーステナントと同じ名前になります。</block>
+  <block id="651d7ef2e8c3366e98b7826592f95fa7" category="section-title">SID固有の構成ファイル</block>
+  <block id="b2a76bbf3423d7ba72553b6a469b19d9" category="paragraph">このスクリプトは、構成ファイルを使用して、ターゲットシステム固有のいくつかのパラメータを設定します。コンフィギュレーションファイルには、SID固有のファイル名「sc-system-refresh-sid.cfg」が必要です。</block>
+  <block id="ecb1d9dfedf1541c7998a2f4588663ba" category="admonition">ターゲット・システムのhdbuserstoreキーを使用して構成されたデータベース・ユーザは'ソース・データベースに存在し'データベース・リカバリを許可するための適切な権限を持っている必要があります</block>
+  <block id="d0f60714a1ed3782abba56ac9489b10c" category="paragraph">構成ファイルのパラメータを次の表に示します。</block>
+  <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">説明</block>
+  <block id="3b5949e0c26b87767a4752a276de9570" category="cell">キーを押します</block>
+  <block id="3a0cdfb5467246a2065933013464dc24" category="cell">例：QS1KEY</block>
+  <block id="a7b3be749b6be09f50b485c82887cb5d" category="cell">SAP HANA hdbuserstoreキー。ターゲットのSAP HANAデータベースのリカバリ処理に使用します。ターゲットホスト上のユーザ&lt;SID&gt;admにキーを設定する必要があります。</block>
+  <block id="83a59f4531c50a35ebc414248499e7df" category="cell">プロトコル</block>
+  <block id="9954f1758a74f9ece72459a8aca46883" category="cell">NFSまたはFCP</block>
+  <block id="56147a88cf9e0102ad8e2873cc800991" category="cell">HANAデータベースのデータボリュームの接続に使用されるストレージプロトコル。</block>
+  <block id="f6e70b0472340b97ea218873e7a5cde0" category="paragraph">次の出力は、「SID=QS1」のSAP HANAシステムの構成ファイルの例を示しています。</block>
+  <block id="9ba220b8314947bfb807aaa20db482fa" category="section-title">SnapCenter 環境変数</block>
+  <block id="c05a52fae37942af7adad0d02ba87fee" category="paragraph">SnapCenter には、ターゲットホストで実行されるスクリプト内で使用可能な一連の環境変数が用意されています。スクリプトはこれらの変数を使用して、関連する構成設定を決定します。</block>
+  <block id="ba25c653128001bcf08bf808ced252a9" category="list-text">スクリプト変数「hana_architecture」は、単一コンテナまたはMDCシステムのいずれかで必要なリカバリ操作を決定するために使用されます。</block>
+  <block id="ec5eb366ca755ac2bc471a5bd1cd07cd" category="list-text">「hana_database-type」環境変数から派生します</block>
+  <block id="43cc589a910d8d9a1f87d79d6dde8f77" category="list-text">たとえば、「MDC\SS1_HA_database]=「multiple_containers」と入力します</block>
+  <block id="860b544d5df250512091fa01e8d6c131" category="list-text">スクリプト変数'tenant'source_tenant''および'source_SID'は'リカバリ・オペレーションのターゲット・テナント名の決定に使用されます</block>
+  <block id="810fd5e22aed350a845d5152e2792d97" category="list-text">「tenant_database-names」環境変数から派生します</block>
+  <block id="180716d3619e705d1aa63e83bbd6fb0c" category="list-text">たとえば、「MDC\SM1_tenant_database-names=TENANT1、TENANT2」のようになります</block>
+  <block id="9da824d922a311daa6550bc58ba65f12" category="list-text">スクリプト変数'storage, junction-path 'は'マウント操作に使用されます</block>
+  <block id="984b9615b6eb4137fbe36d80e6c215bf" category="list-text">「cloned_volume_mount_path」環境変数から派生します</block>
+  <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="list-text">例：</block>
+  <block id="3e88016e64c25f9d19a24a1f021ac09a" category="section-title">スクリプトsc-mount-volume.sh</block>
+  <block id="5d5e8180e8e28f025880fcba510f9534" category="paragraph">スクリプト例のsc-mount-volume.sh'は'すべてのボリュームのマウントとアンマウントを実行するために使用されますスクリプトを使用して、HANA共有ボリュームをSAP HANAシステムのクローニング処理でマウントします。次の図に示すように、SnapCenter ワークフローでは、clone createおよびclone deleteの中から特定のコマンドラインオプションを指定してスクリプトを呼び出します。</block>
+  <block id="d7024a5c2d5ed7203f976d4b75f475b4" category="admonition">このスクリプトは、NFSをストレージプロトコルとして使用するHANAシステムをサポートしています。</block>
+  <block id="45f8afeea5c6274f6a448f8526c68aa8" category="paragraph"><block ref="45f8afeea5c6274f6a448f8526c68aa8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="29e2dd6e9c1ba11d2dd4b2729177f644" category="list-text">「cloned_volume_mount_path」環境変数から派生したものです。</block>
+  <block id="14d04d54afbe1cbf1d1c652d03b4ab5b" category="section-title">SnapCenter 環境変数を取得するスクリプト</block>
+  <block id="f849fc808040266d8c8e8176608047f5" category="paragraph">自動化スクリプトを使用せず、手順を手動で実行する必要がある場合は、FlexCloneボリュームのストレージシステムのジャンクションパスを把握しておく必要があります。ジャンクションパスはSnapCenter 内では表示されないため、ストレージシステムで直接ジャンクションパスを検索するか、ターゲットホストにSnapCenter 環境変数を提供する単純なスクリプトを使用する必要があります。このスクリプトは、SnapCenter のクローン作成処理にマウント処理スクリプトとして追加する必要があります。</block>
+  <block id="19cc491dd4ab0c0c23981caff6da1749" category="paragraph">「env-from-ssc.txt」ファイル内で、変数「cloned_volume_mount_path」を検索して、FlexCloneボリュームのストレージシステムのIPアドレスとジャンクションパスを取得します。</block>
+  <block id="a5db31eb7ca073c97cdc5059e6b1149e" category="inline-link-macro">次の例：SnapCenter でSAP HANAシステムを更新</block>
+  <block id="2fbbbc8425272793c16625ea652d2aaa" category="paragraph"><block ref="2fbbbc8425272793c16625ea652d2aaa" category="inline-link-macro-rx"></block></block>
+  <block id="d1d283ed469f9cbb4c4f40ee4c2c78d0" category="summary">SAPのライフサイクル管理を最適化するネットアップのソリューションは、SAP AnyDBとSAP HANAデータベースに統合されています。さらに、ネットアップは、アプリケーションと統合された効率的なデータ保護と、SAPテストシステムの柔軟なプロビジョニングを組み合わせた、SAPのライフサイクル管理ツールに統合しています。</block>
+  <block id="8133b664c0921de8f7cfeb9e67c3402e" category="doc">TR-4929：Libelle SystemCopyによるSAPシステムのコピー処理の自動化</block>
+  <block id="6581ea45f3bd063045396c433f8b8673" category="paragraph">Holger Zecha、Tobias Brandl、ネットアップFranz Diegruber、Libelle</block>
+  <block id="dd2d3355ce822b7021e69bb9d84e81f9" category="paragraph">市場ニーズの変化は、企業のSAP環境にも影響を及ぼし、定期的な統合、変更、更新が必要になります。IT部門は、これらの変更を、より少ないリソースでより短い期間で実装する必要があります。変更を導入する際のリスクを最小限に抑えるには、本番環境の実際のデータを使用するSAPシステムを追加で必要とする、テストとトレーニングを徹底的に実施する必要があります。</block>
+  <block id="512e1d819a2e72bd976007357739c04d" category="paragraph">SAPのライフサイクル管理を最適化するネットアップのソリューションは、SAP AnyDBとSAP HANAデータベースに統合されています。さらに、ネットアップは、アプリケーションと統合された効率的なデータ保護と、SAPテストシステムの柔軟なプロビジョニングを組み合わせた、SAPのライフサイクル管理ツールに統合しています。</block>
+  <block id="85843ef1a579ba31f7d2d08eee1f3767" category="inline-link">SAP同種システムのコピーガイド</block>
+  <block id="2ff1b2a382b2aaf88d7989c339b64c0c" category="inline-link">Libelle</block>
+  <block id="5ef992ffc6cb882658d3affca1d6a660" category="inline-link">Libelle SystemCopy (LSC)</block>
+  <block id="577e0778dbb772e991e1ef7491d4a63d" category="inline-link">完全なエンドツーエンドの自動システムコピーを、記録的な時間で作成します</block>
+  <block id="cb542b2dfbc4144e32b4ad8589d73ce9" category="paragraph">このようなネットアップのソリューションは、大規模なデータベースでも膨大なデータを効率的に管理するという問題 を解決しますが、SAPシステムの完全なエンドツーエンドのコピーおよび更新処理には、ソースSAPシステムのIDをターゲットシステムに完全に変更するためのコピー前処理とコピー後処理が含まれている必要があります。SAPでは、で必要なアクティビティについて説明します<block ref="0de971f1438283e76a91316d0d3300a0" category="inline-link-rx"></block>。ネットアップのパートナー様は、手動プロセスの回数をさらに減らし、SAPシステムのコピープロセスの品質と安定性を高めるために<block ref="afdd381059116a8c46ab98bfde7cbd99" category="inline-link-rx"></block> を開発しました<block ref="733635162e915754a49ad8c2e771a2c5" category="inline-link-rx"></block> ツール。Libelleと共同で、SAPシステムコピー用のネットアップソリューションをLSCに統合して提供しています<block ref="08c74391aa9b631b71159d2b8e7655b7" category="inline-link-rx"></block>。</block>
+  <block id="d9693233c8bb371afd0a7faaa0c944bb" category="section-title">アプリケーションに統合されたSnapshotコピー処理</block>
+  <block id="df1fdb1abc84b3d20f88397c73bba7ce" category="inline-link">Microsoft Azure Application Consistent Snapshotツール</block>
+  <block id="2550d042e773faa90e9c72382941e7ca" category="paragraph">アプリケーションと整合性のあるNetApp Snapshotコピーをストレージレイヤに作成する機能は、本ドキュメントで説明するシステムコピー処理とシステムクローン処理の基盤となります。ストレージベースのSnapshotコピーは、ネットアップのSnapCenter Plug-in for SAP HANAまたはSAPのネイティブONTAP システム上の任意のDBを使用して作成されます<block ref="c71ed82ea3bb1854004aa6a0fd6774ad" category="inline-link-rx"></block> （AzAcSnap）、およびMicrosoft Azureで実行されるSAP HANAとOracleデータベースによって提供されるインターフェイス。SAP HANAを使用している場合は、SnapCenter とAzAcSnapがSnapshotコピーをSAP HANAバックアップカタログに登録することで、リストアとリカバリ、およびクローニング処理に使用できます。</block>
+  <block id="c92c24a3b359481ce49bb324a8332db9" category="paragraph">アプリケーションと整合性のあるSnapshotコピーは、ストレージレイヤから、オンプレミスのSnapCenter で制御されるオフサイトのバックアップサイトやディザスタリカバリサイトにレプリケートできます。レプリケーションはブロック変更に基づいているため、スペースと帯域幅を効率的に使用できます。クロスリージョンレプリケーション（CRR）機能を使用してAzureリージョン間でAzure NetApp Files ボリュームを効率的にレプリケートすることで、AzureでAzure NetApp Files 実行されているSAP HANAシステムとOracleシステムにも同じテクノロジが使用されます。</block>
+  <block id="d92849d4de6a2769ac5847c9d79a1640" category="section-title">SAPシステムのコピー処理やクローニング処理には、任意のSnapshotコピーを使用できます</block>
+  <block id="789d2cc69d2afb78e02f72d73b164988" category="paragraph">ネットアップのテクノロジとソフトウェアの統合により、ソースシステムの任意のSnapshotコピーを使用してSAPシステムのコピーやクローニングを実行できます。このSnapshotコピーは、SAP本番用システムと同じストレージ、オフサイトのバックアップに使用するストレージ（AzureのAzure NetApp Files バックアップなど）、またはディザスタリカバリサイトのストレージ（Azure NetApp Files CRRターゲットボリューム）のいずれかから選択できます。この柔軟性により、必要に応じて開発用システムとテスト用システムを本番用システムと分離し、ディザスタリカバリサイトでのディザスタリカバリのテストなど、さまざまなシナリオに対応することができます。</block>
+  <block id="77b7177c9e95eb53f805c69f8b7a862d" category="paragraph">SAPテストシステムのプロビジョニングにはさまざまなシナリオとユースケースがあり、自動化のレベルに関してもさまざまな要件が存在する場合があります。ネットアップのSAP向けソフトウェア製品は、SAPなどのサードパーティベンダーが提供するデータベースやライフサイクル管理製品（Libelleなど）と統合されており、さまざまなシナリオや自動化のレベルをサポートします。</block>
+  <block id="bb8dcc59de9078f53fc58de9c2f7cee5" category="paragraph">SAP HANAとSAP AnyDBまたはAzure上のAzAcSnap向けのプラグインを備えたNetApp SnapCenter を使用して、アプリケーションと整合性のあるSnapshotコピーに基づいて必要なストレージボリュームのクローンをプロビジョニングし、開始されたSAPデータベースまで、必要なホストとデータベースのすべての処理を実行できます。SAPシステムのコピー、システムクローン、システムの更新、SAPのポストプロセスなどの追加の手動手順が必要になる場合があります。詳細については、次のセクションで説明します。</block>
+  <block id="8851fd3c41521c43b8872d5844987d90" category="paragraph">完全に自動化されたエンドツーエンドのSAPテストシステムのプロビジョニングまたは更新は、Libelle SystemCopy（LSC）自動化を使用して実行できます。SnapCenter またはAzAcSnapのLSCへの統合については、このドキュメントで詳しく説明します。</block>
+  <block id="31f2fe4efe97c6c07f6792cf857596b8" category="section-title">Libelle SystemCopy</block>
+  <block id="3d3d7012f3fc84e162e820c211555de4" category="paragraph">Libelle SystemCopyは、完全に自動化されたシステムコピーとランドスケープコピーを作成するフレームワークベースのソフトウェア解決策 です。ボタンを口頭で操作することで、QAおよびテストシステムを新しい本番データで更新できます。Libelle SystemCopyは、従来のすべてのデータベースとオペレーティングシステムをサポートし、すべてのプラットフォームに独自のコピーメカニズムを提供しますが、同時にバックアップ/リストア手順や、NetApp SnapshotコピーやNetApp FlexCloneボリュームなどのストレージツールを統合します。システムのコピー中に必要なアクティビティは、SAP ABAPスタックの外部から制御されます。そのため、SAPアプリケーションでは転送などの変更は必要ありません。一般に、システムコピー手順 を正常に完了するために必要な手順は、次の4つに分類できます。</block>
+  <block id="1088566a14cfbaeba677e0abd83c10d5" category="list-text">*確認フェーズ。*関係するシステム環境を確認してください。</block>
+  <block id="56a32c0278a7c01b44ab4ea945a636a0" category="list-text">*プリフェーズ*システムコピーのターゲット・システムを準備します。</block>
+  <block id="5b615fbc78e5d6145480840d167efffc" category="list-text">*コピーフェーズ*ソースからターゲット・システムに実際の本番データベースのコピーを提供します</block>
+  <block id="7fa823cd52bf8b21a23eb54e78e7926b" category="list-text">*ポスト・フェーズ*：コピー後のすべてのタスクで同機種システムのコピー手順 を完了し'ターゲット・システムを更新します</block>
+  <block id="bd6d85bfbf8eed33fcd6d6195ba63e05" category="paragraph">コピーフェーズでは、NetApp SnapshotとFlexCloneの機能を使用して、最大のデータベースであっても、必要な時間を数分に短縮できます。</block>
+  <block id="b950f3bf7751b53e112aa6665a1e0e31" category="paragraph">チェックフェーズ、プリフェーズ、およびポストフェーズの場合、LSCには、一般的な更新操作の95%をカバーする450以上の事前設定されたタスクが付属しています。その結果、LSCはSAP標準に従って自動化を推進します。LSCはソフトウェアで定義されるため、システム更新プロセスを簡単に調整および拡張して、お客様のSAP環境固有のニーズに対応できます。</block>
+  <block id="d79a0116ae6180c79075dda925087409" category="section-title">SAPシステムの更新とクローニングのユースケース</block>
+  <block id="f1615122fe3ee987c5398359f2dca8a8" category="paragraph">ソースシステムのデータをターゲットシステムで使用できるようにする必要があるシナリオは複数あります。</block>
+  <block id="b0b38c4cc3e591b6cdab5040cd71f242" category="list-text">品質保証およびテストおよびトレーニングシステムの定期的な更新</block>
+  <block id="d88297c655f3ff29d2a1ec937fdd33a7" category="list-text">論理的な破損に対処するために、システム環境の障害修復または修復を行う</block>
+  <block id="a70c7e060a3886f8f55acde979d98f33" category="list-text">ディザスタリカバリのテストシナリオ</block>
+  <block id="6f89f570d60963a6699473a3ff97bc26" category="paragraph">修復システムと災害復旧テストシステムは、通常、更新されたテストおよびトレーニングシステムのためにSAPシステムクローン（広範囲な後処理操作は不要）を使用して提供されますが、これらの後処理手順を適用してソースシステムと共存させる必要があります。そのため、本ドキュメントでは、SAPシステムの更新シナリオに焦点を当てて説明します。さまざまなユースケースの詳細については、テクニカルレポートを参照してください<block ref="cd920b3d7d4dc41443c1d02db576233a" category="inline-link-rx"></block>。</block>
+  <block id="0a2e09fa683bd368c81839911e03b708" category="paragraph">このドキュメントの残りの部分は、2つの部分に分かれています。最初のパートでは、オンプレミスのNetApp ONTAP システムで実行されているSAP HANAシステムとSAP AnyDBシステム向けのNetApp SnapCenter とLibelle SystemCopyの統合について説明します。2番目のパートでは、Microsoft Azureで実行されているSAP HANAシステム用のLSCと、提供されているAzure NetApp Files とのAzAcSnapの統合について説明します。ONTAP テクノロジの基盤は同じですが、Azure NetApp Files は、ネイティブONTAP インストールとは異なるインターフェイスとツールの統合（AzAcSnapなど）を提供します。</block>
+  <block id="2068acecca0077fd3a48d2668542bccc" category="inline-link-macro">次の例：LSCとSnapCenter でSAP HANAシステムが更新されます。</block>
+  <block id="901dbde8a2b798f61a514b189d3ac126" category="paragraph"><block ref="901dbde8a2b798f61a514b189d3ac126" category="inline-link-macro-rx"></block></block>
+  <block id="3af0a07313f24e03257baf4f77dca35c" category="summary">テストやトレーニングの目的で、ソースシステムのデータをターゲットシステムで使用できるようにする必要があるシナリオは複数あります。テストおよびトレーニング用のシステムは、ソースシステムのデータで定期的に更新し、現在のデータセットでテストとトレーニングが実行されていることを確認する必要があります。</block>
+  <block id="8632014b0a82d2a229bc13ad57a2ac7e" category="doc">システムの更新とクローニングのユースケース</block>
+  <block id="05ac89336715d6f26191f1492a1fb31a" category="inline-link-macro">Previous：SAPシステムのコピー、更新、クローニングのシナリオ</block>
+  <block id="d8dd073dd8b75a463357b52dfc5ba25d" category="paragraph"><block ref="d8dd073dd8b75a463357b52dfc5ba25d" category="inline-link-macro-rx"></block></block>
+  <block id="16fc6bd74d4496ed31fe8ee50e1887ee" category="section-title">QA、テスト、サンドボックス、トレーニングシステムのデータ更新</block>
+  <block id="496f6480899827292afdc45c94aabc78" category="paragraph">テストやトレーニングの目的で、ソースシステムのデータをターゲットシステムで使用できるようにする必要があるシナリオは複数あります。テストおよびトレーニング用のシステムは、ソースシステムのデータで定期的に更新し、現在のデータセットでテストとトレーニングが実行されていることを確認する必要があります。システムの更新処理は、インフラ、データベース、アプリケーションの各レイヤ上で実行される複数のタスクで構成されます。自動化のレベルによっては、数日かかる場合があります。</block>
+  <block id="4ef50dae8742b31bd8ec2d69e25fdef1" category="paragraph">次の図は、SAPシステムの更新、コピー、およびクローニングの各処理を示しています。</block>
+  <block id="031d22d85a5da16f3ba181da66c12ecd" category="paragraph"><block ref="031d22d85a5da16f3ba181da66c12ecd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="461e187f7dadcae3439069c475efba9c" category="paragraph">SnapCenter クローニングワークフローを使用すると、インフラレイヤとデータベースレイヤで必要なタスクを高速化し、自動化することができます。SnapCenter では、バックアップをソースシステムからターゲットシステムにリストアする代わりに、ネットアップのSnapshotコピーとFlexCloneテクノロジを使用して、開始されたHANAデータベースまでに必要なタスクを、次の図に示すように数時間ではなく数分で実行します。クローニングプロセスに要する時間はデータベースのサイズに左右されないため、非常に大規模なシステムでも数分で作成できます。</block>
+  <block id="d1a24aa3152d972fcab200a268e7235f" category="paragraph">次の図は、QA、テスト、サンドボックス、またはトレーニングシステムのデータ更新を示しています。</block>
+  <block id="bcc93bdc05fd8eec85752da1e432d248" category="paragraph"><block ref="bcc93bdc05fd8eec85752da1e432d248" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="00b4ead5541ced0624c52fdc64a84c14" category="inline-link-macro">「SnapCenter でSAP HANAシステムを更新」</block>
+  <block id="42f2ef2ba52b6a85eaf58f1a330f7210" category="paragraph">システムの更新処理のワークフローについては、を参照してください <block ref="e55292fa4cf2ac9dc22d1926cd366aca" category="inline-link-macro-rx"></block></block>
+  <block id="c93a3b395dcad6d7d4701c7ae95fc9d7" category="section-title">論理的破損に対処する</block>
+  <block id="af5083b35bb63e06e5abf6eb41bc6a64" category="paragraph">論理的破損は、ソフトウェアエラー、人為的エラー、破壊行為などが原因で発生する可能性があります。残念ながら、論理的破損は、標準的な高可用性ソリューションやディザスタリカバリソリューションでは対処できないことがよくあります。その結果、論理的な破損が発生したレイヤ、アプリケーション、ファイルシステム、またはストレージによっては、ダウンタイムを最小限に抑え、データ損失を最大化するための要件を満たすことができない場合があります。</block>
+  <block id="a57853f44c435f203fab190cb2f37b09" category="paragraph">最悪のケースは、SAPアプリケーションが論理的に破損した場合です。SAP アプリケーションは多くの場合、異なるアプリケーションが相互に通信してデータを交換する環境で動作します。このため、論理的な破損が発生した SAP システムはリストアとリカバリを実行しないことを推奨します。破損が発生する前の時点にシステムをリストアすると、データが失われます。また、 SAP ランドスケープは同期されず、さらにポストプロセスが必要になります。</block>
+  <block id="40d7615d00f208b51b1e36048899ef14" category="paragraph">SAPシステムをリストアする代わりに、別の修復システムで問題を分析して、システム内の論理エラーを修正する方法を推奨します。ルート原因分析には、ビジネスプロセスやアプリケーション所有者の関与が必要です。このシナリオでは、論理的破損が発生する前に格納されたデータに基づいて、修復システム（本番用システムのクローン）を作成します。リペアシステム内では、必要なデータをエクスポートし、本番システムにインポートできます。このアプローチでは、本番用システムを停止する必要はなく、最良のシナリオでは、データの損失だけでなく、ごくわずかなデータの損失も発生します。</block>
+  <block id="2791cdc032a8ce86baaddd3e7e010995" category="paragraph">リペアシステムを設定する際には、柔軟性とスピードが不可欠です。ネットアップのストレージベースのSnapshotバックアップでは、次の図に示すように、NetApp FlexCloneテクノロジを使用して、複数の整合性のあるデータベースイメージから本番システムのクローンを作成できます。ファイルベースのバックアップからリダイレクトされたリストアを使用して修復システムを設定する場合、FlexCloneボリュームは数時間ではなく数秒で作成できます。</block>
+  <block id="c1e885ff16ee900105c65331fffef05d" category="paragraph"><block ref="c1e885ff16ee900105c65331fffef05d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3d7345edeeb5411d19faf37f4b0c3c2b" category="inline-link-macro">「SnapCenter を使用したSAPシステムのクローン作成」</block>
+  <block id="cd54fd82fa6c906e20ebfd1a171d8845" category="paragraph">リペアシステムの作成ワークフローについては、を参照してください <block ref="cfd6c85725a07b8a62d48c44cdaafa1a" category="inline-link-macro-rx"></block></block>
+  <block id="5286abcb37bc2a905758c905666d0e5d" category="paragraph">効果的なディザスタリカバリ戦略を策定するには、必要なワークフローをテストする必要がテストでは、戦略が機能するかどうか、および内部ドキュメントで十分かどうかを検証します。また、管理者は必要な手順をトレーニングできます。</block>
+  <block id="f693601db2c33356395c1020a3b09d61" category="paragraph">SnapMirrorを使用したストレージレプリケーションでは、RTOとRPOをリスクにさらすことなく、ディザスタリカバリのテストを実行できます。ディザスタリカバリテストは、データレプリケーションを中断することなく実行できます。</block>
+  <block id="f4ee3b1ed515524d4ecf1ed0eb6009df" category="paragraph">非同期SnapMirrorと同期SnapMirrorのディザスタリカバリテストでは、ディザスタリカバリターゲットでSnapshotバックアップとFlexCloneボリュームを使用します。</block>
+  <block id="7e6c953c75eaf106e6a44189131fd8f0" category="paragraph">次の図は、ディザスタリカバリのテストを示しています。</block>
+  <block id="53b525b68641353affc24f8c4e64c1d2" category="paragraph"><block ref="53b525b68641353affc24f8c4e64c1d2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="23d78a8119a85afc982e82f6af3a08a0" category="paragraph">詳細な手順概要 については、テクニカルレポートを参照してください<block ref="52b379c796572c84dee3ce1ed1c3826b" category="inline-link-rx"></block>。</block>
+  <block id="ccb696a8a182ac023820c12f0d2215f2" category="inline-link-macro">次：SnapCenter を使用したSAPシステムの更新ワークフローの概要</block>
+  <block id="93340f7f28c1267d08165625e5161a29" category="paragraph"><block ref="93340f7f28c1267d08165625e5161a29" category="inline-link-macro-rx"></block></block>
+  <block id="270e0c458007c88cf15cb7fbdb4890eb" category="summary">このセクションでは、SAP HANAデータベースのさまざまなシステム更新処理オプションについて、ステップバイステップの概要 を示します。</block>
+  <block id="ed6366424ce9a66f8fb6ed2d75c90f8a" category="doc">SAP HANAシステムをSnapCenter で更新</block>
+  <block id="808254f0550776a888bafd3ac4970807" category="inline-link-macro">前の例：自動化スクリプト。</block>
+  <block id="62f57e3cd1fce3aeb1f6294921b8c2cb" category="paragraph"><block ref="62f57e3cd1fce3aeb1f6294921b8c2cb" category="inline-link-macro-rx"></block></block>
+  <block id="b28e3552f08f48399d98c4e3f2ebf170" category="paragraph">次のセクションでは、SAP HANAデータベースのさまざまなシステム更新処理オプションについて、ステップバイステップの概要 を示します。</block>
+  <block id="ca6901d32a1871c68df005c11893ef03" category="paragraph">このセクションでは、次のシナリオについて説明します。</block>
+  <block id="2a995a569260d18dbea0c475b32b5070" category="list-text">クローンスプリット処理を実行せずにSAP HANAシステムが更新されます。</block>
+  <block id="577d45313453f242dbed0d7091f85dd2" category="list-text">プライマリストレージから、テナント名をSIDと同じにしてクローニングする</block>
+  <block id="0519c794e8dee044b6955a224b3fd694" category="list-text">テナント名がSIDと同じオフサイトのバックアップストレージからクローニングする</block>
+  <block id="1694cd7363603670d079a64892e40f2e" category="list-text">テナント名を持つプライマリストレージからのクローニングがSIDと等しくない</block>
+  <block id="f5dda657758ce85749d3b1d78126301c" category="list-text">クローンの削除処理</block>
+  <block id="eec94e3f3d2ba5db3a1e72117c9ba511" category="list-text">SAP HANAシステムがクローンスプリット処理で更新されます</block>
+  <block id="25c0305dfdc1e02814116467a7b1157d" category="list-text">クローンスプリット処理</block>
+  <block id="df239f38953986dc1710f0064101678e" category="paragraph"><block ref="df239f38953986dc1710f0064101678e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="549857ff78ff15b9e6eef9c923be04a8" category="list-text">ここで説明するワークフローは、シングルテナントまたは複数テナントのシングルホストSAP HANA MDCシステムに対して有効です。SAP HANAマルチホストシステムは、自動化スクリプトではサポートされていません。</block>
+  <block id="4d00e36a56a9005825e75e625320710e" category="list-text">自動化スクリプトを実行できるようにするには、SnapCenter HANAプラグインをターゲットホストに導入する必要があります。HANAプラグインをHANAソースシステムホストにインストールする必要はありません。</block>
+  <block id="04e121499bbff104b16f959e82fdc314" category="list-text">説明されているワークフローは、SnapCenter 4.6 P1以降でのみ有効です。以前のリリースでは、ワークフローが若干異なります。</block>
+  <block id="10b6f8ea3f6024502051c00f3b3b0b95" category="list-text">このワークフローは、NFSとFCPを使用するHANAシステムに有効です。</block>
+  <block id="37225e9225b6516b9c93db3aa013bf01" category="paragraph">次の図は、システムの更新処理オプション別に設定したラボ環境を示しています。</block>
+  <block id="fe9696b9b6183d7296d0f7aa65607960" category="list-text">プライマリストレージまたはオフサイトのバックアップストレージからクローニングする。テナント名はSIDと同じ。</block>
+  <block id="138283049fef5ee154f142eed601b5d6" category="list-text">ソースHANAシステム：テナントSS1を使用するSS1</block>
+  <block id="aff8e91d94f3ad4019e97e0b4ea356ae" category="list-text">ターゲットのHANAシステム：QS1とテナントQS1</block>
+  <block id="ea9d307953e5c9d327e185c56c644cc8" category="list-text">プライマリストレージからのクローニング。テナント名はSIDと等しくありません。</block>
+  <block id="487bb1c30f5b6f5ae0ef610473fdf2e7" category="list-text">ソースHANAシステム：SM1、Tanant1、Tenant2</block>
+  <block id="d0e79a527c5c25c3a33fc58ffd7c3cf5" category="list-text">ターゲットのHANAシステム：QS1とTenant1</block>
+  <block id="02ab5e821b3157aebb569eef485fa62b" category="list-text">SnapCenter 4.6 P1</block>
+  <block id="b1ae86bc2b6247190d86e3b5e996c089" category="list-text">HANAシステム：HANA 2.0 SPS6 rev.61およびHANA 2.0 SPS5 rev.52</block>
+  <block id="bdb9d4569afec846fc12c6671235c013" category="list-text">ONTAP 9.7P7.</block>
+  <block id="93e2ec534a7e1e8ee8969d773ba67200" category="paragraph">すべてのHANAシステムは、構成ガイドに基づいて構成されています<block ref="9042a1cec9cc6f21384e148006094985" category="inline-link-rx"></block>。SnapCenter リソースとHANAリソースは、ベストプラクティスガイドに基づいて構成されています<block ref="f70d28502828defa3eb13d3b730673fb" category="inline-link-rx"></block>。</block>
+  <block id="713278b17c5cd7faa41b36cab2cd3bf1" category="paragraph"><block ref="713278b17c5cd7faa41b36cab2cd3bf1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f730f78b62e0154b1968bf5a9cfaa272" category="section-title">最初の1回限りの準備手順</block>
+  <block id="63c1495b9d918ac3c7b4a93cbe522b61" category="paragraph">最初のステップでは、ターゲットのHANAシステムとSAPアプリケーションサービスをインストールし、次にHANAシステムをSnapCenter 内で構成する必要があります。</block>
+  <block id="55caeb55e7746649bb2f1b652c080d85" category="list-text">HANAターゲットシステムとSAPアプリケーションサービスのインストール</block>
+  <block id="be9dc20d998d7ee2c72693d2cc60c146" category="list-text">の説明に従って、SnapCenter でHANAシステムを構成します<block ref="7d612f806d1e07d1f3292801524311f8" category="inline-link-rx"></block></block>
+  <block id="fb8729d55caeeef457cfc3e2a43785ec" category="list-text">SnapCenter バックアップ処理用のHANAデータベースユーザの構成。このユーザは、ソースシステムとターゲットシステムで同一である必要があります。</block>
+  <block id="39bbfe03089cb7b26b516f3bc9e2d339" category="list-text">上記のバックアップ・ユーザを使用したhdbuserstoreキーの設定</block>
+  <block id="59747ddc5dc366ea4ef5ef2a6377f839" category="list-text">ターゲットホストへのSnapCenter HANAプラグインの導入。HANAシステムはSnapCenter によって自動検出されます。</block>
+  <block id="acf3db297a0ad4bb5ffe3672ff5e2cb4" category="list-text">HANAのリソース保護の構成（オプション）。</block>
+  <block id="c339e6217e1e3820b4e0049fdf784407" category="paragraph">初期インストールの準備が完了してから、次の手順で最初のSAPシステムの更新処理を実行します。</block>
+  <block id="192e0eea8d38ced1355dab03d63f645e" category="list-text">SAPアプリケーションサービスとターゲットHANAシステムをシャットダウンします。</block>
+  <block id="d44c7e15d174646982dd84b2b319ab03" category="list-text">HANAデータボリュームをアンマウント</block>
+  <block id="d15ae9c4b3386df38b1c8b39d279b83b" category="section-title">テナント名をSIDと同じにしてプライマリストレージからクローニングする</block>
+  <block id="4cb440919c14b7b5becb14d046d8cbd2" category="paragraph">このセクションでは、HANAシステムの更新ワークフローについて説明します。このワークフローでは、ソースとターゲットのシステムでテナント名をSIDと同じにします。ストレージ・クローニングはプライマリ・ストレージで実行され'sc-system-refresh.shスクリプトを使用してさらに自動化されます</block>
+  <block id="5573f8a92c5b5d3d2e529b15cacad43f" category="paragraph">次の図は、テナント名= SIDを持つプライマリストレージからのクローニングを表しています。</block>
+  <block id="2bf5c8938c42515ad64387b48218a975" category="paragraph"><block ref="2bf5c8938c42515ad64387b48218a975" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bf53d2bd10de0b4d63b8b4e5961de63a" category="paragraph">このワークフローは、次の手順で構成されます。</block>
+  <block id="07c961d286f81d1b5db9494f6035284f" category="list-text">ターゲットのHANAシステムがSnapCenter で保護されている場合は、先に保護を削除する必要があります。</block>
+  <block id="14ec8064529be3c2a6ffe3291f642e34" category="list-text">SnapCenter クローニングウィザードを開きます。</block>
+  <block id="b732ccdc3bf0ac2eceafe40d284c26ba" category="list-text">ソースHANAシステムSS1からSnapshotバックアップを選択します。</block>
+  <block id="c5bc1108bafaeb9ba090c6a052e5414a" category="list-text">ターゲットホストを選択し、ストレージネットワークインターフェイスを指定します。</block>
+  <block id="a54279d2a51634ebef5deaa1d8116b38" category="list-text">ターゲットシステムのSID（この例ではQS1）を指定します。</block>
+  <block id="eba76588ce04243b401c5094333bd738" category="list-text">マウント処理とクローニング後処理に使用するスクリプトを指定します。</block>
+  <block id="7947e028a44fed4e753a83137b2c74d1" category="list-text">SnapCenter クローニング処理を実行するには、次の手順を実行します。</block>
+  <block id="bef154bddec648665d006827252d3def" category="list-text">ソースHANAシステムで選択したSnapshotバックアップに基づいてFlexCloneボリュームを作成します。</block>
+  <block id="173f11496853aa1e59d7f974652558d1" category="list-text">FlexCloneボリュームをターゲットホストストレージのネットワークインターフェイスにエクスポートします。</block>
+  <block id="23fd77fb734d35c9438efda6db8a81aa" category="list-text">マウント処理スクリプトを実行します。</block>
+  <block id="d9bb55c29020321c081427f79add7a65" category="list-text">FlexCloneボリュームは、ターゲットホストでデータボリュームとしてマウントされます。</block>
+  <block id="1ae80716711a2da01db96f27079fa144" category="list-text">所有権をqs1admに変更します</block>
+  <block id="adfc4f5f95fd14fe5e97864c6d86f868" category="list-text">クローニング後の処理スクリプトを実行します。</block>
+  <block id="3341903edb9816045da3c0ee4d66d7c0" category="list-text">システムデータベースのリカバリ。</block>
+  <block id="b60470565d8fe8651182cb2c066bac7d" category="list-text">テナント名= QS1でのテナントデータベースのリカバリ</block>
+  <block id="adc2b9c278da13b528d00324aaeb5cdd" category="list-text">SAPアプリケーションサービスを開始します。</block>
+  <block id="e1c708e2804c337ef823929e99a3455d" category="list-text">必要に応じて、SnapCenter でターゲットのHANAリソースを保護します。</block>
+  <block id="c5ba90ff83ae13b97d609a49e54c1ae6" category="paragraph">以下のスクリーンショットは、必要な手順を示しています。</block>
+  <block id="f004e2eef151bcdf5bd7ea895d76ca67" category="list-text">ソース・システムSS1からSnapshotバックアップを選択し、Clone from Backupをクリックします。</block>
+  <block id="3d6e57c014fe290dc79aa90e27dddf88" category="paragraph"><block ref="3d6e57c014fe290dc79aa90e27dddf88" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2beea213cf9a65bc8a70c66c0f77391d" category="list-text">ターゲットシステムQS1がインストールされているホストを選択します。ターゲットSIDとして「QS1」と入力します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。</block>
+  <block id="43fd51d416af6e9f18b014529be516b2" category="admonition">ここで入力するターゲットSIDは、SnapCenter によるクローンの管理方法を制御します。ターゲットのSIDがターゲットホスト上のSnapCenter ですでに設定されている場合、SnapCenter はクローンをホストに割り当てるだけです。ターゲットホストでSIDが設定されていない場合、SnapCenter は新しいリソースを作成します。</block>
+  <block id="758363fa84c32651f9292f2a5cc32a28" category="paragraph"><block ref="758363fa84c32651f9292f2a5cc32a28" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="92e40993ee50730e77531cba9693e2c8" category="list-text">必要なコマンドラインオプションを指定して、マウントスクリプトとクローニング後のスクリプトを入力します。</block>
+  <block id="1da094df1dab4d426de4957e68eb4990" category="paragraph"><block ref="1da094df1dab4d426de4957e68eb4990" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9d94d2cd136d267b823119465ff12cce" category="list-text">SnapCenter の[ジョブの詳細]画面に、処理の進捗状況が表示されます。ジョブの詳細には、データベースリカバリを含めた全体的な実行時間が2分未満であることも示されています。</block>
+  <block id="668232ce8d31f584760f2f4a5780959e" category="paragraph"><block ref="668232ce8d31f584760f2f4a5780959e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="15ad79b2ed70013562c0d01be6d5c47a" category="list-text">sc-system-refresh.shスクリプトのログファイルには'マウントおよびリカバリ操作で実行されたさまざまなステップが表示されますソースシステムに単一のテナントがあり、名前がソースシステムのSID SS1と同じであることがスクリプトによって自動的に検出されました。そのため、このスクリプトはテナント名QS1でテナントをリカバリしました。</block>
+  <block id="ae412af2cf9a8a129cdb2a54dad8cbeb" category="inline-link-macro">「ストレージスナップショットバックアップを使用したSAP HANAシステムの更新操作ワークフロー」</block>
+  <block id="afcb1f460a479b434bc2e1c6660ebbcd" category="admonition">ソーステナント名がソーステナントSIDと同じで、デフォルトのテナント設定フラグである場合は、セクションで説明します <block ref="ed7f275ab757734a24425cd920afe9f7" category="inline-link-macro-rx"></block> はすでに設定されていないため、リカバリ処理は失敗し、手動で実行する必要があります。</block>
+  <block id="0b5d0b2bad6c93484f679ba8419a784f" category="list-text">SnapCenter ジョブが完了すると、ソースシステムのトポロジビューにクローンが表示されます。</block>
+  <block id="88f19da46d22f2f8414d0a0a8867a6b6" category="paragraph"><block ref="88f19da46d22f2f8414d0a0a8867a6b6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="eb7be2e609f53d976252980a5fb13056" category="list-text">HANAデータベースが実行され、SAPアプリケーションサービスを開始できるようになります。</block>
+  <block id="fd11ad04c8bb5382877ffe14a2c9c2b9" category="list-text">ターゲットのHANAシステムを保護する場合は、SnapCenter でリソース保護を設定する必要があります。</block>
+  <block id="bb78481c3ee74e7c2f67d913b4b7b5ef" category="paragraph"><block ref="bb78481c3ee74e7c2f67d913b4b7b5ef" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="77dab2103eaa63111d90367492942c5d" category="section-title">テナント名がSIDと同じオフサイトのバックアップストレージからクローニングする</block>
+  <block id="dcc6549ce81731114e4cf1ce74ef63ca" category="paragraph">このセクションでは、ソースシステムとターゲットシステムでテナント名がSIDと同じになるHANAシステムの更新ワークフローについて説明します。ストレージ・クローニングはオフサイトのバックアップ・ストレージで実行され'sc-system-refresh.shスクリプトを使用してさらに自動化されます</block>
+  <block id="a1004bdbfd5d0adc8808c6558359668c" category="paragraph"><block ref="a1004bdbfd5d0adc8808c6558359668c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="29cec1274f240553a4ff462962cb67ef" category="paragraph">SnapCenter で選択できるのは、プライマリおよびオフサイトのバックアップストレージのクローニングにおけるHANAシステムの更新ワークフローの唯一の違いは、Snapshotバックアップです。オフサイトバックアップストレージのクローニングでは、最初にセカンダリバックアップを選択する必要があります。</block>
+  <block id="837e411cb06fd2fb7816981174a4edc4" category="paragraph"><block ref="837e411cb06fd2fb7816981174a4edc4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="157c12f15ead2ce03155298b5993cf4c" category="paragraph">選択したバックアップのセカンダリストレージが複数ある場合は、必要なデスティネーションボリュームを選択する必要があります。</block>
+  <block id="327d949e6fd9f7292c445b433b47a8c5" category="paragraph"><block ref="327d949e6fd9f7292c445b433b47a8c5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="78184728d775ae4a002e4a173ee4900a" category="paragraph">以降の手順は、「」の説明に従って、プライマリストレージからのクローニングのワークフローと同じです<block ref="c97beb62b14d7af628661ab1b7083442" category="inline-xref-macro-rx"></block>」</block>
+  <block id="76aa27a87d3422dbfbd64167d0ee13a1" category="section-title">テナント名をSIDと同じにしないプライマリストレージからのクローニング</block>
+  <block id="246cdc6844a0e538e4f6603d3729feee" category="paragraph">このセクションでは、ソースのテナント名がSIDと等しくないHANAシステムの更新ワークフローについて説明します。ストレージ・クローニングは'プライマリ・ストレージで実行され'sc-system-refresh.shスクリプトを使用してさらに自動化されます</block>
+  <block id="4673c340c8aa985d02926436427cf9eb" category="paragraph"><block ref="4673c340c8aa985d02926436427cf9eb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fb5bae147fa2b5448fb954976b70afc3" category="paragraph">SnapCenter で必要な手順は、「」で説明されている手順と同じです<block ref="c97beb62b14d7af628661ab1b7083442" category="inline-xref-macro-rx"></block>."] 相違点は'sc-system-refresh.shスクリプト内のテナント・リカバリ・オペレーションです</block>
+  <block id="2b68c12375c80ea7202f0761c4fec2f7" category="paragraph">ソースシステムのテナント名がソースシステムのSIDと異なることがスクリプトで検出されると、ターゲットシステムでのテナントリカバリは、ソーステナントと同じテナント名を使用して実行されます。ターゲットテナント名が異なる場合は、テナントの名前をあとから手動で変更する必要があります。</block>
+  <block id="1dbd1d4931ef272ce46f923c3cc14deb" category="admonition">ソースシステムに複数のテナントがある場合は、最初のテナントのみがリカバリされます。追加のテナントは手動でリカバリする必要があります。</block>
+  <block id="3a6409fe6b4d53ff3f6b240aac5341a9" category="paragraph">新しいSAP HANAシステムの更新処理を開始するには、SnapCenter のクローンの削除処理を使用してターゲットシステムをクリーンアップします。</block>
+  <block id="e2ce46f9cc8de206cfbfd637042c4b0b" category="admonition">SAPアプリケーションサービスは、SnapCenter クローンの削除ワークフローによって停止されることはありません。スクリプトはシャットダウン機能内で拡張するか、アプリケーションサービスを手動で停止する必要があります。</block>
+  <block id="a3401f0667947c2b63c2b4a3fed9e267" category="paragraph">ターゲットのHANAシステムがSnapCenter で保護されている場合は、先に保護を削除する必要があります。ターゲットシステムのトポロジビューで、Remove Protection（保護の削除）をクリックします。</block>
+  <block id="989eccbebcc495e2fe59a81e515b0985" category="paragraph"><block ref="989eccbebcc495e2fe59a81e515b0985" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3e15eddacbaee9932214636dff97abc2" category="paragraph"><block ref="3e15eddacbaee9932214636dff97abc2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="90c309f11ecd1ac79e33675f70945513" category="paragraph">クローンの削除ワークフローは、以下の手順で実行されるようになりました。</block>
+  <block id="be9bc84ed210547ec7c14180e17bf5b9" category="list-text">ソースシステムのトポロジビューでクローンを選択し、削除をクリックします。</block>
+  <block id="4ad31e486af5b781eb51270c2d16f306" category="paragraph"><block ref="4ad31e486af5b781eb51270c2d16f306" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd3b9e0c6370bb8b1bc50684358716e2" category="list-text">必要なコマンドラインオプションを使用して、クローニング前スクリプトとアンマウント後スクリプトを入力します。</block>
+  <block id="61602eb9c1606a0cc9997652ab5014da" category="paragraph"><block ref="61602eb9c1606a0cc9997652ab5014da" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e33bfba94c90e7d4b42f179784bd6f9e" category="paragraph"><block ref="e33bfba94c90e7d4b42f179784bd6f9e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ab6c6ce6391f56063487189d2fcf7a78" category="list-text">sc-system-refresh.shスクリプトのログ・ファイルには'シャットダウンおよびアンマウントの操作手順が表示されます</block>
+  <block id="651c5cde8d72dbd0c53ab15e99678b9b" category="list-text">SnapCenter のクローン作成処理を使用して、SAP HANAの更新処理を再開できるようになりました。</block>
+  <block id="eefd7414dd589e4a4133686b9fc64373" category="section-title">クローンスプリット処理を使用したSAP HANAシステムの更新</block>
+  <block id="803bcd228d1c94485bf2b18ff9f11f49" category="paragraph">システムの更新処理のターゲットシステムを長期間（1~2週間以上）使用する場合は、通常、FlexCloneの容量が削減されることはありません。また、ソースシステムの依存するSnapshotバックアップは、SnapCenter の保持管理によってブロックされ、削除されることはありません。</block>
+  <block id="08eaabb3aed4565ef294e8813596fa2e" category="paragraph">そのため、ほとんどの場合、システムの更新処理の一環としてFlexCloneボリュームをスプリットする方が効果的です。</block>
+  <block id="9cb37b148747af7977290265de6e3e8e" category="admonition">クローンスプリット処理はクローンボリュームの使用をブロックしないため、HANAデータベースの使用中にいつでも実行できます。</block>
+  <block id="360ba780d29018e88a0631d411374c56" category="admonition">クローンスプリット処理ではSnapCenter 、SnapCenter リポジトリ内のターゲットシステムに作成されたすべてのバックアップが削除されます。NetApp AFF システムの場合、クローンスプリット処理によってボリューム上にSnapshotコピーが保持されます。これは、ONTAP によってSnapshotコピーが削除されるFAS システム専用です。これはSnapCenter の既知のバグで、今後のリリースで修正される予定です。</block>
+  <block id="0760f364c123ffeb65230ca87dd8d091" category="paragraph">SnapCenter のクローンスプリットのワークフローは、クローンを選択してクローンスプリットをクリックすることで、ソースシステムのトポロジビューで開始されます。</block>
+  <block id="9af9c37e3998035f8bc3f6a36b5bdda8" category="paragraph"><block ref="9af9c37e3998035f8bc3f6a36b5bdda8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0bb89be537550b86187cea5cf67ac2da" category="paragraph">次の画面には、スプリットボリュームに必要な容量に関する情報がプレビューで表示されます。</block>
+  <block id="c7d002d1f2e180b92480b04daf204c3e" category="paragraph"><block ref="c7d002d1f2e180b92480b04daf204c3e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="32da2ef1aadc17a0c37d725aa68059c6" category="paragraph">SnapCenter ジョブログには、クローンスプリット処理の進捗状況が表示されます。</block>
+  <block id="75caa100dec7744d82e6a0dddbbe4934" category="paragraph"><block ref="75caa100dec7744d82e6a0dddbbe4934" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b1f6480dba4de873a5c13f1a5eb6cb22" category="paragraph">ソースシステムのトポロジビューに戻ると、クローンは表示されなくなります。スプリットボリュームは、ソースシステムのSnapshotバックアップとは独立しています。</block>
+  <block id="4e279ef56c8dec1eb92fb5b6e29f4a53" category="paragraph"><block ref="4e279ef56c8dec1eb92fb5b6e29f4a53" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c1581e8de0ba932c7d6f7e03047baaa5" category="paragraph"><block ref="c1581e8de0ba932c7d6f7e03047baaa5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="875e31e8ed3564eab8486ddbbf14da98" category="paragraph">クローンスプリット処理後の更新ワークフローは、クローンスプリットを使用しない処理と少し異なります。クローンスプリット処理の実行後は、ターゲットデータボリュームがFlexCloneボリュームでなくなったため、クローンの削除処理は必要ありません。</block>
+  <block id="44b1c469b04e22c1b02dfc159d42b76f" category="list-text">ターゲットのHANAシステムがSnapCenter で保護されている場合は、先に保護を削除する必要があります。</block>
+  <block id="a3a1751a895917b2a93271ecd142a988" category="list-text">SnapCenter クローニングウィザードを開始します。</block>
+  <block id="9b7d4441890df21b59985f2678aecdbf" category="list-text">ソースHANAシステムSS1からSnapshotバックアップを選択します。</block>
+  <block id="c28023e6646ca3cb43502a132cd326bf" category="list-text">ターゲットホストを選択し、ターゲットホストのストレージネットワークインターフェイスを指定します。</block>
+  <block id="34e82d25d19905b44504ec1f9a6074e0" category="list-text">クローニング前、マウント、クローニング後の各処理に使用するスクリプトを指定します。</block>
+  <block id="955fc654ce08874287363442ae3a05e7" category="list-text">SnapCenter クローニング処理。</block>
+  <block id="c6b0b90b778034587b6c6ec42e911ba3" category="list-text">所有権をqs1admに変更します</block>
+  <block id="9d811d9640890f043797b252de118ff9" category="list-text">システムデータベースをリカバリします。</block>
+  <block id="89323a923dd015f1c1a63e0e7b037191" category="list-text">テナント名= QS1を使用してテナントデータベースをリカバリします。</block>
+  <block id="8ed643b400f5b8818c206d496ca25b2a" category="list-text">古いスプリットのターゲットボリュームを手動で削除します。</block>
+  <block id="2da0fbf285f68c883efe64e56c6fb6a8" category="list-text">ソース・システムSS1からSnapshotバックアップを選択し、Clone from backupをクリックします。</block>
+  <block id="39413e8f3a99f75b4799f7561d4b5e28" category="paragraph"><block ref="39413e8f3a99f75b4799f7561d4b5e28" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d8167b3338beef6747a1140d7dbb1db4" category="admonition">ここで入力するターゲットSIDは、SnapCenter によるクローンの管理方法を制御します。ターゲットのSIDがターゲットホスト上のSnapCenter ですでに設定されている場合、SnapCenter はクローンをホストに割り当てるだけです。ターゲットホストでSIDが設定されていない場合、SnapCenter は新しいリソースを作成します。</block>
+  <block id="4278fbd4b12a3d37e896d2fb2c50112a" category="paragraph"><block ref="4278fbd4b12a3d37e896d2fb2c50112a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f16fb3c3571534cf8d9dab0d59140a70" category="list-text">必要なコマンド・ライン・オプションを指定して、クローニング前、マウント、およびクローニング後のスクリプトを入力します。クローニング前の手順では、スクリプトを使用してHANAデータベースをシャットダウンし、データボリュームをアンマウントします。</block>
+  <block id="075ef9c0fea2bfef2fedf09421e97520" category="paragraph"><block ref="075ef9c0fea2bfef2fedf09421e97520" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4c3598a628eabf81182fedcb2644641a" category="list-text">SnapCenter のジョブ詳細画面に処理の進捗状況が表示されます。ジョブの詳細には、データベースリカバリを含めた全体的な実行時間が2分未満であることも示されています。</block>
+  <block id="2773ed031ad7078870b82d19da26d408" category="paragraph"><block ref="2773ed031ad7078870b82d19da26d408" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0879aa8ce4f24e250f4ff6b532ca0e85" category="list-text">sc-system-refresh.shスクリプトのログファイルには'シャットダウン'アンマウント'マウント'およびリカバリ操作に対して実行されたさまざまなステップが表示されますソースシステムに単一のテナントがあり、名前がソースシステムのSID SS1と同じであることがスクリプトによって自動的に検出されました。そのため、このスクリプトはテナント名QS1でテナントをリカバリしました。</block>
+  <block id="0dea17e6f635ab0c3868e15ed7f49829" category="list-text">更新処理が終了しても古いターゲットデータボリュームは削除されません。ONTAP System Managerなどを使用して手動で削除する必要があります。</block>
+  <block id="76a5308fe89a8e782a72010d9a7ee852" category="section-title">PowerShellスクリプトによるSnapCenter ワークフロー自動化</block>
+  <block id="c0ff26b620598b6000a1bcf255a128c6" category="paragraph">前のセクションでは、SnapCenter UIを使用してさまざまなワークフローを実行し、PowerShellスクリプトまたはREST API呼び出しを使用してすべてのワークフローを実行することもできるため、さらなる自動化が可能です。以降のセクションでは、以降のワークフローの基本的なPowerShellスクリプトの例について説明します。</block>
+  <block id="2021b3b77c933e0e9fc9d56a3a552caf" category="list-text">クローンを作成します</block>
+  <block id="12ed4152d6bd08ebcd4e8d515069f7a5" category="list-text">クローンを削除します</block>
+  <block id="37ba622841aed0dc2e49254702244420" category="admonition">このサンプルスクリプトは現状のまま提供されており、ネットアップではサポートしていません。</block>
+  <block id="2cbd77b31c264f22e56a266062e0b76e" category="paragraph">すべてのスクリプトはPowerShellコマンドウィンドウで実行する必要があります。スクリプトを実行する前に'Open-SmConnection'コマンドを使用してSnapCenter サーバへの接続を確立する必要があります</block>
+  <block id="81040d6711353f30feae62b8255cac0a" category="paragraph">以下の簡単なスクリプトは、PowerShellコマンドを使用してSnapCenter クローン作成処理を実行する方法を示しています。SnapCenter の「New-SmClone」コマンドは、ラボ環境に必要なコマンドライン・オプションと、前述した自動化スクリプトを使用して実行します。</block>
+  <block id="f01358f0b3c6557b9a0d6ca899e3caeb" category="paragraph">画面出力には、クローン作成PowerShellスクリプトの実行状況が表示されます。</block>
+  <block id="60af87a36f879c4e11b6fe3ca1c7243f" category="paragraph">以下の簡単なスクリプトは、PowerShellコマンドを使用してSnapCenter クローンの削除処理を実行する方法を示しています。SnapCenter のRemove-SmCloneコマンドは'実習環境に必要なコマンド・ライン・オプションと'前に説明した自動化スクリプトを使用して実行します</block>
+  <block id="e76ca097f489e790c48bef1cede72490" category="paragraph">画面出力には、クローン削除PowerShellスクリプトの実行状況が表示されます。</block>
+  <block id="a8cbe653a38b6555478292c8201083cd" category="inline-link-macro">次の例は、SnapCenter を使用したSAPシステムのクローニングです。</block>
+  <block id="ae5345c78ae9296598fefd8e5dabcec9" category="paragraph"><block ref="ae5345c78ae9296598fefd8e5dabcec9" category="inline-link-macro-rx"></block></block>
+  <block id="1ac85619672d3775188dd5a646cde2e7" category="summary">Azure NetApp Files for SAP HANA、Oracle、DB2 on Azureを使用すると、NetApp ONTAP の高度なデータ管理機能とデータ保護機能をMicrosoft Azure NetApp Files の標準サービスで利用できます。</block>
+  <block id="7795765c3d2e54c77f3ddad7877f93e2" category="doc">LSC、AzAcSnap、およびAzure NetApp Files を使用してSAP HANAシステムが更新されます</block>
+  <block id="9feb37412183993901b30e7332fad66e" category="inline-link-macro">前の例：LSCとSnapCenter でSAP HANAシステムが更新されます。</block>
+  <block id="a6f1cf5ecbcd4076fb2a189488d4b908" category="paragraph"><block ref="a6f1cf5ecbcd4076fb2a189488d4b908" category="inline-link-macro-rx"></block></block>
+  <block id="fa93527877c31a5c6e9ce20800f4865c" category="inline-link">Azure NetApp Files for SAP HANAの略</block>
+  <block id="e55759cd3f81e064f2a8f339a6c05115" category="inline-link">AzAcSnap</block>
+  <block id="09f21139c961e6762596c00d8a70ff85" category="paragraph">を使用します<block ref="e44e132e965fcb8ded073c9571f6e761" category="inline-link-rx"></block>、Oracle、DB2 on Azureを利用すると、NetApp ONTAP の高度なデータ管理機能とデータ保護機能をMicrosoft Azure NetApp Files 標準サービスで利用できます。<block ref="5970ce2e45a53257e469b102e0b782c9" category="inline-link-rx"></block> は、SAPシステムの更新処理を高速化して、SAP HANAシステムとOracleシステムのNetApp Snapshotコピーをアプリケーションと整合性のあるものにするための基盤です（DB2は現在AzAcSnapではサポートされていません）。</block>
+  <block id="46218e7d3d10ced22363fc51163a8631" category="paragraph">Snapshotコピーのバックアップは、オンデマンドで作成することも、バックアップ戦略の一環として定期的に作成することもでき、効率的に新しいボリュームにクローニングして、ターゲットシステムを迅速に更新することができます。AzAcSnapは、バックアップを作成して新しいボリュームにクローンを作成するために必要なワークフローを提供します。一方、Libelle SystemCopyは、完全なエンドツーエンドのシステム更新に必要な、前処理と後処理の手順を実行します。</block>
+  <block id="eaa4caa91e8a756ac88c72f7fa40f7ef" category="paragraph">この章では、SAP HANAを基盤データベースとして使用したAzAcSnapおよびLibelle SystemCopyを使用したSAPシステムの自動更新について説明します。AzAcSnapはOracleでも利用できるため、AzAcSnap for Oracleを使用して同じ手順 を実装することもできます。その他のデータベースは、今後AzAcSnapによってサポートされる可能性があります。この場合、LSCおよびAzAcSnapを使用してこれらのデータベースのシステムコピー操作が有効になります。</block>
+  <block id="f37683b4ee88357da8b8ff8d55aa1304" category="paragraph">次の図は、AzAcSnapおよびLSCを使用したSAPシステム更新ライフサイクルの一般的なワークフローを示しています。</block>
+  <block id="5802128cf27d5a7bd20d04ed131c4bb6" category="list-text">LSCによって実行されるSAP前処理操作。</block>
+  <block id="134d7bd893793f6cd5c99330d7b3504d" category="list-text">AzAcSnapで実行されるターゲットシステムへのソースシステムの既存のSnapshotコピーのリストア（またはクローニング）。</block>
+  <block id="099f06a764be7ee4654b26209cb55657" category="list-text">LSCによって実行されるSAP後処理操作。</block>
+  <block id="4b34b0d40dff8a07be6ef92392bacaea" category="paragraph">システムはテストシステムまたはQAシステムとして使用できます。新しいシステムの更新が要求されると、手順2でワークフローが再開されます。残りのクローンボリュームは手動で削除する必要があります。</block>
+  <block id="6dab1fed0d48a8518974affe4abc61f5" category="paragraph"><block ref="6dab1fed0d48a8518974affe4abc61f5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5d254ff3f488e6288f82f4fec056f63a" category="paragraph">次の前提条件を満たしている必要があります。</block>
+  <block id="f67cde57713136eea461365a6e071ca0" category="section-title">AzAcSnapがインストールされ、ソースデータベース用に設定されている</block>
+  <block id="a652e1055f4eb346a05a0a8ae89ccf80" category="paragraph">一般に、AzAcSnapには次の図に示すように、2つの導入オプションがあります。</block>
+  <block id="a33fdfdbe5e63cebae840dbd0fb8b354" category="paragraph"><block ref="a33fdfdbe5e63cebae840dbd0fb8b354" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ad0fea35a0ba8f00a3f79747ff581fe9" category="paragraph">AzAcSnapは、すべてのDB構成ファイルが一元的に格納されている中央のLinux VMにインストールして実行できます。AzAcSnapは、すべてのデータベースに（hdbsqlクライアントを介して）すべてのデータベースと、これらすべてのデータベースに設定されたHANAユーザストアキーにアクセスできます。分散型の展開では、AzAcSnapは各データベースホストに個別にインストールされ、通常はローカルデータベースのDB構成のみが格納されます。どちらの展開オプションもLSC統合でサポートされています。ただし、このドキュメントのラボセットアップではハイブリッドアプローチを採用しました。AzAcSnapは、すべてのDB構成ファイルとともに中央のNFS共有にインストールされました。この中央インストール共有は、「/mnt/software/AZACSNAP/snapshot-tool」の下のすべてのVMにマウントされました。その後、このツールはDB VM上でローカルに実行され、</block>
+  <block id="3473bf6ac226ea97187d11de4c036254" category="section-title">Libelle SystemCopyがソースおよびターゲットのSAPシステム用にインストールおよび設定されていること</block>
+  <block id="6d4c9a9ee647a3bb91c46c91c618bbd0" category="paragraph">Libelle SystemCopyの展開は、次のコンポーネントで構成されています。</block>
+  <block id="c7487082a9119948c757ddc187f61aa0" category="paragraph"><block ref="c7487082a9119948c757ddc187f61aa0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="569de98db8273c0914828fb03d807225" category="list-text">*LSC Master.*という名前が示すように、これはLibelleベースのシステムコピーの自動ワークフローを制御するマスターコンポーネントです。</block>
+  <block id="13b1b9bc69152de535f089e6aa2557fa" category="list-text">* LSC Worker。* LSCワーカーは通常、ターゲットSAPシステム上で実行され、自動システムコピーに必要なスクリプトを実行します。</block>
+  <block id="f827b8d117bc460f3b9c2612535f7e04" category="list-text">* LSC Satellite。* LSCサテライトは、追加のスクリプトを実行する必要があるサードパーティシステムで実行されます。LSCマスターは、LSCサテライトシステムの役割も果たします。</block>
+  <block id="6ad330317942586b738ce4d07b4d04dd" category="paragraph">Libelle SystemCopy（LSC）GUIが適切なVMにインストールされている必要があります。この実習セットアップでは、LSC GUIは別のWindows VMにインストールされていますが、LSCワーカーとともにDBホストでも実行できます。LSCワーカーは、少なくともターゲットDBのVMにインストールする必要があります。選択したAzAcSnap展開オプションによっては、LSCワーカーの追加インストールが必要な場合があります。AzAcSnapが実行されるVMにLSCワーカーインストールが必要です。</block>
+  <block id="6118b8c345b5bb01238a53ac29f93c35" category="paragraph">LSCをインストールした後、ソースおよびターゲットデータベースの基本設定をLSCガイドラインに従って実行する必要があります。次の図は、このドキュメントのラボ環境の構成を示しています。ソースとターゲットのSAPシステムおよびデータベースの詳細については、次のセクションを参照してください。</block>
+  <block id="cb89419556c8bcac070f65acf0e1a6c5" category="paragraph"><block ref="cb89419556c8bcac070f65acf0e1a6c5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0f57aa4795f7dfe2ad4752c161b57833" category="paragraph">また、SAPシステムに適した標準のタスクリストを設定する必要があります。LSCのインストールおよび設定の詳細については、LSCインストールパッケージの一部であるLSCユーザマニュアルを参照してください。</block>
+  <block id="482723983a4f2af954e36ff41e567451" category="section-title">既知の制限</block>
+  <block id="582de1e52b4b4b8c43afd9e2901bb386" category="paragraph">ここで説明するAzAcSnapとLSCの統合は、SAP HANAのシングルホストデータベースでのみ機能します。SAP HANAマルチホスト（またはスケールアウト）配置もサポートできますが、このような配置では、コピーフェーズおよびアンダーレイアウトスクリプトのLSCカスタムタスクをいくつか調整または拡張する必要があります。このような機能強化については、本ドキュメントでは説明していません。</block>
+  <block id="d5fd1a217e57fc0be1c5b301de253791" category="paragraph">SAPシステムの更新機能が統合される際には、ソースシステムのSnapshotコピーが最新で正常に作成され、ターゲットシステムの更新が実行されます。他の古いSnapshotコピーを使用する場合は、の対応するロジックを指定します <block ref="2af3f1688ba1a6519fca5748b63691bc" category="inline-xref-macro-rx"></block> カスタムタスクを調整する必要があります。このプロセスについては、本ドキュメントでは説明しません。</block>
+  <block id="ef0b4c849c8032326f9a09dbcac2c1aa" category="paragraph">このラボ環境は、ソースのSAPシステムとターゲットのSAPシステムで構成され、どちらもSAP HANAのシングルホストデータベースで実行されます。</block>
+  <block id="ac070aa5e6a10e38f43a73ecc6d42841" category="paragraph">次の図は、ラボのセットアップを示しています。</block>
+  <block id="d861c343b201f7c50c6ec8267d280bd2" category="paragraph"><block ref="d861c343b201f7c50c6ec8267d280bd2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6b0375a968afca58417a6ccc5db74398" category="paragraph">このボリュームには、次のシステム、ソフトウェアバージョン、およびAzure NetApp Files ボリュームが含まれています。</block>
+  <block id="49777ec13a778673605c9e33fe4d84de" category="list-text">* P01。* SAP HANA 2.0 SP5データベース。ソースデータベース、シングルホスト、シングルユーザテナント</block>
+  <block id="8be862122af4c9837175fbad21e59c86" category="list-text">* PN1.* SAP NetWeaver ABAP 7.51ソースのSAPシステム：</block>
+  <block id="6bda167dc65db3a371fbd8355cb7bc59" category="list-text">* VM-P01。* SLES 15 SP2、AzAcSnapがインストールされている場合。ソースVMでP01とPN1をホストしています。</block>
+  <block id="63ed1d491719254b5f3c455a5f911ae5" category="list-text">* QL1.* SAP HANA 2.0 SP5データベース。ターゲットデータベース、シングルホスト、シングルユーザテナントのシステム更新</block>
+  <block id="32da3b0f0447a0ec3ab62e03e5eb84ee" category="list-text">* QN1.* SAP NetWeaver ABAP 7.51システム更新の対象となるSAPシステム：</block>
+  <block id="c8ae9af9ad689cb19e7af7e97a1887ae" category="list-text">* VM-QL1.* LSCワーカーがインストールされたSLES 15 SP2。ターゲットのVMでQL1とQN1をホストしています。</block>
+  <block id="9e018e4a68d1463bc5db2d746d1acb7f" category="list-text">LSCマスターバージョン9.0.0.052。</block>
+  <block id="f25f13481e770cb30d45d52a5d67617c" category="list-text">* VM-LSC-MMASTER.* Windows Server 2016。LSCマスターおよびLSC GUIをホストします。</block>
+  <block id="067614b5d11d65ce10a3c3c952fea380" category="list-text">専用DBホストにマウントされたP01とQL1のデータ、ログ、共有のAzure NetApp Files ボリューム。</block>
+  <block id="4f53adf1b17bd4d8d6121ec5aba2a189" category="list-text">スクリプト、AzAcSnapのインストール、すべてのVMにマウントされた構成ファイル用のCentral Azure NetApp Files ボリューム。</block>
+  <block id="7586e39c6c4f8cbe63f3b66c1b9e3faa" category="paragraph">最初のSAPシステムの更新を実行する前に、AzAcSnapで実行されるAzure NetApp Files のSnapshotコピーおよびクローニングベースのストレージ処理を統合する必要があります。また、データベースの起動と停止、およびAzure NetApp Files ボリュームのマウントまたはアンマウントを実行する補助スクリプトも実行する必要があります。必要なすべてのタスクは、コピーフェーズの一部としてLSCでカスタムタスクとして実行されます。次の図は、LSCタスクリスト内のカスタムタスクを示しています。</block>
+  <block id="69d7683305142afd07c1b50f77aaf2ee" category="paragraph"><block ref="69d7683305142afd07c1b50f77aaf2ee" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="46d4412b24c36c75d9f3d4767b465cdc" category="paragraph">5つのコピー・タスクの詳細については'以下を参照してくださいこれらのタスクの一部では、サンプルスクリプト「sc-system-refresh.sh」を使用して、必要なSAP HANAデータベースのリカバリ処理と、データボリュームのマウントおよびアンマウントをさらに自動化します。スクリプトは、LSCに対する実行が成功したことを示すために、システム出力で「LSC:SUCCESS」メッセージを使用します。カスタムタスクおよび使用可能なパラメータの詳細については、LSCユーザマニュアルおよびLSC開発者ガイドを参照してください。このラボ環境のすべてのタスクは、ターゲットDB VMで実行されます。</block>
+  <block id="3c3eb031881af72bbc2cd35d51f73ec5" category="admonition">サンプルスクリプトは現状のまま提供されており、ネットアップではサポートしていません。スクリプトは、mailto：ng-sapcc@netapp.com [ ng-sapcc@netapp.com ^]にEメールで送信できます。</block>
+  <block id="d5588a980e081e89a600221efeb98b75" category="section-title">Sc-system-refresh.sh構成ファイル</block>
+  <block id="fb57465e538291ad6aa0cd830ca9bf3b" category="paragraph">前述したように、補助スクリプトを使用して、データベースの起動と停止、Azure NetApp Files ボリュームのマウントとアンマウント、およびSnapshotコピーからのSAP HANAデータベースのリカバリを行います。スクリプト「sc-system-refresh.sh」は中央NFS共有に格納されます。スクリプトでは、ターゲットデータベースごとに構成ファイルが必要です。このファイルは、スクリプト自体と同じフォルダに格納する必要があります。コンフィギュレーションファイルには、「sc-system-refresh-&lt;target DB SID&gt;.cfg」という名前（この実習環境では「sc-system-refresh-ql1.cfg」など）を付ける必要があります。ここで使用する構成ファイルでは、固定/ハードコーディングされたソースDB SIDを使用します。いくつかの変更により、スクリプトと構成ファイルを拡張して、ソースDB SIDを入力パラメータとして取得できます。</block>
+  <block id="f6c6e1dc96f073e737f971bc3de9bf27" category="paragraph">特定の環境に応じて、次のパラメータを調整する必要があります。</block>
+  <block id="c225d666b6830be01af89c21fb5b7663" category="section-title">ZSCCOPYSHUTDOWN</block>
+  <block id="d2a4d4fa2135bbe64765a848486bf0e3" category="paragraph">このタスクは、ターゲットのSAP HANAデータベースを停止します。このタスクの[コード]セクションには、次のテキストが含まれています。</block>
+  <block id="66e8ad725021919d88a78f141636e9e9" category="paragraph">スクリプト「sc-system-refresh.sh」は'shutdownコマンドとDB SIDの2つのパラメータを取り'sapcontrolを使用してSAP HANAデータベースを停止しますシステム出力は標準のLSCログファイルにリダイレクトされます。前述のように、「lsc：success」メッセージは、正常に実行されたことを示します。</block>
+  <block id="eaf0d593dd3699b3ce75412eb657ca04" category="paragraph"><block ref="eaf0d593dd3699b3ce75412eb657ca04" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a0148c02de1fd7114f8aff04fbc1d77e" category="section-title">ZSCCOPYUMOUNT</block>
+  <block id="a188fa865cb93fe9e4fe446df15457ab" category="paragraph">このタスクでは、ターゲットのDBオペレーティングシステム（OS）から古いAzure NetApp Files データボリュームをアンマウントします。このタスクのコードセクションには、次のテキストが含まれています。</block>
+  <block id="b0f77d682c2a17e5fb5645acd2be9ad9" category="paragraph">前のタスクと同じスクリプトが使用されます。渡される2つのパラメータは'umount'コマンドとDB SIDです</block>
+  <block id="f1ffbb80b33a17caf09dab5d5759da18" category="section-title">ZAZACSNAPRESORE</block>
+  <block id="893ecde8f8b221085cc1f80173cf2a6f" category="paragraph">このタスクでは、AzAcSnapを実行して、ソースデータベースの最新の成功したSnapshotコピーを、ターゲットデータベースの新しいボリュームにクローニングします。この処理は、従来のバックアップ環境でのバックアップのリダイレクトリストアに相当します。ただし、Snapshotコピーとクローニング機能を使用すれば、最大のデータベースであっても数秒でこのタスクを実行できます。従来のバックアップでは、このタスクに数時間かかることもありました。このタスクのコードセクションには、次のテキストが含まれています。</block>
+  <block id="d2d41dd98a152a7ea8b159ca20e4ab02" category="inline-link">Azure Application Consistent Snapshotツールを使用してリストア</block>
+  <block id="62ee4a8664a0e46bebbe8a72cd8dbcab" category="paragraph">AzAcSnapの'restore'コマンド・ライン・オプションに関する完全なドキュメントはAzureのドキュメントを参照してください<block ref="c5fde8728491d75aa1afef4669aa2a0d" category="inline-link-rx"></block>。この呼び出しでは、ソースDBのJSON DB構成ファイルが、「azacsnap -&lt;source DB SID&gt;」という命名規則に従って中央のNFS共有にあることが前提となります。JSON形式（このラボ環境では'azacsnap-p0P01 JSONなど）</block>
+  <block id="82c163596353a5052a29181bedeaa772" category="admonition">AzAcSnapコマンドの出力は変更できないため、このタスクにはデフォルトの「LSC:SUCCESS」メッセージを使用できません。そのため'AzAcSnap出力の文字列'Example mount instructionsが'成功した戻りコードとして使用されます5.0 GAバージョンのAzAcSnapでは、この出力はクローニングプロセスが成功した場合にのみ生成されます。</block>
+  <block id="ec16e54e6d69802cf5c8689992d032ca" category="paragraph">次の図に、新しいボリュームへのAzAcSnapリストア成功メッセージを示します。</block>
+  <block id="ff2a47c3602b07a11dace2d6bea98fcc" category="paragraph"><block ref="ff2a47c3602b07a11dace2d6bea98fcc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1c7e35fce098356ccba33d52f38b9ede" category="section-title">ZSCCOPYMOUNT</block>
+  <block id="064b2926edf3b035dc0bcd3f7a1fc7bb" category="paragraph">このタスクでは、ターゲットDBのOSに新しいAzure NetApp Files データボリュームをマウントします。このタスクのコードセクションには、次のテキストが含まれています。</block>
+  <block id="6a2a3f49299c67baa45c92224d7eff0e" category="paragraph">sc-system-refresh.shスクリプトが再び使用され'mountコマンドとターゲットDB SIDが渡されます</block>
+  <block id="f64b75a1baf8c4281e01d865f1c874e5" category="section-title">ZSCCOPYRECOVER</block>
+  <block id="730fe24ed3ef0ef3bd0be5dd1af0f3af" category="inline-link">ボリュームクォータの動的な増減</block>
+  <block id="f2f5edcd956f2ae9e108055b0188a470" category="paragraph">このタスクでは、リストア（クローン）されたSnapshotコピーに基づいて、システムデータベースとテナントデータベースのSAP HANAデータベースのリカバリを実行します。ここで使用するリカバリ・オプションは、フォワード・リカバリに適用される特定のデータベース・バックアップ（追加ログなしなど）を対象としています。したがって、リカバリ時間は非常に短くなります（最大で数分）。この処理の実行時間は、リカバリプロセス後に自動的に実行されるSAP HANAデータベースの起動によって決まります。起動時間を短縮するために、必要に応じて、次のAzureのドキュメントに従ってAzure NetApp Files データボリュームのスループットを一時的に向上させることができます。<block ref="e891566aaa8094b6e6bbfcb7652af128" category="inline-link-rx"></block>。このタスクのコードセクションには、次のテキストが含まれています。</block>
+  <block id="b8d42515ee80a358d1c946f1ccf838dc" category="paragraph">このスクリプトは'recover'コマンドとターゲットDB SIDとともに再び使用されます</block>
+  <block id="4bd56b391b93afbc4de82fc45017847a" category="paragraph">このセクションでは、ラボシステムの更新処理のサンプルとして、このワークフローの主な手順を記載します。</block>
+  <block id="b63b967fbfcc2b625ffd8c4e6d742f78" category="paragraph">バックアップカタログに記載されたP01ソースデータベースの定期的なSnapshotコピーとオンデマンドSnapshotコピーが作成されている。</block>
+  <block id="a3d04f4d455a0f6118e2e8465622823a" category="paragraph"><block ref="a3d04f4d455a0f6118e2e8465622823a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="44d822623a67b202b6fcd5653ee5c4f1" category="paragraph">更新処理には、3月12日の最新バックアップが使用されています。バックアップの詳細セクションに、このバックアップの外部バックアップID（EBID）が表示されます。次の図に示すように、Azure NetApp Files データボリューム上の、対応するSnapshotコピーバックアップのSnapshotコピー名を指定します。</block>
+  <block id="769f7a650380281a234a3f7cbec72806" category="paragraph"><block ref="769f7a650380281a234a3f7cbec72806" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="01d15505073ca5412063edc35cf07b35" category="paragraph">更新操作を開始するには、LSC GUIで正しい設定を選択し、[実行の開始]をクリックします。</block>
+  <block id="09607f50153017449c2750d6e4c3f62d" category="paragraph"><block ref="09607f50153017449c2750d6e4c3f62d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="62021ea8e70f699321bf7b3de6ecce87" category="paragraph">LSCは、チェックフェーズのタスクの実行を開始し、プリフェーズの設定済みタスクを実行します。</block>
+  <block id="3f26dbf1ea393e54568e5201cd862779" category="paragraph"><block ref="3f26dbf1ea393e54568e5201cd862779" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="adafee97abc781243b6b647f8ffc7ddd" category="paragraph">移行前フェーズの最後のステップとして、移行先のSAPシステムが停止します。次のコピーフェーズでは、前のセクションで説明したステップが実行されます。まず、ターゲットのSAP HANAデータベースが停止し、古いAzure NetApp Files ボリュームがOSからアンマウントされます。</block>
+  <block id="f1e3ee62f635b9bacd660db2f6ca0f0e" category="paragraph"><block ref="f1e3ee62f635b9bacd660db2f6ca0f0e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4778404c5c2a6cb13b27028a13e6ec62" category="paragraph">次に、ZAZACSNAPRESTOREタスクで、P01システムの既存のSnapshotコピーからクローンとして新しいボリュームを作成します。次の2つの図は、LSC GUIでのタスクのログ、およびAzureポータルでのクローンAzure NetApp Files ボリュームを示しています。</block>
+  <block id="b53f1c99895c8e20dc924911200aa2a7" category="paragraph"><block ref="b53f1c99895c8e20dc924911200aa2a7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4a8eefc4e2802ff7979008300dd2cc4e" category="paragraph"><block ref="4a8eefc4e2802ff7979008300dd2cc4e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ac8d5bfc0cf9544d6cc1869d7061a604" category="paragraph">その後、この新しいボリュームがターゲットDBホストとシステムデータベースにマウントされ、テナントデータベースが、包含するSnapshotコピーを使用してリカバリされます。リカバリが完了すると、SAP HANAデータベースが自動的に起動します。このSAP HANAデータベースの起動は、コピーフェーズのほとんどの時間を占めています。残りの手順は、データベースのサイズに関係なく、通常数秒で終了します。次の図は、SAPが提供するPythonリカバリスクリプトを使用してシステムデータベースをリカバリする方法を示しています。</block>
+  <block id="7bd05f03ede952aef4f6d0fadabf82a3" category="paragraph"><block ref="7bd05f03ede952aef4f6d0fadabf82a3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bb19e82722621ce22f94d846c584a966" category="paragraph">コピーフェーズ後、LSCはPostフェーズで定義されたすべてのステップで継続します。システムの更新プロセスが完了すると'ターゲット・システムは再び稼働し'完全に使用可能になりますこのラボシステムでは、SAPシステムの更新に必要な合計実行時間は約25分でした。このうち、コピーフェーズで消費される時間は5分未満です。</block>
+  <block id="3b7e2a13f6f2900aebaac1a475f80d70" category="paragraph"><block ref="3b7e2a13f6f2900aebaac1a475f80d70" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4eab10bc40a84a5e6e404013a09733f4" category="inline-link-macro">次へ：追加情報 およびバージョン履歴の参照先。</block>
+  <block id="43678c52f4cb8971c772ed90d9f6ce7c" category="paragraph"><block ref="43678c52f4cb8971c772ed90d9f6ce7c" category="inline-link-macro-rx"></block></block>
+  <block id="aed4be0abac71ea3a4ee20b172e42949" category="sidebar">Libelle SystemCopyによるSAPシステムのコピー処理の自動化</block>
+  <block id="8e070ffcf4d959eabcd3559b9bb17ec6" category="sidebar">追加情報 およびバージョン履歴の参照先</block>
 </blocks>

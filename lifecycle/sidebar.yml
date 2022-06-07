@@ -2,6 +2,42 @@
 section: lifecycle
 title: ライフサイクル管理
 entries:
+- title: SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化
+  type: solutions
+  entries:
+  - title: はじめに
+    url: "/lifecycle/sc-copy-clone-introduction.html"
+  - title: SAPシステムのコピー、更新、クローニングのシナリオ
+    url: "/lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html"
+  - title: システムの更新とクローニングのユースケース
+    url: "/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html"
+  - title: SnapCenter を使用したSAPシステムの更新ワークフローの概要
+    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html"
+  - title: SnapCenter を使用したSAPシステムのコピーワークフローの概要
+    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html"
+  - title: SnapCenter を使用したSAPシステムのクローニングワークフローの概要
+    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html"
+  - title: ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー
+    url: "/lifecycle/sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html"
+  - title: 自動化スクリプトの例
+    url: "/lifecycle/sc-copy-clone-automation-example-scripts.html"
+  - title: SAP HANAシステムをSnapCenter で更新
+    url: "/lifecycle/sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html"
+  - title: SnapCenter によるSAPシステムのクローニング
+    url: "/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html"
+  - title: 追加情報およびバージョン履歴の参照先
+    url: "/lifecycle/sc-copy-clone-where-to-find-additional-information.html"
+- title: Libelle SystemCopyによるSAPシステムのコピー処理の自動化
+  type: solutions
+  entries:
+  - title: 概要
+    url: "/lifecycle/libelle-sc-overview.html"
+  - title: LSCおよびSnapCenter でSAP HANAシステムが更新されます
+    url: "/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html"
+  - title: LSC、AzAcSnap、およびAzure NetApp Files を使用してSAP HANAシステムが更新されます
+    url: "/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html"
+  - title: 追加情報 およびバージョン履歴の参照先
+    url: "/lifecycle/libelle-sc-where-to-find-additional-information.html"
 - title: SnapCenter SAP HANA プラグインを使用した SAP システムのコピーの自動化
   url: https://www.netapp.com/us/media/tr-4667.pdf
 - title: ネットアップストレージと SAP Landscape Management の統合
