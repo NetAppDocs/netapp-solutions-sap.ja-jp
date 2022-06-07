@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head class="at-element-marker">
-  <title>TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』</title>
+  <title>システムの更新とクローニングのユースケース</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』" />
+  <meta property="og:title" content="システムの更新とクローニングのユースケース" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/backup/saphana-br-sc_pdf_link.html" />
-	<meta property="og:description" content="テクニカルレポート TR-4614 に、 NetApp SnapCenter を使用した SAP HANA データ保護のベストプラクティスを示します。このドキュメントでは、 SnapCenter の概念、設定に関する推奨事項、設定やバックアップ処理などの運用ワークフローについて説明します。 リストア処理とリカバリ..." />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html" />
+	<meta property="og:description" content="テストやトレーニングの目的で、ソースシステムのデータをターゲットシステムで使用できるようにする必要があるシナリオは複数あります。テストおよびトレーニング用のシステムは、ソースシステムのデータで定期的に更新し、現在のデータセットでテストとトレーニングが実行されていることを確認する必要があります。" />
   <meta property="og:image" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="テクニカルレポート TR-4614 に、 NetApp SnapCenter を使用した SAP HANA データ保護のベストプラクティスを示します。このドキュメントでは、 SnapCenter の概念、設定に関する推奨事項、設定やバックアップ処理などの運用ワークフローについて説明します。 リストア処理とリカバリ...">
-  <meta name="keywords" content=" tr-4614, pdf, sap, hana, backup, recovery, snapcenter"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="テストやトレーニングの目的で、ソースシステムのデータをターゲットシステムで使用できるようにする必要があるシナリオは複数あります。テストおよびトレーニング用のシステムは、ソースシステムのデータで定期的に更新し、現在のデータセットでテストとトレーニングが実行されていることを確認する必要があります。">
+  <meta name="keywords" content=" date refresh, qa, test, sandbox, training, logical corruption, dr, disaster recovery, testing"><!-- Icons -->
   <link rel="icon" href="/ja-jp/netapp-solutions-sap/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/issues/new?body=Page%3A%20[TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』](https://docs.netapp.com/ja-jp/netapp-solutions-sap/backup/saphana-br-sc_pdf_link.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a><a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/blob/main/backup/saphana-br-sc_pdf_link.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/edit-sm.svg" class="github-icon" />GitHub で編集</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/netapp-solutions-sap/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/issues/new?body=Page%3A%20[システムの更新とクローニングのユースケース](https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a><a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/blob/main/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/edit-sm.svg" class="github-icon" />GitHub で編集</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/netapp-solutions-sap/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">このページ</div>
@@ -277,35 +277,27 @@
     </div>
   </div>
   <div class="n-property-bar__toolbar">
-    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
-      <div id="ie-i18n-menu">
-      <span class="ie-i18n-lang">日本語</span>
-        <button class="ie-i18n-icon-container" type="button">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">日本語</span>
           <svg class="n-globe__icon" aria-labelledby="title">
             <title>globe</title>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#globe"></use>
           </svg>
         </button>
       </div>
-      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
-        <div class="n-language-selector-menu">
-          <ul class="n-menu__list">
-            <li class="n-menu__list-column">
-              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-sc_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/netapp-solutions-sap/backup/saphana-br-sc_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/netapp-solutions-sap/backup/saphana-br-sc_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/netapp-solutions-sap/backup/saphana-br-sc_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/netapp-solutions-sap/backup/saphana-br-sc_pdf_link.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
-                </li></ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li></ul>
     </div><!-- End Language Selector -->
 
     <div class="n-property-bar__cta"></div>
@@ -1151,6 +1143,95 @@
           </a>
           
 
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_を使用して_SAP_HANA_システムのコピーおよびクローン処理を自動化.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化
+          </a>
+          
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/ja-jp/netapp-solutions-sap/pdfs/pages/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.pdf" >
+    <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/Libelle_SystemCopyによるSAPシステムのコピー処理の自動化.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            Libelle SystemCopyによるSAPシステムのコピー処理の自動化
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
 
 
 
@@ -1236,7 +1317,7 @@
     $("#toggleContainerPdf").toggle('display');
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><div class="sidebar-nav-container">
+</script><div class="sidebar-nav-container" id="mysidebardiv">
   <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/index.html">
         SAP ソリューション
       </a></li><li class="subfolders "><a href="#">
@@ -1574,7 +1655,43 @@
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> ライフサイクル管理</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="https://www.netapp.com/us/media/tr-4667.pdf">
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html">
+        はじめに
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html">
+        SAPシステムのコピー、更新、クローニングのシナリオ
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html">
+        システムの更新とクローニングのユースケース
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムの更新ワークフローの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムのコピーワークフローの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムのクローニングワークフローの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html">
+        ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-automation-example-scripts.html">
+        自動化スクリプトの例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html">
+        SAP HANAシステムをSnapCenter で更新
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html">
+        SnapCenter によるSAPシステムのクローニング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-where-to-find-additional-information.html">
+        追加情報およびバージョン履歴の参照先
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Libelle SystemCopyによるSAPシステムのコピー処理の自動化</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html">
+        LSCおよびSnapCenter でSAP HANAシステムが更新されます
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html">
+        LSC、AzAcSnap、およびAzure NetApp Files を使用してSAP HANAシステムが更新されます
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-where-to-find-additional-information.html">
+        追加情報 およびバージョン履歴の参照先
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="https://www.netapp.com/us/media/tr-4667.pdf">
         SnapCenter SAP HANA プラグインを使用した SAP システムのコピーの自動化
       </a></li><li class=" "><a class="na-navbar-padding" href="https://www.netapp.com/us/media/tr-4018.pdf">
         ネットアップストレージと SAP Landscape Management の統合
@@ -1647,28 +1764,101 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』</h1>
+  <h1 class="n-doc__component-detail-heading">システムの更新とクローニングのユースケース</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:04:49 +0000">05/03/2022</time>
+    <time datetime="2022-06-07 14:36:50 +0000">06/07/2022</time>
     
   
 
 
 </p>
 
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>ネットアップ Nils Bauer</p>
+<p><a href="sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html">"Previous：SAPシステムのコピー、更新、クローニングのシナリオ"</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="qaテストサンドボックストレーニングシステムのデータ更新">QA、テスト、サンドボックス、トレーニングシステムのデータ更新</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>テストやトレーニングの目的で、ソースシステムのデータをターゲットシステムで使用できるようにする必要があるシナリオは複数あります。テストおよびトレーニング用のシステムは、ソースシステムのデータで定期的に更新し、現在のデータセットでテストとトレーニングが実行されていることを確認する必要があります。システムの更新処理は、インフラ、データベース、アプリケーションの各レイヤ上で実行される複数のタスクで構成されます。自動化のレベルによっては、数日かかる場合があります。</p>
 </div>
 <div class="paragraph">
-<p>TR-4616 は、 SAP HANA のディザスタリカバリ保護のオプションの概要を示しています。詳細なセットアップ情報、および同期および非同期の NetApp SnapMirror ストレージレプリケーションをベースとした 3 サイトディザスタリカバリ解決策のユースケース概要が含まれます。説明されている解決策では、データベースの整合性を管理するために、 NetApp SnapCenter と SAP HANA プラグインを使用します。</p>
+<p>次の図は、SAPシステムの更新、コピー、およびクローニングの各処理を示しています。</p>
 </div>
 <div class="paragraph">
-<p><a href="https://www.netapp.com/pdf.html?item=/media/12405-tr4614pdf.pdf">https://www.netapp.com/pdf.html?item=/media/12405-tr4614pdf.pdf</a></p>
+<p><span class="image"><img src="./../media/sc-copy-clone-image3.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+<div class="paragraph">
+<p>SnapCenter クローニングワークフローを使用すると、インフラレイヤとデータベースレイヤで必要なタスクを高速化し、自動化することができます。SnapCenter では、バックアップをソースシステムからターゲットシステムにリストアする代わりに、ネットアップのSnapshotコピーとFlexCloneテクノロジを使用して、開始されたHANAデータベースまでに必要なタスクを、次の図に示すように数時間ではなく数分で実行します。クローニングプロセスに要する時間はデータベースのサイズに左右されないため、非常に大規模なシステムでも数分で作成できます。</p>
+</div>
+<div class="paragraph">
+<p>次の図は、QA、テスト、サンドボックス、またはトレーニングシステムのデータ更新を示しています。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image4.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+<div class="paragraph">
+<p>システムの更新処理のワークフローについては、を参照してください <a href="sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html">"「SnapCenter でSAP HANAシステムを更新」"</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="論理的破損に対処する">論理的破損に対処する</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>論理的破損は、ソフトウェアエラー、人為的エラー、破壊行為などが原因で発生する可能性があります。残念ながら、論理的破損は、標準的な高可用性ソリューションやディザスタリカバリソリューションでは対処できないことがよくあります。その結果、論理的な破損が発生したレイヤ、アプリケーション、ファイルシステム、またはストレージによっては、ダウンタイムを最小限に抑え、データ損失を最大化するための要件を満たすことができない場合があります。</p>
+</div>
+<div class="paragraph">
+<p>最悪のケースは、SAPアプリケーションが論理的に破損した場合です。SAP アプリケーションは多くの場合、異なるアプリケーションが相互に通信してデータを交換する環境で動作します。このため、論理的な破損が発生した SAP システムはリストアとリカバリを実行しないことを推奨します。破損が発生する前の時点にシステムをリストアすると、データが失われます。また、 SAP ランドスケープは同期されず、さらにポストプロセスが必要になります。</p>
+</div>
+<div class="paragraph">
+<p>SAPシステムをリストアする代わりに、別の修復システムで問題を分析して、システム内の論理エラーを修正する方法を推奨します。ルート原因分析には、ビジネスプロセスやアプリケーション所有者の関与が必要です。このシナリオでは、論理的破損が発生する前に格納されたデータに基づいて、修復システム（本番用システムのクローン）を作成します。リペアシステム内では、必要なデータをエクスポートし、本番システムにインポートできます。このアプローチでは、本番用システムを停止する必要はなく、最良のシナリオでは、データの損失だけでなく、ごくわずかなデータの損失も発生します。</p>
+</div>
+<div class="paragraph">
+<p>リペアシステムを設定する際には、柔軟性とスピードが不可欠です。ネットアップのストレージベースのSnapshotバックアップでは、次の図に示すように、NetApp FlexCloneテクノロジを使用して、複数の整合性のあるデータベースイメージから本番システムのクローンを作成できます。ファイルベースのバックアップからリダイレクトされたリストアを使用して修復システムを設定する場合、FlexCloneボリュームは数時間ではなく数秒で作成できます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image5.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+<div class="paragraph">
+<p>リペアシステムの作成ワークフローについては、を参照してください <a href="sc-copy-clone-sap-system-clone-with-snapcenter.html">"「SnapCenter を使用したSAPシステムのクローン作成」"</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ディザスタリカバリのテスト">ディザスタリカバリのテスト</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>効果的なディザスタリカバリ戦略を策定するには、必要なワークフローをテストする必要がテストでは、戦略が機能するかどうか、および内部ドキュメントで十分かどうかを検証します。また、管理者は必要な手順をトレーニングできます。</p>
+</div>
+<div class="paragraph">
+<p>SnapMirrorを使用したストレージレプリケーションでは、RTOとRPOをリスクにさらすことなく、ディザスタリカバリのテストを実行できます。ディザスタリカバリテストは、データレプリケーションを中断することなく実行できます。</p>
+</div>
+<div class="paragraph">
+<p>非同期SnapMirrorと同期SnapMirrorのディザスタリカバリテストでは、ディザスタリカバリターゲットでSnapshotバックアップとFlexCloneボリュームを使用します。</p>
+</div>
+<div class="paragraph">
+<p>次の図は、ディザスタリカバリのテストを示しています。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image6.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+<div class="paragraph">
+<p>詳細な手順概要 については、テクニカルレポートを参照してください <a href="http://www.netapp.com/us/media/tr-4646.pdf" target="_blank" rel="noopener">"SAP HANA Disaster Recovery with Storage Replication 』を参照してください"</a>。</p>
+</div>
+<div class="paragraph">
+<p><a href="sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html">"次：SnapCenter を使用したSAPシステムの更新ワークフローの概要"</a></p>
+</div>
+</div>
 </div>
 
     </article>
@@ -1816,4 +2006,5 @@
     </script>
     <script src='/ja-jp/netapp-solutions-sap/js/www-ntap.js'></script>
     <script src='/ja-jp/netapp-solutions-sap/js/tabbed-blocks.js'></script>
+    <script src='/ja-jp/netapp-solutions-sap/js/sidebar.js'></script>
   </body></html>

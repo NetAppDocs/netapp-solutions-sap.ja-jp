@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>SnapCenter によるSAPシステムのクローニング</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="SnapCenter によるSAPシステムのクローニング" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html" />
+	<meta property="og:description" content="このセクションでは、SAPシステムのクローニング処理の手順ごとの概要 を示します。このを使用して、論理的な破損に対処するための修復システムをセットアップできます。" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="このセクションでは、SAPシステムのクローニング処理の手順ごとの概要 を示します。このを使用して、論理的な破損に対処するための修復システムをセットアップできます。">
+  <meta name="keywords" content=" prerequisites, lab setup, target host, users, ports, sap services, file system mounts,"><!-- Icons -->
+  <link rel="icon" href="/ja-jp/netapp-solutions-sap/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/netapp-solutions-sap/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/netapp-solutions-sap/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/netapp-solutions-sap/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/ja-jp/netapp-solutions-sap/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/ja-jp/netapp-solutions-sap/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/ja-jp/netapp-solutions-sap/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/custom-dropdown.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/netapp-solutions-sap/js/na-search.js'></script><script src='/ja-jp/netapp-solutions-sap/js/na-pagenav.js'></script><link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/netapp-solutions-sap/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/ja-jp/netapp-solutions-sap/js/na-utility.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/clouddocs.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/toc.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/ja-jp/netapp-solutions-sap/js/custom-dropdown.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/jszip.min.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/issues/new?body=Page%3A%20[SnapCenter によるSAPシステムのクローニング](https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a><a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/blob/main/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/netapp-solutions-sap/images/edit-sm.svg" class="github-icon" />GitHub で編集</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/netapp-solutions-sap/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">製品とソリューション</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">サポートとトレーニング</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">コミュニティ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">ブログ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">ユーザ事例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ja-jp/netapp-solutions-sap/search.html"
+          data-type="widget" 
+          data-placeholder="ドキュメントを検索" 
+          data-no-results-found="{query}に該当する結果はありません" 
+          data-did-you-mean="{suggestion} を検索" 
+          data-no-results-found-did-you-mean="{query} に該当する結果はありません。{suggestion} の間違いではありませんか?" 
+          data-results-found="{hitCount} 件見つかりました"  
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">日本語</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>利用可能なPDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/ja-jp/netapp-solutions-sap/pdfs/fullsite-sidebar/SAP_Business_Application_と_SAP_HANA_Database_ソリューション.pdf" >
+          <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>このドキュメントサイトのPDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/ベストプラクティス.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            ベストプラクティス
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/__SAP_HANA_on_NetApp_AFF_Systems_with_FCP_Configuration_Guide__.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/インフラのセットアップと設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            インフラのセットアップと設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/__SAP_HANA_on_NetApp_AFF_Systems_with_NFS_Configuration_Guide__.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/インフラのセットアップと設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            インフラのセットアップと設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/__SAP_HANA_on_NetApp_FAS_Systems_with_NFS_Configuration_Guide__.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/インフラのセットアップと設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            インフラのセットアップと設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/__SAP_HANA_on_FAS_Systems_with_FCP_Configuration_Guide__を参照してください.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/インフラのセットアップと設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            インフラのセットアップと設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/バックアップ_リストア_ディザスタリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            バックアップ、リストア、ディザスタリカバリ
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/Amazon_FSX上のSAP_HANA_for_NetApp_ONTAP___SnapCenter_を使用したバックアップとリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapVault_を使用したバックアップレプリケーション.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SnapVault を使用したバックアップレプリケーション
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_を使用した_SAP_HANA_のバックアップとリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SnapCenter を使用した SAP HANA のバックアップとリカバリ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_を使用した_SAP_HANA_システムレプリケーションのバックアップとリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/Azure_NetApp_Files_を使用した_SAP_HANA_ディザスタリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            Azure NetApp Files を使用した SAP HANA ディザスタリカバリ
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SAP_HANA_を使用した_ANF_のクロスリージョンレプリケーション.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SAP HANA を使用した ANF のクロスリージョンレプリケーション
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/ディザスタリカバリのテスト.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            ディザスタリカバリのテスト
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/ディザスタリカバリフェイルオーバー.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            ディザスタリカバリフェイルオーバー
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_サービスを使用した_Azure_NetApp_Files_での_SAP_HANA_のバックアップとリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SnapCenter サービスを使用した Azure NetApp Files での SAP HANA のバックアップとリカバリ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_サービスの_Snapshot_バックアップ設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SnapCenter サービスの Snapshot バックアップ設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/ライフサイクル管理.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            ライフサイクル管理
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_を使用して_SAP_HANA_システムのコピーおよびクローン処理を自動化.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/ja-jp/netapp-solutions-sap/pdfs/pages/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.pdf" >
+    <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/Libelle_SystemCopyによるSAPシステムのコピー処理の自動化.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            Libelle SystemCopyによるSAPシステムのコピー処理の自動化
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/解決策概要.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf.png" width="16" height="16"/>
+            解決策概要
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/ja-jp/netapp-solutions-sap/images/pdf-zip.png" width="16" height="16"/>
+      <pre>個別のPDFドキュメントのコレクション<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/index.html">
+        SAP ソリューション
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ベストプラクティス</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html">
+        はじめに
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_architecture.html">
+        アーキテクチャ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_storage_sizing.html">
+        ストレージのサイジング
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> インフラのセットアップと設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_infrastructure_setup_and_configuration_overview.html">
+        インフラのセットアップと設定の概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_san_fabric_setup.html">
+        SAN ファブリックのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_time_synchronization.html">
+        時刻の同期
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_storage_controller_setup.html">
+        ストレージコントローラのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_sap_hana_storage_connector_api.html">
+        SAP HANA Storage Connector API
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_host_setup.html">
+        ホストのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_i_o_stack_configuration_for_sap_hana.html">
+        SAP HANA の I/O スタック構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_sap_hana_software_installation.html">
+        SAP HANA ソフトウェアのインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html">
+        SAP HANA シングルホストシステムのデータボリュームパーティションを追加します
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_where_to_find_additional_information.html">
+        追加情報の参照先
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html">
+        はじめに
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_architecture.html">
+        アーキテクチャ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_storage_sizing.html">
+        ストレージのサイジング
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> インフラのセットアップと設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_infrastructure_setup_and_configuration_overview.html">
+        インフラのセットアップと設定の概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_network_setup.html">
+        ネットワークセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_time_synchronization.html">
+        時刻の同期
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_storage_controller_setup.html">
+        ストレージコントローラのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_host_setup.html">
+        ホストのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_sap_hana_installation_preparations_for_nfsv4.html">
+        NFSv4 用の SAP HANA インストールの準備
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html">
+        SAP HANA 向けの I/O スタック構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_sap_hana_data_volume_size.html">
+        SAP HANA データボリュームのサイズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_sap_hana_software_installation.html">
+        SAP HANA ソフトウェアのインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_adding_additional_data_volume_partitions.html">
+        データボリュームのパーティションを追加しています
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_where_to_find_additional_information.html">
+        追加情報の参照先
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_introduction.html">
+        はじめに
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_architecture.html">
+        アーキテクチャ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_storage_sizing.html">
+        ストレージのサイジング
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> インフラのセットアップと設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_infrastructure_setup_and_configuration_overview.html">
+        インフラのセットアップと設定の概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_network_setup.html">
+        ネットワークセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_time_synchronization.html">
+        時刻の同期
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_storage_controller_setup.html">
+        ストレージコントローラのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_host_setup.html">
+        ホストのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html">
+        NFSv4 用の SAP HANA インストールの準備
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_i_o_stack_configuration_for_sap_hana.html">
+        SAP HANA 向けの I/O スタック構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_sap_hana_data_volume_size.html">
+        SAP HANA データボリュームのサイズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_sap_hana_software_installation.html">
+        SAP HANA ソフトウェアのインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_adding_additional_data_volume_partitions.html">
+        データボリュームのパーティションを追加しています
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_where_to_find_additional_information.html">
+        追加情報の参照先
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_introduction.html">
+        はじめに
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_architecture.html">
+        アーキテクチャ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_storage_sizing.html">
+        ストレージのサイジング
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> インフラのセットアップと設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_infrastructure_setup_and_configuration_overview.html">
+        インフラのセットアップと設定の概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_san_fabric_setup.html">
+        SAN ファブリックのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_time_synchronization.html">
+        時刻の同期
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_storage_controller_setup.html">
+        ストレージコントローラのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_sap_hana_storage_connector_api.html">
+        SAP HANA Storage Connector API
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_host_setup.html">
+        ホストのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_i_o_stack_configuration_for_sap_hana.html">
+        SAP HANA 向けの I/O スタック構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_sap_hana_software_installation.html">
+        SAP HANA ソフトウェアのインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html">
+        SAP HANA シングルホストシステムのデータボリュームパーティションを追加します
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_where_to_find_additional_information.html">
+        追加情報の参照先
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/saphana-ibm-aff-nfs_pdf_link.html">
+        IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/sap-oracle-snapman_pdf_link.html">
+        UNIX および NFS 上で稼働する Oracle を使用する SAP と NetApp ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/bp/sap-sqls-sc_pdf_link.html">
+        Windows で ONTAP を使用して SAP と Microsoft SQL Server を運用
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> バックアップ、リストア、ディザスタリカバリ</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-backup-and-recovery-using-amazon-fsx-for-ontap.html">
+        Amazon FSX for ONTAP を使用したバックアップとリカバリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-snapcenter-architecture.html">
+        SnapCenter アーキテクチャ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-snapcenter-configuration.html">
+        SnapCenter 構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-snapcenter-backup-operations.html">
+        SnapCenter バックアップ処理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-backup-of-non-data-volumes.html">
+        データボリューム以外のボリュームのバックアップ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SnapVault を使用したバックアップレプリケーション</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-backup-replication-with-snapvault_overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html">
+        ONTAP ファイルシステムのレプリケーション関係をFSXに設定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-add-a-backup-svm-to-snapcenter.html">
+        SnapCenter にバックアップSVMを追加
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html">
+        バックアップレプリケーション用の新しいSnapCenter ポリシーを作成します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-add-a-policy-to-resource-protection.html">
+        リソースの保護にポリシーを追加します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-create-a-backup-with-replication.html">
+        レプリケーションを使用してバックアップを作成します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-restore-and-recover-from-secondary-storage.html">
+        セカンダリストレージからリストアおよびリカバリする
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-where-to-find-additional-information.html">
+        追加情報およびバージョン履歴の参照先
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SnapCenter を使用した SAP HANA のバックアップとリカバリ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-architecture.html">
+        SnapCenter アーキテクチャ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html">
+        SnapCenter SAP HANA Backup 解決策 の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-concepts-and-best-practices.html">
+        SnapCenter の概念とベストプラクティス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-lab-setup-used-for-this-report.html">
+        このレポートで使用するラボのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-configuration.html">
+        SnapCenter 構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-initial-configuration.html">
+        SnapCenter の初期設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html">
+        SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html">
+        データボリューム以外のバックアップ用の SnapCenter リソース固有の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-database-backups.html">
+        データベースのバックアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-block-integrity-check.html">
+        ブロック整合性チェック
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-restore-and-recovery.html">
+        リストアとリカバリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-advanced-configuration-and-tuning.html">
+        高度な設定と調整
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-where-to-find-additional-information.html">
+        追加情報およびバージョン履歴の参照先
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-sap-hana-system-replication-overview.html">
+        SAP HANA システムレプリケーションの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html">
+        ストレージ Snapshot バックアップと SAP システムレプリケーション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html">
+        SAP システムレプリケーションの SnapCenter 設定オプション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html">
+        リソースグループを使用した SnapCenter 4.6 の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html">
+        単一のリソースを使用する SnapCenter 構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html">
+        もう一方のホストで作成されたバックアップからのリストアとリカバリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-where-to-find-additional-information_overview.html">
+        追加情報の参照先
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-version-history.html">
+        バージョン履歴
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure NetApp Files を使用した SAP HANA ディザスタリカバリ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_data_protection_overview_overview.html">
+        データ保護の概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_disaster_recovery_solution_comparison.html">
+        ディザスタリカバリ解決策の比較
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SAP HANA を使用した ANF のクロスリージョンレプリケーション</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html">
+        SAP HANA によるクロスリージョンレプリケーションの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_configuration_options_for_cross-region_replication_with_sap_hana.html">
+        SAP HANA によるクロスリージョンレプリケーションの設定オプション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_requirements_and_best_practices.html">
+        要件およびベストプラクティス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_lab_setup.html">
+        ラボのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_configuration_steps_for_anf_cross-region_replication.html">
+        ANF クロスリージョンレプリケーションの設定手順
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_monitoring_anf_cross-region_replication.html">
+        ANF のクロスリージョンレプリケーションを監視しています
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ディザスタリカバリのテスト</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_disaster_recovery_testing_overview.html">
+        ディザスタリカバリテストの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_prepare_the_target_host.html">
+        ターゲットホストを準備します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_create_new_volumes_based_on_snapshot_backups_at_the_disaster_recovery_site.html">
+        ディザスタリカバリサイトでの Snapshot バックアップに基づいて新しいボリュームを作成します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_mount_the_new_volumes_at_the_target_host.html">
+        ターゲットホストに新しいボリュームをマウントします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_hana_database_recovery.html">
+        HANA データベースのリカバリ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ディザスタリカバリフェイルオーバー</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_disaster_recovery_failover_overview.html">
+        ディザスタリカバリフェイルオーバーの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_prepare_the_target_host_01.html">
+        ターゲットホストを準備します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_break_and_delete_replication_peering.html">
+        レプリケーションピアリングを解除して削除します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html">
+        ターゲットホストにボリュームをマウントします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_hana_database_recovery_01.html">
+        HANA データベースのリカバリ
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SnapCenter サービスを使用した Azure NetApp Files での SAP HANA のバックアップとリカバリ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-the-netapp-solution.html">
+        NetApp 解決策の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-snapcenter-service-architecture.html">
+        SnapCenter サービスアーキテクチャ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-snapcenter-service-sap-hana-backup-solution.html">
+        SnapCenter サービス SAP HANA バックアップ解決策
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-snapcenter-service-concepts-and-best-practices.html">
+        SnapCenter サービスの概念とベストプラクティス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-lab-setup-used-for-this-report.html">
+        このレポートで使用するラボのセットアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-snapcenter-service-policy-configuration.html">
+        SnapCenter サービスポリシーの設定
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SnapCenter サービスの Snapshot バックアップ設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-snapcenter-service-snapshot-backup-configuration-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html">
+        SAP HANA データベースのバックアップ構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-backup-configuration-of-sap-hana-non-data-volumes.html">
+        SAP HANA の非データボリュームのバックアップ構成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-backup-configuration-of-global-non-data-volumes.html">
+        グローバルな非データボリュームのバックアップ構成
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-sap-hana-database-snapshot-backups.html">
+        SAP HANA データベースの Snapshot バックアップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-file-based-backups-and-block-integrity-check.html">
+        ファイルベースのバックアップとブロックの整合性チェック
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-restore-and-recovery.html">
+        リストアとリカバリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-additional-information.html">
+        追加情報
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-backup-anf-version-history.html">
+        バージョン履歴
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-sr_pdf_link.html">
+        SAP HANA Disaster Recovery with Storage Replication 』を参照してください
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-bandr-sc_pdf_link.html">
+        Snap Creator を使用した SAP HANA のバックアップとリカバリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-commvault_pdf_link.html">
+        ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/backup/saphana-san_pdf_link.html">
+        『 SAP HANA on NetApp All SAN Array 』 - 最新 SAN 、データ保護、ディザスタリカバリ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ライフサイクル管理</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html">
+        はじめに
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html">
+        SAPシステムのコピー、更新、クローニングのシナリオ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html">
+        システムの更新とクローニングのユースケース
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムの更新ワークフローの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムのコピーワークフローの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムのクローニングワークフローの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html">
+        ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-automation-example-scripts.html">
+        自動化スクリプトの例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html">
+        SAP HANAシステムをSnapCenter で更新
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html">
+        SnapCenter によるSAPシステムのクローニング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-where-to-find-additional-information.html">
+        追加情報およびバージョン履歴の参照先
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Libelle SystemCopyによるSAPシステムのコピー処理の自動化</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html">
+        LSCおよびSnapCenter でSAP HANAシステムが更新されます
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html">
+        LSC、AzAcSnap、およびAzure NetApp Files を使用してSAP HANAシステムが更新されます
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-where-to-find-additional-information.html">
+        追加情報 およびバージョン履歴の参照先
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="https://www.netapp.com/us/media/tr-4667.pdf">
+        SnapCenter SAP HANA プラグインを使用した SAP システムのコピーの自動化
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://www.netapp.com/us/media/tr-4018.pdf">
+        ネットアップストレージと SAP Landscape Management の統合
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 解決策概要</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/briefs/saphana-lm-sb_pdf_link.html">
+        SAP HANA Lifecycle Management の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://www.netapp.com/us/media/sb-3965.pdf">
+        SAP HANA のバックアップとリカバリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://www.netapp.com/us/media/sb-3968.pdf">
+        SAP HANA ディザスタリカバリ
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/flexpod/ent-db/index.html">
+        FlexPod SAP ソリューション
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/netapp-solutions/">
+        ネットアップのソリューション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/netapp-solutions-sap/reference_legal_notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ja-jp/netapp-solutions-sap/">NetApp&nbsp;Solutions&nbsp;SAP</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">SnapCenter によるSAPシステムのクローニング</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-06-07 14:36:50 +0000">06/07/2022</time>
+    
+  
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html">"前：SAP HANAシステムはSnapCenter で更新されました。"</a></p>
+</div>
+<div class="paragraph">
+<p>このセクションでは、SAPシステムのクローニング処理の手順ごとの概要 を示します。このを使用して、論理的な破損に対処するための修復システムをセットアップできます。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/netapp-solutions-sap/images/note.svg" alt="注記">
+</td>
+<td class="content">
+ラボのセットアップと検証では、SAPアプリケーションサービスは対象外です。ただし、SAPアプリケーションサービスに必要な手順については、このドキュメントで説明しています。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image10.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="前提条件および制限事項">前提条件および制限事項</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>以降のセクションで説明するワークフローには、HANAシステムアーキテクチャとSnapCenter 構成に関するいくつかの前提条件と制限事項があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ここで説明するワークフローは、シングルテナントを使用するシングルホストSAP HANA MDCシステムに対して有効です。</p>
+</li>
+<li>
+<p>自動化スクリプトを実行できるようにするには、SnapCenter HANAプラグインをターゲットホストに導入する必要があります。HANAプラグインをHANAソースシステムホストにインストールする必要はありません。</p>
+</li>
+<li>
+<p>NFSのワークフローが検証されました。自動化スクリプト「sc-mount-volume.sh」は、HANA共有ボリュームのマウントに使用され、FCPをサポートしていません。この手順は、手動で実行するか、スクリプトを拡張して実行する必要があります。</p>
+</li>
+<li>
+<p>記述されたワークフローは、SnapCenter 4.6 P1リリース以降でのみ有効です。以前のリリースでは、ワークフローが若干異なります。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ラボのセットアップ">ラボのセットアップ</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>次の図は、システムのクローニング処理に使用するラボ環境のセットアップを示しています。</p>
+</div>
+<div class="paragraph">
+<p>使用したソフトウェアバージョンは次のとおりです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SnapCenter 4.6：P1</p>
+</li>
+<li>
+<p>HANAシステム：HANA 2.0 SPS6 rev.61</p>
+</li>
+<li>
+<p>VMware 6.7.0</p>
+</li>
+<li>
+<p>SLES 15 SP2</p>
+</li>
+<li>
+<p>ONTAP 9.7P7すべてのHANAシステムは、構成ガイドに基づいて構成されています <a href="https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html" target="_blank" rel="noopener">"NFSを使用したNetApp AFF システムでのSAP HANA"</a>。SnapCenter リソースとHANAリソースは、ベストプラクティスガイドに基づいて構成されています <a href="https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html" target="_blank" rel="noopener">"SnapCenter を使用した SAP HANA のバックアップとリカバリ"</a>。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image42.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ターゲットホストの準備">ターゲットホストの準備</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ここでは、システムクローンターゲットとして使用するサーバで必要な準備手順について説明します。</p>
+</div>
+<div class="paragraph">
+<p>通常運用時は、HANAのQAやテスト用システムなど、別の目的にターゲットホストを使用することもできます。したがって、前述のほとんどの手順は、システムクローン処理が要求されたときに実行する必要があります。一方、関連する構成ファイルは、「/etc/fstab」や「/usr/sap/sapservices」のように準備し、構成ファイルをコピーするだけで運用に移すことができます。</p>
+</div>
+<div class="paragraph">
+<p>ターゲットホストの準備には、HANAのQAまたはテストシステムのシャットダウンも含まれます。</p>
+</div>
+<div class="sect2">
+<h3 id="ターゲットサーバのホスト名と-ip-アドレス">ターゲットサーバのホスト名と IP アドレス</h3>
+<div class="paragraph">
+<p>ターゲット・サーバのホスト名は ' ソース・システムのホスト名と同じである必要がありますIP アドレスは異なっていてもかまいません。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/netapp-solutions-sap/images/note.svg" alt="注記">
+</td>
+<td class="content">
+ターゲットサーバが他のシステムと通信できないように、ターゲットサーバの適切なフェンシングを確立する必要があります。適切なフェンシングが設定されていないと、クローニングされた本番用システムは他の本番用システムとデータを交換する可能性があります。
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/netapp-solutions-sap/images/note.svg" alt="注記">
+</td>
+<td class="content">
+このラボ環境では、ターゲットシステム側から見て、ターゲットシステムのホスト名を内部的にのみ変更しました。ホストの外部からは、ホスト名として「HANA -7」を使用してアクセスできました。ホストにログインすると、ホスト自体がHANAです。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="必要なソフトウェアをインストールします">必要なソフトウェアをインストールします</h3>
+<div class="paragraph">
+<p>SAP ホストエージェントソフトウェアをターゲットサーバにインストールする必要があります。詳細については、を参照してください <a href="https://help.sap.com/viewer/9f03f1852ce94582af41bb49e0a667a7/103/en-US" target="_blank" rel="noopener">"SAP ホストエージェント"</a> SAP ヘルプポータルで、次の作業を行います。</p>
+</div>
+<div class="paragraph">
+<p>SnapCenter のホストの追加処理を使用して、SnapCenter HANAプラグインをターゲットホストに導入する必要があります。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ユーザポートおよび-sap-サービスを設定する">ユーザ、ポート、および SAP サービスを設定する</h3>
+<div class="paragraph">
+<p>ターゲットサーバに、 SAP HANA データベースに必要なユーザとグループが配置されている必要があります。通常は、ユーザの一元管理が使用されるため、ターゲットサーバで設定手順を行う必要はありません。HANA データベースに必要なポートは、ターゲットホストで設定する必要があります。構成は '/etc/services ファイルをターゲット・サーバにコピーすることによって ' ソース・システムからコピーできます</p>
+</div>
+<div class="paragraph">
+<p>必要な SAP サービスのエントリがターゲットホストにあることが必要です。/usr/sap/sapservices' ファイルをターゲットサーバにコピーすることで ' ソースシステムから構成をコピーできます次の出力は、このラボ環境で使用する SAP HANA データベースの必須エントリを示しています。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>#!/bin/sh
+LD_LIBRARY_PATH=/usr/sap/SS1/HDB00/exe:$LD_LIBRARY_PATH;export LD_LIBRARY_PATH;/usr/sap/SS1/HDB00/exe/sapstartsrv pf=/usr/sap/SS1/SYS/profile/SS1_HDB00_hana-1 -D -u ss1adm
+limit.descriptors=1048576</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ログとログのバックアップボリュームを準備">ログとログのバックアップボリュームを準備</h3>
+<div class="paragraph">
+<p>ログボリュームをソースシステムからクローニングする必要はなく、clear logオプションを使用してリカバリを実行するため、空のログボリュームをターゲットホストで準備しておく必要があります。</p>
+</div>
+<div class="paragraph">
+<p>ソースシステムには独立したログバックアップボリュームが設定されているため、空のログバックアップボリュームを準備し、ソースシステムと同じマウントポイントにマウントする必要があります。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>hana- 1:/# cat /etc/fstab
+192.168.175.117:/SS1_repair_log_mnt00001 /hana/log/SS1/mnt00001 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+192.168.175.117:/SS1_repair_log_backup /mnt/log-backup nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ログボリュームhdb*内では、ソース・システムと同じ方法でサブディレクトリを作成する必要があります。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>hana- 1:/ # ls -al /hana/log/SS1/mnt00001/
+total 16
+drwxrwxrwx 5 root   root   4096 Dec  1 06:15 .
+drwxrwxrwx 1 root   root     16 Nov 30 08:56 ..
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec  1 06:14 hdb00001
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec  1 06:15 hdb00002.00003
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec  1 06:15 hdb00003.00003</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ログバックアップボリュームには、システムとテナントデータベースのサブディレクトリを作成する必要があります。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>hana- 1:/ # ls -al /mnt/log-backup/
+total 12
+drwxr-xr-x 4 root root 4096 Dec  1 04:48 .
+drwxr-xr-x 1 root root   48 Dec  1 03:42 ..
+drwxrwxrwx 2 root root 4096 Dec  1 06:15 DB_SS1
+drwxrwxrwx 2 root root 4096 Dec  1 06:14 SYSTEMDB</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ファイルシステムのマウントを準備">ファイルシステムのマウントを準備</h3>
+<div class="paragraph">
+<p>データおよび共有ボリュームのマウントポイントを準備しておく必要があります。</p>
+</div>
+<div class="paragraph">
+<p>この例では'/hana/data/ss1/mnt00001'/hana/shared&#8217;およびusr/sap/ss1&#8217;ディレクトリを作成する必要があります</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="snapcenter-スクリプト用にsid固有の構成ファイルを準備します">SnapCenter スクリプト用にSID固有の構成ファイルを準備します</h3>
+<div class="paragraph">
+<p>SnapCenter 自動化スクリプト「sc-system-refresh.sh」の構成ファイルを作成する必要があります。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>hana- 1:/mnt/sapcc-share/SAP-System-Refresh # cat sc-system-refresh-SS1.cfg
+# ---------------------------------------------
+# Target database specific parameters
+# ---------------------------------------------
+# hdbuserstore key, which should be used to connect to the target database
+KEY="SS1KEY"
+# Used storage protocol, NFS or FCP
+PROTOCOL</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hana共有ボリュームのクローニング">HANA共有ボリュームのクローニング</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>ソース・システムSS1共有ボリュームからSnapshotバックアップを選択し、Clone from Backupをクリックします。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image43.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</li>
+<li>
+<p>ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDはソースシステムと同じSIDを保持するため、この例ではSS1です。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image44.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</li>
+<li>
+<p>必要なコマンドラインオプションを指定して、マウントスクリプトを入力します。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/netapp-solutions-sap/images/note.svg" alt="注記">
+</td>
+<td class="content">
+HANAシステムは、構成ガイドで推奨されているように、単一のボリュームを「/hana/shared」と「/usr/sap/ss1」に使用し、サブディレクトリで区切られます <a href="https://www.netapp.com/media/17238-tr4435.pdf" target="_blank" rel="noopener">"NFSを使用したNetApp AFF システムでのSAP HANA"</a>。スクリプトのsc-mount-volume.sh&#8217;は&#8217;マウント・パスに特別なコマンド・ライン・オプションを使用して&#8217;この構成をサポートしていますマウント・パス・コマンド・ライン・オプションがusr-sap-and -sharedと等しい場合&#8217;スクリプトは&#8217;それに応じて&#8217;ボリューム内のサブディレクトリであるsharedとusr-sapをマウントします
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image45.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</li>
+<li>
+<p>SnapCenter のジョブ詳細画面に処理の進捗状況が表示されます。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image46.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</li>
+<li>
+<p>sc-mount-volume.shスクリプトのログファイルには&#8217;マウント操作に対して実行されるさまざまな手順が示されています</p>
+<div class="literalblock">
+<div class="content">
+<pre>20201201041441###hana-1###sc-mount-volume.sh: Adding entry in /etc/fstab.
+20201201041441###hana-1###sc-mount-volume.sh: 192.168.175.117://SS1_shared_Clone_05132205140448713/usr-sap /usr/sap/SS1 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+20201201041441###hana-1###sc-mount-volume.sh: Mounting volume: mount /usr/sap/SS1.
+20201201041441###hana-1###sc-mount-volume.sh: 192.168.175.117: /SS1_shared_Clone_05132205140448713/shared /hana/shared nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+20201201041441###hana-1###sc-mount-volume.sh: Mounting volume: mount /hana/shared.
+20201201041441###hana-1###sc-mount-volume.sh: usr-sap-and-shared mounted successfully.
+20201201041441###hana-1###sc-mount-volume.sh: Change ownership to ss1adm.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>SnapCenter ワークフローが終了すると&#8217;usr/sap/ss1&#8217;および'/hana/shareed&#8217;ファイルシステムがターゲット・ホストにマウントされます</p>
+<div class="literalblock">
+<div class="content">
+<pre>hana-1:~ # df
+Filesystem                                                       1K-blocks     Used Available Use% Mounted on
+192.168.175.117:/SS1_repair_log_mnt00001                         262144000      320 262143680   1% /hana/log/SS1/mnt00001
+192.168.175.100:/sapcc_share                                    1020055552 53485568 966569984   6% /mnt/sapcc-share
+192.168.175.117:/SS1_repair_log_backup                           104857600      256 104857344   1% /mnt/log-backup
+192.168.175.117: /SS1_shared_Clone_05132205140448713/usr-sap  262144064 10084608 252059456   4% /usr/sap/SS1
+192.168.175.117: /SS1_shared_Clone_05132205140448713/shared   262144064 10084608 252059456   4% /hana/shared</pre>
+</div>
+</div>
+</li>
+<li>
+<p>SnapCenter では、クローニングされたボリュームの新しいリソースが表示されます。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image47.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</li>
+<li>
+<p>「/hana/shared」ボリュームが使用可能になったので、SAP HANAサービスを開始できます。</p>
+<div class="literalblock">
+<div class="content">
+<pre>hana-1:/mnt/sapcc-share/SAP-System-Refresh # systemctl start sapinit</pre>
+</div>
+</div>
+</li>
+<li>
+<p>SAPホストエージェントとsapstartsrvプロセスが開始されました。</p>
+<div class="literalblock">
+<div class="content">
+<pre>hana-1:/mnt/sapcc-share/SAP-System-Refresh # ps -ef |grep sap
+root     12377     1  0 04:34 ?        00:00:00 /usr/sap/hostctrl/exe/saphostexec pf=/usr/sap/hostctrl/exe/host_profile
+sapadm   12403     1  0 04:34 ?        00:00:00 /usr/lib/systemd/systemd --user
+sapadm   12404 12403  0 04:34 ?        00:00:00 (sd-pam)
+sapadm   12434     1  1 04:34 ?        00:00:00 /usr/sap/hostctrl/exe/sapstartsrv pf=/usr/sap/hostctrl/exe/host_profile -D
+root     12485 12377  0 04:34 ?        00:00:00 /usr/sap/hostctrl/exe/saphostexec pf=/usr/sap/hostctrl/exe/host_profile
+root     12486 12485  0 04:34 ?        00:00:00 /usr/sap/hostctrl/exe/saposcol -l -w60 pf=/usr/sap/hostctrl/exe/host_profile
+ss1adm   12504     1  0 04:34 ?        00:00:00 /usr/sap/SS1/HDB00/exe/sapstartsrv pf=/usr/sap/SS1/SYS/profile/SS1_HDB00_hana-1 -D -u ss1adm
+root     12582 12486  0 04:34 ?        00:00:00 /usr/sap/hostctrl/exe/saposcol -l -w60 pf=/usr/sap/hostctrl/exe/host_profile
+root     12585  7613  0 04:34 pts/0    00:00:00 grep --color=auto sap
+hana-1:/mnt/sapcc-share/SAP-System-Refresh #</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="追加のsapアプリケーションサービスのクローニング">追加のSAPアプリケーションサービスのクローニング</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SAP HANA共有ボリュームと同じ方法で、追加のSAPアプリケーションサービスのクローンを作成できます（を参照）<a href="#Cloning the HANA shared volume">[Cloning the HANA shared volume]</a>」 もちろん、SAPアプリケーションサーバに必要なストレージボリュームもSnapCenter で保護する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>必要なサービスエントリを/usr/sap/sapservicesに追加し&#8217;ポート&#8217;ユーザ&#8217;ファイルシステムマウントポイント(たとえば'/usr/sap/sid')を準備する必要があります</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="データボリュームのクローニングとhanaデータベースのリカバリ">データボリュームのクローニングとHANAデータベースのリカバリ</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>ソースシステムSS1からHANA Snapshotバックアップを選択します。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image48.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</li>
+<li>
+<p>ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDはソースシステムと同じSIDを保持します。この例では、SS1です。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image49.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</li>
+<li>
+<p>必要なコマンドラインオプションを指定して、マウントスクリプトとクローニング後スクリプトを入力します。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/netapp-solutions-sap/images/note.svg" alt="注記">
+</td>
+<td class="content">
+リカバリ処理のスクリプトは、HANAデータベースをSnapshot処理の時点までリカバリします。フォワードリカバリは実行しません。特定の時点までのフォワードリカバリが必要な場合は、リカバリを手動で実行する必要があります。手動フォワードリカバリでは、ソースシステムのログバックアップをターゲットホストで利用できることも必要です。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image50.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>SnapCenter のジョブ詳細画面に処理の進捗状況が表示されます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/sc-copy-clone-image51.png" alt="エラー：グラフィックイメージがありません"></span></p>
+</div>
+<div class="paragraph">
+<p>sc-system-refresh.shスクリプトのログファイルには&#8217;マウントおよびリカバリ操作で実行されるさまざまなステップが示されています</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>20201201052114###hana-1###sc-system-refresh.sh: Adding entry in /etc/fstab.
+20201201052114###hana-1###sc-system-refresh.sh: 192.168.175.117:/SS1_data_mnt00001_Clone_0421220520054605 /hana/data/SS1/mnt00001 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+20201201052114###hana-1###sc-system-refresh.sh: Mounting data volume: mount /hana/data/SS1/mnt00001.
+20201201052114###hana-1###sc-system-refresh.sh: Data volume mounted successfully.
+20201201052114###hana-1###sc-system-refresh.sh: Change ownership to ss1adm.
+20201201052124###hana-1###sc-system-refresh.sh: Recover system database.
+20201201052124###hana-1###sc-system-refresh.sh: /usr/sap/SS1/HDB00/exe/Python/bin/python /usr/sap/SS1/HDB00/exe/python_support/recoverSys.py --command "RECOVER DATA USING SNAPSHOT CLEAR LOG"
+20201201052156###hana-1###sc-system-refresh.sh: Wait until SAP HANA database is started ....
+20201201052156###hana-1###sc-system-refresh.sh: Status:  GRAY
+20201201052206###hana-1###sc-system-refresh.sh: Status:  GREEN
+20201201052206###hana-1###sc-system-refresh.sh: SAP HANA database is started.
+20201201052206###hana-1###sc-system-refresh.sh: Source system has a single tenant and tenant name is identical to source SID: SS1
+20201201052206###hana-1###sc-system-refresh.sh: Target tenant will have the same name as target SID: SS1.
+20201201052206###hana-1###sc-system-refresh.sh: Recover tenant database SS1.
+20201201052206###hana-1###sc-system-refresh.sh: /usr/sap/SS1/SYS/exe/hdb/hdbsql -U SS1KEY RECOVER DATA FOR SS1 USING SNAPSHOT CLEAR LOG
+0 rows affected (overall time 34.773885 sec; server time 34.772398 sec)
+20201201052241###hana-1###sc-system-refresh.sh: Checking availability of Indexserver for tenant SS1.
+20201201052241###hana-1###sc-system-refresh.sh: Recovery of tenant database SS1 succesfully finished.
+20201201052241###hana-1###sc-system-refresh.sh: Status: GREEN</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>マウント処理とリカバリ処理が完了すると、ターゲットホストにHANAデータボリュームがマウントされます。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>hana-1:/mnt/log-backup # df
+Filesystem                                                       1K-blocks     Used Available Use% Mounted on
+192.168.175.117:/SS1_repair_log_mnt00001                         262144000   760320 261383680   1% /hana/log/SS1/mnt00001
+192.168.175.100:/sapcc_share                                    1020055552 53486592 966568960   6% /mnt/sapcc-share
+192.168.175.117:/SS1_repair_log_backup                           104857600      512 104857088   1% /mnt/log-backup
+192.168.175.117: /SS1_shared_Clone_05132205140448713/usr-sap  262144064 10090496 252053568   4% /usr/sap/SS1
+192.168.175.117: /SS1_shared_Clone_05132205140448713/shared   262144064 10090496 252053568   4% /hana/shared
+192.168.175.117:/SS1_data_mnt00001_Clone_0421220520054605           262144064  3732864 258411200   2% /hana/data/SS1/mnt00001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>HANAシステムが使用可能になり、修理システムなどとして使用できるようになります。</p>
+</div>
+<div class="paragraph">
+<p><a href="sc-copy-clone-where-to-find-additional-information.html">"次へ：追加情報 およびバージョン履歴の参照先。"</a></p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">利用条件</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">プライバシー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">クッキー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">クッキーの設定</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">Web サイトについてのフィードバックを</span>
+              <a target="_self" href="javascript:netapp_mailto()">お寄せください</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/ja-jp/announcements/">お知らせ</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/netapp-solutions-sap/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/netapp-solutions-sap/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/netapp-solutions-sap/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/netapp-solutions-sap/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/netapp-solutions-sap/js/www-ntap.js'></script>
+    <script src='/ja-jp/netapp-solutions-sap/js/tabbed-blocks.js'></script>
+    <script src='/ja-jp/netapp-solutions-sap/js/sidebar.js'></script>
+  </body></html>
