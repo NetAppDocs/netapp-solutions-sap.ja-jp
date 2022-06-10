@@ -29,7 +29,7 @@ SAP AnyDB用のデフォルトのSnapCenter エージェントとデータベー
 
 次の項では、標準インストールまたは中央通信ホストを使用したLSCとSnapCenter の統合の違いについて説明します。特に、インストールオプションと使用するデータベースに関係なく、強調表示されない設定手順はすべて同じです。
 
-ソースデータベースからSnapshotコピーベースの自動バックアップを実行し、新しいターゲットデータベースのクローンを作成するには、LSCとSnapCenter の説明された統合では、で説明されている設定オプションとスクリプトが使用されます https://www.netapp.com/pdf.html?item=/media/17111-tr4667pdf.pdf["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"^]。
+ソースデータベースからSnapshotコピーベースの自動バックアップを実行し、新しいターゲットデータベースのクローンを作成するには、LSCとSnapCenter の説明された統合では、で説明されている設定オプションとスクリプトが使用されます link:https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"^]。
 
 
 
@@ -91,7 +91,7 @@ LSCマスターおよびLSCワーカーがSAP環境にインストールされ�
 * https://docs.netapp.com/us-en/snapcenter/["SnapCenter ドキュメントセンター"^]
 * https://www.netapp.com/pdf.html?item=/media/12403-tr4700.pdf["TR-4700 ：『 SnapCenter Plug-in for Oracle Database 』"^]
 * https://www.netapp.com/pdf.html?item=/media/12405-tr4614pdf.pdf["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]
-* https://www.netapp.com/pdf.html?item=/media/17111-tr4667pdf.pdf["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"^]
 * https://fieldportal.netapp.com/content/883721["TR-4769：『SnapCenter Best Practices and Sizing Guidelines』"^]
 * https://library.netapp.com/ecm/ecm_download_file/ECMLP2880726["SnapCenter 4.6コマンドレットリファレンスガイド"^]
 
