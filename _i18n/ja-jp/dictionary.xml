@@ -1121,7 +1121,6 @@
   <block id="478e40cd9ddf422d368f6b4491dd38c7" category="paragraph"><block ref="478e40cd9ddf422d368f6b4491dd38c7" category="inline-link-macro-rx"></block></block>
   <block id="4f0141ecc04bee7dc293f8992542b4bd" category="summary">NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP オペレーティングシステムが搭載されています。</block>
   <block id="088c8c258db90c09658a39d2839f52b0" category="doc">TR-4384 ：『 SAP HANA on NetApp FAS Systems with Fibre Channel Protocol Configuration Guide 』</block>
-  <block id="d505ac9d8d6e21d17ef8d33d547be191" category="list-text">FAS2720 、 FAS2750 、 FAS8200 、 FAS8300 、 FAS8700 、 FAS9000</block>
   <block id="42eb56ae1e83db3afce70f056a668205" category="inline-link">認定およびサポートされている SAP HANA ハードウェアディレクトリ</block>
   <block id="b448d121930edfc4a956027d7533c403" category="paragraph">本ドキュメントでは、 Fibre Channel Protocol （ FCP ；ファイバチャネルプロトコル）を使用した FAS 構成について説明します。</block>
   <block id="bd06b22fab5b6b92f9bf2b53d26f4805" category="admonition">このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定を変更したり、機能を使用したりすると、パフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更を実施するのは、ネットアップのサポートから助言さ</block>
@@ -2830,7 +2829,6 @@
   <block id="f9d7623ba6cc83509340e737618f63c2" category="paragraph">次の例は、 SID=NF2 で、 NFSv3 を使用し、書き込みの場合は NFS 転送サイズが 1MB 、読み取りの場合は 256K の、シングルホスト SAP HANA データベースを示しています。</block>
   <block id="b6002aa673859c29cc8fc6915c01cf54" category="paragraph">次の例は、 SID=NF2 で、データファイルシステムとログファイルシステムに NFSv4.1 を使用し、「 /hana/shared 」ファイルシステムと「 /usr/sap/nf2 」ファイルシステムに NFSv3 を使用する、マルチホスト SAP HANA データベースを示しています。書き込みでは、読み取りの場合は 1MB 、書き込みの場合は 256K の NFS 転送サイズが使用されます。</block>
   <block id="4ba3e1c058ef7fff97064b76f2483b24" category="paragraph">SAP HANA の容量要件の詳細な概要については、を参照してください<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> ホワイトペーパーを添付。</block>
-  <block id="257f17de4aa60411125a8899104c5927" category="list-text">FAS2720 、 FAS2750 、 FAS8300 、 FAS8700 、 FAS9000SAP HANA 向けネットアップ認定ストレージソリューションの完全なリストは、から入手できます<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>。</block>
   <block id="45bb1f13b573370e5659e113eaa6e2a7" category="paragraph">本ドキュメントでは、 NFS バージョン 3 （ NFSv3 ）プロトコルまたは NFS バージョン 4 （ NFSv4.1 ）プロトコルの ONTAP 設定要件について説明します。</block>
   <block id="bc3bbc9b5df10cfc4c9d9747e9b15e4f" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="2585df8f0f74fb3d91dc9a930fa3213b" category="inline-link-rx"></block>。</block>
   <block id="fa880fcc81edcdb201d07b92940b6c2c" category="paragraph">1 台目のシェルフの最小 12 本の NVMe SSD で、最大 16 台の SAP HANA ホストをサポートできます。フル装備のシェルフは、最大 48 台の SAP HANA ホストをサポートします。</block>
@@ -4937,4 +4935,6 @@
   <block id="845479810e43d8fc64263c1a762de016" category="paragraph">ソースデータベースからSnapshotコピーベースの自動バックアップを実行し、新しいターゲットデータベースのクローンを作成するには、LSCとSnapCenter の説明された統合では、で説明されている設定オプションとスクリプトが使用されます <block ref="6cb270d5a2712c948be937faf1cb1d50" category="inline-link-macro-rx"></block>。</block>
   <block id="66988e72fd271cabc6a7489ab70e1a4f" category="list-text"><block ref="66988e72fd271cabc6a7489ab70e1a4f" category="inline-link-rx"></block></block>
   <block id="5c427e461906a4b90dc3d5777ec58bfa" category="paragraph">修復システムと災害復旧テストシステムは、通常、更新されたテストおよびトレーニングシステムのためにSAPシステムクローン（広範囲な後処理操作は不要）を使用して提供されますが、これらの後処理手順を適用してソースシステムと共存させる必要があります。そのため、本ドキュメントでは、SAPシステムの更新シナリオに焦点を当てて説明します。さまざまなユースケースの詳細については、テクニカルレポートを参照してください<block ref="d89e94a6aaf703375bdbc4104c3e8227" category="inline-link-rx"></block>。</block>
+  <block id="ecf911b27dfacab49658bef695c01f50" category="list-text">FAS2720、FAS2750、FAS8300、FAS8700、FAS9000 そしてFAS9500です。SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>。</block>
+  <block id="9b340c29d45c75265853d640bc6a1e05" category="list-text">FAS2720、FAS2750、FAS8200、FAS8300、FAS8700、 FAS9000、FAS9500</block>
 </blocks>
