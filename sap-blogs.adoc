@@ -23,7 +23,7 @@ keywords: netapp, solutions, SAP, blogs
 
 
 
-=== SAP 構成のベストプラクティスブログ
+== SAP 構成のベストプラクティスブログ
 
 
 
@@ -31,7 +31,7 @@ keywords: netapp, solutions, SAP, blogs
 
 
 
-=== SAP ライフサイクル管理ブログ
+== SAP ライフサイクル管理ブログ
 
 * link:https://blogs.sap.com/2021/10/27/whitepaper-sap-landscape-management-with-netapp/["ネットアップを使用した SAP Landscape Management の導入"]
 

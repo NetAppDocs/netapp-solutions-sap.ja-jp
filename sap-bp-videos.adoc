@@ -19,7 +19,7 @@ SAP Configuration Best Practices に記載されたビデオとデモの概要
 
 
 
-=== SAP Configuration Best Practices ビデオおよびデモをご覧ください
+== SAP Configuration Best Practices ビデオおよびデモをご覧ください
 
 * link:https://www.netapp.tv/details/28149["SAP HANA は、ネットアップインフラで最適なソリューションを実現します"]
 * link:https://www.netapp.tv/details/28189["『 SAP on Azure NetApp Files ： Overview and Updates 』"]

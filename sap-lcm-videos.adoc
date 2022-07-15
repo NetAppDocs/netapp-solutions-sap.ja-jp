@@ -19,7 +19,7 @@ SAP Lifecycle Management を紹介するビデオとデモの概要。
 
 
 
-=== SAP ライフサイクル管理のビデオとデモ
+== SAP ライフサイクル管理のビデオとデモ
 
 * link:https://www.netapp.tv/details/25588["リスクを軽減し 'SAP プロジェクトの品質を向上"]
 * link:https://www.netapp.tv/details/25595["予期しないイベントに備えて、基幹業務の継続性を確保します"]
