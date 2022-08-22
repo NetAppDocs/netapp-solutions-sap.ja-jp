@@ -77,6 +77,9 @@ net.ipv4.tcp_timestamps = 1
 net.ipv4.tcp_sack = 1
 ....
 
+NOTE: Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用して設定を適用することもできます。を参照してください https://launchpad.support.sap.com/["SAP ノート 3024346"^] （ SAP ログインが必要です）。
+
+
 
 == /hana/shared ボリュームにサブディレクトリを作成します
 

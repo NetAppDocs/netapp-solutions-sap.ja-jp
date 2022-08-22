@@ -669,7 +669,6 @@
   <block id="4142bd640477d1c4292c7fcbb3bb1f57" category="section-title">/hana/shared ボリュームにサブディレクトリを作成します</block>
   <block id="67435e0588f5cb039a7fb0f4578e90a7" category="admonition">以下の例は、 SID=NF2 の SAP HANA データベースを示しています。</block>
   <block id="73534bc746cc8b23b1e96428d64fb98d" category="paragraph">必要なサブディレクトリを作成するには、次のいずれかの操作を行います。</block>
-  <block id="a3dd76ccd42ef45432fcdf4bcd06d1d6" category="list-text">シングル・ホスト・システムの場合は '/hana/shared-volume をマウントし 'hared' サブディレクトリと usr-sap サブディレクトリを作成します</block>
   <block id="4dedcda7bf51022c092ff39d3a6d5686" category="list-text">マルチ・ホスト・システムの場合は '/hana/shared-volume をマウントし ' 各ホストの 'hared' サブディレクトリと 'usr-sap' サブディレクトリを作成します</block>
   <block id="d434026f127f46b1327fb139872c6f31" category="list-text">マルチホストシステムの場合は、マウントポイントを作成し、すべてのワーカーホストとスタンバイホストに権限を設定します。</block>
   <block id="456f14e4dccd61c74e863ee833a9ca13" category="paragraph">以下のコマンド例は、 2+1 のマルチホスト HANA システムを示しています。</block>
@@ -903,12 +902,10 @@
   <block id="c74ff3a04dfaf8295d9c6f7254506ba9" category="paragraph"><block ref="c74ff3a04dfaf8295d9c6f7254506ba9" category="inline-link-macro-rx"></block></block>
   <block id="e41020e64935329a6db54f4c483b9113" category="summary">このセクションで説明するホストのセットアップ手順は、すべて物理サーバ上の SAP HANA 環境と、 VMware vSphere 上で実行される SAP HANA 環境の両方で有効です。</block>
   <block id="970af0317b4da152f387070d466a966a" category="paragraph"><block ref="970af0317b4da152f387070d466a966a" category="inline-link-macro-rx"></block></block>
-  <block id="95df6f6c376792473a459235195a79dd" category="paragraph">SUSE Linux Enterprise Server 12 SP1 以降、カーネルパラメータは /etc/sysctl.d` ディレクトリの構成ファイルで設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。</block>
   <block id="ec0668f7ae6dba074f0862485b7b15f8" category="admonition">これらの値は、 SLES for SAP OS のバージョンに含まれている saptune を使用して設定できます。詳細については、を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="c60051ea586d490f1e69166ac39409e5" category="paragraph">NFSv3 を使用してストレージを接続する場合は、「 /etc/modprobe.d/sunrpc.conf 」に「 `unrpc.tcp_max_slot_table_entries 」を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
   <block id="179a425489e8da15ef704b42e37645c8" category="section-title">Red Hat Enterprise Linux 7.2 以降の構成パラメータ</block>
   <block id="e19cf298e039e5acff1dbe7e98090d84" category="paragraph">SAP HANA で生成されるワークロードに合わせて、各 SAP HANA ホストで追加のカーネルパラメータと構成パラメータを調整する必要があります。</block>
-  <block id="7a093f47a350c0e9b97c0070054a7d01" category="paragraph">ストレージの接続に NFSv3 を使用する場合は、 /etc/modprobe.d/sunrpc.conf のパラメータ 'unrpc.tcp_max_slot_table_entries を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
   <block id="5491b828c5fede318e582fdb0621d64f" category="paragraph">Red Hat Enterprise Linux 7.2 以降では、 /etc/sysctl.d` ディレクトリにある構成ファイルでカーネルパラメータを設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。</block>
   <block id="b57aa9745ef1f47f50b9a81013b110fc" category="admonition">次の例は、 SID=NF2 の SAP HANA データベースを示しています。</block>
   <block id="efa2100424814ed736c66e231fca168e" category="paragraph">次の表に、シングルホストデータベースとマルチホスト SAP HANA データベースの異なるファイルシステムに使用する必要がある NFS のバージョンを示します。</block>
@@ -4937,4 +4934,8 @@
   <block id="5c427e461906a4b90dc3d5777ec58bfa" category="paragraph">修復システムと災害復旧テストシステムは、通常、更新されたテストおよびトレーニングシステムのためにSAPシステムクローン（広範囲な後処理操作は不要）を使用して提供されますが、これらの後処理手順を適用してソースシステムと共存させる必要があります。そのため、本ドキュメントでは、SAPシステムの更新シナリオに焦点を当てて説明します。さまざまなユースケースの詳細については、テクニカルレポートを参照してください<block ref="d89e94a6aaf703375bdbc4104c3e8227" category="inline-link-rx"></block>。</block>
   <block id="ecf911b27dfacab49658bef695c01f50" category="list-text">FAS2720、FAS2750、FAS8300、FAS8700、FAS9000 そしてFAS9500です。SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>。</block>
   <block id="9b340c29d45c75265853d640bc6a1e05" category="list-text">FAS2720、FAS2750、FAS8200、FAS8300、FAS8700、 FAS9000、FAS9500</block>
+  <block id="8293eb8037b07e6a99273e0e69a21b6f" category="paragraph">SUSE Linux Enterprise Server 12 SP1 以降、カーネルパラメータは /etc/sysctl.d` ディレクトリの構成ファイルで設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。</block>
+  <block id="9f7a362263a005504b84698373ae8acb" category="paragraph">ストレージの接続に NFSv3 を使用する場合は、 /etc/modprobe.d/sunrpc.conf のパラメータ 'unrpc.tcp_max_slot_table_entries を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
+  <block id="c27949e29c7b8b43b4bd0feb8b22be99" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用して設定を適用することもできます。を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
+  <block id="a45ee993bf9abd75c709b9125c24c32a" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用してこれらの設定を適用することもできます。を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
 </blocks>
