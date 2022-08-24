@@ -1020,16 +1020,13 @@
   <block id="9ba59bf1b64e9d129b41dbb49f3c385f" category="paragraph">NFS システムと NetApp FAS システムを使用する AFF システムの構成ガイドは、次のリンクから入手できます。</block>
   <block id="6e309be8793679276c5f6a7bdd2bfdfa" category="inline-link">FCP を使用した NetApp FAS システムでの SAP HANA</block>
   <block id="794aa68d1e6abb7bdd6b9ecf4a1125fd" category="inline-link">NFS を使用した NetApp FAS システムでの SAP HANA</block>
-  <block id="4300aba024439d53329726e8ecb7f77b" category="list-text"><block ref="4300aba024439d53329726e8ecb7f77b" category="inline-link-rx"></block></block>
   <block id="5f6e041a9634120ceb1ee084f6acde8a" category="inline-link">SAP Note 2235581 – SAP HANA Supported Operating Systems 』</block>
   <block id="10fba2fd8d2b0860517a92eefbfce26b" category="paragraph">SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオーバー時にフェンシングを提供するために、標準の SAP HANA ストレージコネクタが使用されます。オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、必ず該当する SAP ノートを参照してください。詳細については、を参照してください<block ref="362348e4aadbc3b1dc4fa3ddcce8fb65" category="inline-link-rx"></block>。</block>
   <block id="c28f239d8c4b11cfe19d1dcf078100b9" category="section-title">SAP HANA テーラードデータセンター統合</block>
   <block id="e13ebe7bf91deecb41098f3561e752bf" category="paragraph">NetApp AFF ストレージシステムは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、アーキテクチャの概要を示します。</block>
   <block id="92587b11e86da44eb218f2b17846d58e" category="paragraph"><block ref="92587b11e86da44eb218f2b17846d58e" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ea6847e11cffe9d9606d920fe126bfdc" category="paragraph">生産性の高い SAP HANA システムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。</block>
   <block id="14a31d6554fa48b10cc86d1aaf656a07" category="inline-link">『 SAP HANA Tailored Data Center Integration Frequently Asked Questions 』</block>
   <block id="9282f2106e2ecc166cf241e78c58163e" category="list-text"><block ref="9282f2106e2ecc166cf241e78c58163e" category="inline-link-rx"></block></block>
-  <block id="44cbaf598c2b8895a3d3a875dd63203f" category="list-text"><block ref="44cbaf598c2b8895a3d3a875dd63203f" category="inline-link-rx"></block></block>
   <block id="677ab22de36ea7a11313727ef07c5d64" category="inline-link-macro">前の手順： SAP HANA シングルホストシステムのデータボリュームパーティションを追加</block>
   <block id="8743d46cf40e9841fd4d7a036d38956c" category="paragraph"><block ref="8743d46cf40e9841fd4d7a036d38956c" category="inline-link-macro-rx"></block></block>
   <block id="156ab83547a69207813015793bfe2332" category="paragraph"><block ref="156ab83547a69207813015793bfe2332" category="inline-link-rx"></block></block>
@@ -1079,9 +1076,7 @@
   <block id="af01ac16ca42b9b924b834a3199131e9" category="paragraph">この認定は、次のモデルで有効です。</block>
   <block id="793f62e70c31f71a93161db091bea2c0" category="paragraph">FCP を使用する NetApp AFF システム、および NFS または FCP を使用する FAS システムの構成ガイドは、次のリンクから入手できます。</block>
   <block id="fd645c3ffaeed1c3efb140082b037a69" category="inline-link">『 SAP HANA on NetApp FAS Systems with Fibre Channel Protocol 』を参照してください</block>
-  <block id="8c286ade008f7d794b82d8e4bc981424" category="list-text"><block ref="8c286ade008f7d794b82d8e4bc981424" category="inline-link-rx"></block></block>
   <block id="d3eeeac9b8ca9512c68dfff9f3b301a2" category="inline-link">『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください</block>
-  <block id="c5b75af125f41729ef7bcd709c04f970" category="list-text"><block ref="c5b75af125f41729ef7bcd709c04f970" category="inline-link-rx"></block></block>
   <block id="36fafbaf89be825de435f50a73ce793c" category="paragraph">次の表に、 SAP HANA データベースの構成に応じた、 NFS バージョン、 NFS ロック、および必要な分離実装についてサポートされる組み合わせを示します。</block>
   <block id="4a74ba49b2778c7cf6b73600b7dfe758" category="paragraph">SAP HANA シングルホストシステム、またはホストの自動フェイルオーバーを使用しない複数のホストでは、 NFSv3 と NFSv4 がサポートされます。</block>
   <block id="8456bce54ecacb824d3f0f3333eec164" category="paragraph">ホストの自動フェイルオーバーを有効にした SAP HANA マルチホストシステムでは、サーバ固有の STONITH （ SAP HANA HA/DR プロバイダ）実装の代わりに NFSv4 ロックを使用した場合に、ネットアップは NFSv4 のみをサポートします。</block>
@@ -1101,7 +1096,6 @@
   <block id="e0f43a4c6e28079f6afdc78865b7782e" category="admonition">オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、該当する SAP ノートを参照してください。詳細については、『 SAP note 2235581 ： SAP HANA Supported Operating Systems 』を参照してください。</block>
   <block id="5d75848b6169b06c4cd7d6a8c2ec2337" category="paragraph">NetApp AFF ストレージコントローラは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、 SAP HANA TDI のアーキテクチャの概要を示します。</block>
   <block id="b397cda0484ae78f49c994384022879a" category="paragraph"><block ref="b397cda0484ae78f49c994384022879a" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0b915d978fec9594c52c6c0d2f128886" category="paragraph">本番用 SAP HANA システムの前提条件と推奨事項の詳細については、次のリソースを参照してください。</block>
   <block id="4769b140b92a70ffdab406be16d30122" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションを使用しても、ホストとストレージの構成が物理ホストと VM で同じになることはありません。</block>
   <block id="35eb3c62d099b5d5e6334b74d5b2bcff" category="paragraph">NFS データストアと NFS を使用する VVol データストアもサポートされます。どちらの場合も、本番環境で使用するデータストアに格納する必要があるのは、 1 つの SAP HANA データボリュームまたはログボリュームだけです。また、 NetApp SnapCenter によってオーケストレーションされた Snapshot ベースのバックアップとリカバリ、および SAP システムのクローニングなどに基づくソリューションは実装できません。</block>
   <block id="f7fbf8be79b2dbbf7cca7d63ea2aaa3e" category="paragraph">このドキュメントでは、ゲスト OS から NFS への直接マウントを使用する場合の推奨セットアップについて説明します。</block>
@@ -1223,7 +1217,6 @@
   <block id="fdb63fa26dfca812f4f453ca18a829c7" category="section-title">SAP HANA テーラードデータセンター統合</block>
   <block id="c2798d82f6c464fd30d247919005bc5b" category="paragraph">NetApp FAS ストレージコントローラは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。アーキテクチャの概要については、次の図を参照してください。</block>
   <block id="780627a969a9ecaba83ec1a8ad4e34f6" category="paragraph"><block ref="780627a969a9ecaba83ec1a8ad4e34f6" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c57f9f1ae5801f0d8675d5d2053fbac7" category="paragraph">本番用 SAP HANA システムの前提条件と推奨事項の詳細については、次の SAP リソースを参照してください。</block>
   <block id="cd67947f6f1984974a5e507afaa2222d" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションを使用しても、ホストやストレージの構成が物理ホストや VM で同じになることはありません。</block>
   <block id="3e0badc46d16811661a7977c8991b3ea" category="paragraph">NFS データストアまたは NFS を使用する VVol データストアもサポートされます。どちらの場合も、本番環境で使用するデータストアに格納する必要があるのは、 1 つの SAP HANA データボリュームまたはログボリュームだけです。また、 SnapCenter がオーケストレーションする Snapshot コピーベースのバックアップとリカバリ、および SAP システムのクローニングなどに基づくソリューションは実装できません。</block>
   <block id="41f8d362e2484ed69d1a57c66be636dc" category="paragraph"><block ref="41f8d362e2484ed69d1a57c66be636dc" category="inline-link-macro-rx"></block></block>
@@ -1905,12 +1898,7 @@
   <block id="4a889ac1eab815e3cc9e7d0066d4360d" category="paragraph">本ドキュメントでは、 Oracle データベースを使用して SAP Business Suite 製品をサポートするストレージソリューションを設計する際の課題について説明します。ストレージインフラの設計、導入、運用、管理を中心に、最新世代の SAP ソリューションの利用に際して経営陣や IT 部門責任者が一般に直面する課題について、その対処方法を示します。本書で紹介する推奨事項は、特定の SAP アプリケーションに限定したものではなく、規模や範囲に関係なくさまざまな SAP 環境に応用できます。本ドキュメントは、ネットアップ製品および SAP 製品のテクノロジと運用に関する基本的な知識があることを前提としています。本ドキュメントは、ネットアップ、 SAP 、 Oracle 、およびお客様の技術スタッフの協力のもとに作成されました。</block>
   <block id="72b1d38d81a57d1482ce5708d98653f1" category="inline-link-macro"><block ref="72b1d38d81a57d1482ce5708d98653f1" category="inline-link-rx"></block></block>
   <block id="d30f42b2a88310780291191529d76b18" category="paragraph"><block ref="d30f42b2a88310780291191529d76b18" category="inline-link-macro-rx"></block></block>
-  <block id="c9d1db03ff9188655c6df6826c9cec88" category="list-text"><block ref="c9d1db03ff9188655c6df6826c9cec88" category="inline-link-rx"></block></block>
-  <block id="172a4f6be2e5258ba785f0fbe99140f7" category="list-text"><block ref="172a4f6be2e5258ba785f0fbe99140f7" category="inline-link-rx"></block></block>
-  <block id="d76e7542f28a5b74ef246f360a1518d6" category="list-text"><block ref="d76e7542f28a5b74ef246f360a1518d6" category="inline-link-rx"></block></block>
   <block id="1c00cdc071680932dbe093eee9f348e7" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください <block ref="0f1147a043e687692dc16c07b278ec3b" category="inline-link-macro-rx"></block>。</block>
-  <block id="6578ba8f8050606717eb26d6e9c36396" category="list-text"><block ref="6578ba8f8050606717eb26d6e9c36396" category="inline-link-rx"></block></block>
-  <block id="9e2f7b0947eed9e36a3d84200631ce7d" category="list-text"><block ref="9e2f7b0947eed9e36a3d84200631ce7d" category="inline-link-rx"></block></block>
   <block id="81c2f60fe1cd3484018d62f2addc343a" category="summary">このリファレンスアーキテクチャドキュメントでは、 VMware vSphere 仮想マシン（ VM ）および NetApp FAS および All Flash FAS （ AFF ）ストレージシステム上に SAP HANA シングルホストおよびマルチホストソリューションを設計し、導入する方法を説明します。</block>
   <block id="fc21beda63f542908cf6ffb86e8a9b91" category="doc">TR-4338 ：『 SAP HANA on VMware vSphere with NetApp-FAS and All Flash FAS Systems 』</block>
   <block id="492dbdbda06cf15ce343cbe404369a3d" category="paragraph">このリファレンスアーキテクチャドキュメントでは、 VMware vSphere 仮想マシン（ VM ）および NetApp FAS および All Flash FAS （ AFF ）ストレージシステム上に SAP HANA シングルホストおよびマルチホストソリューションを設計し、導入する方法を説明します。このリファレンスアーキテクチャは、 VMware とネットアップの既存のお客様のエクスペリエンス、実際のシミュレーション、ネットアップのエンジニアリングラボでの検証に基づいて、導入と文書化が行われた解決策です。このドキュメントでは、要件評価、解決策設計、インストール、管理など、プロジェクトのライフサイクル全体を通じてお客様を支援します。</block>
@@ -4938,4 +4926,12 @@
   <block id="9f7a362263a005504b84698373ae8acb" category="paragraph">ストレージの接続に NFSv3 を使用する場合は、 /etc/modprobe.d/sunrpc.conf のパラメータ 'unrpc.tcp_max_slot_table_entries を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
   <block id="c27949e29c7b8b43b4bd0feb8b22be99" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用して設定を適用することもできます。を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="a45ee993bf9abd75c709b9125c24c32a" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用してこれらの設定を適用することもできます。を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
+  <block id="6ed4f46c3f6437e250cb69f8684772f4" category="list-text"><block ref="6ed4f46c3f6437e250cb69f8684772f4" category="inline-link-rx"></block></block>
+  <block id="24d3ef74df0d2ceedb42c4a4c33104d4" category="list-text"><block ref="24d3ef74df0d2ceedb42c4a4c33104d4" category="inline-link-rx"></block></block>
+  <block id="a52e74dbfc20d705ac349fdd5b3d0188" category="list-text"><block ref="a52e74dbfc20d705ac349fdd5b3d0188" category="inline-link-rx"></block></block>
+  <block id="aeb3b72555ced42ccaba566af6824c8b" category="paragraph">生産性の高いSAP HANAシステムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。</block>
+  <block id="bee7a17172474fbff8f082af26c835d8" category="list-text"><block ref="bee7a17172474fbff8f082af26c835d8" category="inline-link-rx"></block></block>
+  <block id="1b0cf038717d1ac5c71d63e939cce293" category="list-text"><block ref="1b0cf038717d1ac5c71d63e939cce293" category="inline-link-rx"></block></block>
+  <block id="e7f295e915bb11e75ddb24aa294f7351" category="paragraph">本番用SAP HANAシステムの前提条件と推奨事項の詳細については、次のSAPリソースを参照してください。</block>
+  <block id="1ad4402d015b30446fdee11f5a31f55b" category="paragraph">本番用SAP HANAシステムの前提条件と推奨事項の詳細については、次のリソースを参照してください。</block>
 </blocks>
