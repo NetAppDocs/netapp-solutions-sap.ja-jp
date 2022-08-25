@@ -660,7 +660,6 @@
   <block id="efcd9df071a570f7c5ed3559b172bce3" category="section-title">SUSE Linux Enterprise Server 12 および 15</block>
   <block id="ebb8355d8accfb697b6808ce518c8666" category="paragraph">SUSE Linux Enterprise Server （ SLES ） 12 SP1 以降、カーネルパラメータは /etc/sysctl.d`d ディレクトリ内の構成ファイルで設定する必要があります。たとえば '91-NetApp-/hana.conf という名前の構成ファイルを作成する必要があります</block>
   <block id="68d9ac2d7e973e347e878b223355bf31" category="inline-link">SAP ノート 3024346</block>
-  <block id="5a7935c69e3983bd16f2022048011c44" category="admonition">SAP OS バージョン用の SLES に含まれている Saptune を使用してこれらの値を設定できます。を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="fe039cc1acff15ac3ebdef50867dad8e" category="paragraph">NFSv3 を使用してストレージを接続する場合は、 'sunrpc.tcp_max_slot_table_entries パラメータを /etc/modprobe.d/sunrpc.conf に設定する必要があります。ファイルが存在しない場合は、次の行を追加して先に作成する必要があります。</block>
   <block id="82740b25df395d68a79118ebc5c4da80" category="section-title">Red Hat Enterprise Linux 7.2 以降の構成パラメータ</block>
   <block id="ba0e722235d43672bc79f8b3d5e18c9f" category="paragraph">SAP HANA で生成されるワークロードに合わせて、各 SAP HANA ホストで追加のカーネルパラメータと構成パラメータを調整する必要があります。</block>
@@ -902,7 +901,6 @@
   <block id="c74ff3a04dfaf8295d9c6f7254506ba9" category="paragraph"><block ref="c74ff3a04dfaf8295d9c6f7254506ba9" category="inline-link-macro-rx"></block></block>
   <block id="e41020e64935329a6db54f4c483b9113" category="summary">このセクションで説明するホストのセットアップ手順は、すべて物理サーバ上の SAP HANA 環境と、 VMware vSphere 上で実行される SAP HANA 環境の両方で有効です。</block>
   <block id="970af0317b4da152f387070d466a966a" category="paragraph"><block ref="970af0317b4da152f387070d466a966a" category="inline-link-macro-rx"></block></block>
-  <block id="ec0668f7ae6dba074f0862485b7b15f8" category="admonition">これらの値は、 SLES for SAP OS のバージョンに含まれている saptune を使用して設定できます。詳細については、を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="c60051ea586d490f1e69166ac39409e5" category="paragraph">NFSv3 を使用してストレージを接続する場合は、「 /etc/modprobe.d/sunrpc.conf 」に「 `unrpc.tcp_max_slot_table_entries 」を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
   <block id="179a425489e8da15ef704b42e37645c8" category="section-title">Red Hat Enterprise Linux 7.2 以降の構成パラメータ</block>
   <block id="e19cf298e039e5acff1dbe7e98090d84" category="paragraph">SAP HANA で生成されるワークロードに合わせて、各 SAP HANA ホストで追加のカーネルパラメータと構成パラメータを調整する必要があります。</block>
@@ -4924,8 +4922,6 @@
   <block id="9b340c29d45c75265853d640bc6a1e05" category="list-text">FAS2720、FAS2750、FAS8200、FAS8300、FAS8700、 FAS9000、FAS9500</block>
   <block id="8293eb8037b07e6a99273e0e69a21b6f" category="paragraph">SUSE Linux Enterprise Server 12 SP1 以降、カーネルパラメータは /etc/sysctl.d` ディレクトリの構成ファイルで設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。</block>
   <block id="9f7a362263a005504b84698373ae8acb" category="paragraph">ストレージの接続に NFSv3 を使用する場合は、 /etc/modprobe.d/sunrpc.conf のパラメータ 'unrpc.tcp_max_slot_table_entries を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
-  <block id="c27949e29c7b8b43b4bd0feb8b22be99" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用して設定を適用することもできます。を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
-  <block id="a45ee993bf9abd75c709b9125c24c32a" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用してこれらの設定を適用することもできます。を参照してください<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="6ed4f46c3f6437e250cb69f8684772f4" category="list-text"><block ref="6ed4f46c3f6437e250cb69f8684772f4" category="inline-link-rx"></block></block>
   <block id="24d3ef74df0d2ceedb42c4a4c33104d4" category="list-text"><block ref="24d3ef74df0d2ceedb42c4a4c33104d4" category="inline-link-rx"></block></block>
   <block id="a52e74dbfc20d705ac349fdd5b3d0188" category="list-text"><block ref="a52e74dbfc20d705ac349fdd5b3d0188" category="inline-link-rx"></block></block>
@@ -4934,4 +4930,8 @@
   <block id="1b0cf038717d1ac5c71d63e939cce293" category="list-text"><block ref="1b0cf038717d1ac5c71d63e939cce293" category="inline-link-rx"></block></block>
   <block id="e7f295e915bb11e75ddb24aa294f7351" category="paragraph">本番用SAP HANAシステムの前提条件と推奨事項の詳細については、次のSAPリソースを参照してください。</block>
   <block id="1ad4402d015b30446fdee11f5a31f55b" category="paragraph">本番用SAP HANAシステムの前提条件と推奨事項の詳細については、次のリソースを参照してください。</block>
+  <block id="537754f62b9e3072d7b143e82ea96f51" category="admonition">これらの値は、 SLES for SAP OS のバージョンに含まれている saptune を使用して設定できます。詳細については、を参照してください<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
+  <block id="64de99f49b55f96ef81b9f1d7d3ef301" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用して設定を適用することもできます。を参照してください<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
+  <block id="a02f77a47cb5c9004f19c8c78d662cd5" category="admonition">SAP OS バージョン用の SLES に含まれている Saptune を使用してこれらの値を設定できます。を参照してください<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
+  <block id="bdd70ece842485df8dbfc92d3ddc2d1e" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用してこれらの設定を適用することもできます。を参照してください<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
 </blocks>

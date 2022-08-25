@@ -43,7 +43,7 @@ net.ipv4.tcp_timestamps = 1
 net.ipv4.tcp_sack = 1
 ....
 
-NOTE: これらの値は、 SLES for SAP OS のバージョンに含まれている saptune を使用して設定できます。詳細については、を参照してください https://launchpad.support.sap.com/["SAP ノート 3024346"^] （ SAP ログインが必要です）。
+NOTE: これらの値は、 SLES for SAP OS のバージョンに含まれている saptune を使用して設定できます。詳細については、を参照してください https://launchpad.support.sap.com/#/notes/3024346["SAP ノート 3024346"^] （ SAP ログインが必要です）。
 
 NFSv3 を使用してストレージを接続する場合は、「 /etc/modprobe.d/sunrpc.conf 」に「 `unrpc.tcp_max_slot_table_entries 」を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。
 
@@ -77,7 +77,7 @@ net.ipv4.tcp_timestamps = 1
 net.ipv4.tcp_sack = 1
 ....
 
-NOTE: Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用して設定を適用することもできます。を参照してください https://launchpad.support.sap.com/["SAP ノート 3024346"^] （ SAP ログインが必要です）。
+NOTE: Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用して設定を適用することもできます。を参照してください https://launchpad.support.sap.com/#/notes/3024346["SAP ノート 3024346"^] （ SAP ログインが必要です）。
 
 
 
