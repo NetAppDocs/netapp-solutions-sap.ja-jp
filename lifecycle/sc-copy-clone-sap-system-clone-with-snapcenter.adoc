@@ -228,7 +228,7 @@ hana-1:/mnt/sapcc-share/SAP-System-Refresh #
 
 == 追加のSAPアプリケーションサービスのクローニング
 
-SAP HANA共有ボリュームと同じ方法で、追加のSAPアプリケーションサービスのクローンを作成できます（を参照）<<Cloning the HANA shared volume>>」 もちろん、SAPアプリケーションサーバに必要なストレージボリュームもSnapCenter で保護する必要があります。
+SAP HANA共有ボリュームと同じ方法で、追加のSAPアプリケーションサービスのクローンを作成できます（を参照） the HANA shared volume」 もちろん、SAPアプリケーションサーバに必要なストレージボリュームもSnapCenter で保護する必要があります。
 
 必要なサービスエントリを/usr/sap/sapservicesに追加し'ポート'ユーザ'ファイルシステムマウントポイント(たとえば'/usr/sap/sid')を準備する必要があります
 

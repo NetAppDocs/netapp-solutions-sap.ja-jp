@@ -60,14 +60,14 @@ FabricPool は、ログバックアップを別のストレージ階層に移動
 
 以下に、必要なストレージ構成手順の概要を示します。各手順の詳細については、以降のセクションで説明します。このセクションでは、ストレージハードウェアがセットアップされており、 ONTAP ソフトウェアがすでにインストールされていることを前提としています。また、ストレージポート（ 10GbE 以上）とネットワークの間の接続がすでに確立されている必要があります。
 
-. 「」の説明に従って、正しいディスクシェルフ構成を確認します。<<Disk shelf connection>>. 」
-. の説明に従って、必要なアグリゲートを作成および構成します。<<Aggregate configuration>>. 」
-. の説明に従って、 Storage Virtual Machine （ SVM ）を作成します。<<SVM configuration>>. 」
-. の説明に従って LIF を作成します。<<LIF configuration>>. 」
-. の説明に従って、アグリゲート内にボリュームを作成します。<<Volume configuration for SAP HANA single host systems>>および<<Volume configuration for SAP HANA multiple host systems>>. 」
-. の説明に従って、必要なボリュームオプションを設定します。<<Volume options>>. 」
-. の説明に従って、 NFSv3 に必要なオプションを設定します。<<NFS configuration for NFSv3>>「 NFSv4 の場合は、」の説明に従ってまたはを参照してください。<<NFS configuration for NFSv4>>. 」
-. の説明に従って、ボリュームをネームスペースにマウントし、エクスポートポリシーを設定します。<<Mount volumes to namespace and set export policies>>. 」
+. 「」の説明に従って、正しいディスクシェルフ構成を確認します。 shelf connection. 」
+. の説明に従って、必要なアグリゲートを作成および構成します。 configuration. 」
+. の説明に従って、 Storage Virtual Machine （ SVM ）を作成します。 configuration. 」
+. の説明に従って LIF を作成します。 configuration. 」
+. の説明に従って、アグリゲート内にボリュームを作成します。 configuration for SAP HANA single host systemsおよび configuration for SAP HANA multiple host systems. 」
+. の説明に従って、必要なボリュームオプションを設定します。 options. 」
+. の説明に従って、 NFSv3 に必要なオプションを設定します。 configuration for NFSv3「 NFSv4 の場合は、」の説明に従ってまたはを参照してください。 configuration for NFSv4. 」
+. の説明に従って、ボリュームをネームスペースにマウントし、エクスポートポリシーを設定します。 volumes to namespace and set export policies. 」
 
 
 
