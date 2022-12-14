@@ -169,7 +169,7 @@ image:saphana-br-scs-image54.png["エラー：グラフィックイメージが�
 次の図に、保護ポリシーを示します。保護関係に使用される保護ポリシーでは、セカンダリストレージでのバックアップの保持に加え、 SnapMirror ラベルも定義されます。この例では ' 使用されているラベルは毎日 ' 保存期間は 5 に設定されています
 
 
-NOTE: 作成するポリシーの SnapMirror ラベルは、 SnapCenter ポリシーの設定で定義されたラベルと一致する必要があります。詳細については、「」を参照してください for daily Snapshot backups with SnapVault replication」
+NOTE: 作成するポリシーの SnapMirror ラベルは、 SnapCenter ポリシーの設定で定義されたラベルと一致する必要があります。詳細については、「」を参照してください<<SnapVault レプリケーションを行う日次 Snapshot バックアップのポリシー>>」
 
 
 NOTE: オフサイトのバックアップストレージでのバックアップの保持は、ポリシーに定義され、 ONTAP によって制御されます。
@@ -235,7 +235,7 @@ image:saphana-br-scs-image59.png["エラー：グラフィックイメージが�
 +
 image:saphana-br-scs-image60.png["エラー：グラフィックイメージがありません"]
 
-.. リソース構成が完了したら、「」の説明に従って、リソース保護の構成を実行します protection configuration」
+.. リソース構成が完了したら、「」の説明に従って、リソース保護の構成を実行します<<リソース保護の設定>>」
 
 
 

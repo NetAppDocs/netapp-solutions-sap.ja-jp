@@ -60,12 +60,12 @@ FabricPool は、ログバックアップを別のストレージ階層に移動
 
 以下に、必要なストレージ構成手順の概要を示します。各手順の詳細については、以降のセクションで説明します。このセクションでは、ストレージハードウェアがセットアップされており、 ONTAP ソフトウェアがすでにインストールされていることを前提としています。また、ストレージ FCP ポートと SAN ファブリックの接続がすでに確立されている必要があります。
 
-. 「」の説明に従って、正しいディスクシェルフ構成を確認します。 shelf connection. 」
-. の説明に従って、必要なアグリゲートを作成して構成します。 configuration. 」
-. の説明に従って、 Storage Virtual Machine （ SVM ）を作成します。 virtual machine configuration. 」
-. の説明に従って、 Logical Interface （ LIF ；論理インターフェイス）を作成します。 interface configuration. 」
-. ポートセットを作成します（を参照）。 port sets. 」
-. 作成の説明に従って、アグリゲート内にイニシエータグループ、ボリューム、および LUN を作成します。 and volumes and mapping LUNs to initiator groups. 」
+. 「」の説明に従って、正しいディスクシェルフ構成を確認します。<<ディスクシェルフの接続>>. 」
+. の説明に従って、必要なアグリゲートを作成して構成します。<<アグリゲートの構成>>. 」
+. の説明に従って、 Storage Virtual Machine （ SVM ）を作成します。<<Storage Virtual Machine の設定>>. 」
+. の説明に従って、 Logical Interface （ LIF ；論理インターフェイス）を作成します。<<論理インターフェイスの構成>>. 」
+. ポートセットを作成します（を参照）。<<FCP ポートセット>>. 」
+. 作成の説明に従って、アグリゲート内にイニシエータグループ、ボリューム、および LUN を作成します。<<LUNs and volumes and mapping LUNs to initiator groups>>. 」
 
 
 
