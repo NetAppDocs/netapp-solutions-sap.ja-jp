@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html 
+keywords: destroy, workflow 
+summary: クローンシステムの運用を停止するには、運用を停止し、準備を事前に完了しておく必要があります。その後、システムの破棄ワークフローを開始できます。 
+---
+= SAP LaMaによるワークフローのプロビジョニング解除-システムの破壊
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:lama-ansible-sap-lama-provisioning-workflow-clone-system.html["前のリリース：SAP LaMaプロビジョニングワークフロー-システムをクローニング"]
+
+[role="lead"]
+次の図は、system destroyワークフローで実行する主な手順を示しています。
+
+image:lama-ansible-image32.png["この図は、システムの破棄ワークフローの概要を示しています。システムの停止、システムの準備解除、ストレージクローンの削除、システム構成の削除の手順が含まれています。"]
+
+. クローンシステムの運用を停止するには、運用を停止し、準備を事前に完了しておく必要があります。その後、システムの破棄ワークフローを開始できます。
++
+image:lama-ansible-image33.png["この図には、システムで前述のワークフロー手順が発生する場合のアーキテクチャ図とその手順が含まれています。"]
+
+. この例では、前に作成したシステムに対してsystem destroyワークフローを実行します。システムビュー*画面でシステムを選択し、*破棄プロセス*でシステム破棄ワークフローを開始します。
++
+image:lama-ansible-image34.png["このスクリーンショットは、SAP LaMa GUIをSystem  Provisioning Systems Viewで開き、Destroy Systemsのドロップダウンを開くことができることを示しています。"]
+
+. プロビジョニングフェーズで維持されたすべてのマウントポイントが表示され、システムの削除ワークフロープロセス中に削除されます。
++
+image:lama-ansible-image35.png["このスクリーンショットは、Destroy Storage Volumes（ストレージボリュームの破棄）タブのDestroy System（システムの破棄）画面とすべてのマウントポイントを表示したものです。"]
+
++
+仮想ホスト名はDNSを通じて管理され、自動的に割り当てられているため、削除されません。
+
++
+image:lama-ansible-image36.png["このスクリーンショットは、ホスト名の削除タブのシステムの破棄画面を示しています。ホスト名は表示されません。"]
+
+. 実行ボタンをクリックすると、処理が開始されます。
++
+image:lama-ansible-image37.png["このスクリーンショットは、ストレージボリュームの破棄の概要ページを示しています。"]
+
++
+ボリュームクローンを削除し、そのクローンシステムの設定を削除する処理がSAP LaMaから実行されます。
+
+. クローンワークフローの進行状況は、* Monitoring *メニューで監視できます。
++
+image:lama-ansible-image38.png["このスクリーンショットは、システムの破棄ワークフローの進行状況をリアルタイムで示しています。"]
+
+. 「* Delete NetAppClone *」タスクを選択すると、その手順の詳細ログが表示されます。Ansibleプレイブックの実行方法を以下に示します。ご覧のように、Ansibleプレイブックもご覧いただけます `netapp_lama_ServiceConfigRemoval.yml` は、HANAデータベースのボリューム、データ、ログ、および共有ごとに実行されます。
++
+image:lama-ansible-image39.png["このスクリーンショットは、システムの破棄ワークフローのログページを示しています。"]
+
+
+
+link:lama-ansible-sap-lama-provisioning-workflow-copy-system.html["次の例：SAP LaMaプロビジョニングワークフローとコピーシステムをプロビジョニング"]

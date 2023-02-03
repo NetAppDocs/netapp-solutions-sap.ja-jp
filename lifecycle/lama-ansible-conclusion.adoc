@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-conclusion.html 
+keywords: conclusion, additional information, version history 
+summary: Ansibleなどの最新の自動化フレームワークがSAP LaMaプロビジョニングワークフローに統合されているため、柔軟な解決策 を利用して、標準的なインフラや複雑なインフラ要件に対応できます。 
+---
+= まとめ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html["以前：プロバイダスクリプトの設定とAnsibleのプレイブック。"]
+
+[role="lead"]
+Ansibleなどの最新の自動化フレームワークがSAP LaMaプロビジョニングワークフローに統合されているため、柔軟な解決策 を利用して、標準的なインフラや複雑なインフラ要件に対応できます。
+
+
+
+== 追加情報の参照先
+
+このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
+
+* NetAppネームスペース内のコレクション
++
+https://docs.ansible.com/ansible/latest/collections/netapp/index.html["https://docs.ansible.com/ansible/latest/collections/netapp/index.html"^]
+
+* AnsibleとAnsibleのPlaybookのサンプルに関するドキュメント
++
+https://github.com/sap-linuxlab/demo.netapp_ontap["https://github.com/sap-linuxlab/demo.netapp_ontap"^]
+
+* Ansibleとネットアップの統合
++
+https://www.ansible.com/integrations/infrastructure/netapp["https://www.ansible.com/integrations/infrastructure/netapp"^]
+
+* SAP LaMaとAnsibleの統合に関するブログ
++
+https://blogs.sap.com/2020/06/08/outgoing-api-calls-from-sap-landscape-management-lama-with-automation-studio/["https://blogs.sap.com/2020/06/08/outgoing-api-calls-from-sap-landscape-management-lama-with-automation-studio/"^]
+
+* SAP Landscape Management 3.0, Enterprise Edition Documentation
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/4df88a8f418c5059e10000000a42189c.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/4df88a8f418c5059e10000000a42189c.html#loio4df88a8f418c5059e10000000a42189c"^]
+
+* SAP LaMaのドキュメント–プロバイダの定義
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/bf6b3e43340a4cbcb0c0f3089715c068.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/bf6b3e43340a4cbcb0c0f3089715c068.html"^]
+
+* SAP LaMaドキュメント-カスタムフック
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/139eca2f925e48738a20dbf0b56674c5.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/139eca2f925e48738a20dbf0b56674c5.html"^]
+
+* SAP LaMaドキュメント-「Configuring SAP Host Agent Registered Scripts
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/250dfc5eef4047a38bab466c295d3a49.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/250dfc5eef4047a38bab466c295d3a49.html"^]
+
+* SAP LaMaドキュメント-カスタム運用とカスタムフックのパラメータ
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/0148e495174943de8c1c3ee1b7c9cc65.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/0148e495174943de8c1c3ee1b7c9cc65.html"^]
+
+* SAP LaMaドキュメント-アダプティブデザイン
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/737a99e86f8743bdb8d1f6cf4b862c79.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/737a99e86f8743bdb8d1f6cf4b862c79.html"^]
+
+* ネットアップの製品マニュアル
++
+https://www.netapp.com/support-and-training/documentation/["https://www.netapp.com/support-and-training/documentation/"^]
+
+
+
+
+
+== バージョン履歴
+
+|===
+| バージョン | 日付 | ドキュメントのバージョン履歴 
+
+
+| バージョン 1.0 以降 | 2023年1月 | 初版リリース 
+|===

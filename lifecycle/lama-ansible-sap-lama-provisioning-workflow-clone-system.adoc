@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-sap-lama-provisioning-workflow-clone-system.html 
+keywords: provisioning, workflow, clone system, 
+summary: このセクションでは、HANAデータベースH09を使用するソースのSAPシステムHN9に基づく、SAP LaMaシステムの完全なクローニングワークフローを紹介します。次の図は、ワークフロー中に実行される手順の概要を示しています。 
+---
+= SAP LaMaプロビジョニングワークフロー-クローンシステム
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:lama-ansible-example-implementation.html["前の例：実装例。"]
+
+[role="lead"]
+次の図は、システムのクローニングワークフローで実行する主な手順を示しています。
+
+image:lama-ansible-image17.png["ストレージクローニング、システムの準備、隔離のアクティブ化、およびシステムの開始の手順を示すワークフロー図。"]
+
+このセクションでは、HANAデータベースH09を使用するソースのSAPシステムHN9に基づく、SAP LaMaシステムの完全なクローニングワークフローを紹介します。次の図は、ワークフロー中に実行される手順の概要を示しています。
+
+image:lama-ansible-image18.png["この図は、Create cloned System Configuration、Create Storage Snapshot and Clone、Create Mount Point Configuration、Set Custom Properties、およびPrepare and start systemなど、ワークフロー中に実行される手順を示しています。"]
+
+. クローニングワークフローを開始するには、メニューツリーで* Provisioning *を開き、ソースシステム（この例ではHN9）を選択します。次に、* Clone System *ウィザードを起動します。
++
+image:lama-ansible-image19.png["このスクリーンショットは、プロビジョニングシステムビューを示しています。2つのシステムが含まれています。"]
+
+. 必要な値を入力します。ウィザードの画面1で、クローニングしたシステムのプール名を入力するように求められます。このステップでは、クローニングされたシステムを起動するインスタンス（仮想または物理）を指定します。デフォルトでは、システムはターゲットシステムと同じプールにクローニングされます。
++
+image:lama-ansible-image20.png["クローンシステムウィザードの画面1で、ターゲットシステムの基本データを指定します。"]
+
+. ウィザードの画面2で、新しいSAPインスタンスを起動するターゲットホストを指定するよう求められます。このインスタンスのターゲットホストは、前の画面で指定したホストプールから選択できます。各インスタンスまたはサービスは、別 々 のホストで開始できます。この例では、3つのサービスがすべて同じホスト上で実行されています。
++
+image:lama-ansible-image21.png["クローンシステムウィザード画面2では、ターゲットシステムのホストを選択できます。"]
+
+. 画面3で要求された情報を入力します。この情報は、仮想ホスト名とネットワークを要求します。通常、ホスト名はDNSで管理されるため、IPアドレスもそれに応じて事前に入力されます。
++
+image:lama-ansible-image22.png["システムのクローンウィザードの画面3では、仮想ホスト名とネットワークを指定できます。"]
+
+. 画面4に、カスタムのクローン処理が表示されます。クローン名と* SnapPostfix *名を指定した場合、この名前は、FlexCloneボリュームとSnapshot名に対するストレージのクローン処理でそれぞれ使用されます。これらのフィールドを空のままにしておくと、プロバイダスクリプトの変数セクションで設定されたデフォルト値になります `netapp_clone.sh` を使用します。
++
+image:lama-ansible-image23.png["Clone System Wizard（クローンシステムウィザード）画面4では、カスタムクローンオプションがオペレーションパラメータとして表示されます。"]
+
+. 画面5では、データベース整合性オプションが選択されています。この例では、「* Online：Clone running DB *」を選択しました。
++
+image:lama-ansible-image24.png["Clone System Wizard（クローンシステムウィザード）画面5では、Online：Clone running DB Selected（オンライン：クローン実行中のDBが選択された状態）のデータベース整合性オプションが表示"]
+
+. 画面6では、テナントのクローンを実行する場合にのみ入力する必要があります。
++
+image:lama-ansible-image25.png["クローンシステムウィザードの画面6では、テナントのクローンを実行する場合、ユーザ名とパスワードを指定できます。"]
+
+. 画面7では、システムの隔離を構成できます。
++
+image:lama-ansible-image26.png["Clone System Wizard（クローンシステムウィザード）画面7では、システムを分離するために、許可された発信接続を定義できます。"]
+
+. 画面8では、ワークフローを開始する前の最終確認のためのすべての設定が概要ページに表示されます。[*Execute*]をクリックして'ワークフローを開始します
++
+image:lama-ansible-image27.png["Clone System Wizard（クローンシステムウィザード）画面8には、入力した情報の概要が表示されます。"]
+
++
+SAP LaMaが、設定に記載されたすべてのアクションを実行します。具体的には、ストレージボリュームのクローンとエクスポートの作成、ターゲットホストへのマウント、分離のためのファイアウォールルールの追加、HANAデータベースとSAPサービスの開始です。
+
+. クローンワークフローの進行状況は、* Monitoring *メニューで監視できます。
++
+image:lama-ansible-image28.png["t \"HISスクリーンショットは、システムクローンプロセスの監視画面を示しています。\""]
+
++
+詳細ログには、* Clone Volume *および* ModifyマウントポイントとAdd Custom Properties *の処理がAnsibleノード、で実行されます `sap-jump` ホスト：以下の手順は、各サービス、HANAデータベース、SAP中央サービス、およびSAPサービスに対して実行します。
+
++
+image:lama-ansible-image29.png["このスクリーンショットは、詳細なログに示されたさまざまな処理を示すシステムのクローン画面を示しています。"]
+
+. Clone Volumes *タスクを選択すると、そのステップの詳細ログが表示され、Ansible Playbookの実行状況が表示されます。Ansibleプレイブックも確認できます `netapp_lama_CloneVolumes.yml` は、HANAデータベースのボリューム、データ、ログ、および共有ごとに実行されます。
++
+image:lama-ansible-image30.png["この画面は、ボリュームクローンの詳細を示すログを示しています。"]
+
+. マウントポイントの変更とカスタムプロパティの追加の手順*マウントポイントの詳細ビューには、マウントポイントと、実行スクリプトによって渡されたカスタムプロパティに関する情報が表示されます。
++
+image:lama-ansible-image31.png["詳細なログ情報"]
+
+
+
+ワークフローが完了すると、クローニングしたSAPシステムの準備が完了し、使用できる状態になります。
+
+link:lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html["次の例：SAP LaMaによるワークフローのプロビジョニング解除- system destroy"]

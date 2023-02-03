@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-introduction.html 
+keywords: tr4953, introduction, 4953, clone, copy, refresh automation 
+summary: SAP Landscape Management（LaMa）を使用すると、SAPシステム管理者は、SAPシステムのエンドツーエンドのクローニング、コピー、更新などのSAPシステム運用を自動化できます。 
+---
+= TR-4953：『NetApp SAP Landscape Management Integration using Ansible』
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+ネットアップ、Michael Schlosser、Nils Bauer
+
+[role="lead"]
+SAP Landscape Management（LaMa）を使用すると、SAPシステム管理者は、SAPシステムのエンドツーエンドのクローニング、コピー、更新などのSAPシステム運用を自動化できます。
+
+ネットアップは、SAP LaMa対応の各種Ansibleモジュールを搭載しており、SAP LaMaのAutomation Studioを通じて、NetApp SnapshotやFlexCloneなどのテクノロジにアクセスできます。これらのテクノロジを使用することで、SAPシステムのクローニング、コピー、更新の処理を簡易化、高速化できます。
+
+この統合は、ネットアップのストレージソリューションをオンプレミスで運用しているお客様や、Amazon Web Services、Microsoft Azure、Google Cloud Platformなどのパブリッククラウドプロバイダでネットアップのストレージサービスを使用しているお客様が利用できます。
+
+このドキュメントでは、Ansibleによる自動化を使用して、SAPシステムのコピー、クローニング、更新の処理に対応するネットアップのストレージ機能を利用したSAP LaMaの設定について説明します。
+
+link:lama-ansible-sap-system-clone,-copy,-and-refresh-scenarios.html["次は、SAPシステムのクローニング、コピー、更新のシナリオです。"]

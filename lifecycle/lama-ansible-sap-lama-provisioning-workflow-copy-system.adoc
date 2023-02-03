@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-sap-lama-provisioning-workflow-copy-system.html 
+keywords: system copy, timeline, storage workflow 
+summary: この章では、システムクローンのワークフローと入力画面の違いについて簡単に説明します。 
+---
+= SAP LaMaプロビジョニングワークフロー-コピーシステム
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html["前のリリース：SAP LaMaによるワークフローのプロビジョニング解除- system destroy"]
+
+[role="lead"]
+次の図は、システムコピーワークフローで実行する主な手順を示しています。
+
+image:lama-ansible-image40.png["この図は、System Copyワークフローのタイムラインを示しています。ストレージクローニング、システムの準備、分離のアクティブ化、システムの名前変更、システムの起動の各手順を記載しています。構成のインポート、コピー後の自動化、システムの非アクティブ化を行います。"]
+
+この章では、システムクローンのワークフローと入力画面の違いについて簡単に説明します。次の図に示すように、ストレージワークフローは変更されていません。
+
+image:lama-ansible-image41.png["この図は、ワークフロー内の各ステップがどこで実行されるかを示すオーバーレイされたステップを含むアーキテクチャ図を示しています。"]
+
+. システムの準備が整ったら、システムコピーワークフローを開始できます。これは、この設定に関する特定のタスクではなく、詳細な説明も行いません。詳細については、SAP LaMaのドキュメントをご覧ください。
++
+image:lama-ansible-image42.png["このスクリーンショットは、［システム］タブの［プロビジョニングシステム］ビューを示しています。2つのシステムが表示され、[Copy System]ドロップダウンが強調表示されます。"]
+
+. コピーワークフローの実行中、最初の画面で指定する必要があるのと同様に、システムの名前が変更されます。
++
+image:lama-ansible-image43.png["このスクリーンショットは、システムIDとHANA SIDのボックスが強調表示されたシステムのコピーページを示しています。"]
+
+. ワークフロー中にインスタンス番号を変更することができます。
++
+image:lama-ansible-image44.png["このスクリーンショットは、SAPインスタンスの番号タブとデータ用の3つのボックスを示しています。"]
+
++
+
+NOTE: インスタンス番号の変更はテストされていないため、プロバイダスクリプトの変更が必要になる場合があります。
+
+. 前述のように、* Custom Clone *画面はクローニングワークフローとは異なりません。
++
+image:lama-ansible-image45.png["このスクリーンショットは、カスタムのクローン情報と処理パラメータが設定されたシステムのコピーページを示しています。"]
+
+. すでに説明したように、残りの入力マスクは標準とは異なるので、ここではそれ以上のマスクには入りません。最後の画面に概要が表示され、実行を開始できます。
++
+image:lama-ansible-image46.png["このスクリーンショットは、基本情報とホストのリストを含むシステムのコピー画面を示しています。右下にある[Execute]ボタンをクリックします。"]
+
+
+
+コピープロセスの完了後、カスタムのクローニングプロセスでターゲットインスタンスが有効になりません。
+
+image:lama-ansible-image47.png["このスクリーンショットは、LaMa Systemsの画面とシステムの詳細を示しています。"]
+
+拘束が設定されて実行を妨げるため'システム破壊プロセス中にプフックステップを実行するには'手動で採用する必要があります
+
+image:lama-ansible-image48.png["このスクリーンショットは、LaMa Systemsの画面とシステムの詳細を示しており、「カスタム処理プロセスを使用」チェックボックスがオンになっています。"]
+
+link:lama-ansible-sap-lama-provisioning-workflow-system-refresh.html["次のステップ：SAP LaMaプロビジョニングワークフロー-システムの更新"]
