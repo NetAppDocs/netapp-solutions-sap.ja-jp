@@ -19,7 +19,7 @@ NetApp AFF システム製品ファミリーは、 TDI プロジェクトの SAP
 
 この認定は、次のモデルで有効です。
 
-* AFF A220 、 AFF A250 、 AFF A300 、 AFF A320 、 AFF A400 、 AFF A700s 、 AFF A700 、 AFF A800 、 AFF A900
+* AFF A150、AFF A220、AFF A250、AFF A300、AFF A320AFF A400、AFF A700s、AFF A700、AFF A800、AFF A900
 
 
 SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
