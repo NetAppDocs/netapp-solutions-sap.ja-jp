@@ -1,0 +1,205 @@
+---
+sidebar: sidebar 
+permalink: backup/anf-cba-overview-of-installation-and-configuration-steps.html 
+keywords: bluexp, hana host, backup user, hana system database 
+summary: このセクションでは、この解決策 のすべてのコンポーネントのインストールと設定について説明します。 
+---
+= インストールと設定の手順の概要
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:anf-cba-cloud-backup-for-applications-architecture.html["以前：Cloud Backup for Applicationsのアーキテクチャ"]
+
+[role="lead"]
+必要なインストールと設定の手順は、3つの領域に分けることができます。
+
+* NetApp BlueXPコンポーネントのインストールと設定
++
+データ保護解決策 の初期セットアップ時に1回実行する必要があります。
+
+* HANAホストとデータベースでの準備手順
++
+CBAで保護するHANAデータベースごとに実行する必要があります。
+
+* 『Cloud Backup for Applications』の設定手順を参照してください。
++
+CBAで保護するHANAデータベースごとに実行する必要があります。
+
+
+
+
+
+== NetApp BlueXPコンポーネントのインストールと設定
+
+NetApp BlueXPのコンポーネントのインストールと設定については、を参照してください https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-cloud-app-data-to-cloud.html["クラウドネイティブアプリケーションデータの保護|ネットアップのドキュメント"^]。
+
+. BlueXPに登録してネットアップアカウントを設定
+. Azure VNetにBlueXPコネクタを導入します。
+. BlueXPでAzure NetApp Files の作業環境を作成
+
+
+image:anf-cba-image5.png["この図は、このセクションで説明する解決策 のアーキテクチャを示しています。"]
+
+
+
+== HANAホストとデータベースでの準備手順
+
+. HANAホストにJava 11をインストールします。HANAデータベースホストにJava 11（64ビット）のOracle JavaまたはOpenJDKをインストールしておく必要があります。
+. の説明に従って、CBA HANAプラグインをHANAホストに導入します link:https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-deploy-snapcenter-plugin-for-sap-hana.html["Deploy Cloud Backup for Applications Plug-in for SAP HANA |ネットアップのドキュメント"]。
+. 次の章で説明するように、HANAシステムデータベースでバックアップユーザを作成します。
+
+
+
+
+== 『Cloud Backup for Applications』の設定手順を参照してください
+
+. Cloud Backup for ApplicationsにHANAホストを追加します。
++
+.. HANAユーザストアキーの設定。
+.. ストレージフットプリント構成。
+
+
+. HANAシステムのバックアップポリシーを作成して割り当てます。
++
+.. Snapshotベースのバックアップ処理。
+.. ファイルベースのバックアップ処理。
+
+
+. データボリューム以外のバックアップ処理を設定します。
++
+.. ストレージフットプリント構成。
+.. バックアップポリシーを作成して割り当てます。
+
+
+. データボリューム以外のグローバルバックアップ処理を設定します。
++
+.. システムの詳細設定。
+.. ストレージフットプリント構成。
+.. バックアップポリシーを作成して割り当てます。
+
+
+
+
+次の章では、Cloud Backup for Applicationsの設定手順について詳しく説明します。
+
+
+
+== HANAシステムデータベースにバックアップユーザを作成します
+
+CBAを使用してバックアップ処理を実行するために、HANAデータベースに専用のデータベースユーザを設定することを推奨します。2番目の手順では、このバックアップユーザにSAP HANAユーザストアキーを設定し、このユーザストアキーをCloud Backup for Applications SAP HANAプラグインの設定で使用します。次の図は、バックアップユーザの作成に使用するSAP HANA Studioを示しています。
+
+必要な権限は次のとおりです。
+
+* バックアップ管理者
+* カタログ読み取り
+* データベースバックアップ管理者
+* データベースリカバリオペレータ
+
+
+SAP HANA MDCシステムの場合は、システムデータベースにユーザを作成する必要があります。これは、システムデータベースとテナントデータベースのすべてのバックアップコマンドがシステムデータベースを使用して実行されるためです。
+
+image:anf-cba-image10.png["このスクリーンショットは、システムデータベース内でユーザを作成する場所を示しています。"]
+
+
+
+== HANAシステムをCloud Backup for Applicationに追加します
+
+. BlueXPで、*[保護]*>*[バックアップとリカバリ]*>*[アプリケーション]*を選択します
++
+image:anf-cba-image11.png["このスクリーンショットは、blueXP Canvasとアプリケーションへの正しいパスを示しています。"]
+
+. 次のスクリーンショットは、最初のHANAシステムを追加する際のワークフローを示しています。Cloud Backup for Applicationsにすでにシステムを追加している場合は、最初の画面にダッシュボードビューが表示され、HANAシステムを追加するための*[システムの追加]*ボタンが表示されます。その場合、ステップ5が最初のステップです。[アプリケーションの検出]*をクリックします。
++
+image:anf-cba-image12.png["このスクリーンショットは、最初のHANAシステムを追加する際のワークフローを示しています。"]
+
+. [クラウドネイティブ]*をクリックします。
++
+image:anf-cba-image13.png["このスクリーンショットは、ハイブリッドとクラウドネイティブの選択ページを示しています。"]
+
+. [SAP HANA]*をクリックします。
++
+image:anf-cba-image14.png["このスクリーンショットは、ハイブリッドとクラウドネイティブの選択ページを示しています。"]
+
+. [System Details]画面で、システムタイプ（HANAシングルコンテナまたはマルチテナントデータベースコンテナ）を選択します。HANAシステムのSIDを指定し、システム名としてフリーテキストを入力します。
++
+次のスクリーンショットは、SAP HANAシステムPR1の構成を示しています。
+
++
+image:anf-cba-image15.png["このスクリーンショットは、SAP HANAシステムPR1の構成を示しています。"]
+
+. [プラグインホストを追加]*をクリックして、HANAデータベースホストを追加します。通常はホスト名が使用されます。IPアドレスも機能します。ポート `8145` は、HANAデータベースホストにインストールされたHANAプラグインのデフォルトポートです。プラグインのインストール中に変更がなかった場合は、デフォルトのポートが有効になります。
++
+
+NOTE: HANAマルチホストシステムの場合は、システムデータベースが実行されているホストを追加するだけで済みます。
+
++
+image:anf-cba-image16.png["このスクリーンショットは、[Add-Plug-in Host]選択画面を示しています。"]
+
+. HANAデータベースのユーザストアキーを追加するには、*[ユーザストアキーの追加]*をクリックします。
++
+HANA データベースのユーザストアキーを設定するための情報を入力します。任意の名前をキー名として指定できます。システムの詳細には 'hdbsql クライアントを使用してシステム・データベースと通信する IP アドレスとポートが含まれますSAP HANA MDCシステムの場合は、ポート `3<instanceNo>13` は、システムデータベースへのSQLアクセス用の標準ポートです。
+
++
+以前に設定したシステムデータベースに、データベースユーザのユーザ名とパスワードを入力する必要があります。Cloud Backup for Applicationsでは、この情報を使用してユーザストアキーが自動的に作成され、そのキーを使用してHANAデータベースと通信します。
+
++
+image:anf-cba-image17.png["このスクリーンショットは、[Add User Store Key]選択画面を示しています。"]
+
+. HANAホストでは、次のコマンドを実行してキーが機能するかどうかを確認できます。
++
+....
+pr1adm@vm-pr1:/usr/sap/PR1/HDB01> hdbuserstore list
+DATA FILE       : /usr/sap/PR1/pr1adm/.hdb/vm-pr1/SSFS_HDB.DAT
+KEY FILE        : /usr/sap/PR1/pr1adm/.hdb/vm-pr1/SSFS_HDB.KEY
+KEY PR1KEY
+  ENV : 10.0.1.20:30113
+  USER: SNAPSHOT
+KEY PR1SAPDBCTRL
+  ENV : vm-pr1:30113
+  USER: SAPDBCTRL
+pr1adm@vm-pr1:/usr/sap/PR1/HDB01> hdbsql -U PR1KEY
+Welcome to the SAP HANA Database interactive terminal.
+Type:  \h for help with commands
+       \q to quit
+hdbsql SYSTEMDB=>
+....
+. [次へ]*をクリックして、[システムの詳細]の設定を完了します。
++
+image:anf-cba-image18.png["このスクリーンショットは、[System Details]画面を示しています。"]
+
+. [ストレージの追加]*をクリックして、HANAデータベースのストレージフットプリントを設定します。
++
+image:anf-cba-image19.png["このスクリーンショットは、[Storage Footprint]画面の[Add Storage]ボタンを示しています。"]
+
+. HANA システムのストレージボリュームの情報を入力します。
+. 作業環境と、HANAシステムのANFボリュームに使用するネットアップアカウントを選択します。HANAシステムのデータボリュームを選択します。この例では、これがです `PR1_data_mnt00001`。
++
+
+NOTE: SAP HANA マルチホストシステムの場合は、システムに属するすべての HANA ホストのデータボリュームを選択する必要があります。
+
++
+image:anf-cba-image20.png["このスクリーンショットは、[Add Storage Footprint]選択画面を示しています。"]
+
+. [次へ]*をクリックしてストレージフットプリントを追加します。
++
+image:anf-cba-image21.png["このスクリーンショットは、ストレージフットプリントを追加する方法を示しています。"]
+
+. 構成を確認し、*[システムの追加]*をクリックします。
++
+image:anf-cba-image22.png["このスクリーンショットは、ストレージシステムを追加する方法を示しています。"]
+
++
+image:anf-cba-image23.png["このスクリーンショットは結果を示しています。"]
+
+
+
+HANAシステムがCloud Backup for Applicationsに追加されました。次の手順では、バックアップ処理を設定する必要があります。
+
+image:anf-cba-image24.png["このスクリーンショットは、バックアップ処理を設定する場所を示しています。"]
+
+link:anf-cba-create-backup-policies.html["次の記事：バックアップポリシーを作成する"]

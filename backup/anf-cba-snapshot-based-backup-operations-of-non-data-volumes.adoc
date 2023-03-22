@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: backup/anf-cba-snapshot-based-backup-operations-of-non-data-volumes.html 
+keywords: configuration, assign policy, non-data volume, cba topology view, azure portal 
+summary: このセクションでは、データボリューム以外のボリュームに対してSnapshotベースのバックアップ処理を実行する方法について説明します。 
+---
+= データボリューム以外のボリュームのSnapshotベースのバックアップ処理
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:anf-cba-file-based-backup-operations-of-the-hana-database.html["以前：HANAデータベースのファイルベースのバックアップ処理。"]
+
+[role="lead"]
+前述したように、CBAではデータ以外のボリュームのバックアップ処理がサポートされます。データ以外のボリュームは、などの特定のSAP HANAシステムに属するボリュームです `/hana/shared` SAPアプリケーションサーバのボリュームなどがあります `/usr/sap/SID` または `sapmnt/SID`。
+
+
+
+== 設定
+
+. CBAダッシュボードビューで、[Manage System–Add Non-Data Volume]を選択します。
++
+image:anf-cba-image57.png["完了している手順のスクリーンショット。"]
+
+. データボリューム以外のボリュームの情報を入力します。
++
+作業環境と、HANAシステムのANFボリュームに使用するネットアップアカウントを選択します。ボリュームを選択します。この例では、 `PR1_shared`。
+
++
+image:anf-cba-image58.png["完了している手順のスクリーンショット。"]
+
+
+
+
+
+== ポリシーを割り当てます
+
+スケジュールされたバックアップをアクティブ化するには、バックアップポリシーを割り当てる必要があります。
+
+. [ポリシーの割り当て]*>*[データボリューム以外のボリューム]*に移動します。
++
+image:anf-cba-image59.png["完了している手順のスクリーンショット。"]
+
+. [*Assign*] をクリックします。
++
+image:anf-cba-image60.png["完了している手順のスクリーンショット。"]
+
+
+
+
+
+== データボリューム以外のボリュームのオンデマンドバックアップを作成します
+
+オンデマンドデータベースバックアップを作成するには、次の手順を実行します。
+
+. CBAダッシュボードビューで、コンテキストメニューから[On-Demand Backup–Data Volume]を選択します。
++
+image:anf-cba-image61.png["完了している手順のスクリーンショット。"]
+
+. [オンデマンドバックアップ]ダイアログで、*[ポリシーベース]*または*[ 1回のみ]*を選択します。
++
+** ポリシーベースの場合、オンデマンドバックアップは、保持およびプリスクリプトおよびポストスクリプトの設定に関して、スケジュールされたバックアップと同様に処理されます。
+** 特定の保持、特定のバックアップ名、特定のプリスクリプトとポストスクリプトを一度に定義できます。
++
+この例ではポリシーベースを選択しており、次の手順としてポリシーと保持を選択する必要があります。
+
++
+image:anf-cba-image62.png["完了している手順のスクリーンショット。"]
+
++
+[Job Monitoring]ビューでは、さまざまなワークフローステップ、ステップの実行時間、および合計操作実行時間を確認できます。この例では、バックアップ処理に47秒かかりました。
+
++
+image:anf-cba-image63.png["[Job Monitoring]ビューのスクリーンショット。"]
+
+
+
+
+
+
+
+== CBAトポロジビューでSnapshotバックアップ情報を確認します
+
+CBAダッシュボードビューのコンテキストメニューで、*[View Topology]*を選択してバックアップの概要を開きます。
+
+バックアップの概要には、CBAを使用して作成されたバックアップのリストが表示されます。
+
+
+NOTE: バックアップ名は、バックアップポリシーで定義された形式になります。ANFボリュームのSnapshot名にも同じ命名規則が使用されます。
+
+image:anf-cba-image64.png["完了している手順のスクリーンショット。"]
+
+
+
+== Azure PortalでSnapshotバックアップ情報を確認します
+
+CBAでバックアップ名として使用されている名前は、ANFボリュームのSnapshotバックアップ名としても使用されます。次の図は、Azureポータルとデータボリューム以外のボリュームのSnapshotバックアップを示しています `pr1-shared`。
+
+image:anf-cba-image65.png["完了している手順のスクリーンショット。"]
+
+link:anf-cba-snapshot-based-backup-operations-of-global-non-data-volumes.html["次の記事：データボリューム以外のグローバルボリュームのSnapshotベースのバックアップ処理。"]

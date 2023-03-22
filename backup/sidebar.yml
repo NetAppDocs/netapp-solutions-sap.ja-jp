@@ -2,6 +2,39 @@
 section: backup
 title: バックアップ、リストア、ディザスタリカバリ
 entries:
+- title: SAP HANA on ANF -アプリケーション向けクラウドバックアップによるバックアップとリカバリ
+  type: solutions
+  entries:
+  - title: 概要
+    url: "/backup/anf-cba-overview.html"
+  - title: Azure NetApp Files を使用したバックアップとリカバリ
+    url: "/backup/anf-cba-backup-and-recovery-using-azure-netapp-files.html"
+  - title: 高速バックアップ/クローニング処理のユースケースと価値
+    entries:
+    - title: 概要
+      url: "/backup/anf-cba-use-cases-and-value-of-accelerated-backup-and-cloning-operations_overview.html"
+    - title: Cloud Backup for Applicationsのアーキテクチャ
+      url: "/backup/anf-cba-cloud-backup-for-applications-architecture.html"
+  - title: インストールと設定の手順の概要
+    url: "/backup/anf-cba-overview-of-installation-and-configuration-steps.html"
+  - title: バックアップポリシーを作成する
+    url: "/backup/anf-cba-create-backup-policies.html"
+  - title: HANAデータベースのSnapshotベースのバックアップ処理
+    url: "/backup/anf-cba-snapshot-based-backup-operations-of-the-hana-database.html"
+  - title: HANAデータベースのファイルベースのバックアップ処理
+    url: "/backup/anf-cba-file-based-backup-operations-of-the-hana-database.html"
+  - title: データボリューム以外のボリュームのSnapshotベースのバックアップ処理
+    url: "/backup/anf-cba-snapshot-based-backup-operations-of-non-data-volumes.html"
+  - title: データボリューム以外のグローバルボリュームのSnapshotベースのバックアップ処理
+    url: "/backup/anf-cba-snapshot-based-backup-operations-of-global-non-data-volumes.html"
+  - title: Snapshotバックアップからのリストアとリカバリ
+    url: "/backup/anf-cba-restore-and-recovery-from-snapshot-backup.html"
+  - title: HANAシステムレプリケーションによるバックアップ処理
+    url: "/backup/anf-cba-backup-operations-with-hana-system-replication.html"
+  - title: HANAマルチホストシステムでのバックアップ処理
+    url: "/backup/anf-cba-backup-operations-with-hana-multiple-host-systems.html"
+  - title: 追加情報およびバージョン履歴の参照先
+    url: "/backup/anf-cba-where-to-find-additional-information-and-version-history.html"
 - title: Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ
   type: solutions
   entries:
