@@ -2016,7 +2016,6 @@
   <block id="8002bc13927c65b5f265b031079ce1d4" category="cell">ドキュメントのバージョン履歴</block>
   <block id="a5f3f63c2f6e1d6d4605650633b9ce8a" category="cell">2021年10月</block>
   <block id="ea9349a37bfee247df0f87cbcacca796" category="cell">初版リリース</block>
-  <block id="0f68b904e33d9ac04605aecc958bcf52" category="doc">追加情報</block>
   <block id="4c28efc16ec0589f9fb25a451feba324" category="inline-link-macro">Previous ：リストアとリカバリを実行します。</block>
   <block id="4f6b276c14acce5792e8927470a89fc2" category="paragraph"><block ref="4f6b276c14acce5792e8927470a89fc2" category="inline-link-macro-rx"></block></block>
   <block id="7d5b957cd473f6eaf5ad335a9c63c4ff" category="paragraph">このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。</block>
@@ -2456,7 +2455,6 @@
   <block id="27a5339355631306e0eeb66ec61f8aaf" category="paragraph">リストアとリカバリの時間は、次の前提に基づいて計算されます。データベースは 250MBps でリストアできます。 1 日にリストアできるログファイルの数は、データベースサイズの 50% です（たとえば、 1TB のデータベースで 1 日に 500MB のログファイルが作成されます）。 リカバリは 100Mbps で実行できます。</block>
   <block id="c8935e1beb0848eefbbd5cda10297089" category="inline-link-macro">次の例は、 SnapCenter サービスアーキテクチャです。</block>
   <block id="60443fe21455bdcdcd0c21760abd95cd" category="paragraph"><block ref="60443fe21455bdcdcd0c21760abd95cd" category="inline-link-macro-rx"></block></block>
-  <block id="6abf73ac39531a37ff136074cc08335d" category="sidebar">SnapCenter サービスを使用した Azure NetApp Files での SAP HANA のバックアップとリカバリ</block>
   <block id="a06fe30236099001fb8865692c8ec7e3" category="paragraph">SnapCenter サービスは、 SnapCenter サービスのバックアップポリシーに定義された保持設定に従って、ストレージおよび SnapCenter サービスリポジトリの Snapshot コピーを削除することで、 SAP HANA データベースのバックアップと非データボリュームのバックアップを削除します。</block>
   <block id="9146086648c59ec16c636f6376bdfd2e" category="paragraph">保持管理ロジックは、 SnapCenter の各バックアップワークフローで実行されます。</block>
   <block id="dbe479d1c7a378f616224ba6a3d956b0" category="paragraph"><block ref="dbe479d1c7a378f616224ba6a3d956b0" category="inline-image-macro-rx" type="image"></block></block>
@@ -5290,8 +5288,6 @@
   <block id="17f31b52b49dfe7dec5229f7caf638c6" category="list-text">AFF A150、AFF A220、AFF A250、AFF A300、AFF A320AFF A400、AFF A700s、AFF A700、AFF A800、AFF A900</block>
   <block id="e6c434a39cbdd99e996e35ba917a1f79" category="summary">Cloud Backup for Applicationsは、ネットアップクラウドストレージで実行されるアプリケーションにデータ保護機能を提供するSaaS解決策 です。NetApp BlueXPで利用できるCloud Backup for Applicationsは、Azure NetApp Files 上のSAP HANAに対して、アプリケーションと整合性のある効率的なポリシーベースの保護を提供します。Cloud Backup for Applicationsでは、一元的な管理と監視が可能です。同時に、アプリケーション固有のバックアップとリストア処理の管理をユーザに委譲することもできます。</block>
   <block id="68b2531582c9405379a246e2f5612632" category="doc">Cloud Backup for Applicationsのアーキテクチャ</block>
-  <block id="1e418ab89f193c74121a07ce83abaed4" category="inline-link-macro">以前：Cloud Backup for Applicationsのアーキテクチャの概要</block>
-  <block id="d9d3ce81752bc06ac7427df8f9d0dd8d" category="paragraph"><block ref="d9d3ce81752bc06ac7427df8f9d0dd8d" category="inline-link-macro-rx"></block></block>
   <block id="f6fcca3f3d3bfd44d0aa729b3d893d98" category="paragraph">Cloud Backup for Applicationsは、NetApp BlueXP内でSaaSとして実行され、フレームワークとUIを活用します。BlueXP作業環境フレームワークは、Azure NetApp Files のクレデンシャルの設定と管理に使用されます。</block>
   <block id="b56d64743b38fb4b0973d9110fb21c20" category="paragraph">BlueXP Connectorをお客様のVNet内に導入する必要があります。ネットアップのSaaSコンポーネントとお客様の環境の間の通信は、コネクタを通じてのみ行われます。コネクタは、ANF管理APIを使用してANFストレージの処理を実行しています。</block>
   <block id="9e9b9e3d6624aa7bef29265a2780a193" category="paragraph">HANAプラグインは、HANAデータベース固有のロジックを提供するため、各HANAホストに導入する必要があります。HANAプラグインは、HANA hdbsqlクライアントとユーザストアキーを使用してHANAデータベースと通信します。すべてのデータベース処理はBlueXPコネクタによってトリガーされます。</block>
@@ -5465,7 +5461,6 @@
   <block id="8fb6836a6a4f22c7090d031fb31467d8" category="inline-link-macro">次の記事：データボリューム以外のボリュームでのSnapshotベースのバックアップ処理。</block>
   <block id="052102618f8c4535a292e7e8eda937ce" category="paragraph"><block ref="052102618f8c4535a292e7e8eda937ce" category="inline-link-macro-rx"></block></block>
   <block id="731c91555406019fb4ca7b621105abba" category="summary">バックアップの実行は、あらゆるデータ保護戦略の重要な部分です。バックアップは、システム障害から確実にリカバリできるように、定期的にスケジュールされます。これは最も明白なユースケースですが、SAPのライフサイクル管理タスクの中には、バックアップとリカバリ処理の高速化が不可欠なものもあります。</block>
-  <block id="51f47ae99b1d73a12860cadd58026d0c" category="doc">高速バックアップおよびクローニング処理のユースケースと価値の概要</block>
   <block id="e97a05d9d17313a2f8bcb989f95b853d" category="inline-link-macro">以前のバージョン：Azure NetApp Files を使用したバックアップとリカバリ</block>
   <block id="ec02aabec7c977a0d1479d4c3756ea39" category="paragraph"><block ref="ec02aabec7c977a0d1479d4c3756ea39" category="inline-link-macro-rx"></block></block>
   <block id="9a8fc8d0db2b6ce4ad7546eec3a993b7" category="paragraph">SAP HANAシステムのアップグレードは、アップグレード前にオンデマンドバックアップを実行し、アップグレードに失敗した場合にリストア処理を実行すると、計画的停止全体に大きな影響を及ぼします。4TBのデータベースの例では、Snapshotベースのバックアップおよびリストア処理を使用することで、計画的停止を8時間短縮できます。</block>
@@ -5853,4 +5848,15 @@
   <block id="fb4d860c1938626a4cb9b8f66c6eb6f2" category="cell">2023年3月</block>
   <block id="8e44a3ecd2d34ebd0399052b6ee88e12" category="sidebar">SAP HANA on ANF -アプリケーション向けクラウドバックアップによるバックアップとリカバリ</block>
   <block id="a412c94443f5ac6c0322b71de9e01398" category="sidebar">高速バックアップ/クローニング処理のユースケースと価値</block>
+  <block id="0c955f27cc01753f6caba6b35f81c22b" category="inline-link-macro">以前：Cloud Backup for Applicationsの概念とベストプラクティス</block>
+  <block id="1d6e2b0c5c8f5ecf276b1c1ae033b52c" category="paragraph"><block ref="1d6e2b0c5c8f5ecf276b1c1ae033b52c" category="inline-link-macro-rx"></block></block>
+  <block id="caf742ad86750136d207a022f2424f96" category="summary">Cloud Backup for Applicationsを設定する前に、さまざまなSAPシステムのRTOとRPOの要件に基づいてデータ保護戦略を定義する必要があります。一般的なアプローチは、本番システム、開発システム、テストシステム、サンドボックスシステムなどのシステムタイプを定義することです。通常、システムタイプが同じ SAP システムのデータ保護パラメータはすべて同じです。</block>
+  <block id="f28f5248fad899e39a597fa4869c8b78" category="inline-link-macro">以前：Cloud Backup for Applications for SAP HANA on ANF</block>
+  <block id="158768d66bdd83e626f048a6dff08419" category="paragraph"><block ref="158768d66bdd83e626f048a6dff08419" category="inline-link-macro-rx"></block></block>
+  <block id="1833b1326ace61b7d0db9c7322a816f1" category="inline-link-macro">次の記事：Cloud Backup for Applicationsの概念とベストプラクティス</block>
+  <block id="94e31554b8b3f5e3703d90f6ca54b3ad" category="paragraph"><block ref="94e31554b8b3f5e3703d90f6ca54b3ad" category="inline-link-macro-rx"></block></block>
+  <block id="709e94314858df04c7357462a0792849" category="inline-link-macro">以前：高速バックアップ/クローニング処理のユースケースと価値</block>
+  <block id="7d0603f1cd927eedf5cdee93312e268b" category="paragraph"><block ref="7d0603f1cd927eedf5cdee93312e268b" category="inline-link-macro-rx"></block></block>
+  <block id="0f8328591822cd94c86e0d9fa42a479e" category="inline-link-macro">次の記事：『Cloud Backup for Applications for SAP HANA on ANF』</block>
+  <block id="2aa507441d0bdacbf0b3c44eb914612f" category="paragraph"><block ref="2aa507441d0bdacbf0b3c44eb914612f" category="inline-link-macro-rx"></block></block>
 </blocks>

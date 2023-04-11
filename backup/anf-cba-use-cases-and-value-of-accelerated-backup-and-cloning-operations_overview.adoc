@@ -4,7 +4,7 @@ permalink: backup/anf-cba-use-cases-and-value-of-accelerated-backup-and-cloning-
 keywords: system upgrade, backups, restore 
 summary: バックアップの実行は、あらゆるデータ保護戦略の重要な部分です。バックアップは、システム障害から確実にリカバリできるように、定期的にスケジュールされます。これは最も明白なユースケースですが、SAPのライフサイクル管理タスクの中には、バックアップとリカバリ処理の高速化が不可欠なものもあります。 
 ---
-= 高速バックアップおよびクローニング処理のユースケースと価値の概要
+= 高速バックアップ/クローニング処理のユースケースと価値
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

@@ -13,7 +13,7 @@ summary: このセクションでは、この解決策 のすべてのコンポ�
 :imagesdir: ./../media/
 
 
-link:anf-cba-cloud-backup-for-applications-architecture.html["以前：Cloud Backup for Applicationsのアーキテクチャ"]
+link:anf-cba-cloud-backup-for-applications-concepts-and-best-practices.html["以前：Cloud Backup for Applicationsの概念とベストプラクティス"]
 
 [role="lead"]
 必要なインストールと設定の手順は、3つの領域に分けることができます。

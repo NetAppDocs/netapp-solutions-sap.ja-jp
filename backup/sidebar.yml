@@ -10,11 +10,13 @@ entries:
   - title: Azure NetApp Files を使用したバックアップとリカバリ
     url: "/backup/anf-cba-backup-and-recovery-using-azure-netapp-files.html"
   - title: 高速バックアップ/クローニング処理のユースケースと価値
-    entries:
-    - title: 概要
-      url: "/backup/anf-cba-use-cases-and-value-of-accelerated-backup-and-cloning-operations_overview.html"
-    - title: Cloud Backup for Applicationsのアーキテクチャ
-      url: "/backup/anf-cba-cloud-backup-for-applications-architecture.html"
+    url: "/backup/anf-cba-use-cases-and-value-of-accelerated-backup-and-cloning-operations_overview.html"
+  - title: Cloud Backup for Applicationsのアーキテクチャ
+    url: "/backup/anf-cba-cloud-backup-for-applications-architecture.html"
+  - title: "『Cloud Backup for Applications for SAP HANA on ANF』を参照してください"
+    url: "/backup/anf-cba-cloud-backup-for-applications-for-sap-hana-on-anf.html"
+  - title: Cloud Backup for Applicationsの概念とベストプラクティス
+    url: "/backup/anf-cba-cloud-backup-for-applications-concepts-and-best-practices.html"
   - title: インストールと設定の手順の概要
     url: "/backup/anf-cba-overview-of-installation-and-configuration-steps.html"
   - title: バックアップポリシーを作成する
