@@ -232,7 +232,7 @@ ONTAP 9 では、 NFS 転送サイズを最大 1MB に設定できます。具�
 | 共通パラメータ | NFSv3 | NFSv4 | ONTAP 9 での NFS 転送サイズ | ONTAP 8 での NFS 転送サイズ 
 
 
-| rw 、 bg 、 hard 、 timeo = 600 、 noatime | バー = 3 、 nolock | vers=4 、 minorversion=1 、 lock です | rsize=1048576 、 wsize=262144 | rsize=65536 、 wsize=65536 です 
+| rw 、 bg 、 hard 、 timeo = 600 、 noatime | nfsvers = 3、nolock | nfsvers = 4.1、ロック | rsize=1048576 、 wsize=262144 | rsize=65536 、 wsize=65536 です 
 |===
 
 NOTE: NFSv3 の読み取りパフォーマンスを向上させるには、「 nConnect=n 」マウントオプションを使用することを推奨します。このオプションは、 SUSE Linux Enterprise Server 12 SP4 以降および RedHat Enterprise Linux （ RHEL ） 8.3 以降で使用できます。
