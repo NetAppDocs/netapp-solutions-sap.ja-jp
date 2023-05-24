@@ -348,6 +348,9 @@ advanced 権限レベルの nfs modify -vserver <vserver-name> -v3-tcp-max-read-
 | NFSv4 数値 ID を無効にする | nfs modify -vserver <vserver_name>-v4-numeric-ids disabled 
 |===
 
+NOTE: ID番号を無効にするには、ユーザー管理が必要です（を参照） link:saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html["NFSv4 用の SAP HANA インストールの準備"]
+
+
 NOTE: NFSv4 ドメイン ID は、すべての Linux サーバ（ /etc/idmapd.conf ）と SVM で同じ値に設定する必要があります（を参照） link:saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html["NFSv4 用の SAP HANA インストールの準備"]
 
 
