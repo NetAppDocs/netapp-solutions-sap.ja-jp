@@ -23,7 +23,7 @@ NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tai
 * AFF C250、AFF C400、AFF C800
 +
 
-NOTE: NetApp AFF CシリーズにはNetApp OMTAP 9.13.1以降が必要です。
+NOTE: NetApp AFF CシリーズにはNetApp ONTAP 9.13.1以降が必要です
 
 
 
