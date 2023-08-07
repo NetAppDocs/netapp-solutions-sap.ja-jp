@@ -15,11 +15,16 @@ summary: NetApp AFF システム製品ファミリーは、 TDI プロジェク�
 
 ネットアップ、 Nils Bauer 、 Marco Sch ö n
 
-NetApp AFF システム製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージシステムには、 NetApp ONTAP ソフトウェアが搭載されています。
+NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。
 
 この認定は、次のモデルで有効です。
 
 * AFF A150、AFF A220、AFF A250、AFF A300、AFF A320AFF A400、AFF A700s、AFF A700、AFF A800、AFF A900
+* AFF C250、AFF C400、AFF C800
++
+
+NOTE: NetApp AFF CシリーズにはNetApp OMTAP 9.13.1以降が必要です。
+
 
 
 SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
