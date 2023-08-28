@@ -19,12 +19,17 @@ summary: NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HA
 
 == はじめに
 
-NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP ソフトウェアが搭載されています。
+NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。
 
-認定は、次のモデルで有効です。
+この認定は、次のモデルで有効です。
 
 * AFF A150、AFF A220、AFF A250、AFF A300、AFF A320AFF A400、AFF A700s、AFF A700、AFF A800、AFF A900
+* AFF C250、AFF C400、AFF C800
 * ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800 ASA AFF A900 の略
++
+
+NOTE: NetApp AFF CシリーズにはNetApp ONTAP 9.13.1以降が必要です
+
 
 
 SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
