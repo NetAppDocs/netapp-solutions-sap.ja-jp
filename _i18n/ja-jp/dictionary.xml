@@ -491,8 +491,6 @@
   <block id="fd18465573ec21a6218982055981f6b1" category="section-title">ストレージ効率</block>
   <block id="cc9ff39c9f631978557ae00fd8f5865d" category="paragraph">SSD 構成の SAP HANA では、インライン重複排除、ボリューム間インライン重複排除、インライン圧縮、インラインコンパクションがサポートされています。</block>
   <block id="ed6036f9cee51fdd7e2a091bbae50c50" category="paragraph">HDD ベースの構成で Storage Efficiency 機能を有効にすることはできません。</block>
-  <block id="f884253d5c2cf3e0fbcf27b5bd7fc515" category="section-title">NetApp Volume Encryption の略</block>
-  <block id="473b0453336bcd8bf5591681f8f2d0a1" category="paragraph">SAP HANA では、 NetApp Volume Encryption （ NVE ）がサポートされています。</block>
   <block id="a662d487b875a4e232a16649f36fb399" category="section-title">サービス品質</block>
   <block id="7686322155849443f06959615c011bf4" category="paragraph">QoS を使用すると、特定の SAP HANA システムやその他のアプリケーションの共有使用コントローラにおけるストレージスループットを制限できます。1 つのユースケースとして、開発システムとテストシステムのスループットを制限し、混在環境で本番システムに影響を与えないようにすることが挙げられます。</block>
   <block id="6c86cfdf44739a850a7a1248b66cb537" category="paragraph">サイジングプロセスでは、非本番システムのパフォーマンス要件を決定する必要があります。開発 / テスト用のシステムは、通常、 SAP で定義されている本番用システム KPI の 20~50% の範囲で、パフォーマンス値を低くしてサイジングすることができます。</block>
@@ -784,7 +782,6 @@
   <block id="52f0703c63884d2286e98f0a3488601f" category="paragraph"><block ref="52f0703c63884d2286e98f0a3488601f" category="inline-link-macro-rx"></block></block>
   <block id="7c2539ff7a7121e5f40217630b2b7413" category="paragraph"><block ref="7c2539ff7a7121e5f40217630b2b7413" category="inline-link-macro-rx"></block></block>
   <block id="fef2c24f71a084e813005b395f827515" category="paragraph">SSD 構成の SAP HANA では、インライン重複排除、ボリューム間インライン重複排除、インライン圧縮、インラインコンパクションがサポートされています。</block>
-  <block id="c4b8c29f448328e82ce27062b5fd9c28" category="section-title">NetApp Volume Encryption の略</block>
   <block id="8bc14f0cb78851f59e85c1d447c2c99f" category="section-title">Quality of Service の略</block>
   <block id="37464f39e18200cea48c4d9c6761a91b" category="paragraph">サイジングプロセスでは、非本番システムのパフォーマンス要件を決定する必要があります。開発 / テスト用のシステムは、通常、 SAP で定義されている本番用システム KPI の 20~50% の範囲で、パフォーマンス値を低くしてサイジングすることができます。</block>
   <block id="67a6bbb8d3e29659ce53d34fa70d088f" category="paragraph">「スナップショットのみ」の階層化ポリシーを使用することも、 NetApp SnapVault や SnapMirror デスティネーションなどのバックアップターゲットで FabricPool を一般的に使用することもできます。</block>
@@ -1321,7 +1318,6 @@
   <block id="7a6d6ee33360204901e8acd302ee01b7" category="paragraph"><block ref="7a6d6ee33360204901e8acd302ee01b7" category="inline-link-macro-rx"></block></block>
   <block id="38b9ce28746b740067bec85a2b293e2a" category="paragraph"><block ref="38b9ce28746b740067bec85a2b293e2a" category="inline-link-macro-rx"></block></block>
   <block id="0d3eab0b9e96ff06837e191b39218d16" category="paragraph">HDD 構成で Storage Efficiency 機能を有効にすることはできません。</block>
-  <block id="908c5fb32cc42e93096371afa23e0dce" category="paragraph">SAP HANA では、 NetApp Volume Encryption （ NVE ）がサポートされています。</block>
   <block id="e2a82c831a3a4651879482e858053e83" category="paragraph">QoS を使用して、特定の SAP HANA システムのストレージスループットを制限できます。1 つのユースケースとして、開発システムとテストシステムのスループットを制限し、混在環境で本番システムに影響を与えないようにすることが挙げられます。</block>
   <block id="6897ebb03b24bb6d57001cdf55ad2d30" category="paragraph">サイジングプロセスでは、非本番システムのパフォーマンス要件を決定する必要があります。開発 / テスト用システムは、通常は本番用システムの 20~50% の範囲で、低いパフォーマンス値でサイジングすることができます。</block>
   <block id="8469b8e3a88a77acf02664f233b3cb72" category="paragraph">ONTAP 9 以降では、ストレージボリュームレベルで QoS が設定され、スループット（ MBps ）と I/O 数（ IOPS ）には最大値が使用されます。</block>
@@ -5864,4 +5860,7 @@
   <block id="fcb7778cf38a196128c87d1b6e20281e" category="paragraph">NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。</block>
   <block id="7c3d41bb91a832b194d140ed72b101e7" category="list-text">AFF C250、AFF C400、AFF C800</block>
   <block id="326f77b6d7cda2b57e0f8e89a8f89959" category="admonition">NetApp AFF CシリーズにはNetApp ONTAP 9.13.1以降が必要です</block>
+  <block id="f7d09d43174d21d3203d6472d2543dc2" category="section-title">NetAppボリュームとアグリゲートの暗号化</block>
+  <block id="381cfdf4e70ff7173296a764c78e97ae" category="paragraph">SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption（NAE）の使用がサポートされています。</block>
+  <block id="5d10dd356a9d8604eaed291a9dfeb67e" category="section-title">NetAppボリュームとアグリゲートの暗号化</block>
 </blocks>

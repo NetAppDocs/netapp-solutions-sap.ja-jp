@@ -25,9 +25,9 @@ SSD 構成の SAP HANA では、インライン重複排除、ボリューム間
 
 
 
-== NetApp Volume Encryption の略
+== NetAppボリュームとアグリゲートの暗号化
 
-SAP HANA では、 NetApp Volume Encryption （ NVE ）がサポートされています。
+SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption（NAE）の使用がサポートされています。
 
 
 

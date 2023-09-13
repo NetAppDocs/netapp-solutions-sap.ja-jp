@@ -27,9 +27,9 @@ HDD 構成で Storage Efficiency 機能を有効にすることはできませ�
 
 
 
-== NetApp Volume Encryption の略
+== NetAppボリュームとアグリゲートの暗号化
 
-SAP HANA では、 NetApp Volume Encryption （ NVE ）がサポートされています。
+SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption（NAE）の使用がサポートされています。
 
 
 
