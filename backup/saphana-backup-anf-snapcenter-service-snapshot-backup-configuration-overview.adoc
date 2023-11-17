@@ -13,8 +13,7 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-snapcenter-service-policy-configuration.html["Previous ： SnapCenter サービスポリシーの設定。"]
-
+[role="lead"]
 SnapCenter サービスでは、 2 種類の Snapshot バックアップ処理がサポートされます。
 
 * Snapshot 処理による SAP HANA データのバックアップ。
@@ -40,5 +39,3 @@ SAP 転送ディレクトリなど、特定の HANA システムに関連付け�
 
 
 
-
-link:saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html["Next ： SAP HANA データベースのバックアップ構成をバックアップします。"]

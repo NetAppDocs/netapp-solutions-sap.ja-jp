@@ -52,5 +52,3 @@ SAPテストシステムのプロビジョニングにはさまざまなシナ�
 NetApp SnapCenter とSAP HANA向けプラグインを使用して、アプリケーションと整合性のあるSnapshotバックアップに基づいて必要なストレージボリュームをプロビジョニングし、開始されたSAP HANAデータベースまで、必要なホストおよびデータベースのすべての処理を実行します。SAPシステムのコピー、システムクローン、システムの更新、SAPのポストプロセスなどの追加の手動手順が必要になる場合があります。詳細については、次のセクションで説明します。
 
 SAP Landscape Management（LaMa）を使用すれば、SAPテストシステムを完全に自動化されたエンドツーエンドのプロビジョニングを実行できます。ネットアップのStorage Services Connectorは、SAP LaMaに統合されており、SAP LaMaに求められる運用をストレージレイヤで実現します。詳細については、を参照してください https://www.netapp.com/us/media/tr-4018.pdf["NetApp ONTAP システムとSAP Landscape Managementの統合"^]。
-
-link:sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html["次は、SAPシステムのコピー、更新、クローニングのシナリオです。"]

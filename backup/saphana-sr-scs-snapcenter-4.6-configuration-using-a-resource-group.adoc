@@ -13,8 +13,7 @@ summary: SnapCenter 4.6 では、 HANA システムレプリケーションが�
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html["Previous ： SAP システムレプリケーションの SnapCenter 構成オプション"]
-
+[role="lead"]
 SnapCenter 4.6 では、 HANA システムレプリケーションが設定された HANA システムの自動検出がサポートされます。SnapCenter 4.6 には、バックアップ処理中にプライマリおよびセカンダリの HANA ホストを識別し、両方の HANA ホスト間で保持管理を処理するロジックが含まれています。また、 HANA システムレプリケーション環境でも自動リストアと自動リカバリが利用できるようになりました。
 
 
@@ -161,5 +160,3 @@ image:saphana-sr-scs-image26.png["エラー：グラフィックイメージが�
 SnapCenter 4.6 リソースグループ構成のリストアおよびリカバリ操作は ' 自動検出されたシステム以外のレプリケーション設定と同じですリストアと自動リカバリのすべてのオプションを使用できます。詳細については、テクニカルレポートを参照してください https://www.netapp.com/us/media/tr-4614.pdf["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]。
 
 もう一方のホストで作成されたバックアップからのリストア処理については、を参照してください link:saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html["他のホストで作成されたバックアップからのリストアとリカバリ"]。
-
-link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html["次の例：単一のリソースを使用する SnapCenter 構成。"]

@@ -13,7 +13,8 @@ summary: SAP HANA のソフトウェアインストールの要件は次のと�
 :imagesdir: ./../media/
 
 
-link:saphana-fas-nfs_sap_hana_data_volume_size.html["Previous ： SAP HANA データボリュームのサイズ。"]
+[role="lead"]
+SAP HANA のソフトウェアインストールの要件は次のとおりです。
 
 
 
@@ -83,5 +84,3 @@ Enter Installation Path [/hana/shared]:
 ....
 . 選択したすべてのコンポーネントが、すべてのワーカーホストとスタンバイホストにインストールされていることを確認します。
 
-
-link:saphana-fas-nfs_adding_additional_data_volume_partitions.html["次：データボリュームのパーティションを追加しています"]

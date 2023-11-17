@@ -13,8 +13,7 @@ summary: 'このセクションでは " ストレージ・システム " 認証�
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-snapcenter-configuration.html["前のバージョン： SnapCenter の設定。"]
-
+[role="lead"]
 初期設定には、次の手順が含まれます。
 
 . ストレージシステムの構成：
@@ -257,5 +256,3 @@ image:saphana-br-scs-image51.png["エラー：グラフィックイメージが�
 image:saphana-br-scs-image52.png["エラー：グラフィックイメージがありません"]
 
 
-
-link:saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html["次の例： SAP HANA データベースのバックアップ用に、 SnapCenter のリソース固有の構成を示します。"]

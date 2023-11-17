@@ -13,8 +13,7 @@ summary: Azure NetApp Files for SAP HANA、Oracle、DB2 on Azureを使用する�
 :imagesdir: ./../media/
 
 
-link:libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html["前の例：LSCとSnapCenter でSAP HANAシステムが更新されます。"]
-
+[role="lead"]
 を使用します https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-solution-architectures["Azure NetApp Files for SAP HANAの略"^]、Oracle、DB2 on Azureを利用すると、NetApp ONTAP の高度なデータ管理機能とデータ保護機能をMicrosoft Azure NetApp Files 標準サービスで利用できます。 https://docs.microsoft.com/en-us/azure/azure-netapp-files/azacsnap-introduction["AzAcSnap"^] は、SAPシステムの更新処理を高速化して、SAP HANAシステムとOracleシステムのNetApp Snapshotコピーをアプリケーションと整合性のあるものにするための基盤です（DB2は現在AzAcSnapではサポートされていません）。
 
 Snapshotコピーのバックアップは、オンデマンドで作成することも、バックアップ戦略の一環として定期的に作成することもでき、効率的に新しいボリュームにクローニングして、ターゲットシステムを迅速に更新することができます。AzAcSnapは、バックアップを作成して新しいボリュームにクローンを作成するために必要なワークフローを提供します。一方、Libelle SystemCopyは、完全なエンドツーエンドのシステム更新に必要な、前処理と後処理の手順を実行します。
@@ -241,5 +240,3 @@ image:libelle-sc-image38.jpg["エラー：グラフィックイメージがあ�
 コピーフェーズ後、LSCはPostフェーズで定義されたすべてのステップで継続します。システムの更新プロセスが完了すると'ターゲット・システムは再び稼働し'完全に使用可能になりますこのラボシステムでは、SAPシステムの更新に必要な合計実行時間は約25分でした。このうち、コピーフェーズで消費される時間は5分未満です。
 
 image:libelle-sc-image39.jpg["エラー：グラフィックイメージがありません"]
-
-link:libelle-sc-where-to-find-additional-information.html["次へ：追加情報 およびバージョン履歴の参照先。"]

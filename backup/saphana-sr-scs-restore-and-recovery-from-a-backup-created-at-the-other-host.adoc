@@ -13,8 +13,7 @@ summary: 他の SAP HANA ホストで作成されたバックアップからの�
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html["Previous ：単一のリソースを使用する SnapCenter 構成。"]
-
+[role="lead"]
 他の SAP HANA ホストで作成されたバックアップからのリストア処理は、両方の SnapCenter 構成オプションで有効なシナリオです。
 
 次の図に、このセクションで説明するリストアとリカバリのシナリオの概要を示します。
@@ -80,5 +79,3 @@ stlrx300s8-5:/mnt/tmp # cp -Rp hdb00002.00003/ /hana/data/SSR/mnt00001/
 stlrx300s8-5:/mnt/tmp # cp -Rp hdb00003.00003/ /hana/data/SSR/mnt00001/
 ....
 SAP HANA Studio を使用したリカバリが、の説明に従って実行されます link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html#snapcenter-restore-of-the-valid-backup-only["有効なバックアップの SnapCenter リストアのみを実行してください"]。
-
-link:saphana-sr-scs-where-to-find-additional-information_overview.html["次へ：追加情報の検索場所。"]

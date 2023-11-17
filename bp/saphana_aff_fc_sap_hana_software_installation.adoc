@@ -13,7 +13,8 @@ summary: このセクションでは、シングルホストシステムとマ�
 :imagesdir: ./../media/
 
 
-link:saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html["前の例： SAP HANA の I/O スタック構成"]
+[role="lead"]
+このセクションでは、シングルホストシステムとマルチホストシステムに SAP HANA をインストールするために必要な準備について説明します。
 
 
 
@@ -146,5 +147,3 @@ Enter Local Host Name [sapcc-hana-tst-03]:
 ....
 . 選択したすべてのコンポーネントが、すべてのワーカーホストとスタンバイホストにインストールされていることを確認します。
 
-
-link:saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html["次の手順： SAP HANA シングルホストシステムのデータボリュームパーティションを追加します"]

@@ -13,8 +13,7 @@ summary: このセクションでは、シングルホスト SAP HANA MDC のシ
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-snapcenter-service-snapshot-backup-configuration-overview.html["Previous ： SnapCenter サービスの Snapshot バックアップ設定の概要を示します。"]
-
+[role="lead"]
 このセクションでは、シングルホスト SAP HANA MDC のシングルテナントシステム PR1 の設定手順について説明します。複数のテナントを持つ MDC システムの場合の手順は同じです。シングルコンテナシステムとマルチホストシステムの違いは、対応する設定手順に反映されます。
 
 
@@ -102,5 +101,3 @@ HANA システムの概要画面には、 HANA システムと割り当てられ
 image:saphana-backup-anf-image30.png["エラー：グラフィックイメージがありません"]
 
 
-
-link:saphana-backup-anf-backup-configuration-of-sap-hana-non-data-volumes.html["次の例： SAP HANA の非データボリュームのバックアップ構成"]

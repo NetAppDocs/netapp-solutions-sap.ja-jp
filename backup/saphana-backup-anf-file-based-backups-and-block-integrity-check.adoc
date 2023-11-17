@@ -13,8 +13,7 @@ summary: SAP では、ブロックの整合性チェックを実行するため�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-sap-hana-database-snapshot-backups.html["Previous ： SAP HANA データベースの Snapshot バックアップ。"]
-
+[role="lead"]
 SAP では、ブロックの整合性チェックを実行するために、ストレージベースの Snapshot バックアップと週次ファイルベースのバックアップを組み合わせることを推奨しています。SnapCenter サービスでは、バックアップタイプとしてファイルベースのバックアップを選択するポリシーを使用して、ブロック整合性チェックの実行をサポートします。
 
 ファイルベースのバックアップは、 HANA データボリュームの Snapshot バックアップに加えて、セカンダリバックアップコピーにも使用されます。これらのファイルベースのバックアップは、プライマリデータボリュームが完全に失われた場合のリストア処理とリカバリ処理に使用できます。
@@ -52,5 +51,3 @@ drwxr-x--- 4 pr1adm sapsys       4096 Jan 31 18:59 ..
 == ファイルベースのバックアップを使用したリストアとリカバリ
 
 HANA Studio または HANA Cockpit で標準の HANA リカバリ処理を使用して、 SnapCenter 外部でファイルベースのバックアップのリストア処理とリカバリ処理を実行する必要があります。
-
-link:saphana-backup-anf-restore-and-recovery.html["次の手順：リストアとリカバリ"]

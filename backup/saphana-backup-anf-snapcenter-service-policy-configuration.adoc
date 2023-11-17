@@ -13,8 +13,7 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-lab-setup-used-for-this-report.html["Previous ：このレポートで使用するラボのセットアップ。"]
-
+[role="lead"]
 の項で説明したように link:saphana-backup-anf-snapcenter-service-concepts-and-best-practices.html#data-protection-strategy["「データ保護戦略」"] ポリシーは通常、リソースとは別に設定され、複数の SAP HANA データベースで使用できます。
 
 一般的な最小構成は、次のポリシーで構成されます。
@@ -77,5 +76,3 @@ image:saphana-backup-anf-image17.png["エラー：グラフィックイメージ
 image:saphana-backup-anf-image18.png["エラー：グラフィックイメージがありません"]
 
 
-
-link:saphana-backup-anf-snapcenter-service-snapshot-backup-configuration-overview.html["次： SnapCenter サービス Snapshot バックアップ設定の概要"]

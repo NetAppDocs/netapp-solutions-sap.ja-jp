@@ -13,8 +13,7 @@ summary: ログバックアップレプリケーションがディザスタリ�
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_hana_database_recovery.html["Previous ： HANA データベースのリカバリ。"]
-
+[role="lead"]
 ログバックアップレプリケーションがディザスタリカバリの設定の一部かどうかによって、ディザスタリカバリの手順は少し異なります。ここでは、データバックアップのみのレプリケーション、およびログバックアップボリュームのレプリケーションと組み合わせたデータボリュームのレプリケーションのためのディザスタリカバリフェイルオーバーについて説明します。
 
 ディザスタリカバリフェイルオーバーを実行するには、次の手順を実行します。
@@ -34,5 +33,3 @@ link:saphana-dr-anf_hana_database_recovery.html["Previous ： HANA データベ�
 以降のサブセクションで、これらの手順について詳しく説明します。次の図は、ディザスタフェイルオーバーのテストを示しています。
 
 image:saphana-dr-anf_image26.png["エラー：グラフィックイメージがありません"]
-
-link:saphana-dr-anf_prepare_the_target_host_01.html["次の手順：ターゲットホストを準備します。"]

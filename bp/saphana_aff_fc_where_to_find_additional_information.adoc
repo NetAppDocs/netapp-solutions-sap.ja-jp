@@ -13,8 +13,7 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html["前の手順： SAP HANA シングルホストシステムのデータボリュームパーティションを追加"]
-
+[role="lead"]
 このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
 
 * 『 Best Practices and Recommendations for Scale-Up Deployments of SAP HANA on VMware vSphere 』
@@ -66,5 +65,3 @@ https://mysupport.netapp.com/info/web/ECMLP2676498.html["https://mysupport.netap
 file:///C:/Users/mschoen/NetApp%20Inc/SAP%20TME%20-%20Dokumente/Projects/HANA-BestPracticeGuide-TRs/2018_sept/www.netapp.com/us/solutions/applications/sap/index.aspx%23sap-hana["www.netapp.com/us/solutions/applications/sap/index.aspx#sap-hana"^]
 
 
-
-link:saphana_aff_fc_update_history.html["次：履歴を更新します。"]

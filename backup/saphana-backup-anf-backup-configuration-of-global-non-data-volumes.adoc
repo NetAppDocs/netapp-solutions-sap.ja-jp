@@ -13,8 +13,7 @@ summary: このセクションでは、 SAP HANA 非データボリュームの�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-backup-configuration-of-sap-hana-non-data-volumes.html["前のバージョン： SAP HANA の非データボリュームのバックアップ構成。"]
-
+[role="lead"]
 グローバルな非データボリュームのバックアップ設定を設定するには、次の手順を実行します。
 
 . SAP HANA Systems に移動し、 Add をクリックします。
@@ -47,5 +46,3 @@ image:saphana-backup-anf-image44.png["エラー：グラフィックイメージ
 image:saphana-backup-anf-image45.png["エラー：グラフィックイメージがありません"]
 
 
-
-link:saphana-backup-anf-sap-hana-database-snapshot-backups.html["次の例は、 SAP HANA データベースの Snapshot バックアップです。"]

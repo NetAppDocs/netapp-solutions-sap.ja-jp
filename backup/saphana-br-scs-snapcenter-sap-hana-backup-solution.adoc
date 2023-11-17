@@ -13,7 +13,8 @@ summary: このセクションでは、この解決策 で使用されている�
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-snapcenter-architecture.html["以前のバージョン： SnapCenter アーキテクチャ。"]
+[role="lead"]
+このセクションでは、この解決策 で使用されているコンポーネント、サポートされている SAP HANA のリリースと構成、および SnapCenter 4.6 の拡張機能について説明します。
 
 
 
@@ -121,5 +122,3 @@ SnapCenter は、次の SAP HANA アーキテクチャとリリースをサポ�
 バージョン 4.6 以降の SnapCenter では、 HANA システムレプリケーション関係で設定された HANA システムの自動検出がサポートされます。各ホストは、物理 IP アドレス（ホスト名）とストレージレイヤ上の個々のデータボリュームを使用して設定されます。2 つの SnapCenter リソースが 1 つのリソースグループに統合されている場合、 SnapCenter はプライマリまたはセカンダリのホストを自動的に識別し、必要なバックアップ処理を適宜実行します。SnapCenter で作成された Snapshot とファイルベースのバックアップの保持の管理は、両方のホストで実行されます。これにより、現在のセカンダリホストでも古いバックアップが削除されるようになります。次の図に概要を示します。SnapCenter の HANA システムレプリケーション対応 HANA システムの構成と運用の詳細概要 については、を参照してください https://www.netapp.com/us/media/tr-4719.pdf["TR-4719 『 SAP HANA System Replication 、 Backup and Recovery with SnapCenter 』"^]。
 
 image:saphana-br-scs-image8.png["エラー：グラフィックイメージがありません"]
-
-link:saphana-br-scs-snapcenter-concepts-and-best-practices.html["次： SnapCenter の概念とベストプラクティス"]

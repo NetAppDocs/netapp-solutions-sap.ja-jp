@@ -13,12 +13,7 @@ summary: 次に示す 3 つのスクリーンショットは、データ、ロ�
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_configuration_steps_for_anf_cross-region_replication.html["前のセクション： ANF クロスリージョンレプリケーションの設定手順"]
-
-
-
-== レプリケーションのステータス
-
+[role="lead"]
 次に示す 3 つのスクリーンショットは、データ、ログバックアップ、および共有ボリュームのレプリケーションステータスを示しています。
 
 ボリュームレプリケーションの遅延時間は、 RPO の期待値を把握するのに役立ちます。たとえば、ログバックアップボリュームのレプリケーションで最大遅延時間が 58 分と表示されています。つまり、 RPO の最大値は同じです。
@@ -47,5 +42,3 @@ image:saphana-dr-anf_image16.png["エラー：グラフィックイメージが�
 NOTE: ソースボリュームとターゲットボリュームに SnapMirror Snapshot コピーが作成され、再同期処理とレプリケーション更新処理にも使用されます。これらの Snapshot コピーは、 HANA データベースの観点からはアプリケーションと整合性がありません。 HANA のリカバリ処理には、 AzaCSsnap で作成されたアプリケーションと整合性のある Snapshot のみを使用できます。
 
 image:saphana-dr-anf_image17.png["エラー：グラフィックイメージがありません"]
-
-link:saphana-dr-anf_disaster_recovery_testing_overview.html["次は、ディザスタリカバリのテストです。"]

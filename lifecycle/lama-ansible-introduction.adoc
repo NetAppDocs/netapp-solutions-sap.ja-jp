@@ -23,5 +23,3 @@ SAP Landscape Management（LaMa）を使用すると、SAPシステム管理者�
 この統合は、ネットアップのストレージソリューションをオンプレミスで運用しているお客様や、Amazon Web Services、Microsoft Azure、Google Cloud Platformなどのパブリッククラウドプロバイダでネットアップのストレージサービスを使用しているお客様が利用できます。
 
 このドキュメントでは、Ansibleによる自動化を使用して、SAPシステムのコピー、クローニング、更新の処理に対応するネットアップのストレージ機能を利用したSAP LaMaの設定について説明します。
-
-link:lama-ansible-sap-system-clone,-copy,-and-refresh-scenarios.html["次は、SAPシステムのクローニング、コピー、更新のシナリオです。"]

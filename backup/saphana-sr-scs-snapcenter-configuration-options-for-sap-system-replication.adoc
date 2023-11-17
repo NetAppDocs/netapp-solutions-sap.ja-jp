@@ -13,8 +13,7 @@ summary: このページでは、 SAP システムレプリケーションの設
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html["Previous ：ストレージの Snapshot バックアップと SAP システムのレプリケーション。"]
-
+[role="lead"]
 SAP HANA システムレプリケーション環境で NetApp SnapCenter ソフトウェアを使用してデータ保護を設定するには、次の 2 つの方法があります。
 
 * SnapCenter リソースグループ。 SAP HANA ホストと SnapCenter バージョン 4.6 以降を使用した自動検出の両方が含まれます。
@@ -51,5 +50,3 @@ SnapCenter 4.6 以降では、 HANA システムレプリケーション関係�
 NOTE: 一般に、リソースグループ構成オプションを SnapCenter 4.6 に設定して、 HANA システムのレプリケーションを有効にして HANA システムを保護することを推奨します。単一の SnapCenter リソース構成が必要になるのは、 SnapCenter の処理アプローチが中央のプラグインホストに基づいており、 HANA プラグインが HANA データベースホストに導入されていない場合だけです。
 
 この 2 つのオプションについては、以降のセクションで詳しく説明します。
-
-link:saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html["次に、リソースグループを使用した SnapCenter 4.6 の設定を行います。"]

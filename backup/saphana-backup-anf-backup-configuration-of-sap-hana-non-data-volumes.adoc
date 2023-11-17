@@ -13,8 +13,7 @@ summary: データボリューム以外のボリュームのバックアップ�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html["Previous ： SAP HANA データベースのバックアップの構成をバックアップします。"]
-
+[role="lead"]
 データボリューム以外のボリュームのバックアップは、 SnapCenter サービスに統合されています。データベースインストールリソースと必要なログが残っていれば、データベースデータボリュームを保護して SAP HANA データベースを特定の時点にリストアおよびリカバリするだけで十分です。
 
 他のデータファイルのリストアが必要な状況からリカバリするには、 SAP HANA データベースのバックアップを補うために、これらのボリュームに対する追加のバックアップ戦略を開発することを推奨します。固有の要件に応じて、非データボリュームのバックアップはスケジュールの頻度と保持の設定が異なる場合があります。また、ファイルを変更する頻度も考慮する必要があります。たとえば、 HANA ボリューム「 /hana/shared 」には、実行可能ファイルと SAP HANA トレースファイルが格納されています。実行ファイルが変更されるのは SAP HANA データベースがアップグレードされた場合だけですが、 SAP HANA で問題の状況を分析できるように、 SAP HANA のトレースファイルには高いバックアップ頻度が必要になる場合があります。
@@ -57,5 +56,3 @@ image:saphana-backup-anf-image37.png["エラー：グラフィックイメージ
 image:saphana-backup-anf-image38.png["エラー：グラフィックイメージがありません"]
 
 
-
-link:saphana-backup-anf-backup-configuration-of-global-non-data-volumes.html["次の例：グローバルな非データボリュームの設定をバックアップします。"]

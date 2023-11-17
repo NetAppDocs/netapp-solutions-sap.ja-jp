@@ -13,8 +13,7 @@ summary: このセクションでは、セカンダリストレージからリ�
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-create-a-backup-with-replication.html["Previous：レプリケーションを含むバックアップを作成します。"]
-
+[role="lead"]
 セカンダリストレージからリストアおよびリカバリするには、次の手順を実行します。
 
 セカンダリストレージ上のすべてのバックアップのリストを取得するには、SnapCenter トポロジビューでVault Copies（ヴォールトコピー）をクリックし、バックアップを選択してRestore（復元）をクリックします。
@@ -26,5 +25,3 @@ image:amazon-fsx-image92.png["エラー：グラフィックイメージがあ�
 image:amazon-fsx-image93.png["エラー：グラフィックイメージがありません"]
 
 さらに、リストアとリカバリの手順は、プライマリストレージにあるSnapshotバックアップでこれまで説明されていた手順と同じです。
-
-link:amazon-fsx-where-to-find-additional-information.html["次へ：追加情報 およびバージョン履歴の参照先。"]

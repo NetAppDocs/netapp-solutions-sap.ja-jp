@@ -13,8 +13,6 @@ summary: このドキュメントの導入例とワークフローの実行時�
 :imagesdir: ./../media/
 
 
-link:lama-ansible-sap-lama-provisioning-workflow-system-refresh.html["前の例：AP LaMaプロビジョニングワークフロー-システムの更新"]
-
 [role="lead"]
 このドキュメントの導入例とワークフローの実行時には、次のプロバイダ構成ファイル、実行スクリプト、およびAnsibleプレイブックを使用します。
 
@@ -518,4 +516,3 @@ ontapservers:
    snapshotpostfix: " _snap_20221115"
    clonepostfix: "_clone_20221115"
 ....
-link:lama-ansible-conclusion.html["次は終わりです"]

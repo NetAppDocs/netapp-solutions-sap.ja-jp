@@ -13,8 +13,7 @@ summary: SnapCenter リソースは、 HANA システムレプリケーション
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html["前のバージョン：リソースグループを使用した SnapCenter 4.6 の設定。"]
-
+[role="lead"]
 SnapCenter リソースは、 HANA システムレプリケーション環境の仮想 IP アドレス（ホスト名）で構成されます。このアプローチでは、ホスト 1 とホスト 2 のどちらがプライマリかに関係なく、 SnapCenter は常にプライマリホストと通信します。両方の SAP HANA ホストのデータボリュームは、 SnapCenter リソースに含まれています。
 
 
@@ -192,5 +191,3 @@ image:saphana-sr-scs-image46.png["エラー：グラフィックイメージが�
 フォワードリカバリが完了すると、セカンダリホスト（ホスト 2 ）が起動し、 SAP HANA システムレプリケーションの再同期が開始されます。すべてのデータの完全なレプリケーションが実行されます。
 
 image:saphana-sr-scs-image47.png["エラー：グラフィックイメージがありません"]
-
-link:saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html["次へ：もう一方のホストで作成されたバックアップからリストアとリカバリを実行します。"]

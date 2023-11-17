@@ -13,8 +13,6 @@ summary: 更新ワークフロー中に、ストレージクローンを削除�
 :imagesdir: ./../media/
 
 
-link:lama-ansible-sap-lama-provisioning-workflow-copy-system.html["前のリリース：SAP LaMaプロビジョニングワークフローとコピーシステムをプロビジョニング"]
-
 [role="lead"]
 次の図は、システムの更新ワークフローで実行する主な手順を示しています。
 
@@ -31,5 +29,3 @@ image:lama-ansible-image51.png["このスクリーンショットは、Provision
 繰り返しますが、入力画面と標準画面では何も異なりません。ワークフローの実行は概要画面から開始できます。
 
 image:lama-ansible-image52.png["このスクリーンショットは、更新するシステムの基本データやターゲットシステムのホスト選択など、システムの更新画面を示しています。"]
-
-link:lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html["次：プロバイダスクリプトの設定とAnsibleのプレイブック。"]

@@ -13,8 +13,7 @@ summary: 次の図は、 ANF クロスリージョンレプリケーションを
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html["前の課題： SAP HANA を使用した ANF のクロスリージョンレプリケーション。"]
-
+[role="lead"]
 次の図は、 ANF クロスリージョンレプリケーションを使用した SAP HANA システムのボリュームレプリケーション関係を示しています。ANF クロスリージョンレプリケーションでは、 HANA データと HANA 共有ボリュームがレプリケートされている必要があります。HANA データボリュームのみがレプリケートされている場合、通常の RPO 値は 1 日の範囲になります。RPO の値を低くする必要がある場合は、 HANA のログバックアップもフォワードリカバリのためにレプリケートする必要があります。
 
 
@@ -51,4 +50,3 @@ image:saphana-dr-anf_image6.png["エラー：グラフィックイメージが�
 
 | フォワードリカバリ | 該当なし | + 過去 24 時間のログ + Snapshot スケジュール（ 6 時間など） + | + 過去 24 時間のログ + Snapshot スケジュール（ 6 時間など） + 
 |===
-link:saphana-dr-anf_requirements_and_best_practices.html["次のステップ：要件とベストプラクティス"]

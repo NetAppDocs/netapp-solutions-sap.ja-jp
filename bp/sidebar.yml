@@ -33,8 +33,6 @@ entries:
       url: "/bp/saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html"
   - title: 追加情報の参照先
     url: "/bp/saphana_aff_fc_where_to_find_additional_information.html"
-  - title: 履歴を更新します
-    url: "/bp/saphana_aff_fc_update_history.html"
 - title: "『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』"
   type: solutions
   entries:
@@ -68,8 +66,6 @@ entries:
       url: "/bp/saphana_aff_nfs_adding_additional_data_volume_partitions.html"
   - title: 追加情報の参照先
     url: "/bp/saphana_aff_nfs_where_to_find_additional_information.html"
-  - title: 履歴を更新します
-    url: "/bp/saphana_aff_nfs_update_history.html"
 - title: "『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』"
   type: solutions
   entries:
@@ -103,8 +99,6 @@ entries:
       url: "/bp/saphana-fas-nfs_adding_additional_data_volume_partitions.html"
   - title: 追加情報の参照先
     url: "/bp/saphana-fas-nfs_where_to_find_additional_information.html"
-  - title: 履歴を更新します
-    url: "/bp/saphana-fas-nfs_update_history.html"
 - title: "『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください"
   type: solutions
   entries:
@@ -136,8 +130,6 @@ entries:
       url: "/bp/saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html"
   - title: 追加情報の参照先
     url: "/bp/saphana_fas_fc_where_to_find_additional_information.html"
-  - title: 履歴を更新します
-    url: "/bp/saphana_fas_fc_update_history.html"
 - title: IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します
   url: "/bp/saphana-ibm-aff-nfs_pdf_link.html"
 - title: UNIX および NFS 上で稼働する Oracle を使用する SAP と NetApp ONTAP

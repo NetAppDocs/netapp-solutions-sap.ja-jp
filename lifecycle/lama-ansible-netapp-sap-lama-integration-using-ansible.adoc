@@ -13,8 +13,6 @@ summary: この統合アプローチでは、SAP LaMaのカスタムプロビジ
 :imagesdir: ./../media/
 
 
-link:lama-ansible-use-cases-for-system-refresh,-copy,-and-cloning.html["Previous：システムの更新、コピー、およびクローニングのユースケースを示します。"]
-
 [role="lead"]
 この統合アプローチでは、SAP LaMaのカスタムプロビジョニングと運用のフックを、ネットアップストレージ管理のAnsibleプレイブックと組み合わせて使用します。次の図は、LaMa側の設定の概要と、実装例の対応するコンポーネントを示しています。
 
@@ -31,5 +29,3 @@ NetApp AnsibleモジュールとLaMaプロバイダの定義の詳細につい�
 * https://www.ansible.com/integrations/infrastructure/netapp["NetApp Ansibleモジュール"^]
 * https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/bf6b3e43340a4cbcb0c0f3089715c068.html["SAP LaMaのドキュメント-プロバイダ定義"^]
 
-
-link:lama-ansible-example-implementation.html["次の例は実装です。"]

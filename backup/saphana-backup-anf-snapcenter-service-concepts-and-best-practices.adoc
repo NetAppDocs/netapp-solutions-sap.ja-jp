@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: backup/saphana-backup-anf-snapcenter-service-concepts-and-best-practices.html 
 keywords:  
-summary:  
+summary: SnapCenterサービスの概念とベストプラクティスを理解しておく必要があります。たとえば、バックアップ処理にはさまざまなポリシーを設定する必要があります。 
 ---
 = SnapCenter サービスの概念とベストプラクティス
 :hardbreaks:
@@ -13,7 +13,8 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-snapcenter-service-sap-hana-backup-solution.html["前のバージョン： SnapCenter サービス SAP HANA バックアップ解決策。"]
+[role="lead"]
+SnapCenterサービスの概念とベストプラクティスを理解しておく必要があります。たとえば、バックアップ処理にはさまざまなポリシーを設定する必要があります。
 
 
 
@@ -220,5 +221,3 @@ NOTE: 現在のリリースの SnapCenter サービスでは、ログバック�
 == Snapshot バックアップに必要な容量
 
 従来のデータベースの変更率と比較して、ストレージレイヤのブロック変更率が高いことを考慮する必要があります。列ストアの HANA テーブルのマージプロセスにより、テーブル全体が変更されたブロックだけでなくディスクに書き込まれます。1 日に複数の Snapshot バックアップを作成した場合、顧客ベースから得られるデータの日次変更率は 20~50% です。
-
-link:saphana-backup-anf-lab-setup-used-for-this-report.html["次：このレポートに使用するラボのセットアップ。"]

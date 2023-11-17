@@ -13,8 +13,7 @@ summary: このラボ環境では、2つ目のAWSアベイラビリティゾー�
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-backup-of-non-data-volumes.html["Previous：非データボリュームのバックアップ。"]
-
+[role="lead"]
 このラボ環境では、2つ目のAWSアベイラビリティゾーンでFSX for ONTAP ファイルシステムを2つ目にして、HANAデータボリュームのバックアップレプリケーションを紹介します。
 
 第章で説明したように link:amazon-fsx-snapcenter-architecture.html#data-protection-strategy["「データ保護戦略」"]では'レプリケーション・ターゲットは'別のアベイラビリティ・ゾーンのONTAP ファイル・システム用の2番目のFSXである必要がありますこれは'プライマリFSX for ONTAP ファイル・システムの障害から保護されるためですまた、HANA共有ボリュームをONTAP ファイルシステムのセカンダリFSXにレプリケートする必要があります。
@@ -48,5 +47,3 @@ FSX for ONTAP レイヤで実行する必要がある設定手順はいくつか
 
 
 以降の章では、個々の手順について詳しく説明します。
-
-link:amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html["次の手順：ONTAP ファイルシステムのレプリケーション関係をFSXで設定します。"]

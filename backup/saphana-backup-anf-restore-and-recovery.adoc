@@ -13,8 +13,7 @@ summary: このセクションでは、 HANA MDC のシングルホストシン�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-file-based-backups-and-block-integrity-check.html["Previous ：ファイルベースのバックアップとブロックの整合性チェック。"]
-
+[role="lead"]
 次のセクションでは、 HANA MDC のシングルホストシングルテナントシステムのリストアとリカバリのワークフローについて説明します。複数ホストシステムの違いについて説明します。
 
 以下の例では、手動リカバリを実行するツールとして SAP HANA Studio を使用しています。リカバリ処理には、 SAP HANA Cockpit または HANA の SQL ステートメントを使用することもできます。
@@ -178,5 +177,3 @@ SAP HANA システムは稼働中です。
 
 
 複数のテナントを使用する SAP HANA MDC システムの場合は、テナントごとに手順 15~24 を繰り返す必要があります。
-
-link:saphana-backup-anf-additional-information.html["次へ：追加情報の検索場所。"]

@@ -13,8 +13,7 @@ summary: このセクションでは、LSCをNetApp SnapCenter に統合する�
 :imagesdir: ./../media/
 
 
-link:libelle-sc-overview.html["前へ：概要。"]
-
+[role="lead"]
 このセクションでは、LSCをNetApp SnapCenter に統合する方法について説明します。LSCとSnapCenter の統合では、SAPでサポートされるすべてのデータベースがサポートされます。ただし、SAP HANAはSAP AnyDBでは使用できない中央通信ホストを提供するため、SAP AnyDBとSAP HANAを区別する必要があります。
 
 SAP AnyDB用のデフォルトのSnapCenter エージェントとデータベースプラグインのインストールは、データベースサーバ用の対応するデータベースプラグインに加えて、SnapCenter エージェントからのローカルインストールです。
@@ -246,5 +245,3 @@ image:libelle-sc-image21.png["エラー：グラフィックイメージがあ�
 次の図に、セントラル通信ホストを使用する場合の「NTAP_SYSTEM_CLONE_CP」と「NTAP_Mnt_RECOVERY_CP」の2つのタスクを示します。この出力からわかるように、Snapshotコピー、クローン、ターゲットデータベースサーバへのクローンボリュームのマウント、ターゲットデータベースのリストアとリカバリには約12分かかりました。これは、標準インストールを使用する場合に、これらの手順を実行するのに必要な時間と同じか、それより短くなります。繰り返しになりますが、SnapshotとNetApp FlexCloneテクノロジを使用すれば、ソースデータベースのサイズに関係なく、これらのタスクを短時間で一貫して実行できます。
 
 image:libelle-sc-image22.png["エラー：グラフィックイメージがありません"]
-
-link:libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html["次の例：SAP HANAシステムがLSC、AzAcSnap、およびAzure NetApp Files で更新されます。"]

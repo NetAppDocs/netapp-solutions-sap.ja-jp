@@ -13,7 +13,8 @@ summary: ベースのSnapCenter 構成とHANAリソースの保護について�
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-snapcenter-architecture.html["以前のバージョン： SnapCenter アーキテクチャ。"]
+[role="lead"]
+ベースのSnapCenter 構成とHANAリソースの保護については、このセクションの手順を実行する必要があります。
 
 
 
@@ -349,5 +350,3 @@ image:amazon-fsx-image46.png["エラー：グラフィックイメージがあ�
 HANAのリソース構成が完了し、バックアップを実行できるようになります。
 
 image:amazon-fsx-image47.png["エラー：グラフィックイメージがありません"]
-
-link:amazon-fsx-snapcenter-backup-operations.html["Next：SnapCenter バックアップ処理"]

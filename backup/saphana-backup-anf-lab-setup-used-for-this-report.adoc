@@ -13,10 +13,7 @@ summary: このレポートで使用するラボのセットアップには、 S
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-snapcenter-service-concepts-and-best-practices.html["以前： SnapCenter サービスの概念とベストプラクティス"]
-
+[role="lead"]
 このレポートで使用するラボ環境は、次の図に示すように、 SAP HANA システム PR1 - SAP HANA シングルホスト MDC シングルテナントシステムと SnapCenter サービスコンポーネントで構成されます。
 
 image:saphana-backup-anf-image13.jpg["エラー：グラフィックイメージがありません"]
-
-link:saphana-backup-anf-snapcenter-service-policy-configuration.html["次の例は、 SnapCenter サービスポリシーの設定です。"]

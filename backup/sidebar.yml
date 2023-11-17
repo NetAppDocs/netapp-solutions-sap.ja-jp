@@ -33,7 +33,7 @@ entries:
       url: "/backup/amazon-fsx-create-a-backup-with-replication.html"
     - title: セカンダリストレージからリストアおよびリカバリする
       url: "/backup/amazon-fsx-restore-and-recover-from-secondary-storage.html"
-  - title: 追加情報およびバージョン履歴の参照先
+  - title: 追加情報の参照先
     url: "/backup/amazon-fsx-where-to-find-additional-information.html"
 - title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
   type: solutions
@@ -64,7 +64,7 @@ entries:
     url: "/backup/saphana-br-scs-restore-and-recovery.html"
   - title: 高度な設定と調整
     url: "/backup/saphana-br-scs-advanced-configuration-and-tuning.html"
-  - title: 追加情報およびバージョン履歴の参照先
+  - title: 追加情報の参照先
     url: "/backup/saphana-br-scs-where-to-find-additional-information.html"
 - title: SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
   type: solutions
@@ -83,8 +83,6 @@ entries:
     url: "/backup/saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html"
   - title: 追加情報の参照先
     url: "/backup/saphana-sr-scs-where-to-find-additional-information_overview.html"
-  - title: バージョン履歴
-    url: "/backup/saphana-sr-scs-version-history.html"
 - title: Azure NetApp Files を使用した SAP HANA ディザスタリカバリ
   type: solutions
   entries:
@@ -130,8 +128,6 @@ entries:
       url: "/backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html"
     - title: HANA データベースのリカバリ
       url: "/backup/saphana-dr-anf_hana_database_recovery_01.html"
-  - title: 履歴を更新します
-    url: "/backup/saphana-dr-anf_update_history.html"
 - title: SAP HANA Disaster Recovery with Storage Replication 』を参照してください
   url: "/backup/saphana-dr-sr_pdf_link.html"
 - title: Snap Creator を使用した SAP HANA のバックアップとリカバリ

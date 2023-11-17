@@ -13,9 +13,10 @@ summary: FlexCloneテクノロジを使用すると、修復システムは通�
 :imagesdir: ./../media/
 
 
-link:sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html["Previous：SnapCenter を使用したSAPシステムのコピーワークフローの概要を示します。"]
+[role="lead"]
+前のセクションで説明したように、SnapCenter は、任意の既存のSnapshotバックアップからデータセットのクローンを管理し、これらのデータセットを任意のターゲットシステムに迅速にプロビジョニングできます。論理的な破損に対処するために、リペアシステムに本番データを迅速にプロビジョニングすることが重要です。これは、多くの場合、リペアシステムをリセットし、別の本番データセットを選択する必要があるためです。
 
-前のセクションで説明したように、SnapCenter は、任意の既存のSnapshotバックアップからデータセットのクローンを管理し、これらのデータセットを任意のターゲットシステムに迅速にプロビジョニングできます。論理的な破損に対処するために、リペアシステムに本番データを迅速にプロビジョニングすることが重要です。これは、多くの場合、リペアシステムをリセットし、別の本番データセットを選択する必要があるためです。FlexCloneテクノロジを使用すると、修復システムは通常短時間しか使用されないため、高速なプロビジョニングプロセスが可能になり、容量を大幅に削減できます。
+FlexCloneテクノロジを使用すると、修復システムは通常短時間しか使用されないため、高速なプロビジョニングプロセスが可能になり、容量を大幅に削減できます。
 
 次の図は、SnapCenter を使用したSAPシステムのクローニング処理に必要な手順をまとめたものです。
 
@@ -39,5 +40,3 @@ NOTE: システムを別のSnapshotバックアップにリセットする必要
 image:sc-copy-clone-image10.png["エラー：グラフィックイメージがありません"]
 
 を参照してください link:sc-copy-clone-sap-system-clone-with-snapcenter.html["「SnapCenter を使用したSAPシステムのクローン作成」"] システムクローンワークフローの詳細なステップバイステップの概要 を示します。
-
-link:sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html["次の例：ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー"]

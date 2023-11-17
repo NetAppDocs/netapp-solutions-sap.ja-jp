@@ -13,8 +13,6 @@ summary: クローンシステムの運用を停止するには、運用を停�
 :imagesdir: ./../media/
 
 
-link:lama-ansible-sap-lama-provisioning-workflow-clone-system.html["前のリリース：SAP LaMaプロビジョニングワークフロー-システムをクローニング"]
-
 [role="lead"]
 次の図は、system destroyワークフローで実行する主な手順を示しています。
 
@@ -54,5 +52,3 @@ image:lama-ansible-image38.png["このスクリーンショットは、システ
 image:lama-ansible-image39.png["このスクリーンショットは、システムの破棄ワークフローのログページを示しています。"]
 
 
-
-link:lama-ansible-sap-lama-provisioning-workflow-copy-system.html["次の例：SAP LaMaプロビジョニングワークフローとコピーシステムをプロビジョニング"]

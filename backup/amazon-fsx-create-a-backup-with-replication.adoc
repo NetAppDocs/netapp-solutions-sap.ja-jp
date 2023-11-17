@@ -13,8 +13,7 @@ summary: このセクションでは、レプリケーションを使用して�
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-add-a-policy-to-resource-protection.html["前の手順：リソース保護にポリシーを追加します。"]
-
+[role="lead"]
 バックアップは、ローカルSnapshotコピーと同じ方法で作成します。
 
 レプリケーションを伴うバックアップを作成するには、バックアップレプリケーションを含むポリシーを選択し、バックアップをクリックします。
@@ -58,5 +57,3 @@ image:amazon-fsx-image90.png["エラー：グラフィックイメージがあ�
 SnapCenter では、トポロジビューのバックアップコピーをクリックして、レプリケートされたバックアップのリストを表示できます。
 
 image:amazon-fsx-image91.png["エラー：グラフィックイメージがありません"]
-
-link:amazon-fsx-restore-and-recover-from-secondary-storage.html["次の手順：セカンダリストレージからリストアとリカバリを実行します。"]

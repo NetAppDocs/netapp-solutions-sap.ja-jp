@@ -13,8 +13,6 @@ summary: システムとストレージのセットアップでは多数のオ�
 :imagesdir: ./../media/
 
 
-link:lama-ansible-netapp-sap-lama-integration-using-ansible.html["以前：Ansibleを使用したNetApp SAP LaMa統合"]
-
 システムとストレージのセットアップでは多数のオプションを使用できるため、システムの個 々 のセットアップと設定の要件をテンプレートとして使用する必要があります。
 
 
@@ -119,5 +117,3 @@ image:lama-ansible-image15.png["NetAppClone Constraintsページのスクリー�
 ソースシステムのカスタムプロビジョニングワークフローを有効にするには、その設定を該当するものにする必要があります。[カスタムプロビジョニングプロセスを使用する*]チェックボックスをオンにして、対応するカスタムプロビジョニング定義を選択する必要があります。
 
 image:lama-ansible-image16.png["SAP LaMa Configuration  Systems  GT; System Details画面のスクリーンショット。［カスタムプロビジョニングプロセスを使用］チェックボックスが強調表示されます。"]
-
-link:lama-ansible-sap-lama-provisioning-workflow-clone-system.html["次のステップ：SAP LaMaプロビジョニングワークフローとクローンシステムをプロビジョニング"]

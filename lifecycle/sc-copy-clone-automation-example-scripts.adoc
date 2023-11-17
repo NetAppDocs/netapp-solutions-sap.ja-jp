@@ -13,8 +13,7 @@ summary: 本ドキュメントでは、SnapCenter クローンの作成処理と
 :imagesdir: ./../media/
 
 
-link:sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html["前のバージョン：ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー"]
-
+[role="lead"]
 本ドキュメントでは、SnapCenter クローンの作成処理とクローンの削除処理をさらに自動化するために、2つのスクリプトを使用しています。
 
 * スクリプト「sc-system-refresh.sh」は、システムの更新およびシステムクローンワークフローに使用され、HANAデータボリュームのマウントおよびアンマウント操作の実行、およびHANAデータベースのリカバリおよびシャットダウン操作に使用されます。
@@ -173,4 +172,3 @@ ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh>
 ....
 CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_data_mnt00001_Clone_05112206115489411
 ....
-link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html["次の例：SnapCenter でSAP HANAシステムを更新"]

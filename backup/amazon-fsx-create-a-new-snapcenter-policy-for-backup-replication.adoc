@@ -13,8 +13,7 @@ summary: このセクションでは、バックアップレプリケーショ�
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-add-a-backup-svm-to-snapcenter.html["前の手順：SnapCenter にバックアップSVMを追加します。"]
-
+[role="lead"]
 バックアップレプリケーションのポリシーは次のように設定する必要があります。
 
 . ポリシーの名前を指定します。
@@ -50,5 +49,3 @@ image:amazon-fsx-image84.png["エラー：グラフィックイメージがあ�
 これで新しいSnapCenter ポリシーが設定されました。
 
 image:amazon-fsx-image85.png["エラー：グラフィックイメージがありません"]
-
-link:amazon-fsx-add-a-policy-to-resource-protection.html["次の手順：リソース保護にポリシーを追加します。"]

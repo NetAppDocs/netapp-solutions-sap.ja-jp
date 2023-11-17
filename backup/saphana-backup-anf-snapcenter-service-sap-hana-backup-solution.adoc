@@ -13,7 +13,8 @@ summary: このセクションでは、 SnapCenter サービスバックアッ�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-snapcenter-service-architecture.html["以前のバージョン： SnapCenter サービスアーキテクチャ。"]
+[role="lead"]
+このセクションでは、 SnapCenter サービスバックアップ解決策でカバーされる領域について説明します。
 
 
 
@@ -108,5 +109,3 @@ SnapCenter サービスは、次の SAP HANA アーキテクチャとリリー�
 NOTE: MDC システムの Snapshot バックアップのサポートは、シングルテナントシステムでは SAP with HANA 2.0 SP1 、マルチテナントシステムでは HANA 2.0 SPS4 に対応しています。
 
 データ Snapshot バックアップと SnapCenter サービスおよびログバックアップと BACKINT 解決策を使用した組み合わせはサポートされません。ログバックアップをファイルシステムに書き込むように設定する必要があります。
-
-link:saphana-backup-anf-snapcenter-service-concepts-and-best-practices.html["次： SnapCenter サービスの概念とベストプラクティス"]

@@ -13,8 +13,7 @@ summary: SnapCenter では、一般に、各 HANA データベースのリソー
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html["Previous ：データボリューム以外のバックアップの SnapCenter リソース固有の設定。"]
-
+[role="lead"]
 SnapCenter では、一般に、各 HANA データベースのリソース保護構成で定義されたスケジュールを使用してデータベースのバックアップが実行されます。
 
 オンデマンドデータベースバックアップを実行するには、 SnapCenter GUI 、 PowerShell コマンドライン、または REST API を使用します。
@@ -115,5 +114,3 @@ image:saphana-br-scs-image93.png["エラー：グラフィックイメージが�
 
 . SAP HANA Studio では、バックアップカタログに新しいバックアップが表示されます。バックアップカタログのコメントフィールドと EBID フィールドには、 SnapCenter と同じバックアップ名が使用されます。
 
-
-link:saphana-br-scs-block-integrity-check.html["次の例は、ブロックの整合性チェックです。"]

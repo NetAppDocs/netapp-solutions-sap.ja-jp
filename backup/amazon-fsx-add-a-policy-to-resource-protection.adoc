@@ -13,8 +13,7 @@ summary: このセクションでは、リソース保護にポリシーを追�
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html["Previous：バックアップレプリケーション用の新しいSnapCenter ポリシーを作成します。"]
-
+[role="lead"]
 次の図に示すように、新しいポリシーをHANAのリソース保護構成に追加する必要があります。
 
 image:amazon-fsx-image86.png["エラー：グラフィックイメージがありません"]
@@ -22,5 +21,3 @@ image:amazon-fsx-image86.png["エラー：グラフィックイメージがあ�
 セットアップでは、日次スケジュールを定義します。
 
 image:amazon-fsx-image87.png["エラー：グラフィックイメージがありません"]
-
-link:amazon-fsx-create-a-backup-with-replication.html["次の手順：レプリケーションを含むバックアップを作成します。"]

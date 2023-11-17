@@ -13,8 +13,7 @@ summary: SAPコピーのワークフローは、システムの更新ワーク�
 :imagesdir: ./../media/
 
 
-link:sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html["Previous：SnapCenter を使用したSAPシステムの更新ワークフローの概要を示します。"]
-
+[role="lead"]
 SAPコピーのワークフローは、システムの更新ワークフローの初期手順と似ています。SnapCenter を使用したワークフローは、次の図に示す5つの主要な手順で構成されます。
 
 . ターゲットシステムの初期インストールと準備を行う。
@@ -25,5 +24,3 @@ SAPコピーのワークフローは、システムの更新ワークフロー�
 
 
 image:sc-copy-clone-image9.png["エラー：グラフィックイメージがありません"]
-
-link:sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html["次：SnapCenter を使用したSAPシステムのクローニングワークフローの概要"]

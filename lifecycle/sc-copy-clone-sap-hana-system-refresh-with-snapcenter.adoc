@@ -13,8 +13,7 @@ summary: このセクションでは、SAP HANAデータベースのさまざま
 :imagesdir: ./../media/
 
 
-link:sc-copy-clone-automation-example-scripts.html["前の例：自動化スクリプト。"]
-
+[role="lead"]
 次のセクションでは、SAP HANAデータベースのさまざまなシステム更新処理オプションについて、ステップバイステップの概要 を示します。
 
 
@@ -601,4 +600,3 @@ PolicyName         :
 Clone delete job has been finshed.
 PS C:\NetApp>
 ....
-link:sc-copy-clone-sap-system-clone-with-snapcenter.html["次の例は、SnapCenter を使用したSAPシステムのクローニングです。"]

@@ -13,8 +13,7 @@ summary: このページでは、設定と調整を完了するために必要�
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-restore-and-recovery.html["Previous ：リストアとリカバリを実行します。"]
-
+[role="lead"]
 このセクションでは、 SnapCenter の設定を特定のニーズに合わせるためにお客様が使用できる設定および調整オプションについて説明します。すべての設定がすべてのお客様のシナリオに適用されるわけではありません。
 
 
@@ -217,5 +216,3 @@ PS C:\Users\scadmin> Check the configuration using the Windows Task Scheduler.
 image:saphana-br-scs-image158.png["エラー：グラフィックイメージがありません"]
 
 
-
-link:saphana-br-scs-where-to-find-additional-information.html["次へ：追加情報の検索場所。"]
