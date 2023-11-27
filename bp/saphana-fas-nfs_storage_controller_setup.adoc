@@ -345,6 +345,12 @@ advanced 権限レベルの nfs modify -vserver <vserver-name> -v3-tcp-max-read-
 
 
 | NFSv4 数値 ID を無効にする | nfs modify -vserver <vserver_name>-v4-numeric-ids disabled 
+
+
+| NFSv4.xセッションスロットの数を変更する
+  任意。 | 詳細設定
+nfs modify -vserver hana-v4.x -session-num-slots <value>
+管理者を設定 
 |===
 
 NOTE: ID番号を無効にするには、ユーザー管理が必要です（を参照） link:saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html["NFSv4 用の SAP HANA インストールの準備"]

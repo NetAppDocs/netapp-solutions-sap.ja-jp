@@ -44,7 +44,7 @@ net.ipv4.tcp_sack = 1
 
 NOTE: これらの値は、 SLES for SAP OS のバージョンに含まれている saptune を使用して設定できます。詳細については、を参照してください https://launchpad.support.sap.com/#/notes/3024346["SAP ノート 3024346"^] （ SAP ログインが必要です）。
 
-NFSv3 を使用してストレージを接続する場合は、「 /etc/modprobe.d/sunrpc.conf 」に「 `unrpc.tcp_max_slot_table_entries 」を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。
+。 `sunrpc.tcp_max_slot_table_entries` パラメータは次の場所で設定してください： `/etc/modprobe.d/sunrpc.conf`。ファイルが存在しない場合は、次の行を追加して先に作成する必要があります。
 
 ....
 options sunrpc tcp_max_slot_table_entries=128
@@ -55,7 +55,7 @@ options sunrpc tcp_max_slot_table_entries=128
 
 SAP HANA で生成されるワークロードに合わせて、各 SAP HANA ホストで追加のカーネルパラメータと構成パラメータを調整する必要があります。
 
-ストレージの接続に NFSv3 を使用する場合は、 /etc/modprobe.d/sunrpc.conf のパラメータ 'unrpc.tcp_max_slot_table_entries を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。
+。 `sunrpc.tcp_max_slot_table_entries` パラメータは次の場所で設定してください： `/etc/modprobe.d/sunrpc.conf`。ファイルが存在しない場合は、次の行を追加して先に作成する必要があります。
 
 ....
 options sunrpc tcp_max_slot_table_entries=128
@@ -237,10 +237,17 @@ ONTAP 9 では、 NFS 転送サイズを最大 1MB に設定できます。具�
 NOTE: NFSv3 の読み取りパフォーマンスを向上させるには、「 nConnect=n 」マウントオプションを使用することを推奨します。このオプションは、 SUSE Linux Enterprise Server 12 SP4 以降および RedHat Enterprise Linux （ RHEL ） 8.3 以降で使用できます。
 
 
-NOTE: パフォーマンス・テストでは'nConnect=8'がデータ・ボリュームの読み取り結果に優れていることが示されましたログの書き込みは 'nConnect=2 など ' セッション数が少ないことからメリットがあります共有ボリュームには、「nConnect」オプションを使用することもできます。NFS サーバからの最初のマウント（ IP アドレス）では、使用されるセッションの量が定義されることに注意してください。同じIPアドレスにさらにマウントしても、nConnectに別の値が使用されていても、この値は変更されません。
+NOTE: パフォーマンステストによると、 `nconnect=4` データボリュームの読み取り結果が良好です。ログへの書き込みは、次のようなセッション数が少ないことでメリットが得られる場合があります。 `nconnect=2`。共有ボリュームには、「nConnect」オプションを使用することもできます。NFS サーバからの最初のマウント（ IP アドレス）では、使用されるセッションの量が定義されることに注意してください。同じIPアドレスにさらにマウントしても、nConnectに別の値が使用されていても、この値は変更されません。
 
 
 NOTE: ONTAP 9.8およびSUSE SLES15SP2以降、またはRed Hat RHEL 8.4以降では、ネットアップはNFSv4.1のnConnectオプションもサポートしています。追加情報については、 Linux ベンダーのマニュアルを参照してください。
+
+
+NOTE: nconnectをNFSv4.xで使用する場合は、次のルールに従ってNFSv4.xセッションスロットの数を調整する必要があります。
+セッションスロットの数は<nconnect value> x 64に等しくなります。
+主催者でこれは次のように審査されます。
+`echo options nfs max_session_slots= <calculated value> > /etc/modprobe.d/nfsclient.conf`
+再起動します。サーバー側の値も調整する必要があります。で説明されているように、セッションスロットの数を設定します。 link:saphana_aff_nfs_storage_controller_setup.html#nfs-configuration-for-nfsv4["NFSv4 の NFS 設定"]
 
 次の例は、 SID=NF2 で、 NFSv3 を使用し、書き込みの場合は NFS 転送サイズが 1MB 、読み取りの場合は 256K の、シングルホスト SAP HANA データベースを示しています。/etc/fstab 構成ファイルを使用してシステムのブート中にファイル・システムをマウントするには ' 次の手順を実行します
 
@@ -248,10 +255,10 @@ NOTE: ONTAP 9.8およびSUSE SLES15SP2以降、またはRed Hat RHEL 8.4以降�
 +
 ....
 sapcc-hana-tst-06:/ # cat /etc/fstab
-<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
 <storage-vif-log01>:/NF2_log_mnt00001 /hana/log/NF2/mnt00001 nfs rw,nfsvers=3,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
-<storage-vif-data01>:/NF2_shared/usr-sap /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
-<storage-vif-data01>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_shared/usr-sap /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
 ....
 . Run `ount – a を実行して、すべてのホストのファイルシステムをマウントします。
 
@@ -261,17 +268,17 @@ sapcc-hana-tst-06:/ # cat /etc/fstab
 . 必要なファイル・システムを ' すべてのホスト上の /etc/fstab 構成ファイルに追加します
 +
 
-NOTE: /usr/sap/nf2 ファイル・システムは ' データベース・ホストごとに異なります次の例は '/NF2_shared_usr-sap-host1' を示しています
+NOTE: 。 `/usr/sap/NF2` ファイルシステムはデータベースホストごとに異なります。次の例は、 `/NF2_shared/usr-sap-host1`。
 
 +
 ....
 stlrx300s8-5:/ # cat /etc/fstab
-<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs  rw,nfsvers=4.1,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
-<storage-vif-data02>:/NF2_data_mnt00002 /hana/data/NF2/mnt00002 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
+<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs  rw,nfsvers=4.1,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
+<storage-vif-data02>:/NF2_data_mnt00002 /hana/data/NF2/mnt00002 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
 <storage-vif-log01>:/NF2_log_mnt00001 /hana/log/NF2/mnt00001 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
 <storage-vif-log02>:/NF2_log_mnt00002 /hana/log/NF2/mnt00002 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
-<storage-vif-data02>:/NF2_shared/usr-sap-host1 /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
-<storage-vif-data02>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data02>:/NF2_shared/usr-sap-host1 /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data02>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
 ....
 . Run `ount – a を実行して、すべてのホストのファイルシステムをマウントします。
 

@@ -590,9 +590,7 @@
   <block id="efcd9df071a570f7c5ed3559b172bce3" category="section-title">SUSE Linux Enterprise Server 12 および 15</block>
   <block id="ebb8355d8accfb697b6808ce518c8666" category="paragraph">SUSE Linux Enterprise Server （ SLES ） 12 SP1 以降、カーネルパラメータは /etc/sysctl.d`d ディレクトリ内の構成ファイルで設定する必要があります。たとえば '91-NetApp-/hana.conf という名前の構成ファイルを作成する必要があります</block>
   <block id="68d9ac2d7e973e347e878b223355bf31" category="inline-link">SAP ノート 3024346</block>
-  <block id="fe039cc1acff15ac3ebdef50867dad8e" category="paragraph">NFSv3 を使用してストレージを接続する場合は、 'sunrpc.tcp_max_slot_table_entries パラメータを /etc/modprobe.d/sunrpc.conf に設定する必要があります。ファイルが存在しない場合は、次の行を追加して先に作成する必要があります。</block>
   <block id="82740b25df395d68a79118ebc5c4da80" category="section-title">Red Hat Enterprise Linux 7.2 以降の構成パラメータ</block>
-  <block id="384d34c5cb85a44702029243289c3645" category="paragraph">ストレージの接続に NFSv3 を使用する場合は、 /etc/modprobe.d/sunrpc.conf 内のパラメータ 'unrpc.tcp_max_slot_table_entries を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
   <block id="c2e770dd6d768668395e4b8d3b9291d1" category="paragraph">Red Hat Enterprise Linux 7.2 以降では、 /etc/sysctl.d` ディレクトリにある構成ファイルでカーネルパラメータを設定する必要があります。たとえば '91-NetApp-/hana.conf という名前の構成ファイルを作成する必要があります</block>
   <block id="4142bd640477d1c4292c7fcbb3bb1f57" category="section-title">/hana/shared ボリュームにサブディレクトリを作成します</block>
   <block id="67435e0588f5cb039a7fb0f4578e90a7" category="admonition">以下の例は、 SID=NF2 の SAP HANA データベースを示しています。</block>
@@ -628,7 +626,6 @@
   <block id="f731bd3074578aba0a3c1b5ab0ca78ee" category="list-text">必要なファイル・システムを /etc/fstab 構成ファイルに追加します</block>
   <block id="aff8bbab4f16423ec5907aed644aead6" category="list-text">Run `ount – a を実行して、すべてのホストのファイルシステムをマウントします。</block>
   <block id="2555851d01cabd281a371497bed0a9a9" category="list-text">必要なファイル・システムを ' すべてのホスト上の /etc/fstab 構成ファイルに追加します</block>
-  <block id="4292e3e460b31d735c080ccc8524778e" category="admonition">/usr/sap/nf2 ファイル・システムは ' データベース・ホストごとに異なります次の例は '/NF2_shared_usr-sap-host1' を示しています</block>
   <block id="019dc6de8e76037cb2c701eebcc7885a" category="summary">このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。</block>
   <block id="9e9bd8073039e8b9017ce3890a88b07f" category="list-text">『 Best Practices and Recommendations for Scale-Up Deployments of SAP HANA on VMware vSphere 』<block ref="c53e7d8b68aab8589d1fe2ae632d97f1" category="inline-link-rx"></block></block>
   <block id="69d8738d5b71d896a0dc1609b971b14d" category="inline-link">www.vmware.com/files/pdf/sap-hana-scale-out-deployments-on-vsphere.pdf</block>
@@ -792,7 +789,6 @@
   <block id="f0c841de9af65f567936371d382c94ec" category="paragraph">サイジングプロセスでは、本番用および非本番用の SAP HANA ホストの数、各ホストの RAM サイズ、ストレージベースの Snapshot コピーのバックアップ保持期間などの詳細が必要です。SAP HANA ホストの数によって、必要なストレージコントローラとディスクの数が決まります。</block>
   <block id="50555071af908138ac56ce172b19cc5d" category="paragraph"><block ref="50555071af908138ac56ce172b19cc5d" category="inline-image-macro-rx" type="image"></block></block>
   <block id="e41020e64935329a6db54f4c483b9113" category="summary">このセクションで説明するホストのセットアップ手順は、すべて物理サーバ上の SAP HANA 環境と、 VMware vSphere 上で実行される SAP HANA 環境の両方で有効です。</block>
-  <block id="c60051ea586d490f1e69166ac39409e5" category="paragraph">NFSv3 を使用してストレージを接続する場合は、「 /etc/modprobe.d/sunrpc.conf 」に「 `unrpc.tcp_max_slot_table_entries 」を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
   <block id="179a425489e8da15ef704b42e37645c8" category="section-title">Red Hat Enterprise Linux 7.2 以降の構成パラメータ</block>
   <block id="e19cf298e039e5acff1dbe7e98090d84" category="paragraph">SAP HANA で生成されるワークロードに合わせて、各 SAP HANA ホストで追加のカーネルパラメータと構成パラメータを調整する必要があります。</block>
   <block id="5491b828c5fede318e582fdb0621d64f" category="paragraph">Red Hat Enterprise Linux 7.2 以降では、 /etc/sysctl.d` ディレクトリにある構成ファイルでカーネルパラメータを設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。</block>
@@ -4425,7 +4421,6 @@
   <block id="ecf911b27dfacab49658bef695c01f50" category="list-text">FAS2720、FAS2750、FAS8300、FAS8700、FAS9000 そしてFAS9500です。SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>。</block>
   <block id="9b340c29d45c75265853d640bc6a1e05" category="list-text">FAS2720、FAS2750、FAS8200、FAS8300、FAS8700、 FAS9000、FAS9500</block>
   <block id="8293eb8037b07e6a99273e0e69a21b6f" category="paragraph">SUSE Linux Enterprise Server 12 SP1 以降、カーネルパラメータは /etc/sysctl.d` ディレクトリの構成ファイルで設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。</block>
-  <block id="9f7a362263a005504b84698373ae8acb" category="paragraph">ストレージの接続に NFSv3 を使用する場合は、 /etc/modprobe.d/sunrpc.conf のパラメータ 'unrpc.tcp_max_slot_table_entries を設定する必要があります。ファイルが存在しない場合は、次の行を追加して作成する必要があります。</block>
   <block id="6ed4f46c3f6437e250cb69f8684772f4" category="list-text"><block ref="6ed4f46c3f6437e250cb69f8684772f4" category="inline-link-rx"></block></block>
   <block id="24d3ef74df0d2ceedb42c4a4c33104d4" category="list-text"><block ref="24d3ef74df0d2ceedb42c4a4c33104d4" category="inline-link-rx"></block></block>
   <block id="a52e74dbfc20d705ac349fdd5b3d0188" category="list-text"><block ref="a52e74dbfc20d705ac349fdd5b3d0188" category="inline-link-rx"></block></block>
@@ -4437,12 +4432,10 @@
   <block id="537754f62b9e3072d7b143e82ea96f51" category="admonition">これらの値は、 SLES for SAP OS のバージョンに含まれている saptune を使用して設定できます。詳細については、を参照してください<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="64de99f49b55f96ef81b9f1d7d3ef301" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用して設定を適用することもできます。を参照してください<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="a02f77a47cb5c9004f19c8c78d662cd5" category="admonition">SAP OS バージョン用の SLES に含まれている Saptune を使用してこれらの値を設定できます。を参照してください<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
-  <block id="8af9dcc6bc45874f6dab0a351794996a" category="admonition">パフォーマンス・テストでは'nConnect=8'がデータ・ボリュームの読み取り結果に優れていることが示されましたログの書き込みは 'nConnect=2 など ' セッション数が少ないことからメリットがあります共有ボリュームには、「nConnect」オプションを使用することもできます。NFS サーバからの最初のマウント（ IP アドレス）では、使用されるセッションの量が定義されることに注意してください。同じIPアドレスにさらにマウントしても、nConnectに別の値が使用されていても、この値は変更されません。</block>
   <block id="b35bcba907dc97a5b6020488961f3307" category="admonition">ONTAP 9.8およびSUSE SLES15SP2以降、またはRed Hat RHEL 8.4以降では、ネットアップはNFSv4.1のnConnectオプションもサポートしています。追加情報については、 Linux ベンダーのマニュアルを参照してください。</block>
   <block id="dbe18498a47f8eb26e80012f0c049b0d" category="paragraph">次の例は、 SID=NF2 で、 NFSv3 を使用し、書き込みの場合は NFS 転送サイズが 1MB 、読み取りの場合は 256K の、シングルホスト SAP HANA データベースを示しています。/etc/fstab 構成ファイルを使用してシステムのブート中にファイル・システムをマウントするには ' 次の手順を実行します</block>
   <block id="afd4f67ca3483f6b519e8ebc2a53dcea" category="admonition">Red Hat Enterprise Linuxバージョン8.6以降では、RHEL System Roles for SAP（Ansible）を使用してこれらの設定を適用することもできます。を参照してください<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> （ SAP ログインが必要です）。</block>
   <block id="e7a66fb065da642109c3abf1481bfcd0" category="paragraph">NFSのバージョンとONTAP のリリースに応じて、異なるマウントオプションが使用されます。次のファイルシステムをホストにマウントする必要があります。</block>
-  <block id="d1805ea655a389bcd86b519f65f01560" category="admonition">パフォーマンス・テストでは'nConnect=8'は'特にデータ・ボリュームの読み取り結果に優れていることが示されていますログの書き込みは 'nConnect=2 など ' セッション数が少ないことからメリットがあります「nConnect」オプションを使用すると、共有ボリュームにもメリットがあります。NFS サーバからの最初のマウント（ IP アドレス）では、使用されるセッションの量が定義されることに注意してください。同じIPアドレスにさらにマウントしても、nConnectに別の値が使用されていても、この値は変更されません。</block>
   <block id="6f7cbdc39f9acbcde843e913e06a5bd8" category="summary">クローンシステムの運用を停止するには、運用を停止し、準備を事前に完了しておく必要があります。その後、システムの破棄ワークフローを開始できます。</block>
   <block id="7c4bf45739108965dce4dca9b396f39d" category="doc">SAP LaMaによるワークフローのプロビジョニング解除-システムの破壊</block>
   <block id="ce5e3f676f90c441971cc56d6dffe08e" category="paragraph">次の図は、system destroyワークフローで実行する主な手順を示しています。</block>
@@ -4801,4 +4794,22 @@
   <block id="93f305eb7fa597fc876f2e0744abf06b" category="paragraph">このシステム更新処理は、インフラ、データベース、アプリケーションの各レイヤ上で実行される複数のタスクで構成されます。自動化のレベルによっては、数日かかる場合があります。</block>
   <block id="848bda1dea8289263932caf2d35de15b" category="paragraph">システムの更新処理は、インフラ、データベース、アプリケーションの各レイヤ上で実行される複数のタスクで構成されます。自動化のレベルによっては、数日かかる場合があります。</block>
   <block id="c673a1530232358f588ada362c289d7f" category="sidebar">追加情報の参照先</block>
+  <block id="e08842ba37eacff4f1a5b7fcf9749dc3" category="paragraph">。<block ref="6f72acaebcb9a0de6696aaf3508a6144" prefix=" " category="inline-code"></block> パラメータは次の場所で設定してください：<block ref="8ad2bc27658297501e1a64bf77a1fd56" prefix=" " category="inline-code"></block>。ファイルが存在しない場合は、次の行を追加して先に作成する必要があります。</block>
+  <block id="b7de930c0dd2d22c43e147a8da62d970" category="admonition">パフォーマンステストによると、<block ref="6ad27604f562c1a2600540bd7f1094d4" prefix=" " category="inline-code"></block> 特にデータボリュームに対して良好な読み取り結果が得られます。ログへの書き込みは、次のようなセッション数が少ないことでメリットが得られる場合があります。<block ref="b3e16d81f1f84d087c55c1815a58a64c" prefix=" " category="inline-code"></block>。「nConnect」オプションを使用すると、共有ボリュームにもメリットがあります。NFS サーバからの最初のマウント（ IP アドレス）では、使用されるセッションの量が定義されることに注意してください。同じIPアドレスにさらにマウントしても、nConnectに別の値が使用されていても、この値は変更されません。</block>
+  <block id="d7d1e0b01aa98fdaaa388843234520d5" category="admonition">ONTAP 9.8およびSUSE SLES15SP2以降、またはRed Hat RHEL 8.4以降では、ネットアップはNFSv4.1のnConnectオプションもサポートしています。</block>
+  <block id="953d9b4b8aec5e0f96c90ef8b3d12b68" category="admonition">nconnectをNFSv4.xで使用する場合は、次のルールに従ってNFSv4.xセッションスロットの数を調整する必要があります。
+セッションスロットの数は&lt;nconnect value&gt; x 64に等しくなります。
+主催者でこれは次のように審査されます。<block ref="0e1f4d10d02df866bcbb3247ad4ee7bd" prefix=" " category="inline-code"></block>
+再起動します。サーバー側の値も調整する必要があります。で説明されているように、セッションスロットの数を設定します。 <block ref="ab5c20669050c73ba24d89c4b271e9e7" category="inline-link-macro-rx"></block></block>
+  <block id="075d23786d3ed7499b8d563bd41298ef" category="admonition">。<block ref="68727786e22b015e3091f141273c8e9a" prefix=" " category="inline-code"></block> ファイルシステムはデータベースホストごとに異なります。次の例は、<block ref="7b5a8b70c72ff791a6c938600aa48468" prefix=" " category="inline-code"></block>。</block>
+  <block id="61dc8147d5af95ff65e5beeeceb8d669" category="cell">NFSv4.xセッションスロットの数を変更する
+  任意。</block>
+  <block id="3a61ec547beefb69b89d0843ea4c03bd" category="cell">詳細設定
+nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
+管理者を設定</block>
+  <block id="7de8b31e6597c345c3a3966bd41f80a2" category="admonition">パフォーマンステストによると、<block ref="6ad27604f562c1a2600540bd7f1094d4" prefix=" " category="inline-code"></block> データボリュームの読み取り結果が良好です。ログへの書き込みは、次のようなセッション数が少ないことでメリットが得られる場合があります。<block ref="b3e16d81f1f84d087c55c1815a58a64c" prefix=" " category="inline-code"></block>。共有ボリュームには、「nConnect」オプションを使用することもできます。NFS サーバからの最初のマウント（ IP アドレス）では、使用されるセッションの量が定義されることに注意してください。同じIPアドレスにさらにマウントしても、nConnectに別の値が使用されていても、この値は変更されません。</block>
+  <block id="3efa710e585bff45d9c6786442911c9d" category="admonition">nconnectをNFSv4.xで使用する場合は、次のルールに従ってNFSv4.xセッションスロットの数を調整する必要があります。
+セッションスロットの数は&lt;nconnect value&gt; x 64に等しくなります。
+主催者でこれは次のように審査されます。<block ref="0e1f4d10d02df866bcbb3247ad4ee7bd" prefix=" " category="inline-code"></block>
+再起動します。サーバー側の値も調整する必要があります。で説明されているように、セッションスロットの数を設定します。 <block ref="f5e012a6f36bf833f75aec36ff8eee0f" category="inline-link-macro-rx"></block></block>
 </blocks>
