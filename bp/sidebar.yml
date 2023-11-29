@@ -44,8 +44,6 @@ entries:
     url: "/bp/saphana_aff_nfs_storage_sizing.html"
   - title: インフラのセットアップと設定
     entries:
-    - title: インフラのセットアップと設定の概要
-      url: "/bp/saphana_aff_nfs_infrastructure_setup_and_configuration_overview.html"
     - title: ネットワークセットアップ
       url: "/bp/saphana_aff_nfs_network_setup.html"
     - title: 時刻の同期
@@ -77,8 +75,6 @@ entries:
     url: "/bp/saphana-fas-nfs_storage_sizing.html"
   - title: インフラのセットアップと設定
     entries:
-    - title: インフラのセットアップと設定の概要
-      url: "/bp/saphana-fas-nfs_infrastructure_setup_and_configuration_overview.html"
     - title: ネットワークセットアップ
       url: "/bp/saphana-fas-nfs_network_setup.html"
     - title: 時刻の同期
