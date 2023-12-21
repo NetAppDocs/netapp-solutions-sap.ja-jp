@@ -13,8 +13,6 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-where-to-find-additional-information_overview.html["前へ（ Previous ）：追加情報を検索する場所。"]
-
 |===
 | バージョン | 日付 | ドキュメントバージョン履歴 
 

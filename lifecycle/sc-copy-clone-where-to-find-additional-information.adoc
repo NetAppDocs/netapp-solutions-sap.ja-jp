@@ -4,7 +4,7 @@ permalink: lifecycle/sc-copy-clone-where-to-find-additional-information.html
 keywords:  
 summary:  
 ---
-= 追加情報の参照先
+= 追加情報およびバージョン履歴の参照先
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -41,3 +41,21 @@ https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introducti
 http://www.netapp.com/us/solutions/applications/sap/index.aspx["http://www.netapp.com/us/solutions/applications/sap/index.aspx"^]
 
 
+
+
+
+== バージョン履歴
+
+|===
+| バージョン | 日付 | ドキュメントバージョン履歴 
+
+
+| バージョン 1.0 以降 | 2018 年 2 月 | 初版リリース 
+
+
+| バージョン 2.0 以降 | 2021年2月 | SnapCenter 4.3および改良された自動化スクリプトを対象とした完全な書き換え
+システムの更新処理およびシステムのクローニング処理で使用する新しいワークフロー概要 です。 
+
+
+| バージョン 3.0 以降 | 2022年5月 | SnapCenter 4.6 P1のワークフローを更新しました。 
+|===

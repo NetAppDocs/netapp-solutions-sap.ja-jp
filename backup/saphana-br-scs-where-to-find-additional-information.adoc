@@ -4,7 +4,7 @@ permalink: backup/saphana-br-scs-where-to-find-additional-information.html
 keywords:  
 summary:  
 ---
-= 追加情報の参照先
+= 追加情報およびバージョン履歴の参照先
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -41,3 +41,77 @@ https://www.netapp.com/pdf.html?item=/media/17195-tr4018pdf.pdf["https://www.net
 https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf["https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf"^]
 
 
+
+
+
+== バージョン履歴
+
+|===
+| バージョン | 日付 | ドキュメントのバージョン履歴 
+
+
+| バージョン 1.0 以降 | 2017年7月  a| 
+* 初版リリース
+
+
+
+
+| バージョン 1.1 以降 | 2017年9月  a| 
+* 「高度な設定とチューニング」の項を追加しました。
+* 微修正。
+
+
+
+
+| バージョン 2.0 以降 | 2018年3月  a| 
+* SnapCenter 4.0を対象としたアップデート：
+新しいデータボリュームリソース
+Single File SnapRestore処理の向上
+
+
+
+
+| バージョン 3.0 以降 | 2020年1月  a| 
+* 「 SnapCenter の概念とベストプラクティス」の項を追加。
+* SnapCenter 4.3を対象としたアップデート：
+自動検出
+リストアとリカバリの自動化
+HANA MDCの複数テナントをサポート
+タンイツテナントノリストアシヨリ
+
+
+
+
+| バージョン 3.1 以降 | 2020 年 7 月  a| 
+* マイナーな更新と修正：
+SnapCenter 4.3.1でのNFSv4のサポート
+SSL通信の設定
+IBM Power上でのLinux用の中央プラグインの導入
+
+
+
+
+| バージョン 3.2 以降 | 2020年11月  a| 
+* HANA 2.0 SPS5 に必要なデータベースユーザー権限を追加。
+
+
+
+
+| バージョン 3.3 以降 | 2021年5月  a| 
+* SSL hdbsql 設定セクションを更新しました。
+* Linux LVM のサポートが追加されました。
+
+
+
+
+| バージョン 3.4 以降 | 2021年8月  a| 
+* 自動検出を無効にする設定の概要 が追加されました。
+
+
+
+
+| バージョン 3.5 以降 | 2022年2月  a| 
+* SnapCenter 4.6 に対応したマイナーアップデートと、 HANA システムレプリケーション対応 HANA システムの自動検出サポート。
+
+
+|===
