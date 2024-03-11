@@ -1,0 +1,136 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-hycl-backup-conf.html 
+keywords: BlueXP, SAP HANA, configuration 
+summary: このセクションでは、作業環境のセットアップ方法、SnapCenterの設定方法、およびBlueXPでSAP HANAバックアップを設定してアクティブ化する方法について説明します。 
+---
+= BlueXP Backup and Recovery for SAP HANAの設定
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+
+
+== BlueXPの作業環境の作成
+
+社内ストレージシステムを作業環境に追加します。
+
+. 左側のメニューで、*[ストレージ]*>*[キャンバス]*>*[マイ作業環境]を選択します。
+. +作業環境の追加*を押します。[+]
+image:hana-hycl-back-image2.jpeg["hana-hycl-back-image2、width=624、height=316"]
+. [オンプレミス]を選択します。[+]
+image:hana-hycl-back-image3.jpeg["^ a b c d e text enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=316"]
+. [オンプレミスのONTAPを検出]*を選択します。[+]
+image:hana-hycl-back-image4.jpeg["^ a b c d e text enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=316"]
+. ONTAPクラスタのIPアドレスとパスワードを追加し、*[検出]*を押します。[+]
+image:hana-hycl-back-image5.jpeg["hana-hycl-back-image5、width=624、height=316"]
+. これでONTAPクラスタが使用可能になります。[+]
+image:hana-hycl-back-image6.jpeg["アイン・ビルト（Das Diagramm enth ä lt）とも呼ばれる。Automatisch generierte Beschreibung、幅=624、高さ=316"]
+
+
+
+
+== オンプレミスのストレージシステムとオブジェクトストレージバケット間の関係を作成
+
+オンプレミスストレージとS3バケットの関係は、ボリュームのバックアップを作成するか、アプリケーションのバックアップをアクティブ化することで確立されます。既存のサイト間VPNを使用してオンプレミスからS3へデータを転送する場合は、VPCエンドポイントを使用する必要があるため、ボリュームバックアップを使用してオンプレミスストレージとS3バケット間の関係を作成する必要があります。[+]
+このドキュメントの作成時、アプリケーションバックアップワークフローでは、S3バケットにアクセスするためのVPCエンドポイントの選択は提案されていません。[+]
+を参照してください https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html["Amazon S3のゲートウェイエンドポイント- Amazon Virtual Private Cloud"] VPC内でS3のVPCエンドポイントをセットアップする方法
+
+最初のボリュームのバックアップを作成するには、次の手順を実行します。
+
+. [保護]*から*[バックアップとリカバリ]*に移動し、*[ボリューム]*を選択します。[+]
+image:hana-hycl-back-image7.jpeg["hana-hycl-back-image7、width=624、height=308"]
+. [Activate Backup]ボタンを押します。[+]
+image:hana-hycl-back-image8.jpeg["hana-hycl-back-image8、width=624、height=309"]
+. 目的のオンプレミスストレージシステムを選択し、*[バックアップのアクティブ化]*をクリックします。[+]
+image:hana-hycl-back-image9.jpeg["hana-hycl-back-image9、width=624、height=304"]
+. [バックアップ]*を選択します。[+]
+image:hana-hycl-back-image10.jpeg["hana-hycl-back-image10、width=624、height=307"]
+. SAP HANAデータファイルと同じSVMに格納されているボリュームを選択し、*[次へ]*を押します。この例では、/hana/sharedのボリュームが選択されています。[+]
+image:hana-hycl-back-image12.jpeg["hana-hycl-back-image12、width=624、height=305"]
+. 既存のポリシーが存在する場合は、[続行]*をクリックします。[+]
+image:hana-hycl-back-image11.jpeg["hana-hycl-back-image11、width=624、height=304"]
+. [バックアップオプション]*にチェックを入れ、目的のバックアッププロバイダを選択します。この例ではAWSです。[+]
+既存のポリシーについては、このオプションを選択したままにします。[+]
+使用しないオプションのチェックを外します。[+]
+image:hana-hycl-back-image13.jpeg["Ein Bild, das Text, Software, Computersymbol, Webseite enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=306"]
+. 新しいバケットを作成するか、既存のバケットを選択します。AWSアカウント設定、regio、アクセスキー、シークレットキーを指定します。[次へ]*を押します。[+]
+image:hana-hycl-back-image14.jpeg["hana-hycl-back-image14、width=624、height=306"]
+. オンプレミスストレージシステムの正しいIPspaceを選択し、* Privat Endpoint Configuration *を選択してS3のVPCエンドポイントを選択します。[次へ]*を押します。[+]
+image:hana-hycl-back-image15.jpeg["hana-hycl-back-image15、width=624、height=304"]
+. 構成を確認し、*[バックアップのアクティブ化]*を押します。[+]
+image:hana-hycl-back-image16.jpeg["hana-hycl-back-image16、width=624、height=304"]
+. バックアップが開始されました。[+]
+image:hana-hycl-back-image17.jpeg["hana-hycl-back-image17、width=624、height=304"]
+
+
+
+
+== SnapCenterでのSAP HANAシステムリソースの設定
+
+. SAP HANAシステムが格納されているSVM（この例ではHANA）がクラスタ経由で追加されているかどうかを確認します。SVMのみが追加されている場合は、クラスタを追加します。[+]
+image:hana-hycl-back-image18.png["グラフィカルユーザインターフェイス、アプリケーション概要が自動的に生成される、幅= 604、高さ= 156"]
+. daily、weekly、またはmonthlyスケジュールタイプでスケジュールポリシーを定義します。[+]
+image:hana-hycl-back-image19.png["グラフィカルユーザインターフェイス、アプリケーション概要が自動的に生成される、幅= 604、高さ= 140"]
+image:hana-hycl-back-image20.jpeg["hana-hycl-back-image20、width=167、height=167"]
+. 新しいポリシーをSAP HANAシステムに追加し、日次スケジュールを割り当てます。[+]
+image:hana-hycl-back-image21.png["グラフィカルユーザインターフェイス、アプリケーション概要が自動的に生成される、幅= 604、高さ= 215"]
+. 設定された新しいバックアップは、定義されたスケジュールに従ってポリシーが実行されたあとに使用できるようになります。
+image:hana-hycl-back-image22.png["グラフィカルユーザインターフェイス、アプリケーション、Teams概要が自動的に生成される、幅= 604、高さ= 193"]
+
+
+
+
+== BlueXP作業環境へのSnapCenterの追加
+
+. 左側のメニューで、*[保護]*->*[バックアップとリカバリ]*->*[アプリケーション]*を選択します。
+. プルダウンメニューから* Hybrid *を選択します。  [+]
+image:hana-hycl-back-image23.jpeg["hana-hycl-back-image23、width=624、height=316"]
+. 設定メニューで* SnapCenter Servers *を選択します。[+]
+image:hana-hycl-back-image24.jpeg["^ a b c d e text enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=316"]
+. SnapCenterサーバを登録します。[+]
+image:hana-hycl-back-image25.jpeg["^ a b c d e text enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=316"]
+. SnapCenterサーバのクレデンシャルを追加します。[+]
+image:hana-hycl-back-image26.jpeg["hana-hycl-back-image26、width=624、height=315"]
+. SnapCenterサーバが追加され、データが検出されます。[+]
+image:hana-hycl-back-image27.jpeg["hana-hycl-back-image27、width=624、height=316"]
+. 検出ジョブが完了すると、SAP HANAシステムが使用可能になります。[+]
+image:hana-hycl-back-image28.jpeg["^ a b c d e text enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=316"]
+
+
+
+
+== アプリケーションバックアップのバックアップポリシーの作成
+
+. 設定メニューで*[ポリシー]*を選択します。[+]
+image:hana-hycl-back-image29.jpeg["hana-hycl-back-image29、width=624、height=316"]
+. 必要に応じて、[ポリシーの作成]*をクリックして新しいポリシーを作成します。[+]
+image:hana-hycl-back-image30.jpeg["hana-hycl-back-image30、width=624、height=316"]
+. ポリシー名と目的のSnapMirrorラベルを指定し、必要なオプションを選択して*[作成]*を押します。[+]
+image:hana-hycl-back-image31.jpeg["hana-hycl-back-image31、width=624、height=315"]
+. 新しいポリシーが使用可能になります。[+]
+image:hana-hycl-back-image32.jpeg["hana-hycl-back-image32、width=624、height=315"]
+
+
+
+
+== Cloud Backup for ApplicationsによるSAP HANAデータベースの保護
+
+. SAP HANAシステムの*[バックアップのアクティブ化]*を選択します。[+]
+image:hana-hycl-back-image33.jpeg["幅= 624、高さ= 316"]
+. 前の手順で作成したポリシーを選択し、*[次へ]*をクリックします。[+]
+image:hana-hycl-back-image34.jpeg["幅= 624、高さ= 316"]
+. ストレージシステムとコネクタが事前に設定されているため、バックアップがアクティブ化されます。[+]
+image:hana-hycl-back-image35.jpeg["幅= 624、高さ= 316"]
+. ジョブが完了すると、システムが表示されます。[+]
+image:hana-hycl-back-image36.jpeg["幅= 624、高さ= 337"]
+. しばらくすると、バックアップがSAP HANAシステムの詳細ビューに表示されます。[+]
+日次バックアップは翌日に表示されます。[+]
+image:hana-hycl-back-image37.jpeg["hana-hycl-back-image37、width=624、height=316"]
+
+
+環境によっては、SnapMirrorソースの既存のスケジュール設定を削除しなければならない場合があります。そのためには、ソースONTAPシステムで次のコマンドを実行します。_snapmirror modify -destination-path <hana-cloud-svm>：<SID_data_mnt00001>_ copy -schedule ""_。

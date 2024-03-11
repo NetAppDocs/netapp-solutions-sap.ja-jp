@@ -66,6 +66,17 @@ entries:
     url: "/backup/saphana-br-scs-advanced-configuration-and-tuning.html"
   - title: 追加情報およびバージョン履歴の参照先
     url: "/backup/saphana-br-scs-where-to-find-additional-information.html"
+- title: BlueXP Backup and Recovery for SAP HANA -バックアップ先としてのクラウドオブジェクトストレージ
+  type: solutions
+  entries:
+  - title: BlueXP Backup and Recovery for SAP HANA -概要
+    url: "/backup/hana-hycl-backup-overview.html"
+  - title: BlueXP Backup and Recovery for SAP HANAの設定
+    url: "/backup/hana-hycl-backup-conf.html"
+  - title: SAP HANA BlueXPのバックアップのリストア
+    url: "/backup/hana-hycl-backup-restore.html"
+  - title: 追加情報とバージョン履歴
+    url: "/backup/hana-hycl-backup-info-version.html"
 - title: SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
   type: solutions
   entries:

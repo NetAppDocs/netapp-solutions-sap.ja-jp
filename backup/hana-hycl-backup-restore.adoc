@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-hycl-backup-restore.html 
+keywords: BlueXP, SAP HANA, restore 
+summary: このセクションでは、BlueXPを使用してSAP HANAのバックアップをリストアする方法について説明します。 
+---
+= SAP HANA BlueXPのバックアップのリストア
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+[role="lead"]
+バックアップからのリストアは、オンプレミスのNetApp ONTAPベースのストレージシステムまたはクラウド内のNetApp CVOに対してのみ実行できます。リストアを実行するには、次の手順を実行します。
+
+. BlueXP UIで 、*[保護]  *>  *[バックアップとリカバリ]*>*[アプリケーション]*をクリックし、[ハイブリッド]を選択します。
+. [Filter by]  *フィールドで、フィルタ* Type *を選択し 、ドロップダウンから * HANA *を選択します。
+. リストアするデータベースの*[詳細の表示]*をクリックします。[+]
+image:hana-hycl-back-image38.jpeg["hana-hycl-back-image38、width=624、height=305"]
+. 目的のバックアップを選択し、[ストレージ][エクスポート]を選択します。[+]
+image:hana-hycl-back-image39.jpeg["Ein Bild, das Text, Screenshot, Software, Computersymbol enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=308"]
+. 必要なオプションを指定します。+
+image:hana-hycl-back-image40.jpeg["Ein Bild, das Text, Screenshot, Software, Computersymbol enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=308"]
++
+.. NAS環境の場合は、オブジェクトストアからリストアするボリュームのエクスポート先となるホストのFQDNまたはIPアドレスを指定します。
+.. SAN環境の場合、オブジェクトストアからリストアするボリュームのLUNをマッピングするホストのイニシエータを指定します。
+
+
+. スナップショットがアーカイブストレージにある場合は、アーカイブストレージからデータをリストアする優先度を選択します。
+. ソースストレージに十分なスペースがないか、ソースストレージが停止している場合は 、*[ストレージの場所を変更]*を選択します。
+. [ストレージの場所の変更]*を選択した場合は、デスティネーションボリュームにサフィックスを追加できます。このチェックボックスをオンにしていない場合、デフォルトでは  デスティネーションボリュームに*_restore *が追加されます。  [次へ]*をクリックします。
+. [ストレージの場所を変更]を選択した場合は、オブジェクトストアからリストアするデータを格納する代替ストレージの場所の詳細を[ストレージマッピング]ページで指定し、*[次へ]*をクリックします。
+. 詳細を確認し、 *[リストア]*をクリックします。[+]
+image:hana-hycl-back-image41.jpeg["hana-hycl-back-image41、width=624、height=309"] [+]
+ [+]
+この処理では、指定したホストのリストアされたバックアップのストレージエクスポートのみが実行されます。ホストでファイルシステムを手動でマウントし、データベースを起動する必要があります。ボリュームを利用したあと、ストレージ管理者はONTAP クラスタからボリュームを削除できます。
+
