@@ -1,0 +1,3455 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>SAP LaMaプロビジョニングワークフロー-システムの更新</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="SAP LaMaプロビジョニングワークフロー-システムの更新" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+	<meta property="og:description" content="更新ワークフロー中に、ストレージクローンを削除する必要があります。システム破棄ワークフローにも同じAnsibleプレイブックを使用できます。ただし、カスタムフックは別の手順に定義されるため、プレイブックの名前も適宜変更されます。クローンのプロセス手順に違いはありません。" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/netapp-solutions-sap/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="更新ワークフロー中に、ストレージクローンを削除する必要があります。システム破棄ワークフローにも同じAnsibleプレイブックを使用できます。ただし、カスタムフックは別の手順に定義されるため、プレイブックの名前も適宜変更されます。クローンのプロセス手順に違いはありません。">
+  <meta name="keywords" content=" refresh, workflow, storage clone"><!-- Icons -->
+  <link rel="icon" href="/ja-jp/netapp-solutions-sap/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/netapp-solutions-sap/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/netapp-solutions-sap/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/netapp-solutions-sap/js/na-search.js'></script><script src='/ja-jp/netapp-solutions-sap/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/ja-jp/netapp-solutions-sap/js/custom-dropdown.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/netapp-solutions-sap/js/jszip.min.js'></script><script src='/ja-jp/netapp-solutions-sap/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/ja-jp/netapp-solutions-sap/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/ja/">
+                <image id="ie-header-logo" src="/ja-jp/netapp-solutions-sap/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/ja/support-and-training/documentation/">ドキュメント</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/ja-jp/netapp-solutions-sap/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">日本語</span>
+                    <img src="/ja-jp/netapp-solutions-sap/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ja-jp/netapp-solutions-sap/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/ja-jp/netapp-solutions-sap/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">すべてのNetApp</span>
+                    <img src="/ja-jp/netapp-solutions-sap/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ja-jp/netapp-solutions-sap/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/ja/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">サポート</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb-ja.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">ナレッジ ベース</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">トレーニング</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/ja-jp/netapp-solutions-sap/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/ja-jp/netapp-solutions-sap/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">すべてのドキュメント</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/ja-jp/netapp-solutions-sap/">-->
+      NetApp Solutions SAP
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/ja-jp/netapp-solutions-sap/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/ja-jp/netapp-solutions-sap/search.html" 
+        data-type="widget"
+        data-placeholder="ドキュメントを検索"
+        data-no-results-found="{query}に一致する結果は見つかりませんでした"
+        data-did-you-mean="{suggestion}で検索しています。"
+        data-no-results-found-did-you-mean="{query}に一致する結果は見つかりませんでした。{suggestion}で検索しますか？"
+        data-results-found="{hitCount}件の結果が見つかりました"
+        data-error-message="エラーが発生しました。もう一度お試しください。"
+        data-error-reset="検索をリセット"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP ソリューション"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/netapp-solutions-sap/index.html">
+        SAP ソリューション
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ベストプラクティス"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ベストプラクティス</div>-->
+         ベストプラクティス
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』</div>-->
+         『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_introduction.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html">
+        はじめに
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アーキテクチャ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_architecture.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_architecture.html">
+        アーキテクチャ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージのサイジング"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_storage_sizing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_storage_sizing.html">
+        ストレージのサイジング
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="インフラのセットアップと設定"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> インフラのセットアップと設定</div>-->
+         インフラのセットアップと設定
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="インフラのセットアップと設定の概要"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_infrastructure_setup_and_configuration_overview.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_infrastructure_setup_and_configuration_overview.html">
+        インフラのセットアップと設定の概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAN ファブリックのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_san_fabric_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_san_fabric_setup.html">
+        SAN ファブリックのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="時刻の同期"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_time_synchronization.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_time_synchronization.html">
+        時刻の同期
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージコントローラのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_storage_controller_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_storage_controller_setup.html">
+        ストレージコントローラのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA Storage Connector API"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_sap_hana_storage_connector_api.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_sap_hana_storage_connector_api.html">
+        SAP HANA Storage Connector API
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ホストのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_host_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_host_setup.html">
+        ホストのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA の I/O スタック構成"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_i_o_stack_configuration_for_sap_hana.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_i_o_stack_configuration_for_sap_hana.html">
+        SAP HANA の I/O スタック構成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA ソフトウェアのインストール"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_sap_hana_software_installation.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_sap_hana_software_installation.html">
+        SAP HANA ソフトウェアのインストール
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA シングルホストシステムのデータボリュームパーティションを追加します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html">
+        SAP HANA シングルホストシステムのデータボリュームパーティションを追加します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_where_to_find_additional_information.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_where_to_find_additional_information.html">
+        追加情報の参照先
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="履歴を更新します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_fc_update_history.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_fc_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』</div>-->
+         『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_introduction.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html">
+        はじめに
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アーキテクチャ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_architecture.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_architecture.html">
+        アーキテクチャ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージのサイジング"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_storage_sizing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_storage_sizing.html">
+        ストレージのサイジング
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="インフラのセットアップと設定"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> インフラのセットアップと設定</div>-->
+         インフラのセットアップと設定
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワークセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_network_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_network_setup.html">
+        ネットワークセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="時刻の同期"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_time_synchronization.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_time_synchronization.html">
+        時刻の同期
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージコントローラのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_storage_controller_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_storage_controller_setup.html">
+        ストレージコントローラのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ホストのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_host_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_host_setup.html">
+        ホストのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NFSv4 用の SAP HANA インストールの準備"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_sap_hana_installation_preparations_for_nfsv4.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_sap_hana_installation_preparations_for_nfsv4.html">
+        NFSv4 用の SAP HANA インストールの準備
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA 向けの I/O スタック構成"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html">
+        SAP HANA 向けの I/O スタック構成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA データボリュームのサイズ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_sap_hana_data_volume_size.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_sap_hana_data_volume_size.html">
+        SAP HANA データボリュームのサイズ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA ソフトウェアのインストール"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_sap_hana_software_installation.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_sap_hana_software_installation.html">
+        SAP HANA ソフトウェアのインストール
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データボリュームのパーティションを追加しています"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_adding_additional_data_volume_partitions.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_adding_additional_data_volume_partitions.html">
+        データボリュームのパーティションを追加しています
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_where_to_find_additional_information.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_where_to_find_additional_information.html">
+        追加情報の参照先
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="履歴を更新します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_aff_nfs_update_history.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_aff_nfs_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』</div>-->
+         『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_introduction.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_introduction.html">
+        はじめに
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アーキテクチャ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_architecture.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_architecture.html">
+        アーキテクチャ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージのサイジング"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_storage_sizing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_storage_sizing.html">
+        ストレージのサイジング
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="インフラのセットアップと設定"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> インフラのセットアップと設定</div>-->
+         インフラのセットアップと設定
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワークセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_network_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_network_setup.html">
+        ネットワークセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="時刻の同期"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_time_synchronization.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_time_synchronization.html">
+        時刻の同期
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージコントローラのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_storage_controller_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_storage_controller_setup.html">
+        ストレージコントローラのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ホストのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_host_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_host_setup.html">
+        ホストのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NFSv4 用の SAP HANA インストールの準備"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html">
+        NFSv4 用の SAP HANA インストールの準備
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA 向けの I/O スタック構成"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_i_o_stack_configuration_for_sap_hana.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_i_o_stack_configuration_for_sap_hana.html">
+        SAP HANA 向けの I/O スタック構成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA データボリュームのサイズ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_sap_hana_data_volume_size.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_sap_hana_data_volume_size.html">
+        SAP HANA データボリュームのサイズ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA ソフトウェアのインストール"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_sap_hana_software_installation.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_sap_hana_software_installation.html">
+        SAP HANA ソフトウェアのインストール
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データボリュームのパーティションを追加しています"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_adding_additional_data_volume_partitions.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_adding_additional_data_volume_partitions.html">
+        データボリュームのパーティションを追加しています
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_where_to_find_additional_information.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_where_to_find_additional_information.html">
+        追加情報の参照先
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="履歴を更新します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-fas-nfs_update_history.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana-fas-nfs_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください</div>-->
+         『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_introduction.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_introduction.html">
+        はじめに
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アーキテクチャ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_architecture.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_architecture.html">
+        アーキテクチャ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージのサイジング"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_storage_sizing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_storage_sizing.html">
+        ストレージのサイジング
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="インフラのセットアップと設定"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> インフラのセットアップと設定</div>-->
+         インフラのセットアップと設定
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="インフラのセットアップと設定の概要"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_infrastructure_setup_and_configuration_overview.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_infrastructure_setup_and_configuration_overview.html">
+        インフラのセットアップと設定の概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAN ファブリックのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_san_fabric_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_san_fabric_setup.html">
+        SAN ファブリックのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="時刻の同期"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_time_synchronization.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_time_synchronization.html">
+        時刻の同期
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージコントローラのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_storage_controller_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_storage_controller_setup.html">
+        ストレージコントローラのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA Storage Connector API"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_sap_hana_storage_connector_api.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_sap_hana_storage_connector_api.html">
+        SAP HANA Storage Connector API
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ホストのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_host_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_host_setup.html">
+        ホストのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA 向けの I/O スタック構成"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_i_o_stack_configuration_for_sap_hana.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_i_o_stack_configuration_for_sap_hana.html">
+        SAP HANA 向けの I/O スタック構成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA ソフトウェアのインストール"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_sap_hana_software_installation.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_sap_hana_software_installation.html">
+        SAP HANA ソフトウェアのインストール
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA シングルホストシステムのデータボリュームパーティションを追加します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html">
+        SAP HANA シングルホストシステムのデータボリュームパーティションを追加します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_where_to_find_additional_information.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_where_to_find_additional_information.html">
+        追加情報の参照先
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="履歴を更新します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana_fas_fc_update_history.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/bp/saphana_fas_fc_update_history.html">
+        履歴を更新します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/saphana-ibm-aff-nfs_pdf_link.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/netapp-solutions-sap/bp/saphana-ibm-aff-nfs_pdf_link.html">
+        IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="UNIX および NFS 上で稼働する Oracle を使用する SAP と NetApp ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/sap-oracle-snapman_pdf_link.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/netapp-solutions-sap/bp/sap-oracle-snapman_pdf_link.html">
+        UNIX および NFS 上で稼働する Oracle を使用する SAP と NetApp ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Windows で ONTAP を使用して SAP と Microsoft SQL Server を運用"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/bp/sap-sqls-sc_pdf_link.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/netapp-solutions-sap/bp/sap-sqls-sc_pdf_link.html">
+        Windows で ONTAP を使用して SAP と Microsoft SQL Server を運用
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="バックアップ、リストア、ディザスタリカバリ"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> バックアップ、リストア、ディザスタリカバリ</div>-->
+         バックアップ、リストア、ディザスタリカバリ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ</div>-->
+         Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-overview.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-overview.html">
+        概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon FSX for ONTAP を使用したバックアップとリカバリ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-backup-and-recovery-using-amazon-fsx-for-ontap.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-backup-and-recovery-using-amazon-fsx-for-ontap.html">
+        Amazon FSX for ONTAP を使用したバックアップとリカバリ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter アーキテクチャ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-snapcenter-architecture.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-snapcenter-architecture.html">
+        SnapCenter アーキテクチャ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter 構成"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-snapcenter-configuration.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-snapcenter-configuration.html">
+        SnapCenter 構成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter バックアップ処理"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-snapcenter-backup-operations.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-snapcenter-backup-operations.html">
+        SnapCenter バックアップ処理
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データボリューム以外のボリュームのバックアップ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-backup-of-non-data-volumes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-backup-of-non-data-volumes.html">
+        データボリューム以外のボリュームのバックアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapVault を使用したバックアップレプリケーション"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SnapVault を使用したバックアップレプリケーション</div>-->
+         SnapVault を使用したバックアップレプリケーション
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概要"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-backup-replication-with-snapvault_overview.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-backup-replication-with-snapvault_overview.html">
+        概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP ファイルシステムのレプリケーション関係をFSXに設定します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html">
+        ONTAP ファイルシステムのレプリケーション関係をFSXに設定します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter にバックアップSVMを追加"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-add-a-backup-svm-to-snapcenter.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-add-a-backup-svm-to-snapcenter.html">
+        SnapCenter にバックアップSVMを追加
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="バックアップレプリケーション用の新しいSnapCenter ポリシーを作成します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html">
+        バックアップレプリケーション用の新しいSnapCenter ポリシーを作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="リソースの保護にポリシーを追加します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-add-a-policy-to-resource-protection.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-add-a-policy-to-resource-protection.html">
+        リソースの保護にポリシーを追加します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="レプリケーションを使用してバックアップを作成します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-create-a-backup-with-replication.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-create-a-backup-with-replication.html">
+        レプリケーションを使用してバックアップを作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="セカンダリストレージからリストアおよびリカバリする"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-restore-and-recover-from-secondary-storage.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-restore-and-recover-from-secondary-storage.html">
+        セカンダリストレージからリストアおよびリカバリする
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/amazon-fsx-where-to-find-additional-information.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/amazon-fsx-where-to-find-additional-information.html">
+        追加情報の参照先
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter を使用した SAP HANA のバックアップとリカバリ"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SnapCenter を使用した SAP HANA のバックアップとリカバリ</div>-->
+         SnapCenter を使用した SAP HANA のバックアップとリカバリ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-overview.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-overview.html">
+        概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter アーキテクチャ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-snapcenter-architecture.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-architecture.html">
+        SnapCenter アーキテクチャ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter SAP HANA Backup 解決策 の略"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html">
+        SnapCenter SAP HANA Backup 解決策 の略
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter の概念とベストプラクティス"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-snapcenter-concepts-and-best-practices.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-concepts-and-best-practices.html">
+        SnapCenter の概念とベストプラクティス
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="このレポートで使用するラボのセットアップ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-lab-setup-used-for-this-report.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-lab-setup-used-for-this-report.html">
+        このレポートで使用するラボのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter 構成"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-snapcenter-configuration.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-configuration.html">
+        SnapCenter 構成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter の初期設定"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-snapcenter-initial-configuration.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-initial-configuration.html">
+        SnapCenter の初期設定
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html">
+        SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データボリューム以外のバックアップ用の SnapCenter リソース固有の設定"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html">
+        データボリューム以外のバックアップ用の SnapCenter リソース固有の設定
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データベースのバックアップ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-database-backups.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-database-backups.html">
+        データベースのバックアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ブロック整合性チェック"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-block-integrity-check.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-block-integrity-check.html">
+        ブロック整合性チェック
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="リストアとリカバリ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-restore-and-recovery.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-restore-and-recovery.html">
+        リストアとリカバリ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="高度な設定と調整"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-advanced-configuration-and-tuning.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-advanced-configuration-and-tuning.html">
+        高度な設定と調整
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報およびバージョン履歴の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-br-scs-where-to-find-additional-information.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-br-scs-where-to-find-additional-information.html">
+        追加情報およびバージョン履歴の参照先
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="BlueXP Backup and Recovery for SAP HANA -バックアップ先としてのクラウドオブジェクトストレージ"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> BlueXP Backup and Recovery for SAP HANA -バックアップ先としてのクラウドオブジェクトストレージ</div>-->
+         BlueXP Backup and Recovery for SAP HANA -バックアップ先としてのクラウドオブジェクトストレージ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="BlueXP Backup and Recovery for SAP HANA -概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/hana-hycl-backup-overview.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/hana-hycl-backup-overview.html">
+        BlueXP Backup and Recovery for SAP HANA -概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="BlueXP Backup and Recovery for SAP HANAの設定"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/hana-hycl-backup-conf.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/hana-hycl-backup-conf.html">
+        BlueXP Backup and Recovery for SAP HANAの設定
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA BlueXPのバックアップのリストア"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/hana-hycl-backup-restore.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/hana-hycl-backup-restore.html">
+        SAP HANA BlueXPのバックアップのリストア
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報とバージョン履歴"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/hana-hycl-backup-info-version.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/hana-hycl-backup-info-version.html">
+        追加情報とバージョン履歴
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ</div>-->
+         SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA システムレプリケーションの概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-sr-scs-sap-hana-system-replication-overview.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-sap-hana-system-replication-overview.html">
+        SAP HANA システムレプリケーションの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージ Snapshot バックアップと SAP システムレプリケーション"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html">
+        ストレージ Snapshot バックアップと SAP システムレプリケーション
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP システムレプリケーションの SnapCenter 設定オプション"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html">
+        SAP システムレプリケーションの SnapCenter 設定オプション
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="リソースグループを使用した SnapCenter 4.6 の設定"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html">
+        リソースグループを使用した SnapCenter 4.6 の設定
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="単一のリソースを使用する SnapCenter 構成"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html">
+        単一のリソースを使用する SnapCenter 構成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="もう一方のホストで作成されたバックアップからのリストアとリカバリ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html">
+        もう一方のホストで作成されたバックアップからのリストアとリカバリ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-sr-scs-where-to-find-additional-information_overview.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-where-to-find-additional-information_overview.html">
+        追加情報の参照先
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="バージョン履歴"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-sr-scs-version-history.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-sr-scs-version-history.html">
+        バージョン履歴
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure NetApp Files を使用した SAP HANA ディザスタリカバリ"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Azure NetApp Files を使用した SAP HANA ディザスタリカバリ</div>-->
+         Azure NetApp Files を使用した SAP HANA ディザスタリカバリ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データ保護の概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_data_protection_overview_overview.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_data_protection_overview_overview.html">
+        データ保護の概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ディザスタリカバリ解決策の比較"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_disaster_recovery_solution_comparison.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_disaster_recovery_solution_comparison.html">
+        ディザスタリカバリ解決策の比較
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA を使用した ANF のクロスリージョンレプリケーション"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SAP HANA を使用した ANF のクロスリージョンレプリケーション</div>-->
+         SAP HANA を使用した ANF のクロスリージョンレプリケーション
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA によるクロスリージョンレプリケーションの概要"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html">
+        SAP HANA によるクロスリージョンレプリケーションの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA によるクロスリージョンレプリケーションの設定オプション"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_configuration_options_for_cross-region_replication_with_sap_hana.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_configuration_options_for_cross-region_replication_with_sap_hana.html">
+        SAP HANA によるクロスリージョンレプリケーションの設定オプション
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="要件およびベストプラクティス"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_requirements_and_best_practices.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_requirements_and_best_practices.html">
+        要件およびベストプラクティス
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ラボのセットアップ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_lab_setup.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_lab_setup.html">
+        ラボのセットアップ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ANF クロスリージョンレプリケーションの設定手順"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_configuration_steps_for_anf_cross-region_replication.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_configuration_steps_for_anf_cross-region_replication.html">
+        ANF クロスリージョンレプリケーションの設定手順
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ANF のクロスリージョンレプリケーションを監視しています"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_monitoring_anf_cross-region_replication.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_monitoring_anf_cross-region_replication.html">
+        ANF のクロスリージョンレプリケーションを監視しています
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ディザスタリカバリのテスト"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ディザスタリカバリのテスト</div>-->
+         ディザスタリカバリのテスト
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ディザスタリカバリテストの概要"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_disaster_recovery_testing_overview.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_disaster_recovery_testing_overview.html">
+        ディザスタリカバリテストの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ターゲットホストを準備します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_prepare_the_target_host.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_prepare_the_target_host.html">
+        ターゲットホストを準備します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ディザスタリカバリサイトでの Snapshot バックアップに基づいて新しいボリュームを作成します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_create_new_volumes_based_on_snapshot_backups_at_the_disaster_recovery_site.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_create_new_volumes_based_on_snapshot_backups_at_the_disaster_recovery_site.html">
+        ディザスタリカバリサイトでの Snapshot バックアップに基づいて新しいボリュームを作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ターゲットホストに新しいボリュームをマウントします"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_mount_the_new_volumes_at_the_target_host.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_mount_the_new_volumes_at_the_target_host.html">
+        ターゲットホストに新しいボリュームをマウントします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HANA データベースのリカバリ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_hana_database_recovery.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_hana_database_recovery.html">
+        HANA データベースのリカバリ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ディザスタリカバリフェイルオーバー"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ディザスタリカバリフェイルオーバー</div>-->
+         ディザスタリカバリフェイルオーバー
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ディザスタリカバリフェイルオーバーの概要"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_disaster_recovery_failover_overview.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_disaster_recovery_failover_overview.html">
+        ディザスタリカバリフェイルオーバーの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ターゲットホストを準備します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_prepare_the_target_host_01.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_prepare_the_target_host_01.html">
+        ターゲットホストを準備します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="レプリケーションピアリングを解除して削除します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_break_and_delete_replication_peering.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_break_and_delete_replication_peering.html">
+        レプリケーションピアリングを解除して削除します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ターゲットホストにボリュームをマウントします"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html">
+        ターゲットホストにボリュームをマウントします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HANA データベースのリカバリ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_hana_database_recovery_01.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_hana_database_recovery_01.html">
+        HANA データベースのリカバリ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="履歴を更新します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-anf_update_history.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-anf_update_history.html">
+        履歴を更新します
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA Disaster Recovery with Storage Replication 』を参照してください"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-dr-sr_pdf_link.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/netapp-solutions-sap/backup/saphana-dr-sr_pdf_link.html">
+        SAP HANA Disaster Recovery with Storage Replication 』を参照してください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Snap Creator を使用した SAP HANA のバックアップとリカバリ"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-bandr-sc_pdf_link.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/netapp-solutions-sap/backup/saphana-bandr-sc_pdf_link.html">
+        Snap Creator を使用した SAP HANA のバックアップとリカバリ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-commvault_pdf_link.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/netapp-solutions-sap/backup/saphana-commvault_pdf_link.html">
+        ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="『 SAP HANA on NetApp All SAN Array 』 - 最新 SAN 、データ保護、ディザスタリカバリ"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/backup/saphana-san_pdf_link.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/netapp-solutions-sap/backup/saphana-san_pdf_link.html">
+        『 SAP HANA on NetApp All SAN Array 』 - 最新 SAN 、データ保護、ディザスタリカバリ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ライフサイクル管理"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ライフサイクル管理</div>-->
+         ライフサイクル管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ansibleを使用したNetApp SAP Landscape Managementの統合"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Ansibleを使用したNetApp SAP Landscape Managementの統合</div>-->
+         Ansibleを使用したNetApp SAP Landscape Managementの統合
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-introduction.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-introduction.html">
+        はじめに
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAPシステムのクローニング、コピー、更新のシナリオ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-sap-system-clone,-copy,-and-refresh-scenarios.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-system-clone,-copy,-and-refresh-scenarios.html">
+        SAPシステムのクローニング、コピー、更新のシナリオ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムの更新、コピー、クローニングのユースケース"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-use-cases-for-system-refresh,-copy,-and-cloning.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-use-cases-for-system-refresh,-copy,-and-cloning.html">
+        システムの更新、コピー、クローニングのユースケース
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ansibleを使用して、NetApp SAP LaMaを統合"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-netapp-sap-lama-integration-using-ansible.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-netapp-sap-lama-integration-using-ansible.html">
+        Ansibleを使用して、NetApp SAP LaMaを統合
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="実装例"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-example-implementation.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-example-implementation.html">
+        実装例
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP LaMaプロビジョニングワークフロー-クローンシステム"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-clone-system.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-clone-system.html">
+        SAP LaMaプロビジョニングワークフロー-クローンシステム
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP LaMaによるワークフローのプロビジョニング解除-システムの破壊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html">
+        SAP LaMaによるワークフローのプロビジョニング解除-システムの破壊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP LaMaプロビジョニングワークフロー-コピーシステム"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-copy-system.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-copy-system.html">
+        SAP LaMaプロビジョニングワークフロー-コピーシステム
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP LaMaプロビジョニングワークフロー-システムの更新"
+      data-li-level="3#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html">
+        SAP LaMaプロビジョニングワークフロー-システムの更新
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="プロバイダスクリプトの設定とAnsibleのプレイブック"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html">
+        プロバイダスクリプトの設定とAnsibleのプレイブック
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="まとめ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/lama-ansible-conclusion.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-conclusion.html">
+        まとめ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化</div>-->
+         SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-introduction.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html">
+        はじめに
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAPシステムのコピー、更新、クローニングのシナリオ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html">
+        SAPシステムのコピー、更新、クローニングのシナリオ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムの更新とクローニングのユースケース"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html">
+        システムの更新とクローニングのユースケース
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter を使用したSAPシステムの更新ワークフローの概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムの更新ワークフローの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter を使用したSAPシステムのコピーワークフローの概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムのコピーワークフローの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter を使用したSAPシステムのクローニングワークフローの概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html">
+        SnapCenter を使用したSAPシステムのクローニングワークフローの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html">
+        ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理のワークフロー
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="自動化スクリプトの例"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-automation-example-scripts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-automation-example-scripts.html">
+        自動化スクリプトの例
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANAシステムをSnapCenter で更新"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html">
+        SAP HANAシステムをSnapCenter で更新
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SnapCenter によるSAPシステムのクローニング"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html">
+        SnapCenter によるSAPシステムのクローニング
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報およびバージョン履歴の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/sc-copy-clone-where-to-find-additional-information.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/sc-copy-clone-where-to-find-additional-information.html">
+        追加情報およびバージョン履歴の参照先
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Libelle SystemCopyによるSAPシステムのコピー処理の自動化"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Libelle SystemCopyによるSAPシステムのコピー処理の自動化</div>-->
+         Libelle SystemCopyによるSAPシステムのコピー処理の自動化
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/libelle-sc-overview.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-overview.html">
+        概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="LSCおよびSnapCenter でSAP HANAシステムが更新されます"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html">
+        LSCおよびSnapCenter でSAP HANAシステムが更新されます
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="LSC、AzAcSnap、およびAzure NetApp Files を使用してSAP HANAシステムが更新されます"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html">
+        LSC、AzAcSnap、およびAzure NetApp Files を使用してSAP HANAシステムが更新されます
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報 およびバージョン履歴の参照先"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/lifecycle/libelle-sc-where-to-find-additional-information.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/netapp-solutions-sap/lifecycle/libelle-sc-where-to-find-additional-information.html">
+        追加情報 およびバージョン履歴の参照先
+      </a></li></ul></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="ネットアップストレージと SAP Landscape Management の統合"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="https://www.netapp.com/us/media/tr-4018.pdf" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://www.netapp.com/us/media/tr-4018.pdf">
+        ネットアップストレージと SAP Landscape Management の統合
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="解決策概要"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/netapp-solutions-sap/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/netapp-solutions-sap/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 解決策概要</div>-->
+         解決策概要
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAP HANA Lifecycle Management の略"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/briefs/saphana-lm-sb_pdf_link.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/netapp-solutions-sap/briefs/saphana-lm-sb_pdf_link.html">
+        SAP HANA Lifecycle Management の略
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="SAP HANA のバックアップとリカバリ"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="https://www.netapp.com/us/media/sb-3965.pdf" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://www.netapp.com/us/media/sb-3965.pdf">
+        SAP HANA のバックアップとリカバリ
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="SAP HANA ディザスタリカバリ"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="https://www.netapp.com/us/media/sb-3968.pdf" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://www.netapp.com/us/media/sb-3968.pdf">
+        SAP HANA ディザスタリカバリ
+      </a></li></ul></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="FlexPod SAP ソリューション"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/flexpod/ent-db/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="https://docs.netapp.com/us-en/flexpod/ent-db/index.html">
+        FlexPod SAP ソリューション
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="ネットアップのソリューション"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/netapp-solutions/" 
+    ><a class="ie-sidebar-menuitem-1 " href="https://docs.netapp.com/us-en/netapp-solutions/">
+        ネットアップのソリューション
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="法的通知"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html" 
+      dale-entry-url="/reference_legal_notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/netapp-solutions-sap/reference_legal_notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/ja-jp/netapp-solutions-sap"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/ja-jp/netapp-solutions-sap"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/ja-jp/netapp-solutions-sap/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">SAP LaMaプロビジョニングワークフロー-システムの更新</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2023-11-17 09:24:17 +0000">11/17/2023</time>
+        
+    
+    
+        <span>共同作成者
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/ja-jp/netapp-solutions-sap/images/discuss-sm.svg" alt="" class="github-icon" />変更を提案</span>
+        <img src="/ja-jp/netapp-solutions-sap/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/ja-jp/netapp-solutions-sap/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap.ja-jp/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/ja-jp/netapp-solutions-sap/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html&page-title=SAP LaMaプロビジョニングワークフロー-システムの更新" class="page-nav-contribute-link" role="button">ドキュメントの変更をリクエスト</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/netapp-solutions-sap/blob/main/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.adoc" class="page-nav-contribute-link" role="button">このページを編集</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >フィードバックを送るには</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/ja-jp/netapp-solutions-sap/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/ja-jp/netapp-solutions-sap/pdfs/fullsite-sidebar/SAP_Business_Application_と_SAP_HANA_Database_ソリューション.pdf" >
+                    <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>このドキュメント ページのPDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/ベストプラクティス.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ベストプラクティス
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/__SAP_HANA_on_NetApp_AFF_Systems_with_FCP_Configuration_Guide__.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/インフラのセットアップと設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            インフラのセットアップと設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/__SAP_HANA_on_NetApp_AFF_Systems_with_NFS_Configuration_Guide__.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/インフラのセットアップと設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            インフラのセットアップと設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/__SAP_HANA_on_NetApp_FAS_Systems_with_NFS_Configuration_Guide__.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/インフラのセットアップと設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            インフラのセットアップと設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/__SAP_HANA_on_FAS_Systems_with_FCP_Configuration_Guide__を参照してください.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/インフラのセットアップと設定.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            インフラのセットアップと設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/バックアップ_リストア_ディザスタリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            バックアップ、リストア、ディザスタリカバリ
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/Amazon_FSX上のSAP_HANA_for_NetApp_ONTAP___SnapCenter_を使用したバックアップとリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapVault_を使用したバックアップレプリケーション.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SnapVault を使用したバックアップレプリケーション
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_を使用した_SAP_HANA_のバックアップとリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SnapCenter を使用した SAP HANA のバックアップとリカバリ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/BlueXP_Backup_and_Recovery_for_SAP_HANA__バックアップ先としてのクラウドオブジェクトストレージ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            BlueXP Backup and Recovery for SAP HANA -バックアップ先としてのクラウドオブジェクトストレージ
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_を使用した_SAP_HANA_システムレプリケーションのバックアップとリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/Azure_NetApp_Files_を使用した_SAP_HANA_ディザスタリカバリ.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Azure NetApp Files を使用した SAP HANA ディザスタリカバリ
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SAP_HANA_を使用した_ANF_のクロスリージョンレプリケーション.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SAP HANA を使用した ANF のクロスリージョンレプリケーション
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/ディザスタリカバリのテスト.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ディザスタリカバリのテスト
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/ディザスタリカバリフェイルオーバー.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ディザスタリカバリフェイルオーバー
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/ライフサイクル管理.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ライフサイクル管理
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/Ansibleを使用したNetApp_SAP_Landscape_Managementの統合.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Ansibleを使用したNetApp SAP Landscape Managementの統合
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/SnapCenter_を使用して_SAP_HANA_システムのコピーおよびクローン処理を自動化.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/Libelle_SystemCopyによるSAPシステムのコピー処理の自動化.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Libelle SystemCopyによるSAPシステムのコピー処理の自動化
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/netapp-solutions-sap/pdfs/sidebar/解決策概要.pdf" 
+            
+          >
+            <img src="/ja-jp/netapp-solutions-sap/images/pdf-icon.png" alt="" width="16" height="16"/>
+            解決策概要
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/ja-jp/netapp-solutions-sap/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>PDF版ドキュメントのセット<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div class="paragraph lead">
+<p>次の図は、システムの更新ワークフローで実行する主な手順を示しています。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/lama-ansible-image49.png" alt="この図は、システム更新ワークフローの各手順を示したタイムラインです。エクスポート設定、システムの停止、システムの準備解除、ストレージクローンの削除、ストレージクローニング、システムの準備、隔離の有効化、システム名の変更、システムの起動、構成のインポートコピー後の自動化と分離の非アクティブ化"></span></p>
+</div>
+<div class="paragraph">
+<p>更新ワークフロー中に、ストレージクローンを削除する必要があります。システム破棄ワークフローにも同じAnsibleプレイブックを使用できます。ただし、カスタムフックは別の手順に定義されるため、プレイブックの名前も適宜変更されます。クローンのプロセス手順に違いはありません。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/lama-ansible-image50.png" alt="この図は、このワークフローの手順を含むアーキテクチャ図を示しています。"></span></p>
+</div>
+<div class="paragraph">
+<p>更新ワークフローは、コピーしたシステムのプロビジョニング画面から開始できます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/lama-ansible-image51.png" alt="このスクリーンショットは、Provisioning systemビューのRefresh systemドロップダウンが強調表示された状態を示しています。"></span></p>
+</div>
+<div class="paragraph">
+<p>繰り返しますが、入力画面と標準画面では何も異なりません。ワークフローの実行は概要画面から開始できます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./../media/lama-ansible-image52.png" alt="このスクリーンショットは、更新するシステムの基本データやターゲットシステムのホスト選択など、システムの更新画面を示しています。"></span></p>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/ja-jp/netapp-solutions-sap/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/ja-jp/netapp-solutions-sap/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">このページ</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">ご利用規約</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">プライバシー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">クッキー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">クッキーの設定</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">このページに関するフィードバックをお寄せください</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/netapp-solutions-sap/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/netapp-solutions-sap/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/netapp-solutions-sap/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/netapp-solutions-sap/js/ie-tabbed-blocks.js'></script>
+    <script src='/ja-jp/netapp-solutions-sap/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
