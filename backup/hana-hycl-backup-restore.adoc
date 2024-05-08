@@ -21,9 +21,9 @@ summary: このセクションでは、BlueXPを使用してSAP HANAのバック
 . リストアするデータベースの*[詳細の表示]*をクリックします。[+]
 image:hana-hycl-back-image38.jpeg["hana-hycl-back-image38、width=624、height=305"]
 . 目的のバックアップを選択し、[ストレージ][エクスポート]を選択します。[+]
-image:hana-hycl-back-image39.jpeg["Ein Bild, das Text, Screenshot, Software, Computersymbol enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=308"]
+image:hana-hycl-back-image39.jpeg["幅= 624、高さ= 308"]
 . 必要なオプションを指定します。+
-image:hana-hycl-back-image40.jpeg["Ein Bild, das Text, Screenshot, Software, Computersymbol enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=308"]
+image:hana-hycl-back-image40.jpeg["幅= 624、高さ= 308"]
 +
 .. NAS環境の場合は、オブジェクトストアからリストアするボリュームのエクスポート先となるホストのFQDNまたはIPアドレスを指定します。
 .. SAN環境の場合、オブジェクトストアからリストアするボリュームのLUNをマッピングするホストのイニシエータを指定します。

@@ -29,12 +29,12 @@ summary: このテクニカルレポートでは、NetApp BlueXP Backup NAD Reco
 
 BlueXPのバックアップとリカバリは、NetAppオンプレミスストレージで実行されるアプリケーションにクラウドでデータ保護機能を提供するSaaS解決策です。NetAppストレージを使用して、アプリケーションと整合性のある効率的なポリシーベースのSAP HANA保護を実現します。さらに、BlueXPのバックアップとリカバリ機能では、一元的な管理と監視が可能になると同時に、アプリケーション固有のバックアップとリストア処理の管理もユーザに委譲できます。
 
-BlueXPのバックアップとリカバリは、NetApp BlueXP内でSaaSとして実行され、フレームワークとUIを活用します。BlueXP作業環境フレームワークを使用して、NetApp ONTAPベースのオンプレミスストレージとNetApp SnapCenterサーバのクレデンシャルを設定および管理します。
+BlueXPのバックアップとリカバリは、NetApp BlueXP内でSaaSとして実行され、フレームワークとUIを活用します。BlueXP作業環境フレームワークを使用して、NetApp ONTAPベースのオンプレミスストレージとNetApp SnapCenterサーバのクレデンシャルを設定、管理します。
 
 BlueXP Connectorは、お客様の仮想ネットワーク内に導入する必要があります。サイト間VPN接続など、オンプレミス環境とクラウド環境を接続する必要があります。NetApp SaaSコンポーネントとお客様の環境の間の通信は、コネクタを介してのみ行われます。コネクタは、ONTAPおよびSnapCenter管理APIを使用してストレージ処理を実行しています。
 
-オンプレミスストレージとクラウドバケット間のデータ転送は、保存中はAES 256ビット暗号化、転送中はTLS / HTTPS暗号化、顧客管理キー（CMK）のサポートによりエンドツーエンドで保護されます。[+]
-バックアップされたデータは、書き換えや削除が不可能なWORM状態で保存されます。オブジェクトストレージからデータにアクセスする唯一の方法は、NetApp CVOを含むNetApp ONTAPベースのストレージにデータをリストアすることです。
+オンプレミスストレージとクラウドバケット間のデータ転送は、保存中のAES 256ビット暗号化、転送中のTLS / HTTPS暗号化、顧客管理キー（CMK）のサポートによってエンドツーエンドで保護されます。[+]
+バックアップされたデータは、書き換えや削除が不可能なWORM状態で保存できます。オブジェクトストレージからデータにアクセスする唯一の方法は、NetApp CVOを含むNetApp ONTAPベースのストレージにデータをリストアすることです。
 
 image:hana-hycl-back-image1.png["Ein Bild, das Text, Screenshot, Diagramm, Kreis enth ä lt.Automatisch generierte Beschreibung、width=624、height=450"]
 
@@ -43,7 +43,7 @@ image:hana-hycl-back-image1.png["Ein Bild, das Text, Screenshot, Diagramm, Kreis
 == インストールと設定の手順の概要
 
 必要なインストールと設定の手順は、3つの領域に分けることができます。[+]
-前提条件として、NetApp Snap CenterでSAP HANAのバックアップ構成が設定されている必要があります。SnapCenter for SAP HANAノセツトアツフ https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-configuration.html["SnapCenterの設定（netapp.com）"]。
+前提条件として、NetApp Snap CenterでSAP HANAのバックアップ構成が設定されている必要があります。Snap Center for SAP HANAの最初のセットアップについては、 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-configuration.html["SnapCenterの設定（netapp.com）"]。
 
 . NetApp BlueXPコンポーネントのインストールと設定
 +
@@ -69,7 +69,7 @@ NetApp BlueXPのコンポーネントのインストールと設定について�
 . BlueXP Connectorを環境に導入します。概要は、 https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["コネクタの詳細| NetAppのドキュメント"]。
 . BlueXPでCloud Backupライセンスを追加/購入： https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html[]。
 . オンプレミスストレージを追加して、BlueXPでNetAppオンプレミス環境とクラウドデスティネーションの作業環境を作成します。
-. オンプレミスストレージ用の新しいオブジェクトストア関係をAWS S3バケットに作成します。
+. オンプレミスストレージの新しいオブジェクトストア関係をAWS S3バケットに作成します。
 . SnapCenterでSAP HANAシステムリソースを設定します。
 . 作業環境にSnap Centerを追加します。
 . 環境に応じたポリシーを作成します。

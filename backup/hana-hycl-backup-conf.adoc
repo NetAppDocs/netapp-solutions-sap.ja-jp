@@ -55,7 +55,7 @@ image:hana-hycl-back-image12.jpeg["hana-hycl-back-image12、width=624、height=3
 . 既存のポリシーが存在する場合は、[続行]*をクリックします。[+]
 image:hana-hycl-back-image11.jpeg["hana-hycl-back-image11、width=624、height=304"]
 . [バックアップオプション]*にチェックを入れ、目的のバックアッププロバイダを選択します。この例ではAWSです。[+]
-既存のポリシーについては、このオプションを選択したままにします。[+]
+既存のポリシーについては、このオプションをオンのままにします。[+]
 使用しないオプションのチェックを外します。[+]
 image:hana-hycl-back-image13.jpeg["Ein Bild, das Text, Software, Computersymbol, Webseite enth ä lt.Automatisch generierte Beschreibung、幅=624、高さ=306"]
 . 新しいバケットを作成するか、既存のバケットを選択します。AWSアカウント設定、regio、アクセスキー、シークレットキーを指定します。[次へ]*を押します。[+]
@@ -106,7 +106,7 @@ image:hana-hycl-back-image28.jpeg["^ a b c d e text enth ä lt.Automatisch gener
 
 == アプリケーションバックアップのバックアップポリシーの作成
 
-. 設定メニューで*[ポリシー]*を選択します。[+]
+. 設定メニューの*ポリシー*を選択します。[+]
 image:hana-hycl-back-image29.jpeg["hana-hycl-back-image29、width=624、height=316"]
 . 必要に応じて、[ポリシーの作成]*をクリックして新しいポリシーを作成します。[+]
 image:hana-hycl-back-image30.jpeg["hana-hycl-back-image30、width=624、height=316"]
