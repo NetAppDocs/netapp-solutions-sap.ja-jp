@@ -4,17 +4,17 @@ permalink: bp/saphana_fas_fc_introduction.html
 keywords: sap, hana, fas, systems, fibre, channel, protocol, configuration, data, vmware, vsphere 
 summary: NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP オペレーティングシステムが搭載されています。 
 ---
-= TR-4384 ：『 SAP HANA on NetApp FAS Systems with Fibre Channel Protocol Configuration Guide 』
+= 『SAP HANA on NetApp FAS Systems with Fibre Channel Protocol』構成ガイド
 :allow-uri-read: 
 
 
-ネットアップ、 Nils Bauer 、 Marco Schoen
+Marco Schoen 、ネットアップ
 
 NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP オペレーティングシステムが搭載されています。
 
 認定は、次のモデルで有効です。
 
-* FAS2720、FAS2750、FAS8200、FAS8300、FAS8700、 FAS9000、FAS9500
+* FAS2750、FAS2820、FAS8300、FAS8700、FAS9500
 
 
 SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
