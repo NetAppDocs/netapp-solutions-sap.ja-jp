@@ -26,6 +26,12 @@ HDD 構成で Storage Efficiency 機能を有効にすることはできませ�
 
 
 
+== NetApp FlexGroupボリューム
+
+NetApp FlexGroup Volumeの使用はSAP HANAではサポートされていません。SAP HANAのアーキテクチャ上、FlexGroup Volumeを使用してもメリットはなく、パフォーマンスの問題が発生する可能性があります。
+
+
+
 == NetAppボリュームとアグリゲートの暗号化
 
 SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption（NAE）の使用がサポートされています。

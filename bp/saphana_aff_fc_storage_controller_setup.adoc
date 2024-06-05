@@ -24,6 +24,12 @@ SSD 構成の SAP HANA では、インライン重複排除、ボリューム間
 
 
 
+== NetApp FlexGroupボリューム
+
+NetApp FlexGroup Volumeの使用はSAP HANAではサポートされていません。SAP HANAのアーキテクチャ上、FlexGroup Volumeを使用してもメリットはなく、パフォーマンスの問題が発生する可能性があります。
+
+
+
 == NetAppボリュームとアグリゲートの暗号化
 
 SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption（NAE）の使用がサポートされています。
@@ -42,7 +48,7 @@ ONTAP 9 以降では、ストレージボリュームレベルで QoS が設定�
 
 
 
-=== NetApp FabricPool
+== NetApp FabricPool
 
 SAP HANA システムのアクティブなプライマリファイルシステムには、 NetApp FabricPool テクノロジを使用しないでください。これには ' データとログ領域のファイル・システムと '/hana/shared-file システムが含まれますそのため、特に SAP HANA システムの起動時に、予測不可能なパフォーマンスが発生します。
 
