@@ -1,0 +1,39 @@
+---
+indexpage:
+  title: SAP Business Application と SAP HANA Database ソリューション
+  summary: ネットアップでは、 SAP と SAP HANA に関するテクニカルレポート、検証済みの設計、ビデオ、ブログ、解決策概要を幅広くご用意しています。
+  keywords: netapp, solutions, sap, hana
+  lead: ネットアップでは、 SAP と SAP HANA に関するテクニカルレポート、検証済みの設計、ビデオ、ブログ、解決策概要を幅広くご用意しています。
+  tiles:
+  - title: 設定のベストプラクティス
+    links:
+    - title: ビデオとデモ
+      url: sap-bp-videos.html
+    - title: ブログ
+      url: sap-bp-blogs.html
+    - title: ツール
+      url: sap-bp-tools.html
+  - title: バックアップ、リストア、ディザスタリカバリ
+    links:
+    - title: ビデオとデモ
+      url: sap-dr-videos.html
+    - title: ブログ
+      url: sap-dr-blogs.html
+    - title: ツール
+      url: sap-dr-tools.html
+  - title: ライフサイクル管理
+    links:
+    - title: ビデオとデモ
+      url: sap-lcm-videos.html
+    - title: ブログ
+      url: sap-lcm-blogs.html
+    - title: ツール
+      url: sap-lcm-tools.html
+  - title: すべての SAP ソリューション
+    links:
+    - title: 新機能
+      url: sap-whatsnew.html
+    - title: ビデオとデモ
+      url: sap-videos.html
+    - title: ブログ
+      url: sap-blogs.html
