@@ -8,3 +8,9 @@ entries:
   url: https://www.netapp.com/us/media/sb-3965.pdf
 - title: SAP HANA ディザスタリカバリ
   url: https://www.netapp.com/us/media/sb-3968.pdf
+- title: AnsibleとNetApp SnapCenterによるSAP自動化
+  url: "/briefs/sap-lama-ansible.html"
+- title: AlpacaとNetApp SnapCenterによるSAP自動化
+  url: "/briefs/sap-alpaca-automation.html"
+- title: AvantraとNetApp SnapCenterによるSAP自動化
+  url: "/briefs/sap-avantra-automation.html"

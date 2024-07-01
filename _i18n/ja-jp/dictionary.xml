@@ -1824,13 +1824,7 @@
   <block id="0a01ff5d4ad68f1f814d0d67480b3b30" category="list-text"><block ref="0a01ff5d4ad68f1f814d0d67480b3b30" category="inline-link-macro-rx"></block></block>
   <block id="23083712546bfb74d3153dd83b152769" category="summary">SAP 解決策ポートフォリオに新たに追加された機能</block>
   <block id="ff0018dfdf641d75e04d581743c81f22" category="paragraph">最新の SAP ソリューションとソリューションの資料の概要</block>
-  <block id="da322257c020829271a011f2bf2ef3af" category="list-text"><block ref="da322257c020829271a011f2bf2ef3af" category="inline-link-macro-rx"></block></block>
-  <block id="7aa50c591cbe872ef050a10a3796443e" category="list-text"><block ref="7aa50c591cbe872ef050a10a3796443e" category="inline-link-macro-rx"></block></block>
-  <block id="dcf135c7c1ec1f076814d863eae8e3c4" category="list-text"><block ref="dcf135c7c1ec1f076814d863eae8e3c4" category="inline-link-macro-rx"></block></block>
   <block id="91e3a26ea4105ecd20561989c3c58a32" category="inline-link-macro">TR-4290 ：『 SAP HANA on NetApp FAS systems with NFS Configuration Guide 』</block>
-  <block id="a71fa770921bd674dcee08ea9faa63c3" category="list-text"><block ref="a71fa770921bd674dcee08ea9faa63c3" category="inline-link-macro-rx"></block></block>
-  <block id="f41d298f4547e5d08ab439536a1d45a7" category="list-text"><block ref="f41d298f4547e5d08ab439536a1d45a7" category="inline-link-macro-rx"></block></block>
-  <block id="c98757f0e8d45370ae0d173f16cb73e3" category="list-text"><block ref="c98757f0e8d45370ae0d173f16cb73e3" category="inline-link-macro-rx"></block></block>
   <block id="6408743c7b0a502fe49fed25ac968c17" category="summary">SAP ライフサイクル管理に関する一連のビデオとデモ</block>
   <block id="18c100c6d8f14819ac80ee276eb251a6" category="doc">SAP ライフサイクル管理のビデオとデモ</block>
   <block id="1e36c812f9450a024b52c0b4085d0776" category="paragraph">SAP Lifecycle Management を紹介するビデオとデモの概要。</block>
@@ -4689,4 +4683,161 @@ AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境
   <block id="1f934c6200615c74e6839ca55ae1e6cf" category="sidebar">バックアップ、リストア、ディザスタリカバリ</block>
   <block id="d57e0763c47c99218375572fbdd307a1" category="sidebar">すべての SAP ソリューション</block>
   <block id="91770f038cd944a1d3b9b347edeb2b10" category="sidebar">新機能</block>
+  <block id="db5a8e62a598aa08b2923f3210fec1a3" category="summary">本ドキュメントでは、NetApp®Snapshot™およびFlexClone®テクノロジをAlpaca自動化ワークフローに統合する方法について説明します。</block>
+  <block id="e7ffc6df7629952bee1f92657458fbac" category="doc">SB-4293：AlpacaとNetApp SnapCenterによるSAPシステムのコピー、更新、クローニングのワークフローの自動化</block>
+  <block id="c0c4b60d27032c028c91440e9d3be949" category="section-title">解決策の概要</block>
+  <block id="86418a2229dc17869377db8ccf58db56" category="paragraph">SAPのシステムとソリューションの運用は非常に複雑です。ただし、SAPを使用している企業では、システムとサービスがビジネスプロセスの中心となります。SAPシステム管理者は、システムのコピーや更新などの日常的な運用タスクを自動化することで、より多くのシステムをより少ない労力で管理し、再現可能な結果を生み出し、人為的ミスを減らすことができます。</block>
+  <block id="fbcecadd64701c98813e5bc5accb7a85" category="paragraph">ランドスケープをプロアクティブに自動化—Cloud and Anywhere（Alpaca）スイートは、SAPランドスケープ全体にわたる詳細な監視と監視を可能にする包括的な管理インターフェイスです。Alpacaは、SAPインフラの運用を合理化、迅速化し、最適な可用性と透明性を確保します。インフラを含む環境全体を管理するための包括的なツールを提供し、サービスの中断、ジョブの停止、輻輳などの異常をプロアクティブに通知します。このスイートは、マルチクラウドシナリオを含め、オンプレミス、ハイブリッド、オールクラウドの各環境でシームレスに動作し、あらゆるインフラへの適応性を確保するように設計されています。このモジュールベースのフレームワークは、SAPの標準的な管理タスクと通常の管理タスク、および停止時のフェイルオーバーなどの複雑なシナリオを自動化します。 管理者/専門家、オペレーター、マネージャーは、高度な制御と自動化をこれらの専門家に提供します。</block>
+  <block id="9d632cae336dd853f201c88c832e2cb7" category="inline-image-macro">Alpacaプラットフォームの図</block>
+  <block id="82020173d38ee27d458fbdf847bfc42e" category="paragraph"><block ref="82020173d38ee27d458fbdf847bfc42e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7323cb77cd037c30e7a9a2a0dc1eacb9" category="paragraph">このドキュメントでは、Snapshotベースのバックアップのオーケストレーション、リストアの実行、FlexCloneボリュームの作成を行うツールであるNetApp SnapCenter®とAlpacaをどのように統合するかについて説明します。この統合により、SAP管理者は、SAPシステムの日常的な運用タスクを大幅に高速化できます。NetAppのSnapshot、FlexClone、SnapRestore®テクノロジは、ポインタベースのストレージテクノロジであるため、バックアップ、リストア、クローニングの処理を高速化します。このアプローチは高速であり、（既存データではなく）新規データや変更されたデータだけをストレージメディアに書き込む必要があるため、クローン処理中のストレージオーバーヘッドも削減されます。これは、オンプレミスのNetAppストレージシステムであっても、大手クラウドプロバイダ3社のいずれかにあるNetAppストレージソリューションであっても当てはまります。</block>
+  <block id="bf8dd94f74c5878ba969abeeef0286d1" category="section-title">対象者</block>
+  <block id="a34a4fdc22dc4d566081e48a846fbf5a" category="paragraph">このドキュメントは、SAPシステムのコピーを手動で実行したことがあり、Alpacaを使用してこの作業を自動化したいSAPシステム管理者を対象としています。NetApp SnapCenterによってオーケストレーションされたNetAppのSnapshotテクノロジとFlexCloneテクノロジをAlpacaのワークフローと組み合わせることで、SAPシステムのコピーを完全に自動化する時間を短縮できます。</block>
+  <block id="3d308ecb8420d2579b7d359b7ad94bb5" category="paragraph">SAPシステムのコピーは、SAPシステムのクローニング、SAPシステムのコピー、SAPシステムの更新という3つのプロセスの同義語としてよく使用されます。ワークフローとユースケースが異なるため、これらの処理を区別することが重要です。</block>
+  <block id="622b88e8f99c2f21460dccf5dc97f1d7" category="list-text">* SAPシステムのクローン*。SAPシステムクローンは、ソースSAPシステムの同一のクローンです。SAPシステムクローンは、一般に論理的な破損に対処したり、ディザスタリカバリのシナリオをテストしたりするのに使用されます。システムのクローニング処理では、ホスト名、インスタンス番号、およびSecure Identifier（SID；セキュア識別子）は同じままです。そのため、ターゲットシステムに適切なネットワークフェンシングを確立して、本番環境と通信しないようにすることが重要です。</block>
+  <block id="da4f81a65278754f8234bd6f906c0e40" category="inline-image-macro">SAPシステムのクローンを示す図</block>
+  <block id="1b937a8a58ab58bc1c61e59ac1b52925" category="paragraph"><block ref="1b937a8a58ab58bc1c61e59ac1b52925" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c363bfedad13dec17e913676bcbc4371" category="list-text">* SAPシステムのコピー*。SAPシステムのコピーは、ソースSAPシステムのデータを使用して新しいターゲットSAPシステムをセットアップすることです。たとえば、本番システムのデータを含む追加のテストシステムを新しいターゲットシステムにすることができます。ホスト名、インスタンス番号、SIDは、ソースシステムとターゲットシステムで異なります。 新しいシステムはソースシステムから分離されていません。</block>
+  <block id="0317fd7042e1a3bbd1897d5d7f7a2cc6" category="inline-image-macro">SAPシステムのコピーを示す画像</block>
+  <block id="3f8fbc4328976ab1bb4502f3763520b2" category="paragraph"><block ref="3f8fbc4328976ab1bb4502f3763520b2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0820369f4405acedd8305fd09350a9e9" category="list-text">* SAPシステムの更新*。SAPシステムの更新とは、既存のターゲットSAPシステムをソースSAPシステムのデータで更新することです。ターゲットシステムは通常、サンドボックスシステムなどのSAPトランスポート環境の一部であり、本番システムのデータで更新されます。ソース・システムとターゲット・システムでは、ホスト名、インスタンス番号、およびSIDが異なります。</block>
+  <block id="a5c1cb5f56a681e17c4285d9eccac7b1" category="inline-image-macro">SAPシステムの更新を示す図</block>
+  <block id="942f47e7ef3ead6cb8f92c69276f36c3" category="paragraph"><block ref="942f47e7ef3ead6cb8f92c69276f36c3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="444724efd6db7acaf8cd0d5c32fcfd71" category="paragraph">これらは3つの異なるユースケースですが、データ管理プロセスは変わりません。3つのユースケースでは、同じデータ管理テクノロジ、NetApp SnapshotとFlexCloneを使用しています。</block>
+  <block id="8f4c7939e8a42e023939df947aba54f6" category="section-title">解決策テクノロジ</block>
+  <block id="e664b92ee975da28ca5e768b9a88dd26" category="paragraph">ソリューション全体は、次の主要コンポーネントで構成されています。</block>
+  <block id="2a4c6f6c82937e9f31385452f76b0a8d" category="list-text">SnapCenterエージェントとSnapCenterデータベースプラグインがインストールされたSAPソースシステム</block>
+  <block id="eafc29f547c05517926b01ee4b438905" category="list-text">SnapCenterエージェントとSnapCenterデータベースプラグインがインストールされたSAPターゲットシステム</block>
+  <block id="9ab707fdba87d81c6d7c3e949c63b277" category="list-text">SAPソースシステムとSAPターゲットシステムが構成されたAlpacaシステム</block>
+  <block id="ee9a1ac4f9e7a6bec1deed8ff9c2f8fb" category="list-text">NetApp SnapCenter Server</block>
+  <block id="5d0a666f7f8f7d38d3fc377ab72d2ac5" category="list-text">NetAppストレージシステム：</block>
+  <block id="55e0c6f2677f63db92df47ec0b324167" category="list-text">オンプレミスの物理ハードウェア：AFF-A、AFF-C、ASA-A、ASA-C、FASシリーズ</block>
+  <block id="251aab5f02e944d9704621e71f85578b" category="list-text">オンプレミスのSoftware-Defined Storage：ONTAP®Select</block>
+  <block id="f01a2a485dbdb94ed94e78580907767c" category="list-text">NetAppクラウドストレージ：</block>
+  <block id="9a5b3a6c19cc79e8803fb4a381f09917" category="list-text">Cloud Volumes ONTAP for AWS、Google Cloud、Azure</block>
+  <block id="7450cfde7058dc5e1f7909d0280fd7ae" category="list-text">Azure NetApp Files</block>
+  <block id="4d82a1ec1af02725042c8c785564ee7a" category="list-text">NetApp ONTAP 対応の Amazon FSX</block>
+  <block id="12237a5e9a92287b4283682895d22d2f" category="paragraph">次の図は、Alpacaサーバ、NetApp SnapCenterサーバ、NetAppストレージシステム、SAPソースシステム、SAPターゲットシステムを示しており、すべてがどのように統合されているかを示しています。その目的は、SnapCenter REST APIを使用して統合を可能な限り柔軟にし、既存のコンポーネント内ですでに行われている設定作業を最大限に再利用できるようにすることです。</block>
+  <block id="a58f060b570a241814715299c91f3fad" category="inline-image-macro">Alpacaサーバ、NetApp SnapCenterサーバ、NetAppストレージシステム、SAPソースシステム、SAPターゲットシステム、およびすべてがどのように統合されているかを示す図</block>
+  <block id="f4ca65fb5c61e96bb0d6eed9c0ca8715" category="paragraph"><block ref="f4ca65fb5c61e96bb0d6eed9c0ca8715" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bf9bdab57c82171f2cc9bcebdc37b2c2" category="section-title">ユースケースの概要</block>
+  <block id="ae1c63d0fd8dbf1fb4e91fd0923187d9" category="paragraph">テストやトレーニングを目的として、ソースシステムのデータをターゲットシステムで利用できるようにする必要があるシナリオはいくつかあります。これらのテストシステムとトレーニングシステムは、ソースシステムのデータで定期的に更新して、テストとトレーニングが最新のデータセットで確実に実行されるようにする必要があります。このようなシステム更新処理は、インフラ、データベース、アプリケーションの各レイヤでの複数のタスクで構成され、自動化のレベルによっては数日かかることがあります。</block>
+  <block id="18636c25be7e0e796a8ec39fe4f0c60e" category="paragraph">運用を高速化し、タスクを自動化し、インフラ、データベース、アプリケーションレベルでの人為的ミスを排除するために、Alpaca Workflowsを使用できます。この統合では、ソースシステムからターゲットシステムにバックアップをリストアするのに時間がかかり、リソースを大量に消費しますが、その代わりにNetAppのSnapshotテクノロジとFlexCloneテクノロジを使用します。データベースのスピンアップに必要なすべてのタスクが、数時間ではなく数分で完了します。クローニングプロセスに要する時間はデータベースのサイズに左右されないため、非常に大規模なシステムでも数分で作成できます。Alpacaは、SAPの後処理側だけでなく、オペレーティングシステムやデータベースのレベルでもタスクを自動化することで、実行時間をさらに短縮します。</block>
+  <block id="8ca12d6eeda659345e54817d871b4153" category="paragraph">次の図は、自動化を使用すると運用効率が向上する可能性があることを示しています。</block>
+  <block id="19a6f9f39008e36ec42310a1697de210" category="inline-image-macro">自動化を使用すると運用効率が向上する可能性があることを示す画像</block>
+  <block id="4c6eb0132e4ccfcc9ed228d27e5cfc29" category="paragraph"><block ref="4c6eb0132e4ccfcc9ed228d27e5cfc29" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5005b13528d942f6d5a5d831e88ad106" category="section-title">テクノロジコンポーネントの統合</block>
+  <block id="3b6949e0ff3c710337d9cd603b9c2515" category="paragraph">AlpacaワークフローへのSnapCenterの実際の統合は、シェルスクリプトを使用してNetApp SnapCenter REST APIにアクセスすることで構成されています。このREST APIベースの統合では、SAPソースシステムのSnapshotコピーが作成され、FlexCloneボリュームが作成されてSAPターゲットシステムにマウントされます。ストレージ管理者やSAP管理者は、SnapCenterによってトリガーされ、SnapCenterエージェントによって実行されるスクリプトを開発して、日常的な運用タスクを自動化する方法を知っています。シェルスクリプトを介してSnapCenterタスクをトリガーするこの疎結合アーキテクチャにより、Alpacaをエンドツーエンドの自動化のワークフローエンジンとして使用することで、既存の自動化手順を再利用して目的の結果を迅速に達成することができます。</block>
+  <block id="3ca92e57dea12993b0c6ac16e5820353" category="paragraph">AlpacaとNetAppのデータ管理テクノロジを組み合わせることで、SAPシステム管理に関連する最も複雑で時間のかかるタスクに必要な時間と労力を大幅に削減できる強力なソリューションを提供します。また、この組み合わせは、人為的ミスがシステム間で引き起こす構成のずれを回避するのにも役立ちます。</block>
+  <block id="6bf71f730c6c54b2134e90f286791cc7" category="paragraph">システムの更新、コピー、クローン、ディザスタリカバリのテストは非常に機密性の高い手順であるため、このようなソリューションを実装することで貴重な管理時間を節約できます。また、基幹業務担当者がSAPシステム管理者に持つ信頼を強化することもできます。トラブルシューティングにかかる時間をどれだけ節約できるか、テストやその他の目的でシステムをコピーするのがどれだけ簡単かがわかります。これは、ソースシステムとターゲットシステムの運用場所（オンプレミス、パブリッククラウド、ハイブリッドクラウド、ハイブリッドマルチクラウド）に関係なく当てはまります。</block>
+  <block id="9c87573265b253410a84d81b471a29e1" category="paragraph">このドキュメントに記載されている情報の詳細については、次のドキュメントおよびWebサイトを参照してください。</block>
+  <block id="7c80105b450d2a7097856f0c1a47f684" category="inline-link-macro">アルパカ</block>
+  <block id="daf59c2df9bdef54e4fcbfb2596f3319" category="list-text"><block ref="daf59c2df9bdef54e4fcbfb2596f3319" category="inline-link-macro-rx"></block></block>
+  <block id="897625d5a9449080791ca6991d9163d6" category="list-text"><block ref="897625d5a9449080791ca6991d9163d6" category="inline-link-macro-rx"></block></block>
+  <block id="2115d0e1d828c5a28a9742411342fc04" category="inline-link-macro">SnapCenter ServerとプラグインでサポートされるREST API</block>
+  <block id="36ac9e3e7c1dda5e31be15c68d614e8a" category="list-text"><block ref="36ac9e3e7c1dda5e31be15c68d614e8a" category="inline-link-macro-rx"></block></block>
+  <block id="c2668ce859de558fa49ef70b7eacbb3b" category="cell">バージョン0.1</block>
+  <block id="338602028883e3e3e93d7fad17905696" category="cell">04.2024</block>
+  <block id="d40cd11c66986e96040133cd69280e6a" category="cell">第1稿。</block>
+  <block id="96d7dc7b222d6abde2ea184b5e0fc02b" category="cell">バージョン0.2</block>
+  <block id="b61612a45af76461f6f16d12a1e3a473" category="cell">06.2024</block>
+  <block id="8d6c86885133ff76b8d68daf86e29551" category="cell">HTML形式に変換</block>
+  <block id="2190de7e3e03ad3aa87d37ce1d799634" category="summary">このドキュメントでは、AvantraとNetApp SnapCenter®プラットフォームの統合方法について説明します。</block>
+  <block id="fc437f8a9ad8cff38c5229c700d66600" category="doc">SB-4294：AvantraとNetApp SnapCenterによるSAPシステムのコピー、更新、クローニングのワークフローの自動化</block>
+  <block id="e85e6812e10c0d3ed470223879ee4a2e" category="paragraph">SAPシステムとソリューションの運用は非常に複雑です。ただし、SAPを使用している企業では、これらのシステムとサービスがビジネスプロセスの中心となります。SAPシステム管理者は、システムのコピーや更新などの日常的な運用タスクを自動化することで、より多くのシステムをより少ない労力で管理し、再現可能な結果を生み出し、人為的ミスを減らすことができます。</block>
+  <block id="6b040b255b68d643f860cc0c42d60c26" category="paragraph">このドキュメントでは、NetApp®Snapshot™およびFlexClone®テクノロジをAvantra自動化ワークフローに統合する方法について説明します。Avantraは、IT運用とサービスの自動管理に重点を置いたIT管理プラットフォームです。ITインフラを監視、自動化、管理するためのソリューションを提供し、ITシステムの効率と信頼性を向上させます。Avantraを使用すると、企業はIT環境をプロアクティブに監視し、問題を早期に検出し、トラブルシューティングやシステムパフォーマンスの最適化のための自動アクションを実行できます。通常、このプラットフォームは他のIT管理ツールと統合されており、クラウド、オンプレミス、ハイブリッドインフラなどのさまざまな環境に導入できます。</block>
+  <block id="9290f6edd05ab74ce976da8a1bd79627" category="paragraph">このドキュメントでは、AvantraとNetApp SnapCenter®プラットフォームの統合方法について説明します。NetApp SnapCenterは、Snapshotベースのバックアップのオーケストレーション、リストアの実行、およびFlexCloneボリュームの作成を行うためのツールです。この統合により、SAP管理者はNetAppの手法を使用して、SAPシステムの日常的な運用タスクを大幅にスピードアップできます。Snapshot、FlexClone、NetApp SnapRestore®ソフトウェアはポインタベースのNetAppストレージテクノロジであるため、バックアップ、リストア、クローニングの処理を高速化できます。このアプローチは速いです。また、オンプレミスのNetAppストレージシステムであるか、大手クラウドプロバイダ3社のいずれかにあるNetAppストレージソリューションであるかに関係なく、新規データや変更されたデータのみがストレージメディアに書き込まれるため、クローン処理時のストレージオーバーヘッドも削減されます。</block>
+  <block id="d62c5e03ce9e8ec0422f7decd2dfd9bf" category="paragraph">このドキュメントは、以前にSAPシステムのコピーを手動で実行したことがあり、Avantraを使用してこの作業を自動化したいSAPシステム管理者を対象としています。NetApp SnapCenterによってオーケストレーションされたNetApp SnapshotとFlexCloneテクノロジをAvantraのワークフローと組み合わせる目的は、SAPシステムのコピーを完全に自動化することで高速化することです。</block>
+  <block id="75c0f54f014e4ab6e3f22f5cd507650c" category="paragraph">SAPシステムのコピーという用語は、多くの場合、SAPシステムのクローニング、SAPシステムのコピー、SAPシステムの更新の3つのプロセスを総称して使用されます。ワークフローとユースケースが異なるため、処理を区別することが重要です。</block>
+  <block id="ed89e0187c6fe54d2628ba3c924c9c94" category="list-text">* SAPシステムのクローン*。SAPシステムクローンは、ソースSAPシステムの同一のクローンです。SAPシステムクローンは、一般に論理的な破損に対処したり、ディザスタリカバリのシナリオをテストしたりするのに使用されます。システムのクローニング処理では、ホスト名、インスタンス番号、およびSecure Identifier（SID；セキュア識別子）は同じままです。そのため、本番環境と通信できないように、ターゲットシステムの適切なネットワークフェンシングを設定することが重要です。</block>
+  <block id="29fa3c48f12e6309c32da9e61f69bd28" category="inline-image-macro">SAPシステムのクローンを示す図</block>
+  <block id="fb37eef62a9f3eb5c99bffedd0024c1f" category="paragraph"><block ref="fb37eef62a9f3eb5c99bffedd0024c1f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b587c7fd00a525678062695450301092" category="list-text">* SAPシステムのコピー*。SAPシステムのコピーは、ソースSAPシステムのデータを使用して新しいターゲットSAPシステムをセットアップすることです。たとえば、本番システムのデータを含む追加のテストシステムをターゲットシステムにすることができます。ホスト名、インスタンス番号、SIDは、ソースシステムとターゲットシステムで異なります。 新しいシステムはソースシステムから分離されていません。</block>
+  <block id="16638dad50a76bca5e7a86dc7294fc2c" category="inline-image-macro">SAPシステムのコピーを示す画像</block>
+  <block id="6393f88818ef94108486ce2601a4732e" category="paragraph"><block ref="6393f88818ef94108486ce2601a4732e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fbd198ef31d57ae3a5f9b9fb5639e948" category="list-text">* SAPシステムの更新。*SAPシステムの更新とは、既存のターゲットSAPシステムをソースSAPシステムのデータで更新することです。ターゲットシステムは通常、サンドボックスシステムなどのSAPトランスポート環境の一部であり、本番システムのデータで更新されます。ホスト名、インスタンス番号、SIDはソースシステムとターゲットシステムで異なります。</block>
+  <block id="a7d281aa380b84143ba85c264cace3d9" category="inline-image-macro">SAPシステムの更新を示す図</block>
+  <block id="1036db93beffe95b80fff8d0ba735af9" category="paragraph"><block ref="1036db93beffe95b80fff8d0ba735af9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="59159350e4004274c8676b9d48b16a41" category="paragraph">3つのユースケースがありますが、データ管理プロセスは変わりません。3つのユースケースでは、基盤となるデータ管理テクノロジであるNetApp SnapshotとFlexCloneが活用されています。</block>
+  <block id="9f502a9c7a5bc34e196821573f56b625" category="list-text">SnapCenterエージェントとSnapCenterデータベースプラグインがインストールされたSAPソースシステム</block>
+  <block id="03c806031b59c42ed3e4c7683d699982" category="list-text">SnapCenterエージェントとSnapCenterデータベースプラグインがインストールされたSAPターゲットシステム</block>
+  <block id="14472d6a98b6c5946fee1bdeaaa9d46d" category="list-text">SAPソースシステムとSAPターゲットシステムが構成されたAvantraシステム</block>
+  <block id="c287b1e946c387c0a7339a652e03b5ce" category="list-text">オンプレミスの物理ハードウェア：NetApp AFF Aシリーズ、AFF Cシリーズ、ASA Aシリーズ、ASA Cシリーズ、またはFASシリーズ</block>
+  <block id="b0904b80e0af825ba00610ce914a3ac9" category="list-text">オンプレミスのSoftware-Defined Storage：NetApp ONTAP®Select</block>
+  <block id="f61f14ca64e865d9739d260389f4af92" category="list-text">NetApp Cloud Volumes ONTAP®をAWS、Google Cloud、Azureに導入</block>
+  <block id="842a4e33040fe08e0af52e5aaf27c55f" category="list-text">Amazon FSx for NetApp ONTAP（AWS）</block>
+  <block id="fd559ee283f10c8dbc8f698f620ac779" category="paragraph">次の図は、Avantraサーバ、NetApp SnapCenterサーバ、NetAppストレージシステム、SAPソースシステムとSAPターゲットシステム、およびすべての統合方法を示しています。その目的は、既存のコンポーネント内ですでに行われている設定作業を最大限に再利用できるように、SnapCenter REST APIを使用して統合を可能な限り柔軟にすることでした。</block>
+  <block id="f6482dcb2b1a382097c11d3774a029ac" category="inline-image-macro">Avantraサーバ、NetApp SnapCenterサーバ、NetAppストレージシステム、SAPソースシステム、SAPターゲットシステム、およびすべてのシステムがどのように統合されているかを示す図</block>
+  <block id="32f81f33d6e774f336864df9e87bc44f" category="paragraph"><block ref="32f81f33d6e774f336864df9e87bc44f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3086cba5137fd0545d778e498d9cd6e2" category="paragraph">時間を短縮し、運用タスクを自動化し、インフラストラクチャ、データベース、アプリケーションレベルで人的エラーを排除するために、Avantraワークフローを使用できます。この統合では、ソースシステムからターゲットシステムにバックアップをリストアする（時間がかかり、リソース消費量も多い）代わりに、NetApp SnapshotとFlexCloneテクノロジを使用します。データベースのスピンアップに必要なすべてのタスクが、数時間ではなく数分で完了します。クローニングプロセスに要する時間はデータベースのサイズに左右されないため、非常に大規模なシステムでも数分で作成できます。Avantraは、SAPの後処理側だけでなく、オペレーティングシステムおよびデータベースレベルでもタスクを自動化することで、実行時間をさらに短縮します。</block>
+  <block id="6a3fec98537c549a047e819f8599d98d" category="paragraph">次の図は、自動化を使用すると運用効率が向上する可能性があることを示しています。</block>
+  <block id="4c7048f952442b8f6d998ab516777056" category="paragraph"><block ref="4c7048f952442b8f6d998ab516777056" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7d8c66dbd94dc77e4312c93bd7586097" category="section-title">さまざまなテクノロジコンポーネントの統合</block>
+  <block id="878da1642730c1593c6b76bdb0d9fda8" category="paragraph">AvantraワークフローでのSnapCenterの実際の統合は、JavaScriptを使用してNetApp SnapCenter REST APIにアクセスすることで構成されています。このREST APIベースの統合では、SAPソースシステムのSnapshotコピーが作成され、FlexCloneボリュームが作成されてSAPターゲットシステムにマウントされます。</block>
+  <block id="f07c14433779a55a296b481246a75c8e" category="paragraph">ストレージ管理者やSAP管理者は、SnapCenterによってトリガーされ、SnapCenterエージェントによって実行されるスクリプトを開発して、毎日繰り返される運用タスクを自動化するための時間とノウハウを投入してきました。JavaScriptを使用してSnapCenterタスクをトリガーするこの疎結合アーキテクチャを使用すると、既存の自動化手順を再利用して、エンドツーエンドの自動化のワークフローエンジンとしてAvantraを使用して、目的の結果を迅速に達成できます。</block>
+  <block id="08d13577d2c770db53482bcfe9f627e4" category="paragraph">AvantraとNetAppのデータ管理テクノロジーを組み合わせることで、SAPシステム管理に関連する最も複雑で時間のかかるタスクに必要な時間と労力を大幅に削減できる強力なソリューションを提供します。また、この組み合わせは、人為的ミスがシステム間で引き起こす構成のずれを回避するのにも役立ちます。</block>
+  <block id="cf3525ddd7a64e1adddcca6e929f690e" category="paragraph">システムの更新、コピー、クローン、ディザスタリカバリのテストは非常に機密性の高い手順であるため、このようなソリューションを実装することで貴重な管理時間を節約できます。また、基幹業務のスタッフがSAPシステム管理者に持つ信頼を強化することもできます。トラブルシューティングにかかる時間をどれだけ節約できるか、テストやその他の目的でシステムをコピーするのがどれだけ簡単かを確認できます。このソリューションには、ソースシステムとターゲットシステムがオンプレミス、パブリッククラウド、ハイブリッドマルチクラウド環境、ハイブリッドマルチクラウド環境のどこで運用されているかに関係なく、これらのメリットがあります。</block>
+  <block id="bf0f42271b1628d48d24ff9e96c0a40d" category="paragraph">このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。</block>
+  <block id="b97f5ca6428e5b00c71db4299dfc3d6f" category="inline-link-macro">アバントラ</block>
+  <block id="2fc4f84f847c8ac3075ea580dfac45a1" category="list-text"><block ref="2fc4f84f847c8ac3075ea580dfac45a1" category="inline-link-macro-rx"></block></block>
+  <block id="bf51eb5d79e16ead1ceda527dda582b6" category="inline-link-macro">SnapCenter ServerとプラグインでサポートされるREST API</block>
+  <block id="857bb4eb3e8e725c7b53c4c49b9f8f61" category="list-text"><block ref="857bb4eb3e8e725c7b53c4c49b9f8f61" category="inline-link-macro-rx"></block></block>
+  <block id="9d04f10ec6d5f74dbca6cec4d7147125" category="cell">03.2024</block>
+  <block id="313d8d29b054407c3e1bee8fe2e46793" category="cell">NetAppの同僚からのフィードバックの統合。</block>
+  <block id="fb4990156c52dedabc6397ade7e76401" category="cell">バージョン0.3</block>
+  <block id="21a718b5ebef012a391d552cfaa4536e" category="cell">要求された変更を統合してNetAppブランディングに準拠</block>
+  <block id="420d57080e1f02fbdb40396ad217482c" category="cell">バージョン0.4</block>
+  <block id="e6fe0ae39ed3c7447d6a4da5d99ea3a2" category="summary">本ドキュメントでは、NetApp®ストレージシステムをオンプレミス、パブリッククラウドインフラサービス（IaaS）環境、ハイブリッドクラウドのいずれで運用している場合でも、Ansible Playbookとカスタムスクリプトを使用して、SAP Landscape Management（LaMa）に統合する方法について説明します。</block>
+  <block id="566e3b562a12b1ef1896ee777b47ed0c" category="doc">SB-4292：AnsibleによるSAP自動化</block>
+  <block id="1dc246d1e2dc4afc0e866ed9c1e00b34" category="paragraph">本ドキュメントでは、NetApp®ストレージシステムをオンプレミス、パブリッククラウドインフラサービス（IaaS）環境、ハイブリッドクラウドのいずれで運用している場合でも、Ansible Playbookとカスタムスクリプトを使用して、SAP Landscape Management（LaMa）に統合する方法について説明します。</block>
+  <block id="375a68bbd8b09c30759cb49ee66744c6" category="paragraph">SAPシステムは非常に複雑です。しかし、SAPを使用している企業では、これらのシステムがビジネスプロセスの中心となっています。SAPシステム管理者は、日常的な運用タスクを自動化することで、より多くのシステムをより少ない労力で管理し、再現可能な結果を生み出し、人為的ミスを減らすことができます。</block>
+  <block id="a54e766cb8511b4b8768f1ba8fef2b0b" category="paragraph">本ドキュメントでは、NetApp®ストレージシステムをオンプレミス、パブリッククラウドインフラサービス（IaaS）環境、ハイブリッドクラウドのいずれで運用している場合でも、Ansible Playbookとカスタムスクリプトを使用して、SAP Landscape Management（LaMa）に統合する方法について説明します。この統合により、SAP管理者は、NetApp Snapshot™およびNetApp FlexClone®テクノロジを使用して、SAPシステムの更新タスクを高速化できます。</block>
+  <block id="3ed6d491000fa37ba8451c450195b4d8" category="paragraph">本ドキュメントは、Ansibleの自動化にあまり経験がない（またはまったく経験がない）SAPシステム管理者を対象としています。Ansibleの使用を開始し、最初のプレイブックを実行し、SAP LaMaベースの最初のシステム更新処理を設定して実行するのに役立ちます。</block>
+  <block id="0bd125fc3eb80484cd714efb009c33da" category="paragraph">SAPシステムのコピーは、SAPシステムのクローニング、SAPシステムのコピー、SAPシステムの更新という3つのプロセスの同義語としてよく使用されます。ワークフローとユースケースが異なるため、処理を区別することが重要です。</block>
+  <block id="984d103d2ea6cdfaf50c6458b93d5060" category="list-text">* SAPシステムのクローン*。SAPシステムクローンは、ソースSAPシステムの同一のクローンです。SAPシステムクローンは、一般に論理的な破損に対処したり、ディザスタリカバリのシナリオをテストしたりするのに使用されます。システムのクローニング処理では、ホスト名、インスタンス番号、およびSecure Identifier（SID；セキュア識別子）は同じままです。そのため、本番環境と通信できないように、ターゲットシステムの適切なネットワークフェンシングを設定することが重要です。</block>
+  <block id="a06496f6b8f5d994759b94c9bc228c07" category="list-text">* SAPシステムのコピー*。SAPシステムのコピーは、ソースSAPシステムのデータを使用して新しいターゲットSAPシステムをセットアップすることです。たとえば、本番システムのデータを含む追加のテストシステムを新しいターゲットシステムにすることができます。ソース・システムとターゲット・システムでは、ホスト名、インスタンス番号、およびSIDが異なります。</block>
+  <block id="a4806533200f7204846fc0516880a512" category="list-text">* SAPシステムの更新*。SAPシステムの更新とは、既存のターゲットSAPシステムをソースSAPシステムのデータで更新することです。ターゲットシステムは通常、品質管理システムなどのSAPトランスポート環境の一部であり、本番用システムのデータで更新されます。ソース・システムとターゲット・システムでは、ホスト名、インスタンス番号、およびSIDが異なります。</block>
+  <block id="9e5ec677b1b1648311e97cf94e0b2d0e" category="paragraph">次の図はNetApp、SAPシステムのLaMaストレージに関連するクローニング、コピー、更新の各ワークフローの手順を示しています。</block>
+  <block id="f74def37972ee4394be8cad5651663f7" category="inline-image-macro">NetAppstorageに関連するSAPシステムのLaMaのクローニング、コピー、更新の各ワークフロー手順を示す図</block>
+  <block id="26fa64ddac14c561cb8700ddd04d2768" category="paragraph"><block ref="26fa64ddac14c561cb8700ddd04d2768" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="54881e79c7640a505cefd7ba1f3b20cc" category="list-text">SAP LaMaシステム</block>
+  <block id="4eebc5ed40ce93bfc87d749fb237b7a3" category="list-text">NetAppストレージシステム</block>
+  <block id="0bbb1b0fa380975becacfe2ebad8efcb" category="list-text">SAPホストエージェントがインストールされたAnsibleコントロールノード。Red Hat Ansible Automation Platformを使用することを推奨します。Red Hat Ansible Automation Platformには次のようなメリットがあります。</block>
+  <block id="3a02ab6c19eb5b6b13f624909cbdd908" category="list-text">AIを使用して自動化タスクに関するコードの推奨事項を生成</block>
+  <block id="9ed57c8ba167159dadbe28961386f0ee" category="list-text">イベントドリブンな自動化で手動タスクを削減</block>
+  <block id="585e67e2ba5c513b961c51dd9ccc25fd" category="list-text">定義され、一貫性があり、移植性が高い</block>
+  <block id="c2348bd887e6c8f4e4cb3e1ecc4c7168" category="list-text">環境全体で自動化を拡張</block>
+  <block id="ba9d2fdcf1098320fd5ab8e8940c1d46" category="list-text">事前パッケージ化されたコンテンツで自動化を加速</block>
+  <block id="ea936622c0742d5330429e7e68527d8a" category="list-text">豊富なレポート機能とオブザーバビリティ指標による自動化の追跡と管理</block>
+  <block id="4db35d276f281c64f50cfa4e820ff070" category="list-text">タスク、モジュール、プレイブックの作成</block>
+  <block id="352646e3f8da3248d7552209da6eab5f" category="paragraph">次の図は、SAPホストエージェントから実行されたシェルスクリプトによってトリガーされる、SAP LaMaストレージシステムとNetAppストレージシステムが、専用のAnsibleホスト上のAnsible Playbookを介してどのように統合されるかを示しています。</block>
+  <block id="a4afd73c26d98d43a41848b904c8e361" category="inline-image-macro">SAP LaMaストレージシステムとNetAppストレージシステムが、専用のAnsibleホスト上のAnsible Playbookを介して統合される様子を示す画像。SAPホストエージェントから実行されたシェルスクリプトによってトリガーされます。</block>
+  <block id="209692e856fceee655a52e1abaa65592" category="paragraph"><block ref="209692e856fceee655a52e1abaa65592" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="385f57610e19e7eac92f41a1dc35251b" category="paragraph">インフラレイヤとデータベースレイヤで必要なタスクを高速化、自動化するには、SAP LaMaとNetAppのクローニングワークフローを使用します。SAP LaMaでは、ソースシステムからターゲットシステムにバックアップをリストアする代わりに、NetApp SnapshotとFlexCloneテクノロジを使用しているため、次の図に示すように、データベースを起動するために必要なタスクを数時間ではなく数分で実行できます。クローニングプロセスに要する時間はデータベースのサイズに左右されないため、非常に大規模なシステムでも数分で作成できます。オペレーティングシステムとデータベースレイヤ、およびSAPのポストプロセス側のタスクを自動化することで、実行時間をさらに短縮できます。</block>
+  <block id="4babb6cd725c24c36d2e3770f6a5f825" category="inline-image-macro">自動化を使用すると運用効率が向上する可能性があることを示す画像</block>
+  <block id="e9bcb357a56a02c9bd8533df7d0dd0ca" category="paragraph"><block ref="e9bcb357a56a02c9bd8533df7d0dd0ca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1b99d3bbfb2ea06147cee599d13b4d4d" category="paragraph">Ansibleを使用してSAP LaMaをNetAppストレージシステムと統合するには、Ansible Playbookを実行できるノードが必要です。Ansible Automation Platformの使用を推奨します。SAP LaMaから起動したこのホストでシェルスクリプトとAnsible Playbookを実行するには、このサーバでSAPホストエージェントを実行する必要があります。SAP Host AgentはSAP LaMaとの双方向通信を引き継ぎ、実際のプレイブックをトリガーするシェルスクリプトを実行します。</block>
+  <block id="a1350e44a1de9e3b2a31107d1a80273c" category="paragraph">この疎結合アーキテクチャにより、SAP LaMaだけでなく、SAP LaMa外からもワークフローを自由に開始できます。プレイブックと対応するロジックは1回だけ設定する必要があり、さまざまなシナリオやユースケースで使用できます。</block>
+  <block id="992397c8c640ca562524a875b68a5b54" category="paragraph">NetApp、SAP LaMa、Ansible自動化プラットフォームを組み合わせることで、SAPシステム管理に関連する最も複雑で時間のかかるタスクに必要な時間と労力を大幅に削減できる強力なソリューションを提供します。また、この組み合わせは、人為的ミスがシステム間で引き起こす構成のずれを回避するのにも役立ちます。</block>
+  <block id="c28874e4beb098c91d1e1c3be126df41" category="paragraph">システムの更新、コピー、クローン、ディザスタリカバリのテストは非常に機密性の高い手順であるため、このようなソリューションを実装すると、貴重な管理時間を節約できます。また、SAPシステム管理者に対する組織の他の組織の信頼を強化することもできます。テストなどの目的でシステムをコピーするのがどれだけ簡単か、トラブルシューティングにかかる時間をどれだけ節約できるかがわかります。</block>
+  <block id="8aadfa67c47b74f799fb7a826a48ba03" category="inline-link-macro">NetApp ONTAP®向けAnsible Playbookを使用した運用の自動化</block>
+  <block id="9f642d22ffdfa2b795d80b29088d3fb0" category="list-text"><block ref="9f642d22ffdfa2b795d80b29088d3fb0" category="inline-link-macro-rx"></block></block>
+  <block id="3ddd20790842649d51a5cc4b6f01db26" category="inline-link-macro">NetApp固有のAnsibleドキュメント</block>
+  <block id="f12dd99ccfdacc7ea0c21003056e4741" category="list-text"><block ref="f12dd99ccfdacc7ea0c21003056e4741" category="inline-link-macro-rx"></block></block>
+  <block id="fef9e784fccd2c3b2ebf4bfcd80e0305" category="inline-link-macro">NetApp ONTAP Ansibleモジュールと完全なドキュメント</block>
+  <block id="0603ed1da71fc41c57bbabf1699bdbde" category="list-text"><block ref="0603ed1da71fc41c57bbabf1699bdbde" category="inline-link-macro-rx"></block></block>
+  <block id="bdbdb20cc2fc78414e07344a2494b8a4" category="inline-link-macro">Red Hat Ansible自動化プラットフォーム</block>
+  <block id="b4da856a893c686c8e2e2539db5024fe" category="list-text"><block ref="b4da856a893c686c8e2e2539db5024fe" category="inline-link-macro-rx"></block></block>
+  <block id="16734dca3a95bfa535c02733aff6eba1" category="cell">03.2023</block>
+  <block id="8badbfef801c8224f9c3f8be1ed7b075" category="cell">01.2024</block>
+  <block id="30f75d5b61876317b00ce9486a8a0160" category="cell">見直しと若干の修正</block>
+  <block id="922130bb4d233bc9ae97cdcc043fb765" category="list-text"><block ref="922130bb4d233bc9ae97cdcc043fb765" category="inline-link-macro-rx"></block></block>
+  <block id="b111feeb1a57d6042e16d90fef6de225" category="list-text"><block ref="b111feeb1a57d6042e16d90fef6de225" category="inline-link-macro-rx"></block></block>
+  <block id="497e8a2b3efcb98884dd2467a68d0809" category="list-text"><block ref="497e8a2b3efcb98884dd2467a68d0809" category="inline-link-macro-rx"></block></block>
+  <block id="f4f158efc25013d7991ed21314e14f62" category="list-text"><block ref="f4f158efc25013d7991ed21314e14f62" category="inline-link-macro-rx"></block></block>
+  <block id="5cbfe26b0216d2cab45c3572761c632a" category="list-text"><block ref="5cbfe26b0216d2cab45c3572761c632a" category="inline-link-macro-rx"></block></block>
+  <block id="2d054d2c04367ef468912c670a8d2ce8" category="list-text"><block ref="2d054d2c04367ef468912c670a8d2ce8" category="inline-link-macro-rx"></block></block>
+  <block id="411b5f626e19bcfe479b7a04afe0a756" category="sidebar">AnsibleとNetApp SnapCenterによるSAP自動化</block>
+  <block id="286f4dd45534d6e8839dc5cb0fc36cee" category="sidebar">AlpacaとNetApp SnapCenterによるSAP自動化</block>
+  <block id="314dcde42b7b98639a9e719950095987" category="sidebar">AvantraとNetApp SnapCenterによるSAP自動化</block>
 </blocks>
