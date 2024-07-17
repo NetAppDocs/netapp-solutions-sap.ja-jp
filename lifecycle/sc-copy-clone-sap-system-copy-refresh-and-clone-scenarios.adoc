@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html 
-keywords: sap system refresh, system copy, system clone, 
-summary: SAPシステムのコピーという用語は、SAPシステムの更新、SAPシステムのコピー、SAPシステムのクローニングの3つの処理を同義語としてよく使用されます。ワークフローとユースケースはそれぞれ異なるため、異なる処理を区別することが重要です。 
+permalink: lifecycle/sc-copy-clone-sap-system-copy-refresh-and-clone-scenarios.html 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAPのライフサイクル管理を最適化するNetAppソリューションは、SAP HANAデータベースとライフサイクル管理ツールに統合されており、効率的なアプリケーション統合データプロテクションと、SAPテストシステムの柔軟なプロビジョニングが組み合わされています。 
 ---
 = SAPシステムのコピー、更新、クローニングのシナリオ
 :hardbreaks:
@@ -13,7 +13,6 @@ summary: SAPシステムのコピーという用語は、SAPシステムの更�
 :imagesdir: ./../media/
 
 
-[role="lead"]
 SAPシステムの更新、SAPシステムのコピー、SAPシステムのクローニングの3つのプロセスの同義語としてよく使用されます。ワークフローとユースケースはそれぞれ異なるため、異なる処理を区別することが重要です。
 
 * * SAPシステムの更新。* SAPシステムの更新は、ソースSAPシステムのデータを使用した既存のターゲットSAPシステムの更新です。ターゲットシステムは、通常、品質管理システムなどのSAP転送環境の一部であり、本番用システムのデータで更新されます。ソース・システムとターゲット・システムでは、ホスト名、インスタンス番号、およびSIDが異なります。
@@ -21,10 +20,6 @@ SAPシステムの更新、SAPシステムのコピー、SAPシステムのク�
 * * SAPシステムのクローン。* SAPシステムのクローンは、ソースSAPシステムの同一クローンです。SAPシステムクローンは、一般に論理的な破損に対処したり、ディザスタリカバリのシナリオをテストしたりするのに使用されます。システムのクローニング処理では、ホスト名、インスタンス番号、およびSIDの値は変更されません。そのため、本番環境と通信できないように、ターゲットシステムの適切なネットワークフェンシングを設定することが重要です。
 
 
-次の図に、システムの更新、システムのコピー、またはシステムのクローン処理中に実行する必要がある主な手順を示します。青のボックスはSnapCenter で自動化できる手順を示し、緑のボックスは手動またはサードパーティのツールを使用してSnapCenter の外部で実行する必要がある手順を示しています。
+次の図は、システム更新、システムコピー、またはシステムクローンの処理中に実行する必要がある主な手順を示しています。青のボックスはSnapCenterで自動化できる手順を示し、グレーのボックスは手動またはサードパーティのツールを使用してSnapCenter以外で実行する必要がある手順を示します。
 
-3つの運用はすべて、SAP LaMaとネットアップのStorage Services Connectorを使って完全に自動化できます。詳細については、を参照してください https://www.netapp.com/us/media/tr-4018.pdf["NetApp ONTAP システムとSAP Landscape Managementの統合"^]。
-
-ネットアップはLibelleでも協力してきました https://www.libelle.com["www.libelle.com"^] SnapCenter クローニングをLibelle SystemCopyと統合して、SAPのプリ/ポストプロセスを自動化すること。詳細な 解決策 概要 については、を参照してください link:https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/libelle-sc-overview.html["Libelle SystemCopyによるSAPシステムコピー処理の自動化"^]。
-
-image:sc-copy-clone-image2.png["エラー：グラフィックイメージがありません"]
+image:sc-copy-clone-image2.png[""]

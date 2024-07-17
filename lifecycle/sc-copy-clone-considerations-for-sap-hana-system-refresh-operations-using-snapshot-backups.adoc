@@ -1,0 +1,131 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-considerations-for-sap-hana-system-refresh-operations-using-snapshot-backups.html 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAPのライフサイクル管理を最適化するNetAppソリューションは、SAP HANAデータベースとライフサイクル管理ツールに統合されており、効率的なアプリケーション統合データプロテクションと、SAPテストシステムの柔軟なプロビジョニングが組み合わされています。 
+---
+= ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理に関する考慮事項
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+
+
+== ターゲットシステムのテナント名
+
+SAP HANAシステムの更新を実行する手順は、次の図に示すように、ソースシステムのテナント構成とターゲットシステムで必要なテナント名によって異なります。
+
+システムデータベースにはテナント名が設定されているため、システムデータベースのリカバリ後にターゲットシステムでもソースシステムのテナント名を使用できます。そのため、ターゲットシステムのテナントは、オプション1に示すように、ソーステナントと同じ名前でしかリカバリできません。ターゲットシステムでテナント名を異なる名前にする必要がある場合は、最初にソーステナントと同じ名前でテナントをリカバリし、必要なターゲットテナント名に変更する必要があります。これはオプション2です。
+
+ただし、テナント名がシステムのSIDと同じであるシングルテナントのSAP HANAシステムは例外です。これは、SAP HANAの初回インストール後のデフォルトの設定です。この特定の構成は、SAP HANAデータベースによってフラグ付けされます。この場合、ターゲットシステムでのテナントリカバリは、ターゲットシステムのテナント名を使用して実行できます。この名前は、ターゲットシステムのシステムSIDと同じである必要もあります。このワークフローをオプション3に示します。
+
+
+NOTE: この設定フラグは、テナントの作成、名前変更、削除処理がソースシステムで実行されるとすぐにSAP HANAデータベースによって削除されます。したがって、構成をTenant = SIDの状態に戻しても、フラグは使用できなくなり、ワークフロー3でのテナントのリカバリに関する例外は実行できなくなります。この場合、必要なワークフローはオプション2です。
+
+image:sc-copy-clone-image10.png[""]
+
+image:sc-copy-clone-image11.png[""]
+
+
+
+== SAP HANAの暗号化を有効にしたシステム更新ワークフロー
+
+SAP HANAの永続性暗号化を有効にしている場合は、ターゲットシステムでSAP HANAデータベースをリカバリする前に追加の手順が必要です。
+
+ソースシステムで、システムデータベースおよびすべてのテナントデータベースの暗号化ルートキーのバックアップを作成する必要があります。リカバリ処理を実行する前に、バックアップファイルをターゲットシステムにコピーし、ルートキーをバックアップからインポートする必要があります。
+
+も参照してください https://help.sap.com/docs/SAP_HANA_PLATFORM/6b94445c94ae495c83a19646e7c3fd56/b1e7562e2c704c19bd86f2f9f4feedc4.html["『 SAP HANA Administration Guide 』をご覧ください"]。
+
+
+
+=== ルートキーのバックアップ
+
+ルートキーに変更があった場合は、常にルートキーのバックアップが必要です。backupコマンドでは、CLIパラメータとしてDBIDを指定する必要があります。DBIDは、次のSQLステートメントを使用して識別できます。
+
+image:sc-copy-clone-image12.png[""]
+
+SQLステートメントおよびその他のドキュメントについては、『SAP HANA Admin Guide』を参照してください。 https://help.sap.com/docs/SAP_HANA_PLATFORM/6b94445c94ae495c83a19646e7c3fd56/b1e7562e2c704c19bd86f2f9f4feedc4.html["ルートキーのバックアップ| SAPヘルプポータル"] 以下の手順は、シングルテナントSS1を使用するHANAシステムに必要な処理を示しており、ソースシステムで実行されます。
+
+. システムおよびテナント（SS1）データベースのバックアップパスワードを設定します（まだ設定していない場合）。
+
+
+....
+hdbsql SYSTEMDB=> ALTER SYSTEM SET ENCRYPTION ROOT KEYS BACKUP PASSWORD Netapp123;
+0 rows affected (overall time 3658.128 msec; server time 3657.967 msec)
+hdbsql SYSTEMDB=>
+hdbsql SS1=> ALTER SYSTEM SET ENCRYPTION ROOT KEYS BACKUP PASSWORD Netapp123;
+0 rows affected (overall time 2424.236 msec; server time 2424.010 msec)
+hdbsql SS1=>
+....
+. システムおよびテナント（SS1）データベースのルートキーのバックアップを作成します。
+
+
+....
+ss1adm@hana-1:/usr/sap/SS1/home> /usr/sap/SS1/HDB00/exe/hdbnsutil -backupRootKeys root-key-backup-SS1-SYSTEMDB.rkb --dbid=1 --type='ALL'
+Exporting root key backup for database SYSTEMDB (DBID: 1) to /usr/sap/SS1/home/root-key-backup-SS1-SYSTEMDB.rkb
+done.
+ss1adm@hana-1:/usr/sap/SS1/home> /usr/sap/SS1/HDB00/exe/hdbnsutil -backupRootKeys root-key-backup-SS1-SS1.rkb --dbid=3 --type='ALL'
+Exporting root key backup for database SS1 (DBID: 3) to /usr/sap/SS1/home/root-key-backup-SS1-SS1.rkb
+done.
+....
+. ルートキーのバックアップの検証（オプション）
+
+
+....
+ss1adm@hana-1:/usr/sap/SS1/home> ls -al root*
+-rw-r----- 1 ss1adm sapsys 1440 Apr 24 07:00 root-key-backup-SS1-SS1.rkb
+-rw-r----- 1 ss1adm sapsys 1440 Apr 24 06:54 root-key-backup-SS1-SYSTEMDB.rkb
+ss1adm@hana-1:/usr/sap/SS1/home>
+
+ss1adm@hana-1:/usr/sap/SS1/home> /usr/sap/SS1/HDB00/exe/hdbnsutil -validateRootKeysBackup root-key-backup-SS1-SS1.rkb
+Please Enter the password:
+Successfully validated SSFS backup file /usr/sap/SS1/home/root-key-backup-SS1-SS1.rkb
+done.
+
+ss1adm@hana-1:/usr/sap/SS1/home> /usr/sap/SS1/HDB00/exe/hdbnsutil -validateRootKeysBackup root-key-backup-SS1-SYSTEMDB.rkb
+Please Enter the password:
+Successfully validated SSFS backup file /usr/sap/SS1/home/root-key-backup-SS1-SYSTEMDB.rkb
+done.
+....
+
+
+=== ターゲットシステムでのルートキーのインポート
+
+最初のシステム更新処理では、最初にルートキーをインポートする必要があります。ソースシステムでルートキーが変更されていない場合は、追加のインポートは必要ありません。importコマンドでは、CLIパラメータとしてDBIDを指定する必要があります。DBIDは、ルートキーのバックアップと同じ方法で識別できます。
+
+. このセットアップでは、ルートキーがソースシステムからNFS共有にコピーされます。
+
+
+....
+hana-1:~ # cp /usr/sap/SS1/home/root-key-backup-SS1-SS1.rkb /mnt/sapcc-share/SAP-System-Refresh/
+hana-1:~ # cp /usr/sap/SS1/home/root-key-backup-SS1-SYSTEMDB.rkb /mnt/sapcc-share/SAP-System-Refresh/
+....
+. これで、hdbnsutilを使用してルートキーをインポートできるようになりました。コマンドでは、システムおよびテナントデータベースのDBIDを指定する必要があります。バックアップパスワードも必要です。
+
+
+....
+qs1adm@hana-7:/usr/sap/QS1/HDB11> ./exe/hdbnsutil -recoverRootKeys /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SYSTEMDB.rkb --dbid=1 --type=ALL
+Please Enter the password:
+Importing root keys for DBID: 1 from /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SYSTEMDB.rkb
+Successfully imported root keys from /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SYSTEMDB.rkb
+done.
+
+qs1adm@hana-7:/usr/sap/QS1/HDB11> ./exe/hdbnsutil -recoverRootKeys /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SS1.rkb --dbid=3 --type=ALL Please Enter the password:
+Importing root keys for DBID: 3 from /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SS1.rkb
+Successfully imported root keys from /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SS1.rkb
+done.
+qs1adm@hana-7:/usr/sap/QS1/HDB11>
+....
+
+
+=== ルートキーのインポート（ターゲットにDBIDが存在しない場合）
+
+前の章で説明したように、DBIDは、システムおよびすべてのテナントデータベースのルートキーをインポートするために必要です。システムデータベースでは常にDBID=0ですが、テナントデータベースでは異なるDBIDを使用できます。
+
+image:sc-copy-clone-image13.png[""]
+
+上の出力は、DBID=3、DBID=4の2つのテナントを示しています。ターゲットシステムがDBID=4のテナントをまだホストしていない場合、ルートキーのインポートは失敗します。その場合は、まずシステムデータベースをリカバリしてから、DBID=4のテナントのキーをインポートする必要があります。

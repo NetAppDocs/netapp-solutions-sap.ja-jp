@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-supported-infrastructure-and-scenarios.html 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAPのライフサイクル管理を最適化するNetAppソリューションは、SAP HANAデータベースとライフサイクル管理ツールに統合されており、効率的なアプリケーション統合データプロテクションと、SAPテストシステムの柔軟なプロビジョニングが組み合わされています。 
+---
+= サポートされるインフラとシナリオ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+このドキュメントでは、オンプレミスのNetAppシステム、Amazon FSx for NetApp ONTAPシステム、およびAzure NetApp Filesで実行されるSAP HANAシステムの更新とクローニングのシナリオについて説明します。ただし、すべてのストレージプラットフォームですべての機能とシナリオを使用できるわけではありません。次の表は、サポートされる構成をまとめたものです。
+
+このドキュメントでは、オンプレミスのNetAppシステムで実行されるSAP HANAランドスケープを使用し、NFSをストレージプロトコルとして使用しています。ワークフローの手順のほとんどは、プラットフォームごとに同じです。違いがある場合は、このドキュメントで説明します。
+
+[cols="25%,25%,25%,25%"]
+|===
+|  | *オンプレミスのNetAppシステム* | * AWS FSx for NetApp ONTAP * | * Azure NetApp Files * 
+
+
+| ストレージプロトコル | NFS、ファイバチャネル | NFS | NFS 
+
+
+| シンクローン（FlexClone） | はい。 | はい。 | いいえ。現在のANFバージョンでは、クローンボリュームは常にスプリットされます。 
+
+
+| クローンスプリット処理 | はい。 | はい。 | N/A 
+
+
+| フライマリカラノクロニンク | はい。 | はい。 | はい。 
+
+
+| オフサイトバックアップからのクローニング | はい。 | はい。 | いいえ 
+
+
+| DRサイトでのクローニング | はい。 | はい。 | はい。ただしSnapCenterには統合されていません。 
+|===
