@@ -36,7 +36,7 @@ BlueXP Connectorは、お客様の仮想ネットワーク内に導入する必�
 オンプレミスストレージとクラウドバケット間のデータ転送は、保存中のAES 256ビット暗号化、転送中のTLS / HTTPS暗号化、顧客管理キー（CMK）のサポートによってエンドツーエンドで保護されます。[+]
 バックアップされたデータは、書き換えや削除が不可能なWORM状態で保存できます。オブジェクトストレージからデータにアクセスする唯一の方法は、NetApp CVOを含むNetApp ONTAPベースのストレージにデータをリストアすることです。
 
-image:hana-hycl-back-image1.png["Ein Bild, das Text, Screenshot, Diagramm, Kreis enth ä lt.Automatisch generierte Beschreibung、width=624、height=450"]
+image::hana-hycl-back-image1.png[アインビルト",624,450]
 
 
 

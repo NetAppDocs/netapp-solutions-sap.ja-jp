@@ -31,7 +31,7 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 
 次の図に示すように、SAP HANAデータベースとライフサイクル管理ツールにSAPのライフサイクル管理を最適化するネットアップのソリューションが統合されています。効率的なアプリケーション統合データプロテクションに、SAPのテストシステムを柔軟にプロビジョニングすることができます。これらのソリューションは、オンプレミスのSAP HANAにも、Azure NetApp Files（ANF）やAmazon FSx for NetApp ONTAP（FSx for ONTAP）のクラウドで実行されているSAP HANAにも対応しています。
 
-image:sc-copy-clone-image1.png[""]
+image::sc-copy-clone-image1.png[SCコピークローンイメージ1]
 
 
 

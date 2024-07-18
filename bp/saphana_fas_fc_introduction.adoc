@@ -39,7 +39,7 @@ SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオ�
 
 NetApp FAS ストレージコントローラは、 NFS （ NAS ）プロトコルとファイバチャネル（ SAN ）プロトコルを使用した、 SAP HANA の TDI プログラムで認定されています。これらは、シングルホスト構成またはマルチホスト構成の SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、任意の SAP HANA シナリオに導入できます。SAP HANA での使用が認定されているサーバは、認定ストレージの解決策と組み合わせることができます。アーキテクチャの概要については、次の図を参照してください。
 
-image:saphana_fas_fc_image1.png["エラー：グラフィックイメージがありません"]
+image::saphana_fas_fc_image1.png[エラー：グラフィックイメージがありません]
 
 生産性の高いSAP HANAシステムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。
 

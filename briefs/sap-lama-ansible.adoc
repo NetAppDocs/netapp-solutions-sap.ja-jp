@@ -43,7 +43,7 @@ SAPシステムのコピーは、SAPシステムのクローニング、SAPシ�
 
 次の図はNetApp、SAPシステムのLaMaストレージに関連するクローニング、コピー、更新の各ワークフローの手順を示しています。
 
-image:sap-lama-image1.png["NetAppstorageに関連するSAPシステムのLaMaのクローニング、コピー、更新の各ワークフロー手順を示す図"]
+image::sap-lama-image1.png[NetAppstorageに関連するSAPシステムのLaMaのクローニング、コピー、更新の各ワークフロー手順を示す図]
 
 
 
@@ -68,7 +68,7 @@ image:sap-lama-image1.png["NetAppstorageに関連するSAPシステムのLaMaの
 
 次の図は、SAPホストエージェントから実行されたシェルスクリプトによってトリガーされる、SAP LaMaストレージシステムとNetAppストレージシステムが、専用のAnsibleホスト上のAnsible Playbookを介してどのように統合されるかを示しています。
 
-image:sap-lama-image2.png["SAP LaMaストレージシステムとNetAppストレージシステムが、専用のAnsibleホスト上のAnsible Playbookを介して統合される様子を示す画像。SAPホストエージェントから実行されたシェルスクリプトによってトリガーされます。"]
+image::sap-lama-image2.png[SAP LaMaストレージシステムとNetAppストレージシステムが、専用のAnsibleホスト上のAnsible Playbookを介して統合される様子を示す画像。SAPホストエージェントから実行されたシェルスクリプトによってトリガーされます。]
 
 
 
@@ -80,7 +80,7 @@ image:sap-lama-image2.png["SAP LaMaストレージシステムとNetAppストレ
 
 次の図は、自動化を使用すると運用効率が向上する可能性があることを示しています。
 
-image:sap-lama-image3.png["自動化を使用すると運用効率が向上する可能性があることを示す画像"]
+image::sap-lama-image3.png[自動化を使用すると運用効率が向上する可能性があることを示す画像]
 
 
 

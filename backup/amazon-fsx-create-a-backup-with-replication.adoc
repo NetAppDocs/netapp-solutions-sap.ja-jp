@@ -18,11 +18,11 @@ summary: このセクションでは、レプリケーションを使用して�
 
 レプリケーションを伴うバックアップを作成するには、バックアップレプリケーションを含むポリシーを選択し、バックアップをクリックします。
 
-image:amazon-fsx-image88.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image88.png[エラー：グラフィックイメージがありません]
 
 SnapCenter ジョブログには、SnapVault 更新処理を開始するセカンダリアップデートステップが表示されます。レプリケーションによって変更されたブロックがソースボリュームからターゲットボリュームにレプリケートされます。
 
-image:amazon-fsx-image89.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image89.png[エラー：グラフィックイメージがありません]
 
 ONTAP ファイル・システムのFSXでは、SnapCenter ポリシーで設定されているように、SnapMirrorラベル「SnapCenter 」を使用してソース・ボリューム上のSnapshotが作成されます。
 
@@ -52,8 +52,8 @@ FsxId05f7f00af49dc7a3e::>
 ....
 HANAのバックアップカタログにも新しいSnapshotバックアップが表示されます。
 
-image:amazon-fsx-image90.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image90.png[エラー：グラフィックイメージがありません]
 
 SnapCenter では、トポロジビューのバックアップコピーをクリックして、レプリケートされたバックアップのリストを表示できます。
 
-image:amazon-fsx-image91.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image91.png[エラー：グラフィックイメージがありません]

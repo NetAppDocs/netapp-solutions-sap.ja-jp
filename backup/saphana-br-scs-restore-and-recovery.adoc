@@ -109,10 +109,10 @@ NOTE: リカバリなしを選択した場合は、 SnapCenter が終了し、�
 NOTE: プライマリまたはオフサイトのバックアップストレージからリストアを選択できます。
 
 +
-image:saphana-br-scs-image96.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image96.png[エラー：グラフィックイメージがありません]
 
 +
-image:saphana-br-scs-image97.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image97.png[エラー：グラフィックイメージがありません]
 
 . リストアの範囲とタイプを選択します。
 +
@@ -126,19 +126,19 @@ image:saphana-br-scs-image97.png["エラー：グラフィックイメージが�
 NOTE: ボリュームリバートオプションは、 NFS でプライマリからのリストア処理でのみ使用できます。
 
 +
-image:saphana-br-scs-image98.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image98.png[エラー：グラフィックイメージがありません]
 
 +
 オフサイトのバックアップストレージからリストアする場合のリストアタイプのオプション。
 
 +
-image:saphana-br-scs-image99.jpeg["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image99.jpeg[エラー：グラフィックイメージがありません]
 
 +
 ファイバチャネル SAN を使用してプライマリストレージからリストアする場合のリストアタイプのオプション。
 
 +
-image:saphana-br-scs-image100.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image100.png[エラー：グラフィックイメージがありません]
 
 . Recovery Scope を選択し、ログバックアップとカタログバックアップの場所を指定します。
 +
@@ -146,27 +146,27 @@ image:saphana-br-scs-image100.png["エラー：グラフィックイメージが
 NOTE: SnapCenter では、 HANA の global.ini ファイルのデフォルトパスまたは変更されたパスを使用して、ログとカタログのバックアップの場所が事前に入力されます。
 
 +
-image:saphana-br-scs-image101.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image101.png[エラー：グラフィックイメージがありません]
 
 . オプションのリストア前のコマンドを入力します
 +
-image:saphana-br-scs-image102.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image102.png[エラー：グラフィックイメージがありません]
 
 . オプションのリストア後のコマンドを入力します。
 +
-image:saphana-br-scs-image103.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image103.png[エラー：グラフィックイメージがありません]
 
 . オプションの E メール設定を入力します。
 +
-image:saphana-br-scs-image104.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image104.png[エラー：グラフィックイメージがありません]
 
 . リストア処理を開始するには、 [ 完了 ] をクリックします。
 +
-image:saphana-br-scs-image105.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image105.png[エラー：グラフィックイメージがありません]
 
 . SnapCenter によってリストアおよびリカバリ処理が実行されます。この例は、リストアジョブとリカバリジョブのジョブの詳細を表示しています。
 +
-image:saphana-br-scs-image106.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image106.png[エラー：グラフィックイメージがありません]
 
 
 
@@ -214,7 +214,7 @@ hdbsql SYSTEMDB=>
 ....
 . SnapCenter で、リストア処理に使用するバックアップを選択します。
 +
-image:saphana-br-scs-image107.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image107.png[エラー：グラフィックイメージがありません]
 
 . リストアするテナントを選択します。
 +
@@ -222,35 +222,35 @@ image:saphana-br-scs-image107.png["エラー：グラフィックイメージが
 NOTE: SnapCenter に、選択したバックアップに含まれるすべてのテナントのリストが表示されます。
 
 +
-image:saphana-br-scs-image108.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image108.png[エラー：グラフィックイメージがありません]
 
 +
 シングルテナントリカバリは、 SnapCenter 4.3 ではサポートされていません。リカバリは事前に選択されておらず、変更することはできません。
 
 +
-image:saphana-br-scs-image109.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image109.png[エラー：グラフィックイメージがありません]
 
 . オプションのリストア前のコマンドを入力します
 +
-image:saphana-br-scs-image110.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image110.png[エラー：グラフィックイメージがありません]
 
 . オプションのリストア後のコマンドを入力します。
 +
-image:saphana-br-scs-image111.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image111.png[エラー：グラフィックイメージがありません]
 
 . オプションの E メール設定を入力します。
 +
-image:saphana-br-scs-image112.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image112.png[エラー：グラフィックイメージがありません]
 
 . リストア処理を開始するには、 [ 完了 ] をクリックします。
 +
-image:saphana-br-scs-image113.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image113.png[エラー：グラフィックイメージがありません]
 
 +
 リストア処理は SnapCenter によって実行されます。この例は、リストアジョブのジョブの詳細を表示します。
 
 +
-image:saphana-br-scs-image114.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image114.png[エラー：グラフィックイメージがありません]
 
 +
 
@@ -290,44 +290,44 @@ sm1adm@hana-2:/usr/sap/SM1/HDB00>
 ....
 . HANA Studio でリカバリを開始します。
 +
-image:saphana-br-scs-image115.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image115.png[エラー：グラフィックイメージがありません]
 
 . テナントを選択します。
 +
-image:saphana-br-scs-image116.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image116.png[エラー：グラフィックイメージがありません]
 
 . リカバリのタイプを選択します。
 +
-image:saphana-br-scs-image117.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image117.png[エラー：グラフィックイメージがありません]
 
 . バックアップカタログの場所を指定します。
 +
-image:saphana-br-scs-image118.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image118.png[エラー：グラフィックイメージがありません]
 
 +
-image:saphana-br-scs-image119.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image119.png[エラー：グラフィックイメージがありません]
 
 +
 バックアップカタログ内で、リストアされたバックアップが緑のアイコンで強調表示されます。外部バックアップ ID には、 SnapCenter で以前に選択されたバックアップ名が表示されます。
 
 . 緑のアイコンが表示されたエントリを選択し、次へをクリックします。
 +
-image:saphana-br-scs-image120.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image120.png[エラー：グラフィックイメージがありません]
 
 . ログのバックアップ先を指定します。
 +
-image:saphana-br-scs-image121.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image121.png[エラー：グラフィックイメージがありません]
 
 . 必要に応じて、他の設定を選択します。
 +
-image:saphana-br-scs-image122.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image122.png[エラー：グラフィックイメージがありません]
 
 . テナントのリカバリ処理を開始します。
 +
-image:saphana-br-scs-image123.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image123.png[エラー：グラフィックイメージがありません]
 
 +
-image:saphana-br-scs-image124.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image124.png[エラー：グラフィックイメージがありません]
 
 
 
@@ -381,26 +381,26 @@ NOTE: FC を使用する SAP HANA マルチホスト環境では、データベ�
 
 . SAP HANA Studio で、 Recover System Database オプションを選択して、システムデータベースのリカバリを開始します。
 +
-image:saphana-br-scs-image125.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image125.png[エラー：グラフィックイメージがありません]
 
 . [OK] をクリックして、 SAP HANA データベースをシャットダウンします。
 +
-image:saphana-br-scs-image126.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image126.png[エラー：グラフィックイメージがありません]
 
 +
 SAP HANA システムがシャットダウンし、リカバリウィザードが起動します。
 
 . リカバリタイプを選択して、 Next （次へ）をクリックします。
 +
-image:saphana-br-scs-image127.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image127.png[エラー：グラフィックイメージがありません]
 
 . バックアップカタログの場所を指定し、 [ 次へ ] をクリックします。
 +
-image:saphana-br-scs-image128.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image128.png[エラー：グラフィックイメージがありません]
 
 . バックアップカタログの内容に基づいて、使用可能なバックアップのリストが表示されます。必要なバックアップを選択し、外部バックアップ ID をメモします。この例では、最新バックアップを選択します。
 +
-image:saphana-br-scs-image129.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image129.png[エラー：グラフィックイメージがありません]
 
 . すべてのデータボリュームをアンマウントします。
 +
@@ -417,7 +417,7 @@ NOTE: FC を使用する SAP HANA マルチホストセットアップでは、�
 
 . SnapCenter の GUI で、リソーストポロジビューを選択し、リストアするバックアップを選択します。この例では、最新のプライマリバックアップを選択します。リストアアイコンをクリックして、リストアを開始します。
 +
-image:saphana-br-scs-image130.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image130.png[エラー：グラフィックイメージがありません]
 
 +
 SnapCenter リストアウィザードが起動します。
@@ -427,38 +427,38 @@ SnapCenter リストアウィザードが起動します。
 ボリュームベースのリストアを使用するには、 [ リソース全体 ] を選択します。
 
 +
-image:saphana-br-scs-image131.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image131.png[エラー：グラフィックイメージがありません]
 
 . すべてのファイルに単一ファイルの SnapRestore 操作を使用するには、 [ ファイルレベルとすべて ] を選択します。
 +
-image:saphana-br-scs-image132.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image132.png[エラー：グラフィックイメージがありません]
 
 +
 
 NOTE: SAP HANA マルチホストシステムのファイルレベルのリストアを実行する場合は、すべてのボリュームを選択します。
 
 +
-image:saphana-br-scs-image133.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image133.png[エラー：グラフィックイメージがありません]
 
 . （オプション）中央の HANA プラグインホストで実行されている SAP HANA プラグインから実行するコマンドを指定します。次へをクリックします。
 +
-image:saphana-br-scs-image134.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image134.png[エラー：グラフィックイメージがありません]
 
 . オプションのコマンドを指定し、次へをクリックします。
 +
-image:saphana-br-scs-image135.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image135.png[エラー：グラフィックイメージがありません]
 
 . 通知設定を指定して、 SnapCenter からステータス E メールとジョブログを送信できるようにします。次へをクリックします。
 +
-image:saphana-br-scs-image136.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image136.png[エラー：グラフィックイメージがありません]
 
 . 概要を確認し、 [ 完了 ] をクリックしてリストアを開始します。
 +
-image:saphana-br-scs-image137.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image137.png[エラー：グラフィックイメージがありません]
 
 . リストアジョブが開始され、アクティビティペインのログ行をダブルクリックするとジョブログが表示されます。
 +
-image:saphana-br-scs-image138.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image138.png[エラー：グラフィックイメージがありません]
 
 . リストアプロセスが完了するまで待ちます。各データベースホストで、すべてのデータボリュームをマウントします。この例では、データベースホスト上で再マウントが必要なボリュームは 1 つだけです。
 +
@@ -467,63 +467,63 @@ mount /hana/data/SP1/mnt00001
 ....
 . SAP HANA Studio に移動し、 Refresh をクリックして、使用可能なバックアップのリストを更新します。SnapCenter でリストアされたバックアップは、バックアップのリストに緑のアイコンで表示されます。バックアップを選択し、 Next （次へ）をクリックします。
 +
-image:saphana-br-scs-image139.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image139.png[エラー：グラフィックイメージがありません]
 
 . ログバックアップの場所を指定します。次へをクリックします。
 +
-image:saphana-br-scs-image140.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image140.png[エラー：グラフィックイメージがありません]
 
 . 必要に応じて、他の設定を選択します。［ デルタバックアップを使用 ］ が選択されていないことを確認します。次へをクリックします。
 +
-image:saphana-br-scs-image141.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image141.png[エラー：グラフィックイメージがありません]
 
 . リカバリ設定を確認し、 [ 完了 ] をクリックします。
 +
-image:saphana-br-scs-image142.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image142.png[エラー：グラフィックイメージがありません]
 
 . リカバリプロセスが開始されます。システムデータベースのリカバリが完了するまで待ちます。
 +
-image:saphana-br-scs-image143.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image143.png[エラー：グラフィックイメージがありません]
 
 . SAP HANA Studio で、システムデータベースのエントリを選択し、 Backup Recovery - Recover Tenant Database を開始します。
 +
-image:saphana-br-scs-image144.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image144.png[エラー：グラフィックイメージがありません]
 
 . リカバリするテナントを選択し、 Next （次へ）をクリックします。
 +
-image:saphana-br-scs-image145.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image145.png[エラー：グラフィックイメージがありません]
 
 . リカバリタイプを指定して、 Next （次へ）をクリックします。
 +
-image:saphana-br-scs-image146.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image146.png[エラー：グラフィックイメージがありません]
 
 . バックアップカタログの場所を確認し、 Next （次へ）をクリックします。
 +
-image:saphana-br-scs-image147.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image147.png[エラー：グラフィックイメージがありません]
 
 . テナントデータベースがオフラインであることを確認します。[OK] をクリックして続行します。
 +
-image:saphana-br-scs-image148.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image148.png[エラー：グラフィックイメージがありません]
 
 . システムデータベースのリカバリ前にデータボリュームのリストアが実行されたため、テナントバックアップをすぐに使用できます。緑色でハイライトされたバックアップを選択し、次へをクリックします。
 +
-image:saphana-br-scs-image149.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image149.png[エラー：グラフィックイメージがありません]
 
 . ログのバックアップ先を確認し、 Next （次へ）をクリックします。
 +
-image:saphana-br-scs-image150.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image150.png[エラー：グラフィックイメージがありません]
 
 . 必要に応じて、他の設定を選択します。［ デルタバックアップを使用 ］ が選択されていないことを確認します。次へをクリックします。
 +
-image:saphana-br-scs-image151.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image151.png[エラー：グラフィックイメージがありません]
 
 . [ 完了 ] をクリックして、リカバリ設定を確認し、テナントデータベースのリカバリプロセスを開始します。
 +
-image:saphana-br-scs-image152.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image152.png[エラー：グラフィックイメージがありません]
 
 . リカバリが完了してテナントデータベースが起動するまで待ちます。
 +
-image:saphana-br-scs-image153.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image153.png[エラー：グラフィックイメージがありません]
 
 +
 SAP HANA システムは稼働中です。

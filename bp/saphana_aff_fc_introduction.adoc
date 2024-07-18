@@ -55,7 +55,7 @@ SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオ�
 
 NetApp AFF ストレージシステムは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、アーキテクチャの概要を示します。
 
-image:saphana_aff_fc_image1.png["エラー：グラフィックイメージがありません"]
+image::saphana_aff_fc_image1.png[エラー：グラフィックイメージがありません]
 
 生産性の高いSAP HANAシステムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。
 

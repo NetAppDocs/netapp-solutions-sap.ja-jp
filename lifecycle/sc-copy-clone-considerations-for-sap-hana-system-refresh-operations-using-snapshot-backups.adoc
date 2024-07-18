@@ -26,9 +26,9 @@ SAP HANAシステムの更新を実行する手順は、次の図に示すよう
 
 NOTE: この設定フラグは、テナントの作成、名前変更、削除処理がソースシステムで実行されるとすぐにSAP HANAデータベースによって削除されます。したがって、構成をTenant = SIDの状態に戻しても、フラグは使用できなくなり、ワークフロー3でのテナントのリカバリに関する例外は実行できなくなります。この場合、必要なワークフローはオプション2です。
 
-image:sc-copy-clone-image10.png[""]
+image::sc-copy-clone-image10.png[SCコピークローンイメージ10]
 
-image:sc-copy-clone-image11.png[""]
+image::sc-copy-clone-image11.png[SCコピークローンイメージ11]
 
 
 
@@ -46,7 +46,7 @@ SAP HANAの永続性暗号化を有効にしている場合は、ターゲット
 
 ルートキーに変更があった場合は、常にルートキーのバックアップが必要です。backupコマンドでは、CLIパラメータとしてDBIDを指定する必要があります。DBIDは、次のSQLステートメントを使用して識別できます。
 
-image:sc-copy-clone-image12.png[""]
+image::sc-copy-clone-image12.png[SCコピークローンイメージ12]
 
 SQLステートメントおよびその他のドキュメントについては、『SAP HANA Admin Guide』を参照してください。 https://help.sap.com/docs/SAP_HANA_PLATFORM/6b94445c94ae495c83a19646e7c3fd56/b1e7562e2c704c19bd86f2f9f4feedc4.html["ルートキーのバックアップ| SAPヘルプポータル"] 以下の手順は、シングルテナントSS1を使用するHANAシステムに必要な処理を示しており、ソースシステムで実行されます。
 
@@ -126,6 +126,6 @@ qs1adm@hana-7:/usr/sap/QS1/HDB11>
 
 前の章で説明したように、DBIDは、システムおよびすべてのテナントデータベースのルートキーをインポートするために必要です。システムデータベースでは常にDBID=0ですが、テナントデータベースでは異なるDBIDを使用できます。
 
-image:sc-copy-clone-image13.png[""]
+image::sc-copy-clone-image13.png[SCコピークローンイメージ13]
 
 上の出力は、DBID=3、DBID=4の2つのテナントを示しています。ターゲットシステムがDBID=4のテナントをまだホストしていない場合、ルートキーのインポートは失敗します。その場合は、まずシステムデータベースをリカバリしてから、DBID=4のテナントのキーをインポートする必要があります。

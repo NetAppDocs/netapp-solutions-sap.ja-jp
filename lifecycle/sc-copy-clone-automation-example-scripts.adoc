@@ -36,7 +36,7 @@ NOTE: このサンプルスクリプトは現状のまま提供されており�
 
 NOTE: 現在のバージョンのスクリプトは、シングルホストシステムMDCのシングルテナント構成、またはMDCのマルチテナント構成をサポートしています。SAP HANAマルチホストシステムはサポートされていません。
 
-image:sc-copy-clone-image14.png[""]
+image::sc-copy-clone-image14.png[SCコピークローンイメージ14]
 
 
 
@@ -68,7 +68,7 @@ image:sc-copy-clone-image14.png[""]
 
 NOTE: このスクリプトは、NFSをストレージプロトコルとして使用するSAP HANAシステムをサポートします。
 
-image:sc-copy-clone-image15.png[""]
+image::sc-copy-clone-image15.png[SCコピークローンイメージ15]
 
 
 

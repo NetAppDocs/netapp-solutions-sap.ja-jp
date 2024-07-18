@@ -34,6 +34,6 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 
 NOTE: システムを別のSnapshotバックアップにリセットする必要がある場合は、手順6と手順4で十分です。SAP HANA共有ボリュームの更新は必要ありません。
 
-image:sc-copy-clone-image9.png[""]
+image::sc-copy-clone-image9.png[SCコピークローンイメージ9]
 
 を参照してください link:sc-copy-clone-sap-system-clone-with-snapcenter.html["「SnapCenter を使用したSAPシステムのクローン作成」"] システムクローンワークフローの詳細なステップバイステップの概要 を示します。

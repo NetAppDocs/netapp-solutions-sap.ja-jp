@@ -19,9 +19,11 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 
 テストやトレーニングの目的で、ソースシステムのデータをターゲットシステムで使用できるようにする必要があるシナリオは複数あります。テストおよびトレーニング用のシステムは、ソースシステムのデータで定期的に更新し、現在のデータセットでテストとトレーニングが実行されていることを確認する必要があります。このシステム更新処理は、インフラ、データベース、アプリケーションの各レイヤ上で実行される複数のタスクで構成されます。自動化のレベルによっては、数日かかる場合があります。
 
-image:sc-copy-clone-image3.png[""] SnapCenterクローニングのワークフローを使用すると、インフラレイヤとデータベースレイヤで必要なタスクを高速化、自動化できます。SnapCenterでは、ソースシステムからターゲットシステムにバックアップをリストアする代わりに、NetApp SnapshotコピーとNetApp FlexCloneテクノロジを使用しているため、起動したSAP HANAデータベースに必要なタスクを数時間ではなく数分で実行できます。クローニングプロセスに要する時間はデータベースのサイズに左右されないため、非常に大規模なシステムでも数分で作成できます。起動時間は、データベースのサイズ、およびデータベースサーバとストレージシステム間の接続によって異なります。
+image::sc-copy-clone-image3.png[SCコピークローンイメージ3]
 
-image:sc-copy-clone-image4.png[""]
+SnapCenter クローニングワークフローを使用すると、インフラレイヤとデータベースレイヤで必要なタスクを高速化し、自動化することができます。SnapCenterでは、ソースシステムからターゲットシステムにバックアップをリストアする代わりに、NetApp SnapshotコピーとNetApp FlexCloneテクノロジを使用しているため、起動したSAP HANAデータベースに必要なタスクを数時間ではなく数分で実行できます。クローニングプロセスに要する時間はデータベースのサイズに左右されないため、非常に大規模なシステムでも数分で作成できます。起動時間は、データベースのサイズ、およびデータベースサーバとストレージシステム間の接続によって異なります。
+
+image::sc-copy-clone-image4.png[SCコピークローンイメージ4]
 
 システムの更新処理のワークフローについては、を参照してください link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html["「SnapCenter でSAP HANAシステムを更新」"]
 
@@ -37,7 +39,7 @@ SAPシステムをリストアする代わりに、別の修復システムで�
 
 リペアシステムを設定する際には、柔軟性と俊敏性が重要です。NetAppのストレージベースのSnapshotバックアップを使用すると、NetApp FlexCloneテクノロジを使用して、複数の整合性のあるデータベースイメージを使用して本番用システムのクローンを作成できます。ファイルベースのバックアップからリダイレクトされたリストアを使用して修復システムを設定する場合、FlexCloneボリュームは数時間ではなく数秒で作成できます。
 
-image:sc-copy-clone-image5.png[""]
+image::sc-copy-clone-image5.png[SCコピークローンイメージ5]
 
 リペアシステムの作成ワークフローについては、を参照してください link:sc-copy-clone-sap-system-clone-with-snapcenter.html["「SnapCenter を使用したSAPシステムのクローン作成」"]
 
@@ -51,7 +53,9 @@ SnapMirrorを使用したストレージレプリケーションでは、RTOとR
 
 非同期SnapMirrorと同期SnapMirrorのディザスタリカバリテストでは、ディザスタリカバリターゲットでSnapshotバックアップとFlexCloneボリュームを使用します。
 
-image:sc-copy-clone-image6.png[""] 詳細な手順については、テクニカルレポートを参照してください。
+image::sc-copy-clone-image6.png[SCコピークローンイメージ6]
+
+詳細な手順については、テクニカルレポートを参照してください。
 
 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-dr-sr_pdf_link.html["TR-4646：『SAP HANA Disaster Recovery with Storage Replication』（netapp.com）"]
 

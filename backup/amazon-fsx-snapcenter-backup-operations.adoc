@@ -28,21 +28,21 @@ summary: ここでは、オンデマンドのSnapshotバックアップの作成
 
 . 一番上の行で、 Back Up Now （今すぐバックアップ）アイコンを選択して、オンデマンドバックアップを開始します。
 +
-image:amazon-fsx-image48.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image48.png[エラー：グラフィックイメージがありません]
 
 . ドロップダウン・リストから'バックアップ・ポリシーLocalSnapを選択し'[Backup]をクリックして'オンデマンド・バックアップを開始します
 +
-image:amazon-fsx-image49.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image49.png[エラー：グラフィックイメージがありません]
 
 +
-image:amazon-fsx-image50.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image50.png[エラー：グラフィックイメージがありません]
 
 +
 前の5つのジョブのログは、Topologyビューの下部にあるActivity領域に表示されます。
 
 . ジョブの詳細は、 [ アクティビティ ] 領域でジョブのアクティビティ行をクリックすると表示されます。ログの表示をクリックすると、詳細なジョブログを開くことができます
 +
-image:amazon-fsx-image51.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image51.png[エラー：グラフィックイメージがありません]
 
 +
 バックアップが完了すると、トポロジビューに新しいエントリが表示されます。バックアップ名は、セクションで定義した Snapshot 名と同じ命名規則に従っています link:amazon-fsx-snapcenter-configuration.html#configure-and-protect-a-hana-resource["「HANAリソースを構成して保護する」"]
@@ -51,16 +51,16 @@ image:amazon-fsx-image51.png["エラー：グラフィックイメージがあ�
 トポロジビューを閉じてから再度開いて、更新されたバックアップリストを確認する必要があります。
 
 +
-image:amazon-fsx-image52.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image52.png[エラー：グラフィックイメージがありません]
 
 +
 SAP HANA のバックアップ・カタログでは、 SnapCenter のバックアップ名は「 Comment 」フィールドと「 External Backup ID （ EBID ）」フィールドとして保存されます。次の図に、システムデータベースとテナントデータベースPFXの次の図を示します。
 
 +
-image:amazon-fsx-image53.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image53.png[エラー：グラフィックイメージがありません]
 
 +
-image:amazon-fsx-image54.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image54.png[エラー：グラフィックイメージがありません]
 
 
 
@@ -82,19 +82,19 @@ sapcc-hana-svm::>
 
 ポリシーBlockIntegrityCheckを選択すると、Snapshotバックアップジョブと同様にオンデマンドでブロック整合性チェック処理が実行されます。このポリシーを使用してバックアップをスケジュールすると、 SnapCenter によってシステムデータベースとテナントデータベース用の標準の SAP HANA ファイルバックアップが作成されます。
 
-image:amazon-fsx-image55.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image55.png[エラー：グラフィックイメージがありません]
 
-image:amazon-fsx-image56.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image56.png[エラー：グラフィックイメージがありません]
 
 SnapCenter では、 Snapshot コピーベースのバックアップと同じ方法でブロック整合性チェックが表示されません。代わりに、サマリーカードには、ファイルベースのバックアップの数と、以前のバックアップのステータスが表示されます。
 
-image:amazon-fsx-image57.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image57.png[エラー：グラフィックイメージがありません]
 
 SAP HANA のバックアップカタログには、システムデータベースとテナントデータベースの両方のエントリが表示されます。次の図は、システムとテナントデータベースのバックアップカタログ内のSnapCenter ブロックの整合性チェックを示しています。
 
-image:amazon-fsx-image58.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image58.png[エラー：グラフィックイメージがありません]
 
-image:amazon-fsx-image59.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image59.png[エラー：グラフィックイメージがありません]
 
 ブロック整合性チェックが成功すると、標準の SAP HANA データバックアップファイルが作成されます。SnapCenter では、ファイルベースのデータバックアップ処理に、HANAデータベースで設定されたバックアップパスが使用されます。
 

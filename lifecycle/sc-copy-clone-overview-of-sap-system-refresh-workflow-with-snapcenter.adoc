@@ -45,7 +45,7 @@ SnapCenterを使用したSAPシステムの更新ワークフローは、次の�
 
 
 
-image:sc-copy-clone-image7.png[""]
+image::sc-copy-clone-image7.png[SCコピークローンイメージ7]
 
 ほとんどの場合、ターゲットテスト/QAシステムは少なくとも数週間使用されます。FlexCloneボリュームがソースシステムボリュームのSnapshotをブロックしているため、このSnapshotには、ソースシステムボリュームでのブロック変更率に基づいて追加の容量が必要になります。本番ソースシステムで1日あたりの平均変更率が20%の場合、ブロックされたSnapshotは5日後に100%に達します。そのため、NetAppでは、クローンが本番用のソースシステムに基づいている場合は、FlexCloneボリュームをすぐにスプリットするか、数日後にスプリットすることを推奨しています。クローンスプリット処理ではクローンボリュームの使用はブロックされないため、HANAデータベースの使用中にいつでも実行できます。
 
@@ -87,6 +87,6 @@ NOTE: 以前にスプリットされていた古いデータボリュームは�
 
 
 
-image:sc-copy-clone-image8.png[""]
+image::sc-copy-clone-image8.png[SCコピークローンイメージ8]
 
 を参照してください link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html["「SnapCenter でSAP HANAシステムを更新」"] に、両方のシステム更新ワークフローの詳しい手順概要 を示します。

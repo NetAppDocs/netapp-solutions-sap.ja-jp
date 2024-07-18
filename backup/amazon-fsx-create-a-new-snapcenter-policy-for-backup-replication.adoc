@@ -18,34 +18,34 @@ summary: このセクションでは、バックアップレプリケーショ�
 
 . ポリシーの名前を指定します。
 +
-image:amazon-fsx-image79.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image79.png[エラー：グラフィックイメージがありません]
 
 . Snapshotバックアップとスケジュール頻度を選択します。通常、Dailyはバックアップのレプリケーションに使用されます。
 +
-image:amazon-fsx-image80.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image80.png[エラー：グラフィックイメージがありません]
 
 . Snapshotバックアップの保持期間を選択します。
 +
-image:amazon-fsx-image81.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image81.png[エラー：グラフィックイメージがありません]
 
 +
 これは、プライマリストレージで作成された日単位のSnapshotバックアップの保持です。SnapVault ターゲットでのセカンダリバックアップの保持設定は、ONTAP レベルでadd ruleコマンドを使用してすでに設定されています。「ONTAP ファイルシステムのFSXでのレプリケーション関係の構成」（xref）を参照してください。
 
 +
-image:amazon-fsx-image82.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image82.png[エラー：グラフィックイメージがありません]
 
 . Update SnapVault フィールドを選択し、カスタムラベルを指定します。
 +
 このラベルは、「add rule」コマンドでONTAP レベルで指定されたSnapMirrorラベルと一致する必要があります。
 
 +
-image:amazon-fsx-image83.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image83.png[エラー：グラフィックイメージがありません]
 
 +
-image:amazon-fsx-image84.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image84.png[エラー：グラフィックイメージがありません]
 
 
 
 これで新しいSnapCenter ポリシーが設定されました。
 
-image:amazon-fsx-image85.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image85.png[エラー：グラフィックイメージがありません]

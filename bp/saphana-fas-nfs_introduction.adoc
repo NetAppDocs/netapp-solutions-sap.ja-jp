@@ -67,7 +67,7 @@ NOTE: オペレーティングシステムの構成ガイドラインと、 HANA
 
 NetApp FAS ストレージコントローラは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。アーキテクチャの概要については、次の図を参照してください。
 
-image:saphana-fas-nfs_image1.png["エラー：グラフィックイメージがありません"]
+image::saphana-fas-nfs_image1.png[エラー：グラフィックイメージがありません]
 
 本番用SAP HANAシステムの前提条件と推奨事項の詳細については、次のSAPリソースを参照してください。
 

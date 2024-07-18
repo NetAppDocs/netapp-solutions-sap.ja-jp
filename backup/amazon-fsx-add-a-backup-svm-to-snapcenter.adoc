@@ -18,14 +18,14 @@ SnapCenter にバックアップSVMを追加するには、次の手順を実行
 
 . SnapVault ターゲットボリュームが配置されているSVMをSnapCenter に設定します。
 +
-image:amazon-fsx-image76.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image76.png[エラー：グラフィックイメージがありません]
 
 . [その他のオプション]ウィンドウで、プラットフォームとして[すべてのFlash FAS ]を選択し、[セカンダリ]を選択します。
 +
-image:amazon-fsx-image77.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image77.png[エラー：グラフィックイメージがありません]
 
 
 
 これで、SVMをSnapCenter で使用できるようになります。
 
-image:amazon-fsx-image78.png["エラー：グラフィックイメージがありません"]
+image::amazon-fsx-image78.png[エラー：グラフィックイメージがありません]

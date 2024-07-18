@@ -15,7 +15,7 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 
 次のセクションでは、SAP HANAデータベースのさまざまなシステム更新処理オプションについて、ステップバイステップの概要 を示します。
 
-image:sc-copy-clone-image7.png[""]
+image::sc-copy-clone-image7.png[SCコピークローンイメージ7]
 
 SAP HANAデータベースの設定に応じて、追加の手順を実行するか、準備が必要です。次の表に概要を示します。
 
@@ -105,7 +105,7 @@ MDCの複数のテナント
 
 すべてのSAP HANAシステムは、構成ガイドに基づいて設定する必要があります https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。SnapCenterとSAP HANAのリソースは、ベストプラクティスガイドに基づいて設定されました https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]。
 
-image:sc-copy-clone-image16.png[""]
+image::sc-copy-clone-image16.png[SCコピークローンイメージ16]
 
 
 
@@ -145,7 +145,7 @@ hana-7:/opt/NetApp/snapcenter/scc/etc #
 
 ここでは、SAP HANAシステムの更新ワークフローについて説明します。このワークフローでは、ソースシステムとターゲットシステムのテナント名がSIDと同じになります。ストレージのクローニングはプライマリストレージで実行され、スクリプトによってリカバリが自動化され `sc-system-refresh.sh`ます。
 
-image:sc-copy-clone-image17.png[""]
+image::sc-copy-clone-image17.png[SCコピークローンイメージ17]
 
 このワークフローは、次の手順で構成されます。
 
@@ -180,7 +180,7 @@ image:sc-copy-clone-image17.png[""]
 . ソースシステムSS1からSnapshotバックアップを選択し、[Clone]をクリックします。
 
 
-image:sc-copy-clone-image18.png[""]
+image::sc-copy-clone-image18.png[SCコピークローンイメージ18]
 
 . ターゲットシステムQS1がインストールされているホストを選択します。ターゲットSIDとして「QS1」と入力します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。
 +
@@ -193,28 +193,28 @@ NOTE: クローニングのワークフローを開始する前に、ターゲ�
 
 
 
-image:sc-copy-clone-image19.png[""]
+image::sc-copy-clone-image19.png[SCコピークローンイメージ19]
 
 ファイバチャネルSANのセットアップでは、エクスポートIPアドレスは必要ありませんが、次の画面で使用するプロトコルを指定する必要があります。
 
 
 NOTE: スクリーンショットは、ファイバチャネル接続を使用した別のラボセットアップを示しています。
 
-image:sc-copy-clone-image20.png[""]
+image::sc-copy-clone-image20.png[SCコピークローンイメージ20]
 
-image:sc-copy-clone-image21.png[""]
+image::sc-copy-clone-image21.png[SCコピークローンイメージ21]
 
 Azure NetApp Filesと手動のQoS容量プールを使用している場合は、新しいボリュームのスループットを最大化する必要があります。容量プールに十分なヘッドルームがあることを確認してください。そうしないと、クローニングワークフローが失敗します。
 
 
 NOTE: スクリーンショットは、Azure NetApp Filesを使用したMicrosoft Azureで実行される別のラボセットアップを示しています。
 
-image:sc-copy-clone-image22.png[""]
+image::sc-copy-clone-image22.png[SCコピークローンイメージ22]
 
 . 必要なコマンドラインオプションを指定して、オプションのクローニング後スクリプトを入力します。この例では、クローニング後のスクリプトを使用してSAP HANAデータベースのリカバリを実行します。
 
 
-image:sc-copy-clone-image23.png[""]
+image::sc-copy-clone-image23.png[SCコピークローンイメージ23]
 
 
 NOTE: 前述したように、リカバリスクリプトの使用はオプションです。SnapCenterクローニングのワークフローが終了したあとに、手動でリカバリを実行することもできます。
@@ -225,7 +225,7 @@ NOTE: リカバリ処理用スクリプトは、ログのクリア処理を使�
 . SnapCenter の[ジョブの詳細]画面に、処理の進捗状況が表示されます。ジョブの詳細には、データベースリカバリを含めた全体的な実行時間が3分未満であることも示されています。
 
 
-image:sc-copy-clone-image24.png[""]
+image::sc-copy-clone-image24.png[SCコピークローンイメージ24]
 
 . スクリプトのログファイル `sc-system-refresh` には、リカバリ処理で実行されたさまざまなステップが表示されます。このスクリプトは、システムデータベースからテナントのリストを読み取り、既存のすべてのテナントのリカバリを実行します。
 
@@ -266,21 +266,21 @@ hana-7:/mnt/sapcc-share/SAP-System-Refresh
 . SnapCenter ジョブが完了すると、ソースシステムのトポロジビューにクローンが表示されます。
 
 
-image:sc-copy-clone-image25.png[""]
+image::sc-copy-clone-image25.png[SCコピークローンイメージ25]
 
 . SAP HANAデータベースが実行されます。
 . ターゲットのSAP HANAシステムを保護する場合は、ターゲットシステムのリソースをクリックして自動検出を実行する必要があります。
 
 
-image:sc-copy-clone-image26.png[""]
+image::sc-copy-clone-image26.png[SCコピークローンイメージ26]
 
 自動検出プロセスが完了すると、新しいクローンボリュームがストレージフットプリントセクションに表示されます。
 
-image:sc-copy-clone-image27.png[""]
+image::sc-copy-clone-image27.png[SCコピークローンイメージ27]
 
 リソースを再度クリックすると、更新したQS1システムのデータ保護を設定できます。
 
-image:sc-copy-clone-image28.png[""]
+image::sc-copy-clone-image28.png[SCコピークローンイメージ28]
 
 
 
@@ -288,13 +288,15 @@ image:sc-copy-clone-image28.png[""]
 
 ここでは、ソースシステムとターゲットシステムのテナント名がSIDと同じであるSAP HANAシステムの更新ワークフローについて説明します。ストレージのクローニングはオフサイトのバックアップストレージで実行され、スクリプトsc-system-refresh.shを使用してさらに自動化されます。
 
-image:sc-copy-clone-image29.png[""] プライマリとオフサイトのバックアップストレージのクローニングでSAP HANAシステムの更新ワークフローが異なるのは、SnapCenterでSnapshotバックアップを選択することだけです。オフサイトのバックアップストレージのクローニングでは、まずセカンダリバックアップを選択し、次にSnapshotバックアップを選択する必要があります。
+image::sc-copy-clone-image29.png[SCコピークローンイメージ29]
 
-image:sc-copy-clone-image30.png[""]
+プライマリとオフサイトのバックアップストレージのクローニングでSAP HANAシステムの更新ワークフローが異なるのは、SnapCenterでSnapshotバックアップを選択することだけです。オフサイトのバックアップストレージのクローニングでは、まずセカンダリバックアップを選択し、次にSnapshotバックアップを選択する必要があります。
+
+image::sc-copy-clone-image30.png[SCコピークローンイメージ30]
 
 選択したバックアップにセカンダリストレージの場所が複数ある場合は、必要なデスティネーションボリュームを選択する必要があります。
 
-image:sc-copy-clone-image31.png[""]
+image::sc-copy-clone-image31.png[SCコピークローンイメージ31]
 
 以降の手順は、プライマリストレージからのクローニングのワークフローと同じです。
 
@@ -304,7 +306,7 @@ image:sc-copy-clone-image31.png[""]
 
 このセクションでは、複数のテナントを使用したSAP HANAシステムの更新ワークフローについて説明します。ストレージのクローニングはプライマリストレージで実行され、スクリプトを使用してさらに自動化され `sc-system-refresh.sh`ます。
 
-image:sc-copy-clone-image32.png[""]
+image::sc-copy-clone-image32.png[SCコピークローンイメージ32]
 
 SnapCenterで必要な手順は、「テナント名がSIDと等しいプライマリストレージからのクローニング」セクションで説明した手順と同じです。唯一の違いは、スクリプト内でのテナントリカバリ処理で、すべてのテナントがリカバリされる点です `sc-system-refresh.sh`。
 
@@ -375,17 +377,17 @@ TENANT1) and starting recovery
 . ソースシステムのトポロジビューでクローンを選択し、[Delete]をクリックします。
 
 
-image:sc-copy-clone-image33.png[""]
+image::sc-copy-clone-image33.png[SCコピークローンイメージ33]
 
 . 必要なコマンドラインオプションを使用して、クローニング前スクリプトとアンマウント後スクリプトを入力します。
 
 
-image:sc-copy-clone-image34.png[""]
+image::sc-copy-clone-image34.png[SCコピークローンイメージ34]
 
 . SnapCenter のジョブ詳細画面に処理の進捗状況が表示されます。
 
 
-image:sc-copy-clone-image35.png[""]
+image::sc-copy-clone-image35.png[SCコピークローンイメージ35]
 
 . スクリプトのログファイルに `sc-system-refresh` は、シャットダウンとアンマウントの処理手順が表示されます。
 
@@ -428,21 +430,21 @@ NOTE: Azure NetApp FilesではAzure NetApp Files、作成後に常にクロー�
 
 SnapCenter のクローンスプリットのワークフローは、クローンを選択してクローンスプリットをクリックすることで、ソースシステムのトポロジビューで開始されます。
 
-image:sc-copy-clone-image36.png[""]
+image::sc-copy-clone-image36.png[SCコピークローンイメージ36]
 
 次の画面には、スプリットボリュームに必要な容量に関する情報がプレビューで表示されます。
 
-image:sc-copy-clone-image37.png[""]
+image::sc-copy-clone-image37.png[SCコピークローンイメージ37]
 
 SnapCenter ジョブログには、クローンスプリット処理の進捗状況が表示されます。
 
-image:sc-copy-clone-image38.png[""]
+image::sc-copy-clone-image38.png[SCコピークローンイメージ38]
 
 SnapCenterのリソースビューで、ターゲットシステムQS1がクローニングされたリソースとしてマークされなくなりました。ソースシステムのトポロジビューに戻ると、クローンは表示されなくなります。スプリットボリュームは、ソースシステムのSnapshotバックアップとは独立しています。
 
-image:sc-copy-clone-image39.png[""]
+image::sc-copy-clone-image39.png[SCコピークローンイメージ39]
 
-image:sc-copy-clone-image40.png[""]
+image::sc-copy-clone-image40.png[SCコピークローンイメージ40]
 
 クローンスプリット処理後の更新ワークフローは、クローンスプリットを使用しない処理と少し異なります。クローンスプリット処理後は、ターゲットデータボリュームがFlexCloneボリュームでなくなるため、クローン削除処理は必要ありません。
 

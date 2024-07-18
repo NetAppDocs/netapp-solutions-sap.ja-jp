@@ -48,7 +48,7 @@ NOTE: 必要な権限は、 HANA 2.0 SPS5 リリースで変更されていま�
 
 NOTE: SAP HANA MDC システムの場合は、システムデータベース内にユーザを作成する必要があります。これは、システムデータベースを使用してシステムとテナントデータベースのバックアップコマンドがすべて実行されるためです。
 
-image:saphana-br-scs-image53.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image53.png[エラー：グラフィックイメージがありません]
 
 SAP HANA プラグインと SAP hdbsql クライアントがインストールされている HANA プラグインホストで、 userstore キーを設定する必要があります。
 
@@ -163,7 +163,7 @@ SnapCenter でレプリケーションの更新を管理するには、データ
 
 NOTE: SnapCenter によって SnapVault の更新がトリガーされるため、関係のスケジュールは None に設定する必要があります。
 
-image:saphana-br-scs-image54.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image54.png[エラー：グラフィックイメージがありません]
 
 次の図に、保護ポリシーを示します。保護関係に使用される保護ポリシーでは、セカンダリストレージでのバックアップの保持に加え、 SnapMirror ラベルも定義されます。この例では ' 使用されているラベルは毎日 ' 保存期間は 5 に設定されています
 
@@ -173,7 +173,7 @@ NOTE: 作成するポリシーの SnapMirror ラベルは、 SnapCenter ポリ�
 
 NOTE: オフサイトのバックアップストレージでのバックアップの保持は、ポリシーに定義され、 ONTAP によって制御されます。
 
-image:saphana-br-scs-image55.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image55.png[エラー：グラフィックイメージがありません]
 
 
 
@@ -203,18 +203,18 @@ SAP HANA システムの場合、 SID は SS2 です。
 hdbuserstore キーは、 HANA データベース SS2 用に設定されたキーと一致している必要があります。この例では、 SS2KEY です。
 
 +
-image:saphana-br-scs-image56.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image56.png[エラー：グラフィックイメージがありません]
 
 +
 
 NOTE: SAP HANA マルチホストシステムの場合、次の図に示すように、すべてのホストの hdbuserstore キーを含める必要があります。SnapCenter は、リストの最初のキーとの接続を試行し、最初のキーが機能しない場合には、他のケースとの接続を続行します。これは、ワーカーホストとスタンバイホストを使用するマルチホストシステムで HANA フェイルオーバーをサポートするために必要です。
 
 +
-image:saphana-br-scs-image57.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image57.png[エラー：グラフィックイメージがありません]
 
 .. ストレージシステム（ SVM ）とボリューム名に必要なデータを選択します。
 +
-image:saphana-br-scs-image58.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image58.png[エラー：グラフィックイメージがありません]
 
 +
 
@@ -225,14 +225,14 @@ NOTE: ファイバチャネル SAN 構成の場合は、 LUN も選択する必�
 NOTE: SAP HANA マルチホストシステムの場合は、次の図に示すように、 SAP HANA システムのすべてのデータボリュームを選択する必要があります。
 
 +
-image:saphana-br-scs-image59.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image59.png[エラー：グラフィックイメージがありません]
 
 +
 リソース構成の概要画面が表示されます。
 
 .. Finish をクリックして、 SAP HANA データベースを追加します。
 +
-image:saphana-br-scs-image60.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image60.png[エラー：グラフィックイメージがありません]
 
 .. リソース構成が完了したら、「」の説明に従って、リソース保護の構成を実行します<<リソース保護の設定>>」
 
@@ -251,17 +251,17 @@ NOTE: SAP HANA プラグインには、 Java 64 ビットバージョン 1.8 が
 . ホストタブで、追加をクリックします。
 . ホスト情報を入力し、インストールする SAP HANA プラグインを選択します。Submit をクリックします。
 +
-image:saphana-br-scs-image61.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image61.png[エラー：グラフィックイメージがありません]
 
 . フィンガープリントを確認します。
 +
-image:saphana-br-scs-image62.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image62.png[エラー：グラフィックイメージがありません]
 
 +
 HANA プラグインと Linux プラグインのインストールが自動的に開始されます。インストールが完了すると、ホストの status 列に running と表示されます。画面には、 Linux プラグインが HANA プラグインと一緒にインストールされていることも表示されます。
 
 +
-image:saphana-br-scs-image63.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image63.png[エラー：グラフィックイメージがありません]
 
 +
 プラグインのインストール後、 HANA リソースの自動検出プロセスが自動的に開始されます。[ リソース ] 画面で、新しいリソースが作成されます。このリソースは、赤い南京錠のアイコンでロックされていることが示されます。
@@ -272,21 +272,21 @@ image:saphana-br-scs-image63.png["エラー：グラフィックイメージが�
 NOTE: [ リソースの更新 ] をクリックして、 [ リソース ] 画面で自動検出プロセスを手動で開始することもできます。
 
 +
-image:saphana-br-scs-image64.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image64.png[エラー：グラフィックイメージがありません]
 
 . HANA データベースのユーザストアキーを指定します。
 +
-image:saphana-br-scs-image65.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image65.png[エラー：グラフィックイメージがありません]
 
 +
 第 2 レベルの自動検出プロセスでは、テナントのデータとストレージのフットプリントの情報が検出されます。
 
 . Details をクリックして、リソーストポロジビューで HANA リソース構成情報を確認します。
 +
-image:saphana-br-scs-image66.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image66.png[エラー：グラフィックイメージがありません]
 
 +
-image:saphana-br-scs-image67.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image67.png[エラー：グラフィックイメージがありません]
 
 +
 リソース構成が終了したら ' 次のセクションの説明に従ってリソース保護構成を実行する必要があります
@@ -318,41 +318,41 @@ NOTE: カスタムの Snapshot コピー名を使用して、どのバックア�
 NOTE: ポリシー設定でオンデマンドバックアップに対して保持が定義されていても、不要なファイルの削除は別のオンデマンドバックアップが実行されたときにのみ実行されます。そのため、通常、 SnapCenter でオンデマンドバックアップを手動で削除して、これらのバックアップが SAP HANA バックアップカタログからも削除され、ログバックアップの不要な削除が古いオンデマンドバックアップに基づいて行われないようにする必要があります。
 
 +
-image:saphana-br-scs-image68.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image68.png[エラー：グラフィックイメージがありません]
 
 
 
 . [ アプリケーションの設定 ] ページで、特定の設定を行う必要はありません。次へをクリックします。
 +
-image:saphana-br-scs-image69.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image69.png[エラー：グラフィックイメージがありません]
 
 . リソースに追加するポリシーを選択してください。
 +
-image:saphana-br-scs-image70.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image70.png[エラー：グラフィックイメージがありません]
 
 . LocalSnap ポリシーのスケジュールを定義します（この例では 4 時間ごと）。
 +
-image:saphana-br-scs-image71.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image71.png[エラー：グラフィックイメージがありません]
 
 . LocalSnapAndSnapVault ポリシーのスケジュールを定義します（この例では 1 日に 1 回）。
 +
-image:saphana-br-scs-image72.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image72.png[エラー：グラフィックイメージがありません]
 
 . ブロック整合性チェックポリシーのスケジュールを定義します（この例では週に 1 回）。
 +
-image:saphana-br-scs-image73.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image73.png[エラー：グラフィックイメージがありません]
 
 . E メール通知に関する情報を指定します。
 +
-image:saphana-br-scs-image74.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image74.png[エラー：グラフィックイメージがありません]
 
 . [ 概要 ] ページで、 [ 完了 ] をクリックします。
 +
-image:saphana-br-scs-image75.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image75.png[エラー：グラフィックイメージがありません]
 
 . トポロジページでオンデマンドバックアップを作成できるようになりました。スケジュールされたバックアップは、設定に基づいて実行されます。
 +
-image:saphana-br-scs-image76.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image76.png[エラー：グラフィックイメージがありません]
 
 
 
@@ -396,4 +396,4 @@ Exit /b 0
 
 次の図に、リソース保護設定画面での休止後のコマンドを示します。
 
-image:saphana-br-scs-image77.png["エラー：グラフィックイメージがありません"]
+image::saphana-br-scs-image77.png[エラー：グラフィックイメージがありません]

@@ -34,7 +34,7 @@ NOTE: システムを別のSnapshotバックアップにリセットする必要
 . SAP HANA共有ボリュームのSnapCenterクローン削除ワークフロー
 
 
-image:sc-copy-clone-image9.png[""]
+image::sc-copy-clone-image9.png[SCコピークローンイメージ9]
 
 
 
@@ -64,7 +64,7 @@ image:sc-copy-clone-image9.png[""]
 
 すべてのSAP HANAシステムは、構成ガイドに基づいて設定する必要があります https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。SnapCenterとSAP HANAのリソースは、ベストプラクティスガイドに基づいて設定されました https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]。
 
-image:sc-copy-clone-image41.png[""]
+image::sc-copy-clone-image41.png[SCコピークローンイメージ41]
 
 
 
@@ -172,12 +172,12 @@ hana-7:/opt/NetApp/snapcenter/scc/etc #
 . ソースシステムのSS1共有ボリュームからSnapshotバックアップを選択し、[Clone]をクリックします。
 
 
-image:sc-copy-clone-image42.png[""]
+image::sc-copy-clone-image42.png[SCコピークローンイメージ42]
 
 . ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDとして、ソースシステムと同じSIDを保持します。この例では、SS1。
 
 
-image:sc-copy-clone-image43.png[""]
+image::sc-copy-clone-image43.png[SCコピークローンイメージ43]
 
 . 必要なコマンドラインオプションを指定して、マウントスクリプトを入力します。
 +
@@ -186,12 +186,12 @@ NOTE: SAP HANAシステムでは、構成ガイドで推奨されているよう
 
 
 
-image:sc-copy-clone-image44.png[""]
+image::sc-copy-clone-image44.png[SCコピークローンイメージ44]
 
 . SnapCenter の[ジョブの詳細]画面に、処理の進捗状況が表示されます。
 
 
-image:sc-copy-clone-image45.png[""]
+image::sc-copy-clone-image45.png[SCコピークローンイメージ45]
 
 . sc-mount-volume.shスクリプトのログファイルには、マウント処理で実行されたさまざまな手順が表示されます。
 
@@ -220,7 +220,7 @@ Filesystem 1K-blocks Used Available Use% Mounted on
 . SnapCenter では、クローニングされたボリュームの新しいリソースが表示されます。
 
 
-image:sc-copy-clone-image46.png[""]
+image::sc-copy-clone-image46.png[SCコピークローンイメージ46]
 
 . /hana/sharedボリュームが使用可能になったので、SAP HANAサービスを開始できます。
 
@@ -259,12 +259,12 @@ hana-1:/mnt/sapcc-share/SAP-System-Refresh #
 . ソースシステムSS1からSAP HANA Snapshotバックアップを選択します。
 
 
-image:sc-copy-clone-image47.png[""]
+image::sc-copy-clone-image47.png[SCコピークローンイメージ47]
 
 . ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDとして、ソースシステムと同じSIDを保持します。この例では、SS1
 
 
-image:sc-copy-clone-image48.png[""]
+image::sc-copy-clone-image48.png[SCコピークローンイメージ48]
 
 . 必要なコマンドラインオプションを指定して、クローニング後のスクリプトを入力します。
 +
@@ -273,11 +273,11 @@ NOTE: リカバリ処理用スクリプトは、Snapshot処理の時点までSAP
 
 
 
-image:sc-copy-clone-image23.png[""]
+image::sc-copy-clone-image23.png[SCコピークローンイメージ23]
 
 SnapCenter のジョブ詳細画面に処理の進捗状況が表示されます。
 
-image:sc-copy-clone-image49.png[""]
+image::sc-copy-clone-image49.png[SCコピークローンイメージ49]
 
 スクリプトのログファイル `sc-system-refresh` には、マウント処理とリカバリ処理に対して実行されるさまざまな手順が表示されます。
 
