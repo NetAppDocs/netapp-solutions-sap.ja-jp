@@ -21,8 +21,5 @@ SAP のバックアップ、リストア、ディザスタリカバリに関す�
 
 === SAP のバックアップ、リストア、ディザスタリカバリに関するビデオとデモ
 
-* link:https://media.netapp.com/video-detail/10430dd1-8560-52fa-8f22-a7923582d66a/ensure-sap-application-availability-and-minimize-downtime["SAP アプリケーションの可用性を確保し、ダウンタイムを最小限に抑えます"^]
-* link:https://media.netapp.com/video-detail/5f6f3721-d1d0-5c1d-9ae9-d696eddb91ea/optimize-your-data-protection-for-sap-hana-on-azure-netapp-files["Azure NetApp Files で SAP HANA 向けのデータ保護を最適化"^]
 * link:https://media.netapp.com/video-detail/6b94b9c3-0862-5da8-8332-5aa1ffe86419/disaster-recovery-options-for-sap-hana["SAP HANA のディザスタリカバリオプション"^]
-* link:https://media.netapp.com/video-detail/049d4875-c8ea-5d25-9205-73c16d81177d/sap-hana-disaster-recovery-with-anf-and-cross-region-replication["ANF を使用した SAP HANA ディザスタリカバリとリージョン間レプリケーション"^]
 

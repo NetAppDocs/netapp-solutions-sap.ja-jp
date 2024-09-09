@@ -21,8 +21,6 @@ SAP Lifecycle Management を紹介するビデオとデモの概要。
 
 == SAP ライフサイクル管理のビデオとデモ
 
-* link:https://media.netapp.com/video-detail/eae1f74b-6a01-5021-9d3f-96987aa08600/decrease-risk-and-increase-quality-of-sap-projects["リスクを軽減し 'SAP プロジェクトの品質を向上"^]
 * link:https://media.netapp.com/video-detail/c1229d10-fe84-58f1-9cdf-ca3c0f9d9104/ensure-continuity-for-lines-of-business-in-the-face-of-unexpected-events["予期しないイベントに備えて、基幹業務の継続性を確保します"^]
 * link:https://media.netapp.com/video-detail/1c753169-f70d-5f2b-b798-cd09a604541c/snapcenter-use-cases["SnapCenter のユースケース"^]
-* link:https://media.netapp.com/video-detail/5ed450f9-d66b-53d9-99de-d763ea44566c/sap-system-copy-with-libelle-and-snapcenter["Libelle と SnapCenter を使用した SAP システムのコピー"^]
 
