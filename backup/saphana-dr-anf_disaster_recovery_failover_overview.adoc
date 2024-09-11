@@ -32,4 +32,4 @@ summary: ログバックアップレプリケーションがディザスタリ�
 
 以降のサブセクションで、これらの手順について詳しく説明します。次の図は、ディザスタフェイルオーバーのテストを示しています。
 
-image::saphana-dr-anf_image26.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image26.png[SAPHana DR anfイメージ26]

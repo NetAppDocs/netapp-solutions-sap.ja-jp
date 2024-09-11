@@ -20,7 +20,7 @@ AFF システム製品ファミリーのさまざまなモデルをストレー�
 
 次の図は、 8 台の SAP HANA ホストをストレージ HA ペアに接続した構成例を示しています。
 
-image::saphana_aff_fc_image2.png[エラー：グラフィックイメージがありません]
+image::saphana_aff_fc_image2.png[SAPHana AFF fc image2]
 
 このアーキテクチャは、次の 2 つの側面で拡張できます。
 
@@ -30,11 +30,11 @@ image::saphana_aff_fc_image2.png[エラー：グラフィックイメージが�
 
 次の図は、追加の SAP HANA ホストをストレージコントローラに接続した場合の構成例を示しています。この例では、 16 台の SAP HANA ホストの容量とパフォーマンスの要件を満たすために、さらにディスクシェルフが必要です。合計スループット要件に応じて、ストレージコントローラへの FC 接続を追加する必要があります。
 
-image::saphana_aff_fc_image3.png[エラー：グラフィックイメージがありません]
+image::saphana_aff_fc_image3.png[SAPHana AFF fc image3]
 
 次の図に示すように、導入した AFF システムとは関係なく、認定済みのストレージコントローラを追加することで、 SAP HANA 環境を拡張して希望するノード密度に合わせることもできます。
 
-image::saphana_aff_fc_image4.png[エラー：グラフィックイメージがありません]
+image::saphana_aff_fc_image4.png[SAPHana AFF fc image4]
 
 
 
@@ -48,7 +48,7 @@ NetApp SnapMirror テクノロジを使用すると、 1 つのストレージ�
 
 次の図に示すように、 NFS マウントを使用して、データベースログをセカンダリストレージに直接バックアップできます。
 
-image::saphana_aff_fc_image5.jpg[エラー：グラフィックイメージがありません]
+image::saphana_aff_fc_image5.jpg[SAPHana AFF fcイメージ5]
 
 ストレージベースの Snapshot バックアップは、従来のファイルベースのバックアップに比べて大きなメリットをもたらします。これには次のような利点がありますが、これらに限定されるわけではありません。
 
@@ -58,7 +58,7 @@ image::saphana_aff_fc_image5.jpg[エラー：グラフィックイメージが�
 * ブロックの変更に基づいて、スペース効率と帯域幅効率に優れたセカンダリストレージへのレプリケーションを実行します
 
 
-SAP HANA のバックアップとリカバリの解決策の詳細については、を参照してください https://www.netapp.com/us/media/tr-4614.pdf["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]。
+SAP HANAのバックアップとリカバリのソリューションの詳細については、を参照してください https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]。
 
 
 
@@ -66,7 +66,7 @@ SAP HANA のバックアップとリカバリの解決策の詳細について�
 
 SAP HANA ディザスタリカバリは、 SAP HANA システムレプリケーションを使用してデータベースレイヤで実行するか、ストレージレプリケーションテクノロジを使用してストレージレイヤで実行できます。次のセクションでは、ストレージレプリケーションに基づくディザスタリカバリソリューションの概要について説明します。
 
-SAP HANA ディザスタリカバリソリューションの詳細については、を参照してください https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf["TR-4646 ：『 SAP HANA Disaster Recovery with Storage Replication 』"^]。
+SAP HANAディザスタリカバリソリューションの詳細については、を参照してください https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-dr-sr_pdf_link.html["TR-4646 ：『 SAP HANA Disaster Recovery with Storage Replication 』"^]。
 
 
 
@@ -84,7 +84,7 @@ DR サイトのサーバは、通常運用時に開発 / テストシステム�
 
 どちらのレプリケーション方法でも、 RPO と RTO に影響を与えることなく DR ワークフローテストを実行できます。FlexClone ボリュームはストレージ上に作成され、 DR テストサーバに接続されます。
 
-image::saphana_aff_fc_image6.png[エラー：グラフィックイメージがありません]
+image::saphana_aff_fc_image6.png[SAPHana AFF fc image6]
 
 同期レプリケーションで StrictSync モードが提供されます。何らかの理由でセカンダリストレージへの書き込みが完了しないと、アプリケーション I/O が失敗し、プライマリストレージシステムとセカンダリストレージシステムが同一になります。プライマリへのアプリケーション I/O は、 SnapMirror 関係のステータスが InSync に戻るまで再開されません。プライマリストレージで障害が発生した場合は、フェイルオーバー後にデータ損失なしでアプリケーション I/O をセカンダリストレージで再開できます。StrictSync モードでは、 RPO は常にゼロです。
 
@@ -94,4 +94,4 @@ image::saphana_aff_fc_image6.png[エラー：グラフィックイメージが�
 
 次の図は、解決策の概要を示しています。各サイトのストレージクラスタがローカルで高可用性を実現し、本番環境のワークロードに使用されます。各サイトのデータはもう一方のサイトに同期的にレプリケートされ、災害のフェイルオーバー時に使用できます。
 
-image::saphana_aff_fc_image7.png[エラー：グラフィックイメージがありません]
+image::saphana_aff_fc_image7.png[SAPHana AFF fcイメージ7]

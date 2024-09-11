@@ -18,7 +18,7 @@ summary: このラボ環境では、2つ目のAWSアベイラビリティゾー�
 
 第章で説明したように link:amazon-fsx-snapcenter-architecture.html#data-protection-strategy["「データ保護戦略」"]では'レプリケーション・ターゲットは'別のアベイラビリティ・ゾーンのONTAP ファイル・システム用の2番目のFSXである必要がありますこれは'プライマリFSX for ONTAP ファイル・システムの障害から保護されるためですまた、HANA共有ボリュームをONTAP ファイルシステムのセカンダリFSXにレプリケートする必要があります。
 
-image::amazon-fsx-image8.png[エラー：グラフィックイメージがありません]
+image::amazon-fsx-image8.png[Amazon FSxイメージ8]
 
 
 

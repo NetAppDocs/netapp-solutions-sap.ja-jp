@@ -215,4 +215,4 @@ RAM のサイズ、各 SAP HANA ホストのディスク上の正味データサ
 
 次の図に、サイジングプロセスの概要を示します。
 
-image::saphana_fas_fc_image8.jpg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image8.jpg[SAPHana FAS fc image8]

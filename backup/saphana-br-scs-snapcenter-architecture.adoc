@@ -28,4 +28,4 @@ SnapCenter のカスタムプラグインを使用すると、独自のプラグ
 
 次の図は、 SnapCenter のコンポーネントを示しています。
 
-image::saphana-br-scs-image6.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image6.png[SAPHana br SCSイメージ6]

@@ -49,7 +49,7 @@ SAPをご利用のお客様は、次の図に示す手動の手順が緑で表�
 
 次の図は、SnapCenterベースのSAPシステム更新手順 の概要を示しています。
 
-image::libelle-sc-image1.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image1.png[libelle SCイメージ1]
 
 
 
@@ -61,27 +61,27 @@ image::libelle-sc-image1.png[エラー：グラフィックイメージがあり
 * 次の図に示すように、SnapCenter でストレージバックエンドが正しく設定されている必要があります。
 
 
-image::libelle-sc-image2.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image2.png[libelle SCイメージ2]
 
 次の2つの図は、SnapCenter エージェントとSAP HANAプラグインが各データベースサーバでローカルにインストールされる標準インストールを示しています。
 
 SnapCenter エージェントと適切なデータベースプラグインをソースデータベースにインストールする必要があります。
 
-image::libelle-sc-image3.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image3.png[libelle SCイメージ3]
 
 SnapCenter エージェントと適切なデータベースプラグインをターゲット・データベースにインストールする必要があります。
 
-image::libelle-sc-image4.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image4.png[libelle SCイメージ4]
 
 次の図は、SnapCenter エージェント、SAP HANAプラグイン、およびSAP HANAデータベースクライアントが一元化されたサーバ（SnapCenter サーバなど）にインストールされ、ランドスケープ内の複数のSAP HANAシステムを管理する、中央通信ホスト環境を示しています。
 
 SnapCenter エージェント、SAP HANAデータベースプラグイン、およびHANAデータベースクライアントが、中央の通信ホストにインストールされている必要があります。
 
-image::libelle-sc-image5.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image5.png[libelle SCイメージ5]
 
 Snapshotコピーを正常に作成できるように、SnapCenter でソースデータベースのバックアップが適切に設定されている必要があります。
 
-image::libelle-sc-image6.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image6.png[libelle SCイメージ6]
 
 LSCマスターおよびLSCワーカーがSAP環境にインストールされている必要があります。この展開では、SnapCenter サーバにLSCマスターをインストールし、ターゲットのSAPデータベースサーバにLSCワーカーをインストールします。このサーバは更新する必要があります。詳細については、「」を参照してください<<ラボのセットアップ>>」
 
@@ -107,7 +107,7 @@ LSCマスターおよびLSCワーカーがSAP環境にインストールされ�
 
 次の図に、SnapCenter エージェントとデータベースプラグインが、ソースおよびターゲットのデータベースサーバ上にローカルにインストールされた標準インストールを示します。このラボ環境では、SAP HANA Plug-inをインストールしました。また、ターゲットサーバにLSCワーカーもインストールされています。簡素化と仮想サーバ数の削減のために、SnapCenter サーバにLSCマスターをインストールしました。次の図は、各種コンポーネント間の通信を示しています。
 
-image::libelle-sc-image7.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image7.png[libelle SCイメージ7]
 
 
 
@@ -115,7 +115,7 @@ image::libelle-sc-image7.png[エラー：グラフィックイメージがあり
 
 次の図に、中央通信ホストを使用した設定を示します。この構成では、SnapCenter エージェントとSAP HANA Plug-inおよびHANAデータベースクライアントを専用サーバにインストールしました。このセットアップでは、SnapCenter サーバを使用して中央通信ホストをインストールしました。さらに、LSCワーカーが再びターゲットサーバにインストールされました。簡素化と仮想サーバ数の削減のため、SnapCenter サーバにLSCマスターもインストールすることにしました。次の図に、異なるコンポーネント間の通信を示します。
 
-image::libelle-sc-image8.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image8.png[libelle SCイメージ8]
 
 
 
@@ -139,7 +139,7 @@ IPアドレス、ホスト名、完全修飾ドメイン名の代わりに使用
 
 次の図は、マスタ、ワーカー、サテライト、SAPソース、SAPターゲットのLSC構成を示しています。 ソースデータベースおよびターゲットデータベース。
 
-image::libelle-sc-image9.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image9.png[libelle SCイメージ9]
 
 メイン統合のためには、設定手順を標準インストールと中央通信ホストを使用したインストールに再度分ける必要があります。
 
@@ -151,11 +151,11 @@ image::libelle-sc-image9.png[エラー：グラフィックイメージがあり
 
 次の図は、コピーフェーズのLSCタスクの設定を示しています。
 
-image::libelle-sc-image10.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image10.png[libelle SCイメージ10]
 
 次の図は'NTAP_SYSTEM_CLONEプロセスの構成を示していますPowerShellスクリプトを実行するため、このWindows PowerShellスクリプトはサテライトシステム上で実行されます。この場合、これは、サテライトシステムとしても機能する、インストールされたLSCマスターを持つSnapCenter サーバです。
 
-image::libelle-sc-image11.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image11.png[libelle SCイメージ11]
 
 LSCは、Snapshotコピー、クローニング、およびリカバリ処理が成功したかどうかを認識する必要があるため、少なくとも2つの戻りコードタイプを定義する必要があります。次の図に示すように、1つのコードはスクリプトを正常に実行するためのもので、もう1つのコードはスクリプトの実行に失敗するためのものです。
 
@@ -163,11 +163,11 @@ LSCは、Snapshotコピー、クローニング、およびリカバリ処理が
 * 実行に失敗した場合は、スクリプトから標準出力に「LSC：error」を書き込む必要があります。
 
 
-image::libelle-sc-image12.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image12.png[libelle SCイメージ12]
 
 次の図は、ソースデータベースシステムでSnapshotベースのバックアップを実行し、ターゲットデータベースシステムでクローンを実行する、PowerShellスクリプトの一部です。このスクリプトは、完全なものではありません。このスクリプトでは、LSCとSnapCenter の統合がどのように表示されるか、および設定がどの程度簡単かを示します。
 
-image::libelle-sc-image13.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image13.png[libelle SCイメージ13]
 
 スクリプトはLSCマスター（サテライトシステムでもある）上で実行されるため、SnapCenter サーバ上のLSCマスターは、SnapCenter でバックアップおよびクローニング操作を実行するための適切な権限を持つWindowsユーザとして実行する必要があります。ユーザに適切な権限があるかどうかを確認するには、SnapCenter UIでSnapshotコピーとクローンを実行できる必要があります。
 
@@ -183,11 +183,11 @@ SnapCenter サーバ自体でLSCマスターおよびLSCサテライトを実行
 * * NTAP_Mnt_RECOVER_CP。*このタスクは、ターゲットSAPシステムとSAP HANAデータベースを停止し、古いボリュームをアンマウントして、前のタスク「NTAP_SYSTEM_CLONE_CP」から渡されたパラメータに基づいて、新しく作成されたストレージクローンボリュームをマウントします。その後、ターゲットのSAP HANAデータベースがリストアおよびリカバリされます。
 
 
-image::libelle-sc-image14.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image14.png[libelle SCイメージ14]
 
 次の図は'タスク'NTAP_SYSTEM_CLONE_CP'の構成を示していますこれは、サテライトシステムで実行されるWindows PowerShellスクリプトです。この場合、サテライトシステムは、インストールされたLSCマスターを持つSnapCenter サーバになります。
 
-image::libelle-sc-image15.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image15.png[libelle SCイメージ15]
 
 LSCは、Snapshotコピーおよびクローニング処理が成功したかどうかを認識する必要があるため、次の図に示すように、少なくとも2つの戻りコードタイプを定義する必要があります。スクリプトを正常に実行するには1つの戻りコードタイプ、スクリプトの実行に失敗するにはもう1つの戻りコードタイプです。
 
@@ -195,11 +195,11 @@ LSCは、Snapshotコピーおよびクローニング処理が成功したかど
 * 実行に失敗した場合は、スクリプトから標準出力に「LSC：error」を書き込む必要があります。
 
 
-image::libelle-sc-image16.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image16.png[libelle SCイメージ16]
 
 次の図は、中央通信ホスト上のSnapCenter エージェントを使用してSnapshotコピーとクローンを実行するために実行する必要があるPowerShellスクリプトの一部を示しています。このスクリプトは完了することを意図したものではありません。代わりに、スクリプトを使用して、LSCとSnapCenter の統合がどのように見えるか、および設定がどの程度簡単かを示します。
 
-image::libelle-sc-image17.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image17.png[libelle SCイメージ17]
 
 前述したように、クローンボリュームの名前を次のタスク「NTAP_Mnt_RECOVER_CP」に渡して、ターゲットサーバでクローンボリュームをマウントする必要があります。クローン・ボリュームの名前（ジャンクション・パスとも呼ばれます）は変数「$JunctionalPath」に格納されます。後続のLSCタスクへの引き渡しは、カスタムのLSC変数によって行われます。
 
@@ -210,7 +210,7 @@ echo $JunctionPath > $_task(current, custompath1)_$
 
 次の図は'NTAP_Mnt_RECOVER_CP'タスクの構成を示していますLinuxシェルスクリプトを実行するため、これはターゲットデータベースシステムで実行されるコマンドスクリプトです。
 
-image::libelle-sc-image18.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image18.png[libelle SCイメージ18]
 
 LSCは、クローンボリュームのマウントを認識し、ターゲットデータベースのリストアとリカバリが成功したかどうかを確認する必要があるため、少なくとも2つの戻りコードタイプを定義する必要があります。1つはスクリプトを正常に実行するためのコードで、1つはスクリプトの実行に失敗したコードです。次の図に示します。
 
@@ -218,7 +218,7 @@ LSCは、クローンボリュームのマウントを認識し、ターゲッ�
 * 実行に失敗した場合は、スクリプトから標準出力に「LSC：error」を書き込む必要があります。
 
 
-image::libelle-sc-image19.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image19.png[libelle SCイメージ19]
 
 次の図に、Linux Shellスクリプトの一部を示します。このスクリプトでは、ターゲットデータベースの停止、古いボリュームのアンマウント、クローンボリュームのマウント、ターゲットデータベースのリストアとリカバリを行います。前のタスクでは、ジャンクションパスがLSC変数に書き込まれました。次のコマンドはこのLSC変数を読み取り、値をLinuxシェルスクリプトの「$JunctionalPath」変数に格納します。
 
@@ -230,7 +230,7 @@ JunctionPath=$_include($_task(NTAP_SYSTEM_CLONE_CP, custompath1)_$, 1, 1)_$
 ....
 hn6adm ALL=(root) NOPASSWD:/usr/local/bin/H06/central_plugin_host_wrapper_script.sh
 ....
-image::libelle-sc-image20.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image20.png[libelle SCイメージ20]
 
 
 
@@ -240,8 +240,8 @@ LSCとNetApp SnapCenter の間の必要な統合タスクがすべて実行さ�
 
 次の図は'標準インストールにおけるNTAP `_`SYSTEM`_CLONE」タスクを示していますこの出力からわかるように、Snapshotコピーとクローンを作成し、クローンボリュームをターゲットデータベースサーバにマウントし、ターゲットデータベースのリストアとリカバリには約14分かかりました。SnapshotとNetApp FlexCloneテクノロジを使用すれば、ソースデータベースのサイズに関係なく、このタスクの所要時間はほぼ同じです。
 
-image::libelle-sc-image21.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image21.png[libelle SCイメージ21]
 
 次の図に、セントラル通信ホストを使用する場合の「NTAP_SYSTEM_CLONE_CP」と「NTAP_Mnt_RECOVERY_CP」の2つのタスクを示します。この出力からわかるように、Snapshotコピー、クローン、ターゲットデータベースサーバへのクローンボリュームのマウント、ターゲットデータベースのリストアとリカバリには約12分かかりました。これは、標準インストールを使用する場合に、これらの手順を実行するのに必要な時間と同じか、それより短くなります。繰り返しになりますが、SnapshotとNetApp FlexCloneテクノロジを使用すれば、ソースデータベースのサイズに関係なく、これらのタスクを短時間で一貫して実行できます。
 
-image::libelle-sc-image22.png[エラー：グラフィックイメージがありません]
+image::libelle-sc-image22.png[libelle SCイメージ22]

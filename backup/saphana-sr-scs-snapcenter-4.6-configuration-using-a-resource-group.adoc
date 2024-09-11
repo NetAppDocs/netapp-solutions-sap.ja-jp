@@ -37,48 +37,48 @@ SnapCenter で HANA システムのレプリケーションを設定するには
 . 両方のホストを含むリソースグループを作成し、保護を設定します。
 
 
-image::saphana-sr-scs-image6.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image6.png[SAPHana SR SCSイメージ6]
 
 両方の HANA ホストに SnapCenter HANA プラグインをインストールすると、他の自動検出されたリソースと同じように、 HANA システムが SnapCenter リソースビューに表示されます。SnapCenter 4.6 以降では、追加の列に HANA システムレプリケーション（有効 / 無効、プライマリ / セカンダリ）のステータスが表示されます。
 
-image::saphana-sr-scs-image7.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image7.png[SAPHana SR SCSイメージ7]
 
 リソースをクリックすると、 SnapCenter は HANA システムの HANA ユーザストアキーを要求します。
 
-image::saphana-sr-scs-image8.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image8.png[SAPHana SR SCSイメージ8]
 
 追加の自動検出ステップが実行され、 SnapCenter にリソースの詳細が表示されます。SnapCenter 4.6 では、システムレプリケーションのステータスとセカンダリサーバがこのビューに表示されます。
 
-image::saphana-sr-scs-image9.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image9.png[SAPHana SR SCSイメージ9]
 
 2 つ目の HANA リソースに対して同じ手順を実行すると、自動検出プロセスが完了し、両方の HANA リソースが SnapCenter で構成されます。
 
-image::saphana-sr-scs-image10.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image10.png[SAPHana SR SCSイメージ10]
 
 HANA システムレプリケーションを有効にしたシステムでは、両方の HANA リソースを含む SnapCenter リソースグループを設定する必要があります。
 
-image::saphana-sr-scs-image11.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image11.png[SAPHana SR SCSイメージ11]
 
 Snapshot 名には、ホスト名、ポリシー、スケジュールなどを含めるカスタムの名前形式を使用することを推奨します。
 
-image::saphana-sr-scs-image12.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image12.png[SAPHana SR SCSイメージ12]
 
 リソースグループに両方の HANA ホストを追加する必要があります。
 
-image::saphana-sr-scs-image13.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image13.png[SAPHana SR SCSイメージ13]
 
 リソースグループにはポリシーとスケジュールが設定されます。
 
 
 NOTE: ポリシーで定義された保持設定は、両方の HANA ホストで使用されます。たとえば、ポリシーで保持数が 10 に定義されている場合、両方のホストのバックアップの合計がバックアップ削除の基準として使用されます。SnapCenter は、現在のプライマリホストまたはセカンダリホストに作成された最も古いバックアップを個別に削除します。
 
-image::saphana-sr-scs-image14.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image14.png[SAPHana SR SCSイメージ14]
 
 これでリソースグループの設定が終了し、バックアップを実行できるようになります。
 
-image::saphana-sr-scs-image15.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image15.png[SAPHana SR SCSイメージ15]
 
-image::saphana-sr-scs-image16.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image16.png[SAPHana SR SCSイメージ16]
 
 
 
@@ -86,38 +86,38 @@ image::saphana-sr-scs-image16.png[エラー：グラフィックイメージが�
 
 リソースグループのバックアップ処理が実行されると、 SnapCenter はどのホストがプライマリであるかを識別し、プライマリホストでのみバックアップをトリガーします。つまり、プライマリホストのデータボリュームのみが Snapshot されます。この例では、 HANA 3 が現在のプライマリホストであり、このホストでバックアップが実行されています。
 
-image::saphana-sr-scs-image17.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image17.png[SAPHana SR SCSイメージ17]
 
 SnapCenter ジョブログには、識別処理と、現在のプライマリホスト HANA でのバックアップの実行が表示されます。
 
-image::saphana-sr-scs-image18.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image18.png[SAPHana SR SCSイメージ18]
 
 これで、プライマリ HANA リソースに Snapshot バックアップが作成されました。バックアップ名に含まれるホスト名は HANA - 3 と表示されます。
 
-image::saphana-sr-scs-image19.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image19.png[SAPHana SR SCSイメージ19]
 
 HANA のバックアップカタログにも同じ Snapshot バックアップが表示されます。
 
-image::saphana-sr-scs-image20.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image20.png[SAPHana SR SCSイメージ20]
 
 テイクオーバー処理が実行されると、それ以降の SnapCenter バックアップで元のセカンダリホスト（ Hana-4 ）がプライマリとして識別され、 Hana-4 でバックアップ処理が実行されるようになります。ここでも、新しいプライマリホスト（ HANA - 4 ）のデータボリュームのみが Snapshot されています。
 
 
 NOTE: SnapCenter 識別ロジックで対応しているのは、 HANA ホストがプライマリとセカンダリの関係にあるシナリオと、 HANA ホストの 1 つがオフラインになっているシナリオだけです。
 
-image::saphana-sr-scs-image21.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image21.png[SAPHana SR SCSイメージ21]
 
 SnapCenter ジョブログには、識別処理と、現在のプライマリホスト HANA でのバックアップの実行が表示されます。
 
-image::saphana-sr-scs-image22.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image22.png[SAPHana SR SCSイメージ22]
 
 これで、プライマリ HANA リソースに Snapshot バックアップが作成されました。バックアップ名に含まれているホスト名は、 HANA のホスト名です。
 
-image::saphana-sr-scs-image23.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image23.png[SAPHana SR SCSイメージ23]
 
 HANA のバックアップカタログにも同じ Snapshot バックアップが表示されます。
 
-image::saphana-sr-scs-image24.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image24.png[SAPHana SR SCSイメージ24]
 
 
 
@@ -139,7 +139,7 @@ SnapVault ターゲットの保持管理は ONTAP by SnapCenter の外部で管�
 
 NOTE: 1 つの SnapVault コピーが同期ポイントとしてブロックされるため、すべての Snapshot コピーのクリーンアップを実行できません。最新の Snapshot コピーも削除する必要がある場合は、 SnapVault レプリケーション関係を削除してください。この場合は、 HANA のバックアップカタログ内のバックアップを削除して、ログのバックアップ保持管理のブロックを解除することを推奨します。
 
-image::saphana-sr-scs-image25.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image25.png[SAPHana SR SCSイメージ25]
 
 
 
@@ -155,7 +155,7 @@ SnapVault レプリケーションがデータ保護戦略の一部である場�
 
 次の図は、複数のテイクオーバーが実行され、両方のサイトに Snapshot バックアップが作成された場合のシナリオを示しています。現在のステータスでは、ホスト HA-3 がプライマリホスト、最新のバックアップは T4 であり、これはホスト HA-3 で作成されています。リストアおよびリカバリ処理を実行する必要がある場合、バックアップ T1 および T4 は SnapCenter のリストアとリカバリに使用できます。ホスト HA-4 （ T2 、 T3 ）で作成されたバックアップは、 SnapCenter を使用してリストアできません。リカバリのために、これらのバックアップを HANA のデータボリュームに手動でコピーする必要があります。
 
-image::saphana-sr-scs-image26.png[エラー：グラフィックイメージがありません]
+image::saphana-sr-scs-image26.png[SAPHana SR SCSイメージ26]
 
 SnapCenter 4.6 リソースグループ構成のリストアおよびリカバリ操作は ' 自動検出されたシステム以外のレプリケーション設定と同じですリストアと自動リカバリのすべてのオプションを使用できます。詳細については、テクニカルレポートを参照してください https://www.netapp.com/us/media/tr-4614.pdf["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]。
 

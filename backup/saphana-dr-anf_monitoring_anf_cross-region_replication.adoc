@@ -22,15 +22,15 @@ summary: 次に示す 3 つのスクリーンショットは、データ、ロ�
 
 次のスクリーンショットは、 HANA データボリュームのレプリケーションステータスを示しています。
 
-image::saphana-dr-anf_image14.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image14.png[SAPHana DR anfイメージ14]
 
 次のスクリーンショットは、 HANA のログバックアップボリュームのレプリケーションステータスを示しています。
 
-image::saphana-dr-anf_image15.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image15.png[SAPHana DR anfイメージ15]
 
 次のスクリーンショットは、 HANA 共有ボリュームのレプリケーションステータスを示しています。
 
-image::saphana-dr-anf_image16.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image16.png[SAPHana DR anfイメージ16]
 
 
 
@@ -41,4 +41,4 @@ image::saphana-dr-anf_image16.png[エラー：グラフィックイメージが�
 
 NOTE: ソースボリュームとターゲットボリュームに SnapMirror Snapshot コピーが作成され、再同期処理とレプリケーション更新処理にも使用されます。これらの Snapshot コピーは、 HANA データベースの観点からはアプリケーションと整合性がありません。 HANA のリカバリ処理には、 AzaCSsnap で作成されたアプリケーションと整合性のある Snapshot のみを使用できます。
 
-image::saphana-dr-anf_image17.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image17.png[SAPHana DR anfイメージ17]

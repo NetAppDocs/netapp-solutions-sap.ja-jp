@@ -39,7 +39,7 @@ SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオ�
 
 NetApp FAS ストレージコントローラは、 NFS （ NAS ）プロトコルとファイバチャネル（ SAN ）プロトコルを使用した、 SAP HANA の TDI プログラムで認定されています。これらは、シングルホスト構成またはマルチホスト構成の SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、任意の SAP HANA シナリオに導入できます。SAP HANA での使用が認定されているサーバは、認定ストレージの解決策と組み合わせることができます。アーキテクチャの概要については、次の図を参照してください。
 
-image::saphana_fas_fc_image1.png[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image1.png[SAPHana FAS fc image1]
 
 生産性の高いSAP HANAシステムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。
 
@@ -57,7 +57,6 @@ raw デバイスマッピング（ RDM ）、 FCP データストア、または
 SAP HANA での vSphere の使用の詳細については、次のリンクを参照してください。
 
 * https://wiki.scn.sap.com/wiki/display/VIRTUALIZATION/SAP+HANA+on+VMware+vSphere["SAP HANA on VMware vSphere - 仮想化 - コミュニティ Wiki"^]
-* http://www.vmware.com/files/pdf/SAP_HANA_on_vmware_vSphere_best_practices_guide.pdf["『 Best Practices and Recommendations for Scale-Up Deployments of SAP HANA on VMware vSphere 』"^]
-* http://www.vmware.com/files/pdf/sap-hana-scale-out-deployments-on-vsphere.pdf["『 Best Practices and Recommendations for Scale-Out Deployments of SAP HANA on VMware vSphere 』"^]
+* https://core.vmware.com/resource/sap-hana-vmware-vsphere-best-practices-and-reference-architecture-guide#introduction["『SAP HANA on VMware vSphere Best Practices and Reference Architecture Guide』"^]
 * https://launchpad.support.sap.com/["2161991 - VMware vSphere 設定ガイドライン - SAP One Support Launchpad （ログインが必要）"^]
 

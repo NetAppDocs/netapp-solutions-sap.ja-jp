@@ -34,7 +34,7 @@ SnapCenter では、自動検出された HANA データベースのリソース
 
 次の図は、依存関係をまとめたものです。HANA の導入オプションの詳細については、「 SAP HANA プラグインの導入オプション」を参照してください。
 
-image::saphana-br-scs-image9.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image9.png[SAPHana br SCSイメージ9]
 
 
 NOTE: HANA と Linux のプラグインは、現在、インテルベースのシステムでのみ使用できます。HANA データベースを IBM Power Systems で実行している場合は、中央の HANA プラグインホストを使用する必要があります。
@@ -101,7 +101,7 @@ NOTE: HANA プラグインが HANA データベースホストに導入されて
 
 SnapCenter サーバは、 SAP HANA プラグインを介して SAP HANA データベースと通信します。SAP HANA プラグインは、 SAP HANA hdbsql クライアントソフトウェアを使用して、 SAP HANA データベースに対して SQL コマンドを実行します。SAP HANA の hdbuserstore は、 SAP HANA データベースにアクセスするためのユーザクレデンシャル、ホスト名、ポート情報を提供するために使用されます。
 
-image::saphana-br-scs-image10.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image10.png[SAPHana br SCSイメージ10]
 
 
 NOTE: SAP HANA プラグインと SAP hdbsql クライアントソフトウェア（ hdbuserstore 設定ツールを含む）は、同じホストに一緒にインストールする必要があります。
@@ -122,7 +122,7 @@ HANA プラグインが SnapCenter サーバにインストールされている
 
 次の図に、 SnapCenter サーバを中央プラグインホストとして使用する場合の設定を示します。SAP HANA プラグインと SAP hdbsql クライアントソフトウェアは、 SnapCenter サーバにインストールされています。
 
-image::saphana-br-scs-image11.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image11.png[SAPHana br SCSイメージ11]
 
 HANA プラグインは、ネットワーク経由で hdbclient を使用して管理対象 HANA データベースと通信できるため、個々の HANA データベースホストに SnapCenter コンポーネントをインストールする必要はありません。SnapCenter では、管理対象データベースに対してすべてのユーザストアキーが設定された中央の HANA プラグインホストを使用して、 HANA データベースを保護できます。
 
@@ -139,7 +139,7 @@ HANA プラグインは、ネットワーク経由で hdbclient を使用して�
 
 NOTE: また、個別の中央プラグインホストを Windows ホストにすることもできます。
 
-image::saphana-br-scs-image12.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image12.png[SAPHana br SCSイメージ12]
 
 前のセクションで説明した機能の可用性に関する同様の制限は、別の中央プラグインホストにも適用されます。
 
@@ -151,7 +151,7 @@ image::saphana-br-scs-image12.png[エラー：グラフィックイメージが�
 
 次の図は、 SAP HANA プラグインが各 SAP HANA データベースホストにインストールされた構成を示しています。
 
-image::saphana-br-scs-image13.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image13.png[SAPHana br SCSイメージ13]
 
 HANA プラグインを各 HANA データベースホストにインストールすると、自動検出やリストアとリカバリの自動化などのすべての機能を使用できるようになります。また、 SnapCenter サーバは HA 構成でセットアップできます。
 
@@ -165,9 +165,9 @@ HANA プラグインを各 HANA データベースホストにインストール
 
 次の 2 つの図に、 SnapCenter サーバまたは別の Linux ホストを中央プラグインホストとして使用したプラグインの混在環境を示します。どちらの構成の場合も、オプションの HA 構成だけが違います。
 
-image::saphana-br-scs-image14.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image14.png[SAPHana br SCSイメージ14]
 
-image::saphana-br-scs-image15.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image15.png[SAPHana br SCSイメージ15]
 
 
 
@@ -299,7 +299,7 @@ NOTE: SAP では、 1 つ以上のテナントが停止している場合に MDC
 
 次の図に、バックアップワークフローの概要を示します。
 
-image::saphana-br-scs-image16.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image16.png[SAPHana br SCSイメージ16]
 
 
 
@@ -365,7 +365,7 @@ NOTE: この手順は、ログバックアップの不要ファイルの削除�
 
 次の図は、各種ワークフローの概要と各処理の依存関係を示しています。以降のセクションでは、さまざまな処理について詳しく説明します。
 
-image::saphana-br-scs-image17.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image17.png[SAPHana br SCSイメージ17]
 
 
 
@@ -534,7 +534,7 @@ HANA データベースに関しては、 SnapCenter は 2 つの異なるリス
 * * 手動リカバリを伴う完全なリソース。 * リカバリなしを選択すると、 SnapCenter は HANA データベースを停止し、必要なファイルシステム（アンマウント、マウント）およびリストア処理を実行します。システムデータベースとテナントデータベースを手動でリカバリする必要があります。
 
 
-image::saphana-br-scs-image18.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image18.png[SAPHana br SCSイメージ18]
 
 
 
@@ -548,7 +548,7 @@ image::saphana-br-scs-image18.png[エラー：グラフィックイメージが�
 
 ワークフローは、前のセクションで説明したものと同じです。
 
-image::saphana-br-scs-image19.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image19.png[SAPHana br SCSイメージ19]
 
 
 
@@ -558,7 +558,7 @@ image::saphana-br-scs-image19.png[エラー：グラフィックイメージが�
 
 構成した HANA の手動リソースの場合、 SnapCenter では、次の図に示すように手動リカバリのみがサポートされます。手動リカバリのワークフローは、前のセクションで説明したものと同じです。
 
-image::saphana-br-scs-image20.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image20.png[SAPHana br SCSイメージ20]
 
 
 

@@ -82,11 +82,11 @@ FabricPool は、ログバックアップを別のストレージ階層に移動
 
 HDD を使用すると、次の図に示すように、 1 つの SAS スタックに最大 2 台の DS2246 ディスクシェルフまたは 4 台の DS224C ディスクシェルフを接続することで、 SAP HANA ホストに必要なパフォーマンスを実現できます。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。
 
-image::saphana_fas_fc_image10.png[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image10.png[SAPHana FAS fc image10]
 
 SSD を使用する場合は、次の図に示すように、 1 つの SAS スタックに最大 1 台のディスクシェルフを接続して、 SAP HANA ホストに必要なパフォーマンスを実現できます。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。ディスクシェルフ DS224C では、クワッドパスの SAS ケーブルも使用できますが、必須ではありません。
 
-image::saphana_fas_fc_image11.png[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image11.png[SAPHana FAS fcイメージ11]
 
 
 
@@ -100,7 +100,7 @@ image::saphana_fas_fc_image11.png[エラー：グラフィックイメージが�
 
 次の図は、 8 台の SAP HANA ホストの構成を示しています。4 台の SAP HANA ホストが各ストレージコントローラに接続されています。各ストレージコントローラに 1 つずつ、合計 2 つのアグリゲートが構成されています。各アグリゲートには、 4 × 10 = 40 のデータディスク（ HDD ）が構成されます。
 
-image::saphana_fas_fc_image12.png[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image12.png[SAPHana FAS fcイメージ12]
 
 
 
@@ -110,7 +110,7 @@ image::saphana_fas_fc_image12.png[エラー：グラフィックイメージが�
 
 次の図は、 ADPv2 を使用した、 12Gb の SAS シェルフで稼働する、 12 台の SAP HANA ホストの構成を示しています。6 台の SAP HANA ホストが各ストレージコントローラに接続されています。各ストレージコントローラに 2 つずつ、合計 4 つのアグリゲートが構成されています。各アグリゲートには、 9 つのデータパーティションと 2 つのパリティディスクパーティションを含む 11 本のディスクが構成されます。各コントローラで、 2 つのスペアパーティションを使用できます。
 
-image::saphana_fas_fc_image13.jpg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image13.jpg[SAPHana FAS fc image13]
 
 
 
@@ -124,13 +124,13 @@ SAP HANA データベースを使用する複数ホストの SAP 環境では、
 
 ストレージクラスタ構成内に、 1 つのネットワークインターフェイス（ LIF ）を作成して専用の FCP ポートに割り当てる必要があります。たとえば、パフォーマンス上の理由から 4 つの FCP ポートが必要な場合は、 4 つの LIF を作成する必要があります。次の図に、「 HANA 」 SVM 上に設定された 4 つの LIF （「 fc_*_* 」という名前）のスクリーンショットを示します。
 
-image::saphana_fas_fc_image14.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image14.jpeg[SAPHana FAS fcイメージ14]
 
 ONTAP 9.8 の System Manager で SVM を作成する際には、必要なすべての物理 FCP ポートを選択し、物理ポートごとに 1 つの LIF を自動的に作成できます。
 
 次の図は、 ONTAP 9.8 の System Manager で SVM と LIF を作成する方法を示しています。
 
-image::saphana_fas_fc_image15.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image15.jpeg[SAPHana FAS fc image15]
 
 
 
@@ -138,7 +138,7 @@ image::saphana_fas_fc_image15.jpeg[エラー：グラフィックイメージが
 
 FCP ポートセットを使用して、特定の igroup で使用する LIF を定義できます。通常、 HANA システム用に作成されたすべての LIF が同じポートセットに配置されます。次の図は、 32G という名前のポートセットの設定を示しています。これには、すでに作成された 4 つの LIF が含まれます。
 
-image::saphana_fas_fc_image16.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image16.jpeg[SAPHana FAS fcイメージ16]
 
 
 NOTE: ONTAP 9.8 では、ポートセットは必要ありませんが、コマンドラインから作成して使用できます。
@@ -164,7 +164,7 @@ NOTE: 「 anlun 」ツールは NetApp Host Utilities の一部であり、各 S
 
 次の図は、 SS3_HANA のイニシエータのリストを示しています。igroup にはサーバのすべての WWPN が含まれており、ストレージコントローラのポートセットに割り当てられています。
 
-image::saphana_fas_fc_image17.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image17.jpeg[SAPHana FAS fc image17]
 
 
 
@@ -175,7 +175,7 @@ image::saphana_fas_fc_image17.jpeg[エラー：グラフィックイメージが
 
 NOTE: ハイアベイラビリティ（ HA ）ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。
 
-image::saphana_fas_fc_image18.jpg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image18.jpg[SAPHana FAS fcイメージ18]
 
 各 SAP HANA ホストには、データボリューム、ログボリューム、「 /hana/shared 」のボリュームが構成されています。次の表は、 4 台の SAP HANA シングルホストシステムを使用した構成例を示しています。
 
@@ -254,7 +254,7 @@ NOTE: ここで説明する構成では ' ユーザ SID1adm のデフォルト�
 
 NOTE: HA ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。
 
-image::saphana_fas_fc_image19.jpg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image19.jpg[SAPHana FAS fc image19]
 
 各 SAP HANA ホストには、 1 個のデータボリュームと 1 個のログボリュームが作成されます。「 /hana/shared 」ボリュームは、 SAP HANA システムのすべてのホストで使用されます。次の図は、 4+1 のマルチホスト SAP HANA システムの構成例を示しています。
 
@@ -380,38 +380,38 @@ NetApp OnCommand System Manager を使用して、ストレージボリューム
 
 . NetApp ONTAP システムマネージャで LUN 作成ウィザードを開始します。
 +
-image::saphana_fas_fc_image20.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image20.jpeg[SAPHana FAS fc image20]
 
 . LUN 名を入力し、 LUN タイプを選択して、 LUN のサイズを入力します。
 +
-image::saphana_fas_fc_image21.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image21.jpeg[SAPHana FAS fc image21]
 
 . ボリューム名とホストしているアグリゲートを入力します。
 +
-image::saphana_fas_fc_image22.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image22.jpeg[SAPHana FAS fcイメージ22]
 
 . LUN をマッピングする igroup を選択します。
 +
-image::saphana_fas_fc_image23.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image23.jpeg[SAPHana FAS fc image23]
 
 . QoS 設定を指定します。
 +
-image::saphana_fas_fc_image24.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image24.jpeg[SAPHana FAS fc image24]
 
 . [ 概要 ] ページで [ 次へ ] をクリックします。
 +
-image::saphana_fas_fc_image25.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image25.jpeg[SAPHana FAS fc image25]
 
 . 完了ページで完了をクリックします
 +
-image::saphana_fas_fc_image26.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image26.jpeg[SAPHana FAS fcイメージ26]
 
 . LUN ごとに、手順 2~7 を繰り返します。
 +
 次の図に、 2+1 のマルチホストセットアップのために作成する必要があるすべての LUN の概要を示します。
 
 +
-image::saphana_fas_fc_image27.jpeg[エラー：グラフィックイメージがありません]
+image::saphana_fas_fc_image27.jpeg[SAPHana FAS fc image27]
 
 
 

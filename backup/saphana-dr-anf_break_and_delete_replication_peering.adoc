@@ -21,15 +21,15 @@ NOTE: HANA データボリュームの場合は、 AzAcSnap で作成された�
 
 次の 2 つのスクリーンショットは、 HANA データボリュームのピアリング操作の解除と削除を示しています。ログバックアップと HANA 共有ボリュームについても、同じ処理を実行する必要があります。
 
-image::saphana-dr-anf_image27.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image27.png[SAPHana DR anfイメージ27]
 
-image::saphana-dr-anf_image28.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image28.png[SAPHana DR anfイメージ28]
 
 レプリケーションピアリングが削除されたため、ボリュームを最新の HANA Snapshot バックアップにリバートできます。ピアリングが削除されない場合、リバートボリュームの選択はグレー表示になり、選択できなくなります。次に示す 2 つのスクリーンショットは、ボリュームのリバート処理を示しています。
 
-image::saphana-dr-anf_image29.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image29.png[SAPHana DR anfイメージ29]
 
-image::saphana-dr-anf_image30.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image30.png[SAPHana DR anfイメージ30]
 
 ボリュームのリバート処理後、データボリュームは整合性のある HANA Snapshot バックアップに基づいており、フォワードリカバリ処理を実行するために使用できるようになりました。
 

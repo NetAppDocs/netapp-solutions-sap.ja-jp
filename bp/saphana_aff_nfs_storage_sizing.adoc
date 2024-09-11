@@ -214,4 +214,4 @@ RAM のサイズ、各 SAP HANA ホストでのディスク上の正味データ
 
 次の図に、サイジングプロセスの概要を示します。
 
-image::saphana_aff_nfs_image9.jpg[エラー：グラフィックイメージがありません]
+image::saphana_aff_nfs_image9.jpg[SAPHana AFF NFSイメージ9]

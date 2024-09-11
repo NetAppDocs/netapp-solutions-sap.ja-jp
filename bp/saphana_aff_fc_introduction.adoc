@@ -55,7 +55,7 @@ SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオ�
 
 NetApp AFF ストレージシステムは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、アーキテクチャの概要を示します。
 
-image::saphana_aff_fc_image1.png[エラー：グラフィックイメージがありません]
+image::saphana_aff_fc_image1.png[SAPHana AFF fc image1]
 
 生産性の高いSAP HANAシステムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。
 
@@ -66,14 +66,13 @@ image::saphana_aff_fc_image1.png[エラー：グラフィックイメージが�
 
 = VMware vSphere を使用した SAP HANA
 
-ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を参照してください link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana_aff_nfs_introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"]。
+ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、をlink:https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"]参照してください。
 
 raw デバイスマッピング（ RDM ）、 FCP データストア、または FCP を使用する VVol データストアもサポートされます。どちらのデータストアオプションも、本番環境で使用するためにデータストアに格納する SAP HANA データボリュームまたはログボリュームは 1 つだけです。また、 SnapCenter がオーケストレーションする Snapshot ベースのバックアップとリカバリ、および SAP システムのクローニングなどに基づくソリューションは実装できません。
 
 SAP HANA での vSphere の使用の詳細については、次のリンクを参照してください。
 
 * https://wiki.scn.sap.com/wiki/display/VIRTUALIZATION/SAP+HANA+on+VMware+vSphere["SAP HANA on VMware vSphere - 仮想化 - コミュニティ Wiki"^]
-* http://www.vmware.com/files/pdf/SAP_HANA_on_vmware_vSphere_best_practices_guide.pdf["『 Best Practices and Recommendations for Scale-Up Deployments of SAP HANA on VMware vSphere 』"^]
-* http://www.vmware.com/files/pdf/sap-hana-scale-out-deployments-on-vsphere.pdf["『 Best Practices and Recommendations for Scale-Out Deployments of SAP HANA on VMware vSphere 』"^]
+* https://core.vmware.com/resource/sap-hana-vmware-vsphere-best-practices-and-reference-architecture-guide#introduction["『SAP HANA on VMware vSphere Best Practices and Reference Architecture Guide』"^]
 * https://launchpad.support.sap.com/["2161991 - VMware vSphere 設定ガイドライン - SAP One Support Launchpad （ログインが必要）"^]
 

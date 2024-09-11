@@ -59,4 +59,4 @@ SnapCenter サーバは、 HANA システム MS1 および SS2 の中央 HANA �
 
 次の図は、ラボのセットアップを示しています。
 
-image::saphana-br-scs-image21.png[エラー：グラフィックイメージがありません]
+image::saphana-br-scs-image21.png[SAPHana br SCSイメージ21]

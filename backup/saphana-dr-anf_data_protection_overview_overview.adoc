@@ -16,7 +16,7 @@ SAP HANA on Azure NetApp Files （ ANF ）を実行すると、 SAP HANA に組�
 
 包括的なディザスタリカバリポリシーを作成するには、データ保護とディザスタリカバリに必要なビジネスアプリケーションの要件と技術的な機能を理解する必要があります。次の図に、データ保護の概要を示します。
 
-image::saphana-dr-anf_image2.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image2.png[SAPHana DR anfイメージ2]
 
 
 

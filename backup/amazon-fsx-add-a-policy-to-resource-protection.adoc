@@ -16,8 +16,8 @@ summary: このセクションでは、リソース保護にポリシーを追�
 [role="lead"]
 次の図に示すように、新しいポリシーをHANAのリソース保護構成に追加する必要があります。
 
-image::amazon-fsx-image86.png[エラー：グラフィックイメージがありません]
+image::amazon-fsx-image86.png[Amazon FSxイメージ86]
 
 セットアップでは、日次スケジュールを定義します。
 
-image::amazon-fsx-image87.png[エラー：グラフィックイメージがありません]
+image::amazon-fsx-image87.png[Amazon FSxイメージ87]

@@ -27,7 +27,7 @@ DR サイトに、手動 QoS を設定した単一の容量プールが設定さ
 
 次の図は、ラボのセットアップを示しています。
 
-image::saphana-dr-anf_image7.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image7.png[SAPHana DR anfイメージ7]
 
 
 
@@ -39,8 +39,8 @@ ANF クロスリージョンレプリケーションを使用してデータボ�
 
 次の図は、 HANA データボリュームの Snapshot バックアップを示しています。
 
-image::saphana-dr-anf_image8.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image8.png[SAPHana DR anfイメージ8]
 
 次の図は、 SAP HANA のバックアップカタログを示しています。
 
-image::saphana-dr-anf_image9.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image9.png[SAPHana DR anfイメージ9]

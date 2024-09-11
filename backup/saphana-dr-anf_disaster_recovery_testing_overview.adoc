@@ -37,4 +37,4 @@ ANF のクロスリージョンレプリケーションにより、 RTO と RPO 
 
 以降のサブセクションで、これらの手順について詳しく説明します。
 
-image::saphana-dr-anf_image18.png[エラー：グラフィックイメージがありません]
+image::saphana-dr-anf_image18.png[SAPHana DR anfイメージ18]
