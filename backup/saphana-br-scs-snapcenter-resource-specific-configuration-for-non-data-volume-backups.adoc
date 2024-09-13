@@ -73,7 +73,7 @@ image::saphana-br-scs-image81.png[SAPHana br SCSイメージ81]
 
 == SnapCenter と SAP ランドスケープ管理の併用
 
-SAP Landscape Management （ SAP LaMa ）を使用すると、オンプレミスのデータセンターやクラウドで実行されているシステムでも、複雑な SAP システム環境を管理できます。SAP LaMa は、ネットアップの Storage Services Connector （ SSC ）と連携して、 SAP システムのクローニングやレプリケーション、 Snapshot や FlexClone テクノロジを使用したコピー、更新などのストレージ運用を実行できます。そのため、ストレージクローニングテクノロジに基づいて SAP システムのコピーを完全に自動化し、必要な SAP のポストプロセスも含めて実行できます。ネットアップの SAP LaMa 対応ソリューションの詳細については、を参照してください https://www.netapp.com/us/media/tr-4018.pdf["TR-4018 ：『 Integrating NetApp ONTAP Systems with SAP Landscape Management 』"^]。
+SAP Landscape Management （ SAP LaMa ）を使用すると、オンプレミスのデータセンターやクラウドで実行されているシステムでも、複雑な SAP システム環境を管理できます。SAP LaMa は、ネットアップの Storage Services Connector （ SSC ）と連携して、 SAP システムのクローニングやレプリケーション、 Snapshot や FlexClone テクノロジを使用したコピー、更新などのストレージ運用を実行できます。そのため、ストレージクローニングテクノロジに基づいて SAP システムのコピーを完全に自動化し、必要な SAP のポストプロセスも含めて実行できます。SAP LaMa向けNetAppソリューションの詳細については、を参照してください https://www.netapp.com/pdf.html?item=/media/17195-tr4018pdf.pdf["TR-4018 ：『 Integrating NetApp ONTAP Systems with SAP Landscape Management 』"^]。
 
 NetApp SSC と SAP LaMa は、 NetApp SSC を使用してオンデマンドで Snapshot コピーを直接作成できますが、 SnapCenter を使用して作成した Snapshot コピーを利用することもできます。SnapCenter バックアップをシステムのクローニング処理やコピー処理のベースとして SAP LaMa を使って実行するには、次の前提条件を満たしている必要があります。
 

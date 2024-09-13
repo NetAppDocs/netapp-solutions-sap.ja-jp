@@ -54,7 +54,7 @@ HANA データベースに、バックアップ処理を実行するユーザを
 ....
 hdbuserstore.exe -u SYSTEM set SSRKEY ssr-vip:31013 SNAPCENTER <password>
 ....
-SAP HANA プラグインの導入オプションとユーザストアの構成の詳細については、テクニカルレポート TR-4614 を参照してください。 https://www.netapp.com/us/media/tr-4614.pdf["SnapCenter を使用した SAP HANA のバックアップとリカバリ"^]。
+SAP HANAプラグインの導入オプションとユーザストアの設定の詳細については、テクニカルレポートTR-4614：を参照 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"^]してください。
 
 SnapCenter では ' 次の図に示すように ' リソースは ' 前に構成されたユーザー・ストア・キーと SnapCenter サーバを 'hdbsql' 通信ホストとして構成されます
 

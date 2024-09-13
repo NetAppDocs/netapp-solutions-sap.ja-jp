@@ -22,7 +22,7 @@ SnapCenter 4.6 では、 HANA システムレプリケーションが設定さ�
 
 次の図に、この章で使用するラボのセットアップを示します。HANA システムレプリケーションを使用して、 HANA ホストを 2 台、 HANA を 3 台、 HANA を 4 台構成しました。
 
-HANA システムデータベース用のデータベースユーザ「 SnapCenter 」が作成され、バックアップおよびリカバリ処理を実行するために必要な権限が付与されています（を参照） https://www.netapp.com/us/media/tr-4614.pdf["SnapCenter を使用した SAP HANA のバックアップとリカバリ"^]）。HANA のユーザストアキーは、上記のデータベースユーザを使用して両方のホストで設定する必要があります。
+バックアップとリカバリ処理を実行するために必要なPrivilegesを使用して、HANAシステムデータベース用にデータベースユーザ「SnapCenter」 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"^]を作成しました（を参照）。HANA のユーザストアキーは、上記のデータベースユーザを使用して両方のホストで設定する必要があります。
 
 ....
 ss2adm@hana- 3: / > hdbuserstore set SS2KEY hana- 3:33313 SNAPCENTER <password>
@@ -157,6 +157,6 @@ SnapVault レプリケーションがデータ保護戦略の一部である場�
 
 image::saphana-sr-scs-image26.png[SAPHana SR SCSイメージ26]
 
-SnapCenter 4.6 リソースグループ構成のリストアおよびリカバリ操作は ' 自動検出されたシステム以外のレプリケーション設定と同じですリストアと自動リカバリのすべてのオプションを使用できます。詳細については、テクニカルレポートを参照してください https://www.netapp.com/us/media/tr-4614.pdf["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]。
+SnapCenter 4.6 リソースグループ構成のリストアおよびリカバリ操作は ' 自動検出されたシステム以外のレプリケーション設定と同じですリストアと自動リカバリのすべてのオプションを使用できます。詳細については、テクニカルレポートを参照して https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]ください。
 
 もう一方のホストで作成されたバックアップからのリストア処理については、を参照してください link:saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html["他のホストで作成されたバックアップからのリストアとリカバリ"]。
