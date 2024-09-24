@@ -14,7 +14,7 @@ NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との
 
 この認定は現在、次のモデルでのみ有効です。
 
-* FAS2750、FAS2820、FAS8300、FAS8700、FAS9500SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
+* FAS2750、FAS2820、FAS8300、FAS8700、FAS70、FAS9500、FAS90 SAP HANA向けのNetApp認定ストレージソリューションの一覧については、を参照し https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]てください。
 
 
 本ドキュメントでは、 NFS バージョン 3 （ NFSv3 ）プロトコルまたは NFS バージョン 4 （ NFSv4.1 ）プロトコルの ONTAP 設定要件について説明します。
