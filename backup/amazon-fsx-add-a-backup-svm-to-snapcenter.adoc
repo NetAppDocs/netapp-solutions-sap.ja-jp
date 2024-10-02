@@ -10,7 +10,7 @@ summary: このセクションでは、SnapCenter にバックアップSVMを追
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -18,14 +18,14 @@ SnapCenter にバックアップSVMを追加するには、次の手順を実行
 
 . SnapVault ターゲットボリュームが配置されているSVMをSnapCenter に設定します。
 +
-image::amazon-fsx-image76.png[Amazon FSxイメージ76]
+image:amazon-fsx-image76.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [その他のオプション]ウィンドウで、プラットフォームとして[すべてのFlash FAS ]を選択し、[セカンダリ]を選択します。
 +
-image::amazon-fsx-image77.png[Amazon FSxイメージ77]
+image:amazon-fsx-image77.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
 これで、SVMをSnapCenter で使用できるようになります。
 
-image::amazon-fsx-image78.png[Amazon FSxイメージ78]
+image:amazon-fsx-image78.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

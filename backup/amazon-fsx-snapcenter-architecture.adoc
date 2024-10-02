@@ -10,7 +10,7 @@ summary: SnapCenter は、アプリケーションと整合性のあるデータ
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -24,7 +24,7 @@ SnapCenter は、ネットアップのデータファブリック内のすべて
 
 SnapCenter には、SnapCenter サーバ、SnapCenter Plug-in Package for Windows、およびSnapCenter Plug-in Package for Linuxが含まれています。各パッケージには、さまざまなアプリケーションやインフラコンポーネント用の SnapCenter へのプラグインが含まれています。
 
-image::amazon-fsx-image5.png[Amazon FSxイメージ5]
+image:amazon-fsx-image5.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -66,7 +66,7 @@ SnapCenter はプライマリストレージで保持を処理し、FSX for ONTA
 
 次の図は、SnapCenter のバックアップおよび保持の管理処理の概要を示しています。
 
-image::amazon-fsx-image6.png[Amazon FSxイメージ6]
+image:amazon-fsx-image6.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 SAP HANA データベースのストレージベースの Snapshot バックアップを実行する場合、 SnapCenter は次のタスクを実行します。
 
@@ -94,7 +94,7 @@ SAP HANA データベースのストレージベースの Snapshot バックア�
 
 次の図は、FSX for ONTAP 上のSAP HANAの一般的なバックアップアーキテクチャを示しています。HANAシステムは、AWSアベイラビリティゾーン1にあり、同じアベイラビリティゾーン内でONTAP ファイルシステム用のFSXを使用しています。Snapshotバックアップ処理は、HANAデータベースのデータと共有ボリュームに対して実行されます。3～5日間保持されるローカルSnapshotバックアップに加えて、バックアップは長期保存用にオフサイトのストレージにもレプリケートされます。オフサイトバックアップストレージは、別のAWSアベイラビリティゾーンに配置されたONTAP ファイルシステム用の2番目のFSXです。HANAデータと共有ボリュームのバックアップは、SnapVault を使用して2番目のONTAP ファイルシステムのFSXにレプリケートされ、2~3週間保持されます。
 
-image::amazon-fsx-image7.png[Amazon FSxイメージ7]
+image:amazon-fsx-image7.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 SnapCenter を設定する前に、各種SAPシステムのRTOとRPOの要件に基づいてデータ保護戦略を定義する必要があります。
 
@@ -201,4 +201,4 @@ ONTAP ファイルシステムのFSx：
 * ONTAP ファイルシステム用の2番目のFSXにHANAデータボリュームがレプリケートされます
 
 
-image::amazon-fsx-image8.png[Amazon FSxイメージ8]
+image:amazon-fsx-image8.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

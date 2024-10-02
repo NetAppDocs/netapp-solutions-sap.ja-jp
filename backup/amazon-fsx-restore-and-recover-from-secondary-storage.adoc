@@ -10,7 +10,7 @@ summary: このセクションでは、セカンダリストレージからリ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -18,10 +18,10 @@ summary: このセクションでは、セカンダリストレージからリ�
 
 セカンダリストレージ上のすべてのバックアップのリストを取得するには、SnapCenter トポロジビューでVault Copies（ヴォールトコピー）をクリックし、バックアップを選択してRestore（復元）をクリックします。
 
-image::amazon-fsx-image92.png[Amazon FSxイメージ92]
+image:amazon-fsx-image92.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 リストアダイアログにセカンダリの場所が表示されます。
 
-image::amazon-fsx-image93.png[Amazon FSxイメージ93]
+image:amazon-fsx-image93.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 さらに、リストアとリカバリの手順は、プライマリストレージにあるSnapshotバックアップでこれまで説明されていた手順と同じです。

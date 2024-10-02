@@ -10,7 +10,7 @@ summary: SAP HANA 2.0 SPS4 以降では、追加のデータボリュームパ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -113,4 +113,4 @@ stlrx300s8-6:/ # chmod –R 777 /hana/data2/SS3
 ....
 ALTER SYSTEM ALTER DATAVOLUME ADD PARTITION PATH '/hana/data2/SID/';
 ....
-image::saphana_aff_fc_image20.jpg[SAPHana AFF fc image20]
+image:saphana_aff_fc_image20.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

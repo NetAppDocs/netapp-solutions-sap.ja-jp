@@ -10,9 +10,10 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
 
 * https://docs.netapp.com/us-en/netapp-solutions-sap/["SAP Business Application and SAP HANA Database Solutions（netapp.com）"]

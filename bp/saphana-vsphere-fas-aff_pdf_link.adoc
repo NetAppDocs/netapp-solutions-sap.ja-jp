@@ -13,13 +13,14 @@ summary: このリファレンスアーキテクチャドキュメントでは�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
-Tobias Brandl 、ネットアップ
-
-VMware 、 Bhumik Patel 、 Erik Rieger 氏
-
+[role="lead"]
 このリファレンスアーキテクチャドキュメントでは、 VMware vSphere 仮想マシン（ VM ）および NetApp FAS および All Flash FAS （ AFF ）ストレージシステム上に SAP HANA シングルホストおよびマルチホストソリューションを設計し、導入する方法を説明します。このリファレンスアーキテクチャは、 VMware とネットアップの既存のお客様のエクスペリエンス、実際のシミュレーション、ネットアップのエンジニアリングラボでの検証に基づいて、導入と文書化が行われた解決策です。このドキュメントでは、要件評価、解決策設計、インストール、管理など、プロジェクトのライフサイクル全体を通じてお客様を支援します。
+
+著者：
+
+VMware 、 Bhumik Patel 、 NetApp Erik Rieger 、 Tobias Brandl 氏
 
 link:https://www.netapp.com/pdf.html?item=/media/17192-tr4338pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17192-tr4338pdf.pdf"]

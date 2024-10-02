@@ -2,7 +2,6 @@
 indexpage:
   title: SAP Business Application と SAP HANA Database ソリューション
   summary: ネットアップでは、 SAP と SAP HANA に関するテクニカルレポート、検証済みの設計、ビデオ、ブログ、解決策概要を幅広くご用意しています。
-  keywords: netapp, solutions, sap, hana
   lead: ネットアップでは、 SAP と SAP HANA に関するテクニカルレポート、検証済みの設計、ビデオ、ブログ、解決策概要を幅広くご用意しています。
   tiles:
   - title: 設定のベストプラクティス

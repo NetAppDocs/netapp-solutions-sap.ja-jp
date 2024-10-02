@@ -10,7 +10,7 @@ summary: 各 SAP HANA サーバには、最低 8Gbps の帯域幅の冗長 FCP S
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -18,6 +18,6 @@ summary: 各 SAP HANA サーバには、最低 8Gbps の帯域幅の冗長 FCP S
 
 次の図は、 4 台の SAP HANA ホストを 2 台のストレージコントローラに接続した場合の例を示しています。各 SAP HANA ホストには、冗長ファブリックに接続された 2 つの FCP ポートがあります。ストレージレイヤでは、各 SAP HANA ホストに必要なスループットを提供するために、 4 つの FCP ポートが構成されます。
 
-image::saphana_aff_fc_image9.png[SAPHana AFF fc image9]
+image:saphana_aff_fc_image9.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 スイッチレイヤのゾーニングに加えて、ストレージシステム上の各 LUN を、この LUN に接続するホストにマッピングする必要があります。スイッチ上のゾーニングはシンプルにします。つまり、すべてのホスト HBA がすべてのコントローラ HBA を認識できるゾーンセットを 1 つ定義します。

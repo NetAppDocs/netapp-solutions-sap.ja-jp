@@ -10,7 +10,7 @@ summary: ここでは、ネットアップストレージシステムの構成�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -70,7 +70,7 @@ FabricPool は、ログバックアップを別のストレージ階層に移動
 . の説明に従って、 Storage Virtual Machine （ SVM ）を作成します。<<Storage Virtual Machine の設定>>. 」
 . の説明に従って、 Logical Interface （ LIF ；論理インターフェイス）を作成します。<<論理インターフェイスの構成>>. 」
 . ポートセットを作成します（を参照）。<<FCP ポートセット>>. 」
-. 作成の説明に従って、アグリゲート内にイニシエータグループ、ボリューム、および LUN を作成します。<<LUNs and volumes and mapping LUNs to initiator groups>>. 」
+. 作成の説明に従って、アグリゲート内にイニシエータグループ、ボリューム、LUNを作成します<<Creating LUNs,ボリューム、イニシエータグループヘノLUNノマッピング>>。
 
 
 
@@ -86,7 +86,7 @@ FabricPool は、ログバックアップを別のストレージ階層に移動
 
 NOTE: ディスクシェルフ DS224C では、クワッドパスの SAS ケーブルも使用できますが、必須ではありません。
 
-image::saphana_aff_fc_image10.png[SAPHana AFF fc image10]
+image:saphana_aff_fc_image10.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -94,7 +94,7 @@ image::saphana_aff_fc_image10.png[SAPHana AFF fc image10]
 
 NS224 NVMe デスクシェルフは、次の図に示すように、各コントローラに 100GbE ポートを 2 つ接続しています。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。ADPv2 は、 NS224 ディスクシェルフにも使用されます。
 
-image::saphana_aff_fc_image11.png[SAPHana AFF fcイメージ11]
+image:saphana_aff_fc_image11.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -104,7 +104,7 @@ image::saphana_aff_fc_image11.png[SAPHana AFF fcイメージ11]
 
 次の図は、 ADPv2 を使用した、 12Gb の SAS シェルフで稼働する、 12 台の SAP HANA ホストの構成を示しています。6 台の SAP HANA ホストが各ストレージコントローラに接続されています。各ストレージコントローラに 2 つずつ、合計 4 つのアグリゲートが構成されています。各アグリゲートには、 9 つのデータパーティションと 2 つのパリティディスクパーティションを含む 11 本のディスクが構成されます。各コントローラで、 2 つのスペアパーティションを使用できます。
 
-image::saphana_aff_fc_image12.jpg[SAPHana AFF fcイメージ12]
+image:saphana_aff_fc_image12.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -123,11 +123,11 @@ vserver modify -vserver <svm-name> -qos-policy-group none
 
 ストレージクラスタ構成内に、 1 つのネットワークインターフェイス（ LIF ）を作成して専用の FCP ポートに割り当てる必要があります。たとえば、パフォーマンス上の理由から 4 つの FCP ポートが必要な場合は、 4 つの LIF を作成する必要があります。次の図に、「 HANA 」 SVM 上に設定された 8 つの LIF （「 fc_*_* 」という名前）のスクリーンショットを示します。
 
-image::saphana_aff_fc_image13.jpeg[SAPHana AFF fc image13]
+image:saphana_aff_fc_image13.jpeg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 ONTAP 9.8 の System Manager で SVM を作成するときに、必要な物理 FCP ポートをすべて選択すると、物理ポートごとに 1 つの LIF が自動的に作成されます。
 
-image::saphana_aff_fc_image14.jpeg[SAPHana AFF fcイメージ14]
+image:saphana_aff_fc_image14.jpeg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -135,7 +135,7 @@ image::saphana_aff_fc_image14.jpeg[SAPHana AFF fcイメージ14]
 
 FCP ポートセットを使用して、特定のイニシエータグループが使用する LIF を定義できます。通常、 HANA システム用に作成されたすべての LIF が同じポートセットに配置されます。次の図は、すでに作成された 4 つの LIF を含む、 32G という名前のポートセットの構成を示しています。
 
-image::saphana_aff_fc_image15.jpeg[SAPHana AFF fc image15]
+image:saphana_aff_fc_image15.jpeg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 NOTE: ONTAP 9.8 では、ポートセットは必要ありませんが、コマンドラインから作成して使用できます。
@@ -149,7 +149,7 @@ NOTE: ONTAP 9.8 では、ポートセットは必要ありませんが、コマ�
 
 NOTE: HA ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。
 
-image::saphana_aff_fc_image16.jpg[SAPHana AFF fcイメージ16]
+image:saphana_aff_fc_image16.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 各 SAP HANA ホストには、データボリューム、ログボリューム、「 /hana/shared 」のボリュームが構成されています。次の表は、 4 台の SAP HANA シングルホストシステムを使用した構成例を示しています。
 
@@ -231,7 +231,7 @@ NOTE: HA ペアのうち、 1 台のストレージコントローラのみを S
 
 NOTE: NetApp ASA AFF システムでは、 NFS をプロトコルとしてサポートしていません。「 /hana/shared 」ファイルシステムには、追加の AFF または FAS システムを使用することを推奨します。
 
-image::saphana_aff_fc_image17.jpg[SAPHana AFF fc image17]
+image:saphana_aff_fc_image17.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 各 SAP HANA ホストには、 1 個のデータボリュームと 1 個のログボリュームが作成されます。「 /hana/shared 」ボリュームは、 SAP HANA システムのすべてのホストで使用されます。次の表に、 4+1 のマルチホスト SAP HANA システムの構成例を示します。
 
@@ -373,12 +373,12 @@ NOTE: 「 anlun 」ツールは NetApp Host Utilities の一部であり、各 S
 
 . System Manager で SAP HANA のアプリケーションプロビジョニングウィザードを起動し、必要な情報を入力します。すべてのホストのすべてのイニシエータ（ WWPN ）を追加する必要があります。
 +
-image::saphana_aff_fc_image18.jpeg[SAPHana AFF fcイメージ18]
+image:saphana_aff_fc_image18.jpeg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ストレージが正常にプロビジョニングされたことを確認します。
 
 
-image::saphana_aff_fc_image19.jpeg[SAPHana AFF fc image19]
+image:saphana_aff_fc_image19.jpeg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 

@@ -10,7 +10,7 @@ summary: 'このセクションでは " ストレージ・システム " 認証�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -35,7 +35,7 @@ summary: 'このセクションでは " ストレージ・システム " 認証�
 
 . SnapCenter サーバ GUI にログインします。
 +
-image::saphana-br-scs-image23.png[SAPHana br SCSイメージ23]
+image:saphana-br-scs-image23.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [ ストレージシステム ] を選択します。
 +
@@ -43,7 +43,7 @@ image::saphana-br-scs-image23.png[SAPHana br SCSイメージ23]
 NOTE: 画面では、 ONTAP SVM または ONTAP クラスタなどのストレージシステムタイプを選択できます。ストレージシステムを SVM レベルで構成する場合は、各 SVM に対して管理 LIF を設定する必要があります。代わりに、クラスタレベルで SnapCenter 管理アクセスを使用することもできます。SVM 管理を使用する例を次に示します。
 
 +
-image::saphana-br-scs-image24.png[SAPHana br SCSイメージ24]
+image:saphana-br-scs-image24.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . New をクリックしてストレージシステムを追加し、必要なホスト名とクレデンシャルを入力します。
 +
@@ -51,7 +51,7 @@ image::saphana-br-scs-image24.png[SAPHana br SCSイメージ24]
 NOTE: スクリーンショットに示されているように、 SVM ユーザを vsadmin ユーザにする必要はありません。通常、ユーザは SVM 上で設定し、バックアップとリストアの処理を実行するために必要な権限を割り当てます。必要な権限の詳細については、を参照してください http://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-isg%2Fhome.html["SnapCenter インストールガイド"^] 「 Minimum ONTAP Privileges Required 」の項を参照してください。
 
 +
-image::saphana-br-scs-image25.png[SAPHana br SCSイメージ25]
+image:saphana-br-scs-image25.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [ その他のオプション ] をクリックして、ストレージプラットフォームを構成します。
 +
@@ -62,11 +62,11 @@ image::saphana-br-scs-image25.png[SAPHana br SCSイメージ25]
 NOTE: SnapVault ターゲットまたは SnapMirror ターゲットとして使用されているシステムの場合は、セカンダリアイコンを選択します。
 
 +
-image::saphana-br-scs-image26.png[SAPHana br SCSイメージ26]
+image:saphana-br-scs-image26.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 必要に応じてストレージシステムを追加この例では、追加のオフサイトバックアップストレージとディザスタリカバリ用ストレージが追加されています。
 +
-image::saphana-br-scs-image27.png[SAPHana br SCSイメージ27]
+image:saphana-br-scs-image27.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -76,22 +76,22 @@ image::saphana-br-scs-image27.png[SAPHana br SCSイメージ27]
 
 . [ 設定 ] に移動し、 [ 資格情報 ] を選択して、 [ 新規 ] をクリックします
 +
-image::saphana-br-scs-image28.png[SAPHana br SCSイメージ28]
+image:saphana-br-scs-image28.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . Linux システムへのプラグインのインストールに使用するユーザのクレデンシャルを入力します。
 +
-image::saphana-br-scs-image29.png[SAPHana br SCSイメージ29]
+image:saphana-br-scs-image29.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . Windows システムへのプラグインのインストールに使用するユーザのクレデンシャルを入力します。
 +
-image::saphana-br-scs-image30.png[SAPHana br SCSイメージ30]
+image:saphana-br-scs-image30.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 次の図に、設定されたクレデンシャルを示します。
 
 
 
-image::saphana-br-scs-image31.png[SAPHana br SCSイメージ31]
+image:saphana-br-scs-image31.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -104,17 +104,17 @@ NOTE: SAP HANA プラグインには、 Java 64 ビットバージョン 1.8 が
 
 . Hosts に移動し、 Add をクリックします。
 +
-image::saphana-br-scs-image32.png[SAPHana br SCSイメージ32]
+image:saphana-br-scs-image32.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 必要なホスト情報を指定します。Submit をクリックします。
 +
-image::saphana-br-scs-image33.png[SAPHana br SCSイメージ33]
+image:saphana-br-scs-image33.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 次の図は、 HANA プラグインの導入後に構成されたすべてのホストを示しています。
 
 +
-image::saphana-br-scs-image34.png[SAPHana br SCSイメージ34]
+image:saphana-br-scs-image34.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -161,31 +161,31 @@ HANA_HDBSQL_CMD=/usr/sap/hdbclient/hdbsql
 
 . [ 設定 ] 、 [ ポリシー ] の順に移動し、 [ 新規 ] をクリックします
 +
-image::saphana-br-scs-image35.png[SAPHana br SCSイメージ35]
+image:saphana-br-scs-image35.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ポリシー名と概要を入力します。次へをクリックします。
 +
-image::saphana-br-scs-image36.png[SAPHana br SCSイメージ36]
+image:saphana-br-scs-image36.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . バックアップタイプとして「 Snapshot Based 」を選択し、スケジュール頻度を選択するには「 Hourly 」を選択します。
 +
-image::saphana-br-scs-image37.png[SAPHana br SCSイメージ37]
+image:saphana-br-scs-image37.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オンデマンドバックアップの保持を設定します。
 +
-image::saphana-br-scs-image38.png[SAPHana br SCSイメージ38]
+image:saphana-br-scs-image38.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . スケジュールされたバックアップの保持を設定します。
 +
-image::saphana-br-scs-image39.png[SAPHana br SCSイメージ39]
+image:saphana-br-scs-image39.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . レプリケーションオプションを設定します。この場合、 SnapVault または SnapMirror の更新は選択されていません。
 +
-image::saphana-br-scs-image40.png[SAPHana br SCSイメージ40]
+image:saphana-br-scs-image40.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [ 概要 ] ページで、 [ 完了 ] をクリックします。
 +
-image::saphana-br-scs-image41.png[SAPHana br SCSイメージ41]
+image:saphana-br-scs-image41.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -196,19 +196,19 @@ image::saphana-br-scs-image41.png[SAPHana br SCSイメージ41]
 . [ 設定 ] 、 [ ポリシー ] の順に移動し、 [ 新規 ] をクリックします
 . ポリシー名と概要を入力します。次へをクリックします。
 +
-image::saphana-br-scs-image42.png[SAPHana br SCSイメージ42]
+image:saphana-br-scs-image42.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . バックアップタイプを Snapshot ベースに、スケジュール頻度を「毎日」に設定します。
 +
-image::saphana-br-scs-image43.png[SAPHana br SCSイメージ43]
+image:saphana-br-scs-image43.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オンデマンドバックアップの保持を設定します。
 +
-image::saphana-br-scs-image44.png[SAPHana br SCSイメージ44]
+image:saphana-br-scs-image44.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . スケジュールされたバックアップの保持を設定します。
 +
-image::saphana-br-scs-image45.png[SAPHana br SCSイメージ45]
+image:saphana-br-scs-image45.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ローカル Snapshot コピーの作成後に SnapVault を更新するを選択します。
 +
@@ -216,11 +216,11 @@ image::saphana-br-scs-image45.png[SAPHana br SCSイメージ45]
 NOTE: セカンダリポリシーのラベルは、ストレージレイヤのデータ保護設定の SnapMirror ラベルと同じにする必要があります。を参照してください link:saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html#configuration-of-data-protection-to-off-site-backup-storage["「オフサイトのバックアップストレージへのデータ保護の構成」"]
 
 +
-image::saphana-br-scs-image46.png[SAPHana br SCSイメージ46]
+image:saphana-br-scs-image46.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [ 概要 ] ページで、 [ 完了 ] をクリックします。
 +
-image::saphana-br-scs-image47.png[SAPHana br SCSイメージ47]
+image:saphana-br-scs-image47.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -231,28 +231,28 @@ image::saphana-br-scs-image47.png[SAPHana br SCSイメージ47]
 . [ 設定 ] 、 [ ポリシー ] の順に移動し、 [ 新規 ] をクリックします
 . ポリシー名と概要を入力します。次へをクリックします。
 +
-image::saphana-br-scs-image48.png[SAPHana br SCSイメージ48]
+image:saphana-br-scs-image48.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . バックアップタイプを「ファイルベース」に、スケジュール頻度を「毎週」に設定します。
 +
-image::saphana-br-scs-image49.png[SAPHana br SCSイメージ49]
+image:saphana-br-scs-image49.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オンデマンドバックアップの保持を設定します。
 +
-image::saphana-br-scs-image50.png[SAPHana br SCSイメージ50]
+image:saphana-br-scs-image50.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . スケジュールされたバックアップの保持を設定します。
 +
-image::saphana-br-scs-image50.png[SAPHana br SCSイメージ50]
+image:saphana-br-scs-image50.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [ 概要 ] ページで、 [ 完了 ] をクリックします。
 +
-image::saphana-br-scs-image51.png[SAPHana br SCSイメージ51]
+image:saphana-br-scs-image51.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 次の図に、設定されているポリシーの概要を示します。
 
 +
-image::saphana-br-scs-image52.png[SAPHana br SCSイメージ52]
+image:saphana-br-scs-image52.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 

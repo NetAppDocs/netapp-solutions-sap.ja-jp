@@ -10,7 +10,7 @@ summary: また、使用している Linux バージョンに固有のマルチ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: SAP HANA ホストは、冗長 10GbE 以上のネットワークイン�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -20,11 +20,11 @@ SAP HANA ホストは、冗長 10GbE 以上のネットワークインフラを�
 
 FAS システム製品ファミリーのさまざまなモデルをストレージレイヤで混在させることができるため、拡張が必要になったり、パフォーマンスや容量のニーズが異なる場合があります。ストレージシステムに接続できる SAP HANA ホストの最大数は、 SAP HANA のパフォーマンス要件と、使用されているネットアップコントローラのモデルによって定義されます。必要なディスクシェルフの数は、 SAP HANA システムの容量とパフォーマンスの要件によってのみ決まります。次の図は、 8 台の SAP HANA ホストをストレージハイアベイラビリティ（ HA ）ペアに接続した構成例を示しています。
 
-image::saphana-fas-nfs_image2.png[SAPHana FAS NFSイメージ2]
+image:saphana-fas-nfs_image2.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 次の図は、 VMware vSphere を仮想化レイヤとして使用した例を示しています。
 
-image::saphana-fas-nfs_image3.jpg[SAPHana FAS NFSイメージ3]
+image:saphana-fas-nfs_image3.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 アーキテクチャは、次の 2 つの側面で拡張できます。
 
@@ -34,11 +34,11 @@ image::saphana-fas-nfs_image3.jpg[SAPHana FAS NFSイメージ3]
 
 次の図は、追加の SAP HANA ホストをストレージコントローラに接続した場合の構成例を示しています。この例では、 SAP HANA ホスト 16 台分の容量とパフォーマンスの両方の要件を満たすために、さらにディスクシェルフが必要です。合計スループット要件に応じて、ストレージコントローラへの 10GbE （以上）接続を追加する必要があります。
 
-image::saphana-fas-nfs_image4.png[SAPHana FAS NFSイメージ4]
+image:saphana-fas-nfs_image4.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 導入した FAS システムとは関係なく、任意の認定済みストレージコントローラを追加して、希望するノード密度に合わせて SAP HANA 環境を拡張することもできます（次の図を参照）。
 
-image::saphana-fas-nfs_image5.png[SAPHana FAS NFSイメージ5]
+image:saphana-fas-nfs_image5.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -52,7 +52,7 @@ NetApp SnapMirror テクノロジを使用すると、一方のストレージ�
 
 次の図に示すように、 NFS マウントを使用して、データベースログをセカンダリストレージに直接バックアップできます。
 
-image::saphana-fas-nfs_image6.jpg[SAPHana FAS NFSイメージ6]
+image:saphana-fas-nfs_image6.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 ストレージベースの Snapshot バックアップは、従来のファイルベースのバックアップに比べて大きなメリットをもたらします。たとえば、次のような利点があります。
 
@@ -88,7 +88,7 @@ SAP HANAディザスタリカバリソリューションの詳細については
 
 どちらのレプリケーション方法でも、 RPO と RTO に影響を与えることなくディザスタリカバリのワークフローテストを実行できます。FlexClone ボリュームはストレージ上に作成され、ディザスタリカバリテスト用サーバに接続されます。
 
-image::saphana-fas-nfs_image7.png[SAPHana FAS NFSイメージ7]
+image:saphana-fas-nfs_image7.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 同期レプリケーションで StrictSync モードが提供されます。何らかの理由でセカンダリストレージへの書き込みが完了しないと、アプリケーション I/O が失敗し、プライマリストレージシステムとセカンダリストレージシステムが同一になります。プライマリへのアプリケーション I/O は、 SnapMirror 関係のステータスが InSync に戻るまで再開されません。プライマリストレージで障害が発生した場合は、フェイルオーバー後にセカンダリストレージでアプリケーション I/O を再開できます。データ損失は発生しません。StrictSync モードでは、 RPO は常にゼロです。
 
@@ -98,4 +98,4 @@ image::saphana-fas-nfs_image7.png[SAPHana FAS NFSイメージ7]
 
 次の図は、解決策の概要を示しています。各サイトのストレージクラスタがローカルで高可用性を実現し、本番環境のワークロードに使用されます。各サイトのデータはもう一方のサイトに同期的にレプリケートされ、災害のフェイルオーバーが発生した場合に使用できます。
 
-image::saphana-fas-nfs_image8.png[SAPHana FAS NFSイメージ8]
+image:saphana-fas-nfs_image8.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

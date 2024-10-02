@@ -10,9 +10,10 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 前のセクションで説明したように、SnapCenter は、任意の既存のSnapshotバックアップからデータセットのクローンを管理し、これらのデータセットを任意のターゲットシステムに迅速にプロビジョニングできます。論理的な破損に対処するために本番データをリペアシステムに柔軟かつ迅速にプロビジョニングすることは、リペアシステムをリセットして別の本番データセットを選択する必要があることが多いため、非常に重要です。FlexCloneテクノロジを使用すると、修復システムは通常短時間しか使用されないため、高速なプロビジョニングプロセスが可能になり、容量を大幅に削減できます。
 
 次の図は、SnapCenterを使用したSAPシステムのクローニング処理に必要な手順をまとめたものです。
@@ -34,6 +35,6 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 
 NOTE: システムを別のSnapshotバックアップにリセットする必要がある場合は、手順6と手順4で十分です。SAP HANA共有ボリュームの更新は必要ありません。
 
-image::sc-copy-clone-image9.png[SCコピークローンイメージ9]
+image:sc-copy-clone-image9.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 を参照してください link:sc-copy-clone-sap-system-clone-with-snapcenter.html["「SnapCenter を使用したSAPシステムのクローン作成」"] システムクローンワークフローの詳細なステップバイステップの概要 を示します。

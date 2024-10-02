@@ -10,9 +10,10 @@ summary: システムとストレージのセットアップでは多数のオ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 システムとストレージのセットアップでは多数のオプションを使用できるため、システムの個 々 のセットアップと設定の要件をテンプレートとして使用する必要があります。
 
 
@@ -40,13 +41,13 @@ NOTE: このサンプルスクリプトは現状のまま提供されており�
 
 次の図は、ラボのセットアップを示しています。システムのクローニングに使用されるソースのSAPシステムHN9では、データベースH09、SAP CS、およびSAP ASサービスが、がインストールされた同じホスト（sap-lnx32）で実行されています https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/737a99e86f8743bdb8d1f6cf4b862c79.html["アダプティブデザイン"^] 有効。に従ってAnsibleコントロールノードが準備されました https://github.com/sap-linuxlab/demo.netapp_ontap/blob/main/netapp_ontap.md["NetApp ONTAP 向けのAnsibleプレイブック"^] ドキュメント
 
-SAPホストエージェントもこのホストにインストールされています。ネットアッププロバイダスクリプトおよびAnsibleプレイブックは、で説明するように、Ansibleコントロールノード上で設定しました link:ama-ansible-appendix--provider-script-configuration-and-ansible-playbooks.html["「付録：プロバイダスクリプトの設定」"]
+SAPホストエージェントもこのホストにインストールされています。NetAppプロバイダスクリプトとAnsibleプレイブックは、Ansibleコントロールノードで設定しました（を参照）。link:lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html["「付録：プロバイダスクリプトの設定」"]
 
 ホスト `sap-lnx49` SAP LaMaクローニング運用のターゲットとして使用し、隔離に対応した機能を設定しました。
 
 システムのコピーおよび更新には、さまざまなSAPシステム（ソースとしてHNA、ターゲットとしてHN2）が使用されました。これは、Post Copy Automation（PCA）が有効になっているためです。
 
-image::lama-ansible-image7.png[この図は、SAPホストエージェントのさまざまな例と、NFSマウントを使用したネットアップストレージの操作方法を示しています。SAP LaMaインスタンスも表しています。]
+image:lama-ansible-image7.png["この図は、SAPホストエージェントのさまざまな例と、NFSマウントを使用したネットアップストレージの操作方法を示しています。SAP LaMaインスタンスも表しています。"]
 
 ラボ環境では、次のソフトウェアリリースを使用しました。
 
@@ -70,19 +71,19 @@ image::lama-ansible-image7.png[この図は、SAPホストエージェントの�
 
 プロバイダの定義は、次のスクリーンショットに示すように、SAP LaMaのAutomation Studio内で実行されます。この例の実装では、前に説明したように、異なるカスタムプロビジョニングステップと操作フックに使用される単一のプロバイダ定義を使用します。
 
-image::lama-ansible-image8.png[SAP LaMa GUIを使用したSAPプロバイダの定義を示すスクリーンショット]
+image:lama-ansible-image8.png["SAP LaMa GUIを使用したSAPプロバイダの定義を示すスクリーンショット"]
 
 プロバイダ `netapp_clone` スクリプトとして定義されます `netapp_clone.sh` SAPホストエージェントに登録されている。SAPホストエージェントは、中央のホストで実行されます `sap-jump`Ansibleコントロールノードとしても機能します。
 
-image::lama-ansible-image9.png[Generalタブの個 々 のプロバイダ定義であるNetApp_cloneのスクリーンショットに、Summaryセクション、Used - forセクション、およびOptionsセクションを示します。]
+image:lama-ansible-image9.png["Generalタブの個 々 のプロバイダ定義であるNetApp_cloneのスクリーンショットに、Summaryセクション、Used - forセクション、およびOptionsセクションを示します。"]
 
 [*で使用（* Used in *）]タブには、プロバイダーが使用されるカスタムオペレーションが表示されます。カスタムプロビジョニング* NetAppClone *およびカスタムフック* Delete NetAppClone *および* Delete NetAppClone Refresh *の構成は、次の章で説明します。
 
-image::lama-ansible-image10.png[使用済みセクションのスクリーンショット。定義を使用するカスタム処理のリストを示しています。この例では、「NetAppCloneの削除」、「NetAppClone更新の削除」、「NetAppClone」と表示されています。]
+image:lama-ansible-image10.png["使用済みセクションのスクリーンショット。定義を使用するカスタム処理のリストを示しています。この例では、「NetAppCloneの削除」、「NetAppClone更新の削除」、「NetAppClone」と表示されています。"]
 
 プロビジョニングワークフローの実行中にパラメータ* ClonePostFix *および* SnapPostFix *が要求され、SnapshotとFlexCloneボリュームの名前に使用されます。
 
-image::lama-ansible-image11.png[「パラメータ」セクションのスクリーンショット。「CLonePostFix」と「SnapPostFix」の2つのパラメータのリストです。]
+image:lama-ansible-image11.png["「パラメータ」セクションのスクリーンショット。「CLonePostFix」と「SnapPostFix」の2つのパラメータのリストです。"]
 
 
 
@@ -90,7 +91,7 @@ image::lama-ansible-image11.png[「パラメータ」セクションのスクリ
 
 SAP LaMaのカスタムプロビジョニング設定で、前述したお客様のプロバイダを使用して、プロビジョニングワークフローの手順* Clone Volumes *と* PostCloneVolumes *を置き換えます。
 
-image::lama-ansible-image12.png[カスタムプロビジョニングの設定画面のスクリーンショット。CloneVolumesとFinalizeCloneVolumesのプロセスが表示されます。]
+image:lama-ansible-image12.png["カスタムプロビジョニングの設定画面のスクリーンショット。CloneVolumesとFinalizeCloneVolumesのプロセスが表示されます。"]
 
 
 
@@ -98,15 +99,15 @@ image::lama-ansible-image12.png[カスタムプロビジョニングの設定画
 
 システムの削除ワークフロー時にシステムを削除した場合は、フック* Delete NetAppClone *を使用してプロバイダ定義が呼び出されます `netapp_clone`。インスタンスは実行中も保持されるため、システムの更新ワークフロー中は* Delete NetApp Clone Refresh *フックが使用されます。
 
-image::lama-ansible-image13.png[カスタムフックのスクリーンショット。カスタムフックのリストを示します。NetAppClone Refresh and Delete NetAppCloneを削除します。]
+image:lama-ansible-image13.png["カスタムフックのスクリーンショット。カスタムフックのリストを示します。NetAppClone Refresh and Delete NetAppCloneを削除します。"]
 
 SAP LaMaがマウントポイント設定の情報をプロバイダに提供できるように、カスタムフックに「データマウントXML *を使用」を設定することが重要です。
 
-image::lama-ansible-image14.png[[Delete NetAppClone General]画面のスクリーンショット]
+image:lama-ansible-image14.png["「Use Mount Data XML yes」が強調表示された「Delete NetAppClone General」画面のスクリーンショット"]
 
 カスタムプロビジョニングワークフローを使用してシステムを作成したときにのみカスタムフックが使用および実行されるようにするために、次の制約がそのフックに追加されます。
 
-image::lama-ansible-image15.png[NetAppClone ConstraintsページのスクリーンショットCustom clone process name（Static；カスタムクローンプロセス名）という単一の制約が含まれています。]
+image:lama-ansible-image15.png["NetAppClone ConstraintsページのスクリーンショットCustom clone process name（Static；カスタムクローンプロセス名）という単一の制約が含まれています。"]
 
 カスタムフックの使用方法の詳細については、を参照してください https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/139eca2f925e48738a20dbf0b56674c5.html["SAP LaMaのドキュメント"^]。
 
@@ -116,4 +117,4 @@ image::lama-ansible-image15.png[NetAppClone Constraintsページのスクリー�
 
 ソースシステムのカスタムプロビジョニングワークフローを有効にするには、その設定を該当するものにする必要があります。[カスタムプロビジョニングプロセスを使用する*]チェックボックスをオンにして、対応するカスタムプロビジョニング定義を選択する必要があります。
 
-image::lama-ansible-image16.png[SAP LaMa Configuration &GT; Systems & GT; System Details画面のスクリーンショット。［カスタムプロビジョニングプロセスを使用］チェックボックスが強調表示されます。]
+image:lama-ansible-image16.png["SAP LaMa Configuration  gt; Systems  gt; System Details画面のスクリーンショット。［カスタムプロビジョニングプロセスを使用］チェックボックスが強調表示されます。"]

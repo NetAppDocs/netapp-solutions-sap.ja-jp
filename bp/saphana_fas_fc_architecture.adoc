@@ -10,7 +10,7 @@ summary: SAP HANA ホストは、冗長 FCP インフラとマルチパスソフ
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -20,7 +20,7 @@ SAP HANA ホストは、冗長 FCP インフラとマルチパスソフトウェ
 
 次の図は、 8 台の SAP HANA ホストをストレージ HA ペアに接続した構成例を示しています。
 
-image::saphana_fas_fc_image2.png[SAPHana FAS fc image2]
+image:saphana_fas_fc_image2.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 このアーキテクチャは、次の 2 つの側面で拡張できます。
 
@@ -30,11 +30,11 @@ image::saphana_fas_fc_image2.png[SAPHana FAS fc image2]
 
 次の図は、追加の SAP HANA ホストをストレージコントローラに接続した場合の構成例を示しています。この例では、 16 台の SAP HANA ホストの容量とパフォーマンスの要件を満たすために、さらにディスクシェルフが必要です。合計スループット要件に応じて、ストレージコントローラへの FC 接続を追加する必要があります。
 
-image::saphana_fas_fc_image3.png[SAPHana FAS fc image3]
+image:saphana_fas_fc_image3.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 導入した FAS システムストレージモデルに関係なく、次の図に示すように、ストレージコントローラを追加することで SAP HANA 環境を拡張することもできます。
 
-image::saphana_fas_fc_image4.png[SAPHana FAS fc image4]
+image:saphana_fas_fc_image4.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -48,7 +48,7 @@ NetApp SnapVault ソフトウェアを使用すると、プライマリストレ
 
 次の図に示すように、 NFS マウントを使用して、データベースログをセカンダリストレージに直接バックアップできます。
 
-image::saphana_fas_fc_image5.jpg[SAPHana FAS fcイメージ5]
+image:saphana_fas_fc_image5.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 ストレージベースの Snapshot バックアップは、ファイルベースのバックアップに比べて大きなメリットをもたらします。たとえば、次のような利点があります。
 
@@ -84,7 +84,7 @@ DR サイトのサーバは、通常運用時に開発 / テストシステム�
 
 どちらのレプリケーション方法でも、 RPO と RTO に影響を与えることなく DR ワークフローテストを実行できます。FlexClone ボリュームはストレージ上に作成され、 DR テストサーバに接続されます。
 
-image::saphana_fas_fc_image6.png[SAPHana FAS fc image6]
+image:saphana_fas_fc_image6.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 同期レプリケーションで StrictSync モードが提供されます。何らかの理由でセカンダリストレージへの書き込みが完了しないと、アプリケーション I/O が失敗し、プライマリストレージシステムとセカンダリストレージシステムが同一になります。プライマリへのアプリケーション I/O は、 SnapMirror 関係のステータスが InSync に戻るまで再開されません。プライマリストレージで障害が発生した場合は、フェイルオーバー後にデータ損失なしでアプリケーション I/O をセカンダリストレージで再開できます。StrictSync モードでは、 RPO は常にゼロです。
 
@@ -94,4 +94,4 @@ image::saphana_fas_fc_image6.png[SAPHana FAS fc image6]
 
 次の図は、解決策の概要を示しています。各サイトのストレージクラスタは、ローカルで高可用性を実現し、本番環境のワークロードに使用されます。各サイトのデータはもう一方のサイトに同期的にレプリケートされ、災害のフェイルオーバー時に使用できます。
 
-image::saphana_fas_fc_image7.png[SAPHana FAS fcイメージ7]
+image:saphana_fas_fc_image7.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

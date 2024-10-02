@@ -10,7 +10,7 @@ summary: SAP HANA 1.0 SPS10 以降、 IO 動作を調整し、使用中のファ
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

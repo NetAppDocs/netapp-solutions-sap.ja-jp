@@ -10,8 +10,10 @@ summary: アプリケーションに依存しないクロスリージョンレ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
-アプリケーションに依存しないクロスリージョンレプリケーションの情報は、で確認できます https://docs.microsoft.com/en-us/azure/azure-netapp-files/["Azure NetApp Files のドキュメント | Microsoft ドキュメント"^] を参照してください。
+クロスリージョンレプリケーションに関するアプリケーションに依存しない情報は、次の場所にあります。
+
+link:https://docs.microsoft.com/en-us/azure/azure-netapp-files/["Azure NetApp Files のドキュメント | Microsoft ドキュメント"^]を参照してください。

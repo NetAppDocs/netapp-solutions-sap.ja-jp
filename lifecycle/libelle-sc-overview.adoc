@@ -10,8 +10,13 @@ summary: SAPのライフサイクル管理を最適化するネットアップ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+SAPのライフサイクル管理を最適化するネットアップのソリューションは、SAP AnyDBとSAP HANAデータベースに統合されています。さらに、ネットアップは、アプリケーションと統合された効率的なデータ保護と、SAPテストシステムの柔軟なプロビジョニングを組み合わせた、SAPのライフサイクル管理ツールに統合しています。
+
+著者：
 
 Holger Zecha、Tobias Brandl、ネットアップFranz Diegruber、Libelle
 

@@ -10,7 +10,7 @@ summary: このセクションで説明するすべての手順は、物理サ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

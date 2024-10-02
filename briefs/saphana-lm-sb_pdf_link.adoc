@@ -8,6 +8,7 @@ summary: ネットアップは、 SAP Landscape Management （ SAP LaMa ）な�
 :allow-uri-read: 
 
 
+[role="lead"]
 ネットアップは、 SAP Landscape Management （ SAP LaMa ）など、 SAP 管理者が日々の運用で使用するツールに完全に統合されたライフサイクル管理解決策を提供することで、機能の実装が遅いという課題や、自動化の欠如、生産性の低下に対処しています。プリプロセスからポストプロセスまで、プロビジョニングのワークフローを簡易化することを目的としています。本番用システムのコピーを作成するために必要なソフトウェアレイヤとストレージレイヤのタスクもすべて含みます。この解決策を使用すると、管理者はマウスを数回クリックするだけで開発およびテスト環境を作成できるため、ライフサイクル管理が向上します。
 
 link:https://www.netapp.com/pdf.html?item=/media/6996-sb-3978pdf.pdf["https://www.netapp.com/pdf.html?item=/media/6996-sb-3978pdf.pdf"]

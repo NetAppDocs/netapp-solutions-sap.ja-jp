@@ -3,7 +3,6 @@ section: bp
 title: ベストプラクティス
 entries:
 - title: "『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』"
-  type: solutions
   entries:
   - title: はじめに
     url: "/bp/saphana_aff_fc_introduction.html"
@@ -36,7 +35,6 @@ entries:
   - title: 履歴を更新します
     url: "/bp/saphana_aff_fc_update_history.html"
 - title: "『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』"
-  type: solutions
   entries:
   - title: はじめに
     url: "/bp/saphana_aff_nfs_introduction.html"
@@ -69,7 +67,6 @@ entries:
   - title: 履歴を更新します
     url: "/bp/saphana_aff_nfs_update_history.html"
 - title: "『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』"
-  type: solutions
   entries:
   - title: はじめに
     url: "/bp/saphana-fas-nfs_introduction.html"
@@ -102,7 +99,6 @@ entries:
   - title: 履歴を更新します
     url: "/bp/saphana-fas-nfs_update_history.html"
 - title: "『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください"
-  type: solutions
   entries:
   - title: はじめに
     url: "/bp/saphana_fas_fc_introduction.html"

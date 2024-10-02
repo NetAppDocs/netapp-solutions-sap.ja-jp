@@ -8,10 +8,11 @@ summary: この NetApp Verified Architecture は、 Brocade FC SAN ファブリ�
 :allow-uri-read: 
 
 
-Nils Bauer 、 Roland Wartenberg 、 Darryl Clinkmars 、 Daniel Hohman 、 Marco Schö en 、 Steve Botkin 、 Michael Peppers 、 Vidula Aiyer 、 Steve Collins 、 Pavan Jhamnani 、 ネットアップ、 Lee Dorrior
-
-Jim Zucchero 氏、 Naem Saafein 博士、 Broadcom Brocade 博士
-
+[role="lead"]
 この NetApp Verified Architecture は、 Brocade FC SAN ファブリックを使用した、ネットアップオール SAN アレイ（ ASA ）ストレージシステム上の SAP システムの最新化と SAP HANA の運用に関する解説です。バックアップとリカバリ、ディザスタリカバリ、データ保護が含まれます。解決策は、 NetApp SnapCenter を活用して、 SAP HANA のバックアップ、リストアとリカバリ、クローニングのワークフローを自動化します。ディザスタリカバリの設定、テスト、およびフェイルオーバーのシナリオについては、同期の NetApp SnapMirror データレプリケーションソフトウェアを使用して説明します。また、 Commvault を使用した SAP データ保護の概要も記載します。
+
+著者：
+
+Nils Bauer 、 Roland Wartenberg 、 Darryl Clinkmars 、 Daniel Hohman 、 Marco Schö en 、 Steve Botkin 、 Michael Peppers 、 Vidula Aiyer 、 Steve Collins 、 Pavan Jhamnani 、 Lee Dorrier 、 NetApp Jim Zucchero 、 Naem Saafein 、 Ph. D. 、 Broadcom Brocade
 
 link:https://www.netapp.com/pdf.html?item=/media/10235-nva-1147-design.pdf["https://www.netapp.com/pdf.html?item=/media/10235-nva-1147-design.pdf"]

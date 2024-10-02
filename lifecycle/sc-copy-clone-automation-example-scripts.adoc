@@ -10,9 +10,10 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 本ドキュメントでは、SnapCenter クローンの作成処理とクローンの削除処理をさらに自動化するために、2つのスクリプトを使用しています。
 
 * script.shは `sc-system-refresh`、システム更新とシステムクローニングのワークフローでSAP HANAデータベースのリカバリ処理とシャットダウン処理を実行するために使用します。
@@ -36,7 +37,7 @@ NOTE: このサンプルスクリプトは現状のまま提供されており�
 
 NOTE: 現在のバージョンのスクリプトは、シングルホストシステムMDCのシングルテナント構成、またはMDCのマルチテナント構成をサポートしています。SAP HANAマルチホストシステムはサポートされていません。
 
-image::sc-copy-clone-image14.png[SCコピークローンイメージ14]
+image:sc-copy-clone-image14.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -68,7 +69,7 @@ image::sc-copy-clone-image14.png[SCコピークローンイメージ14]
 
 NOTE: このスクリプトは、NFSをストレージプロトコルとして使用するSAP HANAシステムをサポートします。
 
-image::sc-copy-clone-image15.png[SCコピークローンイメージ15]
+image:sc-copy-clone-image15.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 

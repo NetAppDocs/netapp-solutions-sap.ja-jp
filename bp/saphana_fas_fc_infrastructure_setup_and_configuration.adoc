@@ -10,6 +10,8 @@ summary:
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
+このドキュメントでは、NetApp FASシステムとNFSのインフラのセットアップと設定について説明します。

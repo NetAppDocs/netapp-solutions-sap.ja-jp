@@ -10,14 +10,14 @@ summary: このセクションでは、リソース保護にポリシーを追�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
 次の図に示すように、新しいポリシーをHANAのリソース保護構成に追加する必要があります。
 
-image::amazon-fsx-image86.png[Amazon FSxイメージ86]
+image:amazon-fsx-image86.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 セットアップでは、日次スケジュールを定義します。
 
-image::amazon-fsx-image87.png[Amazon FSxイメージ87]
+image:amazon-fsx-image87.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

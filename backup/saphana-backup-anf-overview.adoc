@@ -10,12 +10,13 @@ summary: このテクニカルレポートでは、 NetApp SnapCenter サービ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
-ネットアップ Nils Bauer
-
+[role="lead"]
 このテクニカルレポートでは、 NetApp SnapCenter サービスと Azure NetApp Files を使用した SAP HANA データ保護のベストプラクティスについて説明します。SnapCenter サービスの概念、設定に関する推奨事項、バックアップ、リストア、リカバリ処理などの運用ワークフローについて説明します。
+
+作成者：Nils Bauer、NetApp
 
 今日の企業には、 SAP アプリケーションを中断なく継続的に利用できることが求められています。データ量が増え続け、システムバックアップなどの日常的な保守作業が必要になった場合に、一貫したパフォーマンスレベルが期待されます。SAP データベースのバックアップは重要な作業であり、本番用 SAP システムのパフォーマンスに大きく影響する可能性があります。
 

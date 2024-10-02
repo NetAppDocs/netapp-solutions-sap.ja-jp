@@ -10,7 +10,7 @@ summary: HANA データベースをリカバリする手順は次のとおりで
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

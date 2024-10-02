@@ -3,7 +3,6 @@ section: backup
 title: バックアップ、リストア、ディザスタリカバリ
 entries:
 - title: Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ
-  type: solutions
   entries:
   - title: 概要
     url: "/backup/amazon-fsx-overview.html"
@@ -36,7 +35,6 @@ entries:
   - title: 追加情報の参照先
     url: "/backup/amazon-fsx-where-to-find-additional-information.html"
 - title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
-  type: solutions
   entries:
   - title: 概要
     url: "/backup/saphana-br-scs-overview.html"
@@ -67,7 +65,6 @@ entries:
   - title: 追加情報およびバージョン履歴の参照先
     url: "/backup/saphana-br-scs-where-to-find-additional-information.html"
 - title: BlueXP Backup and Recovery for SAP HANA -バックアップ先としてのクラウドオブジェクトストレージ
-  type: solutions
   entries:
   - title: BlueXP Backup and Recovery for SAP HANA -概要
     url: "/backup/hana-hycl-backup-overview.html"
@@ -78,7 +75,6 @@ entries:
   - title: 追加情報とバージョン履歴
     url: "/backup/hana-hycl-backup-info-version.html"
 - title: SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
-  type: solutions
   entries:
   - title: SAP HANA システムレプリケーションの概要
     url: "/backup/saphana-sr-scs-sap-hana-system-replication-overview.html"
@@ -97,7 +93,6 @@ entries:
   - title: バージョン履歴
     url: "/backup/saphana-sr-scs-version-history.html"
 - title: Azure NetApp Files を使用した SAP HANA ディザスタリカバリ
-  type: solutions
   entries:
   - title: データ保護の概要
     url: "/backup/saphana-dr-anf_data_protection_overview_overview.html"

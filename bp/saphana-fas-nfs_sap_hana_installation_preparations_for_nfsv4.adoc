@@ -10,7 +10,7 @@ summary: NFS バージョン 4 以降では、ユーザ認証が必要です。�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

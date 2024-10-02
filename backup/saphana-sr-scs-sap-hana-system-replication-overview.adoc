@@ -10,12 +10,13 @@ summary: SAP HANA システムレプリケーションは、一般に、 SAP HAN
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
-ネットアップ Nils Bauer
-
+[role="lead"]
 SAP HANA システムレプリケーションは、一般に、 SAP HANA データベースの高可用性またはディザスタリカバリ解決策として使用されます。SAP HANA システムレプリケーションには、ユースケースや可用性の要件に応じて、さまざまな動作モードが用意されています。
+
+作成者：Nils Bauer、NetApp
 
 組み合わせて使用できる主なユースケースは次の 2 つです。
 
@@ -35,7 +36,7 @@ SAP HANA システムレプリケーションは、一般に、 SAP HANA デー�
 
 このドキュメントの残りの部分では、ハイアベイラビリティ解決策として構成された SAP システムレプリケーションを使用したバックアップ処理について説明します。
 
-image::saphana-sr-scs-image1.png[SAPHana SR SCSイメージ1]
+image:saphana-sr-scs-image1.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -45,4 +46,4 @@ image::saphana-sr-scs-image1.png[SAPHana SR SCSイメージ1]
 
 バックアップ要件に関しては、データセンター 1 での通常運用中、およびデータセンター 2 でのディザスタリカバリ中に、バックアップを作成できる必要があります。データセンター 1 と 2 には独立したバックアップインフラがあり、ディザスタフェイルオーバーの一環としてバックアップ処理がアクティブ化されます。通常、バックアップインフラは共有されません。もう一方のデータセンターで作成されたバックアップをリストアすることはできません。
 
-image::saphana-sr-scs-image2.png[SAPHana SR SCSイメージ2]
+image:saphana-sr-scs-image2.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

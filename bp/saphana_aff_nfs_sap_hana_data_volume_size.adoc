@@ -10,7 +10,7 @@ summary: デフォルトでは、 SAP HANA サービスごとに使用される�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

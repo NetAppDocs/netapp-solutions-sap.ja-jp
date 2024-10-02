@@ -10,7 +10,7 @@ summary: 'これで " 以前に作成した /etc/fstab ファイルに基づい�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

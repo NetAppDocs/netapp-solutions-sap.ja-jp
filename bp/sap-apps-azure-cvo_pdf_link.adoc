@@ -13,13 +13,14 @@ summary: TR-4757 では、 Azure NetApp Files for SAP Applications と SAP HANA 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
-ネットアップ、 Nils Bauer 、 Tobias Brandl 氏
-
-Microsoft 、 Geert van Teylingen 、 Will Bratton 氏
-
+[role="lead"]
 TR-4757 では、 Azure NetApp Files for SAP Applications と SAP HANA の導入に関するベストプラクティスを紹介しています。また、 SAP 共有ファイルシステムのさまざまなユースケースについても詳しく説明しています。本ドキュメントでは、 SAP アプリケーションと SAP HANA 環境に NetApp Cloud Volumes ONTAP を活用するためのベストプラクティスを紹介します。SAP 共有ファイルシステムとは異なるユースケースや、 Cloud Volumes ONTAP 上の SAP HANA での固有のパフォーマンスに関する考慮事項があります。
+
+著者：
+
+Bert Herth 、 Tobias Brandl 、 Nils Bauer 、ネットアップ、 Bratton 、 Geert van Teylingen 、 Microsoft 社
 
 link:https://www.netapp.com/pdf.html?item=/media/17126-tr4757pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17126-tr4757pdf.pdf"]

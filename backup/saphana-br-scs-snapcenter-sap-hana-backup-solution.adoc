@@ -10,7 +10,7 @@ summary: このセクションでは、この解決策 で使用されている�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -81,7 +81,7 @@ NOTE: SnapCenter はプライマリストレージでの保持を処理し、 ON
 
 次の図に、データベースとログのバックアップ構成の概要を示します。この図では、ログバックアップがオフサイトのバックアップストレージの NFS マウントに書き込まれます。
 
-image::saphana-br-scs-image7.png[SAPHana br SCSイメージ7]
+image:saphana-br-scs-image7.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 SnapCenter では、データボリューム以外のボリュームのストレージベースの Snapshot バックアップを実行する際に、次のタスクを実行します。
 
@@ -121,4 +121,4 @@ SnapCenter は、次の SAP HANA アーキテクチャとリリースをサポ�
 
 バージョン 4.6 以降の SnapCenter では、 HANA システムレプリケーション関係で設定された HANA システムの自動検出がサポートされます。各ホストは、物理 IP アドレス（ホスト名）とストレージレイヤ上の個々のデータボリュームを使用して設定されます。2 つの SnapCenter リソースが 1 つのリソースグループに統合されている場合、 SnapCenter はプライマリまたはセカンダリのホストを自動的に識別し、必要なバックアップ処理を適宜実行します。SnapCenter で作成された Snapshot とファイルベースのバックアップの保持の管理は、両方のホストで実行されます。これにより、現在のセカンダリホストでも古いバックアップが削除されるようになります。次の図に概要を示します。SnapCenterでのHANAシステムレプリケーションに対応したHANAシステムの構成と運用の詳細については、を参照 https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf["TR-4719 『 SAP HANA System Replication 、 Backup and Recovery with SnapCenter 』"^]してください。
 
-image::saphana-br-scs-image8.png[SAPHana br SCSイメージ8]
+image:saphana-br-scs-image8.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

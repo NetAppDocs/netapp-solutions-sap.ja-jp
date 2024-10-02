@@ -10,7 +10,7 @@ summary: ここでは、ネットアップストレージシステムの構成�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -69,7 +69,7 @@ FabricPool は、ログバックアップを別のストレージ階層に移動
 . の説明に従って、必要なアグリゲートを作成および構成します。<<アグリゲートの構成>>. 」
 . の説明に従って、 Storage Virtual Machine （ SVM ）を作成します。<<SVM の設定>>. 」
 . の説明に従って LIF を作成します。<<LIF の設定>>. 」
-. の説明に従って、アグリゲート内にボリュームを作成します。<<Volume configuration for SAP HANA single host systems>>および<<Volume configuration for SAP HANA multiple host systems>>. 」
+. および<<SAP HANA マルチホストシステムのボリューム構成>>の説明に従って、アグリゲート内にボリュームを作成します<<SAP HANA シングルホストシステムのボリューム構成>>。
 . の説明に従って、必要なボリュームオプションを設定します。<<ボリュームのオプション>>. 」
 . の説明に従って、 NFSv3 に必要なオプションを設定します。<<NFSv3 用の NFS 設定>>「 NFSv4 の場合は、」の説明に従ってまたはを参照してください。<<NFSv4 の NFS 設定>>. 」
 . の説明に従って、ボリュームをネームスペースにマウントし、エクスポートポリシーを設定します。<<ボリュームをネームスペースにマウントし、エクスポートポリシーを設定>>. 」
@@ -88,7 +88,7 @@ FabricPool は、ログバックアップを別のストレージ階層に移動
 
 NOTE: ディスクシェルフ DS224C では、クワッドパスの SAS ケーブルも使用できますが、必須ではありません。
 
-image::saphana_aff_nfs_image13.png[SAPHana AFF NFSイメージ13]
+image:saphana_aff_nfs_image13.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -96,7 +96,7 @@ image::saphana_aff_nfs_image13.png[SAPHana AFF NFSイメージ13]
 
 NS224 NVMe ディスクシェルフは、各コントローラに 100GbE ポートを 2 つ使用して接続します。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。ADPv2 は、アグリゲート構成の章で説明されているとおり、 NS224 ディスクシェルフにも使用されます。次の図は、 NVMe ドライブとのディスクシェルフ接続を示しています。
 
-image::saphana_aff_nfs_image14.jpg[SAPHana AFF NFSイメージ14]
+image:saphana_aff_nfs_image14.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -106,7 +106,7 @@ image::saphana_aff_nfs_image14.jpg[SAPHana AFF NFSイメージ14]
 
 次の図は、 ADPv2 を使用した、 12Gb の SAS シェルフで稼働する、 12 台の SAP HANA ホストの構成を示しています。6 台の SAP HANA ホストが各ストレージコントローラに接続されています。各ストレージコントローラに 2 つずつ、合計 4 つのアグリゲートが構成されています。各アグリゲートには、 9 つのデータパーティションと 2 つのパリティディスクパーティションを含む 11 本のディスクが構成されます。各コントローラで、 2 つのスペアパーティションを使用できます。
 
-image::saphana_aff_nfs_image15.jpg[SAPHana AFF NFSイメージ15]
+image:saphana_aff_nfs_image15.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -154,7 +154,7 @@ NOTE: HA ペアのうち、 1 台のストレージコントローラのみを S
 
 NOTE: データボリュームとログボリュームが同じコントローラに格納されている場合は、サーバからストレージへのアクセスに、 2 つの異なる LIF を使用して実行する必要があります。 1 つはデータボリュームにアクセスする LIF 、もう 1 つはログボリュームにアクセスする LIF です。
 
-image::saphana_aff_nfs_image16.jpg[SAPHana AFF NFSイメージ16]
+image:saphana_aff_nfs_image16.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 各 SAP HANA ホストには、データボリューム、ログボリューム、「 /hana/shared 」のボリュームが構成されています。次の表は、シングルホスト SAP HANA システムの構成例を示しています。
 
@@ -199,7 +199,7 @@ NOTE: HA ペアのうち、 1 台のストレージコントローラのみを S
 
 NOTE: データボリュームとログボリュームが同じコントローラに格納されている場合は、サーバからストレージへのアクセスに、 2 つの異なる LIF を使用して実行する必要があります。 1 つはデータボリュームにアクセスする LIF で、もう 1 つはログボリュームにアクセスする LIF です。
 
-image::saphana_aff_nfs_image17.jpg[SAPHana AFF NFSイメージ17]
+image:saphana_aff_nfs_image17.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 各 SAP HANA ホストには、 1 個のデータボリュームと 1 個のログボリュームが作成されます。「 /hana/shared 」ボリュームは、 SAP HANA システムのすべてのホストで使用されます。次の表に、 4 つのアクティブホストを持つ、マルチホスト SAP HANA システムの構成例を示します。
 

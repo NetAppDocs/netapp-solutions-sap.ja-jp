@@ -10,7 +10,7 @@ summary: Microsoft Azure では、作成時や割り当て解除された VM の
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: SnapCenter リソースは、 HANA システムレプリケーション
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -23,13 +23,13 @@ NOTE: 仮想 IP アドレスは常にプライマリ SAP HANA ホストにバイ
 
 SAP HANA のバックアップカタログと SnapCenter リソースには、ホスト 1 で作成されたバックアップが含まれています。
 
-image::saphana-sr-scs-image27.png[SAPHana SR SCSイメージ27]
+image:saphana-sr-scs-image27.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 次の図に、ホスト 2 へのフェイルオーバーおよびホスト 2 からホスト 1 へのレプリケーション後のバックアップ処理を示します。SnapCenter は、 SnapCenter リソースに設定されている仮想 IP アドレスを使用して、ホスト 2 と自動的に通信します。これで、ホスト 2 にバックアップが作成されます。SnapCenter によって 2 つの Snapshot コピーが作成されます。ホスト 2 のデータボリュームにあるデータベースと整合性のあるバックアップと、ホスト 1 のデータボリュームにあるクラッシュイメージの Snapshot コピーです。SAP HANA のバックアップカタログと SnapCenter リソースに、ホスト 1 で作成されたバックアップとホスト 2 で作成されたバックアップが含まれるようになりました。
 
 不要なデータバックアップやログバックアップは、定義された SnapCenter 保持ポリシーに基づいて削除され、プライマリまたはセカンダリのホストに関係なく、バックアップは削除されます。
 
-image::saphana-sr-scs-image28.png[SAPHana SR SCSイメージ28]
+image:saphana-sr-scs-image28.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 の項で説明したように link:saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html["ストレージ Snapshot バックアップと SAP システムレプリケーション"]ストレージベースの Snapshot バックアップを使用したリストア処理は、リストアするバックアップによって異なります。ローカル・ストレージ・ボリュームでリストアを実行できるかどうか、または他のホストのストレージ・ボリュームでリストアを実行する必要があるかどうかを判断するには、バックアップが作成されたホストを特定することが重要です。
 
@@ -37,7 +37,7 @@ image::saphana-sr-scs-image28.png[SAPHana SR SCSイメージ28]
 
 次の図は、バックアップホストの ID を示しています。
 
-image::saphana-sr-scs-image29.png[SAPHana SR SCSイメージ29]
+image:saphana-sr-scs-image29.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -45,7 +45,7 @@ image::saphana-sr-scs-image29.png[SAPHana SR SCSイメージ29]
 
 次の図は、ラボでのセットアップと必要な SnapCenter 構成の概要を示しています。
 
-image::saphana-sr-scs-image30.png[SAPHana SR SCSイメージ30]
+image:saphana-sr-scs-image30.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 どの SAP HANA ホストがプライマリであっても、 1 つのホストがダウンしている場合でもバックアップ処理を実行するには、 SnapCenter SAP HANA プラグインを中央のプラグインホストに導入する必要があります。今回のラボ環境では、 SnapCenter サーバを中央プラグインホストとして使用し、 SnapCenter サーバに SAP HANA プラグインを導入しました。
 
@@ -58,18 +58,18 @@ SAP HANAプラグインの導入オプションとユーザストアの設定の
 
 SnapCenter では ' 次の図に示すように ' リソースは ' 前に構成されたユーザー・ストア・キーと SnapCenter サーバを 'hdbsql' 通信ホストとして構成されます
 
-image::saphana-sr-scs-image31.png[SAPHana SR SCSイメージ31]
+image:saphana-sr-scs-image31.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 次の図に示すように、両方の SAP HANA ホストのデータボリュームがストレージ設置面積構成に含まれています。
 
-image::saphana-sr-scs-image32.png[SAPHana SR SCSイメージ32]
+image:saphana-sr-scs-image32.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 前述したように、 SnapCenter はバックアップがどこで作成されたかを認識しません。したがって、 SnapCenter バックアップワークフローにバックアップ前のスクリプトを追加して、現在プライマリ SAP HANA ホストとなっているホストを特定することを推奨します。この識別は、次の図に示すように、バックアップワークフローに追加された SQL ステートメントを使用して実行できます。
 
 ....
 Select host from “SYS”.M_DATABASE
 ....
-image::saphana-sr-scs-image33.png[SAPHana SR SCSイメージ33]
+image:saphana-sr-scs-image33.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -81,18 +81,18 @@ image::saphana-sr-scs-image33.png[SAPHana SR SCSイメージ33]
 
 次の図に、ホスト 1 をプライマリホストとするバックアップジョブログを示します。
 
-image::saphana-sr-scs-image34.png[SAPHana SR SCSイメージ34]
+image:saphana-sr-scs-image34.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 この図は、ホスト 2 がプライマリホストであるバックアップジョブログを示しています。
 
-image::saphana-sr-scs-image35.png[SAPHana SR SCSイメージ35]
+image:saphana-sr-scs-image35.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 次の図は、 SAP HANA Studio の SAP HANA バックアップカタログを示しています。SAP HANA データベースがオンラインの場合、バックアップが作成された SAP HANA ホストが SAP HANA Studio に表示されます。
 
 
 NOTE: リストア処理とリカバリ処理で使用されるファイルシステム上の SAP HANA バックアップカタログに、バックアップが作成されたホスト名は含まれません。データベースがダウンしているときにホストを識別する唯一の方法は、バックアップカタログのエントリと、両方の SAP HANA ホストの「 backup.log 」ファイルを組み合わせることです。
 
-image::saphana-sr-scs-image36.png[SAPHana SR SCSイメージ36]
+image:saphana-sr-scs-image36.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -106,7 +106,7 @@ image::saphana-sr-scs-image36.png[SAPHana SR SCSイメージ36]
 
 ホスト 2 （ T2 ）に作成されたバックアップを使用してリストアする必要がある場合は、ホスト 2 のストレージボリュームにある Snapshot コピーを使用する必要があります。このバックアップを利用するには、バックアップから NetApp FlexClone コピーを作成し、 FlexClone コピーをホスト 1 にマウントし、データを元の場所にコピーします。
 
-image::saphana-sr-scs-image37.png[SAPHana SR SCSイメージ37]
+image:saphana-sr-scs-image37.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 単一の SnapCenter リソース構成では、両方の SAP HANA システムレプリケーションホストの両方のストレージボリュームに Snapshot コピーが作成されます。フォワードリカバリに使用できるのは、プライマリ SAP HANA ホストのストレージボリュームに作成された Snapshot バックアップのみです。セカンダリ SAP HANA ホストのストレージボリュームに作成された Snapshot コピーは、フォワードリカバリに使用できないクラッシュイメージです。
 
@@ -120,7 +120,7 @@ SnapCenter でのリストア処理は、次の 2 つの方法で実行できま
 
 次の図は、単一の SnapCenter リソース構成を使用したリストア処理を示しています。
 
-image::saphana-sr-scs-image38.png[SAPHana SR SCSイメージ38]
+image:saphana-sr-scs-image38.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -137,33 +137,33 @@ T1 のホスト 1 にバックアップが作成されました。ホスト 2 �
 . ホスト 2 が開始され、ホスト 2 のシステムレプリケーションの再同期が自動的に開始されます。
 
 
-image::saphana-sr-scs-image39.png[SAPHana SR SCSイメージ39]
+image:saphana-sr-scs-image39.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 次の図は、 SAP HANA Studio の SAP HANA バックアップカタログを示しています。強調表示されたバックアップは、 T1 のホスト 1 で作成されたバックアップを示しています。
 
-image::saphana-sr-scs-image40.png[SAPHana SR SCSイメージ40]
+image:saphana-sr-scs-image40.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 リストア処理とリカバリ処理は SAP HANA Studio で開始されます。次の図に示すように、バックアップが作成されたホストの名前はリストアとリカバリのワークフローには表示されません。
 
 
 NOTE: テストシナリオでは、データベースがオンラインのままの場合、 SAP HANA Studio で正しいバックアップ（ホスト 1 で作成されたバックアップ）を特定できました。データベースを使用できない場合は、 SnapCenter バックアップジョブログで適切なバックアップを特定する必要があります。
 
-image::saphana-sr-scs-image41.png[SAPHana SR SCSイメージ41]
+image:saphana-sr-scs-image41.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 SnapCenter では、バックアップが選択され、ファイルレベルのリストア処理が実行されます。ファイルレベルのリストア画面では、有効なバックアップのみがリストアされるように、ホスト 1 のボリュームのみが選択されます。
 
-image::saphana-sr-scs-image42.png[SAPHana SR SCSイメージ42]
+image:saphana-sr-scs-image42.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 リストア処理が完了すると、 SAP HANA Studio でバックアップが緑色で強調表示されます。ホスト 1 とホスト 2 のログバックアップのファイルパスがバックアップカタログに含まれているため、追加のログバックアップの場所を入力する必要はありません。
 
-image::saphana-sr-scs-image43.png[SAPHana SR SCSイメージ43]
+image:saphana-sr-scs-image43.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 フォワードリカバリが完了すると、セカンダリホスト（ホスト 2 ）が起動し、 SAP HANA システムレプリケーションの再同期が開始されます。
 
 
 NOTE: セカンダリホストが最新の状態である（ホスト 2 に対してリストア処理が実行されていない）場合でも、 SAP HANA はすべてのデータの完全なレプリケーションを実行します。この動作は、 SAP HANA システムレプリケーションを使用したリストア処理とリカバリ処理後に標準で実行されます。
 
-image::saphana-sr-scs-image44.png[SAPHana SR SCSイメージ44]
+image:saphana-sr-scs-image44.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -180,14 +180,14 @@ T1 のホスト 1 にバックアップが作成されました。ホスト 2 �
 . ホスト 2 が開始され、ホスト 2 のシステムレプリケーションの再同期が自動的に開始されます。
 
 
-image::saphana-sr-scs-image45.png[SAPHana SR SCSイメージ45]
+image:saphana-sr-scs-image45.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 SAP HANA Studio でのリストアとリカバリの処理は、のセクションで説明する手順と同じです link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html#snapcenter-restore-of-the-valid-backup-only["有効なバックアップの SnapCenter リストアのみを実行してください"]。
 
 リストア処理を実行するには、 SnapCenter でリソースを完全に選択してください。両方のホストのボリュームがリストアされます。
 
-image::saphana-sr-scs-image46.png[SAPHana SR SCSイメージ46]
+image:saphana-sr-scs-image46.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 フォワードリカバリが完了すると、セカンダリホスト（ホスト 2 ）が起動し、 SAP HANA システムレプリケーションの再同期が開始されます。すべてのデータの完全なレプリケーションが実行されます。
 
-image::saphana-sr-scs-image47.png[SAPHana SR SCSイメージ47]
+image:saphana-sr-scs-image47.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

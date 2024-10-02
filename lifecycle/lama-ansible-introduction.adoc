@@ -10,13 +10,13 @@ summary: SAP Landscape Management（LaMa）を使用すると、SAPシステム�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
-
-ネットアップ、Michael Schlosser、Nils Bauer
 
 [role="lead"]
 SAP Landscape Management（LaMa）を使用すると、SAPシステム管理者は、SAPシステムのエンドツーエンドのクローニング、コピー、更新などのSAPシステム運用を自動化できます。
+
+著者：Michael Schlosser、Nils Bauer、NetApp
 
 ネットアップは、SAP LaMa対応の各種Ansibleモジュールを搭載しており、SAP LaMaのAutomation Studioを通じて、NetApp SnapshotやFlexCloneなどのテクノロジにアクセスできます。これらのテクノロジを使用することで、SAPシステムのクローニング、コピー、更新の処理を簡易化、高速化できます。
 

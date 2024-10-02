@@ -10,7 +10,7 @@ summary: バックアップ処理は常にプライマリ SAP HANA ホストで�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -22,10 +22,10 @@ SAP HANA のバックアップ処理では、プライマリとセカンダリ�
 
 各 SAP HANA ホストには、独自のストレージボリュームがあります。ストレージベースの Snapshot を使用してバックアップを実行すると、データベースと整合性のある Snapshot がプライマリ SAP HANA ホストのストレージボリューム上に作成されます。
 
-image::saphana-sr-scs-image3.png[SAPHana SR SCSイメージ3]
+image:saphana-sr-scs-image3.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 ホスト 2 へのフェイルオーバーが実行されると、ホスト 2 がプライマリホストになり、ホスト 2 でバックアップが実行され、ホスト 2 のストレージボリュームに Snapshot バックアップが作成されます。
 
 ホスト 2 で作成されたバックアップは、ストレージレイヤで直接リストアできます。ホスト 1 に作成したバックアップを使用する場合は、ホスト 1 のストレージボリュームからホスト 2 のストレージボリュームにバックアップをコピーする必要があります。フォワードリカバリでは、両方のホストからのログバックアップが使用されます。
 
-image::saphana-sr-scs-image4.png[SAPHana SR SCSイメージ4]
+image:saphana-sr-scs-image4.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

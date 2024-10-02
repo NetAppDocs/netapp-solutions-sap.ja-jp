@@ -10,8 +10,11 @@ summary: NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HA
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP ソフトウェアが搭載されています。
 
 ネットアップ、 Nils Bauer 、 Marco Schoen
 
@@ -55,7 +58,7 @@ SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオ�
 
 NetApp AFF ストレージシステムは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、アーキテクチャの概要を示します。
 
-image::saphana_aff_fc_image1.png[SAPHana AFF fc image1]
+image:saphana_aff_fc_image1.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 生産性の高いSAP HANAシステムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。
 

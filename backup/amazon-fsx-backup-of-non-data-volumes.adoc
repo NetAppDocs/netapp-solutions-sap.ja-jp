@@ -10,7 +10,7 @@ summary: 非データボリュームのバックアップは、SnapCenter とSAP
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -30,46 +30,46 @@ SnapCenter の非データボリュームバックアップを使用すると、
 
 . [リソース]タブで、[データボリュームではない]を選択し、[ SAP HANAデータベースの追加]をクリックします。
 +
-image::amazon-fsx-image60.png[Amazon FSxイメージ60]
+image:amazon-fsx-image60.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . SAP HANAデータベースの追加ダイアログのステップ1で、リソースタイプリストから非データボリュームを選択します。リソースの名前、およびリソースに使用する関連SIDとSAP HANAプラグインホストを指定し、[次へ]をクリックします。
 +
-image::amazon-fsx-image61.png[Amazon FSxイメージ61]
+image:amazon-fsx-image61.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . SVM とストレージボリュームをストレージ容量として追加し、次へをクリックします。
 +
-image::amazon-fsx-image62.png[Amazon FSxイメージ62]
+image:amazon-fsx-image62.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 設定を保存するには、概要手順で[完了]をクリックします。
 +
-image::amazon-fsx-image63.png[Amazon FSxイメージ63]
+image:amazon-fsx-image63.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 これで、新しい非データボリュームがSnapCenter に追加されます。新しいリソースをダブルクリックして、リソースの保護を実行します。
 
 +
-image::amazon-fsx-image64.png[Amazon FSxイメージ64]
+image:amazon-fsx-image64.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 リソースの保護は、HANAデータベースのリソースで前述した方法と同じ方法で行われます。
 
 . [今すぐバックアップ]をクリックして、バックアップを実行できるようになりました。
 +
-image::amazon-fsx-image65.png[Amazon FSxイメージ65]
+image:amazon-fsx-image65.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ポリシーを選択し、バックアップ処理を開始します。
 +
-image::amazon-fsx-image66.png[Amazon FSxイメージ66]
+image:amazon-fsx-image66.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
 SnapCenter ジョブログには、個々のワークフロー手順が表示されます。
 
-image::amazon-fsx-image67.png[Amazon FSxイメージ67]
+image:amazon-fsx-image67.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 これで、新しいバックアップがデータボリューム以外のリソースのリソースビューに表示されます。
 
-image::amazon-fsx-image68.png[Amazon FSxイメージ68]
+image:amazon-fsx-image68.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -119,38 +119,38 @@ No Recoveryを選択すると、SnapCenter が終了し、システムとテナ�
 
 . SnapCenter で、リストア処理に使用するバックアップを選択します。
 +
-image::amazon-fsx-image69.png[Amazon FSxイメージ69]
+image:amazon-fsx-image69.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リストアの範囲とタイプを選択します。
 +
 HANA MDCのシングルテナントシステムの標準的なシナリオは、ボリュームをリバートしてリソース全体を使用する場合です。複数のテナントを使用するHANA MDCシステムでは、単一のテナントのみをリストアできます。シングルテナントのリストアの詳細については、を参照してください https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-restore-and-recovery.html["リストアとリカバリ（netapp.com）"^]。
 
 +
-image::amazon-fsx-image70.png[Amazon FSxイメージ70]
+image:amazon-fsx-image70.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . Recovery Scope を選択し、ログバックアップとカタログバックアップの場所を指定します。
 +
 SnapCenter では、HANAのglobal.iniファイルでデフォルトのパスまたは変更したパスを使用して、ログやカタログのバックアップの場所を事前に取り込むことができます。
 
 +
-image::amazon-fsx-image71.png[Amazon FSxイメージ71]
+image:amazon-fsx-image71.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションのリストア前のコマンドを入力します。
 +
-image::amazon-fsx-image72.png[Amazon FSxイメージ72]
+image:amazon-fsx-image72.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションのリストア後のコマンドを入力します。
 +
-image::amazon-fsx-image73.png[Amazon FSxイメージ73]
+image:amazon-fsx-image73.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リストアおよびリカバリ操作を開始するには'[完了]をクリックします
 +
-image::amazon-fsx-image74.png[Amazon FSxイメージ74]
+image:amazon-fsx-image74.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 SnapCenter によってリストアおよびリカバリ処理が実行されます。この例は、リストアジョブとリカバリジョブのジョブの詳細を表示しています。
 
 +
-image::amazon-fsx-image75.png[Amazon FSxイメージ75]
+image:amazon-fsx-image75.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 

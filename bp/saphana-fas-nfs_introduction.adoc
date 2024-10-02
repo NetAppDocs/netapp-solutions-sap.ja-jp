@@ -8,9 +8,10 @@ summary: NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HA
 :allow-uri-read: 
 
 
-ネットアップ、 Nils Bauer 、 Marco Sch ö n
-
+[role="lead"]
 NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージシステムには、 NetApp ONTAP ソフトウェアが搭載されています。
+
+ネットアップ、 Nils Bauer 、 Marco Sch ö n
 
 この認定は現在、次のモデルでのみ有効です。
 
@@ -67,7 +68,7 @@ NOTE: オペレーティングシステムの構成ガイドラインと、 HANA
 
 NetApp FAS ストレージコントローラは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。アーキテクチャの概要については、次の図を参照してください。
 
-image::saphana-fas-nfs_image1.png[SAPHana FAS NFSイメージ1]
+image:saphana-fas-nfs_image1.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 本番用SAP HANAシステムの前提条件と推奨事項の詳細については、次のSAPリソースを参照してください。
 

@@ -10,9 +10,10 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 このドキュメントでは、オンプレミスのNetAppシステム、Amazon FSx for NetApp ONTAPシステム、およびAzure NetApp Filesで実行されるSAP HANAシステムの更新とクローニングのシナリオについて説明します。ただし、すべてのストレージプラットフォームですべての機能とシナリオを使用できるわけではありません。次の表は、サポートされる構成をまとめたものです。
 
 このドキュメントでは、オンプレミスのNetAppシステムで実行されるSAP HANAランドスケープを使用し、NFSをストレージプロトコルとして使用しています。ワークフローの手順のほとんどは、プラットフォームごとに同じです。違いがある場合は、このドキュメントで説明します。

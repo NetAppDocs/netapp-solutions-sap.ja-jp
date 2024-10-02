@@ -10,7 +10,7 @@ summary: このドキュメントの導入例とワークフローの実行時�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

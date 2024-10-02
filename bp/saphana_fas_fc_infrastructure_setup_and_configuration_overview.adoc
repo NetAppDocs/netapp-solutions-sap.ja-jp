@@ -10,7 +10,7 @@ summary: 次のセクションでは、 SAP HANA インフラのセットアッ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

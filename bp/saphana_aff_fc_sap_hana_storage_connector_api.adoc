@@ -10,7 +10,7 @@ summary: ストレージコネクタは、フェイルオーバー機能を備�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

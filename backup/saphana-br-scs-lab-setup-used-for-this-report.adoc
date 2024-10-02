@@ -10,7 +10,7 @@ summary: このテクニカルレポートで使用するラボセットアッ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -59,4 +59,4 @@ SnapCenter サーバは、 HANA システム MS1 および SS2 の中央 HANA �
 
 次の図は、ラボのセットアップを示しています。
 
-image::saphana-br-scs-image21.png[SAPHana br SCSイメージ21]
+image:saphana-br-scs-image21.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

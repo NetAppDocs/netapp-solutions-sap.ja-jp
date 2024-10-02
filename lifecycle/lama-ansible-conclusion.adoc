@@ -10,7 +10,7 @@ summary: Ansibleなどの最新の自動化フレームワークがSAP LaMaプ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -13,11 +13,12 @@ summary: このドキュメントでは、ネットアップの SAP HANA 向け�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
-ネットアップ Nils Bauer
-
+[role="lead"]
 TR-4313 は、 SAP HANA 向けのネットアップのバックアップおよびリカバリ解決策のインストールと構成について説明しています。解決策は、 NetApp Snap Creator フレームワークと、 SAP HANA 向け Snap Creator プラグインに基づいています。この解決策は、認定済みの Cisco SAP HANA マルチノードアプライアンスをネットアップストレージと組み合わせて使用した場合にサポートされます。この解決策は、 TDI プロジェクトのシングルノードおよびマルチノードの SAP HANA システムでもサポートされています。
+
+作成者：Nils Bauer、NetApp
 
 link:https://www.netapp.com/pdf.html?item=/media/19779-tr-4313.pdf["https://www.netapp.com/pdf.html?item=/media/19779-tr-4313.pdf"]

@@ -10,7 +10,7 @@ summary: ログバックアップレプリケーションがディザスタリ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -32,4 +32,4 @@ summary: ログバックアップレプリケーションがディザスタリ�
 
 以降のサブセクションで、これらの手順について詳しく説明します。次の図は、ディザスタフェイルオーバーのテストを示しています。
 
-image::saphana-dr-anf_image26.png[SAPHana DR anfイメージ26]
+image:saphana-dr-anf_image26.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

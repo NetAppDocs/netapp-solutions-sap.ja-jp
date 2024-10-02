@@ -8,8 +8,9 @@ summary: 本ドキュメントでは、 Windows 環境で Microsoft SQL Server �
 :allow-uri-read: 
 
 
-Marco Schoen 、ネットアップ
-
+[role="lead"]
 本ドキュメントでは、 Windows 環境で Microsoft SQL Server を実行する SAP Business Suite ソリューションをサポートする NetApp ONTAP の導入に関するベストプラクティスについて、お客様とパートナー様に説明します。
+
+Marco Schoen 、ネットアップ
 
 link:https://www.netapp.com/media/16865-tr-4467.pdf["https://www.netapp.com/media/16865-tr-4467.pdf"]

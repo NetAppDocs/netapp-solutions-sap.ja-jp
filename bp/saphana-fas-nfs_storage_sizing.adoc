@@ -10,7 +10,7 @@ summary: 次のセクションでは、 SAP HANA 用のストレージシステ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -215,4 +215,4 @@ RAM のサイズ、各 SAP HANA ホストでのディスク上の正味データ
 
 次の図に、サイジングプロセスの概要を示します。
 
-image::saphana-fas-nfs_image9.jpg[SAPHana FAS NFSイメージ9]
+image:saphana-fas-nfs_image9.jpg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

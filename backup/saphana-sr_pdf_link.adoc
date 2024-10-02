@@ -10,11 +10,12 @@ summary: TR-4719 は、 SAP HANA システムレプリケーション環境で�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+TR-4719 は、 SAP HANA システムレプリケーション環境で、 NetApp SnapCenter テクノロジと SAP HANA プラグインを使用したバックアップとリカバリの方法を説明しています。
 
 ネットアップ Nils Bauer
-
-TR-4719 は、 SAP HANA システムレプリケーション環境で、 NetApp SnapCenter テクノロジと SAP HANA プラグインを使用したバックアップとリカバリの方法を説明しています。
 
 link:https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf"]

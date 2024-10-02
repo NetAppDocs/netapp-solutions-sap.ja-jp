@@ -10,7 +10,7 @@ summary: 以降のセクションでは、 3 種類のシナリオと設定例�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -109,10 +109,10 @@ NOTE: リカバリなしを選択した場合は、 SnapCenter が終了し、�
 NOTE: プライマリまたはオフサイトのバックアップストレージからリストアを選択できます。
 
 +
-image::saphana-br-scs-image96.png[SAPHana br SCSイメージ96]
+image:saphana-br-scs-image96.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
-image::saphana-br-scs-image97.png[SAPHana br SCSイメージ97]
+image:saphana-br-scs-image97.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リストアの範囲とタイプを選択します。
 +
@@ -126,19 +126,19 @@ image::saphana-br-scs-image97.png[SAPHana br SCSイメージ97]
 NOTE: ボリュームリバートオプションは、 NFS でプライマリからのリストア処理でのみ使用できます。
 
 +
-image::saphana-br-scs-image98.png[SAPHana br SCSイメージ98]
+image:saphana-br-scs-image98.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 オフサイトのバックアップストレージからリストアする場合のリストアタイプのオプション。
 
 +
-image::saphana-br-scs-image99.jpeg[SAPHana br SCSイメージ99]
+image:saphana-br-scs-image99.jpeg["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 ファイバチャネル SAN を使用してプライマリストレージからリストアする場合のリストアタイプのオプション。
 
 +
-image::saphana-br-scs-image100.png[SAPHana br SCSイメージ100]
+image:saphana-br-scs-image100.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . Recovery Scope を選択し、ログバックアップとカタログバックアップの場所を指定します。
 +
@@ -146,27 +146,27 @@ image::saphana-br-scs-image100.png[SAPHana br SCSイメージ100]
 NOTE: SnapCenter では、 HANA の global.ini ファイルのデフォルトパスまたは変更されたパスを使用して、ログとカタログのバックアップの場所が事前に入力されます。
 
 +
-image::saphana-br-scs-image101.png[SAPHana br SCSイメージ101]
+image:saphana-br-scs-image101.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションのリストア前のコマンドを入力します
 +
-image::saphana-br-scs-image102.png[SAPHana br SCSイメージ102]
+image:saphana-br-scs-image102.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションのリストア後のコマンドを入力します。
 +
-image::saphana-br-scs-image103.png[SAPHana br SCSイメージ103]
+image:saphana-br-scs-image103.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションの E メール設定を入力します。
 +
-image::saphana-br-scs-image104.png[SAPHana br SCSイメージ104]
+image:saphana-br-scs-image104.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リストア処理を開始するには、 [ 完了 ] をクリックします。
 +
-image::saphana-br-scs-image105.png[SAPHana br SCSイメージ105]
+image:saphana-br-scs-image105.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . SnapCenter によってリストアおよびリカバリ処理が実行されます。この例は、リストアジョブとリカバリジョブのジョブの詳細を表示しています。
 +
-image::saphana-br-scs-image106.png[SAPHana br SCSイメージ106]
+image:saphana-br-scs-image106.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -214,7 +214,7 @@ hdbsql SYSTEMDB=>
 ....
 . SnapCenter で、リストア処理に使用するバックアップを選択します。
 +
-image::saphana-br-scs-image107.png[SAPHana br SCSイメージ107]
+image:saphana-br-scs-image107.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リストアするテナントを選択します。
 +
@@ -222,35 +222,35 @@ image::saphana-br-scs-image107.png[SAPHana br SCSイメージ107]
 NOTE: SnapCenter に、選択したバックアップに含まれるすべてのテナントのリストが表示されます。
 
 +
-image::saphana-br-scs-image108.png[SAPHana br SCSイメージ108]
+image:saphana-br-scs-image108.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 シングルテナントリカバリは、 SnapCenter 4.3 ではサポートされていません。リカバリは事前に選択されておらず、変更することはできません。
 
 +
-image::saphana-br-scs-image109.png[SAPHana br SCSイメージ109]
+image:saphana-br-scs-image109.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションのリストア前のコマンドを入力します
 +
-image::saphana-br-scs-image110.png[SAPHana br SCSイメージ110]
+image:saphana-br-scs-image110.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションのリストア後のコマンドを入力します。
 +
-image::saphana-br-scs-image111.png[SAPHana br SCSイメージ111]
+image:saphana-br-scs-image111.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションの E メール設定を入力します。
 +
-image::saphana-br-scs-image112.png[SAPHana br SCSイメージ112]
+image:saphana-br-scs-image112.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リストア処理を開始するには、 [ 完了 ] をクリックします。
 +
-image::saphana-br-scs-image113.png[SAPHana br SCSイメージ113]
+image:saphana-br-scs-image113.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 リストア処理は SnapCenter によって実行されます。この例は、リストアジョブのジョブの詳細を表示します。
 
 +
-image::saphana-br-scs-image114.png[SAPHana br SCSイメージ114]
+image:saphana-br-scs-image114.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 
@@ -290,44 +290,44 @@ sm1adm@hana-2:/usr/sap/SM1/HDB00>
 ....
 . HANA Studio でリカバリを開始します。
 +
-image::saphana-br-scs-image115.png[SAPHana br SCSイメージ115]
+image:saphana-br-scs-image115.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . テナントを選択します。
 +
-image::saphana-br-scs-image116.png[SAPHana br SCSイメージ116]
+image:saphana-br-scs-image116.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リカバリのタイプを選択します。
 +
-image::saphana-br-scs-image117.png[SAPHana br SCSイメージ117]
+image:saphana-br-scs-image117.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . バックアップカタログの場所を指定します。
 +
-image::saphana-br-scs-image118.png[SAPHana br SCSイメージ118]
+image:saphana-br-scs-image118.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
-image::saphana-br-scs-image119.png[SAPHana br SCSイメージ119]
+image:saphana-br-scs-image119.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 バックアップカタログ内で、リストアされたバックアップが緑のアイコンで強調表示されます。外部バックアップ ID には、 SnapCenter で以前に選択されたバックアップ名が表示されます。
 
 . 緑のアイコンが表示されたエントリを選択し、次へをクリックします。
 +
-image::saphana-br-scs-image120.png[SAPHana br SCSイメージ120]
+image:saphana-br-scs-image120.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ログのバックアップ先を指定します。
 +
-image::saphana-br-scs-image121.png[SAPHana br SCSイメージ121]
+image:saphana-br-scs-image121.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 必要に応じて、他の設定を選択します。
 +
-image::saphana-br-scs-image122.png[SAPHana br SCSイメージ122]
+image:saphana-br-scs-image122.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . テナントのリカバリ処理を開始します。
 +
-image::saphana-br-scs-image123.png[SAPHana br SCSイメージ123]
+image:saphana-br-scs-image123.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
-image::saphana-br-scs-image124.png[SAPHana br SCSイメージ124]
+image:saphana-br-scs-image124.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -381,26 +381,26 @@ NOTE: FC を使用する SAP HANA マルチホスト環境では、データベ�
 
 . SAP HANA Studio で、 Recover System Database オプションを選択して、システムデータベースのリカバリを開始します。
 +
-image::saphana-br-scs-image125.png[SAPHana br SCSイメージ125]
+image:saphana-br-scs-image125.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [OK] をクリックして、 SAP HANA データベースをシャットダウンします。
 +
-image::saphana-br-scs-image126.png[SAPHana br SCSイメージ126]
+image:saphana-br-scs-image126.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 SAP HANA システムがシャットダウンし、リカバリウィザードが起動します。
 
 . リカバリタイプを選択して、 Next （次へ）をクリックします。
 +
-image::saphana-br-scs-image127.png[SAPHana br SCSイメージ127]
+image:saphana-br-scs-image127.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . バックアップカタログの場所を指定し、 [ 次へ ] をクリックします。
 +
-image::saphana-br-scs-image128.png[SAPHana br SCSイメージ128]
+image:saphana-br-scs-image128.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . バックアップカタログの内容に基づいて、使用可能なバックアップのリストが表示されます。必要なバックアップを選択し、外部バックアップ ID をメモします。この例では、最新バックアップを選択します。
 +
-image::saphana-br-scs-image129.png[SAPHana br SCSイメージ129]
+image:saphana-br-scs-image129.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . すべてのデータボリュームをアンマウントします。
 +
@@ -417,7 +417,7 @@ NOTE: FC を使用する SAP HANA マルチホストセットアップでは、�
 
 . SnapCenter の GUI で、リソーストポロジビューを選択し、リストアするバックアップを選択します。この例では、最新のプライマリバックアップを選択します。リストアアイコンをクリックして、リストアを開始します。
 +
-image::saphana-br-scs-image130.png[SAPHana br SCSイメージ130]
+image:saphana-br-scs-image130.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 SnapCenter リストアウィザードが起動します。
@@ -427,38 +427,38 @@ SnapCenter リストアウィザードが起動します。
 ボリュームベースのリストアを使用するには、 [ リソース全体 ] を選択します。
 
 +
-image::saphana-br-scs-image131.png[SAPHana br SCSイメージ131]
+image:saphana-br-scs-image131.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . すべてのファイルに単一ファイルの SnapRestore 操作を使用するには、 [ ファイルレベルとすべて ] を選択します。
 +
-image::saphana-br-scs-image132.png[SAPHana br SCSイメージ132]
+image:saphana-br-scs-image132.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 
 NOTE: SAP HANA マルチホストシステムのファイルレベルのリストアを実行する場合は、すべてのボリュームを選択します。
 
 +
-image::saphana-br-scs-image133.png[SAPHana br SCSイメージ133]
+image:saphana-br-scs-image133.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . （オプション）中央の HANA プラグインホストで実行されている SAP HANA プラグインから実行するコマンドを指定します。次へをクリックします。
 +
-image::saphana-br-scs-image134.png[SAPHana br SCSイメージ134]
+image:saphana-br-scs-image134.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . オプションのコマンドを指定し、次へをクリックします。
 +
-image::saphana-br-scs-image135.png[SAPHana br SCSイメージ135]
+image:saphana-br-scs-image135.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 通知設定を指定して、 SnapCenter からステータス E メールとジョブログを送信できるようにします。次へをクリックします。
 +
-image::saphana-br-scs-image136.png[SAPHana br SCSイメージ136]
+image:saphana-br-scs-image136.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 概要を確認し、 [ 完了 ] をクリックしてリストアを開始します。
 +
-image::saphana-br-scs-image137.png[SAPHana br SCSイメージ137]
+image:saphana-br-scs-image137.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リストアジョブが開始され、アクティビティペインのログ行をダブルクリックするとジョブログが表示されます。
 +
-image::saphana-br-scs-image138.png[SAPHana br SCSイメージ138]
+image:saphana-br-scs-image138.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リストアプロセスが完了するまで待ちます。各データベースホストで、すべてのデータボリュームをマウントします。この例では、データベースホスト上で再マウントが必要なボリュームは 1 つだけです。
 +
@@ -467,63 +467,63 @@ mount /hana/data/SP1/mnt00001
 ....
 . SAP HANA Studio に移動し、 Refresh をクリックして、使用可能なバックアップのリストを更新します。SnapCenter でリストアされたバックアップは、バックアップのリストに緑のアイコンで表示されます。バックアップを選択し、 Next （次へ）をクリックします。
 +
-image::saphana-br-scs-image139.png[SAPHana br SCSイメージ139]
+image:saphana-br-scs-image139.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ログバックアップの場所を指定します。次へをクリックします。
 +
-image::saphana-br-scs-image140.png[SAPHana br SCSイメージ140]
+image:saphana-br-scs-image140.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 必要に応じて、他の設定を選択します。［ デルタバックアップを使用 ］ が選択されていないことを確認します。次へをクリックします。
 +
-image::saphana-br-scs-image141.png[SAPHana br SCSイメージ141]
+image:saphana-br-scs-image141.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リカバリ設定を確認し、 [ 完了 ] をクリックします。
 +
-image::saphana-br-scs-image142.png[SAPHana br SCSイメージ142]
+image:saphana-br-scs-image142.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リカバリプロセスが開始されます。システムデータベースのリカバリが完了するまで待ちます。
 +
-image::saphana-br-scs-image143.png[SAPHana br SCSイメージ143]
+image:saphana-br-scs-image143.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . SAP HANA Studio で、システムデータベースのエントリを選択し、 Backup Recovery - Recover Tenant Database を開始します。
 +
-image::saphana-br-scs-image144.png[SAPHana br SCSイメージ144]
+image:saphana-br-scs-image144.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リカバリするテナントを選択し、 Next （次へ）をクリックします。
 +
-image::saphana-br-scs-image145.png[SAPHana br SCSイメージ145]
+image:saphana-br-scs-image145.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リカバリタイプを指定して、 Next （次へ）をクリックします。
 +
-image::saphana-br-scs-image146.png[SAPHana br SCSイメージ146]
+image:saphana-br-scs-image146.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . バックアップカタログの場所を確認し、 Next （次へ）をクリックします。
 +
-image::saphana-br-scs-image147.png[SAPHana br SCSイメージ147]
+image:saphana-br-scs-image147.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . テナントデータベースがオフラインであることを確認します。[OK] をクリックして続行します。
 +
-image::saphana-br-scs-image148.png[SAPHana br SCSイメージ148]
+image:saphana-br-scs-image148.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . システムデータベースのリカバリ前にデータボリュームのリストアが実行されたため、テナントバックアップをすぐに使用できます。緑色でハイライトされたバックアップを選択し、次へをクリックします。
 +
-image::saphana-br-scs-image149.png[SAPHana br SCSイメージ149]
+image:saphana-br-scs-image149.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ログのバックアップ先を確認し、 Next （次へ）をクリックします。
 +
-image::saphana-br-scs-image150.png[SAPHana br SCSイメージ150]
+image:saphana-br-scs-image150.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 必要に応じて、他の設定を選択します。［ デルタバックアップを使用 ］ が選択されていないことを確認します。次へをクリックします。
 +
-image::saphana-br-scs-image151.png[SAPHana br SCSイメージ151]
+image:saphana-br-scs-image151.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [ 完了 ] をクリックして、リカバリ設定を確認し、テナントデータベースのリカバリプロセスを開始します。
 +
-image::saphana-br-scs-image152.png[SAPHana br SCSイメージ152]
+image:saphana-br-scs-image152.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リカバリが完了してテナントデータベースが起動するまで待ちます。
 +
-image::saphana-br-scs-image153.png[SAPHana br SCSイメージ153]
+image:saphana-br-scs-image153.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 SAP HANA システムは稼働中です。

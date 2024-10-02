@@ -10,9 +10,10 @@ summary: SAPのライフサイクル管理を最適化するNetAppソリュー�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 このセクションでは、SAPシステムのクローニング処理の手順ごとの概要 を示します。このを使用して、論理的な破損に対処するための修復システムをセットアップできます。
 
 次の図は、SnapCenterを使用したSAPシステムのクローニング処理に必要な手順をまとめたものです。
@@ -34,7 +35,7 @@ NOTE: システムを別のSnapshotバックアップにリセットする必要
 . SAP HANA共有ボリュームのSnapCenterクローン削除ワークフロー
 
 
-image::sc-copy-clone-image9.png[SCコピークローンイメージ9]
+image:sc-copy-clone-image9.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -64,7 +65,7 @@ image::sc-copy-clone-image9.png[SCコピークローンイメージ9]
 
 すべてのSAP HANAシステムは、構成ガイドに基づいて設定する必要があります https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。SnapCenterとSAP HANAのリソースは、ベストプラクティスガイドに基づいて設定されました https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]。
 
-image::sc-copy-clone-image41.png[SCコピークローンイメージ41]
+image:sc-copy-clone-image41.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -172,26 +173,26 @@ hana-7:/opt/NetApp/snapcenter/scc/etc #
 . ソースシステムのSS1共有ボリュームからSnapshotバックアップを選択し、[Clone]をクリックします。
 
 
-image::sc-copy-clone-image42.png[SCコピークローンイメージ42]
+image:sc-copy-clone-image42.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDとして、ソースシステムと同じSIDを保持します。この例では、SS1。
 
 
-image::sc-copy-clone-image43.png[SCコピークローンイメージ43]
+image:sc-copy-clone-image43.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 必要なコマンドラインオプションを指定して、マウントスクリプトを入力します。
 +
 
-NOTE: SAP HANAシステムでは、構成ガイドで推奨されているように、およびに単一のボリュームをサブディレクトリに分けて使用します `/hana/shared` `/usr/sap/SS1` https://www.netapp.com/media/17238-tr4435.pdf["NFSを使用したNetApp AFF システムでのSAP HANA"]。スクリプト `sc-mount-volume.sh` では、マウントパスに特別なコマンドラインオプションを使用してこの設定をサポートしています。mount pathコマンドラインオプションをusr-sap-and-sharedと指定すると、sharedおよびusr-sapのサブディレクトリがボリューム内に適宜マウントされます。
+NOTE: SAP HANAシステムでは、構成ガイドで推奨されているように、およびに `/usr/sap/SS1`単一のボリュームをサブディレクトリに分けて使用します `/hana/shared`link:../bp/saphana_aff_nfs_introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。スクリプト `sc-mount-volume.sh` では、マウントパスに特別なコマンドラインオプションを使用してこの設定をサポートしています。mount pathコマンドラインオプションをusr-sap-and-sharedと指定すると、sharedおよびusr-sapのサブディレクトリがボリューム内に適宜マウントされます。
 
 
 
-image::sc-copy-clone-image44.png[SCコピークローンイメージ44]
+image:sc-copy-clone-image44.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . SnapCenter の[ジョブの詳細]画面に、処理の進捗状況が表示されます。
 
 
-image::sc-copy-clone-image45.png[SCコピークローンイメージ45]
+image:sc-copy-clone-image45.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . sc-mount-volume.shスクリプトのログファイルには、マウント処理で実行されたさまざまな手順が表示されます。
 
@@ -220,7 +221,7 @@ Filesystem 1K-blocks Used Available Use% Mounted on
 . SnapCenter では、クローニングされたボリュームの新しいリソースが表示されます。
 
 
-image::sc-copy-clone-image46.png[SCコピークローンイメージ46]
+image:sc-copy-clone-image46.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . /hana/sharedボリュームが使用可能になったので、SAP HANAサービスを開始できます。
 
@@ -259,12 +260,12 @@ hana-1:/mnt/sapcc-share/SAP-System-Refresh #
 . ソースシステムSS1からSAP HANA Snapshotバックアップを選択します。
 
 
-image::sc-copy-clone-image47.png[SCコピークローンイメージ47]
+image:sc-copy-clone-image47.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDとして、ソースシステムと同じSIDを保持します。この例では、SS1
 
 
-image::sc-copy-clone-image48.png[SCコピークローンイメージ48]
+image:sc-copy-clone-image48.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . 必要なコマンドラインオプションを指定して、クローニング後のスクリプトを入力します。
 +
@@ -273,11 +274,11 @@ NOTE: リカバリ処理用スクリプトは、Snapshot処理の時点までSAP
 
 
 
-image::sc-copy-clone-image23.png[SCコピークローンイメージ23]
+image:sc-copy-clone-image23.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 SnapCenter のジョブ詳細画面に処理の進捗状況が表示されます。
 
-image::sc-copy-clone-image49.png[SCコピークローンイメージ49]
+image:sc-copy-clone-image49.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 スクリプトのログファイル `sc-system-refresh` には、マウント処理とリカバリ処理に対して実行されるさまざまな手順が表示されます。
 

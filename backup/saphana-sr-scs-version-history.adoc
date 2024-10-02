@@ -10,8 +10,11 @@ summary:
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+バージョン履歴：
 
 |===
 | バージョン | 日付 | ドキュメントバージョン履歴 

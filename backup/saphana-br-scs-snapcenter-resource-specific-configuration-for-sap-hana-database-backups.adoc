@@ -10,7 +10,7 @@ summary: ここでは、 SS2 および SS1 の 2 つの設定例の設定手順�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -48,7 +48,7 @@ NOTE: 必要な権限は、 HANA 2.0 SPS5 リリースで変更されていま�
 
 NOTE: SAP HANA MDC システムの場合は、システムデータベース内にユーザを作成する必要があります。これは、システムデータベースを使用してシステムとテナントデータベースのバックアップコマンドがすべて実行されるためです。
 
-image::saphana-br-scs-image53.png[SAPHana br SCSイメージ53]
+image:saphana-br-scs-image53.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 SAP HANA プラグインと SAP hdbsql クライアントがインストールされている HANA プラグインホストで、 userstore キーを設定する必要があります。
 
@@ -163,17 +163,17 @@ SnapCenter でレプリケーションの更新を管理するには、データ
 
 NOTE: SnapCenter によって SnapVault の更新がトリガーされるため、関係のスケジュールは None に設定する必要があります。
 
-image::saphana-br-scs-image54.png[SAPHana br SCSイメージ54]
+image:saphana-br-scs-image54.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 次の図に、保護ポリシーを示します。保護関係に使用される保護ポリシーでは、セカンダリストレージでのバックアップの保持に加え、 SnapMirror ラベルも定義されます。この例では ' 使用されているラベルは毎日 ' 保存期間は 5 に設定されています
 
 
-NOTE: 作成するポリシーの SnapMirror ラベルは、 SnapCenter ポリシーの設定で定義されたラベルと一致する必要があります。詳細については、「」を参照してください<<SnapVault レプリケーションを行う日次 Snapshot バックアップのポリシー>>」
+NOTE: 作成するポリシーの SnapMirror ラベルは、 SnapCenter ポリシーの設定で定義されたラベルと一致する必要があります。詳細については、を参照してください link:saphana-br-scs-snapcenter-initial-configuration.html#snapshot-policy["SnapVault レプリケーションを行う日次 Snapshot バックアップのポリシー"]。
 
 
 NOTE: オフサイトのバックアップストレージでのバックアップの保持は、ポリシーに定義され、 ONTAP によって制御されます。
 
-image::saphana-br-scs-image55.png[SAPHana br SCSイメージ55]
+image:saphana-br-scs-image55.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -203,18 +203,18 @@ SAP HANA システムの場合、 SID は SS2 です。
 hdbuserstore キーは、 HANA データベース SS2 用に設定されたキーと一致している必要があります。この例では、 SS2KEY です。
 
 +
-image::saphana-br-scs-image56.png[SAPHana br SCSイメージ56]
+image:saphana-br-scs-image56.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 
 NOTE: SAP HANA マルチホストシステムの場合、次の図に示すように、すべてのホストの hdbuserstore キーを含める必要があります。SnapCenter は、リストの最初のキーとの接続を試行し、最初のキーが機能しない場合には、他のケースとの接続を続行します。これは、ワーカーホストとスタンバイホストを使用するマルチホストシステムで HANA フェイルオーバーをサポートするために必要です。
 
 +
-image::saphana-br-scs-image57.png[SAPHana br SCSイメージ57]
+image:saphana-br-scs-image57.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 .. ストレージシステム（ SVM ）とボリューム名に必要なデータを選択します。
 +
-image::saphana-br-scs-image58.png[SAPHana br SCSイメージ58]
+image:saphana-br-scs-image58.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 
@@ -225,16 +225,16 @@ NOTE: ファイバチャネル SAN 構成の場合は、 LUN も選択する必�
 NOTE: SAP HANA マルチホストシステムの場合は、次の図に示すように、 SAP HANA システムのすべてのデータボリュームを選択する必要があります。
 
 +
-image::saphana-br-scs-image59.png[SAPHana br SCSイメージ59]
+image:saphana-br-scs-image59.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 リソース構成の概要画面が表示されます。
 
 .. Finish をクリックして、 SAP HANA データベースを追加します。
 +
-image::saphana-br-scs-image60.png[SAPHana br SCSイメージ60]
+image:saphana-br-scs-image60.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
-.. リソース構成が完了したら、「」の説明に従って、リソース保護の構成を実行します<<リソース保護の設定>>」
+.. リソースの設定が完了したら、の説明に従ってリソース保護の設定を実行しますlink:saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html#resource-protection["リソース保護の設定"]。
 
 
 
@@ -251,17 +251,17 @@ NOTE: SAP HANA プラグインには、 Java 64 ビットバージョン 1.8 が
 . ホストタブで、追加をクリックします。
 . ホスト情報を入力し、インストールする SAP HANA プラグインを選択します。Submit をクリックします。
 +
-image::saphana-br-scs-image61.png[SAPHana br SCSイメージ61]
+image:saphana-br-scs-image61.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . フィンガープリントを確認します。
 +
-image::saphana-br-scs-image62.png[SAPHana br SCSイメージ62]
+image:saphana-br-scs-image62.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 HANA プラグインと Linux プラグインのインストールが自動的に開始されます。インストールが完了すると、ホストの status 列に running と表示されます。画面には、 Linux プラグインが HANA プラグインと一緒にインストールされていることも表示されます。
 
 +
-image::saphana-br-scs-image63.png[SAPHana br SCSイメージ63]
+image:saphana-br-scs-image63.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 プラグインのインストール後、 HANA リソースの自動検出プロセスが自動的に開始されます。[ リソース ] 画面で、新しいリソースが作成されます。このリソースは、赤い南京錠のアイコンでロックされていることが示されます。
@@ -272,21 +272,21 @@ image::saphana-br-scs-image63.png[SAPHana br SCSイメージ63]
 NOTE: [ リソースの更新 ] をクリックして、 [ リソース ] 画面で自動検出プロセスを手動で開始することもできます。
 
 +
-image::saphana-br-scs-image64.png[SAPHana br SCSイメージ64]
+image:saphana-br-scs-image64.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . HANA データベースのユーザストアキーを指定します。
 +
-image::saphana-br-scs-image65.png[SAPHana br SCSイメージ65]
+image:saphana-br-scs-image65.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 第 2 レベルの自動検出プロセスでは、テナントのデータとストレージのフットプリントの情報が検出されます。
 
 . Details をクリックして、リソーストポロジビューで HANA リソース構成情報を確認します。
 +
-image::saphana-br-scs-image66.png[SAPHana br SCSイメージ66]
+image:saphana-br-scs-image66.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
-image::saphana-br-scs-image67.png[SAPHana br SCSイメージ67]
+image:saphana-br-scs-image67.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 +
 リソース構成が終了したら ' 次のセクションの説明に従ってリソース保護構成を実行する必要があります
@@ -318,41 +318,41 @@ NOTE: カスタムの Snapshot コピー名を使用して、どのバックア�
 NOTE: ポリシー設定でオンデマンドバックアップに対して保持が定義されていても、不要なファイルの削除は別のオンデマンドバックアップが実行されたときにのみ実行されます。そのため、通常、 SnapCenter でオンデマンドバックアップを手動で削除して、これらのバックアップが SAP HANA バックアップカタログからも削除され、ログバックアップの不要な削除が古いオンデマンドバックアップに基づいて行われないようにする必要があります。
 
 +
-image::saphana-br-scs-image68.png[SAPHana br SCSイメージ68]
+image:saphana-br-scs-image68.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
 . [ アプリケーションの設定 ] ページで、特定の設定を行う必要はありません。次へをクリックします。
 +
-image::saphana-br-scs-image69.png[SAPHana br SCSイメージ69]
+image:saphana-br-scs-image69.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . リソースに追加するポリシーを選択してください。
 +
-image::saphana-br-scs-image70.png[SAPHana br SCSイメージ70]
+image:saphana-br-scs-image70.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . LocalSnap ポリシーのスケジュールを定義します（この例では 4 時間ごと）。
 +
-image::saphana-br-scs-image71.png[SAPHana br SCSイメージ71]
+image:saphana-br-scs-image71.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . LocalSnapAndSnapVault ポリシーのスケジュールを定義します（この例では 1 日に 1 回）。
 +
-image::saphana-br-scs-image72.png[SAPHana br SCSイメージ72]
+image:saphana-br-scs-image72.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . ブロック整合性チェックポリシーのスケジュールを定義します（この例では週に 1 回）。
 +
-image::saphana-br-scs-image73.png[SAPHana br SCSイメージ73]
+image:saphana-br-scs-image73.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . E メール通知に関する情報を指定します。
 +
-image::saphana-br-scs-image74.png[SAPHana br SCSイメージ74]
+image:saphana-br-scs-image74.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . [ 概要 ] ページで、 [ 完了 ] をクリックします。
 +
-image::saphana-br-scs-image75.png[SAPHana br SCSイメージ75]
+image:saphana-br-scs-image75.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 . トポロジページでオンデマンドバックアップを作成できるようになりました。スケジュールされたバックアップは、設定に基づいて実行されます。
 +
-image::saphana-br-scs-image76.png[SAPHana br SCSイメージ76]
+image:saphana-br-scs-image76.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -396,4 +396,4 @@ Exit /b 0
 
 次の図に、リソース保護設定画面での休止後のコマンドを示します。
 
-image::saphana-br-scs-image77.png[SAPHana br SCSイメージ77]
+image:saphana-br-scs-image77.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
