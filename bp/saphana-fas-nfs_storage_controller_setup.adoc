@@ -289,9 +289,7 @@ image:saphana-fas-nfs_image18.jpg["入力/出力ダイアログを示す図、�
 | Snapshot コピーの自動作成を無効にする | vol modify – vserver <vserver-name> -volume <volname> -snapshot-policy none と指定します 
 
 
-| SID_shared ボリュームを除くアクセス時間の更新を無効にします  a| 
-advanced 権限レベルの vol modify -vserver <vserver-name> -volume <volname> -atime-update false set admin を設定します
-
+| SID_shared ボリュームを除くアクセス時間の更新を無効にします | advanced 権限レベルの vol modify -vserver <vserver-name> -volume <volname> -atime-update false set admin を設定します 
 |===
 
 
@@ -308,15 +306,11 @@ advanced 権限レベルの vol modify -vserver <vserver-name> -volume <volname>
 | NFSv3 を有効にします | nfs modify -vserver <vserver -name> v3.0 enabled 
 
 
-| ONTAP 9 ： NFS TCP の最大転送サイズを 1MB に設定します  a| 
-advanced 権限レベルの nfs modify -vserver <vserver_name> -tcp-max-xfer-size 1048576 set admin を設定します
-
-
-
-| ONTAP 8 ： NFS の読み取りサイズと書き込みサイズを 64KB に設定します  a| 
-advanced 権限レベルの nfs modify -vserver <vserver-name> -v3-tcp-max-read-size 65536 nfs modify -vserver <vserver-name> -v3-tcp-max-write-size 65536 set admin に設定します
-
+| NFS TCPの最大転送サイズを1MBに設定する | advanced 権限レベルの nfs modify -vserver <vserver_name> -tcp-max-xfer-size 1048576 set admin を設定します 
 |===
+
+NOTE: ワークロードが異なる共有環境では、NFS TCPの最大転送サイズを262144に設定
+
 
 
 == NFSv4 の NFS 設定
@@ -332,10 +326,7 @@ advanced 権限レベルの nfs modify -vserver <vserver-name> -v3-tcp-max-read-
 | NFSv4 を有効にします | nfs modify -vserver <vserver-name> -v4.1 enabled と入力します 
 
 
-| ONTAP 9 ： NFS TCP の最大転送サイズを 1MB に設定します | advanced 権限レベルの nfs modify -vserver <vserver_name> -tcp-max-xfer-size 1048576 set admin を設定します 
-
-
-| ONTAP 8 ： NFS の読み取りサイズと書き込みサイズを 64KB に設定します | advanced 権限レベルの nfs modify -vserver <vserver_name> -tcp-max-xfer-size 65536 set admin を設定します 
+| NFS TCPの最大転送サイズを1MBに設定する | advanced 権限レベルの nfs modify -vserver <vserver_name> -tcp-max-xfer-size 1048576 set admin を設定します 
 
 
 | NFSv4 のアクセス制御リスト（ ACL ）を無効にする | nfs modify -vserver <vserver_name>-v4.1-acl disabled 
@@ -353,11 +344,13 @@ advanced 権限レベルの nfs modify -vserver <vserver-name> -v3-tcp-max-read-
 | NFSv4 数値 ID を無効にする | nfs modify -vserver <vserver_name>-v4-numeric-ids disabled 
 
 
-| NFSv4.xセッションスロットの数を変更する
-  任意。 | 詳細設定
+| NFSv4.xセッションスロットの数の変更（オプション） | 詳細設定
 nfs modify -vserver hana-v4.x -session-num-slots <value>
 管理者を設定 
 |===
+
+NOTE: ワークロードが異なる共有環境では、NFS TCPの最大転送サイズを262144に設定
+
 
 NOTE: ID番号を無効にするには、ユーザー管理が必要です（を参照） link:saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html["NFSv4 用の SAP HANA インストールの準備"]
 
@@ -365,7 +358,7 @@ NOTE: ID番号を無効にするには、ユーザー管理が必要です（を
 NOTE: NFSv4 ドメイン ID は、すべての Linux サーバ（ /etc/idmapd.conf ）と SVM で同じ値に設定する必要があります（を参照） link:saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html["NFSv4 用の SAP HANA インストールの準備"]
 
 
-NOTE: NFSv4.1 を使用している場合、 pNFS は有効にして使用できます。
+NOTE: pNFSは有効にして使用できます。
 
 ホストの自動フェイルオーバーを備えたSAP HANAマルチホストシステムを使用している場合は、 `nameserver.ini` 次の表を参照してください。これらのセクションでは、デフォルトの再試行間隔を 10 秒に設定します。
 
