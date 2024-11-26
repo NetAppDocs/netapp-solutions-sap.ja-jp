@@ -777,7 +777,6 @@
   <block id="02fb0663b2b25ed3058835e1a2db5762" category="paragraph">これにより、 8 、 000GB の上限に達すると、新しいデータボリュームが作成されます。<block ref="0d7b59f229b453865b91c5e952a7b217" category="inline-link-rx"></block> 詳細については ' を参照してください</block>
   <block id="0f41d05d80faf4e3a75a6b4e2292f1c0" category="summary">NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP ソフトウェアが搭載されています。</block>
   <block id="0db6b81db5bd35e1eef1e83e154c3cb5" category="doc">TR-4436 ：『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』</block>
-  <block id="3582e9217fbd3de24b2e5ecfb0fc97b4" category="paragraph">ネットアップ、 Nils Bauer 、 Marco Schoen</block>
   <block id="0b79795d3efc95b9976c7c5b933afce2" category="section-title">はじめに</block>
   <block id="e4509a748ae3ce7cb528662f2f9f7e10" category="paragraph">認定は、次のモデルで有効です。</block>
   <block id="130c9ce9d2909449cb229a98c66f9d29" category="inline-link">認定およびサポートされている SAP HANA ハードウェアディレクトリ</block>
@@ -1001,9 +1000,6 @@
   <block id="092e6a6bc4923c6cfc72d214ce390535" category="paragraph">ネットアップでは、 ONTAP System Manager 9.7 以前のバージョンで SAP HANA 向けの自動アプリケーションウィザードを提供しているため、ボリュームと LUN のプロビジョニングプロセスが大幅に簡易化されます。ネットアップの SAP HANA 向けベストプラクティスに従って、ボリュームと LUN が自動的に作成および設定されます。</block>
   <block id="0c71c668e5ae926e6d75aa8bbbc09dd2" category="paragraph">「 anlun 」ツールを使用して次のコマンドを実行し、各 SAP HANA ホストの Worldwide Port Name （ WWPN ）を取得します。</block>
   <block id="a86be254d15f1254d56b97c8755a5b77" category="admonition">「 anlun 」ツールは NetApp Host Utilities の一部であり、各 SAP HANA ホストにインストールする必要があります。詳細については、「 host_setup 」セクションを参照してください。</block>
-  <block id="3b02abc3a7dd4095cd8ef946e6bd6dd0" category="paragraph">次の手順は、 SID SS3 を使用した 2+1 のマルチホスト HANA システムの構成を示しています。</block>
-  <block id="ce30bd2bdaee34467dfdf55ea753e7ba" category="list-text">System Manager で SAP HANA のアプリケーションプロビジョニングウィザードを起動し、必要な情報を入力します。すべてのホストのすべてのイニシエータ（ WWPN ）を追加する必要があります。</block>
-  <block id="16307583508372b498160c0e90dba4d0" category="list-text">ストレージが正常にプロビジョニングされたことを確認します。</block>
   <block id="8c4751bd2d7d17062a8b536388ba69bc" category="section-title">CLI を使用して LUN 、ボリュームを作成し、 igroup に LUN をマッピングします</block>
   <block id="6204c72c80408db453e7fea0b62d2e36" category="paragraph">このセクションでは、コマンドラインを使用した ONTAP 9.8 と、 SID FC5 を使用した 2+1 の SAP HANA マルチホストシステムで、 LVM ボリュームグループごとに 2 つの LUN を使用した構成例を示します。</block>
   <block id="c48caf1c739d7975abd91d926cd56982" category="list-text">必要なボリュームをすべて作成します。</block>
@@ -3441,7 +3437,6 @@
   <block id="75bdc4f45cfc79b09fa1f15e1cd83b33" category="admonition">ID番号を無効にするには、ユーザー管理が必要です（を参照） <block ref="7cbf1992917906c8f8c329ad679d4886" category="inline-link-macro-rx"></block></block>
   <block id="a548c9345f858c0926b5fa0db82b1d29" category="admonition">数値IDを無効にするには、の説明に従ってユーザ管理が必要です <block ref="19618adae76246007b68ca646cc14e2b" category="inline-link-macro-rx"></block></block>
   <block id="fcb7778cf38a196128c87d1b6e20281e" category="paragraph">NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。</block>
-  <block id="7c3d41bb91a832b194d140ed72b101e7" category="list-text">AFF C250、AFF C400、AFF C800</block>
   <block id="326f77b6d7cda2b57e0f8e89a8f89959" category="admonition">NetApp AFF CシリーズにはNetApp ONTAP 9.13.1以降が必要です</block>
   <block id="f7d09d43174d21d3203d6472d2543dc2" category="section-title">NetAppボリュームとアグリゲートの暗号化</block>
   <block id="381cfdf4e70ff7173296a764c78e97ae" category="paragraph">SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption（NAE）の使用がサポートされています。</block>
@@ -3588,12 +3583,10 @@ AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境
   <block id="89579d729fbef030eb0080e68e88f112" category="paragraph">1本のNVMe SSD（データ）は、最大5台のSAP HANAホストをサポートします。
 SSD と SAP HANA ホストは、両方のストレージコントローラ間で均等に分散する必要があります。
 AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境にします。</block>
-  <block id="aa73ef84825182521094d3998757610f" category="list-text">AFF A150、AFF A250、AFF A400、AFF A70、AFF A800、 AFF A90、AFF A900、AFF A1K</block>
   <block id="9c485d8d0a0f2d60633001b05d342eed" category="doc">『SAP HANA on NetApp FAS systems with NFS Configuration Guide』</block>
   <block id="b7bda169ccba06e8cbcf02ba0fab5928" category="doc">『SAP HANA on NetApp FAS Systems with Fibre Channel Protocol』構成ガイド</block>
   <block id="a56f5f8ccd94f38be4e8a0f1faf81823" category="doc">『SAP HANA on NetApp AFF Systems with NFS』-構成ガイド</block>
   <block id="ef6ac0da06e1bd8eabd965442ae5668d" category="paragraph">マルコ・ショーン、NetApp</block>
-  <block id="47e4a9a1322865b7fd49caaf0207408a" category="list-text">AFF A150、AFF A250、AFF A400、AFF A70、AFF A800、 AFF A900、AFF A90、AFF A1K</block>
   <block id="a004afbb2c9ff596c570f05cacd1d651" category="section-title">NetApp FlexGroupボリューム</block>
   <block id="cfb6b0dd52bfc75b4646448807e41154" category="paragraph">NetApp FlexGroup Volumeの使用はSAP HANAではサポートされていません。SAP HANAのアーキテクチャ上、FlexGroup Volumeを使用してもメリットはなく、パフォーマンスの問題が発生する可能性があります。</block>
   <block id="0500aa4516d90775e7cd20e0b45fa4ad" category="sidebar">設定のベストプラクティス</block>
@@ -4525,8 +4518,6 @@ AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境
   <block id="03595684b4248a265a5f7e534bd92c49" category="paragraph"><block ref="03595684b4248a265a5f7e534bd92c49" category="inline-image-macro-rx" type="image"></block></block>
   <block id="ade510803f2b9aad765372451fd52da2" category="paragraph"><block ref="ade510803f2b9aad765372451fd52da2" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b2bc3f5a45ad0103150eddb5c0947895" category="paragraph"><block ref="b2bc3f5a45ad0103150eddb5c0947895" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="faa4100dbfa2cef1a0c4e0c3db26e5fc" category="paragraph"><block ref="faa4100dbfa2cef1a0c4e0c3db26e5fc" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c464883cb94a3fba7db930a07cb34811" category="paragraph"><block ref="c464883cb94a3fba7db930a07cb34811" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4cd082d270e30712a5d973de884f7b9f" category="paragraph"><block ref="4cd082d270e30712a5d973de884f7b9f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="017e522349a0ff07067400d6b880e9df" category="paragraph">=: hardbreaks::nofooter::icons:font:linkattrs::imagesdir:../media/</block>
   <block id="2267b0943e951c31d5f31c288b6bfbe6" category="paragraph">NFSプロトコルを使用するNetApp AFF上のSAP HANA</block>
@@ -4769,4 +4760,7 @@ AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境
   <block id="9adaadfddff33c2daa546229f2809747" category="list-text">SAPインストールツールを使用して<block ref="b0aa3e7cad7b6222087aedbd4c799832" prefix=" " category="inline-code"></block>、いずれかのワーカーホストで次のコマンドを実行してインストールを開始します。オプションを使用し<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block>て<block ref="d6075976fde6718b25d21e4894d5d07d" prefix="(" category="inline-code"></block>、2番目のワーカーとスタンバイホストを追加し<block ref="7e4282317c0dcc7ce1f24f047b09f466" prefix="(" category="inline-code"></block>ます）。</block>
   <block id="dc6dd758c7cbed933fdee36ba03835f9" category="admonition">準備したファイルが格納されているディレクトリ<block ref="1611b9881f1a590d33bbbcfdd9c55ca7" prefix=" " category="inline-code"></block>は<block ref="1b723e0f23eac7863dadd5b0b02436e4" prefix="(" category="inline-code"></block>、CLIオプションに含まれてい<block ref="09c9689230344c41364f0fa22da928c6" prefix=" " category="inline-code"></block>ます）。</block>
   <block id="b5b2eafc66ebc94cfb50a26c15cf1f52" category="paragraph">SAPインストールツールを使用して<block ref="e57381f2a2aa941f8d88ba956c77d978" prefix=" " category="inline-code"></block>、いずれかのワーカーホストで次のコマンドを実行してインストールを開始します。オプションを使用し<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block>て、2番目のワーカー（sapc-hana-tst-06）とスタンバイホスト（sapc-hana-tst-07）を追加します。準備したファイルが格納されているディレクトリ<block ref="1611b9881f1a590d33bbbcfdd9c55ca7" prefix=" " category="inline-code"></block>は<block ref="1b723e0f23eac7863dadd5b0b02436e4" prefix="(" category="inline-code"></block>、CLIオプションに含まれてい<block ref="09c9689230344c41364f0fa22da928c6" prefix=" " category="inline-code"></block>ます）。使用する OS のバージョンによっては、 SAP HANA データベースをインストールする前に Phyton 2.7 をインストールする必要があります。</block>
+  <block id="1a808aae97e904d2d0d8b853c60fa475" category="list-text">AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A90、AFF A900、AFF A800</block>
+  <block id="19fe8eb256f35b3d5110d29e652ce432" category="list-text">AFF C250、AFF C30、AFF C400、AFF C60、AFF C800、AFF C80</block>
+  <block id="968cad2bf5c711dad5ccd0efa3e1ff9f" category="list-text">AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A900、AFF A90、AFF A800</block>
 </blocks>
