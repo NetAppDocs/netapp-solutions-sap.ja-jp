@@ -20,10 +20,6 @@ SAP ソリューションを紹介するビデオとデモの概要
 
 == SAP Configuration Best Practices ビデオおよびデモをご覧ください
 
-* link:https://media.netapp.com/video-detail/71853836-ac06-50bf-a579-01ff36851580/sap-hana-runs-best-on-netapp-infrastructure-brk-1114-2["SAP HANA は、ネットアップインフラで最適なソリューションを実現します"^]
-* link:https://media.netapp.com/video-detail/60bf8c7c-d14d-5463-b839-4e1c8daca1a3/sap-on-azure-netapp-files-overview-and-updates-brk-1453-2["『 SAP on Azure NetApp Files ： Overview and Updates 』"^]
-
-
 
 
 === SAP のバックアップ、リストア、ディザスタリカバリに関するビデオとデモ

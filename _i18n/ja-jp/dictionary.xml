@@ -809,7 +809,6 @@
   <block id="d8c167d8f4fbaa19b28b96b8f9830293" category="paragraph">DR サイトのサーバは、通常運用時に開発 / テストシステムとして使用できます。災害が発生した場合は、開発 / テスト用システムをシャットダウンし、 DR 本番用サーバとして起動する必要があります。</block>
   <block id="5a19cb1f3722bd59393efe7cbc853747" category="summary">NetApp AFF システム製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージシステムには、 NetApp ONTAP ソフトウェアが搭載されています。</block>
   <block id="8290e539e87b39f4743f2a941a37d00d" category="doc">TR-4435 ：『 SAP HANA on NetApp AFF Systems with NFS-Configuration Guide 』</block>
-  <block id="ccc35786789b66e9752e6f8cde933754" category="paragraph">ネットアップ、 Nils Bauer 、 Marco Sch ö n</block>
   <block id="af01ac16ca42b9b924b834a3199131e9" category="paragraph">この認定は、次のモデルで有効です。</block>
   <block id="793f62e70c31f71a93161db091bea2c0" category="paragraph">FCP を使用する NetApp AFF システム、および NFS または FCP を使用する FAS システムの構成ガイドは、次のリンクから入手できます。</block>
   <block id="fd645c3ffaeed1c3efb140082b037a69" category="inline-link">『 SAP HANA on NetApp FAS Systems with Fibre Channel Protocol 』を参照してください</block>
@@ -833,7 +832,6 @@
   <block id="e0f43a4c6e28079f6afdc78865b7782e" category="admonition">オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、該当する SAP ノートを参照してください。詳細については、『 SAP note 2235581 ： SAP HANA Supported Operating Systems 』を参照してください。</block>
   <block id="5d75848b6169b06c4cd7d6a8c2ec2337" category="paragraph">NetApp AFF ストレージコントローラは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、 SAP HANA TDI のアーキテクチャの概要を示します。</block>
   <block id="4769b140b92a70ffdab406be16d30122" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションを使用しても、ホストとストレージの構成が物理ホストと VM で同じになることはありません。</block>
-  <block id="35eb3c62d099b5d5e6334b74d5b2bcff" category="paragraph">NFS データストアと NFS を使用する VVol データストアもサポートされます。どちらの場合も、本番環境で使用するデータストアに格納する必要があるのは、 1 つの SAP HANA データボリュームまたはログボリュームだけです。また、 NetApp SnapCenter によってオーケストレーションされた Snapshot ベースのバックアップとリカバリ、および SAP システムのクローニングなどに基づくソリューションは実装できません。</block>
   <block id="f7fbf8be79b2dbbf7cca7d63ea2aaa3e" category="paragraph">このドキュメントでは、ゲスト OS から NFS への直接マウントを使用する場合の推奨セットアップについて説明します。</block>
   <block id="181fc43b08ba57214c4bbd2448ec470d" category="list-text"><block ref="181fc43b08ba57214c4bbd2448ec470d" category="inline-link-macro-rx"></block></block>
   <block id="302092b20c647fa4f675ff96913675f9" category="list-text"><block ref="302092b20c647fa4f675ff96913675f9" category="inline-link-macro-rx"></block></block>
@@ -845,7 +843,6 @@
   <block id="b33f6954e7bec0569d3be6ef5cea4d1d" category="paragraph">NFS システムと NetApp AFF システムを使用する FAS システムの構成ガイドは、次のリンクから入手できます。</block>
   <block id="1800d8919a8de7dbf0bdd4d4ef0a94f4" category="paragraph">SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオーバー時にフェンシングを提供するために、標準の SAP HANA ストレージコネクタが使用されます。オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、該当する SAP ノートを参照してください。詳細については、を参照してください<block ref="362348e4aadbc3b1dc4fa3ddcce8fb65" category="inline-link-rx"></block>。</block>
   <block id="324c1541e14a4687bde362da7f340662" category="paragraph">NetApp FAS ストレージコントローラは、 NFS （ NAS ）プロトコルとファイバチャネル（ SAN ）プロトコルを使用した、 SAP HANA の TDI プログラムで認定されています。これらは、シングルホスト構成またはマルチホスト構成の SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、任意の SAP HANA シナリオに導入できます。SAP HANA での使用が認定されているサーバは、認定ストレージの解決策と組み合わせることができます。アーキテクチャの概要については、次の図を参照してください。</block>
-  <block id="2119e51f96366de40a69723f79096b89" category="paragraph">raw デバイスマッピング（ RDM ）、 FCP データストア、または FCP を使用する VVol データストアもサポートされます。どちらのデータストアオプションも、本番環境で使用するためにデータストアに格納する SAP HANA データボリュームまたはログボリュームは 1 つだけです。また、 SnapCenter がオーケストレーションする Snapshot ベースのバックアップとリカバリ、および SAP システムのクローニングなどに基づくソリューションは実装できません。</block>
   <block id="3823dde38e881edb5563cdd3b64099ba" category="summary">SAP HANA のソフトウェアインストールの要件は次のとおりです。</block>
   <block id="d62e297e0f46d31deba4b84efdfafc32" category="paragraph">SAP HANA ソフトウェアのインストールでは、シングルホストシステムについて行う追加の準備作業はありません。</block>
   <block id="07f50886cb51dc3f90123d42cf009896" category="summary">SAP HANA ホストは、冗長 FCP インフラとマルチパスソフトウェアを使用してストレージコントローラに接続されます。</block>
@@ -916,7 +913,6 @@
   <block id="fdb63fa26dfca812f4f453ca18a829c7" category="section-title">SAP HANA テーラードデータセンター統合</block>
   <block id="c2798d82f6c464fd30d247919005bc5b" category="paragraph">NetApp FAS ストレージコントローラは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。アーキテクチャの概要については、次の図を参照してください。</block>
   <block id="cd67947f6f1984974a5e507afaa2222d" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションを使用しても、ホストやストレージの構成が物理ホストや VM で同じになることはありません。</block>
-  <block id="3e0badc46d16811661a7977c8991b3ea" category="paragraph">NFS データストアまたは NFS を使用する VVol データストアもサポートされます。どちらの場合も、本番環境で使用するデータストアに格納する必要があるのは、 1 つの SAP HANA データボリュームまたはログボリュームだけです。また、 SnapCenter がオーケストレーションする Snapshot コピーベースのバックアップとリカバリ、および SAP システムのクローニングなどに基づくソリューションは実装できません。</block>
   <block id="a3bc23f60d8778684d75db7b4d688fae" category="summary">ここでは、ネットアップストレージシステムの構成について説明します。プライマリのインストールとセットアップは、対応する Data ONTAP のセットアップガイドおよび設定ガイドに従って実行する必要があります。</block>
   <block id="429f30a2f19f5542c01260900f1268d8" category="paragraph">QoS を使用すると、特定の SAP HANA システムまたは非 SAP アプリケーションのストレージスループットを共有ユースコントローラ上で制限できます。1 つのユースケースとして、開発システムとテストシステムのスループットを制限し、混在環境で本番システムに影響を与えないようにすることが挙げられます。</block>
   <block id="dc8101343408623d860369896b9691df" category="paragraph">FabricPool や SnapMirror デスティネーションなどのバックアップターゲットで、 Snapshot のみの階層化ポリシーと SnapVault を併用できます。</block>
@@ -1606,8 +1602,6 @@
   <block id="293e9d744a4c2a3dfc4088f7b8aa25d5" category="doc">SAP 解決策のビデオとデモ</block>
   <block id="2259bdd472d4d2949e3eea23b5e4ef34" category="paragraph">SAP ソリューションを紹介するビデオとデモの概要</block>
   <block id="aa5b0840e871ca382a477398de4a7243" category="section-title">SAP Configuration Best Practices ビデオおよびデモをご覧ください</block>
-  <block id="c482c0b5b51f55ba9a7c2dcdee1f4339" category="inline-link-macro">SAP HANA は、ネットアップインフラで最適なソリューションを実現します</block>
-  <block id="442aae40221b985ca5667a9e47a977f6" category="inline-link-macro">『 SAP on Azure NetApp Files ： Overview and Updates 』</block>
   <block id="ed2640c6c02db4ce182af25c797097d8" category="section-title">SAP のバックアップ、リストア、ディザスタリカバリに関するビデオとデモ</block>
   <block id="eabc448bcef35b3d5eb92882f22f6f0c" category="inline-link-macro">SAP HANA のディザスタリカバリオプション</block>
   <block id="dd39ffa36b8ed682c45520c7d7dc8517" category="summary">SAP Lifecycle Management のツールとヒント</block>
@@ -3990,8 +3984,6 @@ AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境
   <block id="30dac510a408bf8be8dd4336d96b482f" category="cell">SnapCenter 4.6 P1で変更されたワークフローに対応</block>
   <block id="f66bc2df80ac37f354b591907be92e18" category="cell">2024年7月</block>
   <block id="17fb9a63c15de98fb13578ff5b945b03" category="paragraph">このドキュメントはオンプレミスのNetAppシステムを対象としています。 FSx for ONTAPとAzure NetApp Files +新しいSnapCenter 5.0の操作クローンの作成と削除のワークフローでのマウントとアンマウント+ファイバチャネルSANの具体的な手順の追加+ Azure NetApp Filesの具体的な手順の追加+対応したシンプルなスクリプト+有効なSAP HANAに必要な手順の追加<block ref="d8eec050302627350eb082c264bec8f6" prefix=" " category="inline-code"></block></block>
-  <block id="0a93e03f240cb8b42069573a99818021" category="list-text"><block ref="0a93e03f240cb8b42069573a99818021" category="inline-link-macro-rx"></block></block>
-  <block id="77b50001f65f6144e393afa83a9d4e21" category="list-text"><block ref="77b50001f65f6144e393afa83a9d4e21" category="inline-link-macro-rx"></block></block>
   <block id="a5cf81e748f3b3e6fad26b2e3470f879" category="list-text"><block ref="a5cf81e748f3b3e6fad26b2e3470f879" category="inline-link-macro-rx"></block></block>
   <block id="87c8349f2562b9df828a79206981328c" category="list-text"><block ref="87c8349f2562b9df828a79206981328c" category="inline-link-macro-rx"></block></block>
   <block id="20a0dcae2f540339bbf69dbaa7f0050a" category="list-text"><block ref="20a0dcae2f540339bbf69dbaa7f0050a" category="inline-link-macro-rx"></block></block>
@@ -4763,4 +4755,7 @@ AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境
   <block id="1a808aae97e904d2d0d8b853c60fa475" category="list-text">AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A90、AFF A900、AFF A800</block>
   <block id="19fe8eb256f35b3d5110d29e652ce432" category="list-text">AFF C250、AFF C30、AFF C400、AFF C60、AFF C800、AFF C80</block>
   <block id="968cad2bf5c711dad5ccd0efa3e1ff9f" category="list-text">AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A900、AFF A90、AFF A800</block>
+  <block id="54652d040ebb810c360684ca8e231a52" category="paragraph">NFS データストアまたは NFS を使用する VVol データストアもサポートされます。どちらの場合も、本番環境で使用するデータストアに格納する必要があるのは、 1 つの SAP HANA データボリュームまたはログボリュームだけです。</block>
+  <block id="7d631f41ea82e4581ac749b6874d885a" category="paragraph">raw デバイスマッピング（ RDM ）、 FCP データストア、または FCP を使用する VVol データストアもサポートされます。どちらのデータストアオプションも、本番環境で使用するためにデータストアに格納する SAP HANA データボリュームまたはログボリュームは 1 つだけです。</block>
+  <block id="efd1d0d586a27578c98f10496d441cd4" category="paragraph">NFS データストアと NFS を使用する VVol データストアもサポートされます。どちらの場合も、本番環境で使用するデータストアに格納する必要があるのは、 1 つの SAP HANA データボリュームまたはログボリュームだけです。</block>
 </blocks>
