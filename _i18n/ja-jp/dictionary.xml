@@ -440,10 +440,7 @@
   <block id="d577a779ffdacd409ec756e191be8c6b" category="cell">40GbE</block>
   <block id="797c6d8f4bdab58ccf0409871daa900d" category="cell">100 Gee</block>
   <block id="29350e56cf985cc1c3055886a585be16" category="cell">物理ポートあたりのログボリュームマウントまたはデータボリュームマウントの最大数</block>
-  <block id="c81e728d9d4c2f636f067f89cc14862c" category="cell">2.</block>
-  <block id="1679091c5a880faf6fb5e6087eb1b2dc" category="cell">6.</block>
   <block id="c20ad4d76fe97759aa27a0c99bff6710" category="cell">12.</block>
-  <block id="1ff1de774005f8da13f42943881c655f" category="cell">24</block>
   <block id="4f405e1a75e4b7b8ec6f50946f0734fc" category="admonition">異なる SAP HANA ホスト間で 1 つの LIF を共有するには、データボリュームまたはログボリュームを別の LIF に再マウントすることが必要になる場合があります。この変更により、ボリュームが別のストレージコントローラに移動された場合のパフォーマンス低下を回避できます。</block>
   <block id="ea4399c89609128e15e361a718a71f5a" category="paragraph">開発 / テスト用システムでは、物理ネットワークインターフェイス上で使用できるデータおよびボリュームのマウントや LIF を増やすことができます。</block>
   <block id="93dc7819b20008ad7611ec3405b515ef" category="paragraph">本番システム ' 開発システム ' およびテスト・システムでは '/hana/shared ファイル・システムは ' データ・ボリュームまたはログ・ボリュームと同じ LIF を使用できます</block>
@@ -624,7 +621,6 @@
   <block id="03ec21b0d762028e928e8b7603d1b5a0" category="admonition">ディスクシェルフ DS224C では、クワッドパスの SAS ケーブルも使用できますが、必須ではありません。</block>
   <block id="bdf2df4b25ef7731104da665fef6a0bc" category="section-title">NVMe （ 100GbE ）ディスクシェルフ</block>
   <block id="c95631e026846b434e73e4f8b624c435" category="paragraph">NS224 NVMe ディスクシェルフは、各コントローラに 100GbE ポートを 2 つ使用して接続します。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。ADPv2 は、アグリゲート構成の章で説明されているとおり、 NS224 ディスクシェルフにも使用されます。次の図は、 NVMe ドライブとのディスクシェルフ接続を示しています。</block>
-  <block id="03513f35519e245e0d372c52a62dc871" category="paragraph">一般に、使用するディスクシェルフやドライブテクノロジ（ SAS SSD または NVMe SSD ）とは関係なく、コントローラごとに 2 つのアグリゲートを構成する必要があります。この手順は、使用可能なすべてのコントローラリソースを使用できるようにするために必要です。AFF A200 シリーズシステムでは、 1 つのデータアグリゲートで十分です。</block>
   <block id="f1c8039bfd9034e917c3ee25c37b6e80" category="paragraph">次の図は、 ADPv2 を使用した、 12Gb の SAS シェルフで稼働する、 12 台の SAP HANA ホストの構成を示しています。6 台の SAP HANA ホストが各ストレージコントローラに接続されています。各ストレージコントローラに 2 つずつ、合計 4 つのアグリゲートが構成されています。各アグリゲートには、 9 つのデータパーティションと 2 つのパリティディスクパーティションを含む 11 本のディスクが構成されます。各コントローラで、 2 つのスペアパーティションを使用できます。</block>
   <block id="99897c39b8224cf5a25fe9c6f599b3a7" category="section-title">SVM の設定</block>
   <block id="b37f183111116179ae8b8190b10de385" category="paragraph">SAP HANA データベースを使用する複数の SAP ランドスケープでは、単一の SVM を使用できます。SVM は、社内の複数のチームによって管理される場合に備え、必要に応じて各 SAP ランドスケープに割り当てることもできます。</block>
@@ -689,7 +685,6 @@
   <block id="27cd945eb6d2a58787f658282dc8c114" category="admonition">どちらの構成もアドバンストディスクパーティショニング（ ADPv2 ）を使用します。ハーフ搭載のディスクシェルフは最大 9 台の SAP HANA ホストをサポートし、フル搭載のシェルフは 1 台のディスクシェルフで最大 14 台のホストをサポートします。SAP HANA ホストは、両方のストレージコントローラ間で均等に分散する必要があります。AFF A700s システムの同じ環境の内蔵ディスク。DS224C ディスクシェルフは、 SAP HANA ホストの数をサポートするため、 12Gb SAS を使用して接続する必要があります。</block>
   <block id="7168b6fab3d1fdb1f905b5d9064d3a24" category="paragraph">6Gb SAS ディスクシェルフ（ DS2246 ）は、最大 4 台の SAP HANA ホストをサポートします。SSD と SAP HANA ホストは、両方のストレージコントローラ間で均等に分散する必要があります。</block>
   <block id="f1ae15f6fd143c9e1276af68c06658c7" category="cell">12Gb SAS シェルフ（ DS224C ）には、 12 本の SSD と ADPv2 が搭載されています</block>
-  <block id="336d2fc2904f8210c02f37eb24f92eca" category="admonition">ディスクシェルフを追加しても、ストレージコントローラでサポートできる SAP HANA ホストの最大数は増加しません。</block>
   <block id="fac3c55a3cdc98c6d08b96c048885f29" category="section-title">パフォーマンステストツールの設定</block>
   <block id="918724fe4fec0578cd9e798f8152194e" category="paragraph">SAP HANA 1.0 SPS10 以降、 I/O 動作を調整し、使用中のファイルシステムとストレージシステムのデータベースを最適化するためのパラメータが導入されています。SAP のパフォーマンステストツールでストレージのパフォーマンスをテストする場合は、 SAP のパフォーマンステストツールにもこれらのパラメータを設定する必要があります。</block>
   <block id="c2cbcc154a82de8081d9414e0f5a0e72" category="paragraph">さまざまな SAP テストツールの設定の詳細については、を参照してください<block ref="ec90a615c6d378fa60ba8e7f2e7592b2" category="inline-link-rx"></block> HWCCT （ SAP HANA 1.0 ）および<block ref="2912abb2c0271a2912b6a4a94888e0ec" category="inline-link-rx"></block> HCMT/HCOT 用（ SAP HANA 2.0 ）。</block>
@@ -741,9 +736,7 @@
   <block id="8e07acfd1437feec339a101261f3d33e" category="list-text">VMware のセットアップでは、実行中の各仮想マシンに、専用の VMXNET3 ネットワークアダプタを割り当てる必要があります。詳細については、「はじめに」に記載されている関連文書を参照してください。</block>
   <block id="ba1e4c91d87d340db9164d860b5fae70" category="list-text">相互の干渉を避けるため、ログとデータ領域には別々のネットワーク /IO パスを使用してください。</block>
   <block id="faee62bb79701f4ef71263923314ff62" category="paragraph">次の図は、 4 台の SAP HANA ホストを 10GbE ネットワークを使用してストレージコントローラ HA ペアに接続した場合の例を示しています。各 SAP HANA ホストには、冗長ファブリックへのアクティブ / パッシブ接続があります。</block>
-  <block id="44597b05bc198603e6227f2548462391" category="paragraph">ストレージレイヤでは、各 SAP HANA ホストに 10Gb のスループットを提供する、 4 つのアクティブ接続が構成されます。また、各ストレージコントローラにスペアインターフェイスが 1 つ設定されます。</block>
   <block id="1efc1e7690d351bfed1ced8c36c4ee03" category="paragraph">ストレージレイヤでは、 MTU サイズが 9 、 000 のブロードキャストドメインが設定され、必要なすべての物理インターフェイスがこのブロードキャストドメインに追加されます。このアプローチでは、これらの物理インターフェイスが自動的に同じフェイルオーバーグループに割り当てられます。これらの物理インターフェイスに割り当てられているすべての論理インターフェイス（ LIF ）が、このフェイルオーバーグループに追加されます。</block>
-  <block id="3054a5405dd4f286779b953b08fbeacf" category="paragraph">一般に、サーバ（ボンド）とストレージシステム（ Link Aggregation Control Protocol （ LACP ）、 ifgroups など）で HA インターフェイスグループを使用することもできます。HA インターフェイスグループを使用して、グループ内のすべてのインターフェイス間で負荷が均等に分散されていることを確認します。負荷分散は、ネットワークスイッチインフラの機能によって異なります。</block>
   <block id="0e9b7a6bc69692a6125fb9b457a42e62" category="admonition">SAP HANA ホストの数と使用されている接続速度に応じて、アクティブな物理ポートの数を変える必要があります。詳細については、を参照してください <block ref="53f775602a3eaa10214452e4a87da1ea" category="inline-link-macro-rx"></block>。</block>
   <block id="283bdd66e3d6ab214e33d303e668536e" category="section-title">VMware 固有のネットワークセットアップ</block>
   <block id="970db5841ccfee51a6e5d4efea5c84f3" category="paragraph">この解決策では、パフォーマンスを重視するデータベースのデータボリュームやログボリュームなど、 SAP HANA インスタンスのすべてのデータが NFS 経由で提供されるため、適切なネットワーク設計と構成が不可欠です。専用のストレージネットワークは、 SAP HANA ノード間の通信トラフィックとユーザアクセストラフィックから NFS トラフィックを分離するために使用されます。各 SAP HANA ノードには、 10Gb 以上の帯域幅を持つ冗長専用ネットワーク接続が必要です。より高い帯域幅もサポートされています。このネットワークは、 VMware vSphere でホストされているゲストオペレーティングシステムまで、ストレージレイヤからネットワークスイッチングおよびコンピューティング経由でエンドツーエンドで拡張する必要があります。物理スイッチングインフラストラクチャに加えて、ハイパーバイザーレイヤでネットワークトラフィックのパフォーマンスと管理性を十分に確保するために、 VMware Distributed Switch （ vDS ）が使用されます。</block>
@@ -798,7 +791,6 @@
   <block id="02e9c064fb16f4d7c921173e0ea3e1d4" category="summary">SAP HANA ホストは、冗長 10GbE 以上のネットワークインフラを使用して、ストレージコントローラに接続されます。SAP HANA ホストとストレージコントローラ間のデータ通信は、 NFS プロトコルに基づいています。スイッチまたはネットワークインターフェイスカード（ NIC ）の障害に備え、耐障害性に優れた SAP HANA ホスト / ストレージ接続を実現するには、冗長スイッチングインフラが必要です。</block>
   <block id="9ebc0606dc606ba3c824288cbcec4b6a" category="paragraph">スイッチは、ポートチャネルを使用して個々のポートのパフォーマンスを集約し、ホストレベルでは単一の論理エンティティとして認識される場合があります。</block>
   <block id="ec7778649625767bca80e5172b3215f8" category="paragraph">次の図は、 8 台の SAP HANA ホストをストレージハイアベイラビリティ（ HA ）ペアに接続した構成例を示しています。</block>
-  <block id="b2ff8e71e9e5aa43773ccdafa2b95737" category="paragraph">次の図は、 VMware vSphere を仮想化レイヤとして使用した例を示しています。</block>
   <block id="f000fef8626763ce732cc75182f80de1" category="list-text">既存のストレージに SAP HANA ホストとストレージ容量を追加で接続することで、ストレージコントローラが現在の SAP HANA の主要パフォーマンス指標（ KPI ）を満たす十分なパフォーマンスを提供する場合。</block>
   <block id="af0b30d5f97bb5800d0d429f5f501e85" category="paragraph">次の図は、追加の SAP HANA ホストをストレージコントローラに接続した場合の構成例を示しています。この例では、 SAP HANA ホスト 16 台分の容量とパフォーマンスの要件を満たすために、さらにディスクシェルフが必要です。合計スループット要件に応じて、 10GbE 以上の接続をストレージコントローラに追加する必要があります。</block>
   <block id="014f96dd954f0cad52c8dd1e4a0f6c0c" category="paragraph">次の図に示すように、導入した AFF システムとは関係なく、任意の認定済みストレージコントローラを追加して希望のノード密度に合わせて SAP HANA 環境を拡張することもできます。</block>
@@ -924,15 +916,10 @@
   <block id="5ed0e891e8b990c7168739eb02edd6a3" category="list-text">の説明に従って、必要なアグリゲートを作成して構成します。<block ref="19f0aba2b822910f53ba3966ee7c8d59" category="inline-xref-macro-rx"></block>. 」</block>
   <block id="f9a28c46fbd1f4dfd78367e2b160714f" category="list-text">の説明に従って、 Storage Virtual Machine （ SVM ）を作成します。<block ref="7c58f6887f41bcea1635c2c18a7a4529" category="inline-xref-macro-rx"></block>. 」</block>
   <block id="9629532b191c2dfd3156fe8e116bbe3b" category="list-text">の説明に従って、 Logical Interface （ LIF ；論理インターフェイス）を作成します。<block ref="fc903155b67a1626f9032f79a26da71f" category="inline-xref-macro-rx"></block>. 」</block>
-  <block id="a8d79b07ead85e8a39ae801f57769490" category="list-text">ポートセットを作成します（を参照）。<block ref="8a161b601c7edc91c1d11775d753aa89" category="inline-xref-macro-rx"></block>. 」</block>
   <block id="2630ee9d2d6404a0be197b5cefef0514" category="section-title">SAS ベースのディスクシェルフ</block>
-  <block id="678c0ed398bb044c2e5a9c21044b8bf5" category="paragraph">次の図に示すように、 1 つの SAS スタックに最大 1 台のディスクシェルフを接続して、 SAP HANA ホストに必要なパフォーマンスを実現できます。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。ADPv2 は、 ONTAP 9 および新しい DS224C ディスクシェルフで使用されます。</block>
   <block id="dd253c07b5e479b9a57c4dff19990513" category="section-title">NVMe （ 100GbE ）ベースのディスクシェルフ</block>
-  <block id="ffd4979e43c842f7c83880611de780c8" category="paragraph">NS224 NVMe デスクシェルフは、次の図に示すように、各コントローラに 100GbE ポートを 2 つ接続しています。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。ADPv2 は、 NS224 ディスクシェルフにも使用されます。</block>
-  <block id="825e04b1728be563d50e2a0cc23bf6ca" category="paragraph">一般に、使用するディスクシェルフやディスクテクノロジ（ SSD または HDD ）に関係なく、コントローラごとに 2 つのアグリゲートを設定する必要があります。この手順は、使用可能なすべてのコントローラリソースを使用できるようにするために必要です。AFF A200 シリーズシステムでは、 1 つのデータアグリゲートで十分です。</block>
   <block id="9edbcb82e27829dd83ad8ddf87b121c5" category="paragraph">新しい SVM の作成時に自動的に作成されて割り当てられた QoS プロファイルがある場合は、この自動作成されたプロファイルを SVM から削除して、 SAP HANA に必要なパフォーマンスを確保します。</block>
   <block id="5d32d4572d40717acaf8b9ef008f4901" category="paragraph">ストレージクラスタ構成内に、 1 つのネットワークインターフェイス（ LIF ）を作成して専用の FCP ポートに割り当てる必要があります。たとえば、パフォーマンス上の理由から 4 つの FCP ポートが必要な場合は、 4 つの LIF を作成する必要があります。次の図に、「 HANA 」 SVM 上に設定された 8 つの LIF （「 fc_*_* 」という名前）のスクリーンショットを示します。</block>
-  <block id="ad0e46aa05fcef2f37453adf0ef136ec" category="paragraph">ONTAP 9.8 の System Manager で SVM を作成するときに、必要な物理 FCP ポートをすべて選択すると、物理ポートごとに 1 つの LIF が自動的に作成されます。</block>
   <block id="3dc0bb550ffeb410b2cbe908abda2020" category="section-title">SAP HANA シングルホストシステムのボリュームと LUN の構成</block>
   <block id="2cd30dd459c96f8423572cfd0315dd72" category="paragraph">次の図は、 4 つのシングルホスト SAP HANA システムのボリューム構成を示しています。各 SAP HANA システムのデータボリュームとログボリュームは、異なるストレージコントローラに分散されます。たとえば、ボリューム「 ID1_data_mnt00001 」がコントローラ A で設定され、ボリューム「 ID1_log_mnt00001 」がコントローラ B で設定されているとします各ボリューム内で 1 つの LUN が構成されます。</block>
   <block id="a2ab47e506561509501f3015dfd353bb" category="admonition">HA ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。</block>
@@ -3566,11 +3553,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="35fb81d7bc669beabd5887c5308a5374" category="paragraph">オンプレミスストレージとS3バケットの関係は、ボリュームのバックアップを作成するか、アプリケーションのバックアップをアクティブ化することで確立されます。既存のサイト間VPNを使用してオンプレミスからS3へデータを転送する場合は、VPCエンドポイントを使用する必要があるため、ボリュームバックアップを使用してオンプレミスストレージとS3バケット間の関係を作成する必要があります。[+]
 このドキュメントの作成時、アプリケーションバックアップワークフローでは、S3バケットにアクセスするためのVPCエンドポイントの選択は提案されていません。[+]
 を参照してください<block ref="7f3b31b88f0e42104578f538777bc3e6" category="inline-link-rx"></block> VPC内でS3のVPCエンドポイントをセットアップする方法</block>
-  <block id="da23b0ab6fe420fd37a4807b59fb7b31" category="paragraph">1本のNVMe SSD（データ）は、最大5台のSAP HANAホストをサポートします。SSD と SAP HANA ホストは、両方のストレージコントローラ間で均等に分散する必要があります。
-AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境にします。</block>
-  <block id="89579d729fbef030eb0080e68e88f112" category="paragraph">1本のNVMe SSD（データ）は、最大5台のSAP HANAホストをサポートします。
-SSD と SAP HANA ホストは、両方のストレージコントローラ間で均等に分散する必要があります。
-AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境にします。</block>
   <block id="9c485d8d0a0f2d60633001b05d342eed" category="doc">『SAP HANA on NetApp FAS systems with NFS Configuration Guide』</block>
   <block id="b7bda169ccba06e8cbcf02ba0fab5928" category="doc">『SAP HANA on NetApp FAS Systems with Fibre Channel Protocol』構成ガイド</block>
   <block id="a56f5f8ccd94f38be4e8a0f1faf81823" category="doc">『SAP HANA on NetApp AFF Systems with NFS』-構成ガイド</block>
@@ -4489,40 +4471,20 @@ AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境
   <block id="d8e5cd74c27d4d7983b9d2c8bdeca1a1" category="paragraph"><block ref="d8e5cd74c27d4d7983b9d2c8bdeca1a1" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b7842d6a27abd5170ad4d41cb2353297" category="paragraph">このドキュメントでは、NetApp AFFシステムとファイバチャネルのインフラストラクチャのセットアップと構成について説明します。</block>
   <block id="265ae4ad07ae6dd3140cd976e6e96a15" category="paragraph"><block ref="265ae4ad07ae6dd3140cd976e6e96a15" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="5eb58939cb873509ebfcc65c7adea6d4" category="paragraph"><block ref="5eb58939cb873509ebfcc65c7adea6d4" category="inline-image-macro-rx" type="image"></block></block>
   <block id="df25c29fe304d621328adc844c5cd0b3" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を<block ref="f5dc5aad2d2f4cc08999d09836f8c4b2" category="inline-link-macro-rx"></block>参照してください。</block>
   <block id="d15ad4b07c5673286f82b8c9b4fccc92" category="inline-xref">ボリューム、イニシエータグループヘノLUNノマッピング</block>
   <block id="1b04aaa74da094dd7c2677d2996e8bc4" category="list-text">作成の説明に従って、アグリゲート内にイニシエータグループ、ボリューム、LUNを作成します<block ref="c8187094a239e1291b967555c8a5ba6c" category="inline-xref-macro-rx"></block>。</block>
-  <block id="f44ac0aaf36d976691573c32c1579d56" category="paragraph"><block ref="f44ac0aaf36d976691573c32c1579d56" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b889efa45187481da0b584b1f08b611d" category="paragraph"><block ref="b889efa45187481da0b584b1f08b611d" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="5a053d099bd71f6622608db75861b1e5" category="paragraph"><block ref="5a053d099bd71f6622608db75861b1e5" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="98388228afa94a728226d844929284de" category="paragraph"><block ref="98388228afa94a728226d844929284de" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="cfd97e0a15391e975214c5503e96d423" category="paragraph"><block ref="cfd97e0a15391e975214c5503e96d423" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ade510803f2b9aad765372451fd52da2" category="paragraph"><block ref="ade510803f2b9aad765372451fd52da2" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b2bc3f5a45ad0103150eddb5c0947895" category="paragraph"><block ref="b2bc3f5a45ad0103150eddb5c0947895" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="4cd082d270e30712a5d973de884f7b9f" category="paragraph"><block ref="4cd082d270e30712a5d973de884f7b9f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="017e522349a0ff07067400d6b880e9df" category="paragraph">=: hardbreaks::nofooter::icons:font:linkattrs::imagesdir:../media/</block>
   <block id="2267b0943e951c31d5f31c288b6bfbe6" category="paragraph">NFSプロトコルを使用するNetApp AFF上のSAP HANA</block>
   <block id="a0988dbd97f9cd1d119f39a16c3e8fe2" category="paragraph"><block ref="a0988dbd97f9cd1d119f39a16c3e8fe2" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0c36eb3b2e8bcf854cb838cadf16d690" category="paragraph"><block ref="0c36eb3b2e8bcf854cb838cadf16d690" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f85ec47d30c38b9521054a2e1dd01d54" category="paragraph"><block ref="f85ec47d30c38b9521054a2e1dd01d54" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f14fa4ed2f8cc9f02e0f0bc794bbc9db" category="paragraph"><block ref="f14fa4ed2f8cc9f02e0f0bc794bbc9db" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="4a40cf994804509601c31a8fabe7487f" category="paragraph"><block ref="4a40cf994804509601c31a8fabe7487f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="168753ba1c857224e6d2c4d6e7832d22" category="paragraph"><block ref="168753ba1c857224e6d2c4d6e7832d22" category="inline-image-macro-rx" type="image"></block></block>
   <block id="80d1a2a3304ad91fb33c08a071649f65" category="paragraph"><block ref="80d1a2a3304ad91fb33c08a071649f65" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b9dfea2f38da456216fb821bdace0099" category="paragraph"><block ref="b9dfea2f38da456216fb821bdace0099" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1061c8a586da3d6a249f18df930dc33a" category="paragraph">このドキュメントでは、NetApp AFFシステムとNFSのインフラのセットアップと設定について説明します。</block>
   <block id="c0c285f4d23d22653eba8dc9a75078b0" category="paragraph"><block ref="c0c285f4d23d22653eba8dc9a75078b0" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="2b7898e27791b39210843e42a3af13e3" category="paragraph"><block ref="2b7898e27791b39210843e42a3af13e3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5238942ad77c3b1f94a61d3640c23e97" category="paragraph"><block ref="5238942ad77c3b1f94a61d3640c23e97" category="inline-image-macro-rx" type="image"></block></block>
   <block id="bc6f4f64c41295649568c9b08222f2c3" category="paragraph"><block ref="bc6f4f64c41295649568c9b08222f2c3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c55f68c7fa3064bc905d3ae3a6a0a59d" category="list-text">および<block ref="886d8674ea6944dd32bd390cb48bc80e" category="inline-xref-macro-rx"></block>の説明に従って、アグリゲート内にボリュームを作成します<block ref="7f2f76d537cb5c15ae301f069af9489f" category="inline-xref-macro-rx"></block>。</block>
-  <block id="a7d4e198585e99565ae20fd5e1e25648" category="paragraph"><block ref="a7d4e198585e99565ae20fd5e1e25648" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1e564b5720d139afce5fbfa4d8305102" category="paragraph"><block ref="1e564b5720d139afce5fbfa4d8305102" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="220d6df1b080b254062b992d2864257d" category="paragraph"><block ref="220d6df1b080b254062b992d2864257d" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b13f29a99399127f7c53673ae7d83d6e" category="paragraph"><block ref="b13f29a99399127f7c53673ae7d83d6e" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="4c4c735b4b06f5c8b4f22ab089500abe" category="paragraph"><block ref="4c4c735b4b06f5c8b4f22ab089500abe" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="6e663089bc56d8ba3af7495ef74018db" category="paragraph"><block ref="6e663089bc56d8ba3af7495ef74018db" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0f067126ab39c0af9790685c5bc83bf3" category="paragraph"><block ref="0f067126ab39c0af9790685c5bc83bf3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b726daf8a2adf210c59b7ef834090339" category="paragraph"><block ref="b726daf8a2adf210c59b7ef834090339" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c8ad86db51ea3fec014b3b92b80c4f2e" category="paragraph"><block ref="c8ad86db51ea3fec014b3b92b80c4f2e" category="inline-image-macro-rx" type="image"></block></block>
@@ -4755,4 +4717,63 @@ AFF A800、AFF A70、AFF A90システムの内蔵NVMeディスクを同じ環境
   <block id="2134d42f2b0f54791bb238214fdc5110" category="list-text">ASA C250、ASA C30、ASA C400、ASA C60、ASA C800、ASA C80</block>
   <block id="a10922577a9bcbf85b1a7a9d8e7de5aa" category="cell">2024年11月</block>
   <block id="53bab281b7eb6692b17a4b65d99e2188" category="list-text">FAS2750、FAS2820、FAS8300、FAS50、FAS8700、 FAS70、FAS9500、FAS90</block>
+  <block id="eccbc87e4b5ce2fe28308fd9f2a7baf3" category="cell">3</block>
+  <block id="c9f0f895fb98ab9159f51fd0297e236d" category="cell">8</block>
+  <block id="34173cb38f07f89ddbebc2ac9128303f" category="cell">30</block>
+  <block id="c2be09c4548a0a3d6590431051156ecc" category="inline-image-macro">8台のSAP HANAホストをストレージHAペアに接続</block>
+  <block id="57b2c63155fecfb21c53a82e0a192a2b" category="paragraph"><block ref="57b2c63155fecfb21c53a82e0a192a2b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="445dc01d838477256a3f7c6ec4051a70" category="inline-image-macro">ストレージHAペアに接続された追加のSAP HANAホスト</block>
+  <block id="2aeef15c3419fd9cc9d6690eb125715e" category="paragraph"><block ref="2aeef15c3419fd9cc9d6690eb125715e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6119ba4f9580ccfa3f0a3d3f871870ff" category="inline-image-macro">ストレエシHAヘアノツイカ</block>
+  <block id="0349c380e002d982103ec0fc460cd07f" category="paragraph"><block ref="0349c380e002d982103ec0fc460cd07f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c4d3f7817a7843faa1dc4bee9f2303ff" category="list-text">SID=SS3のHANAシステム</block>
+  <block id="d6b8648b9a763d4fa670f413b105dec7" category="list-text">Linuxの論理ボリュームマネージャ（LVM）を使用するSID=FC5のHANAシステム</block>
+  <block id="238ec08371f09e874d0f1002aee0caeb" category="inline-image-macro">2台のストレージコントローラに接続されたSAP HANAホスト</block>
+  <block id="74f3ad2825ea13022492793fb7f63a79" category="paragraph"><block ref="74f3ad2825ea13022492793fb7f63a79" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="15e40c72ba936fd4cbb64210e15725a1" category="paragraph">次の図に示すように、 1 つの SAS スタックに最大 1 台のディスクシェルフを接続して、 SAP HANA ホストに必要なパフォーマンスを実現できます。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。ADPv2 は、 ONTAP 9 および DS224C ディスクシェルフで使用されます。</block>
+  <block id="2f4edbf818ed882e067d16f9f1c932da" category="inline-image-macro">DS224Cディスクシェルフの接続</block>
+  <block id="ddb7d2fa5d4fd45c1a6001d8cbba792c" category="paragraph"><block ref="ddb7d2fa5d4fd45c1a6001d8cbba792c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f8c9ad3e9065af52a42b05407f475c98" category="paragraph">次の図に示すように、NS224 NVMeディスクシェルフは、コントローラごとに2つの100GbEポートで接続されます。各シェルフ内のディスクは、HAペアの両方のコントローラに均等に分散する必要があります。ADPv2 は、 NS224 ディスクシェルフにも使用されます。</block>
+  <block id="39b270995b65c0f50a8535f49f84aa61" category="inline-image-macro">NS224 NVMeディスクシェルフの接続</block>
+  <block id="dac87f657c075eb6a448486fda4b18e4" category="paragraph"><block ref="dac87f657c075eb6a448486fda4b18e4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0dee623c3a47708547aff95df6dc16df" category="paragraph">一般に、使用するディスクシェルフやディスクテクノロジ（ SSD または HDD ）に関係なく、コントローラごとに 2 つのアグリゲートを設定する必要があります。この手順は、使用可能なすべてのコントローラリソースを使用できるようにするために必要です。</block>
+  <block id="6f1ace73b19ea95862049cef5bc4fabb" category="admonition">2024年8月以降にリリースされたASAシステムでは、この手順は自動的に実行されるため必要ありません。</block>
+  <block id="f4c9620796b063803a52bf4cb0bdc63b" category="paragraph"><block ref="f4c9620796b063803a52bf4cb0bdc63b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c63c34bc75852acd26eac087d69564e1" category="inline-image-macro">論理インターフェイスの概要</block>
+  <block id="442b4694b4e23c4c8aab5817606d4a8f" category="paragraph"><block ref="442b4694b4e23c4c8aab5817606d4a8f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="775282e39d26408a21d5eaa1c485e361" category="paragraph">ONTAP System Managerを使用したSVMの作成時には、必要なすべての物理FCPポートを選択でき、物理ポートごとに1つのLIFが自動的に作成されます。</block>
+  <block id="ca4b4ab28b402042c5530cc0059c6af3" category="inline-image-macro">SVMの作成</block>
+  <block id="bc0b4db5e6b23fdaed6f5246d05d6ef8" category="paragraph"><block ref="bc0b4db5e6b23fdaed6f5246d05d6ef8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0c2fd995ece5cfe7704d5109986e3b0e" category="paragraph"><block ref="0c2fd995ece5cfe7704d5109986e3b0e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2376775a32e0fa313efe0917b1bd9cfc" category="paragraph"><block ref="2376775a32e0fa313efe0917b1bd9cfc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="062ce9ed8e9b3c25669e46aba83faa4c" category="admonition">2024年8月よりあとに起動したASAシステムでは、_lunの作成_時に自動的に実行されるため、この手順は必要ありません。</block>
+  <block id="962f559368bb8c770c0eb510490d6a70" category="admonition">LUN名は、2024年8月以降に起動されたASAシステムのパスとしてのみ指定してください。これは、以下の_lun map_commandにも当てはまります。また、_-space-reserve_and_-space-allocation_オプションは使用できません。</block>
+  <block id="871d39fd458463703004f24c503c7812" category="paragraph">1つのNVMe SSD（データ）は、使用する特定のNVMeディスクに応じて、最大2/5のSAP HANAホストをサポートします。SSDとSAP HANAホストは、両方のストレージコントローラ間で均等に分散する必要があります。AFFシステムとASAシステムの内蔵NVMeディスクについても同様です。</block>
+  <block id="b80edeac5a9d51784b1a139f183acc83" category="inline-image-macro">SAP HANAのサイジングプロセス</block>
+  <block id="4bb4fae3b6ea53d3f376bbd619714543" category="paragraph"><block ref="4bb4fae3b6ea53d3f376bbd619714543" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f2ed1b2a99c0f64ca0cfcd6111d7ec4c" category="inline-image-macro">8台のSAP HANAホストをストレージハイアベイラビリティ（HA）ペアに接続</block>
+  <block id="831843b9e12aadd42880c9ec56bd509a" category="paragraph"><block ref="831843b9e12aadd42880c9ec56bd509a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d788d47338c59792d717e9540a6664ef" category="inline-image-macro">既存のストレージコントローラHAペアへの追加のSAP HANAホストの追加</block>
+  <block id="1630763019d92de5939da85faf4ad16c" category="paragraph"><block ref="1630763019d92de5939da85faf4ad16c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4f056ce2074ba16ee637d64fdef647a7" category="inline-image-macro">HAペアが追加されました</block>
+  <block id="afd2c3367e4b9e93007759798ae8b0c0" category="paragraph"><block ref="afd2c3367e4b9e93007759798ae8b0c0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4d9c2ddc20521fa24e033c096807f43d" category="paragraph">次の図は、 4 台の SAP HANA ホストを 10GbE ネットワークを使用してストレージコントローラ HA ペアに接続した場合の例を示しています。各SAP HANAホストには、冗長ファブリックへのアクティブ/アクティブ接続があります。</block>
+  <block id="e7c118cc09590a9a288c67a4b302b904" category="paragraph">ストレージレイヤでは、4つのアクティブ接続が各SAP HANAホストに10Gbのスループットを提供するように構成されます。ストレージレイヤでは、MTUサイズが9、000のブロードキャストドメインが設定され、必要なすべての物理インターフェイスがこのブロードキャストドメインに追加されます。この方法では、これらの物理インターフェイスが同じフェイルオーバーグループに自動的に割り当てられます。これらの物理インターフェイスに割り当てられているすべての論理インターフェイス（ LIF ）が、このフェイルオーバーグループに追加されます。</block>
+  <block id="fa9e73ef22bb3dbfc0d7dfadf5b21281" category="inline-image-macro">ネットワークの概要</block>
+  <block id="1f4afde3d41b82108694e4fb06f46b87" category="paragraph"><block ref="1f4afde3d41b82108694e4fb06f46b87" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5cc69351dc44fc813914fdaa909dbc3e" category="paragraph">一般に、サーバ（ボンド）およびストレージシステムではHAインターフェイスグループ（Link Aggregation Control Protocol [LACP]やifgroupなど）を使用することを推奨します。HA インターフェイスグループを使用して、グループ内のすべてのインターフェイス間で負荷が均等に分散されていることを確認します。負荷分散は、ネットワークスイッチインフラの機能によって異なります。</block>
+  <block id="6c3a3847a37cd097bd01d4da5604f5ec" category="inline-image-macro">SASシェルフの接続</block>
+  <block id="9a0eda3f9d8233b1fa9f3da649f3f69a" category="paragraph"><block ref="9a0eda3f9d8233b1fa9f3da649f3f69a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ad5e5ab57510595b28c8e0eccf58ded8" category="inline-image-macro">MVMeディスクシェルフの接続</block>
+  <block id="a1868e70c540a5e45ad58185a99b3769" category="paragraph"><block ref="a1868e70c540a5e45ad58185a99b3769" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="06622e356c3be6dc8c45370761d20660" category="paragraph">一般に、使用するディスクシェルフやドライブテクノロジ（ SAS SSD または NVMe SSD ）とは関係なく、コントローラごとに 2 つのアグリゲートを構成する必要があります。</block>
+  <block id="91e0d52ee3c1820ee8386d18f6a91bd0" category="inline-image-macro">アグリゲート構成</block>
+  <block id="da814dd6671cb64a7483f4c29eac56a3" category="paragraph"><block ref="da814dd6671cb64a7483f4c29eac56a3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d63145bc3309abf0009436530805ac13" category="inline-image-macro">ボリューム構成SAP HANAシングルホスト</block>
+  <block id="4e37fc2061f3eb4a5c883256f7abd270" category="paragraph"><block ref="4e37fc2061f3eb4a5c883256f7abd270" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2f57ad2489363e64804b354244f0c7b8" category="inline-image-macro">ボリューム構成SAP HANAマルチホスト</block>
+  <block id="67723885e8b8dec5641fd9b65c05a445" category="paragraph"><block ref="67723885e8b8dec5641fd9b65c05a445" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="de3a0b5c28d9158410e205fdf4dd72f2" category="paragraph">1つのNVMe SSD（データ）は、使用するNVMeディスクに応じて、最大2/5のSAP HANAホストをサポートします。SSDとSAP HANAホストは、両方のストレージコントローラ間で均等に分散する必要があります。AFFシステムの内蔵NVMeディスクについても同様です。</block>
+  <block id="a1498fba486158dfd616e2bc1f205275" category="admonition">ディスクシェルフを追加しても、ストレージコントローラでサポートできるSAP HANAホストの最大数は増えません。</block>
+  <block id="57c187411855aa330625e6e0331a74b7" category="paragraph"><block ref="57c187411855aa330625e6e0331a74b7" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>

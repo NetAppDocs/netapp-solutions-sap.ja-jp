@@ -16,13 +16,13 @@ summary:
 [role="lead"]
 以降のセクションでは、 SAP HANA インフラのセットアップと構成のガイドラインについて説明し、 SAP HANA システムのセットアップに必要なすべての手順について説明します。ここでは、次の設定例を使用します。
 
-* SID=SS3 、 ONTAP 9.7 以前の HANA システム
+* SID=SS3のHANAシステム
 +
 ** SAP HANA シングルおよびマルチホスト
 ** SAP HANA マルチパーティションを使用する SAP HANA シングルホスト
 
 
-* Linux の論理ボリュームマネージャ（ LVM ）を使用した、 SID = FC5 および ONTAP 9.8 の HANA システム
+* Linuxの論理ボリュームマネージャ（LVM）を使用するSID=FC5のHANAシステム
 +
 ** SAP HANA シングルおよびマルチホスト
 
