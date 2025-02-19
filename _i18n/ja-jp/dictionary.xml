@@ -821,8 +821,6 @@
   <block id="5d75848b6169b06c4cd7d6a8c2ec2337" category="paragraph">NetApp AFF ストレージコントローラは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、 SAP HANA TDI のアーキテクチャの概要を示します。</block>
   <block id="4769b140b92a70ffdab406be16d30122" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションを使用しても、ホストとストレージの構成が物理ホストと VM で同じになることはありません。</block>
   <block id="f7fbf8be79b2dbbf7cca7d63ea2aaa3e" category="paragraph">このドキュメントでは、ゲスト OS から NFS への直接マウントを使用する場合の推奨セットアップについて説明します。</block>
-  <block id="181fc43b08ba57214c4bbd2448ec470d" category="list-text"><block ref="181fc43b08ba57214c4bbd2448ec470d" category="inline-link-macro-rx"></block></block>
-  <block id="302092b20c647fa4f675ff96913675f9" category="list-text"><block ref="302092b20c647fa4f675ff96913675f9" category="inline-link-macro-rx"></block></block>
   <block id="4f0141ecc04bee7dc293f8992542b4bd" category="summary">NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP オペレーティングシステムが搭載されています。</block>
   <block id="088c8c258db90c09658a39d2839f52b0" category="doc">TR-4384 ：『 SAP HANA on NetApp FAS Systems with Fibre Channel Protocol Configuration Guide 』</block>
   <block id="42eb56ae1e83db3afce70f056a668205" category="inline-link">認定およびサポートされている SAP HANA ハードウェアディレクトリ</block>
@@ -969,7 +967,6 @@
   <block id="b9c48200eb9eba714e3c88803e97b4ce" category="section-title">LUN 、ボリュームを作成し、 LUN をイニシエータグループにマッピングします</block>
   <block id="a86be254d15f1254d56b97c8755a5b77" category="admonition">「 anlun 」ツールは NetApp Host Utilities の一部であり、各 SAP HANA ホストにインストールする必要があります。詳細については、「 host_setup 」セクションを参照してください。</block>
   <block id="8c4751bd2d7d17062a8b536388ba69bc" category="section-title">CLI を使用して LUN 、ボリュームを作成し、 igroup に LUN をマッピングします</block>
-  <block id="6204c72c80408db453e7fea0b62d2e36" category="paragraph">このセクションでは、コマンドラインを使用した ONTAP 9.8 と、 SID FC5 を使用した 2+1 の SAP HANA マルチホストシステムで、 LVM ボリュームグループごとに 2 つの LUN を使用した構成例を示します。</block>
   <block id="c48caf1c739d7975abd91d926cd56982" category="list-text">必要なボリュームをすべて作成します。</block>
   <block id="8e5c1549db5f0e31853b6809f7049388" category="list-text">すべての LUN を作成します。</block>
   <block id="d595b9142c1fd0d3ea19c8cd10165661" category="list-text">システム FC5 に属するすべてのサーバのイニシエータグループを作成します。</block>
@@ -3921,8 +3918,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="20a0dcae2f540339bbf69dbaa7f0050a" category="list-text"><block ref="20a0dcae2f540339bbf69dbaa7f0050a" category="inline-link-macro-rx"></block></block>
   <block id="b0be0a2f6c57f7c66aa9ab049763af3a" category="paragraph">SnapCenterを使用したSAP HANAバックアップ/リカバリソリューションの詳細については、を参照してください<block ref="7d612f806d1e07d1f3292801524311f8" category="inline-link-rx"></block>。</block>
   <block id="c2107d876323ca6269d87dd4ef892a8a" category="paragraph">SAP HANAディザスタリカバリソリューションの詳細については、を参照してください<block ref="22d31f63af3553980c791e5bf538fbdd" category="inline-link-rx"></block>。</block>
-  <block id="78439f11ea8c9762eac371e8475447aa" category="inline-link">『SAP HANA on VMware vSphere Best Practices and Reference Architecture Guide』</block>
-  <block id="52d5e1f1eef3e549b479feffef1c376c" category="list-text"><block ref="52d5e1f1eef3e549b479feffef1c376c" category="inline-link-rx"></block></block>
   <block id="1b70ac0a972fddf1e1a33e6ed9df49c7" category="cell">2022年9月</block>
   <block id="3c3691e44e6ff923dc83662b2f7e1001" category="cell">新しいOS -リリース</block>
   <block id="6d6bbe0ff14c220c87649b72d24ad927" category="cell">2023年8月</block>
@@ -4748,4 +4743,7 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="c9f801c3b76e183b280276e75a8ebaea" category="list-text">『SAP HANA on VMware vSphere Best Practices Guide』</block>
   <block id="838491807b9e9689bc796a7e547fe188" category="inline-link"><block ref="838491807b9e9689bc796a7e547fe188" category="inline-link-rx"></block></block>
   <block id="b61d59281011f2681050ce1756929d77" category="paragraph"><block ref="b61d59281011f2681050ce1756929d77" category="inline-link-rx"></block></block>
+  <block id="22c7eb5619fc26c433125aab7cfd57af" category="list-text"><block ref="22c7eb5619fc26c433125aab7cfd57af" category="inline-link-rx"></block></block>
+  <block id="d8cb082280c9ef193a28bdb60d8e9779" category="list-text"><block ref="d8cb082280c9ef193a28bdb60d8e9779" category="inline-link-rx"></block></block>
+  <block id="147a64bd742e2d54a7d7a7f133c3561c" category="paragraph">このセクションでは、コマンドラインを使用した ONTAP 9 と、 SID FC5 を使用した 2+1 の SAP HANA マルチホストシステムで、 LVM ボリュームグループごとに 2 つの LUN を使用した構成例を示します。</block>
 </blocks>

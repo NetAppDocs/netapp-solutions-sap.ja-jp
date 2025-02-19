@@ -75,7 +75,7 @@ raw デバイスマッピング（ RDM ）、 FCP データストア、または
 
 SAP HANA での vSphere の使用の詳細については、次のリンクを参照してください。
 
-* https://wiki.scn.sap.com/wiki/display/VIRTUALIZATION/SAP+HANA+on+VMware+vSphere["SAP HANA on VMware vSphere - 仮想化 - コミュニティ Wiki"^]
-* https://core.vmware.com/resource/sap-hana-vmware-vsphere-best-practices-and-reference-architecture-guide#introduction["『SAP HANA on VMware vSphere Best Practices and Reference Architecture Guide』"^]
+* https://help.sap.com/docs/SUPPORT_CONTENT/virtualization/3362185751.html["SAP HANA on VMware vSphere - 仮想化 - コミュニティ Wiki"^]
+* https://www.vmware.com/docs/sap_hana_on_vmware_vsphere_best_practices_guide-white-paper["『SAP HANA on VMware vSphere Best Practices Guide』"^]
 * https://launchpad.support.sap.com/["2161991 - VMware vSphere 設定ガイドライン - SAP One Support Launchpad （ログインが必要）"^]
 
