@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-sc-backup.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= SnapCenter バックアップ処理
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+バックアップ処理のたびに、SnapCenterはVMware側での検出とプライマリサイトの検出を実行します。ストレージフェイルオーバーが発生した場合、SnapCenterはリソースのバックアップが実行されるとすぐに新しいプライマリサイトを検出します。
+
+image:sc-saphana-vmware-smas-image31.png[""]
+
+
+
+== [Topology]ビュー
+
+トポロジビュー内のSnapCenterには、ソースとデスティネーションの両方のストレージクラスタのバックアップが表示されます。
+
+image:sc-saphana-vmware-smas-image32.png[""]
+
+image:sc-saphana-vmware-smas-image33.png[""]
+
+セカンダリストレージの数をクリックすると、現在の関係とレプリケーションの方向が表示されます。ソースは常に現在のプライマリサイトです。ストレージフェイルオーバーが発生すると、プライマリサイトが変化し、それに応じて表示が変更されます。どのストレージシステムが現在プライマリサイトであるかに応じて、すべてのバックアップの関係は常に同じです。
+
+image:sc-saphana-vmware-smas-image34.png[""]
+
+
+
+== ストレージシステムにSnapshotを作成
+
+SnapCenterで作成されたSnapshotバックアップは、両方のストレージシステムの両方のHANAデータボリュームで使用できます。ONTAPでは、整合グループレベルで追加のSnapshotが作成され、他のすべてのHANAボリュームでも使用できます。
+
+次の図は、A700クラスタのHANAデータボリュームのSnapshotを示しています。
+
+image:sc-saphana-vmware-smas-image35.png[""]
+
+次の図は、A800クラスタのHANAデータボリュームのSnapshotを示しています。
+
+image:sc-saphana-vmware-smas-image36.png[""]

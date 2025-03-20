@@ -1,0 +1,131 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-sc-config.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= SnapCenter 構成
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+本ドキュメントの冒頭で説明したように、VMwareとVMFSおよびSnapMirrorのアクティブ同期を使用するHANA環境のベストプラクティスを紹介することを目的としています。ここでは、この特定のソリューションに関連する詳細と重要な手順についてのみ説明します。SnapCenterの一般的な概念については説明しません。SnapCenterに関するこれらの概念およびその他の追加情報については、次のサイトを参照してください。
+
+https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"]
+
+https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-sr-scs-sap-hana-system-replication-overview.html["TR-4719 ：『 SAP HANA System Replication - Backup and Recovery with SnapCenter 』"]
+
+https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"]
+
+
+
+== 前提条件
+
+一般に、保護されたリソースをSnapCenterに追加する前に、SnapMirrorアクティブ同期を設定する必要があります。SnapMirror Active Syncのセットアップ前に作成されたバックアップは、元のプライマリストレージにのみ存在し、その後はレプリケートされません。
+
+
+
+=== SnapCenter HANAリソースを自動検出する必要があります
+
+VMware VMFSで構成されているリソース、またはSnapMirror Active Syncで保護されているリソースは、SnapCenterによって自動検出され、これらの構成に必要な特定の処理を実行できるようにする必要があります。
+
+HANAの非データボリュームは、SnapCenterでは常に手動で設定されたリソースであるため、SnapCenterでは即座にサポートされません。データボリューム以外のボリュームのオプションと回避策については、このドキュメントの後半で説明します。
+
+SAP HANAマルチホストシステムは、中央のHANAプラグインを使用して設定する必要があるため、デフォルトでリソースを手動で設定します。VMware VMFSまたはSnapMirrorのアクティブ同期を使用している場合、このようなHANAシステムはSnapCenterでサポートされません。
+
+
+
+=== SnapCenter for VMware vSphereプラグイン
+
+SnapCenter for VMware vSphereプラグインをVMware環境に導入する必要があります。
+
+
+
+=== ボリュームをホストしているSVMの管理IPアドレス
+
+クラスタをSnapCenterに追加する場合でも、ソースボリュームとデスティネーションボリュームをホストするSVMに管理IPアドレスを設定する必要があります。
+
+
+
+=== ストレージ通信用のREST API
+
+SnapMirrorのアクティブな同期の管理と監視には、REST APIアクセスが必要です。そのため、ストレージ通信にREST APIを使用するようにSnapCenterを設定する必要があります。構成ファイル+C：++\\+Program NetApp +\\+SMCore++\\+SMCoreServiceHost.dll.configのパラメータ「IsRestEnabledForStorageConnection」をtrueに設定する必要があります。
+
+....
+<add key="IsRestEnabledForStorageConnection" value="true">
+....
+image:sc-saphana-vmware-smas-image21.png[""]
+
+パラメータを変更したら、SnapCenter SMCoreサービスを再起動する必要があります。
+
+image:sc-saphana-vmware-smas-image22.png[""]
+
+
+
+== ストレージシステムを追加する
+
+SnapCenterでREST APIを有効にしたあとにストレージシステムを追加できます。個 々 のSVMではなく、両方のストレージクラスタを追加する必要があります。
+
+image:sc-saphana-vmware-smas-image23.png[""]
+
+image:sc-saphana-vmware-smas-image24.png[""]
+
+
+
+== ホストの追加–SnapCenter for VMware vSphereプラグイン
+
+SnapCenterのリソースが仮想化されたVMware環境で実行されている場合、SnapCenterはSnapCenter Plugin for VMware vSphereを利用して、SnapCenterのバックアップ、リストア、クローニングのワークフローを拡張し、VMwareレイヤで必要な手順を実行します。
+
+ホストをSnapCenterに追加する前に、VMware vSphere用SnapCenterプラグインをVMware環境に導入する必要があります。
+
+
+NOTE: クレデンシャルはホスト追加ワークフローで設定する必要があります。ホストタイプとしてvSphereを選択できます。
+
+image:sc-saphana-vmware-smas-image25.png[""]
+
+image:sc-saphana-vmware-smas-image26.png[""]
+
+image:sc-saphana-vmware-smas-image27.png[""]
+
+
+NOTE: SnapCenter for vSphereプラグイン自体で追加の設定は必要ありません。
+
+
+
+== ホストを追加–HANAシステム
+
+
+NOTE: 具体的な要件はありません。プラグインの導入と自動検出は通常どおり実行されます。
+
+自動検出プロセスにより、SnapCenterは、HANAリソースがVMFS/VMDKで仮想化された状態で実行されていることを検出します。また、SnapCenterはSnapMirrorのアクティブな同期設定を検出し、現在のプライマリサイトを特定します。
+
+リソースの自動検出後、リソースビューのストレージフットプリントセクションに現在のプライマリサイトが表示されます。どのストレージシステムがマスターであるかは、SnapCenterで使用されるONTAPコマンドの出力に基づいて検出されます。
+
+....
+volume show -vserver <vs> -volume <vol> -fields smbc-consensus,is-smbc-master
+....
+image:sc-saphana-vmware-smas-image28.png[""]
+
+
+
+== ポリシー設定
+
+SnapMirrorアクティブ同期で保護されているリソースに使用されるポリシーは、SnapMirrorレプリケーションを使用して設定する必要があります。ただし、SnapCenterではSnapMirror更新処理がトリガーされません。
+
+image:sc-saphana-vmware-smas-image29.png[""]
+
+image:sc-saphana-vmware-smas-image30.png[""]
+
+
+
+== HANAリソース保護構成
+
+具体的な要件はありません。リソース保護の設定は通常どおり行われます。

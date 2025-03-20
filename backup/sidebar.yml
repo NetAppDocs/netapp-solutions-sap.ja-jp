@@ -64,6 +64,32 @@ entries:
     url: "/backup/saphana-br-scs-advanced-configuration-and-tuning.html"
   - title: 追加情報およびバージョン履歴の参照先
     url: "/backup/saphana-br-scs-where-to-find-additional-information.html"
+- title: SnapCenter、SnapMirror Active Sync、VMware Metro Storage ClusterによるSAP HANAのデータ保護と高可用性
+  entries:
+  - title: 本ドキュメントの内容
+    url: "/backup/hana-sc-vmware-smas-scope.html"
+  - title: SAP HANAの高可用性の概要
+    url: "/backup/hana-sc-vmware-smas-hana-ha.html"
+  - title: セツテイノカイヨウレイ
+    url: "/backup/hana-sc-vmware-smas-example-config.html"
+  - title: HANAシステムのプロビジョニングとインストール
+    url: "/backup/hana-sc-vmware-smas-hana-install.html"
+  - title: SnapMirrorのアクティブな同期設定
+    url: "/backup/hana-sc-vmware-smas-smas-config.html"
+  - title: SnapCenter 構成
+    url: "/backup/hana-sc-vmware-smas-sc-config.html"
+  - title: SnapCenter バックアップ処理
+    url: "/backup/hana-sc-vmware-smas-sc-backup.html"
+  - title: SnapCenterノリストアトリカハリ
+    url: "/backup/hana-sc-vmware-smas-sc-restore.html"
+  - title: SAPシステムの更新処理
+    url: "/backup/hana-sc-vmware-smas-sc-system-refresh.html"
+  - title: SnapCenterデータボリューム以外のボリューム
+    url: "/backup/hana-sc-vmware-smas-sc-non-data-vols.html"
+  - title: フェイルオーバーのシナリオ
+    url: "/backup/hana-sc-vmware-smas-failover-scenarios.html"
+  - title: 追加情報とバージョン履歴
+    url: "/backup/hana-sc-vmware-smas-additional-info.html"
 - title: BlueXP Backup and Recovery for SAP HANA -バックアップ先としてのクラウドオブジェクトストレージ
   entries:
   - title: BlueXP Backup and Recovery for SAP HANA -概要

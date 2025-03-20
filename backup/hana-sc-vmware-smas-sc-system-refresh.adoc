@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-sc-system-refresh.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= SAPシステムの更新処理
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+クローニング処理は、プライマリサイトまたはセカンダリストレージで実行できます。
+
+クローンボリュームはHANA整合性グループには含まれず、SnapMirrorのアクティブな同期ではレプリケートされません。
+
+システム更新ワークフローの詳細については、次のサイトを参照してください。 https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"]

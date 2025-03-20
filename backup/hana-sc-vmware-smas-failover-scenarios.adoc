@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-failover-scenarios.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= フェイルオーバーのシナリオ
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+
+
+== 統一されたアクセス設定
+
+統一されたアクセス構成では、ファイバチャネルSANが両方のサイトに拡張されます。両方のサイトのESXホストは、データセットの両方のコピーにアクセスできます。通常運用時、HANAシステムを実行するESXホストは、イニシエータグループ構成の近接設定に基づいてデータのローカルコピーにアクセスします。各ESXホストには、ローカルコピーへのアクティブな最適パスと、ミラーコピーへのアクティブな非最適パスがあります。
+
+
+
+=== 通常運用時
+
+通常運用時には、HANAシステムはESXホストESX-1からのアクティブな最適パスに基づいてローカルコピーの読み取りと書き込みを行います。各バックアップ処理で、SnapCenterはレプリケーション関係の現在のプライマリサイトを検出し、プライマリサイトに対してバックアップ処理を実行します。Snapshotはミラーコピーにレプリケートされ、両方のサイトで使用できます。プライマリサイトでSnapCenterリストア処理を実行します。
+
+image:sc-saphana-vmware-smas-image42.png[""]
+
+
+
+=== ストレージ障害
+
+サイト1のストレージシステムに障害が発生した場合、HANAシステムはサイト2のミラーコピーにアクセスして処理を続行します。プライマリサイトがセカンダリサイトに切り替わり、SnapCenterが新しいプライマリサイトでバックアップとリストアの処理を実行するようになります。
+
+image:sc-saphana-vmware-smas-image43.png[""]
+
+
+
+=== サイト障害
+
+サイト障害が発生した場合、HANA VMとSnapCenterおよびSnapCenter for VMwareプラグインVMは、vSphere HAを使用してセカンダリサイトのESXホストにフェイルオーバーします。HANAデータベースを起動し、セカンダリサイトのミラーコピーにアクセスする必要があります。プライマリサイトがセカンダリサイトに切り替わり、SnapCenterが新しいプライマリサイトでバックアップとリストアの処理を実行するようになります。
+
+image:sc-saphana-vmware-smas-image44.png[""]
+
+
+
+== 不均一なアクセス設定
+
+統一されていないアクセス構成では、ファイバチャネルSANは両方のサイトに拡張されません。各サイトの各ESXホストは、データセットのローカルコピーにのみアクセスできます。
+
+
+
+=== 通常運用時
+
+通常運用時、HANAシステムはローカルコピーとの間で読み取りと書き込みを行います。各バックアップ処理で、SnapCenterはレプリケーション関係の現在のプライマリサイトを検出し、プライマリサイトに対してバックアップ処理を実行します。Snapshotはミラーコピーにレプリケートされ、両方のサイトで使用できます。プライマリサイトでSnapCenterリストア処理を実行します。
+
+image:sc-saphana-vmware-smas-image45.png[""]
+
+
+
+=== ストレージ障害
+
+ストレージに障害が発生した場合、HANA VMとSnapCenterおよびSnapCenter for VMwareプラグインVMは、vSphere HAを使用してセカンダリサイトのESXホストにフェイルオーバーします。HANAデータベースを起動し、セカンダリサイトのミラーコピーにアクセスする必要があります。プライマリサイトがセカンダリサイトに切り替わり、SnapCenterが新しいプライマリサイトでバックアップとリストアの処理を実行するようになります。
+
+image:sc-saphana-vmware-smas-image46.png[""]
+
+
+
+=== サイト障害
+
+ストレージ障害と同じ。
+
+image:sc-saphana-vmware-smas-image47.png[""]
+
+
+
+=== HANA VMまたはプライマリサイトの再配置
+
+HANA VMを他のESXホストに再配置し、ストレージのプライマリサイトを変更しないと、SnapCenterを使用したリストア処理は失敗します。SnapCenterはリストア処理を実行するためにプライマリサイトを使用するため、クローンは左側に作成され、HANA VMは右側で実行されます。サイト間にデータパスがないため、SnapCenterはデータをコピーしません。
+
+この問題を回避するには、VMとプライマリ側の再配置を同時に実行するか、SnapCenterを使用したリストア処理の前にプライマリサイトをフェイルオーバーする必要があります。
+
+image:sc-saphana-vmware-smas-image48.png[""]

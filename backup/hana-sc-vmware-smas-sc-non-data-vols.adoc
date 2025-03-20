@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-sc-non-data-vols.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery, non-data volumes 
+summary:  
+---
+= SnapCenterデータボリューム以外のボリューム
+:allow-uri-read: 
+
+
+'''
+リソースがSnapCenterで手動で設定され、自動検出されない場合、SnapCenterはVMwareとSnapMirrorのアクティブな同期を認識しません。そのため、SnapCenterではネイティブにサポートされていません。
+
+HANA共有のようなデータボリューム以外のボリュームでは、追加の手動手順を検討する場合でも、SnapCenterを使用してバックアップとリストアの処理を実行できます。
+
+
+
+== SnapCenterで設定されたストレージシステムの障害
+
+SnapCenterで設定されたストレージ・システムに障害が発生しても、SnapCenterは自動的にもう一方のストレージ・システムに切り替わりません。ボリュームのミラーコピーをバックアップおよびリストア処理に使用するには、データボリューム以外のリソースを手動で調整する必要があります。
+
+image:sc-saphana-vmware-smas-image39.png[""]
+
+
+
+== バックアップ処理
+
+SnapCenterはHANA共有ボリュームのSnapMirrorアクティブ同期設定を認識しませんが、Snapshotは両方のサイトにレプリケートされます。
+
+image:sc-saphana-vmware-smas-image40.png[""]
+
+image:sc-saphana-vmware-smas-image41.png[""]
+
+
+
+== リストア処理を実行します
+
+リストアの場合、SnapCenterでは、VMware固有の手順を実行せずにボリュームのリストアが実行されます。通常は、LinuxホストでHANA共有ボリュームをアンマウントし、データストアを切断してからボリュームのリストアを実行し、データストアを再度接続してから、Linuxホストでファイルシステムをマウントする必要があります。手動操作では、HANA VMを停止し、SnapCenterでHANA共有ボリュームをリストアしてから、VMを再起動できます。

@@ -1,0 +1,53 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-example-config.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= セツテイノカイヨウレイ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+[role="lead"]
+ラボのセットアップでは、両方のESXホストが両方のストレージクラスタにアクセスできる、統一されたアクセス構成を使用します。次のセクションでは、ユニフォームアクセス設定について説明しますが、ユニフォーム設定ではない場合の違いについても説明します。
+
+image:sc-saphana-vmware-smas-image1.png[""]
+
+
+
+== ソフトウェアバージョン
+
+[cols="50%,50%"]
+|===
+| ソフトウェア | バージョン 
+
+
+| ONTAP | A700：9.15.1P7、A800：9.16.1RC1 
+
+
+| vSphereクライアント | 8.0.3 
+
+
+| ESXi | 8.0.3 
+
+
+| vSphere用SnapCenterプラグイン | 6.0.1 
+
+
+| Linux OS | SLES for SAP 15 SP5 
+
+
+| SAP HANA のサポート | 2.0 SPS8 
+
+
+| SnapCenter | 6.0.1 
+|===
