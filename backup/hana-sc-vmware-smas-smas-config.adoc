@@ -11,11 +11,10 @@ summary:
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:firstname: ---
-:author: ---
-:authorinitials: -
-:authors: ---
 
+
+[role="lead"]
+この記事では、このソリューションに必要な設定手順について説明します。
 
 
 
@@ -25,9 +24,9 @@ summary:
 
 両方のストレージクラスタでONTAPメディエーターが使用可能で設定されている必要があります。
 
-image:sc-saphana-vmware-smas-image10.png[""]
+image:sc-saphana-vmware-smas-image10.png["説明している内容を示す図"]
 
-image:sc-saphana-vmware-smas-image11.png[""]
+image:sc-saphana-vmware-smas-image11.png["説明している内容を示す図"]
 
 
 
@@ -41,7 +40,7 @@ ONTAPのドキュメントでは https://docs.netapp.com/us-en/ontap/snapmirror-
 
 HANAシステムのレプリケーションでは、整合性グループに、個 々 のHANAシステムで使用されるすべてのボリューム（データ、ログ、共有）が含まれている必要があります。整合グループに含めるボリュームは、同じSVMに格納する必要があります。オペレーティングシステムイメージは、独自の整合グループを持つ別のボリュームに格納できます。次の図は、2つのHANAシステムを使用した構成例を示しています。
 
-image:sc-saphana-vmware-smas-image12.png[""]
+image:sc-saphana-vmware-smas-image12.png["説明している内容を示す図"]
 
 
 
@@ -51,9 +50,9 @@ image:sc-saphana-vmware-smas-image12.png[""]
 
 このプロキシミティ設定を使用して、どのESXホストがどのストレージクラスタに近いかを定義しました。この例では、A700はESX-1に近く、A800はESX-2に近くなっています。
 
-image:sc-saphana-vmware-smas-image13.png[""]
+image:sc-saphana-vmware-smas-image13.png["説明している内容を示す図"]
 
-image:sc-saphana-vmware-smas-image14.png[""]
+image:sc-saphana-vmware-smas-image14.png["説明している内容を示す図"]
 
 
 NOTE: 統一されていないアクセス設定では、プライマリストレージクラスタ（A700）のイニシエータグループにESX-1ホストのイニシエータのみを含める必要があります。これは、ESX-2へのSAN接続がないためです。また、2つ目のストレージクラスタ（A800）に、ESX-2ホストのイニシエータのみを含む別のイニシエータグループを設定する必要があります。プロキシミティ構成とイニシエータグループのレプリケーションは必要ありません。
@@ -62,7 +61,7 @@ NOTE: 統一されていないアクセス設定では、プライマリスト�
 
 == ONTAP System Managerを使用した保護の設定
 
-image:sc-saphana-vmware-smas-image15.png[""]
+image:sc-saphana-vmware-smas-image15.png["説明している内容を示す図"]
 
 
 
@@ -75,11 +74,11 @@ image:sc-saphana-vmware-smas-image15.png[""]
 
 NOTE: 異なるアクセス設定では、別のイニシエータグループを2つ目のストレージクラスタに設定する必要があるため、イニシエータグループをレプリケートしないでください。
 
-image:sc-saphana-vmware-smas-image16.png[""]
+image:sc-saphana-vmware-smas-image16.png["説明している内容を示す図"]
 
 近接設定をクリックすると、イニシエータグループのセットアップで実行された設定を確認できます。
 
-image:sc-saphana-vmware-smas-image17.png[""]
+image:sc-saphana-vmware-smas-image17.png["説明している内容を示す図"]
 
 デスティネーションストレージクラスタを設定し、「関係の初期化」を有効にする必要があります。
 
@@ -89,11 +88,11 @@ image:sc-saphana-vmware-smas-image17.png[""]
 
 A700ストレージクラスタ（ソース）に新しい関係が表示されます。
 
-image:sc-saphana-vmware-smas-image18.png[""]
+image:sc-saphana-vmware-smas-image18.png["説明している内容を示す図"]
 
 A800ストレージクラスタ（デスティネーション）で、新しい関係とレプリケーションのステータスが表示されます。
 
-image:sc-saphana-vmware-smas-image19.png[""]
+image:sc-saphana-vmware-smas-image19.png["説明している内容を示す図"]
 
 
 
@@ -118,4 +117,4 @@ SnapMirrorアクティブ同期では、一方のサイトが「ソース」で�
 
 NOTE: ソースとデスティネーションはSVMまたはストレージクラスタに関連付けられていませんが、レプリケーション関係ごとに異なる場合があることに注意してください。
 
-image:sc-saphana-vmware-smas-image20.png[""]
+image:sc-saphana-vmware-smas-image20.png["説明している内容を示す図"]

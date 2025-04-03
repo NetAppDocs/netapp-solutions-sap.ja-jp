@@ -37,4 +37,4 @@ summary:
 
 ここでは、次の図に示すように、SnapMirrorアクティブ同期の統一されたアクセス設定を使用するVMware Metro Storage Cluster（vMSC）構成に焦点を当てますが、ベアメタルおよび不統一のアクセス設定についても簡単に説明します。
 
-image:sc-saphana-vmware-smas-image1.png[""]
+image:sc-saphana-vmware-smas-image1.png["説明している内容を示す図"]

@@ -10,11 +10,10 @@ summary:
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:firstname: ---
-:author: ---
-:authorinitials: -
-:authors: ---
 
+
+[role="lead"]
+この記事では、このソリューションのフェイルオーバーシナリオについて説明します。
 
 
 
@@ -28,7 +27,7 @@ summary:
 
 通常運用時には、HANAシステムはESXホストESX-1からのアクティブな最適パスに基づいてローカルコピーの読み取りと書き込みを行います。各バックアップ処理で、SnapCenterはレプリケーション関係の現在のプライマリサイトを検出し、プライマリサイトに対してバックアップ処理を実行します。Snapshotはミラーコピーにレプリケートされ、両方のサイトで使用できます。プライマリサイトでSnapCenterリストア処理を実行します。
 
-image:sc-saphana-vmware-smas-image42.png[""]
+image:sc-saphana-vmware-smas-image42.png["説明している内容を示す図"]
 
 
 
@@ -36,7 +35,7 @@ image:sc-saphana-vmware-smas-image42.png[""]
 
 サイト1のストレージシステムに障害が発生した場合、HANAシステムはサイト2のミラーコピーにアクセスして処理を続行します。プライマリサイトがセカンダリサイトに切り替わり、SnapCenterが新しいプライマリサイトでバックアップとリストアの処理を実行するようになります。
 
-image:sc-saphana-vmware-smas-image43.png[""]
+image:sc-saphana-vmware-smas-image43.png["説明している内容を示す図"]
 
 
 
@@ -44,7 +43,7 @@ image:sc-saphana-vmware-smas-image43.png[""]
 
 サイト障害が発生した場合、HANA VMとSnapCenterおよびSnapCenter for VMwareプラグインVMは、vSphere HAを使用してセカンダリサイトのESXホストにフェイルオーバーします。HANAデータベースを起動し、セカンダリサイトのミラーコピーにアクセスする必要があります。プライマリサイトがセカンダリサイトに切り替わり、SnapCenterが新しいプライマリサイトでバックアップとリストアの処理を実行するようになります。
 
-image:sc-saphana-vmware-smas-image44.png[""]
+image:sc-saphana-vmware-smas-image44.png["説明している内容を示す図"]
 
 
 
@@ -58,7 +57,7 @@ image:sc-saphana-vmware-smas-image44.png[""]
 
 通常運用時、HANAシステムはローカルコピーとの間で読み取りと書き込みを行います。各バックアップ処理で、SnapCenterはレプリケーション関係の現在のプライマリサイトを検出し、プライマリサイトに対してバックアップ処理を実行します。Snapshotはミラーコピーにレプリケートされ、両方のサイトで使用できます。プライマリサイトでSnapCenterリストア処理を実行します。
 
-image:sc-saphana-vmware-smas-image45.png[""]
+image:sc-saphana-vmware-smas-image45.png["説明している内容を示す図"]
 
 
 
@@ -66,7 +65,7 @@ image:sc-saphana-vmware-smas-image45.png[""]
 
 ストレージに障害が発生した場合、HANA VMとSnapCenterおよびSnapCenter for VMwareプラグインVMは、vSphere HAを使用してセカンダリサイトのESXホストにフェイルオーバーします。HANAデータベースを起動し、セカンダリサイトのミラーコピーにアクセスする必要があります。プライマリサイトがセカンダリサイトに切り替わり、SnapCenterが新しいプライマリサイトでバックアップとリストアの処理を実行するようになります。
 
-image:sc-saphana-vmware-smas-image46.png[""]
+image:sc-saphana-vmware-smas-image46.png["説明している内容を示す図"]
 
 
 
@@ -74,7 +73,7 @@ image:sc-saphana-vmware-smas-image46.png[""]
 
 ストレージ障害と同じ。
 
-image:sc-saphana-vmware-smas-image47.png[""]
+image:sc-saphana-vmware-smas-image47.png["説明している内容を示す図"]
 
 
 
@@ -84,4 +83,4 @@ HANA VMを他のESXホストに再配置し、ストレージのプライマリ�
 
 この問題を回避するには、VMとプライマリ側の再配置を同時に実行するか、SnapCenterを使用したリストア処理の前にプライマリサイトをフェイルオーバーする必要があります。
 
-image:sc-saphana-vmware-smas-image48.png[""]
+image:sc-saphana-vmware-smas-image48.png["説明している内容を示す図"]

@@ -30,7 +30,7 @@ SAP HANAシステムレプリケーションでは、データが同期的にレ
 
 すべての設定オプションとレプリケーションシナリオの詳細については、を参照してください https://help.sap.com/docs/SAP_HANA_PLATFORM/4e9b18c116aa42fc84c7dbfd02111aba/afac7100bc6d47729ae8eae32da5fdec.html["SAP HANAシステムレプリケーション++|++ SAPヘルプポータル"]。
 
-image:sc-saphana-vmware-smas-image2.png[""]
+image:sc-saphana-vmware-smas-image2.png["説明している内容を示す図"]
 
 
 
@@ -52,7 +52,7 @@ ONTAP 9.15.1以降では、SnapMirrorアクティブ同期で対称アクティ�
 
 ホストまたはサイト全体に障害が発生した場合は、障害が発生したホストのデータにアクセスするために、セカンダリサイトに新しいサーバを用意する必要があります。これは通常、本番システムと同じサイズのテストシステムまたはQAシステムで、シャットダウンして本番システムの実行に使用します。セカンダリサイトのLUNを新しいホストに接続したら、HANAデータベースを起動する必要があります。そのため、合計RTOは、ホストのプロビジョニングに必要な時間とHANAデータベースの起動時間に左右されます。
 
-image:sc-saphana-vmware-smas-image3.png[""]
+image:sc-saphana-vmware-smas-image3.png["説明している内容を示す図"]
 
 
 
@@ -64,7 +64,7 @@ FCPに接続されたデータストアを使用するVMware環境でSAP HANAを
 
 ホストまたはサイト全体に障害が発生した場合は、vSphere HAを使用してセカンダリESXホストでHANA VMを起動します。HANA VMを実行したら、HANAデータベースを起動する必要があります。そのため、総RTOは主にHANAデータベースの起動時間に依存します。
 
-image:sc-saphana-vmware-smas-image4.png[""]
+image:sc-saphana-vmware-smas-image4.png["説明している内容を示す図"]
 
 
 

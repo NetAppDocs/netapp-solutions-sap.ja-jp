@@ -11,12 +11,9 @@ summary:
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:firstname: ---
-:author: ---
-:authorinitials: -
-:authors: ---
 
 
+[role="lead"]
 本ドキュメントの冒頭で説明したように、VMwareとVMFSおよびSnapMirrorのアクティブ同期を使用するHANA環境のベストプラクティスを紹介することを目的としています。ここでは、この特定のソリューションに関連する詳細と重要な手順についてのみ説明します。SnapCenterの一般的な概念については説明しません。SnapCenterに関するこれらの概念およびその他の追加情報については、次のサイトを参照してください。
 
 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"]
@@ -62,11 +59,11 @@ SnapMirrorのアクティブな同期の管理と監視には、REST APIアク�
 ....
 <add key="IsRestEnabledForStorageConnection" value="true">
 ....
-image:sc-saphana-vmware-smas-image21.png[""]
+image:sc-saphana-vmware-smas-image21.png["説明している内容を示す図"]
 
 パラメータを変更したら、SnapCenter SMCoreサービスを再起動する必要があります。
 
-image:sc-saphana-vmware-smas-image22.png[""]
+image:sc-saphana-vmware-smas-image22.png["説明している内容を示す図"]
 
 
 
@@ -74,9 +71,9 @@ image:sc-saphana-vmware-smas-image22.png[""]
 
 SnapCenterでREST APIを有効にしたあとにストレージシステムを追加できます。個 々 のSVMではなく、両方のストレージクラスタを追加する必要があります。
 
-image:sc-saphana-vmware-smas-image23.png[""]
+image:sc-saphana-vmware-smas-image23.png["説明している内容を示す図"]
 
-image:sc-saphana-vmware-smas-image24.png[""]
+image:sc-saphana-vmware-smas-image24.png["説明している内容を示す図"]
 
 
 
@@ -89,11 +86,11 @@ SnapCenterのリソースが仮想化されたVMware環境で実行されてい�
 
 NOTE: クレデンシャルはホスト追加ワークフローで設定する必要があります。ホストタイプとしてvSphereを選択できます。
 
-image:sc-saphana-vmware-smas-image25.png[""]
+image:sc-saphana-vmware-smas-image25.png["説明している内容を示す図"]
 
-image:sc-saphana-vmware-smas-image26.png[""]
+image:sc-saphana-vmware-smas-image26.png["説明している内容を示す図"]
 
-image:sc-saphana-vmware-smas-image27.png[""]
+image:sc-saphana-vmware-smas-image27.png["説明している内容を示す図"]
 
 
 NOTE: SnapCenter for vSphereプラグイン自体で追加の設定は必要ありません。
@@ -112,7 +109,7 @@ NOTE: 具体的な要件はありません。プラグインの導入と自動�
 ....
 volume show -vserver <vs> -volume <vol> -fields smbc-consensus,is-smbc-master
 ....
-image:sc-saphana-vmware-smas-image28.png[""]
+image:sc-saphana-vmware-smas-image28.png["説明している内容を示す図"]
 
 
 
@@ -120,9 +117,9 @@ image:sc-saphana-vmware-smas-image28.png[""]
 
 SnapMirrorアクティブ同期で保護されているリソースに使用されるポリシーは、SnapMirrorレプリケーションを使用して設定する必要があります。ただし、SnapCenterではSnapMirror更新処理がトリガーされません。
 
-image:sc-saphana-vmware-smas-image29.png[""]
+image:sc-saphana-vmware-smas-image29.png["説明している内容を示す図"]
 
-image:sc-saphana-vmware-smas-image30.png[""]
+image:sc-saphana-vmware-smas-image30.png["説明している内容を示す図"]
 
 
 

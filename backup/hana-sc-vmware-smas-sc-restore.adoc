@@ -6,9 +6,13 @@ summary:
 ---
 = SnapCenterノリストアトリカハリ
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
-'''
+[role="lead"]
 仮想リソースがVMFS/VMDKに格納されている場合、SnapCenterのリストア処理は、常にクローン、マウント、コピーの各処理によって実行されます。
 
 . SnapCenterは、選択したSnapshotを基にボリュームクローンを作成します。
@@ -24,11 +28,11 @@ summary:
 
 また、リソースにSnapMirrorアクティブ同期が設定されている場合、SnapCenterリストア処理は現在のプライマリサイトでのみ選択できます。
 
-image:sc-saphana-vmware-smas-image37.png[""]
+image:sc-saphana-vmware-smas-image37.png["説明している内容を示す図"]
 
 リストアとリカバリ処理の実行中に、現在のプライマリサイトに作成された新しいクローンボリュームが表示されます。
 
-image:sc-saphana-vmware-smas-image38.png[""]
+image:sc-saphana-vmware-smas-image38.png["説明している内容を示す図"]
 
 HANA Linuxホストでは、ホストにマウントされた新しいディスクが表示されます。リストア処理が完了すると、SnapCenterによってデータストアとボリュームが再び削除されます。
 

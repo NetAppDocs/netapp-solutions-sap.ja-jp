@@ -10,12 +10,9 @@ summary:
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:firstname: ---
-:author: ---
-:authorinitials: -
-:authors: ---
 
 
+[role="lead"]
 クローニング処理は、プライマリサイトまたはセカンダリストレージで実行できます。
 
 クローンボリュームはHANA整合性グループには含まれず、SnapMirrorのアクティブな同期ではレプリケートされません。

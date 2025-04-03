@@ -8,7 +8,7 @@ summary:
 :allow-uri-read: 
 
 
-'''
+[role="lead"]
 リソースがSnapCenterで手動で設定され、自動検出されない場合、SnapCenterはVMwareとSnapMirrorのアクティブな同期を認識しません。そのため、SnapCenterではネイティブにサポートされていません。
 
 HANA共有のようなデータボリューム以外のボリュームでは、追加の手動手順を検討する場合でも、SnapCenterを使用してバックアップとリストアの処理を実行できます。
@@ -19,7 +19,7 @@ HANA共有のようなデータボリューム以外のボリュームでは、�
 
 SnapCenterで設定されたストレージ・システムに障害が発生しても、SnapCenterは自動的にもう一方のストレージ・システムに切り替わりません。ボリュームのミラーコピーをバックアップおよびリストア処理に使用するには、データボリューム以外のリソースを手動で調整する必要があります。
 
-image:sc-saphana-vmware-smas-image39.png[""]
+image:sc-saphana-vmware-smas-image39.png["説明している内容を示す図"]
 
 
 
@@ -27,9 +27,9 @@ image:sc-saphana-vmware-smas-image39.png[""]
 
 SnapCenterはHANA共有ボリュームのSnapMirrorアクティブ同期設定を認識しませんが、Snapshotは両方のサイトにレプリケートされます。
 
-image:sc-saphana-vmware-smas-image40.png[""]
+image:sc-saphana-vmware-smas-image40.png["説明している内容を示す図"]
 
-image:sc-saphana-vmware-smas-image41.png[""]
+image:sc-saphana-vmware-smas-image41.png["説明している内容を示す図"]
 
 
 

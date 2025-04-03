@@ -26,14 +26,14 @@ summary:
 
 次の図は、HANAシステムのストレージとデータストアの構成を示しています。HANAシステムのファイルシステムごとに専用のボリューム、LUN、データストアを設定する必要があります。複数のHANAシステム間やその他のワークロード間でデータストアを共有しないでください。
 
-image:sc-saphana-vmware-smas-image5.png[""]
+image:sc-saphana-vmware-smas-image5.png["説明している内容を示す図"]
 
 HANAシステムの3つのLUN（hana++_+data++_+SMA、hana+++_+LOG +++_+SAMおよびhana++_+shared++++_++SMA）と、OSイメージ用のLUNとSnapCenterコンポーネント用のLUNがすべてA700ストレージクラスタでプロビジョニングされている。
 
 
 NOTE: HANAシステムのボリュームは、すべて同じSVM内にプロビジョニングする必要があります。後述するSnapMirrorアクティブ同期構成では、3つのHANAボリュームすべてにわたって整合グループを作成します。そのためには、ボリュームが同じSVM内にある必要があります。インフラボリュームは別の整合グループに配置されるため、別のSVMに配置することもできます。
 
-image:sc-saphana-vmware-smas-image6.png[""]
+image:sc-saphana-vmware-smas-image6.png["説明している内容を示す図"]
 
 イニシエータグループを設定し、このラボ環境のA700ストレージシステムのすぐ近くにあるESX-1ホストに上記のLUNをマッピングする必要があります。
 
@@ -43,7 +43,7 @@ image:sc-saphana-vmware-smas-image6.png[""]
 
 以前にプロビジョニングした3つのLUNを使用して、HANAシステム用に3つのデータストアを作成しました。また、インフラLUNを使用してインフラデータストアを作成しました。
 
-image:sc-saphana-vmware-smas-image7.png[""]
+image:sc-saphana-vmware-smas-image7.png["説明している内容を示す図"]
 
 
 
@@ -57,7 +57,7 @@ image:sc-saphana-vmware-smas-image7.png[""]
 
 HANA VMに3本の新しいディスクが追加されました。各ディスクは、HANAシステム用に作成されたいずれかのデータストア内にあります。
 
-image:sc-saphana-vmware-smas-image8.png[""]
+image:sc-saphana-vmware-smas-image8.png["説明している内容を示す図"]
 
 
 
@@ -67,7 +67,7 @@ image:sc-saphana-vmware-smas-image8.png[""]
 
 パラメータを追加する前に、VMを停止する必要があります。
 
-image:sc-saphana-vmware-smas-image9.png[""]
+image:sc-saphana-vmware-smas-image9.png["説明している内容を示す図"]
 
 この機能は、以下のコマンドで確認できます。
 

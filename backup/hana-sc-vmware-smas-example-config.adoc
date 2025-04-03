@@ -20,7 +20,7 @@ summary:
 [role="lead"]
 ラボのセットアップでは、両方のESXホストが両方のストレージクラスタにアクセスできる、統一されたアクセス構成を使用します。次のセクションでは、ユニフォームアクセス設定について説明しますが、ユニフォーム設定ではない場合の違いについても説明します。
 
-image:sc-saphana-vmware-smas-image1.png[""]
+image:sc-saphana-vmware-smas-image1.png["説明している内容を示す図"]
 
 
 
