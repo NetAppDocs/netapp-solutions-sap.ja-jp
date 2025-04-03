@@ -72,6 +72,9 @@ lun create -vserver <vserver_name> -path  /vol/<volume_name>/<lun_name>   -size 
 特定のLUNの最大スループットとして1000MB/秒を使用することを推奨します。アプリケーションがより多くのスループットを必要とする場合は、LUNストライピングを備えた複数のLUNを使用して、必要な帯域幅を提供する必要があります。このガイドでは、セクションで、Linux LVMをベースとしたSAP HANAの例を紹介します https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_fas_fc_host_setup.html#create-lvm-volume-groups-and-logical-volumes["ホスト セットアップ"]。
 
 
+NOTE: この制限は読み取りにも適用されます。そのため、SAP HANAデータベースの起動時間やバックアップに必要なSLAを満たす十分な数のLUNを使用します。
+
+
 
 == NetApp FabricPool
 
