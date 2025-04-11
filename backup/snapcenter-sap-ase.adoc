@@ -1,0 +1,458 @@
+---
+sidebar: sidebar 
+permalink: backup/snapcenter-sap-ase.html 
+keywords: SAP, snapcenter, SAP ASE, database, backup, restore 
+summary: このドキュメントでは、SAP環境で使用されるSAP ASEデータベースのSnapCenter統合の詳細について説明します。 
+---
+= SnapCenterとSAP ASEデータベースの統合
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このドキュメントでは、SAP環境で使用されるSAP ASEデータベースのSnapCenter統合の詳細について説明します。
+
+
+
+== はじめに
+
+このドキュメントは、環境全体のセットアップ方法を段階的に説明することを目的としたものではありませんが、以下に関連する概念と関連する詳細について説明します。
+
+* セツテイノカイヨウレイ
+* サンプルレイアウト
+* SAP ASEインスタンスの保護
+* SAP ASEインスタンスのリストアとリカバリ
+
+
+作成者：Michael Schlosser、NetApp
+
+
+
+=== セツテイノカイヨウレイ
+
+Azureプラットフォームで実行されているSAPシステム用のSnapCenter ASEプラグインの実装例。
+
+
+NOTE: この実装では、最小限必要なボリューム構成について説明します。データ・ダンプ・バックアップとログ・ダンプ・バックアップは、SAP Note 1588316に従って設定します。
+
+または、これに記載されている体積構造をlink:https://techcommunity.microsoft.com/blog/sapapplications/sap-ase-16-0-on-azure-netapp-files-for-sap-workloads-on-sles15/3729496["MSテクニカルコミュニティブログ"]使用することもできます。
+
+
+
+=== デモ環境
+
+image:sc-sap-ase-image01.png["使用したデモ環境を示す図"]
+
+
+
+=== ソフトウェアバージョン
+
+[cols="50%, 50%"]
+|===
+| *ソフトウェア* | * バージョン * 
+
+
+| Linux OS | SLES for SAP 15 SP5 
+
+
+| SAP | SAP NetWeaver 7.5 
+
+
+| SAP ASE | 16.0 SP04 PL06 HF1 
+
+
+| SnapCenter | 6.1 
+|===
+
+
+=== ASEボリューム設計
+
+SAP ASEデータベースのバックアップ/リカバリとクローニングのユースケースには、次の最小ボリュームレイアウトを使用する必要があります。この設定例では、<SID>：A01を使用しています。
+
+[cols="20%, 20%, 30%, 30%"]
+|===
+| *ボリューム名* | *ボリューム上のディレクトリ（qtree）* | *サーバ上のマウントポイント* | * コメント * 
+
+
+| <SID>サパス | Sybase の場合 | /Sybase | ASE関連ファイルの親ディレクトリ 
+
+
+|  |  | /Sybase /<SID>/バックアップ | データダンプのバックアップ（別のボリュームに配置されている場合がある） 
+
+
+|  |  | /Sybase /<SID>/ log_archives | ログダンプのバックアップ（別のボリュームに配置されている可能性あり） 
+
+
+|  | <sid> adm | <sid> adm | ユーザ<sid> admのホームディレクトリ 
+
+
+|  | usrsaptrans | /usr/sap/trans | 転送ディレクトリ 
+
+
+|  | Usrsap <SID> | /usr/sap/<SID> | ユーザSAP 
+
+
+|  | sapmnt <SID> | /sapmnt/<SID> | SAP GlobalHostディレクトリ 
+
+
+| <SID>-データログ | SAPDATA_1 | /Sybase/Sybase/Sapdata_1 <SID> | DBデータ（SID） 
+
+
+|  | saplog_1 | /sybase/saplog_1 <SID> | DBログ（SID） 
+
+
+|  | saptemp | /Sybase/Sybase/Saptemp <SID> | PSAPTEMP 
+
+
+|  | Sybsecurity | /Sybase/Sybase/Sybsecurity <SID> | SybaseセキュリティDB 
+
+
+|  | Sybsystem | /Sybase/Sybase/Sybsystem <SID> | SybaseシステムDB 
+
+
+|  | sybtemp | /Sybase/Sybase/Sybtemp <SID> | SybaseシステムDB-Temp 
+
+
+|  | sapdiag | /Sybase/Sybase/Sapdiag <SID> | 'saptools'データベース 
+|===
+
+
+=== データベースA01を保護する手順
+
+* サンプルレイアウトに従ってファイルの配布をチェックします。
+* ホストの前提条件の確認（VM-A01）
+* データベースの前提条件の確認(A01)
+* ホストへのSnapCenterエージェントの導入/インストール（VM-A01）
+* SnapCenterインスタンスリソース構成の作成
+
+
+
+
+=== ホストの前提条件
+
+より最新の情報が得られる可能性がありlink:https://docs.netapp.com/us-en/snapcenter/protect-scu/reference_prerequisites_for_adding_hosts_and_installing_snapcenter_plug_ins_package_for_linux.html["ここをクリック"]ます。
+
+ホストを追加してLinux用のプラグインパッケージをインストールする前に、すべての要件を満たしておく必要があります。
+
+* iSCSIを使用している場合は、iSCSIサービスが実行されている必要があります。
+* パスワードベースの認証またはSSHキーベースの認証を使用できます。パスワードベースの認証はrootユーザとroot以外のユーザが使用できます。
+* SnapCenter Plug-in for UNIX File Systemsは、root以外のユーザもインストールできます。ただし、プラグイン プロセスをインストールして開始できるよう、root以外のユーザにsudo権限を設定する必要があります。プラグインのインストール後、プロセスは有効なroot以外のユーザとして実行されます。
+* インストール ユーザのクレデンシャルを、認証モードをLinuxに設定して作成します。
+* Java 11をLinuxホストにインストールしておく必要があります。
+* LinuxホストにJava 11の認定エディションのみがインストールされていることを確認します。
+* Javaのダウンロードについては、「Java Downloads for All Operating Systems」を参照してください。
+* プラグインのインストールには、デフォルトのシェルとしてbashを使用する必要があります。
+
+
+
+
+=== データベースの前提条件–ログとバックアップの有効化
+
+* バックアップとLOG_ARCHIVESのディレクトリを作成（/sybase/a01/backups、/sybase/a01/log_archives）
+* データベースA01に接続（OS-user syba01として）
++
+** isql -S A01 -U sapsa -X -w 1024
+
+
+* SAP Note 1588316に従って、データ（A01DB）のダンプ構成を作成します。
++
+** マスターを使用
+** 移動
+** exec exec SP _config_dump@config_name ='A01DB'、@stripe_dir='/sybase/A01/backups'、@compression='101'、@verify='header'
+** 移動
+
+
+* SAP Note 1588316に従って、ログ（A01LOG）のダンプ構成を作成します。
++
+** マスターを使用
+** 移動
+** sybase_config_dump@config_name ='A01LOG'、@stripe_dir='/sybase/A01/log_archives'、@compression='101'、@verify='header' SP
+** 移動
+
+
+* データベースA01のフルロギングを有効にする
++
+** dboption a01、'trunc log on chkpt'、false SP
+** 移動
+** vlan_dboption A01、'full logging for all'、'true' SP
+** 移動
+** dboption a01、'Enforce dump tran sequence'、'true' SP
+** 移動
+
+
+* ログダンプバックアップを有効にするデータベースダンプバックアップ
++
+** config='A01DB'を使用してデータベースA01をダンプする
+** 移動
+** ログダンプ
+** config='A01LOG'を使用してトランザクションA01をダンプします
+** 移動
+
+
+* SAP Note 1588316に従って、定期的なログバックアップが設定されていることを確認します。
+
+
+
+
+=== オプション–専用のデータベースユーザを作成する
+
+SAP環境では、ユーザsapsaを使用できます。
+
+* データベースA01に接続（OS-user syba01として）
++
+** isql -S A01 -U sapsa -X -w 1024
+
+
+* ユーザの作成
++
+** パスワード「<password>」でログインのバックアップを作成します。
+** 移動
+
+
+* ユーザーへの権限/役割の割り当て
++
+** ロールsa_role、sso_role、oper_role、sybase_ts_roleをバックアップに付与
+** 移動
+
+
+
+
+
+
+=== SnapCenterエージェントをホストVM-A01に展開する
+
+詳細については、を参照してlink:https://docs.netapp.com/us-en/snapcenter/protect-scu/task_add_hosts_and_install_the_snapcenter_plug_ins_package_for_linux.html["SnapCenter のドキュメント"]ください。
+
+[SAP ASE and Unix File Systems Plugins]を選択します。
+
+image:sc-sap-ase-image02.png["[Add Host]ダイアログのスクリーンショット"]
+
+
+
+=== データベースA01のSnapCenterインスタンスリソース構成の作成
+
+リソース-> SAP ASE ->リソースの追加
+
+image:sc-sap-ase-image03.png["[Add host resource details]ダイアログのスクリーンショット"]
+
+
+NOTE: パスワードに特殊文字が含まれている場合は、バックスラッシュでマスクする必要があります。例：Test！123! ->テスト\!123\!
+
+image:sc-sap-ase-image04.png["[Add host resource details]ダイアログのスクリーンショット"] image:sc-sap-ase-image05.png["[Add host resource details]ダイアログのスクリーンショット"]
+
+
+NOTE: からボリュームデザインを使用している場合link:https://techcommunity.microsoft.com/blog/sapapplications/sap-ase-16-0-on-azure-netapp-files-for-sap-workloads-on-sles15/3729496["MSテクニカルコミュニティブログ"]。
+
+ボリューム/vol/<SID> Sybase、/vol/<SID> data、/vol/<SID> logをストレージフットプリントとして設定する必要がある
+
+次のリソース設定カスタムのキーと値のペアを作成する必要があります(少なくとも)。
+
+image:sc-sap-ase-image06.png["[Resource Settings][Custom key-value pairs]ダイアログのスクリーンショット"]
+
+次の表に、 Sybase プラグインのパラメータの一覧、設定、説明を示します。
+
+[cols="25%, 25%, 50%"]
+|===
+| * パラメータ * | *設定* | * 概要 * 
+
+
+| SYBASE_ISQL_CMD のようになります | 例：/opt/sybase/ocs-15__0/bin/isql -X | isql コマンドへのパスを定義します。使用可能なオプション： https://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc34237.1500/html/mvsinst/CIHHFDGC.htm[] 
+
+
+| SYBASE_USER | user_name （ユーザー名 | isql コマンドを実行できるオペレーティングシステムユーザを指定します。このパラメータは UNIX では必須です。このパラメータは、 Snap Creator の Agentstart コマンドおよび stop コマンド（通常は root ユーザ）を実行しているユーザと、 isql コマンドを実行しているユーザが異なる場合に必要です。 
+
+
+| SYBASE_SERVER のことです | data_sserver_name を選択します | Sybaseデータサーバ名を指定します（isqlコマンドの-Sオプション）。例：A01 
+
+
+| SYBASE_DATABASES | db_name ： user_name password | バックアップするインスタンス内のデータベースのリストを表示します。たとえば、DBAtest2:sa/53616c7404351eのようにマスターデータベースが追加されます。+allという名前のデータベースを使用すると、データベースの自動検出が使用され、sybsyntax、sybsystemdb、sybsystemprocs、tempdbデータベースは除外されます。例：+all：sa/53616c71a6351e NTAP_PWD_PROTECTIONパラメータが設定されている場合、暗号化されたパスワードがサポートされます。 
+
+
+| SYBASE_DATABASE_EXCLUDE | データベース名 | ALL construct を使用する場合にデータベースを除外できるようにします。複数のデータベースを指定するには、セミコロンで区切ったリストを使用します。例：pubs2；test_db1 
+
+
+| Sybase_Tran ダンプ | db_name ： direction_path | Snapshotコピーを作成したあとにSybaseトランザクションダンプを実行できます。例：pubs2：/sybasedumps/pubs2トランザクションダンプが必要な各データベースを指定する必要があります。 
+
+
+| SYBASE_TRAN_DUMP_FORMAT | %S_%D_%T.cmn | ダンプの命名規則を指定できます。次のキーを指定できます。%S = SYBASE_SERVERのインスタンス名%D = SYBASE_DATABASESのデータベース%T = UNIQUE TIMESTAMP例を次に示します。%S_%D_% T.log 
+
+
+| SYBASE_TRAN_DUMP_COMPRESSE_COMPRESS | （Y/N） | 標準の Sybase トランザクションダンプの圧縮を有効または無効にします。 
+
+
+| Sybase の場合 | 例：/Sybase | Sybase をインストールする場所を指定します。 
+
+
+| SYBASE_MANIMANIEST | 例：a01：/sybase/a01/sapdiag | マニフェストファイルを作成する必要のあるデータベースと、マニフェストファイルを配置する必要のある場所を指定します。 
+
+
+| SYBASE_MANIMANIT_FORMAT の場合 | %S__%D_.manifest例：%S_%D_.manifest | マニフェストファイルの命名規則を指定できます。次のキーを指定できます。%S = Sybase_serverのインスタンス名%D = Sybase_databasesのデータベース 
+
+
+| SYBASE_MANIMANIT_DELETE | （Y/N） | Snapshot コピーの作成後にマニフェストを削除できます。Snapshot コピー内でマニフェストファイルをキャプチャし、常にバックアップで利用できるようにする必要があります。 
+
+
+| SYBASE_EXCLUDE tempdb の場合 | （Y/N） | ユーザが作成した一時データベースの自動除外を有効にします。 
+|===
+
+
+=== システムA01をリカバリする手順
+
+. SAPシステムA01（データベースを含む）の停止、sapinitの停止
+. ファイルシステムのアンマウント
+. リストアボリュームA01-datalog（SnapCenterを使用）
+. ファイルシステムのマウント
+. データベースA01を起動します（SAP Note 1887068に準拠して、自動オンラインを回避し、データベースのフォワードリカバリを可能にするために–qオプションを指定）。
+. BackupServer A01の起動
+. オンラインデータベースsaptools、sybsecurity、sybmgmtdb
+. データベースA01のリカバリ（isqlを使用）
+. オンラインデータベースA01
+. sapinit、SAPシステムA01の起動
+
+
+
+
+=== インスタンスA01のリカバリ
+
+* ホストVM-A01でSAPシステム+ DB A01を停止
++
+** ユーザーa01adm：停止
+** ユーザroot：/etc/init.d/sapinit stop
+** ユーザroot：umount -a -t nfs
+
+
+* リストア バックアップ
++
+** SnapCenter GUI：リストアに必要なバックアップを選択
++
+image:sc-sap-ase-image07.png["[Select Required Backup for Restore]ダイアログのスクリーンショット"]
+
+** ANF導入の場合–完全なリソースのみ提供
++
+image:sc-sap-ase-image08.png["[Select Required Backup for Restore]ダイアログのスクリーンショット"]
+
+
+
+
+
+
+NOTE: [Complete Resource]を選択すると、Volume Based Snap Restore（VBSR）が実行されます。Azure内ではと呼ばれますlink:https://learn.microsoft.com/en-us/azure/azure-netapp-files/snapshots-revert-volume["ボリュームのリバート"]。
+
+image:sc-sap-ase-image09.png["Snapshotに関する重要なメッセージのスクリーンショット"]
+
+
+NOTE: その他のタイプの導入（オンプレミスANFなど）では、Single File Snap Restore（SFSR）処理をオーケストレーションできます。[File Level]と[According Volume]を選択し、[All]にチェックマークを付けます。次のスクリーンショットを参照してください。
+
+image:sc-sap-ase-image10.png["ファイルレベルのスナップショットを選択するスクリーンショット"]
+
+概要が表示され、[Finish]をクリックすると、実際のリストアが開始されます。
+
+image:sc-sap-ase-image11.png["Snapshotリストアの概要を示すスクリーンショット"]
+
+* ファイルシステムのマウント（VM-A01）
++
+** ユーザroot：mount -a -t nfs
+
+
+* データベースA01+ BackupServerの起動
++
+** run_a01を変更し、-q\を追加します（SAP Note 1887068に準拠）。
+** ユーザsyba01：run_A01 &
+** ユーザsyba01：run_A01_BS&
+
+
+* オンラインデータベースsaptools、sybsecurity、sybmgmtdb
++
+** ユーザsyba01：isql -S A01 -U sapsa -X -w 1024
+** オンラインデータベースのsaptools
+** 移動
+** オンラインデータベースsybsecurity
+** 移動
+** オンラインデータベースsybmgmtdb
+** 移動
+
+
+* データベースA01のリカバリ
++
+** SP dump_history（トランザクション・ログ・ダンプを表示）
+** 移動
+** 必要に応じてトランザクションログダンプをロードします。詳細については、次のドキュメントを参照してください。 https://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc36272.1572/html/commands/X75212.htm[]
+** 例：'/sybase/a01/log_archives/a01.Tran.20250207.140248.6.000'からTran A01をロードします
+** 移動
+** オンラインデータベースA01
+** 移動
+
+
+* run_A01から-qを削除
+* SAPシステムの起動
++
+** ユーザroot：/etc/init.d/sapinit start
+** ユーザa01adm：startsap
+
+
+
+
+
+
+== 追加情報とバージョン履歴
+
+
+
+=== 休止と準備
+
+リンク：https://help.sap.com/docs/SAP_ASE/4e870f06a15b4bbeb237cca890000421/d9d3ce996bdd415693cdb17663bfc0e3.html?locale=en-US&version=16.0.2.0[SAPヘルプページ]のドキュメントを参照してください。
+
+image:sc-sap-ase-image12.png["SAPヘルプページのコンテンツのスクリーンショット"]
+
+SnapCenter SAP ASEプラグインはquiesce databaseコマンドを使用しますが、prepareコマンドに置き換えることもできます。必要に応じて、473、475、479、481、673、675のSybase.pmで変更する必要があります。
+
+image:sc-sap-ase-image13.png["quiesce databaseコマンドのスクリーンショット"]
+
+
+
+=== デモの録画
+
+ドキュメントをサポートするために、次の記録済みデモを利用できます。
+
+.インストールと設定ASEプラグイン、ASEデータベースのバックアップ
+video::079554d1-452c-42e5-95f6-b2b900c1fa86[panopto,width=360]
+.ASEデータベースのリストアとリカバリ
+video::0aba8433-e0d0-4c40-be0a-b2b900c1fb54[panopto,width=360]
+
+
+=== 外部ドキュメント
+
+このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
+
+* link:https://techcommunity.microsoft.com/blog/sapapplications/sap-ase-16-0-on-azure-netapp-files-for-sap-workloads-on-sles15/3729496["ANFでのAzureのSAPインストール"]
+* link:https://docs.netapp.com/us-en/snapcenter/protect-scu/reference_prerequisites_for_adding_hosts_and_installing_snapcenter_plug_ins_package_for_linux.html["SnapCenterプラグインの前提条件"]
+* link:https://docs.netapp.com/us-en/snapcenter/protect-scu/task_add_hosts_and_install_the_snapcenter_plug_ins_package_for_linux.html["SnapCenterインストールプラグイン"]
+* link:https://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc34237.1500/html/mvsinst/CIHHFDGC.htm["Sybase Infocenter - isql"]
+* link:https://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc36272.1572/html/commands/X75212.htm["Sybase Infocenter -トランザクションログダンプをロード"]
+* SAP Notes（ログインが必要）
++
+** 1887068-SYB：SAP ASEでの外部バックアップとリストアの使用： https://me.sap.com/notes/1887068/E[]
+** 1618817- SYB: SAP ASEデータベース・サーバのリストア方法(UNIX): https://me.sap.com/notes/1618817/E[]
+** 1585981-SYB：SAP ASEのリカバリ性の確保： https://me.sap.com/notes/1585981/E[]
+** 1588316-SYB：データベースとログの自動バックアップを設定します。 https://me.sap.com/notes/1588316/E[]
+** NetApp製品ドキュメント： https://www.netapp.com/support-and-training/documentation/[]
+** NetApp SAPソリューション–ユースケース、ベストプラクティス、メリットに関する情報： https://docs.netapp.com/us-en/netapp-solutions-sap[]
+
+
+
+
+
+
+=== バージョン履歴
+
+[cols="30%, 30%, 40%"]
+|===
+| * バージョン * | * 日付 * | *ドキュメントバージョン履歴* 
+
+
+| バージョン 1.0 以降 | 2025年4月 | 初期バージョン：ASEデータベースのバックアップ/リカバリ 
+|===
