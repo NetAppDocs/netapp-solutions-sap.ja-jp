@@ -70,10 +70,8 @@
   <block id="5ab9c3d59a0ecc9e30a1f938039d0ecf" category="summary">NFS バージョン 4 以降では、ユーザ認証が必要です。この認証は、 Lightweight Directory Access Protocol （ LDAP ）サーバやローカルユーザアカウントなどの中央ユーザ管理ツールを使用して実行できます。</block>
   <block id="e3a77a70624c57f3f0e2fc7075e4f75f" category="doc">NFSv4 用の SAP HANA インストールの準備</block>
   <block id="7f5e79baae33aa1aca5c990882a844cb" category="paragraph">NFS バージョン 4 以降では、ユーザ認証が必要です。この認証は、 Lightweight Directory Access Protocol （ LDAP ）サーバやローカルユーザアカウントなどの中央ユーザ管理ツールを使用して実行できます。次のセクションでは、ローカルユーザアカウントを設定する方法について説明します。</block>
-  <block id="3e0be3ed453ef480d348366ac9692e0b" category="paragraph">SAP HANA ソフトウェアのインストールを開始する前に、管理ユーザ「 &lt;sidadm&gt; 」と「 sapsys 」グループを SAP HANA ホストとストレージコントローラ上に手動で作成する必要があります。</block>
   <block id="cbec60dce8dfbeca522952f14d38d3b1" category="section-title">SAP HANA ホスト</block>
   <block id="6f99ed415d7b5330cfe770dc1088f66b" category="paragraph">存在しない場合は、 SAP HANA ホストに「 sapsys 」グループを作成する必要があります。ストレージコントローラ上の既存のグループ ID と競合しない一意のグループ ID を選択する必要があります。</block>
-  <block id="7bafe155f78e1791271552be40c162f4" category="paragraph">ユーザー「 &lt;sidadm&gt; 」は SAP HANA ホスト上に作成されます。ストレージコントローラ上の既存のユーザ ID と競合しない一意の ID を選択する必要があります。</block>
   <block id="8f35838ad2fe64a0c17ff23449515d26" category="paragraph">マルチホスト SAP HANA システムの場合、ユーザ ID とグループ ID はすべての SAP HANA ホストで同じである必要があります。グループとユーザは、移行元システムから他のすべての SAP HANA ホストに「 /etc/group 」および「 /etc/passwd 」の該当する行をコピーすることによって、他の SAP HANA ホスト上に作成されます。</block>
   <block id="2fa0eba92353ea7e1816fcc916b31030" category="admonition">NFSv4 ドメインは、すべての Linux サーバ（ /etc/idmapd.conf ）と SVM で同じ値に設定する必要があります。Linux ホストの /etc/idmapd.conf ファイル内の domain パラメータ「 Domain=&lt;domain-name&gt; 」を設定します。</block>
   <block id="c16fea4c59b7f6d7ce28e4f656eb58f6" category="paragraph">NFS IDMAPD サービスを有効にして開始します。</block>
@@ -847,7 +845,6 @@
   <block id="3228fe22c23747656168738709bc6bd1" category="paragraph">SAP HANA ディザスタリカバリは、 SAP システムレプリケーションを使用してデータベースレイヤで実行するか、ストレージレプリケーションテクノロジを使用してストレージレイヤで実行できます。次のセクションでは、ストレージレプリケーションに基づくディザスタリカバリソリューションの概要について説明します。</block>
   <block id="ad3b35bfc8ee4f5dee91390584d5b8cd" category="paragraph">次の図は、同期 SnapMirror レプリケーションを使用してローカル DR データセンターにデータをレプリケートし、非同期 SnapMirror を使用してリモート DR データセンターにデータをレプリケートする、 3 サイトのディザスタリカバリ解決策を示しています。</block>
   <block id="c3a14b2b8a8f3abd4f577b36ff5a89d7" category="paragraph">次の図は、解決策の概要を示しています。各サイトのストレージクラスタは、ローカルで高可用性を実現し、本番環境のワークロードに使用されます。各サイトのデータはもう一方のサイトに同期的にレプリケートされ、災害のフェイルオーバー時に使用できます。</block>
-  <block id="766c3ec7b91d6121d225b55cf37f9e60" category="paragraph">まだ存在しない場合は、 SAP HANA ホスト上に「 sapsys 」グループを作成する必要があります。ストレージコントローラ上の既存のグループ ID と競合しない一意のグループ ID を選択します。</block>
   <block id="96affa74630cd326f32e3a646b2bf9ad" category="admonition">NFSv4 ドメインは、すべての Linux サーバと SVM で同じ値に設定する必要があります。Linux ホストの場合は ' ファイル /etc/idmapd.conf にドメイン・パラメータ「ドメイン・ドメイン = &lt;domain_name&gt;` 」を設定します</block>
   <block id="90c5b46276106ab7121fe824091fdfde" category="paragraph">NFS idmapd サービスを有効にして開始します。</block>
   <block id="82d9f02aa4638adac22e7bc4604d9e25" category="admonition">最新の Linux カーネルでは、この手順は必要ありません。警告メッセージは無視してかまいません。</block>
@@ -5409,4 +5406,8 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="649c133bd78c9a4db2ae6b6cc125afc9" category="list-text">NetApp SAPソリューション–ユースケース、ベストプラクティス、メリットに関する情報：<block ref="275e41234bd9820755d1021988b4d48e" category="inline-link-rx"></block></block>
   <block id="ebbef4ff98690d25d6060ddc932670b0" category="cell">初期バージョン：ASEデータベースのバックアップ/リカバリ</block>
   <block id="7b4b03f44ad3853577dba2a8cb0ea413" category="video-title">インストールASEプラグイン、設定ASEプラグイン、ASEデータベースのバックアップ</block>
+  <block id="6d6e2198d3b7635ccb9480a805db5475" category="paragraph">管理ユーザ<block ref="f1770ad185fb295659ec2c9813d05f31" prefix=" " category="inline-code"></block><block ref="45a97e94fe5e2d9ac461ae04e25474ab" prefix="," category="inline-code"></block>SAP HANAソフトウェアのインストールを開始する前に、SAP HANAホストとストレージコントローラにと<block ref="d2c4ba56a16c77e9f8b02c0e67ddab49" prefix=" " category="inline-code"></block>グループを手動で作成する必要があります。</block>
+  <block id="0c8bebe236646d373f29581e17ec5c73" category="paragraph">ユーザ<block ref="f1770ad185fb295659ec2c9813d05f31" prefix=" " category="inline-code"></block>と<block ref="45a97e94fe5e2d9ac461ae04e25474ab" prefix=" " category="inline-code"></block>がSAP HANAホストに作成されます。ストレージコントローラの既存のユーザIDと競合しない一意のIDを選択する必要があります。</block>
+  <block id="c3edf19e9cb8e20c8545cc3279f2d388" category="paragraph">マルチホストSAP HANAシステムの場合は、ユーザIDとグループIDがすべてのSAP HANAホストで同じである必要があります。グループとユーザは、および<block ref="c5068b7c2b1707f8939b283a2758a691" prefix=" " category="inline-code"></block>の影響を受ける行をソースシステムから他のすべてのSAP HANAホストにコピーすることで、他のSAP HANAホストに作成され<block ref="8cd4f87abbd9addd26d3a8c86730f48b" prefix=" " category="inline-code"></block>ます。</block>
+  <block id="176e74803d5c3f1e178b5783467512c1" category="paragraph">ユーザIDとグループIDは、SAP HANAホストとストレージコントローラで同じである必要があります。グループとユーザは、ストレージクラスタで次のコマンドを入力することで作成されます。</block>
 </blocks>
