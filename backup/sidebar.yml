@@ -166,12 +166,8 @@ entries:
       url: "/backup/saphana-dr-anf_update_history.html"
 - title: SAP HANA Disaster Recovery with Storage Replication 』を参照してください
   url: "/backup/saphana-dr-sr_pdf_link.html"
-- title: Snap Creator を使用した SAP HANA のバックアップとリカバリ
-  url: "/backup/saphana-bandr-sc_pdf_link.html"
 - title: ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア
   url: "/backup/saphana-commvault_pdf_link.html"
-- title: "『 SAP HANA on NetApp All SAN Array 』 - 最新 SAN 、データ保護、ディザスタリカバリ"
-  url: "/backup/saphana-san_pdf_link.html"
 - title: SnapCenterとSAP ASEデータベースの統合
   url: "/backup/snapcenter-sap-ase.html"
 - title: IBM DB2データベース用のSnapCenter統合

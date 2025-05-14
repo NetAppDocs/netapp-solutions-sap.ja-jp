@@ -60,5 +60,3 @@ entries:
     url: "/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html"
   - title: 追加情報 およびバージョン履歴の参照先
     url: "/lifecycle/libelle-sc-where-to-find-additional-information.html"
-- title: ネットアップストレージと SAP Landscape Management の統合
-  url: https://www.netapp.com/pdf.html?item=/media/17195-tr4018pdf.pdf

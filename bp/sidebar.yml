@@ -130,9 +130,3 @@ entries:
     url: "/bp/saphana_fas_fc_where_to_find_additional_information.html"
   - title: 履歴を更新します
     url: "/bp/saphana_fas_fc_update_history.html"
-- title: IBM Power Systems および NetApp AFF システムでの SAP HANA NFS を使用します
-  url: "/bp/saphana-ibm-aff-nfs_pdf_link.html"
-- title: UNIX および NFS 上で稼働する Oracle を使用する SAP と NetApp ONTAP
-  url: "/bp/sap-oracle-snapman_pdf_link.html"
-- title: Windows で ONTAP を使用して SAP と Microsoft SQL Server を運用
-  url: "/bp/sap-sqls-sc_pdf_link.html"
