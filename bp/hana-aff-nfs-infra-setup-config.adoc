@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-nfs-infra-setup-config.html 
+keywords:  
+summary:  
+---
+= インフラのセットアップと設定
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このドキュメントでは、NetApp AFFシステムとNFSのインフラのセットアップと設定について説明します。

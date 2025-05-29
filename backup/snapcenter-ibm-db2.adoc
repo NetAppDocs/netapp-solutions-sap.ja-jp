@@ -325,7 +325,7 @@ video::3a82e561-e5a2-4a23-9465-b2b900c1fac5[panopto,width=360]
 
 
 * NetApp製品ドキュメント： https://www.netapp.com/support-and-training/documentation/[]
-* NetApp SAPソリューション–ユースケース、ベストプラクティス、メリットに関する情報： https://docs.netapp.com/us-en/netapp-solutions-sap[]
+* link:../index.html["NetApp SAPソリューション–ユースケース、ベストプラクティス、メリットに関する情報"]
 
 
 

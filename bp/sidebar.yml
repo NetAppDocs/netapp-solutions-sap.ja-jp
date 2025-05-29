@@ -5,128 +5,128 @@ entries:
 - title: "『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』"
   entries:
   - title: はじめに
-    url: "/bp/saphana_aff_fc_introduction.html"
+    url: "/bp/hana-aff-fc-introduction.html"
   - title: アーキテクチャ
-    url: "/bp/saphana_aff_fc_architecture.html"
+    url: "/bp/hana-aff-fc-architecture.html"
   - title: ストレージのサイジング
-    url: "/bp/saphana_aff_fc_storage_sizing.html"
+    url: "/bp/hana-aff-fc-storage-sizing.html"
   - title: インフラのセットアップと設定
     entries:
     - title: インフラのセットアップと設定の概要
-      url: "/bp/saphana_aff_fc_infrastructure_setup_and_configuration_overview.html"
+      url: "/bp/hana-aff-fc-infra-setup-config-overview.html"
     - title: SAN ファブリックのセットアップ
-      url: "/bp/saphana_aff_fc_san_fabric_setup.html"
+      url: "/bp/hana-aff-fc-san-fabric-setup.html"
     - title: 時刻の同期
-      url: "/bp/saphana_aff_fc_time_synchronization.html"
+      url: "/bp/hana-aff-fc-time-synchronization.html"
     - title: ストレージコントローラのセットアップ
-      url: "/bp/saphana_aff_fc_storage_controller_setup.html"
+      url: "/bp/hana-aff-fc-storage-controller-setup.html"
     - title: SAP HANA Storage Connector API
-      url: "/bp/saphana_aff_fc_sap_hana_storage_connector_api.html"
+      url: "/bp/hana-aff-fc-storage-connector-api.html"
     - title: ホストのセットアップ
-      url: "/bp/saphana_aff_fc_host_setup.html"
+      url: "/bp/hana-aff-fc-host-setup.html"
     - title: SAP HANA の I/O スタック構成
-      url: "/bp/saphana_aff_fc_i_o_stack_configuration_for_sap_hana.html"
+      url: "/bp/hana-aff-fc-io-stack-configuration.html"
     - title: SAP HANA ソフトウェアのインストール
-      url: "/bp/saphana_aff_fc_sap_hana_software_installation.html"
+      url: "/bp/hana-aff-fc-software-install.html"
     - title: SAP HANA シングルホストシステムのデータボリュームパーティションを追加します
-      url: "/bp/saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html"
+      url: "/bp/hana-aff-fc-add-data-volume-partitions-single-host-systems.html"
   - title: 追加情報の参照先
-    url: "/bp/saphana_aff_fc_where_to_find_additional_information.html"
+    url: "/bp/hana-aff-fc-additional-info.html"
   - title: 履歴を更新します
-    url: "/bp/saphana_aff_fc_update_history.html"
+    url: "/bp/hana-aff-fc-update-history.html"
 - title: "『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』"
   entries:
   - title: はじめに
-    url: "/bp/saphana_aff_nfs_introduction.html"
+    url: "/bp/hana-aff-nfs-introduction.html"
   - title: アーキテクチャ
-    url: "/bp/saphana_aff_nfs_architecture.html"
+    url: "/bp/hana-aff-nfs-architecture.html"
   - title: ストレージのサイジング
-    url: "/bp/saphana_aff_nfs_storage_sizing.html"
+    url: "/bp/hana-aff-nfs-storage-sizing.html"
   - title: インフラのセットアップと設定
     entries:
     - title: ネットワークセットアップ
-      url: "/bp/saphana_aff_nfs_network_setup.html"
+      url: "/bp/hana-aff-nfs-network-setup.html"
     - title: 時刻の同期
-      url: "/bp/saphana_aff_nfs_time_synchronization.html"
+      url: "/bp/hana-aff-nfs-time-synchronization.html"
     - title: ストレージコントローラのセットアップ
-      url: "/bp/saphana_aff_nfs_storage_controller_setup.html"
+      url: "/bp/hana-aff-nfs-storage-controller-setup.html"
     - title: ホストのセットアップ
-      url: "/bp/saphana_aff_nfs_host_setup.html"
+      url: "/bp/hana-aff-nfs-host-setup.html"
     - title: NFSv4 用の SAP HANA インストールの準備
-      url: "/bp/saphana_aff_nfs_sap_hana_installation_preparations_for_nfsv4.html"
+      url: "/bp/hana-aff-nfs-install-prep-nfsv4.html"
     - title: SAP HANA 向けの I/O スタック構成
-      url: "/bp/saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html"
+      url: "/bp/hana-aff-nfs-io-stack-configuration.html"
     - title: SAP HANA データボリュームのサイズ
-      url: "/bp/saphana_aff_nfs_sap_hana_data_volume_size.html"
+      url: "/bp/hana-aff-nfs-data-volume-size.html"
     - title: SAP HANA ソフトウェアのインストール
-      url: "/bp/saphana_aff_nfs_sap_hana_software_installation.html"
+      url: "/bp/hana-aff-nfs-software_installation.html"
     - title: データボリュームのパーティションを追加しています
-      url: "/bp/saphana_aff_nfs_adding_additional_data_volume_partitions.html"
+      url: "/bp/hana-aff-nfs-add-data-volume-partitions.html"
   - title: 追加情報の参照先
-    url: "/bp/saphana_aff_nfs_where_to_find_additional_information.html"
+    url: "/bp/hana-aff-nfs-additional-info.html"
   - title: 履歴を更新します
-    url: "/bp/saphana_aff_nfs_update_history.html"
+    url: "/bp/hana-aff-nfs-update-history.html"
 - title: "『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』"
   entries:
   - title: はじめに
-    url: "/bp/saphana-fas-nfs_introduction.html"
+    url: "/bp/hana-fas-nfs-introduction.html"
   - title: アーキテクチャ
-    url: "/bp/saphana-fas-nfs_architecture.html"
+    url: "/bp/hana-fas-nfs-architecture.html"
   - title: ストレージのサイジング
-    url: "/bp/saphana-fas-nfs_storage_sizing.html"
+    url: "/bp/hana-fas-nfs-storage-sizing.html"
   - title: インフラのセットアップと設定
     entries:
     - title: ネットワークセットアップ
-      url: "/bp/saphana-fas-nfs_network_setup.html"
+      url: "/bp/hana-fas-nfs-network-setup.html"
     - title: 時刻の同期
-      url: "/bp/saphana-fas-nfs_time_synchronization.html"
+      url: "/bp/hana-fas-nfs-time-synchronization.html"
     - title: ストレージコントローラのセットアップ
-      url: "/bp/saphana-fas-nfs_storage_controller_setup.html"
+      url: "/bp/hana-fas-nfs-storage-controller-setup.html"
     - title: ホストのセットアップ
-      url: "/bp/saphana-fas-nfs_host_setup.html"
+      url: "/bp/hana-fas-nfs-host-setup.html"
     - title: NFSv4 用の SAP HANA インストールの準備
-      url: "/bp/saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html"
+      url: "/bp/hana-fas-nfs-install-prep-nfsv4.html"
     - title: SAP HANA 向けの I/O スタック構成
-      url: "/bp/saphana-fas-nfs_i_o_stack_configuration_for_sap_hana.html"
+      url: "/bp/hana-fas-nfs-io-stack-configuration.html"
     - title: SAP HANA データボリュームのサイズ
-      url: "/bp/saphana-fas-nfs_sap_hana_data_volume_size.html"
+      url: "/bp/hana-fas-nfs-data-volume-size.html"
     - title: SAP HANA ソフトウェアのインストール
-      url: "/bp/saphana-fas-nfs_sap_hana_software_installation.html"
+      url: "/bp/hana-fas-nfs-software-installation.html"
     - title: データボリュームのパーティションを追加しています
-      url: "/bp/saphana-fas-nfs_adding_additional_data_volume_partitions.html"
+      url: "/bp/hana-fas-nfs-add-data-volume-partitions.html"
   - title: 追加情報の参照先
-    url: "/bp/saphana-fas-nfs_where_to_find_additional_information.html"
+    url: "/bp/hana-fas-nfs-additional-info.html"
   - title: 履歴を更新します
-    url: "/bp/saphana-fas-nfs_update_history.html"
+    url: "/bp/hana-fas-nfs-update-history.html"
 - title: "『 SAP HANA on FAS Systems with FCP Configuration Guide 』を参照してください"
   entries:
   - title: はじめに
-    url: "/bp/saphana_fas_fc_introduction.html"
+    url: "/bp/hana-fas-fc-introduction.html"
   - title: アーキテクチャ
-    url: "/bp/saphana_fas_fc_architecture.html"
+    url: "/bp/hana-fas-fc-architecture.html"
   - title: ストレージのサイジング
-    url: "/bp/saphana_fas_fc_storage_sizing.html"
+    url: "/bp/hana-fas-fc-storage-sizing.html"
   - title: インフラのセットアップと設定
     entries:
     - title: インフラのセットアップと設定の概要
-      url: "/bp/saphana_fas_fc_infrastructure_setup_and_configuration_overview.html"
+      url: "/bp/hana-fas-fc-infra-setup-config-overview.html"
     - title: SAN ファブリックのセットアップ
-      url: "/bp/saphana_fas_fc_san_fabric_setup.html"
+      url: "/bp/hana-fas-fc-san-fabric-setup.html"
     - title: 時刻の同期
-      url: "/bp/saphana_fas_fc_time_synchronization.html"
+      url: "/bp/hana-fas-fc-time-synchronization.html"
     - title: ストレージコントローラのセットアップ
-      url: "/bp/saphana_fas_fc_storage_controller_setup.html"
+      url: "/bp/hana-fas-fc-storage-controller-setup.html"
     - title: SAP HANA Storage Connector API
-      url: "/bp/saphana_fas_fc_sap_hana_storage_connector_api.html"
+      url: "/bp/hana-fas-fc-storage-connector-api.html"
     - title: ホストのセットアップ
-      url: "/bp/saphana_fas_fc_host_setup.html"
+      url: "/bp/hana-fas-fc-host-setup.html"
     - title: SAP HANA 向けの I/O スタック構成
-      url: "/bp/saphana_fas_fc_i_o_stack_configuration_for_sap_hana.html"
+      url: "/bp/hana-fas-fc-io-stack-configuration.html"
     - title: SAP HANA ソフトウェアのインストール
-      url: "/bp/saphana_fas_fc_sap_hana_software_installation.html"
+      url: "/bp/hana-fas-fc-software-install.html"
     - title: SAP HANA シングルホストシステムのデータボリュームパーティションを追加します
-      url: "/bp/saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html"
+      url: "/bp/hana-fas-fc-add-data-volume-partitions-single-host-systems.html"
   - title: 追加情報の参照先
-    url: "/bp/saphana_fas_fc_where_to_find_additional_information.html"
+    url: "/bp/hana-fas-fc-additional-info.html"
   - title: 履歴を更新します
-    url: "/bp/saphana_fas_fc_update_history.html"
+    url: "/bp/hana-fas-fc-update-history.html"

@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-overview-of-sys-clone-wf-sc.html 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAPのライフサイクル管理を最適化するNetAppソリューションは、SAP HANAデータベースとライフサイクル管理ツールに統合されており、効率的なアプリケーション統合データプロテクションと、SAPテストシステムの柔軟なプロビジョニングが組み合わされています。 
+---
+= SnapCenter を使用したSAPシステムのクローニングワークフローの概要
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+前のセクションで説明したように、SnapCenter は、任意の既存のSnapshotバックアップからデータセットのクローンを管理し、これらのデータセットを任意のターゲットシステムに迅速にプロビジョニングできます。論理的な破損に対処するために本番データをリペアシステムに柔軟かつ迅速にプロビジョニングすることは、リペアシステムをリセットして別の本番データセットを選択する必要があることが多いため、非常に重要です。FlexCloneテクノロジを使用すると、修復システムは通常短時間しか使用されないため、高速なプロビジョニングプロセスが可能になり、容量を大幅に削減できます。
+
+次の図は、SnapCenterを使用したSAPシステムのクローニング処理に必要な手順をまとめたものです。
+
+. ターゲットホストを準備します。
+. SAP HANA共有ボリューム用のSnapCenterクローン作成ワークフロー
+. SAP HANAサービスを開始します。
+. SnapCenterクローンは、SAP HANAデータボリュームのデータベースリカバリを含むワークフローを作成します。
+. SAP HANAシステムを修復システムとして使用できるようになりました。
+
+
+システムが不要になった場合は、次の手順でクリーンアッププロセスを実行します。
+
+. データベースのシャットダウンを含む、SAP HANAデータボリュームのSnapCenterクローン削除ワークフロー（自動スクリプト使用時）。
+. SAP HANAサービスを停止します。
+. SAP HANA共有ボリュームのSnapCenterクローン削除ワークフロー
+
+
+
+NOTE: システムを別のSnapshotバックアップにリセットする必要がある場合は、手順6と手順4で十分です。SAP HANA共有ボリュームの更新は必要ありません。
+
+image:sc-copy-clone-image9.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+「」セクションではlink:sc-copy-clone-sys-clone-with-sc.html["「SnapCenter を使用したSAPシステムのクローン作成」"]、システムクローニングワークフローの詳細な手順を説明します。

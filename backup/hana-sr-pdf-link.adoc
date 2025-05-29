@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sr-pdf-link.html 
+keywords: tr-4719, pdf, sap, hana, backup, system replication, snapcenter 
+summary: TR-4719 は、 SAP HANA システムレプリケーション環境で、 NetApp SnapCenter テクノロジと SAP HANA プラグインを使用したバックアップとリカバリの方法を説明しています。 
+---
+= TR-4719 ：『 SAP HANA System Replication - Backup and Recovery with SnapCenter 』
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+TR-4719 は、 SAP HANA システムレプリケーション環境で、 NetApp SnapCenter テクノロジと SAP HANA プラグインを使用したバックアップとリカバリの方法を説明しています。
+
+ネットアップ Nils Bauer
+
+link:https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf"]

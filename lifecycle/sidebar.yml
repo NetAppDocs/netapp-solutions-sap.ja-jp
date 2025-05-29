@@ -7,23 +7,23 @@ entries:
   - title: はじめに
     url: "/lifecycle/lama-ansible-introduction.html"
   - title: SAPシステムのクローニング、コピー、更新のシナリオ
-    url: "/lifecycle/lama-ansible-sap-system-clone,-copy,-and-refresh-scenarios.html"
+    url: "/lifecycle/lama-ansible-sys-clone-copy-refresh.html"
   - title: システムの更新、コピー、クローニングのユースケース
-    url: "/lifecycle/lama-ansible-use-cases-for-system-refresh,-copy,-and-cloning.html"
+    url: "/lifecycle/lama-ansible-usecases-sys-refresh-copy-clone.html"
   - title: Ansibleを使用して、NetApp SAP LaMaを統合
-    url: "/lifecycle/lama-ansible-netapp-sap-lama-integration-using-ansible.html"
+    url: "/lifecycle/lama-ansible-netapp-integration.html"
   - title: 実装例
     url: "/lifecycle/lama-ansible-example-implementation.html"
   - title: SAP LaMaプロビジョニングワークフロー-クローンシステム
-    url: "/lifecycle/lama-ansible-sap-lama-provisioning-workflow-clone-system.html"
+    url: "/lifecycle/lama-ansible-provision-wf-clone-system.html"
   - title: SAP LaMaによるワークフローのプロビジョニング解除-システムの破壊
-    url: "/lifecycle/lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html"
+    url: "/lifecycle/lama-ansible-deprovision-wf-sys-destroy.html"
   - title: SAP LaMaプロビジョニングワークフロー-コピーシステム
-    url: "/lifecycle/lama-ansible-sap-lama-provisioning-workflow-copy-system.html"
+    url: "/lifecycle/lama-ansible-provision-wf-copy-sys.html"
   - title: SAP LaMaプロビジョニングワークフロー-システムの更新
-    url: "/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+    url: "/lifecycle/lama-ansible-provision-wf-sys-refresh.html"
   - title: プロバイダスクリプトの設定とAnsibleのプレイブック
-    url: "/lifecycle/lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html"
+    url: "/lifecycle/lama-ansible-appendix.html"
   - title: まとめ
     url: "/lifecycle/lama-ansible-conclusion.html"
 - title: SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化
@@ -31,32 +31,32 @@ entries:
   - title: はじめに
     url: "/lifecycle/sc-copy-clone-introduction.html"
   - title: SAPシステムのコピー、更新、クローニングのシナリオ
-    url: "/lifecycle/sc-copy-clone-sap-system-copy-refresh-and-clone-scenarios.html"
+    url: "/lifecycle/sc-copy-clone-sys-copy-refresh-clone.html"
   - title: システムの更新とクローニングのユースケース
-    url: "/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html"
+    url: "/lifecycle/sc-copy-clone-usecases-sys-refresh-cloning.html"
   - title: サポートされるインフラとシナリオ
-    url: "/lifecycle/sc-copy-clone-supported-infrastructure-and-scenarios.html"
+    url: "/lifecycle/sc-copy-clone-supported-infrastructure.html"
   - title: SnapCenter を使用したSAPシステムの更新ワークフローの概要
-    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html"
+    url: "/lifecycle/sc-copy-clone-overview-sys-refresh-wf-sc.html"
   - title: SnapCenter を使用したSAPシステムのクローニングワークフローの概要
-    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html"
+    url: "/lifecycle/sc-copy-clone-overview-of-sys-clone-wf-sc.html"
   - title: ストレージSnapshotバックアップを使用したSAP HANAシステムの更新処理に関する考慮事項
-    url: "/lifecycle/sc-copy-clone-considerations-for-sap-hana-system-refresh-operations-using-snapshot-backups.html"
+    url: "/lifecycle/sc-copy-clone-sys-refresh-using-snapshot-backups.html"
   - title: 自動化スクリプトの例
-    url: "/lifecycle/sc-copy-clone-automation-example-scripts.html"
+    url: "/lifecycle/sc-copy-clone-automation-scripts.html"
   - title: SAP HANAシステムをSnapCenter で更新
-    url: "/lifecycle/sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html"
+    url: "/lifecycle/sc-copy-clone-hana-sys-refresh-with-sc.html"
   - title: SnapCenter によるSAPシステムのクローニング
-    url: "/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html"
+    url: "/lifecycle/sc-copy-clone-sys-clone-with-sc.html"
   - title: 追加情報およびバージョン履歴の参照先
-    url: "/lifecycle/sc-copy-clone-where-to-find-additional-information.html"
+    url: "/lifecycle/sc-copy-clone-additional-info.html"
 - title: Libelle SystemCopyによるSAPシステムのコピー処理の自動化
   entries:
   - title: 概要
     url: "/lifecycle/libelle-sc-overview.html"
   - title: LSCおよびSnapCenter でSAP HANAシステムが更新されます
-    url: "/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html"
+    url: "/lifecycle/libelle-sc-hana-sys-refresh-lsc-sc.html"
   - title: LSC、AzAcSnap、およびAzure NetApp Files を使用してSAP HANAシステムが更新されます
-    url: "/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html"
+    url: "/lifecycle/libelle-sc-hana-sys-refresh-lsc-azacsnap-anf.html"
   - title: 追加情報 およびバージョン履歴の参照先
-    url: "/lifecycle/libelle-sc-where-to-find-additional-information.html"
+    url: "/lifecycle/libelle-sc-additional-info.html"

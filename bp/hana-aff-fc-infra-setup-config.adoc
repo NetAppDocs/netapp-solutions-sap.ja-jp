@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-fc-infra-setup-config.html 
+keywords:  
+summary:  
+---
+= インフラのセットアップと設定
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このドキュメントでは、NetApp AFFシステムとファイバチャネルのインフラストラクチャのセットアップと構成について説明します。

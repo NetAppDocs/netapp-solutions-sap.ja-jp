@@ -17,4 +17,4 @@ summary:
 
 クローンボリュームはHANA整合性グループには含まれず、SnapMirrorのアクティブな同期ではレプリケートされません。
 
-システム更新ワークフローの詳細については、次のサイトを参照してください。 https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"]
+システム更新ワークフローの詳細については、次のサイトを参照してください。link:../lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"]

@@ -65,10 +65,10 @@ NetApp SnapCenter とSAP HANA向けプラグインを使用して、アプリケ
 
 SAPテストシステムのプロビジョニングは、サードパーティのツールを使用してNetAppの機能を統合することで、完全に自動化されたエンドツーエンドで実行できます。詳細については、次のサイトを参照してください。
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/lama-ansible-introduction.html["TR-4953：『NetApp SAP Landscape Management Integration using Ansible』"]
+link:lama-ansible-introduction.html["TR-4953：『NetApp SAP Landscape Management Integration using Ansible』"]
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/libelle-sc-overview.html["TR-4929：『Automating SAP system copy operations with Libelle SystemCopy』（netapp.com）"]
+link:libelle-sc-overview.html["TR-4929：『Automating SAP system copy operations with Libelle SystemCopy』（netapp.com）"]
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/briefs/sap-alpaca-automation.html#solution-overview["AlpacaとNetApp SnapCenterを使用したSAPシステムのコピーとクローンワークフローの自動化"]
+link:../briefs/sap-alpaca-automation.html#solution-overview["AlpacaとNetApp SnapCenterを使用したSAPシステムのコピーとクローンワークフローの自動化"]
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/briefs/sap-avantra-automation.html#solution-overview["AvantraとNetApp SnapCenterを使用したSAPシステムのコピーとクローンワークフローの自動化"]
+link:../briefs/sap-avantra-automation.html#solution-overview["AvantraとNetApp SnapCenterを使用したSAPシステムのコピーとクローンワークフローの自動化"]

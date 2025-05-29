@@ -85,6 +85,6 @@ Libelle SystemCopyは、完全に自動化されたシステムコピーとラ�
 * ディザスタリカバリのテストシナリオ
 
 
-修復システムと災害復旧テストシステムは、通常、更新されたテストおよびトレーニングシステムのためにSAPシステムクローン（広範囲な後処理操作は不要）を使用して提供されますが、これらの後処理手順を適用してソースシステムと共存させる必要があります。そのため、本ドキュメントでは、SAPシステムの更新シナリオに焦点を当てて説明します。さまざまなユースケースの詳細については、テクニカルレポートを参照してください https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"^]。
+修復システムと災害復旧テストシステムは、通常、更新されたテストおよびトレーニングシステムのためにSAPシステムクローン（広範囲な後処理操作は不要）を使用して提供されますが、これらの後処理手順を適用してソースシステムと共存させる必要があります。そのため、本ドキュメントでは、SAPシステムの更新シナリオに焦点を当てて説明します。さまざまなユースケースの詳細については、テクニカルレポートを参照しlink:sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"^]てください。
 
 このドキュメントの残りの部分は、2つの部分に分かれています。最初のパートでは、オンプレミスのNetApp ONTAP システムで実行されているSAP HANAシステムとSAP AnyDBシステム向けのNetApp SnapCenter とLibelle SystemCopyの統合について説明します。2番目のパートでは、Microsoft Azureで実行されているSAP HANAシステム用のLSCと、提供されているAzure NetApp Files とのAzAcSnapの統合について説明します。ONTAP テクノロジの基盤は同じですが、Azure NetApp Files は、ネイティブONTAP インストールとは異なるインターフェイスとツールの統合（AzAcSnapなど）を提供します。

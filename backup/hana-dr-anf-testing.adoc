@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-dr-anf-testing.html 
+keywords:  
+summary:  
+---
+= ディザスタリカバリのテスト
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このセクションでは、Azure NetApp Files（ANF）でのSAP HANAのディザスタリカバリテストの概要を説明します。

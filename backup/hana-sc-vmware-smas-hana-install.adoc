@@ -18,7 +18,7 @@ summary:
 
 
 [role="lead"]
-この章では、VMFSを使用するVMware環境に固有のSAP HANAシステムのインストールと設定について説明します。その他の一般的なベストプラクティスについては、を参照してください https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html#sap-hana-tailored-data-center-integration["『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください"]。
+この章では、VMFSを使用するVMware環境に固有のSAP HANAシステムのインストールと設定について説明します。その他の一般的なベストプラクティスについては、を参照してくださいlink:../bp/hana-aff-fc-introduction.html#sap-hana-tailored-data-center-integration["『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください"]。
 
 
 
@@ -234,7 +234,7 @@ NOTE: ここで説明した設定では、OS VMDK上に/usr/sap/smaディレク�
 
 システムデータベースユーザのユーザストアを作成し、SnapCenterで使用する必要があります。通信ポートに応じてHANAインスタンス番号を設定する必要があります。セットアップでは、インスタンス番号「00」が使用されます。
 
-詳細については、を参照してください。 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html#sap-hana-backup-user-and-hdbuserstore-configuration["SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成"]
+詳細については、を参照してください。link:hana-br-scs-resource-config-hana-database-backups.html#sap-hana-backup-user-and-hdbuserstore-configuration["SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成"]
 
 ....
 smaadm@hana-1:/usr/sap/SMA/HDB00> hdbuserstore set SMAKEY hana-1:30013 SNAPCENTER <password>

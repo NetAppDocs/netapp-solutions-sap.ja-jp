@@ -41,7 +41,7 @@ NOTE: このサンプルスクリプトは現状のまま提供されており�
 
 次の図は、ラボのセットアップを示しています。システムのクローニングに使用されるソースのSAPシステムHN9では、データベースH09、SAP CS、およびSAP ASサービスが、がインストールされた同じホスト（sap-lnx32）で実行されています https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/737a99e86f8743bdb8d1f6cf4b862c79.html["アダプティブデザイン"^] 有効。に従ってAnsibleコントロールノードが準備されました https://github.com/sap-linuxlab/demo.netapp_ontap/blob/main/netapp_ontap.md["NetApp ONTAP 向けのAnsibleプレイブック"^] ドキュメント
 
-SAPホストエージェントもこのホストにインストールされています。NetAppプロバイダスクリプトとAnsibleプレイブックは、Ansibleコントロールノードで設定しました（を参照）。link:lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html["「付録：プロバイダスクリプトの設定」"]
+SAPホストエージェントもこのホストにインストールされています。NetAppプロバイダスクリプトとAnsibleプレイブックは、Ansibleコントロールノードで設定しました（を参照）。link:lama-ansible-appendix.html["「付録：プロバイダスクリプトの設定」"]
 
 ホスト `sap-lnx49` SAP LaMaクローニング運用のターゲットとして使用し、隔離に対応した機能を設定しました。
 

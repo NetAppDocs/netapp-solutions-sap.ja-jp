@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: backup/fsxn-additional-info.html 
+keywords:  
+summary:  
+---
+= 追加情報の参照先
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
+
+* 『FSX for NetApp ONTAP user guide—What is Amazon FSX for NetApp ONTAP ？』
++
+https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html[]
+
+* SnapCenter のリソースページ
++
+https://www.netapp.com/us/documentation/snapcenter-software.aspx["https://www.netapp.com/us/documentation/snapcenter-software.aspx"]
+
+* SnapCenter ソフトウェアのドキュメント
++
+https://docs.netapp.com/us-en/snapcenter/index.html["https://docs.netapp.com/us-en/snapcenter/index.html"]
+
+* TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』
++
+link:../lifecycle/sc-copy-clone-introduction.html["SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化"]
+
+* TR-4719：『SAP HANA System Replication—Backup and Recovery with SnapCenter 』
++
+link:hana-sr-scs-system-replication-overview.html["SnapCenterによるバックアップとリカバリ"]
+
+
+
+
+
+== バージョン履歴
+
+|===
+| バージョン | 日付 | ドキュメントのバージョン履歴 
+
+
+| バージョン 1.0 以降 | 2022年5月 | 初版リリース 
+|===

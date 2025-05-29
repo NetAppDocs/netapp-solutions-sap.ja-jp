@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-br-scs-lab-setup.html 
+keywords: lab, setup, configuration, 
+summary: このテクニカルレポートで使用するラボセットアップには、 5 つの SAP HANA 構成が含まれています。 
+---
+= このレポートで使用するラボのセットアップ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このテクニカルレポートで使用するラボセットアップには、次の 5 種類の SAP HANA 構成が含まれています。
+
+* * MS1.*
++
+** SAP HANA マルチホスト MDC のシングルテナントシステム
+** 中央のプラグインホスト（ SnapCenter サーバ）で管理
+** ストレージプロトコルとして NFS を使用します
+
+
+* * SS1.*
++
+** SAP HANA シングルホスト MDC のシングルテナントシステム
+** HANA プラグインが HANA データベースホストにインストールされている状態で自動検出されます
+** ストレージプロトコルとして NFS を使用します
+
+
+* * SM1. *
++
+** SAP HANA シングルホスト MDC のマルチテナントシステム
+** HANA プラグインが HANA データベースホストにインストールされている状態で自動検出されます
+** ストレージプロトコルとして NFS を使用します
+
+
+* * SS2.*
++
+** SAP HANA シングルホスト MDC のシングルテナントシステム
+** 中央のプラグインホスト（ SnapCenter サーバ）で管理
+** ストレージプロトコルとして NFS を使用します
+
+
+* * SS3.*
++
+** SAP HANA シングルホスト MDC のシングルテナントシステム
+** HANA プラグインが HANA データベースホストにインストールされている状態で自動検出されます
+** ストレージプロトコルとして Fibre Channel SAN を使用します
+
+
+
+
+以降のセクションでは、設定、バックアップ、リストア、リカバリの各ワークフローについて説明します。概要 では、ローカル Snapshot バックアップに加え、 SnapVault を使用したバックアップストレージへのレプリケーションも実行できます。Storage Virtual Machine （ SVM ）は、プライマリストレージは「 HANA プライマリ」、オフサイトバックアップストレージは「 HANA プライマリ」です。
+
+SnapCenter サーバは、 HANA システム MS1 および SS2 の中央 HANA プラグインホストとして使用されます。
+
+次の図は、ラボのセットアップを示しています。
+
+image:saphana-br-scs-image21.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

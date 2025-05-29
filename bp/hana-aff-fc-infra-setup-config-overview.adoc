@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-fc-infra-setup-config-overview.html 
+keywords:  
+summary:  
+---
+= インフラのセットアップと設定
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+以降のセクションでは、 SAP HANA インフラのセットアップと構成のガイドラインについて説明し、 SAP HANA システムのセットアップに必要なすべての手順について説明します。ここでは、次の設定例を使用します。
+
+* SID=SS3のHANAシステム
++
+** SAP HANA シングルおよびマルチホスト
+** SAP HANA マルチパーティションを使用する SAP HANA シングルホスト
+
+
+* Linuxの論理ボリュームマネージャ（LVM）を使用するSID=FC5のHANAシステム
++
+** SAP HANA シングルおよびマルチホスト
+
+
+

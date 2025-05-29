@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/libelle-sc-additional-info.html 
+keywords:  
+summary:  
+---
+= 追加情報およびバージョン履歴の参照先
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
+
+* ネットアップの製品マニュアル
++
+https://docs.netapp.com["https://docs.netapp.com"^]
+
+
+
+
+
+== バージョン履歴
+
+|===
+| バージョン | 日付 | ドキュメントバージョン履歴 
+
+
+| バージョン 1.0 以降 | 2022年4月 | 初版リリース 
+|===

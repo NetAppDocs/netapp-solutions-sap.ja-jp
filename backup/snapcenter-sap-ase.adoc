@@ -440,7 +440,7 @@ video::0aba8433-e0d0-4c40-be0a-b2b900c1fb54[panopto,width=360]
 ** 1585981-SYB：SAP ASEのリカバリ性の確保： https://me.sap.com/notes/1585981/E[]
 ** 1588316-SYB：データベースとログの自動バックアップを設定します。 https://me.sap.com/notes/1588316/E[]
 ** NetApp製品ドキュメント： https://www.netapp.com/support-and-training/documentation/[]
-** NetApp SAPソリューション–ユースケース、ベストプラクティス、メリットに関する情報： https://docs.netapp.com/us-en/netapp-solutions-sap[]
+** link:../index.html["NetApp SAPソリューション–ユースケース、ベストプラクティス、メリットに関する情報"]
 
 
 

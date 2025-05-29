@@ -1,0 +1,310 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-sys-clone-with-sc.html 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAPのライフサイクル管理を最適化するNetAppソリューションは、SAP HANAデータベースとライフサイクル管理ツールに統合されており、効率的なアプリケーション統合データプロテクションと、SAPテストシステムの柔軟なプロビジョニングが組み合わされています。 
+---
+= SnapCenter によるSAPシステムのクローニング
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このセクションでは、SAPシステムのクローニング処理の手順ごとの概要 を示します。このを使用して、論理的な破損に対処するための修復システムをセットアップできます。
+
+次の図は、SnapCenterを使用したSAPシステムのクローニング処理に必要な手順をまとめたものです。
+
+. ターゲットホストを準備します。
+. SAP HANA共有ボリューム用のSnapCenterクローン作成ワークフロー
+. SAP HANAサービスを開始します。
+. SnapCenterクローンは、SAP HANAデータボリュームのデータベースリカバリを含むワークフローを作成します。
+. SAP HANAシステムを修復システムとして使用できるようになりました。
++
+
+NOTE: システムを別のSnapshotバックアップにリセットする必要がある場合は、手順6と手順4で十分です。SAP HANA共有ボリュームは引き続きマウントできます。
+
++
+システムが不要になった場合は、次の手順でクリーンアッププロセスを実行します。
+
+. SAP HANAデータボリュームのSnapCenterクローン削除ワークフロー（データベースのシャットダウンを含む）。
+. SAP HANAサービスを停止します。
+. SAP HANA共有ボリュームのSnapCenterクローン削除ワークフロー
+
+
+image:sc-copy-clone-image9.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+
+
+== 前提条件および制限事項
+
+以降のセクションで説明するワークフローには、SAP HANAシステムのアーキテクチャとSnapCenterの設定に関する前提条件と制限事項がいくつかあります。
+
+* ここで説明するワークフローは、シングルホストのSAP HANA MDCシステムに対して有効です。複数のホストシステムはサポートされません。
+* 自動スクリプトを実行するには、SnapCenter SAP HANAプラグインをターゲットホストに導入する必要があります。
+* NFSのワークフローが検証されました。SAP HANA共有ボリュームのマウントに使用される自動化で `script sc-mount-volume.sh`は、FCPはサポートされません。この手順は、手動で実行するか、スクリプトを拡張して実行する必要があります。
+* ここで説明するワークフローは、SnapCenter 5.0リリース以降でのみ有効です。
+
+
+
+
+== ラボのセットアップ
+
+次の図は、システムのクローン作成に使用するラボのセットアップを示しています。
+
+使用したソフトウェアバージョンは次のとおりです。
+
+* SnapCenter 5.0
+* SAP HANAシステム：HANA 2.0 SPS6 rev.61
+* SLES 15
+* ONTAP 9.7P7.
+
+
+すべてのSAP HANAシステムは、構成ガイドに基づいて設定する必要がありますlink:../bp/hana-aff-nfs-introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。SnapCenterとSAP HANAのリソースは、ベストプラクティスガイドに基づいて設定されましたlink:../backup/hana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]。
+
+image:sc-copy-clone-image41.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+
+
+== ターゲットホストの準備
+
+ここでは、システムクローンターゲットとして使用するサーバで必要な準備手順について説明します。
+
+通常運用時は、SAP HANA QAやテストシステムなど、他の目的にターゲットホストを使用できます。したがって、前述のほとんどの手順は、システムクローン処理が要求されたときに実行する必要があります。一方、やなどの関連する設定ファイルは `/etc/fstab` 、 `/usr/sap/sapservices`設定ファイルをコピーするだけで準備し、本番環境に置くことができます。
+
+ターゲットホストの準備には、SAP HANA QAまたはテストシステムのシャットダウンも含まれます。
+
+
+
+=== *ターゲットサーバーのホスト名とIPアドレス*
+
+ターゲット・サーバのホスト名は ' ソース・システムのホスト名と同じである必要がありますIP アドレスは異なっていてもかまいません。
+
+
+NOTE: ターゲットサーバが他のシステムと通信できないように、ターゲットサーバの適切なフェンシングを確立する必要があります。適切なフェンシングが設定されていないと、クローニングされた本番用システムは他の本番用システムとデータを交換する可能性があります。
+
+
+NOTE: このラボ環境では、ターゲットシステム側から見て、ターゲットシステムのホスト名を内部的にのみ変更しました。ホストの外部からは、ホスト名として「HANA -7」を使用してアクセスできました。ホストにログインすると、ホスト自体がHANAです。
+
+
+
+=== *必要なソフトウェアのインストール*
+
+SAP ホストエージェントソフトウェアをターゲットサーバにインストールする必要があります。詳細については、SAPヘルプポータルのを参照して https://help.sap.com/doc/saphelp_nw73ehp1/7.31.19/en-US/8b/92b1cf6d5f4a7eac40700295ea687f/content.htm?no_cache=true["SAP ホストエージェント"] ください。
+
+SnapCenterでのホストの追加処理を使用して、SnapCenter SAP HANAプラグインをターゲットホストに導入する必要があります。
+
+
+
+=== *ユーザー'ポート'およびSAPサービスの構成*
+
+ターゲットサーバに、 SAP HANA データベースに必要なユーザとグループが配置されている必要があります。通常は、ユーザの一元管理が使用されるため、ターゲットサーバで設定手順を行う必要はありません。SAP HANAデータベースに必要なポートがターゲットホストに設定されている必要があります。/etc/servicesファイルをターゲット・サーバにコピーすることにより'ソース・システムから構成をコピーできます
+
+必要な SAP サービスのエントリがターゲットホストにあることが必要です。/usr/sap/sapservices' ファイルをターゲットサーバにコピーすることで ' ソースシステムから構成をコピーできます次の出力は、このラボ環境で使用する SAP HANA データベースの必須エントリを示しています。
+
+....
+#!/bin/sh
+LD_LIBRARY_PATH=/usr/sap/SS1/HDB00/exe:$LD_LIBRARY_PATH;export LD_LIBRARY_PATH;/usr/sap/SS1/HDB00/exe/sapstartsrv pf=/usr/sap/SS1/SYS/profile/SS1_HDB00_hana-1 -D -u ss1adm
+limit.descriptors=1048576
+....
+
+
+=== ログとログのバックアップボリュームを準備
+
+ログボリュームをソースシステムからクローニングする必要はなく、clear logオプションを使用してリカバリを実行するため、空のログボリュームをターゲットホストで準備しておく必要があります。
+
+ソースシステムには独立したログバックアップボリュームが設定されているため、空のログバックアップボリュームを準備し、ソースシステムと同じマウントポイントにマウントする必要があります。
+
+....
+hana-1:/# cat /etc/fstab
+192.168.175.117:/SS1_repair_log_mnt00001 /hana/log/SS1/mnt00001 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+192.168.175.117:/SS1_repair_log_backup /mnt/log-backup nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+....
+ログボリュームhdb*内では、ソース・システムと同じ方法でサブディレクトリを作成する必要があります。
+
+....
+hana-1:/ # ls -al /hana/log/SS1/mnt00001/
+total 16
+drwxrwxrwx 5 root root 4096 Dec 1 06:15 .
+drwxrwxrwx 1 root root 16 Nov 30 08:56 ..
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec 1 06:14 hdb00001
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec 1 06:15 hdb00002.00003
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec 1 06:15 hdb00003.00003
+....
+ログバックアップボリュームには、システムとテナントデータベースのサブディレクトリを作成する必要があります。
+
+....
+hana-1:/ # ls -al /mnt/log-backup/
+total 12
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec 1 04:48 .
+drwxr-xr-- 2 ss1adm sapsys 4896 Dec 1 03:42 ..
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec 1 06:15 DB_SS1
+drwxr-xr-- 2 ss1adm sapsys 4096 Dec 1 06:14 SYSTEMDB
+....
+
+
+=== *ファイル・システム・マウントの準備*
+
+データおよび共有ボリュームのマウントポイントを準備しておく必要があります。
+
+この例では、ディレクトリ `/hana/data/SS1/mnt00001`、 `/hana/shared` および `usr/sap/SS1` を作成する必要があります。
+
+
+
+=== *スクリプト実行の準備*
+
+ターゲットシステムで実行するスクリプトを、SnapCenter allowed commands configファイルに追加する必要があります。
+
+....
+hana-7:/opt/NetApp/snapcenter/scc/etc # cat /opt/NetApp/snapcenter/scc/etc/allowed_commands.config
+command: mount
+command: umount
+command: /mnt/sapcc-share/SAP-System-Refresh/sc-system-refresh.sh
+command: /mnt/sapcc-share/SAP-System-Refresh/sc-mount-volume.sh
+hana-7:/opt/NetApp/snapcenter/scc/etc #
+....
+
+
+== HANA共有ボリュームのクローニング
+
+. ソースシステムのSS1共有ボリュームからSnapshotバックアップを選択し、[Clone]をクリックします。
+
+
+image:sc-copy-clone-image42.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+. ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDとして、ソースシステムと同じSIDを保持します。この例では、SS1。
+
+
+image:sc-copy-clone-image43.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+. 必要なコマンドラインオプションを指定して、マウントスクリプトを入力します。
++
+
+NOTE: SAP HANAシステムでは、構成ガイドで推奨されているように、およびに `/usr/sap/SS1`単一のボリュームをサブディレクトリに分けて使用します `/hana/shared`link:../bp/hana-aff-nfs-introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。スクリプト `sc-mount-volume.sh` では、マウントパスに特別なコマンドラインオプションを使用してこの設定をサポートしています。mount pathコマンドラインオプションをusr-sap-and-sharedと指定すると、sharedおよびusr-sapのサブディレクトリがボリューム内に適宜マウントされます。
+
+
+
+image:sc-copy-clone-image44.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+. SnapCenter の[ジョブの詳細]画面に、処理の進捗状況が表示されます。
+
+
+image:sc-copy-clone-image45.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+. sc-mount-volume.shスクリプトのログファイルには、マウント処理で実行されたさまざまな手順が表示されます。
+
+
+....
+20201201041441###hana-1###sc-mount-volume.sh: Adding entry in /etc/fstab.
+20201201041441###hana-1###sc-mount-volume.sh: 192.168.175.117://SS1_shared_Clone_05132205140448713/usr-sap /usr/sap/SS1 nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+20201201041441###hana-1###sc-mount-volume.sh: Mounting volume: mount /usr/sap/SS1.
+20201201041441###hana-1###sc-mount-volume.sh: 192.168.175.117:/SS1_shared_Clone_05132205140448713/shared /hana/shared nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+20201201041441###hana-1###sc-mount-volume.sh: Mounting volume: mount /hana/shared.
+20201201041441###hana-1###sc-mount-volume.sh: usr-sap-and-shared mounted successfully.
+20201201041441###hana-1###sc-mount-volume.sh: Change ownership to ss1adm.
+....
+. SnapCenterワークフローが完了すると、/usr/sap/ss1と/hana/sharedファイルシステムがターゲットホストにマウントされます。
+
+
+....
+hana-1:~ # df
+Filesystem 1K-blocks Used Available Use% Mounted on
+192.168.175.117:/SS1_repair_log_mnt00001 262144000 320 262143680 1% /hana/log/SS1/mnt00001
+192.168.175.100:/sapcc_share 1020055552 53485568 966569984 6% /mnt/sapcc-share
+192.168.175.117:/SS1_repair_log_backup 104857600 256 104857344 1% /mnt/log-backup
+192.168.175.117:/SS1_shared_Clone_05132205140448713/usr-sap 262144064 10084608 252059456 4% /usr/sap/SS1
+192.168.175.117:/SS1_shared_Clone_05132205140448713/shared 262144064 10084608 252059456 4% /hana/shared
+....
+. SnapCenter では、クローニングされたボリュームの新しいリソースが表示されます。
+
+
+image:sc-copy-clone-image46.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+. /hana/sharedボリュームが使用可能になったので、SAP HANAサービスを開始できます。
+
+
+....
+hana-1:/mnt/sapcc-share/SAP-System-Refresh # systemctl start sapinit
+....
+. これで'SAPホスト・エージェントとsapstartsrvのプロセスが開始されました
+
+
+....
+hana-1:/mnt/sapcc-share/SAP-System-Refresh # ps -ef |grep sap
+root 12377 1 0 04:34 ? 00:00:00 /usr/sap/hostctrl/exe/saphostexec pf=/usr/sap/hostctrl/exe/host_profile
+sapadm 12403 1 0 04:34 ? 00:00:00 /usr/lib/systemd/systemd --user
+sapadm 12404 12403 0 04:34 ? 00:00:00 (sd-pam)
+sapadm 12434 1 1 04:34 ? 00:00:00 /usr/sap/hostctrl/exe/sapstartsrv pf=/usr/sap/hostctrl/exe/host_profile -D
+root 12485 12377 0 04:34 ? 00:00:00 /usr/sap/hostctrl/exe/saphostexec pf=/usr/sap/hostctrl/exe/host_profile
+root 12486 12485 0 04:34 ? 00:00:00 /usr/sap/hostctrl/exe/saposcol -l -w60 pf=/usr/sap/hostctrl/exe/host_profile
+ss1adm 12504 1 0 04:34 ? 00:00:00 /usr/sap/SS1/HDB00/exe/sapstartsrv pf=/usr/sap/SS1/SYS/profile/SS1_HDB00_hana-1 -D -u ss1adm
+root 12582 12486 0 04:34 ? 00:00:00 /usr/sap/hostctrl/exe/saposcol -l -w60 pf=/usr/sap/hostctrl/exe/host_profile
+root 12585 7613 0 04:34 pts/0 00:00:00 grep --color=auto sap
+hana-1:/mnt/sapcc-share/SAP-System-Refresh #
+....
+
+
+== 追加のSAPアプリケーションサービスのクローニング
+
+その他のSAPアプリケーションサービスのクローニングは、セクション「SAP HANA共有ボリュームのクローニング」で説明したSAP HANA共有ボリュームと同じ方法で行います。もちろん、SAPアプリケーションサーバに必要なストレージボリュームもSnapCenterで保護する必要があります。
+
+必要なサービスエントリを/usr/sap/sapservicesに追加し、ポート、ユーザ、およびファイルシステムのマウントポイント（/usr/sap/SIDなど）を準備しておく必要があります。
+
+
+
+== データボリュームのクローニングとHANAデータベースのリカバリ
+
+. ソースシステムSS1からSAP HANA Snapshotバックアップを選択します。
+
+
+image:sc-copy-clone-image47.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+. ターゲット修復システムの準備が完了したホストを選択します。NFSエクスポートのIPアドレスは、ターゲットホストのストレージネットワークインターフェイスである必要があります。ターゲットSIDとして、ソースシステムと同じSIDを保持します。この例では、SS1
+
+
+image:sc-copy-clone-image48.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+. 必要なコマンドラインオプションを指定して、クローニング後のスクリプトを入力します。
++
+
+NOTE: リカバリ処理用スクリプトは、Snapshot処理の時点までSAP HANAデータベースをリカバリし、フォワードリカバリを実行しません。特定の時点までのフォワードリカバリが必要な場合は、リカバリを手動で実行する必要があります。手動フォワードリカバリでは、ソースシステムのログバックアップをターゲットホストで利用できることも必要です。
+
+
+
+image:sc-copy-clone-image23.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+SnapCenter のジョブ詳細画面に処理の進捗状況が表示されます。
+
+image:sc-copy-clone-image49.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+スクリプトのログファイル `sc-system-refresh` には、マウント処理とリカバリ処理に対して実行されるさまざまな手順が表示されます。
+
+....
+20201201052124###hana-1###sc-system-refresh.sh: Recover system database.
+20201201052124###hana-1###sc-system-refresh.sh: /usr/sap/SS1/HDB00/exe/Python/bin/python /usr/sap/SS1/HDB00/exe/python_support/recoverSys.py --command "RECOVER DATA USING SNAPSHOT CLEAR LOG"
+20201201052156###hana-1###sc-system-refresh.sh: Wait until SAP HANA database is started ....
+20201201052156###hana-1###sc-system-refresh.sh: Status: GRAY
+20201201052206###hana-1###sc-system-refresh.sh: Status: GREEN
+20201201052206###hana-1###sc-system-refresh.sh: SAP HANA database is started.
+20201201052206###hana-1###sc-system-refresh.sh: Source system has a single tenant and tenant name is identical to source SID: SS1
+20201201052206###hana-1###sc-system-refresh.sh: Target tenant will have the same name as target SID: SS1.
+20201201052206###hana-1###sc-system-refresh.sh: Recover tenant database SS1.
+20201201052206###hana-1###sc-system-refresh.sh: /usr/sap/SS1/SYS/exe/hdb/hdbsql -U SS1KEY RECOVER DATA FOR SS1 USING SNAPSHOT CLEAR LOG
+0 rows affected (overall time 34.773885 sec; server time 34.772398 sec)
+20201201052241###hana-1###sc-system-refresh.sh: Checking availability of Indexserver for tenant SS1.
+20201201052241###hana-1###sc-system-refresh.sh: Recovery of tenant database SS1 succesfully finished.
+20201201052241###hana-1###sc-system-refresh.sh: Status: GREEN
+After the recovery operation, the HANA database is running and the data volume is mounted at the target host.
+hana-1:/mnt/log-backup # df
+Filesystem 1K-blocks Used Available Use% Mounted on
+192.168.175.117:/SS1_repair_log_mnt00001 262144000 760320 261383680 1% /hana/log/SS1/mnt00001
+192.168.175.100:/sapcc_share 1020055552 53486592 966568960 6% /mnt/sapcc-share
+192.168.175.117:/SS1_repair_log_backup 104857600 512 104857088 1% /mnt/log-backup
+192.168.175.117:/SS1_shared_Clone_05132205140448713/usr-sap 262144064 10090496 252053568 4% /usr/sap/SS1
+192.168.175.117:/SS1_shared_Clone_05132205140448713/shared 262144064 10090496 252053568 4% /hana/shared
+192.168.175.117:/SS1_data_mnt00001_Clone_0421220520054605 262144064 3732864 258411200 2% /hana/data/SS1/mnt00001
+....
+これでSAP HANAシステムが利用可能になり、リペアシステムなどとして使用できます。

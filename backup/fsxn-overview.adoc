@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: backup/fsxn-overview.html 
+keywords: tr4926, 4926, introduction, overview 
+summary: このテクニカルレポートでは、Amazon FSX上でNetApp ONTAP とNetApp SnapCenter を使用したSAP HANAデータ保護のベストプラクティスについて説明します。このドキュメントでは、 SnapCenter の概念、設定に関する推奨事項、設定やバックアップ処理などの運用ワークフローについて説明します。 リストア処理とリカバリ処理を行うことができます。 
+---
+= TR-4926：『SAP HANA on Amazon FSX for NetApp ONTAP - Backup and Recovery with SnapCenter 』
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このテクニカルレポートでは、Amazon FSX上でNetApp ONTAP とNetApp SnapCenter を使用したSAP HANAデータ保護のベストプラクティスについて説明します。このドキュメントでは、 SnapCenter の概念、設定に関する推奨事項、設定やバックアップ処理などの運用ワークフローについて説明します。 リストア処理とリカバリ処理を行うことができます。
+
+作成者：Nils Bauer、NetApp
+
+今日の企業には、 SAP アプリケーションを中断なく継続的に利用できることが求められています。データ量が増え続け、システムバックアップなどの日常的な保守作業が必要になった場合に、一貫したパフォーマンスレベルが期待されます。SAPデータベースのバックアップは重要な作業であり、本番用SAPシステムのパフォーマンスに大きく影響する可能性があります。
+
+バックアップウィンドウは短くなっている一方で、バックアップするデータの量は増え続けています。そのため、バックアップを実行してもビジネスプロセスへの影響を最小限に抑えることができれば、時間を見つけることは困難です。本番環境と非本番環境のSAPシステムのダウンタイムは、ビジネスコストを削減するために最小化する必要があるため、SAPシステムのリストアとリカバリに要する時間は重要です。

@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-dr-anf-cross-region-replication.html 
+keywords:  
+summary:  
+---
+= SAP HANA を使用した ANF のクロスリージョンレプリケーション
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このドキュメントでは、SAP HANAを使用したANFのクロスリージョンレプリケーションについて説明します。

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: backup/fsxn-restore-recover-from-secondary-storage.html 
+keywords: restore, recover, secondary, storage, 
+summary: このセクションでは、セカンダリストレージからリストアおよびリカバリする方法について説明します。 
+---
+= セカンダリストレージからリストアおよびリカバリする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+セカンダリストレージからリストアおよびリカバリするには、次の手順を実行します。
+
+セカンダリストレージ上のすべてのバックアップのリストを取得するには、SnapCenter トポロジビューでVault Copies（ヴォールトコピー）をクリックし、バックアップを選択してRestore（復元）をクリックします。
+
+image:amazon-fsx-image92.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+リストアダイアログにセカンダリの場所が表示されます。
+
+image:amazon-fsx-image93.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+さらに、リストアとリカバリの手順は、プライマリストレージにあるSnapshotバックアップでこれまで説明されていた手順と同じです。

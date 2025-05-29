@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-nfs-update-history.html 
+keywords:  
+summary:  
+---
+= 履歴を更新します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+この解決策の初版以降には、次の技術的な変更が加えられています。
+
+[cols="25,50"]
+|===
+| 日付 | 概要を更新します 
+
+
+| 2015年10月 | 初版 
+
+
+| 2016年3月 | 容量のサイジングを更新し '/hana/shared のマウント・オプションを更新し 'sysctl パラメータを更新 
+
+
+| 2017年2月 | 新しいネットアップストレージシステムとディスクシェルフ 40GbE に対応した ONTAP 9 の新機能新しい OS リリース（ SUSE Linux Enterprise Server 12 SP1 および Red Hat Enterprise Linux 7.2 ）新しい SAP HANA リリース 
+
+
+| 2017年7月 | マイナーアップデート 
+
+
+| 2018年9月 | 新しいネットアップストレージシステムは 100GbE をサポート新しい OS リリース（ SUSE Linux Enterprise Server 12 SP3 および Red Hat Enterprise Linux 7.4 ）では、 SAP HANA 2.0 SPS3 のマイナーな変更が追加されています 
+
+
+| 2019年10月 | 新しいネットアップストレージシステムと NVMe シェルフ新しい OS リリース（ SUSE Linux Enterprise Server 12 SP4 、 SUSE Linux Enterprise Server 15 、および Red Hat Enterprise Linux 7.6 ） MAX Data ボリュームサイズが変更になりました 
+
+
+| 2019年12月 | 新しいネットアップストレージシステム新しい OS リリース SUSE Linux Enterprise Server 15 SP1 
+
+
+| 2020年3月 | NFSv3 での nConnect のサポート新しい OS リリースは Red Hat Enterprise Linux 8 です 
+
+
+| 2020年5月 | SAP HANA 2.0 SPS4 で複数のデータボリュームパーティションがサポートされます 
+
+
+| 2020 年 6 月 | 追加情報オプションの機能に関するマイナーアップデート 
+
+
+| 2020年12月 | ONTAP 9.8 以降で NFSv4.1 の nconnect がサポートされるようになりました。新しいバージョンの SAP HANA がリリースされました 
+
+
+| 2021年2月 | ネットアップストレージシステムが新しく追加されると、ホストネットワークの設定が変更されます。軽微な変更が 
+
+
+| 2021年4月 | VMware vSphere 固有の情報を追加しました 
+
+
+| 2022年9月 | 新しいOS -リリース 
+
+
+| 2023年8月 | 新しいストレージシステム（AFF Cシリーズ） 
+
+
+| 2023年12月 | ホストセットアップの更新：nconnectの設定が改訂され、NFSv4.1セッションに関する情報が追加されました。 
+
+
+| 2024年5月 | 新しいストレージシステム（AFF Aシリーズ） 
+
+
+| 2024年9月 | マイナーアップデート 
+
+
+| 2024年11月 | 新しいストレージシステム 
+|===

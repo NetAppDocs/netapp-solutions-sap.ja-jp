@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: backup/fsxn-add-backup-svm-snapcenter.html 
+keywords: svm, backup, snapcenter 
+summary: このセクションでは、SnapCenter にバックアップSVMを追加する方法について説明します。 
+---
+= SnapCenter にバックアップSVMを追加
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapCenter にバックアップSVMを追加するには、次の手順を実行します。
+
+. SnapVault ターゲットボリュームが配置されているSVMをSnapCenter に設定します。
++
+image:amazon-fsx-image76.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+. [その他のオプション]ウィンドウで、プラットフォームとして[すべてのFlash FAS ]を選択し、[セカンダリ]を選択します。
++
+image:amazon-fsx-image77.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+
+
+これで、SVMをSnapCenter で使用できるようになります。
+
+image:amazon-fsx-image78.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]

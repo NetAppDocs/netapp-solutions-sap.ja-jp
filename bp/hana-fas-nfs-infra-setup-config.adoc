@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-fas-nfs-infra-setup-config.html 
+keywords:  
+summary:  
+---
+= インフラのセットアップと設定
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このドキュメントでは、NetApp FASシステムとNFSのインフラのセットアップと設定について説明します。

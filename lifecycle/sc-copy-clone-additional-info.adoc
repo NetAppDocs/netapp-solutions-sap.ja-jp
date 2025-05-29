@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-additional-info.html 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAPのライフサイクル管理を最適化するNetAppソリューションは、SAP HANAデータベースとライフサイクル管理ツールに統合されており、効率的なアプリケーション統合データプロテクションと、SAPテストシステムの柔軟なプロビジョニングが組み合わされています。 
+---
+= 追加情報およびバージョン履歴の参照先
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
+
+* link:../index.html["SAP Business Application and SAP HANA Database Solutions（netapp.com）"]
+* link:../backup/hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"]
+* link:../bp/hana-aff-fc-introduction.html["TR-4436：『SAP HANA on NetApp All Flash FAS Systems with Fibre Channel Protocol』"]
+* link:../bp/hana-aff-nfs-introduction.html["TR-4435：『SAP HANA on NetApp All Flash FAS Systems with NFS』"]
+* link:../backup/fsxn-overview.html["TR-4926：『SAP HANA on Amazon FSX for NetApp ONTAP - Backup and Recovery with SnapCenter 』"]
+* link:lama-ansible-introduction.html["TR-4953：『NetApp SAP Landscape Management Integration using Ansible』"]
+* link:libelle-sc-overview.html["TR-4929：『Automating SAP system copy operations with Libelle SystemCopy』（netapp.com）"]
+* link:../briefs/sap-alpaca-automation.html["AlpacaとNetApp SnapCenterによるSAPシステムのコピー、更新、クローニングのワークフローの自動化"]
+* link:../briefs/sap-avantra-automation.html["AvantraとNetApp SnapCenterを使用したSAPシステムのコピー、更新、クローニングのワークフローの自動化"]
+
+
+[cols="21%,20%,59%"]
+|===
+| バージョン | 日付 | ドキュメントバージョン履歴 
+
+
+| バージョン 1.0 以降 | 2018 年 2 月 | 初版リリース 
+
+
+| バージョン 2.0 以降 | 2021年2月  a| 
+SnapCenter 4.3および改良された自動化スクリプトを対象とした完全な書き換え+システム更新処理とシステムクローン処理のワークフローの説明が新しくなりました。
+
+
+
+| バージョン 3.0 以降 | 2022年5月 | SnapCenter 4.6 P1で変更されたワークフローに対応 
+
+
+| バージョン 4.0 以降 | 2024年7月  a| 
+このドキュメントはオンプレミスのNetAppシステムを対象としています。 FSx for ONTAPとAzure NetApp Files +新しいSnapCenter 5.0の操作クローンの作成と削除のワークフローでのマウントとアンマウント+ファイバチャネルSANの具体的な手順の追加+ Azure NetApp Filesの具体的な手順の追加+対応したシンプルなスクリプト+有効なSAP HANAに必要な手順の追加 `sc-system-refresh`
+
+|===

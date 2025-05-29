@@ -5,65 +5,65 @@ entries:
 - title: Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ
   entries:
   - title: 概要
-    url: "/backup/amazon-fsx-overview.html"
+    url: "/backup/fsxn-overview.html"
   - title: Amazon FSX for ONTAP を使用したバックアップとリカバリ
-    url: "/backup/amazon-fsx-backup-and-recovery-using-amazon-fsx-for-ontap.html"
+    url: "/backup/fsxn-backup-recovery-using-fsxn.html"
   - title: SnapCenter アーキテクチャ
-    url: "/backup/amazon-fsx-snapcenter-architecture.html"
+    url: "/backup/fsxn-snapcenter-architecture.html"
   - title: SnapCenter 構成
-    url: "/backup/amazon-fsx-snapcenter-configuration.html"
+    url: "/backup/fsxn-snapcenter-config.html"
   - title: SnapCenter バックアップ処理
-    url: "/backup/amazon-fsx-snapcenter-backup-operations.html"
+    url: "/backup/fsxn-snapcenter-backup-operations.html"
   - title: データボリューム以外のボリュームのバックアップ
-    url: "/backup/amazon-fsx-backup-of-non-data-volumes.html"
+    url: "/backup/fsxn-backup-of-non-data-volumes.html"
   - title: SnapVault を使用したバックアップレプリケーション
     entries:
     - title: 概要
-      url: "/backup/amazon-fsx-backup-replication-with-snapvault_overview.html"
+      url: "/backup/fsxn-backup-replication-with-snapvault-overview.html"
     - title: ONTAP ファイルシステムのレプリケーション関係をFSXに設定します
-      url: "/backup/amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html"
+      url: "/backup/fsxn-configure-replication-relationships.html"
     - title: SnapCenter にバックアップSVMを追加
-      url: "/backup/amazon-fsx-add-a-backup-svm-to-snapcenter.html"
+      url: "/backup/fsxn-add-backup-svm-snapcenter.html"
     - title: バックアップレプリケーション用の新しいSnapCenter ポリシーを作成します
-      url: "/backup/amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html"
+      url: "/backup/fsxn-create-snapcenter-policy-backup-replication.html"
     - title: リソースの保護にポリシーを追加します
-      url: "/backup/amazon-fsx-add-a-policy-to-resource-protection.html"
+      url: "/backup/fsxn-add-policy-to-resource-protection.html"
     - title: レプリケーションを使用してバックアップを作成します
-      url: "/backup/amazon-fsx-create-a-backup-with-replication.html"
+      url: "/backup/fsxn-create-backup-with-replication.html"
     - title: セカンダリストレージからリストアおよびリカバリする
-      url: "/backup/amazon-fsx-restore-and-recover-from-secondary-storage.html"
+      url: "/backup/fsxn-restore-recover-from-secondary-storage.html"
   - title: 追加情報の参照先
-    url: "/backup/amazon-fsx-where-to-find-additional-information.html"
+    url: "/backup/fsxn-additional-info.html"
 - title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
   entries:
   - title: 概要
-    url: "/backup/saphana-br-scs-overview.html"
+    url: "/backup/hana-br-scs-overview.html"
   - title: SnapCenter アーキテクチャ
-    url: "/backup/saphana-br-scs-snapcenter-architecture.html"
+    url: "/backup/hana-br-scs-snapcenter-architecture.html"
   - title: SnapCenter SAP HANA Backup 解決策 の略
-    url: "/backup/saphana-br-scs-snapcenter-sap-hana-backup-solution.html"
+    url: "/backup/hana-br-scs-snapcenter-backup.html"
   - title: SnapCenter の概念とベストプラクティス
-    url: "/backup/saphana-br-scs-snapcenter-concepts-and-best-practices.html"
+    url: "/backup/hana-br-scs-concepts-best-practices.html"
   - title: このレポートで使用するラボのセットアップ
-    url: "/backup/saphana-br-scs-lab-setup-used-for-this-report.html"
+    url: "/backup/hana-br-scs-lab-setup.html"
   - title: SnapCenter 構成
-    url: "/backup/saphana-br-scs-snapcenter-configuration.html"
+    url: "/backup/hana-br-scs-snapcenter-config.html"
   - title: SnapCenter の初期設定
-    url: "/backup/saphana-br-scs-snapcenter-initial-configuration.html"
+    url: "/backup/hana-br-scs-snapcenter-initial-config.html"
   - title: SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成
-    url: "/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html"
+    url: "/backup/hana-br-scs-resource-config-hana-database-backups.html"
   - title: データボリューム以外のバックアップ用の SnapCenter リソース固有の設定
-    url: "/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html"
+    url: "/backup/hana-br-scs-resource-specific-config-non-data-volume-backups.html"
   - title: データベースのバックアップ
-    url: "/backup/saphana-br-scs-database-backups.html"
+    url: "/backup/hana-br-scs-database-backups.html"
   - title: ブロック整合性チェック
-    url: "/backup/saphana-br-scs-block-integrity-check.html"
+    url: "/backup/hana-br-scs-block-integrity-check.html"
   - title: リストアとリカバリ
-    url: "/backup/saphana-br-scs-restore-and-recovery.html"
+    url: "/backup/hana-br-scs-restore-recovery.html"
   - title: 高度な設定と調整
-    url: "/backup/saphana-br-scs-advanced-configuration-and-tuning.html"
+    url: "/backup/hana-br-scs-advanced-config-tuning.html"
   - title: 追加情報およびバージョン履歴の参照先
-    url: "/backup/saphana-br-scs-where-to-find-additional-information.html"
+    url: "/backup/hana-br-scs-additional-info.html"
 - title: SnapCenter、SnapMirror Active Sync、VMware Metro Storage ClusterによるSAP HANAのデータ保護と高可用性
   entries:
   - title: 本ドキュメントの内容
@@ -103,72 +103,74 @@ entries:
 - title: SnapCenter を使用した SAP HANA システムレプリケーションのバックアップとリカバリ
   entries:
   - title: SAP HANA システムレプリケーションの概要
-    url: "/backup/saphana-sr-scs-sap-hana-system-replication-overview.html"
+    url: "/backup/hana-sr-scs-system-replication-overview.html"
   - title: ストレージ Snapshot バックアップと SAP システムレプリケーション
-    url: "/backup/saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html"
+    url: "/backup/hana-sr-scs-storage-snapshot-backups-sap-system-replication.html"
   - title: SAP システムレプリケーションの SnapCenter 設定オプション
-    url: "/backup/saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html"
+    url: "/backup/hana-sr-scs-config-options-sap-system-replication.html"
   - title: リソースグループを使用した SnapCenter 4.6 の設定
-    url: "/backup/saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html"
+    url: "/backup/hana-sr-scs-4.6-config-using-resource-group.html"
   - title: 単一のリソースを使用する SnapCenter 構成
-    url: "/backup/saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html"
+    url: "/backup/hana-sr-scs-config-single-resource.html"
   - title: もう一方のホストで作成されたバックアップからのリストアとリカバリ
-    url: "/backup/saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html"
+    url: "/backup/hana-sr-scs-restore-recovery-other-host-backup.html"
   - title: 追加情報の参照先
-    url: "/backup/saphana-sr-scs-where-to-find-additional-information_overview.html"
+    url: "/backup/hana-sr-scs-additional-info.html"
   - title: バージョン履歴
-    url: "/backup/saphana-sr-scs-version-history.html"
+    url: "/backup/hana-sr-scs-version-history.html"
 - title: Azure NetApp Files を使用した SAP HANA ディザスタリカバリ
   entries:
   - title: データ保護の概要
-    url: "/backup/saphana-dr-anf_data_protection_overview_overview.html"
+    url: "/backup/hana-dr-anf-data-protection-overview.html"
   - title: ディザスタリカバリ解決策の比較
-    url: "/backup/saphana-dr-anf_disaster_recovery_solution_comparison.html"
+    url: "/backup/hana-dr-anf-dr-solution-comparison.html"
   - title: SAP HANA を使用した ANF のクロスリージョンレプリケーション
     entries:
-    - title: SAP HANA によるクロスリージョンレプリケーションの概要
-      url: "/backup/saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html"
+    - title: SAP HANAを使用したリージョン間レプリケーションの概要
+      url: "/backup/hana-dr-anf-cross-region-replication-overview.html"
     - title: SAP HANA によるクロスリージョンレプリケーションの設定オプション
-      url: "/backup/saphana-dr-anf_configuration_options_for_cross-region_replication_with_sap_hana.html"
+      url: "/backup/hana-dr-anf-config-cross-region-replication.html"
     - title: 要件およびベストプラクティス
-      url: "/backup/saphana-dr-anf_requirements_and_best_practices.html"
+      url: "/backup/hana-dr-anf-requirements-best-practices.html"
     - title: ラボのセットアップ
-      url: "/backup/saphana-dr-anf_lab_setup.html"
+      url: "/backup/hana-dr-anf-lab-setup.html"
     - title: ANF クロスリージョンレプリケーションの設定手順
-      url: "/backup/saphana-dr-anf_configuration_steps_for_anf_cross-region_replication.html"
+      url: "/backup/hana-dr-anf-config-steps-cross-region-replication.html"
     - title: ANF のクロスリージョンレプリケーションを監視しています
-      url: "/backup/saphana-dr-anf_monitoring_anf_cross-region_replication.html"
+      url: "/backup/hana-dr-anf-monitor-cross-region-replication.html"
   - title: ディザスタリカバリのテスト
     entries:
     - title: ディザスタリカバリテストの概要
-      url: "/backup/saphana-dr-anf_disaster_recovery_testing_overview.html"
+      url: "/backup/hana-dr-anf-testing-overview.html"
     - title: ターゲットホストを準備します
-      url: "/backup/saphana-dr-anf_prepare_the_target_host.html"
+      url: "/backup/hana-dr-anf-prepare-target-host.html"
     - title: ディザスタリカバリサイトでの Snapshot バックアップに基づいて新しいボリュームを作成します
-      url: "/backup/saphana-dr-anf_create_new_volumes_based_on_snapshot_backups_at_the_disaster_recovery_site.html"
+      url: "/backup/hana-dr-anf-create-vols-at-dr-site.html"
     - title: ターゲットホストに新しいボリュームをマウントします
-      url: "/backup/saphana-dr-anf_mount_the_new_volumes_at_the_target_host.html"
+      url: "/backup/hana-dr-anf-mount-new-vols-target-host.html"
     - title: HANA データベースのリカバリ
-      url: "/backup/saphana-dr-anf_hana_database_recovery.html"
+      url: "/backup/hana-dr-anf-database-recovery.html"
   - title: ディザスタリカバリフェイルオーバー
     entries:
     - title: ディザスタリカバリフェイルオーバーの概要
-      url: "/backup/saphana-dr-anf_disaster_recovery_failover_overview.html"
+      url: "/backup/hana-dr-anf-failover-overview.html"
     - title: ターゲットホストを準備します
-      url: "/backup/saphana-dr-anf_prepare_the_target_host_01.html"
+      url: "/backup/hana-dr-anf-prepare-target-host_01.html"
     - title: レプリケーションピアリングを解除して削除します
-      url: "/backup/saphana-dr-anf_break_and_delete_replication_peering.html"
+      url: "/backup/hana-dr-anf-break-delete-replication-peering.html"
     - title: ターゲットホストにボリュームをマウントします
-      url: "/backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html"
+      url: "/backup/hana-dr-anf-mount-new-vols-target-host_01.html"
     - title: HANA データベースのリカバリ
-      url: "/backup/saphana-dr-anf_hana_database_recovery_01.html"
-    - title: 履歴を更新します
-      url: "/backup/saphana-dr-anf_update_history.html"
+      url: "/backup/hana-dr-anf-database-recovery_01.html"
+  - title: 履歴を更新します
+    url: "/backup/hana-dr-anf-update-history.html"
 - title: SAP HANA Disaster Recovery with Storage Replication 』を参照してください
-  url: "/backup/saphana-dr-sr_pdf_link.html"
+  url: "/backup/hana-dr-sr-pdf-link.html"
 - title: ネットアップストレージと Commvault を使用した SAP HANA のバックアップとリカバリ ソフトウェア
-  url: "/backup/saphana-commvault_pdf_link.html"
+  url: "/backup/hana-commvault-pdf-link.html"
 - title: SnapCenterとSAP ASEデータベースの統合
   url: "/backup/snapcenter-sap-ase.html"
 - title: IBM DB2データベース用のSnapCenter統合
   url: "/backup/snapcenter-ibm-db2.html"
+- title: SAP MaxDBデータベースのSnapCenter統合
+  url: "/backup/snapcenter-sap-maxdb.html"

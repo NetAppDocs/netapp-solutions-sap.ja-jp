@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-fc-introduction.html 
+keywords: introduction, raw device mapping, rdm, tailored data center integration, FCP datastore 
+summary: NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP ソフトウェアが搭載されています。 
+---
+= 『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP ソフトウェアが搭載されています。
+
+Marco Schoen 、ネットアップ
+
+
+
+== はじめに
+
+NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。
+
+この認定は、次のモデルで有効です。
+
+* AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A90、AFF A900、AFF A800
+* AFF C250、AFF C30、AFF C400、AFF C60、AFF C800、AFF C80
+* ASA A250、ASA A20、ASA A30、ASA A400、ASA A50、ASA A70、ASA、ASA A900、ASA A90、ASA A800 A1K
+* ASA C250、ASA C400、ASA C800
++
+
+NOTE: NetApp AFFおよびASA CシリーズにはNetApp ONTAP 9.13.1以降が必要です
+
+
+
+SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
+
+本ドキュメントでは、 Fibre Channel Protocol （ FCP ；ファイバチャネルプロトコル）を使用した AFF 構成について説明します。
+
+
+NOTE: このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定または機能を変更すると、原因のパフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更は、ネットアップのサポートから助言された場合にのみ実施
+
+NFS システムと NetApp FAS システムを使用する AFF システムの構成ガイドは、次のリンクから入手できます。
+
+* link:hana-fas-fc-introduction.html["FCP を使用した NetApp FAS システムでの SAP HANA"^]
+* link:hana-fas-nfs-introduction.html["NFS を使用した NetApp FAS システムでの SAP HANA"^]
+* link:hana-aff-nfs-introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"^]
+
+
+SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオーバー時にフェンシングを提供するために、標準の SAP HANA ストレージコネクタが使用されます。オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、必ず該当する SAP ノートを参照してください。詳細については、を参照してください https://launchpad.support.sap.com/["SAP Note 2235581 – SAP HANA Supported Operating Systems 』"^]。
+
+
+
+== SAP HANA テーラードデータセンター統合
+
+NetApp AFF ストレージシステムは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、アーキテクチャの概要を示します。
+
+image:saphana_aff_fc_image1.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+生産性の高いSAP HANAシステムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。
+
+* http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html["『 SAP HANA Tailored Data Center Integration Frequently Asked Questions 』"^]
+
+
+
+
+= VMware vSphere を使用した SAP HANA
+
+ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、をlink:hana-aff-nfs-introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"]参照してください。
+
+raw デバイスマッピング（ RDM ）、 FCP データストア、または FCP を使用する VVol データストアもサポートされます。どちらのデータストアオプションも、本番環境で使用するためにデータストアに格納する SAP HANA データボリュームまたはログボリュームは 1 つだけです。
+
+SAP HANA での vSphere の使用の詳細については、次のリンクを参照してください。
+
+* https://help.sap.com/docs/SUPPORT_CONTENT/virtualization/3362185751.html["SAP HANA on VMware vSphere - 仮想化 - コミュニティ Wiki"^]
+* https://www.vmware.com/docs/sap_hana_on_vmware_vsphere_best_practices_guide-white-paper["『SAP HANA on VMware vSphere Best Practices Guide』"^]
+* https://launchpad.support.sap.com/["2161991 - VMware vSphere 設定ガイドライン - SAP One Support Launchpad （ログインが必要）"^]
+

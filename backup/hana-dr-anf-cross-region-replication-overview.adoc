@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-dr-anf-cross-region-replication-overview.html 
+keywords: application, agnostic, information, azure, sap, hana 
+summary: アプリケーションに依存しないクロスリージョンレプリケーションの情報は、次の場所にあります。 
+---
+= SAP HANA を使用した ANF のクロスリージョンレプリケーション
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+クロスリージョンレプリケーションに関するアプリケーションに依存しない情報は、次の場所にあります。
+
+link:https://docs.microsoft.com/en-us/azure/azure-netapp-files/["Azure NetApp Files のドキュメント | Microsoft ドキュメント"^]を参照してください。
