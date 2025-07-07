@@ -221,4 +221,4 @@ RAM のサイズ、各 SAP HANA ホストのディスク上の正味データサ
 
 次の図に、サイジングプロセスの概要を示します。
 
-image:saphana_fas_fc_image8.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+image:saphana_fas_fc_image8a.png["SAP HANA のサイジングプロセス"]

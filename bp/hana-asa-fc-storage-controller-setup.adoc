@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-storage-controller-setup.html 
+keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
+summary: ここでは、ネットアップストレージシステムの構成について説明します。プライマリのインストールとセットアップは、対応する Data ONTAP のセットアップガイドおよび設定ガイドに従って実行する必要があります。 
+---
+= ストレージコントローラのセットアップ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+ここでは、ネットアップストレージシステムの構成について説明します。プライマリのインストールとセットアップは、対応する Data ONTAP のセットアップガイドおよび設定ガイドに従って実行する必要があります。
+
+
+
+== ストレージ効率
+
+SSD 構成の SAP HANA では、インライン重複排除、ボリューム間インライン重複排除、インライン圧縮、インラインコンパクションがサポートされています。
+
+
+
+== Quality of Service の略
+
+QoSを使用すると、共有コントローラ上の特定のSAP HANAシステムまたはSAP以外のアプリケーションのストレージスループットを制限できます。
+
+
+
+=== 本番環境と開発/テスト
+
+1つのユースケースは、開発システムとテストシステムのスループットを制限して、混在環境で本番システムに影響を与えないようにすることです。サイジングプロセスでは、非本番システムのパフォーマンス要件を決定する必要があります。開発 / テスト用のシステムは、通常、 SAP で定義されている本番用システム KPI の 20~50% の範囲で、パフォーマンス値を低くしてサイジングすることができます。ストレージシステムのパフォーマンスに最も大きな影響を与えるのは、大きな書き込みI/Oです。そのため、QoSスループットの上限を、データボリュームとログボリュームの対応する書き込みSAP HANAストレージパフォーマンスKPI値の割合に設定する必要があります。
+
+
+
+=== 共有環境
+
+もう1つのユースケースは、負荷の高い書き込みワークロードのスループットを制限することです。特に、レイテンシの影響を受けやすい他の書き込みワークロードにこれらのワークロードが影響しないようにするためです。このような環境では、非共有のスループットの上限QoSグループポリシーを各Storage Virtual Machine（SVM）内の各LUNに適用して、個 々 のストレージオブジェクトの最大スループットを指定した値に制限することを推奨します。これにより、1つのワークロードが他のワークロードに悪影響を及ぼす可能性が低くなります。
+
+そのためには、SVMごとにONTAPクラスタのCLIを使用してグループポリシーを作成する必要があります。
+
+....
+qos policy-group create -policy-group <policy-name> -vserver <vserver name> -max-throughput 1000MB/s -is-shared false
+....
+SVM内の各LUNに適用されます。次の例では、SVM内の既存のすべてのLUNにポリシーグループを適用します。
+
+....
+lun modify -vserver <vserver name>  -path * -qos-policy-group  <policy-name>
+....
+この作業はSVMごとに行う必要があります。QoSポリシンググループの名前は、SVMごとに異なる名前にする必要があります。新しいLUNの場合は、ポリシーを直接適用できます。
+
+....
+lun create -vserver <vserver_name> -path  /vol/<volume_name>/<lun_name>   -size <size> -ostype <e.g. linux>  -qos-policy-group <policy-name>
+....
+特定のLUNの最大スループットとして1000MB/秒を使用することを推奨します。アプリケーションがより多くのスループットを必要とする場合は、LUNストライピングを備えた複数のLUNを使用して、必要な帯域幅を提供する必要があります。このガイドでは、セクションで、Linux LVMをベースとしたSAP HANAの例を紹介しますlink:hana-asa-fc-host-setup.html#create-lvm-volume-groups-and-logical-volumes["ホスト セットアップ"]。
+
+
+NOTE: この制限は読み取りにも適用されます。そのため、SAP HANAデータベースの起動時間やバックアップに必要なSLAを満たす十分な数のLUNを使用します。
+
+
+
+== ストレージを設定する
+
+以下に、必要なストレージ構成手順の概要を示します。各手順の詳細については、以降のセクションで説明します。このセクションでは、ストレージハードウェアがセットアップされており、 ONTAP ソフトウェアがすでにインストールされていることを前提としています。また、ストレージ FCP ポートと SAN ファブリックの接続がすでに確立されている必要があります。
+
+. の説明に従って、正しいディスク・シェルフ構成を確認します<<NVMe （ 100GbE ）ベースのディスクシェルフ>>。
+. セクション link:saphana-asa-fc-storage-controller-setup.html#initiator-groups の説明に従って、HANA サーバーのワールドワイド名 (WWN) を持つイニシエーター グループ (igroup) を作成します。 <<イニシエータグループ>> 。
+. LUNを作成し、それをセクションで説明されているサーバーにマッピングします。 link:hana-asa-fc-storage-controller-setup_single_host.html["SAP HANA 単一ホストシステムの LUN 構成"]そしてlink:hana-asa-fc-storage-controller-setup_multiple_hosts.html["SAP HANA マルチホストシステムの LUN 構成"]
+
+
+
+
+=== NVMe （ 100GbE ）ベースのディスクシェルフ
+
+次の図に示すように、NS224 NVMeディスクシェルフは、コントローラごとに2つの100GbEポートで接続されます。ディスクは HA ペアの両方のコントローラに自動的に配布されます。
+
+image:saphana_asa_fc_image11a.png["NS224 NVMeディスクシェルフの接続"]
+
+
+
+=== イニシエータグループ
+
+igroup は、サーバごとに、または LUN へのアクセスを必要とするサーバのグループに対して設定できます。igroup の構成には、サーバの World Wide Port Name （ WWPN ）が必要です。
+
+「 anlun 」ツールを使用して次のコマンドを実行し、各 SAP HANA ホストの WWPN を取得します。
+
+....
+sapcc-hana-tst:~ # sanlun fcp show adapter
+/sbin/udevadm
+/sbin/udevadm
+
+host0 ...... WWPN:2100000e1e163700
+host1 ...... WWPN:2100000e1e163701
+....
+
+NOTE: この `sanlun`ツールはNetApp Host Utilitiesに含まれており、各SAP HANAホストにインストールする必要があります。詳細については、セクションを参照してください。link:hana-asa-fc-host-setup.html["ホストのセットアップ："]
+
+igroupは、ONTAPクラスタのCLIを使用して作成できます。
+
+....
+lun igroup create -igroup <igroup name> -protocol fcp -ostype linux -initiator <list of initiators> -vserver <SVM name>
+....

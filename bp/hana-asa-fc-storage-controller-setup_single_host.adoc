@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-storage-controller-setup_single_host.html 
+keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
+summary: ここでは、ネットアップストレージシステムの構成について説明します。プライマリのインストールとセットアップは、対応する Data ONTAP のセットアップガイドおよび設定ガイドに従って実行する必要があります。 
+---
+= ストレージコントローラのセットアップ - 単一ホスト
+:allow-uri-read: 
+
+
+
+
+== ストレージコントローラのセットアップ - 単一ホスト
+
+[role="lead"]
+このセクションでは、SAP HANAシングルホストシステムに固有のNetAppストレージシステムの構成について説明します。
+
+
+
+== SAP HANA 単一ホストシステムの LUN 構成
+
+Linux LVM は、パフォーマンスを向上し、LUN サイズの制限に対処するために使用されています。次の表に示すように、 SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。
+
+|===
+| 論理ボリューム / LUN | SAP HANA ホストのマウントポイント | 注 
+
+
+| lv ： FC5_data_mnt0000 -vol | /hana/data FC5/mnt00001 のように指定します | /etc/fstab エントリを使用してマウントされます 
+
+
+| lv ： FC5_log_mnt00001 -vol | /hana/log/FC5/mnt00001 | /etc/fstab エントリを使用してマウントされます 
+
+
+| LUN：FC5_shared | /hana/shareed/FC5 | /etc/fstab エントリを使用してマウントされます 
+|===
+
+NOTE: 説明した構成では、  `/usr/sap/FC5`ユーザFC5admのデフォルトのホームディレクトリが格納されているディレクトリは、ローカルディスク上にあります。ディスクベースのレプリケーションによる災害復旧設定では、NetAppは、  `/usr/sap/FC5`すべてのファイルシステムが中央ストレージ上に存在するようにディレクトリを作成します。
+
+
+
+== LUN の作成とイニシエーター グループへの LUN のマッピング
+
+NetApp ONTAP System Managerを使用してストレージボリュームとLUNを作成し、それらをサーバとONTAP CLIのigroupにマッピングすることができます。このマニュアルでは、CLIの使用方法について説明します。
+
+
+NOTE: 「 anlun 」ツールは NetApp Host Utilities の一部であり、各 SAP HANA ホストにインストールする必要があります。詳細については、「 host_setup 」セクションを参照してください。
+
+
+
+=== CLI を使用して LUN を作成し、LUN をイニシエータ グループにマッピングする
+
+このセクションでは、LVM と LVM ボリューム グループごとに 2 つの LUN を使用する SID FC5 の SAP HANA 単一ホスト システムに対して、ONTAP 9 のコマンド ラインを使用した構成例を示します。
+
+. すべての LUN を作成します。
++
+....
+lun create -path  FC5_data_mnt00001   -size 1t -ostype linux  -class regular
+lun create -path FC5_data2_mnt00001 -size 1t -ostype linux  -class regular
+lun create -path FC5_log_mnt00001 -size 260g -ostype linux  -class regular
+lun create -path FC5_log2_mnt00001 -size 260g -ostype linux  -class regular
+lun create -path FC5_shared -size 260g -ostype linux  -class regular
+
+....
+. システム FC5 に属するすべてのサーバのイニシエータグループを作成します。
++
+....
+lun igroup create -igroup HANA-FC5 -protocol fcp -ostype linux -initiator 10000090fadcc5fa,10000090fadcc5fb -vserver svm1
+....
+. 作成したイニシエータグループにすべての LUN をマッピングします。
++
+....
+lun map -path FC5_data_mnt00001    -igroup HANA-FC5
+lun map -path FC5_data2_mnt00001  -igroup HANA-FC5
+lun map -path FC5_log_mnt00001  -igroup HANA-FC5
+lun map -path FC5_log2_mnt00001  -igroup HANA-FC5
+lun map -path FC5_shared  -igroup HANA-FC5
+....
+

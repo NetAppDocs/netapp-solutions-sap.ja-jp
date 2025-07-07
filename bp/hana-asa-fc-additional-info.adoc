@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: bp/hana-fas-fc-additional-info.html 
-keywords: additional, information, sap, hana, fc 
-summary: このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。 
+permalink: bp/hana-asa-fc-additional-info.html 
+keywords:  
+summary:  
 ---
 = 追加情報の参照先
 :hardbreaks:
@@ -18,8 +18,9 @@ summary: このドキュメントに記載されている情報の詳細につ�
 
 * link:../index.html["SAP HANA ソフトウェアソリューション"]
 * link:../backup/hana-dr-sr-pdf-link.html["TR-4646 ：『 SAP HANA Disaster Recovery with Storage Replication 』"]
+* link:../backup/hana-sc-vmware-smas-scope.html["SnapCenter、SnapMirror Active Sync、VMware Metro Storage ClusterによるSAP HANAのデータ保護と高可用性"^]
 * link:../backup/hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"]
-* link:../lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP System Copies Using the SnapCenter SAP HANA Plug-in』"]
+* link:../lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"]
 * ネットアップドキュメントセンター
 +
 https://www.netapp.com/support-and-training/documentation/["https://www.netapp.com/support-and-training/documentation/"^]

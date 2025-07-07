@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-infra-setup-config-overview.html 
+keywords:  
+summary:  
+---
+= インフラのセットアップと設定
+:allow-uri-read: 
+
+
+
+
+== インフラのセットアップと設定
+
+[role="lead"]
+以降のセクションでは、 SAP HANA インフラのセットアップと構成のガイドラインについて説明し、 SAP HANA システムのセットアップに必要なすべての手順について説明します。ここでは、次の設定例を使用します。
+
+* SID=FC5のHANAシステム
++
+** SAP HANA シングルおよびマルチホスト
+
+
+

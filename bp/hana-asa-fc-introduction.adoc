@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-introduction.html 
+keywords: introduction, raw device mapping, rdm, tailored data center integration, FCP datastore 
+summary: NetApp ASA 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。このガイドでは、このプラットフォーム上の SAP HANA に関するベスト プラクティスについて説明します。 
+---
+= 『 SAP HANA on NetApp ASA Systems with Fibre Channel Protocol 』を参照してください
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp ASA 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。このガイドでは、このプラットフォーム上の SAP HANA に関するベスト プラクティスについて説明します。
+
+Marco Schoen 、ネットアップ
+
+
+
+== はじめに
+
+NetApp ASA AシリーズおよびASA Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。このガイドでは、次の認定モデルのベスト プラクティスについて説明します。
+
+* ASA A20、ASA A30、ASA A50、ASA A70、ASA A90、ASA A1K
+* ASA C30
+
+
+SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
+
+本ドキュメントでは、 Fibre Channel Protocol （ FCP ；ファイバチャネルプロトコル）を使用した ASA 構成について説明します。
+
+
+NOTE: このホワイトペーパーで説明している構成は、 SAP HANA に必要な SAP HANA KPI と、 SAP HANA に最適なパフォーマンスを達成するために必要です。ここに記載されていない設定または機能を変更すると、原因のパフォーマンスが低下したり、予期しない動作が発生したりする可能性があります。変更は、ネットアップのサポートから助言された場合にのみ実施
+
+SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオーバー時にフェンシングを提供するために、標準の SAP HANA ストレージコネクタが使用されます。オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、必ず該当する SAP ノートを参照してください。詳細については、を参照してください https://launchpad.support.sap.com/["SAP Note 2235581 – SAP HANA Supported Operating Systems 』"^]。
+
+
+
+== SAP HANA テーラードデータセンター統合
+
+NetApp ASA ストレージ システムは、FC (SAN) プロトコルを使用する SAP HANA TDI プログラムで認定されています。SAP Business Suite on HANA、S/4HANA、BW/4HANA、SAP Business Warehouse on HANA など、現在のどの SAP HANA シナリオにも、単一ホスト構成または複数ホスト構成で導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、アーキテクチャの概要を示します。
+
+image:saphana_aff_fc_image1.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+生産性の高いSAP HANAシステムを実現するための前提条件と推奨事項の詳細については、次のリソースを参照してください。
+
+* http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html["『 SAP HANA Tailored Data Center Integration Frequently Asked Questions 』"^]
+
+
+
+
+= VMware vSphere を使用した SAP HANA
+
+ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。Raw デバイス マッピング (RDM)、FCP データストア、または FCP を使用した VVOL データストアがサポートされています。どちらのデータストアオプションも、本番環境で使用するためにデータストアに格納する SAP HANA データボリュームまたはログボリュームは 1 つだけです。
+
+SAP HANA での vSphere の使用の詳細については、次のリンクを参照してください。
+
+* https://help.sap.com/docs/SUPPORT_CONTENT/virtualization/3362185751.html["SAP HANA on VMware vSphere - 仮想化 - コミュニティ Wiki"^]
+* https://www.vmware.com/docs/sap_hana_on_vmware_vsphere_best_practices_guide-white-paper["『SAP HANA on VMware vSphere Best Practices Guide』"^]
+* https://launchpad.support.sap.com/["2161991 - VMware vSphere 設定ガイドライン - SAP One Support Launchpad （ログインが必要）"^]
+

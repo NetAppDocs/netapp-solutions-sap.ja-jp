@@ -66,6 +66,48 @@ entries:
     url: "/bp/hana-aff-nfs-additional-info.html"
   - title: 履歴を更新します
     url: "/bp/hana-aff-nfs-update-history.html"
+- title: "『 SAP HANA on NetApp ASA Systems with FCP Configuration Guide 』"
+  entries:
+  - title: はじめに
+    url: "/bp/hana-asa-fc-introduction.html"
+  - title: アーキテクチャ
+    url: "/bp/hana-asa-fc-architecture.html"
+  - title: ストレージのサイジング
+    url: "/bp/hana-asa-fc-storage-sizing.html"
+  - title: インフラのセットアップと設定
+    entries:
+    - title: インフラのセットアップと設定の概要
+      url: "/bp/hana-asa-fc-infra-setup-config-overview.html"
+    - title: SAN ファブリックのセットアップ
+      url: "/bp/hana-asa-fc-san-fabric-setup.html"
+    - title: 時刻の同期
+      url: "/bp/hana-asa-fc-time-synchronization.html"
+    - title: ストレージコントローラのセットアップ
+      entries:
+      - title: 一般的な設定
+        url: "/bp/hana-asa-fc-storage-controller-setup.html"
+      - title: 単一ホストLUN構成
+        url: "/bp/hana-asa-fc-storage-controller-setup_single_host.html"
+      - title: 複数ホストのLUN構成
+        url: "/bp/hana-asa-fc-storage-controller-setup_multiple_hosts.html"
+    - title: SAP HANA Storage Connector API
+      url: "/bp/hana-asa-fc-storage-connector-api.html"
+    - title: ホストのセットアップ
+      entries:
+      - title: マルチパスの設定
+        url: "/bp/hana-asa-fc-host-setup.html"
+      - title: シングルホスト
+        url: "/bp/hana-asa-fc-host-setup_single.html"
+      - title: マルチホスト
+        url: "/bp/hana-asa-fc-host-setup_multi.html"
+    - title: SAP HANA の I/O スタック構成
+      url: "/bp/hana-asa-fc-io-stack-configuration.html"
+    - title: SAP HANA ソフトウェアのインストール
+      url: "/bp/hana-asa-fc-software-install.html"
+  - title: 追加情報の参照先
+    url: "/bp/hana-asa-fc-additional-info.html"
+  - title: 履歴を更新します
+    url: "/bp/hana-asa-fc-update-history.html"
 - title: "『 SAP HANA on NetApp FAS Systems with NFS Configuration Guide 』"
   entries:
   - title: はじめに

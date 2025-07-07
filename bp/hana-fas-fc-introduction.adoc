@@ -2,14 +2,14 @@
 sidebar: sidebar 
 permalink: bp/hana-fas-fc-introduction.html 
 keywords: sap, hana, fas, systems, fibre, channel, protocol, configuration, data, vmware, vsphere 
-summary: NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP オペレーティングシステムが搭載されています。 
+summary: NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。このガイドでは、このプラットフォーム上の SAP HANA に関するベスト プラクティスについて説明します。 
 ---
 = 『SAP HANA on NetApp FAS Systems with Fibre Channel Protocol』構成ガイド
 :allow-uri-read: 
 
 
 [role="lead"]
-NetApp FAS 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。この認定エンタープライズストレージプラットフォームでは、 NetApp ONTAP オペレーティングシステムが搭載されています。
+NetApp FAS 製品ファミリは、TDI プロジェクトで SAP HANA と併用することが認定されています。このガイドでは、FCP のこのプラットフォームでの SAP HANA のベスト プラクティスについて説明します。
 
 Marco Schoen 、ネットアップ
 
@@ -27,7 +27,8 @@ NOTE: このホワイトペーパーで説明している構成は、 SAP HANA �
 
 NFS システムと NetApp AFF システムを使用する FAS システムの構成ガイドは、次のリンクから入手できます。
 
-* link:hana-aff-fc-introduction.html["『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください"^]
+* link:hana-aff-fc-introduction.html["FCP 搭載の NetApp AFF システム上の SAP HANA"^]
+* link:hana-asa-fc-introduction.html["FCP 搭載の NetApp ASA システム上の SAP HANA"^]
 * link:hana-fas-nfs-introduction.html["NFS を使用した NetApp FAS システムでの SAP HANA"^]
 * link:hana-aff-nfs-introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"^]
 

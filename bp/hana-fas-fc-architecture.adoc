@@ -34,7 +34,7 @@ image:saphana_fas_fc_image3.png["入力/出力ダイアログを示す図、ま�
 
 導入した FAS システムストレージモデルに関係なく、次の図に示すように、ストレージコントローラを追加することで SAP HANA 環境を拡張することもできます。
 
-image:saphana_fas_fc_image4.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+image:saphana_fas_fc_image4a.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 
 
@@ -48,7 +48,7 @@ NetApp SnapVault ソフトウェアを使用すると、プライマリストレ
 
 次の図に示すように、 NFS マウントを使用して、データベースログをセカンダリストレージに直接バックアップできます。
 
-image:saphana_fas_fc_image5.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+image:saphana_asa_fc_image5a.png["SnapCenterの概要"]
 
 ストレージベースの Snapshot バックアップは、ファイルベースのバックアップに比べて大きなメリットをもたらします。たとえば、次のような利点があります。
 

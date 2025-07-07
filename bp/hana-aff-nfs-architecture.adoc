@@ -22,7 +22,7 @@ AFF システム製品ファミリーのさまざまなモデルをストレー�
 
 次の図は、 8 台の SAP HANA ホストをストレージハイアベイラビリティ（ HA ）ペアに接続した構成例を示しています。
 
-image:saphana_aff_nfs_image2a.png["8台のSAP HANAホストをストレージハイアベイラビリティ（HA）ペアに接続"]
+image:saphana_aff_nfs_image2b.png["8台のSAP HANAホストをストレージハイアベイラビリティ（HA）ペアに接続"]
 
 アーキテクチャは、次の 2 つの側面で拡張できます。
 
@@ -32,11 +32,11 @@ image:saphana_aff_nfs_image2a.png["8台のSAP HANAホストをストレージハ
 
 次の図は、追加の SAP HANA ホストをストレージコントローラに接続した場合の構成例を示しています。この例では、 SAP HANA ホスト 16 台分の容量とパフォーマンスの要件を満たすために、さらにディスクシェルフが必要です。合計スループット要件に応じて、 10GbE 以上の接続をストレージコントローラに追加する必要があります。
 
-image:saphana_aff_nfs_image3a.png["既存のストレージコントローラHAペアへの追加のSAP HANAホストの追加"]
+image:saphana_aff_nfs_image3b.png["既存のストレージコントローラHAペアへの追加のSAP HANAホストの追加"]
 
 次の図に示すように、導入した AFF システムとは関係なく、任意の認定済みストレージコントローラを追加して希望のノード密度に合わせて SAP HANA 環境を拡張することもできます。
 
-image:saphana_aff_nfs_image4a.png["HAペアが追加されました"]
+image:saphana_aff_nfs_image4b.png["HAペアが追加されました"]
 
 
 
@@ -50,7 +50,7 @@ NetApp SnapMirror テクノロジを使用すると、一方のストレージ�
 
 次の図に示すように、 NFS マウントを使用して、データベースログをセカンダリストレージに直接バックアップできます。
 
-image:saphana_aff_nfs_image6.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+image:saphana_asa_fc_image5a.png["SnapCenterの概要"]
 
 ストレージベースの Snapshot バックアップは、従来のファイルベースのバックアップに比べて大きなメリットをもたらします。たとえば、次のような利点があります。
 

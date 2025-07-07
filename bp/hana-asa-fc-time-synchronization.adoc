@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-time-synchronization.html 
+keywords: time, storage, database host 
+summary: ストレージコントローラと SAP HANA データベースホストの間で時刻を同期する必要があります。そのためには、すべてのストレージコントローラとすべての SAP HANA ホストに同じタイムサーバを設定します。 
+---
+= 時刻の同期
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージコントローラと SAP HANA データベースホストの間で時刻を同期する必要があります。そのためには、すべてのストレージコントローラとすべての SAP HANA ホストに同じタイムサーバを設定します。
