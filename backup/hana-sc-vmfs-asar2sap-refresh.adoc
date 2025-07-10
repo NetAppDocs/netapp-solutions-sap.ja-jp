@@ -1,0 +1,177 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2sap-refresh.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery 
+summary:  
+---
+= SAP システムリフレッシュ
+:allow-uri-read: 
+
+
+SnapCenterを使用したSAPシステムリフレッシュ操作の詳細については、以下を参照してください。  https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"] 。
+
+2番目のHANAシステムのQFSは、第1章で説明したのと同じ方法でプロビジョニングされています。 link:hana-sc-vmfs-asar2-hana-prov.html["「HANAシステムのプロビジョニングとインストール」"] 。
+
+
+
+=== 前提条件
+
+SnapCenterの現在のバージョン (6.1P1) にはいくつかの制限がありますが、次のリリースで修正される予定です。
+
+. 各「クローン作成」および「クローン削除」ワークフローの後に、ターゲット HANA ホストでコマンド「systemctl restart spl」を使用して spl プロセスを再起動する必要があります。
+. SAP システム更新操作のソースとターゲットとして使用される HANA VM は、同じ ESX ホスト上で実行する必要があります。
+
+
+
+
+=== ワークフローの概要
+
+最初の SAP システム更新処理を実行する前に、ターゲット HANA システムをインストールし、ホストを SnapCenter に追加する必要があります。次に、HANA システムをシャットダウンし、HANA データ ディスクをホストからアンマウントする必要があります。
+
+
+
+==== SnapCenter クローン作成ワークフロー
+
+. ストレージクローンを作成
+. ストレージクローンのホストマッピングを設定します
+. ストレージクローン(データストア)をESXホストに接続します
+. データストアからターゲットHANA VMに新しいディスクを追加する
+. HANA VM OS へのディスクのマウント
+. 事後スクリプトを使用したHANAシステムの回復
+
+
+上映時間:12分
+
+
+NOTE: リストア処理と比較すると、クローン処理の実行時間は HANA データベースのサイズに依存しません。ステップ 1 から 5 の実行時間は、非常に大規模なデータベースでも同様です。もちろん、大規模なHANAシステムでは回復に時間がかかります。
+
+
+
+==== SnapCenter クローン削除ワークフロー
+
+. 事前スクリプトを使用したHANAシステムのシャットダウン
+. HANA VM OS からディスクをアンマウントする
+. HANA VM からディスクを削除する
+. ESX ホストからデータストアを削除する
+. ストレージクローンの削除
+
+
+上映時間:11分
+
+
+
+=== SnapCenter クローン作成ワークフロー
+
+クローン作成ワークフローは、目的のスナップショットを選択し、クローン・ボタンをクリックすると開始されます。
+
+image:sc-hana-asrr2-vmfs-image28.png["説明している内容を示す図"]
+
+ターゲット ホストと SID を指定する必要があります。
+
+image:sc-hana-asrr2-vmfs-image29.png["説明している内容を示す図"]
+
+image:sc-hana-asrr2-vmfs-image30.png["説明している内容を示す図"]
+
+この例では、ポストスクリプトを使用して、ターゲットホストでリカバリを実行しています。
+
+image:sc-hana-asrr2-vmfs-image31.png["説明している内容を示す図"]
+
+ワークフローが開始されると、 SnapCenter は選択した Snapshot に基づいてクローニングされたストレージユニットを作成します。
+
+image:sc-hana-asrr2-vmfs-image32.png["説明している内容を示す図"]
+
+その後、 SnapCenter は、ターゲット HANA VM が実行されている ESX ホストに LUN (データストア)を接続します。
+
+image:sc-hana-asrr2-vmfs-image33.png["説明している内容を示す図"]
+
+その後、新しいデータストア内の VMDK が HANA VM に追加されます。
+
+image:sc-hana-asrr2-vmfs-image34.png["説明している内容を示す図"]
+
+その後、 SnapCenter は新しいディスクを HANA Linux システムに設定してマウントします。
+
+....
+hana-9:/mnt/sapcc-share/SAP-System-Refresh # df -h
+
+Filesystem Size Used Avail Use% Mounted on
+/dev/mapper/system-root 60G 5.2G 52G 10% /
+devtmpfs 4.0M 4.0K 4.0M 1% /dev
+tmpfs 49G 0 49G 0% /dev/shm
+efivarfs 256K 57K 195K 23% /sys/firmware/efi/efivars
+tmpfs 13G 26M 13G 1% /run
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-tmpfiles-setup-dev-early.service
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-sysctl.service
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-sysusers.service
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-tmpfiles-setup-dev.service
+/dev/mapper/system-root 60G 5.2G 52G 10% /.snapshots
+/dev/mapper/system-root 60G 5.2G 52G 10% /boot/grub2/i386-pc
+/dev/mapper/system-root 60G 5.2G 52G 10% /boot/grub2/x86++_++64-efi
+/dev/mapper/system-root 60G 5.2G 52G 10% /home
+/dev/mapper/system-root 60G 5.2G 52G 10% /opt
+/dev/mapper/system-root 60G 5.2G 52G 10% /srv
+/dev/mapper/system-root 60G 5.2G 52G 10% /root
+/dev/mapper/system-root 60G 5.2G 52G 10% /tmp
+/dev/mapper/system-root 60G 5.2G 52G 10% /usr/local
+/dev/mapper/system-root 60G 5.2G 52G 10% /var
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-vconsole-setup.service
+/dev/sdc 95G 8.9G 87G 10% /hana/log/QFS/mnt00001
+/dev/sdd 95G 14G 82G 14% /hana/shared
+/dev/sda1 253M 5.9M 247M 3% /boot/efi
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-tmpfiles-setup.service
+192.168.175.86:/sapcc++_++share 1.4T 858G 568G 61% /mnt/sapcc-share
+tmpfs 6.3G 72K 6.3G 1% /run/user/464
+tmpfs 1.0M 0 1.0M 0% /run/credentials/getty@tty1.service
+tmpfs 6.3G 52K 6.3G 1% /run/user/0
+/dev/sde 95G 9.2G 86G 10% /hana/data/QFS/mnt00001
+tmpfs 6.3G 56K 6.3G 1% /run/user/1001
+hana-9:/mnt/sapcc-share/SAP-System-Refresh #
+
+hana-9:/mnt/sapcc-share/SAP-System-Refresh # cat /etc/fstab
+/dev/system/root / btrfs defaults 0 0
+/dev/system/root /var btrfs subvol=/@/var 0 0
+/dev/system/root /usr/local btrfs subvol=/@/usr/local 0 0
+/dev/system/root /tmp btrfs subvol=/@/tmp 0 0
+/dev/system/root /srv btrfs subvol=/@/srv 0 0
+/dev/system/root /root btrfs subvol=/@/root 0 0
+/dev/system/root /opt btrfs subvol=/@/opt 0 0
+/dev/system/root /home btrfs subvol=/@/home 0 0
+/dev/system/root /boot/grub2/x86++_++64-efi btrfs subvol=/@/boot/grub2/x86++_++64-efi 0 0
+/dev/system/root /boot/grub2/i386-pc btrfs subvol=/@/boot/grub2/i386-pc 0 0
+/dev/system/swap swap swap defaults 0 0
+/dev/system/root /.snapshots btrfs subvol=/@/.snapshots 0 0
+UUID=FB79-24DC /boot/efi vfat utf8 0 2
+192.168.175.86:/sapcc++_++share /mnt/sapcc-share nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+#/dev/sdb /hana/data/QFS/mnt00001 xfs relatime,inode64 0 0
+/dev/sdc /hana/log/QFS/mnt00001 xfs relatime,inode64 0 0
+/dev/sdd /hana/shared xfs defaults 0 0
+# The following entry has been added by NetApp (SnapCenter Plug-in for UNIX)
+/dev/sde /hana/data/QFS/mnt00001 xfs rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota 0 0
+hana-9:/mnt/sapcc-share/SAP-System-Refresh #
+....
+次のスクリーンショットは、 SnapCenter によって実行されるジョブステップを示しています。
+
+image:sc-hana-asrr2-vmfs-image35.png["説明している内容を示す図"]
+
+で説明したように "前提条件" セクションでは、適切なクリーンアップを開始するには、 HANA ホストの SnapCenter spl サービスを「 systemctl restart spl 」コマンドを使用して再起動する必要があります。これは、ジョブが終了したときに行う必要があります。
+
+クローンワークフローが完了したら、リソース QFS をクリックして自動検出を開始できます。自動検出プロセスが完了すると、新しいストレージフットプリントがリソースの詳細ビューに一覧表示されます。
+
+image:sc-hana-asrr2-vmfs-image36.png["説明している内容を示す図"]
+
+
+
+=== SnapCenter クローン削除ワークフロー
+
+クローン削除ワークフローは、ソース HANA リソースでクローンを選択し、削除ボタンをクリックして開始します。
+
+image:sc-hana-asrr2-vmfs-image37.png["説明している内容を示す図"]
+
+この例では、事前スクリプトを使用してターゲットHANAデータベースをシャットダウンしています。
+
+image:sc-hana-asrr2-vmfs-image38.png["説明している内容を示す図"]
+
+次のスクリーンショットは、 SnapCenter によって実行されるジョブステップを示しています。
+
+image:sc-hana-asrr2-vmfs-image39.png["説明している内容を示す図"]
+
+で説明したように "前提条件" セクションでは、適切なクリーンアップを開始するには、 HANA ホストの SnapCenter spl サービスを「 systemctl restart spl 」コマンドを使用して再起動する必要があります。

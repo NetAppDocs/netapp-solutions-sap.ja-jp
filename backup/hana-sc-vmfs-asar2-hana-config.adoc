@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-hana-config.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery 
+summary:  
+---
+= HANA構成
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+
+
+== SnapCenterデータベースユーザーを構成する
+
+システムデータベースユーザのユーザストアを作成し、SnapCenterで使用する必要があります。
+
+image:sc-hana-asrr2-vmfs-image8.png["説明している内容を示す図"]
+
+
+
+== HDBユーザーストアキーを設定する
+
+ユーザーvfsadmのユーザーストアキーを作成する必要があります。ポート通信のために、HANAインスタンス番号を適切に設定する必要があります。セットアップでは、インスタンス番号「45」が使用されます。
+
+....
+vfsadm@hana-8:/usr/sap/VFS/HDB45> hdbuserstore SET VFSKEY hana-8:34513 SNAPCENTER <password>
+
+Retroactive report: Operation succeed.
+....
+アクセスを確認するには:
+
+....
+vfsadm@hana-8:/usr/sap/VFS/HDB45> hdbsql -U VFSKEY
+
+Welcome to the SAP HANA Database interactive terminal.
+Type: \h for help with commands
+\q to quit
+hdbsql SYSTEMDB=> exit
+
+vfsadm@hana-8:/usr/sap/VFS/HDB45>
+....

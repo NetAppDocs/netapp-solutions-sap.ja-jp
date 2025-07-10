@@ -1,0 +1,221 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-hana-prov.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery 
+summary:  
+---
+= HANAシステムのプロビジョニングとインストール
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+この章では、VMFSを使用するVMware環境に固有のSAP HANAシステムのインストールと設定について説明します。その他の一般的なベストプラクティスについては、を参照してください https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["『 SAP HANA on NetApp ASA Systems with Fibre Channel Protocol 』を参照してください"]。
+
+
+
+== ストレージ構成
+
+SAPが本番環境のHANAシステム向けに定義したストレージパフォーマンスKPIを満たすには、HANAシステムのデータおよびログファイルシステム用に専用のLUNとデータストアを構成する必要があります。データストアは、複数のHANAシステムや他のワークロード間で共有しないでください。
+
+HANA システム VFS の 3 つのデータストアをプロビジョニングするために、 ONTAP Tools for VMware (OTV) が使用されています。
+
+* ハナ+___++データ+___++VFS
+* hana+___++log++++VFS
+* hana+___++共有++++VFS
+
+
+
+NOTE: HANA 共有ファイルシステムのデータストアは、複数の HANA システム間で共有することもできます。
+
+image:sc-hana-asrr2-vmfs-image2.png["説明している内容を示す図"]
+
+ストレージ システムでは、OTV によって 3 つの LUN が作成されています。
+
+image:sc-hana-asrr2-vmfs-image3.png["説明している内容を示す図"]
+
+
+
+== VMディスク構成
+
+HANA VMに3つの新しいディスク（VMDK）を追加する必要があります。各ディスクは、下図に示すように、以前に作成されたデータストアのいずれかに格納されます。
+
+image:sc-hana-asrr2-vmfs-image4.png["説明している内容を示す図"]
+
+image:sc-hana-asrr2-vmfs-image5.png["説明している内容を示す図"]
+
+image:sc-hana-asrr2-vmfs-image6.png["説明している内容を示す図"]
+
+3 つのディスクが VM に追加されると、OS レベルでリストできるようになります。
+
+....
+hana-8:~ # lsblk
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+sda 8:0 0 100G 0 disk
+├─sda1 8:1 0 256M 0 part /boot/efi
+└─sda2 8:2 0 82G 0 part
+├─system-root 254:0 0 60G 0 lvm /root
+│ /var
+│ /usr/local
+│ /tmp
+│ /srv
+│ /opt
+│ /home
+│ /boot/grub2/x86++_++64-efi
+│ /boot/grub2/i386-pc
+│ /.snapshots
+│ /
+└─system-swap 254:1 0 2G 0 lvm [SWAP]
+sdb 8:16 0 95G 0 disk
+sdc 8:32 0 95G 0 disk
+sdd 8:48 0 95G 0 disk
+sr0 11:0 1 17.1G 0 rom
+....
+
+
+== VMパラメータdisk.EnableUUID
+
+このパラメータを適切に設定する必要があります。そうしないと、 SnapCenterデータベースの自動検出は失敗します。
+
+. VMのシャットダウン
+. 新しいパラメータ「disk.EnableUUID」を追加し、「TRUE」に設定します
+. Start VM
+
+
+image:sc-hana-asrr2-vmfs-image7.png["説明している内容を示す図"]
+
+
+
+== Linuxホストテノフアイルシステムノシユンヒ
+
+
+
+=== 新しいディスクでのxfsファイルシステムの作成
+
+3つの新しいディスクそれぞれにxfsファイルシステムが作成されている。
+
+....
+hana-8:~ # mkfs.xfs /dev/sdb
+meta-data=/dev/sdb isize=512 agcount=4, agsize=6225920 blks
+= sectsz=512 attr=2, projid32bit=1
+= crc=1 finobt=1, sparse=1, rmapbt=1
+= reflink=1 bigtime=1 inobtcount=0 nrext64=0
+data = bsize=4096 blocks=24903680, imaxpct=25
+= sunit=0 swidth=0 blks
+naming =version 2 bsize=4096 ascii-ci=0, ftype=1
+log =internal log bsize=4096 blocks=16384, version=2
+= sectsz=512 sunit=0 blks, lazy-count=1
+realtime =none extsz=4096 blocks=0, rtextents=0
+Discarding blocks...Done.
+
+hana-8:~ # mkfs.xfs /dev/sdc
+meta-data=/dev/sdc isize=512 agcount=4, agsize=6225920 blks
+= sectsz=512 attr=2, projid32bit=1
+= crc=1 finobt=1, sparse=1, rmapbt=1
+= reflink=1 bigtime=1 inobtcount=0 nrext64=0
+data = bsize=4096 blocks=24903680, imaxpct=25
+= sunit=0 swidth=0 blks
+naming =version 2 bsize=4096 ascii-ci=0, ftype=1
+log =internal log bsize=4096 blocks=16384, version=2
+= sectsz=512 sunit=0 blks, lazy-count=1
+realtime =none extsz=4096 blocks=0, rtextents=0
+Discarding blocks...Done.
+
+hana-8:~ # mkfs.xfs /dev/sdd
+meta-data=/dev/sdd isize=512 agcount=4, agsize=6225920 blks
+= sectsz=512 attr=2, projid32bit=1
+= crc=1 finobt=1, sparse=1, rmapbt=1
+= reflink=1 bigtime=1 inobtcount=0 nrext64=0
+data = bsize=4096 blocks=24903680, imaxpct=25
+= sunit=0 swidth=0 blks
+naming =version 2 bsize=4096 ascii-ci=0, ftype=1
+log =internal log bsize=4096 blocks=16384, version=2
+= sectsz=512 sunit=0 blks, lazy-count=1
+realtime =none extsz=4096 blocks=0, rtextents=0
+Discarding blocks...Done.
+
+hana-8:~ #
+....
+
+
+=== マウントポイントの作成
+
+....
+hana-8:/ # mkdir -p /hana/data/VFS/mnt00001
+hana-8:/ # mkdir -p /hana/log/VFS/mnt00001
+hana-8:/ # mkdir -p /hana/shared
+hana-8:/ # chmod –R 777 /hana/log/SMA
+hana-8:/ # chmod –R 777 /hana/data/SMA
+hana-8:/ # chmod -R 777 /hana/shared
+....
+
+
+=== /etc/fstabの設定
+
+....
+hana-8:/ # cat /etc/fstab
+
+/dev/system/root / btrfs defaults 0 0
+/dev/system/root /var btrfs subvol=/@/var 0 0
+/dev/system/root /usr/local btrfs subvol=/@/usr/local 0 0
+/dev/system/root /tmp btrfs subvol=/@/tmp 0 0
+/dev/system/root /srv btrfs subvol=/@/srv 0 0
+/dev/system/root /root btrfs subvol=/@/root 0 0
+/dev/system/root /opt btrfs subvol=/@/opt 0 0
+/dev/system/root /home btrfs subvol=/@/home 0 0
+/dev/system/root /boot/grub2/x86++_++64-efi btrfs subvol=/@/boot/grub2/x86++_++64-efi 0 0
+/dev/system/root /boot/grub2/i386-pc btrfs subvol=/@/boot/grub2/i386-pc 0 0
+/dev/system/swap swap swap defaults 0 0
+/dev/system/root /.snapshots btrfs subvol=/@/.snapshots 0 0
+UUID=FB79-24DC /boot/efi vfat utf8 0 2
+### SAPCC_share
+192.168.175.86:/sapcc_share /mnt/sapcc-share nfs rw,vers=3,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,nolock 0 0
+/dev/sdb /hana/data/VFS/mnt00001 xfs relatime,inode64 0 0
+/dev/sdc /hana/log/VFS/mnt00001 xfs relatime,inode64 0 0
+/dev/sdd /hana/shared xfs defaults 0 0
+hana-8:/ #
+
+hana-8:/ # df -h
+Filesystem Size Used Avail Use% Mounted on
+/dev/mapper/system-root 60G 4.4G 54G 8% /
+devtmpfs 4.0M 0 4.0M 0% /dev
+tmpfs 49G 0 49G 0% /dev/shm
+efivarfs 256K 57K 195K 23% /sys/firmware/efi/efivars
+tmpfs 13G 18M 13G 1% /run
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-tmpfiles-setup-dev-early.service
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-sysctl.service
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-tmpfiles-setup-dev.service
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-vconsole-setup.service
+/dev/mapper/system-root 60G 4.4G 54G 8% /.snapshots
+/dev/mapper/system-root 60G 4.4G 54G 8% /boot/grub2/i386-pc
+/dev/mapper/system-root 60G 4.4G 54G 8% /boot/grub2/x86++_++64-efi
+/dev/mapper/system-root 60G 4.4G 54G 8% /home
+/dev/mapper/system-root 60G 4.4G 54G 8% /opt
+/dev/mapper/system-root 60G 4.4G 54G 8% /srv
+/dev/mapper/system-root 60G 4.4G 54G 8% /tmp
+/dev/mapper/system-root 60G 4.4G 54G 8% /usr/local
+/dev/mapper/system-root 60G 4.4G 54G 8% /var
+/dev/sda1 253M 5.9M 247M 3% /boot/efi
+/dev/mapper/system-root 60G 4.4G 54G 8% /root
+tmpfs 1.0M 0 1.0M 0% /run/credentials/systemd-tmpfiles-setup.service
+tmpfs 6.3G 72K 6.3G 1% /run/user/464
+tmpfs 1.0M 0 1.0M 0% /run/credentials/getty@tty1.service
+tmpfs 6.3G 52K 6.3G 1% /run/user/0
+192.168.175.86:/sapcc_share 1.4T 840G 586G 59% /mnt/sapcc-share
+/dev/sdb 95G 1.9G 94G 2% /hana/data/VFS/mnt00001
+/dev/sdc 95G 1.9G 94G 2% /hana/log/VFS/mnt00001
+/dev/sdd 95G 1.9G 94G 2% /hana/shared
+
+hana-8:/ #
+....
+
+
+== HANAのインストール
+
+これで、HANAのインストールを実行できます。
+
+
+NOTE: 上記の設定では、/usr/sap/VFS ディレクトリは OS VMDK 上に配置されます。/usr/sap/VFS を共有 VMDK 上に保存する必要がある場合は、hana 共有ディスクをパーティション分割して、/usr/sap/VFS 用の別のファイルシステムを提供することができます。

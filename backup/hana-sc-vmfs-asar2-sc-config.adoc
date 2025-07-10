@@ -1,0 +1,100 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-sc-config.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery 
+summary:  
+---
+= SnapCenter 構成
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+
+
+== 前提条件
+
+
+
+=== SnapCenter HANAリソースを自動検出する必要があります
+
+VMware VMFS で構成されたリソースは、これらの構成に必要な特定の操作を有効にするために、 SnapCenterによって自動検出される必要があります。
+
+HANA 非データ ボリュームはSnapCenterで常に手動で構成されるリソースであるため、VMFS を使用したSnapCenterではサポートされません。
+
+SAP HANAのマルチホストシステムは、中央のHANAプラグインを使用して設定する必要があるため、デフォルトでは手動で設定されます。また、VMware VMFSを使用する場合、このようなシステムはSnapCenterではサポートされません。
+
+
+
+=== SnapCenter for VMware vSphereプラグイン
+
+SnapCenter for VMware vSphereプラグインをVMware環境に導入する必要があります。
+
+
+
+=== Storage SVM 管理 IP
+
+LUN をホストするストレージ SVM には管理インターフェイスが設定されている必要があります。そうでないと、「クラスターの追加」オプションを使用してストレージを追加したときに SVM がSnapCenterにリストされず、自動検出操作が失敗します。
+
+image:sc-hana-asrr2-vmfs-image9.png["説明している内容を示す図"]
+
+image:sc-hana-asrr2-vmfs-image10.png["説明している内容を示す図"]
+
+
+
+=== VMディスクパラメータ
+
+パラメータは、章で説明されているように設定する必要があります。 link:hana-sc-vmfs-asar2-hana-prov.html#vm-parameter-disk-enableuuid["「VMパラメータdisk.EnableUUID」"]そうしないと、 SnapCenterデータベースの自動検出は失敗します。
+
+image:sc-hana-asrr2-vmfs-image11.png["説明している内容を示す図"]
+
+
+
+=== ストレージ通信にREST APIを使用するようにSnapCenterを構成する
+
+SnapCenterは、ストレージ通信にREST APIを使用するように設定する必要があります。設定されていない場合、スナップショット作成操作は失敗し、以下のエラーメッセージが表示されます。
+
+image:sc-hana-asrr2-vmfs-image12.png["説明している内容を示す図"]
+
+構成ファイル + C:++\++Program Files++\++NetApp++\++SMCore++\++SMCoreServiceHost.dll.config 内のパラメーター「IsRestEnabledForStorageConnection」を「true」に設定する必要があります。
+
+++<++キー="IsRestEnabledForStorageConnection" 値="true" を追加 /++>++
+
+image:sc-hana-asrr2-vmfs-image13.png["説明している内容を示す図"]
+
+変更を行った後、 SnapCenter SMCore サービスを停止して起動する必要があります。
+
+image:sc-hana-asrr2-vmfs-image14.png["説明している内容を示す図"]
+
+
+
+== SnapCenterにVMwareプラグインを追加する
+
+ホストをSnapCenterに追加する前に、VMware vSphere用SnapCenterプラグインをVMware環境に導入する必要があります。も参照してください https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deploy_snapcenter_plug-in_for_vmware_vsphere.html["SnapCenter Plug-in for VMware vSphereの導入"]。
+
+
+NOTE: クレデンシャルはホスト追加ワークフローで設定する必要があります。ホストタイプとしてvSphereを選択できます。
+
+image:sc-hana-asrr2-vmfs-image15.png["説明している内容を示す図"]
+
+
+
+== HANAホストを追加する
+
+
+NOTE: 具体的な要件はありません。プラグインの導入と自動検出は通常どおり実行されます。
+
+image:sc-hana-asrr2-vmfs-image16.png["説明している内容を示す図"]
+
+自動検出プロセスにより、 SnapCenter はHANA リソースが VMFS で仮想化されて実行されていることを検出します。
+
+image:sc-hana-asrr2-vmfs-image17.png["説明している内容を示す図"]
+
+
+
+== ポリシーとリソース保護の構成
+
+VMFS を使用する VMware に固有のものはありません。

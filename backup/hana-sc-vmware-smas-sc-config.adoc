@@ -40,7 +40,7 @@ SAP HANAマルチホストシステムは、中央のHANAプラグインを使�
 
 
 
-=== SnapCenter for VMware vSphereプラグイン
+=== SnapCenter for VMware vSphere プラグイン
 
 SnapCenter for VMware vSphereプラグインをVMware環境に導入する必要があります。
 

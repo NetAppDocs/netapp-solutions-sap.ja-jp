@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-lab-setup.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery 
+summary:  
+---
+= このドキュメントで使用したラボのセットアップ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+下の図は、使用したラボのセットアップの概要を示しています。2つの単一ホストHANA MDCシステムを使用して、様々な操作をデモンストレーションしています。HANAシステムVFSはバックアップ、リストア、リカバリ操作の実行用に指定され、HANAシステムQFSはSAPシステムリフレッシュ操作のターゲットシステムとして機能します。VMware向けSnapCenterプラグインは、VMware VMFSで構成されたHANAリソースをSnapCenterで管理するために不可欠です。HANAシステムのストレージユニットのプロビジョニングにはVMware向けONTAPツールを使用しましたが、必須コンポーネントではありません。
+
+image:sc-hana-asrr2-vmfs-image1.png["説明している内容を示す図"]
+
+
+
+=== ソフトウェアバージョン
+
+[cols="50%,50%"]
+|===
+| ソフトウェア | バージョン 
+
+
+| ONTAP | ASA A70 ONTAP 9.16.1 
+
+
+| vSphereクライアント | 8.0.3 
+
+
+| ESXi | 8.0.3 
+
+
+| vSphere用SnapCenterプラグイン | 6.1.0 
+
+
+| ONTAP tools for VMware vSphere | 10.4 
+
+
+| Linux OS | SLES for SAP 15 SP6 
+
+
+| SAP HANA のサポート | 2.0 SPS8 
+
+
+| SnapCenter | 6.1P1 
+|===
