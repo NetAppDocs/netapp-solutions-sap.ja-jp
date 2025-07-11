@@ -37,33 +37,7 @@ SAP HANA ソフトウェアのインストールでは、シングルホスト�
 
 . データパーティションとログパーティションの WWID を追加します。WWID は '/etc/multipath.conf' ファイルに設定されているエイリアス名と一致している必要があります
 +
-次の出力は、システム ID （ SID ）が SS3 の 2+1 マルチホストセットアップの例を示しています。
-
-+
-....
-stlrx300s8-6:~ # cat /hana/shared/global.ini
-[communication]
-listeninterface = .global
-[persistence]
-basepath_datavolumes = /hana/data/SS3
-basepath_logvolumes = /hana/log/SS3
-[storage]
-ha_provider = hdb_ha.fcClient
-partition_*_*__prtype = 5
-partition_*_data__mountoptions = -o relatime,inode64
-partition_*_log__mountoptions = -o relatime,inode64,nobarrier
-partition_1_data__wwid = hana-SS3_data_mnt00001
-partition_1_log__wwid = hana-SS3_log_mnt00001
-partition_2_data__wwid = hana-SS3_data_mnt00002
-partition_2_log__wwid = hana-SS3_log_mnt00002
-[system_information]
-usage = custom
-[trace]
-ha_fcclient = info
-stlrx300s8-6:~ #
-....
-+
-Linux LVM を使用している場合は、必要な設定が異なります。次の例は、 SID が FC5 の 2+1 マルチホストセットアップを示しています。
+次の出力は、SID=FC5 の LVM を使用した 2+1 のマルチホスト セットアップの例を示しています。
 
 +
 ....
@@ -83,8 +57,10 @@ partition_1_log__lvmname = FC5_log_mnt00001-vol
 partition_2_data__lvmname = FC5_data_mnt00002-vol
 partition_2_log__lvmname = FC5_log_mnt00002-vol
 sapcc-hana-tst-03:/hana/shared #
-Using the SAP hdblcm installation tool, start the installation by running the following command at one of the worker hosts. Use the `addhosts` option to add the second worker (sapcc-hana-tst-06) and the standby host (sapcc-hana-tst-07).
 ....
++
+SAP hdblcm インストール ツールを使用して、ワーカー ホストの 1 つで次のコマンドを実行してインストールを開始します。オプションを使用し `addhosts`て、2番目のワーカー（sapc-hana-tst-06）とスタンバイホスト（sapc-hana-tst-07）を追加します。
+
 +
 
 NOTE: 準備したファイルが格納されているディレクトリ `global.ini`は(`--storage_cfg=/hana/shared`、CLIオプションに含まれてい `storage_cfg`ます）。

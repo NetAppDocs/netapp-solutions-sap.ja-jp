@@ -1,0 +1,131 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-fc-storage-controller-setup_single_host.html 
+keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
+summary: ここでは、ネットアップストレージシステムの構成について説明します。プライマリのインストールとセットアップは、対応する Data ONTAP のセットアップガイドおよび設定ガイドに従って実行する必要があります。 
+---
+= ストレージコントローラのセットアップ - 単一ホスト
+:allow-uri-read: 
+
+
+
+
+== ストレージコントローラのセットアップ - 単一ホスト
+
+[role="lead"]
+このセクションでは、SAP HANAシングルホストシステムに固有のNetAppストレージシステムの構成について説明します。
+
+
+
+== SAP HANA シングルホストシステムのボリュームと LUN の構成
+
+次の図は、 4 つのシングルホスト SAP HANA システムのボリューム構成を示しています。各 SAP HANA システムのデータボリュームとログボリュームは、異なるストレージコントローラに分散されます。たとえば、ボリューム「 ID1_data_mnt00001 」がコントローラ A で設定され、ボリューム「 ID1_log_mnt00001 」がコントローラ B で設定されているとします各ボリューム内で 1 つの LUN が構成されます。
+
+
+NOTE: HA ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。
+
+image:saphana_aff_fc_image16a.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+
+各 SAP HANA ホストには、データボリューム、ログボリューム、「 /hana/shared 」のボリュームが構成されています。次の表は、 4 台の SAP HANA シングルホストシステムを使用した構成例を示しています。
+
+|===
+| 目的 | コントローラ A のアグリゲート 1 | コントローラ A のアグリゲート 2 | コントローラ B のアグリゲート 1 | コントローラ B のアグリゲート 2 
+
+
+| システム SID1 のデータ、ログ、および共有ボリューム | データボリューム： SID1_data_mnt00001 | 共有ボリューム： SID1_shared | – | ログボリューム： SID1_log_mnt00001 
+
+
+| システム SID2 のデータボリューム、ログボリューム、および共有ボリューム | – | ログボリューム： SID2_log_mnt00001 | データボリューム： SID2_data_mnt00001 | 共有ボリューム： SID2_shared 
+
+
+| システム SID3 のデータ、ログ、および共有ボリューム | 共有ボリューム： SID3_shared | データボリューム： SID3_data_mnt00001 | ログボリューム： SID3_log_mnt00001 | – 
+
+
+| システム SID4 のデータボリューム、ログボリューム、および共有ボリューム | ログボリューム： SID4_log_mnt00001 | – | 共有ボリューム： SID4_shared | データボリューム： SID4_data_mnt00001 
+|===
+次の表に、シングルホストシステムのマウントポイント構成例を示します。
+
+|===
+| LUN | SAP HANA ホストのマウントポイント | 注 
+
+
+| SID1_data_mnt00001 | /hana/data SID1/mnt00001 のように指定します | /etc/fstab エントリを使用してマウントされます 
+
+
+| SID1_log_mnt00001 | /hana/log/s1/mnt00001 | /etc/fstab エントリを使用してマウントされます 
+
+
+| SID1_shared | /hana/shareed/SID1 | /etc/fstab エントリを使用してマウントされます 
+|===
+
+NOTE: ここで説明する構成では ' ユーザ SID1adm のデフォルトのホーム・ディレクトリが格納されている /usr/sap/SID1 ディレクトリがローカル・ディスク上にありますディスク・ベースのレプリケーションを使用した災害復旧セットアップでは、すべてのファイル・システムが中央ストレージ上にあるように、 /usr/sap/SID1 ディレクトリの「 ID1_shared 」ボリューム内に追加の LUN を作成することを推奨します。
+
+
+
+== Linux LVM を使用した SAP HANA シングルホストシステムのボリュームと LUN の構成
+
+Linux LVM を使用すると、パフォーマンスを向上させ、 LUN サイズの制限に対処できます。LVM ボリュームグループの各 LUN は、別のアグリゲートおよび別のコントローラに格納する必要があります。次の表に、ボリュームグループごとに 2 つの LUN を使用する例を示します。
+
+
+NOTE: SAP HANA KPI を実現するために、複数の LUN で LVM を使用する必要はありません。1 つの LUN セットアップで必要な KPI を達成します。
+
+|===
+| 目的 | コントローラ A のアグリゲート 1 | コントローラ A のアグリゲート 2 | コントローラ B のアグリゲート 1 | コントローラ B のアグリゲート 2 
+
+
+| LVM ベースのシステムのデータ、ログ、および共有ボリューム | データボリューム： SID1_data_mnt00001 | 共有ボリューム： SID1_shared log2 ボリューム： SID1_log2_mnt00001 | data2 ボリューム： SID1_data2_mnt00001 | ログボリューム： SID1_log_mnt00001 
+|===
+次の表に示すように、 SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。
+
+|===
+| 論理ボリューム / LUN | SAP HANA ホストのマウントポイント | 注 
+
+
+| LV ： SID1_data_mnt0000_vol | /hana/data SID1/mnt00001 のように指定します | /etc/fstab エントリを使用してマウントされます 
+
+
+| LV ： SID1_log_mnt00001-vol | /hana/log/s1/mnt00001 | /etc/fstab エントリを使用してマウントされます 
+
+
+| LUN ： SID1_shared | /hana/shareed/SID1 | /etc/fstab エントリを使用してマウントされます 
+|===
+
+NOTE: ここで説明する構成では ' ユーザ SID1adm のデフォルトのホーム・ディレクトリが格納されている /usr/sap/SID1 ディレクトリがローカル・ディスク上にありますディスク・ベースのレプリケーションを使用した災害復旧セットアップでは、すべてのファイル・システムが中央ストレージ上にあるように、 /usr/sap/SID1 ディレクトリの「 ID1_shared 」ボリューム内に追加の LUN を作成することを推奨します。
+
+
+
+=== CLI を使用して LUN を作成し、LUN をイニシエータ グループにマッピングする
+
+このセクションでは、LVM と LVM ボリューム グループごとに 2 つの LUN を使用する SID FC5 の SAP HANA 単一ホスト システムに対して、ONTAP 9 のコマンド ラインを使用した構成例を示します。
+
+. 必要なボリュームをすべて作成します。
++
+....
+vol create -volume FC5_data_mnt00001 -aggregate aggr1_1 -size 1200g  -snapshot-policy none -foreground true -encrypt false  -space-guarantee none
+vol create -volume FC5_log_mnt00001  -aggregate aggr1_2 -size 280g -snapshot-policy none -foreground true -encrypt false -space-guarantee none
+vol create -volume FC5_data2_mnt00001 -aggregate aggr1_2 -size 1200g -snapshot-policy none -foreground true -encrypt false -space-guarantee none
+vol create -volume FC5_log2_mnt00001  -aggregate aggr1_1 -size 280g -snapshot-policy none -foreground true -encrypt false  -space-guarantee none
+vol create -volume FC5_shared -aggregate aggr1_1 -size 512g -state online -policy default -snapshot-policy none -junction-path /FC5_shared -encrypt false  -space-guarantee none
+....
+. すべての LUN を作成します。
++
+....
+lun create -path  /vol/FC5_data_mnt00001/FC5_data_mnt00001   -size 1t -ostype linux -space-reserve disabled -space-allocation disabled -class regular
+lun create -path /vol/FC5_data2_mnt00001/FC5_data2_mnt00001 -size 1t -ostype linux -space-reserve disabled -space-allocation disabled -class regular
+lun create -path /vol/FC5_log_mnt00001/FC5_log_mnt00001 -size 260g -ostype linux -space-reserve disabled -space-allocation disabled -class regular
+lun create -path /vol/FC5_log2_mnt00001/FC5_log2_mnt00001 -size 260g -ostype linux -space-reserve disabled -space-allocation disabled -class regular
+....
+. FC5 のシステム ホストに属するすべてのポートのイニシエーター グループを作成します。
++
+....
+lun igroup create -igroup HANA-FC5 -protocol fcp -ostype linux -initiator 10000090fadcc5fa,10000090fadcc5fb -vserver hana
+....
+. 作成したイニシエータグループにすべての LUN をマッピングします。
++
+....
+lun map -path /vol/FC5_data_mnt00001/FC5_data_mnt00001    -igroup HANA-FC5
+lun map -path /vol/FC5_data2_mnt00001/FC5_data2_mnt00001  -igroup HANA-FC5
+lun map -path /vol/FC5_log_mnt00001/FC5_log_mnt00001  -igroup HANA-FC5
+lun map -path /vol/FC5_log2_mnt00001/FC5_log2_mnt00001  -igroup HANA-FC5
+....
+

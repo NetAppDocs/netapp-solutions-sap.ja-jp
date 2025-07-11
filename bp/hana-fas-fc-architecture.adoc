@@ -94,4 +94,4 @@ image:saphana_fas_fc_image6.png["入力/出力ダイアログを示す図、ま�
 
 次の図は、解決策の概要を示しています。各サイトのストレージクラスタは、ローカルで高可用性を実現し、本番環境のワークロードに使用されます。各サイトのデータはもう一方のサイトに同期的にレプリケートされ、災害のフェイルオーバー時に使用できます。
 
-image:saphana_fas_fc_image7.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+image:saphana_fas_image8.png["NetAppMetroClusterIP"]

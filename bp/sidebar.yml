@@ -19,10 +19,20 @@ entries:
     - title: 時刻の同期
       url: "/bp/hana-aff-fc-time-synchronization.html"
     - title: ストレージコントローラのセットアップ
+      entries:
+      - title: 単一ホストLUN構成
+        url: "/bp/hana-aff-fc-storage-controller-setup_single_host.html"
+      - title: 複数ホストのLUN構成
+        url: "/bp/hana-aff-fc-storage-controller-setup_multiple_hosts.html"
       url: "/bp/hana-aff-fc-storage-controller-setup.html"
     - title: SAP HANA Storage Connector API
       url: "/bp/hana-aff-fc-storage-connector-api.html"
     - title: ホストのセットアップ
+      entries:
+      - title: シングルホスト
+        url: "/bp/hana-aff-fc-host-setup_single.html"
+      - title: 複数のホスト
+        url: "/bp/hana-aff-fc-host-setup_multi.html"
       url: "/bp/hana-aff-fc-host-setup.html"
     - title: SAP HANA の I/O スタック構成
       url: "/bp/hana-aff-fc-io-stack-configuration.html"
@@ -84,22 +94,20 @@ entries:
       url: "/bp/hana-asa-fc-time-synchronization.html"
     - title: ストレージコントローラのセットアップ
       entries:
-      - title: 一般的な設定
-        url: "/bp/hana-asa-fc-storage-controller-setup.html"
       - title: 単一ホストLUN構成
         url: "/bp/hana-asa-fc-storage-controller-setup_single_host.html"
       - title: 複数ホストのLUN構成
         url: "/bp/hana-asa-fc-storage-controller-setup_multiple_hosts.html"
+      url: "/bp/hana-asa-fc-storage-controller-setup.html"
     - title: SAP HANA Storage Connector API
       url: "/bp/hana-asa-fc-storage-connector-api.html"
     - title: ホストのセットアップ
       entries:
-      - title: マルチパスの設定
-        url: "/bp/hana-asa-fc-host-setup.html"
       - title: シングルホスト
         url: "/bp/hana-asa-fc-host-setup_single.html"
-      - title: マルチホスト
+      - title: 複数のホスト
         url: "/bp/hana-asa-fc-host-setup_multi.html"
+      url: "/bp/hana-asa-fc-host-setup.html"
     - title: SAP HANA の I/O スタック構成
       url: "/bp/hana-asa-fc-io-stack-configuration.html"
     - title: SAP HANA ソフトウェアのインストール

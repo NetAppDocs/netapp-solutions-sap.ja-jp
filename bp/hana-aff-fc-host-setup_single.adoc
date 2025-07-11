@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-fc-host-setup_single.html 
+keywords: multipathing, fcp, hba, configure 
+summary: ホストをセットアップする前に、ネットアップサポートサイトから NetApp SAN Host Utilities をダウンロードし、 HANA サーバにインストールしておく必要があります。ホスト・ユーティリティのマニュアルには、使用する FCP HBA に応じてインストールする必要がある追加ソフトウェアの情報が記載されています。 
+---
+= 単一ホスト設定
+:allow-uri-read: 
+
+
+
+
+== 単一ホスト設定
+
+[role="lead"]
+この章では、SAP HANA 単一ホストのセットアップについて説明します。
+
+
+
+=== LVM ボリュームグループと論理ボリュームを作成
+
+. すべての LUN を物理ボリュームとして初期化します。
++
+....
+pvcreate /dev/mapper/hana-FC5_data_mnt00001
+pvcreate /dev/mapper/hana-FC5_data2_mnt00001
+pvcreate /dev/mapper/hana-FC5_log_mnt00001
+pvcreate /dev/mapper/hana-FC5_log2_mnt00001
+....
+. 各データパーティションとログパーティションのボリュームグループを作成します。
++
+....
+vgcreate FC5_data_mnt00001 /dev/mapper/hana-FC5_data_mnt00001 /dev/mapper/hana-FC5_data2_mnt00001
+vgcreate FC5_log_mnt00001 /dev/mapper/hana-FC5_log_mnt00001 /dev/mapper/hana-FC5_log2_mnt00001
+....
+. データパーティションとログパーティションごとに論理ボリュームを作成します。ボリュームグループごとに使用されている LUN の数（この例では 2 つ）と同じストライプサイズを使用し、データの場合は 256K 、ログの場合は 64k を使用します。SAP では、ボリュームグループごとに 1 つの論理ボリュームのみがサポートされます。
++
+....
+lvcreate --extents 100%FREE -i 2 -I 256k --name vol FC5_data_mnt00001
+lvcreate --extents 100%FREE -i 2 -I 64k --name vol FC5_log_mnt00001
+....
+. その他すべてのホストで、物理ボリューム、ボリュームグループ、およびボリュームグループをスキャンします。
+
+
+....
+modprobe dm_mod
+pvscan
+vgscan
+lvscan
+....
+
+NOTE: これらのコマンドでボリュームが見つからない場合は、再起動する必要があります。
+
+論理ボリュームをマウントするには、論理ボリュームをアクティブ化する必要があります。ボリュームをアクティブ化するには、次のコマンドを実行します。
+
+....
+vgchange -a y
+....
+
+
+=== ファイルシステムの作成
+
+すべてのデータおよびログ論理ボリュームと hana 共有 LUN に XFS ファイル システムを作成します。
+
+....
+mkfs.xfs FC5_data_mnt00001-vol
+mkfs.xfs FC5_log_mnt00001-vol
+mkfs.xfs /dev/mapper/svm1-FC5_shared
+....
+
+NOTE: 複数ホストのコマンド例には、 2+1 のマルチホスト HANA システムが示されています。
+
+
+
+=== マウントポイントを作成する
+
+必要なマウントポイントディレクトリを作成するには、次のいずれかの操作を行います。
+
+* シングルホストシステムの場合は、権限を設定し、データベースホストにマウントポイントを作成します。
+
+
+....
+sapcc-hana-tst:/ # mkdir -p /hana/data/FC5/mnt00001
+sapcc-hana-tst:/ # mkdir -p /hana/log/FC5/mnt00001
+sapcc-hana-tst:/ # mkdir -p /hana/shared
+sapcc-hana-tst:/ # chmod –R 777 /hana/log/FC5
+sapcc-hana-tst:/ # chmod –R 777 /hana/data/FC5
+sapcc-hana-tst:/ # chmod 777 /hana/shared
+....
+
+
+=== ファイルシステムをマウント
+
+/etc/fstab 構成ファイルを使用してシステムのブート中にファイル・システムをマウントするには ' 次の手順を実行します
+
+* シングル・ホスト・システムの場合は ' 必要なファイル・システムを /etc/fstab 構成ファイルに追加します
++
+....
+# cat /etc/fstab
+/dev/mapper/hana-FC5_shared /hana/shared xfs defaults 0 0
+/dev/mapper/FC5_log_mnt00001-vol /hana/log/FC5/mnt00001 xfs relatime,inode64 0 0
+/dev/mapper/FC5_data_mnt00001-vol /hana/data/FC5/mnt00001 xfs relatime,inode64 0 0
+....
++
+
+NOTE: データ LUN とログ LUN の XFS ファイルシステムは 'relatim' および inode64' マウントオプションを使用してマウントする必要があります
+
++
+ファイルシステムをマウントするには、  `mount –a`ホストでコマンドを実行します。
+
+
