@@ -5,12 +5,13 @@ keywords: multipathing, fcp, hba, configure
 summary: ホストをセットアップする前に、ネットアップサポートサイトから NetApp SAN Host Utilities をダウンロードし、 HANA サーバにインストールしておく必要があります。ホスト・ユーティリティのマニュアルには、使用する FCP HBA に応じてインストールする必要がある追加ソフトウェアの情報が記載されています。 
 ---
 = ホストのセットアップ
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
-
-
-
-== ホストのセットアップ
 
 [role="lead"]
 ホストをセットアップする前に、 NetApp SAN Host Utilities をからダウンロードしておく必要があります http://mysupport.netapp.com/["ネットアップサポート"^] HANA サーバにインストールします。ホスト・ユーティリティのマニュアルには、使用する FCP HBA に応じてインストールする必要がある追加ソフトウェアの情報が記載されています。

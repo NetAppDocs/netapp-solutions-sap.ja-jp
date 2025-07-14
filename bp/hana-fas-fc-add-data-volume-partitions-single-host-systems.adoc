@@ -80,7 +80,7 @@ ONTAP システムマネージャまたは ONTAP CLI を使用して、新しい
 . HANA システムに属する追加の LUN ごとに XFS ファイルシステムを作成します。
 +
 ....
-stlrx300s8-6:/ # mkfs.xfs /dev/mapper/hana-SS3_data2_mnt00001
+stlrx300s8-6:/ # mkfs.xfs /dev/mapper/hana-FC5_data2_mnt00001
 ....
 . 追加のファイル・システム /s を '/etc/fstab 構成ファイルに追加します
 +
@@ -90,16 +90,16 @@ NOTE: データ LUN の XFS ファイル・システムは 'relatim' および i
 +
 ....
 stlrx300s8-6:/ # cat /etc/fstab
-/dev/mapper/hana-SS3_shared /hana/shared xfs defaults 0 0
-/dev/mapper/hana-SS3_log_mnt00001 /hana/log/SS3/mnt00001 xfs relatime,inode64 0 0
-/dev/mapper/hana-SS3_data_mnt00001 /hana/data/SS3/mnt00001 xfs relatime,inode64 0 0
-/dev/mapper/hana-SS3_data2_mnt00001 /hana/data2/SS3/mnt00001 xfs relatime,inode64 0 0
+/dev/mapper/hana-FC5_shared /hana/shared xfs defaults 0 0
+/dev/mapper/hana-FC5_log_mnt00001 /hana/log/FC5/mnt00001 xfs relatime,inode64 0 0
+/dev/mapper/hana-FC5_data_mnt00001 /hana/data/FC5/mnt00001 xfs relatime,inode64 0 0
+/dev/mapper/hana-FC5_data2_mnt00001 /hana/data2/FC5/mnt00001 xfs relatime,inode64 0 0
 ....
 . マウントポイントを作成し、データベースホストに権限を設定します。
 +
 ....
-stlrx300s8-6:/ # mkdir -p /hana/data2/SS3/mnt00001
-stlrx300s8-6:/ # chmod –R 777 /hana/data2/SS3
+stlrx300s8-6:/ # mkdir -p /hana/data2/FC5/mnt00001
+stlrx300s8-6:/ # chmod –R 777 /hana/data2/FC5
 ....
 . ファイルシステムをマウントするには、「 mount – a 」コマンドを実行します。
 

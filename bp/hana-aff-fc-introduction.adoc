@@ -70,7 +70,7 @@ image:saphana_aff_fc_image1.png["入力/出力ダイアログを示す図、ま�
 
 = VMware vSphere を使用した SAP HANA
 
-ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、をlink:hana-aff-nfs-introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"]参照してください。
+ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、をlink:hana-aff-nfs-introduction.html["NFS を使用した NetApp AFF システムでの SAP HANA"^]参照してください。
 
 raw デバイスマッピング（ RDM ）、 FCP データストア、または FCP を使用する VVol データストアもサポートされます。どちらのデータストアオプションも、本番環境で使用するためにデータストアに格納する SAP HANA データボリュームまたはログボリュームは 1 つだけです。
 

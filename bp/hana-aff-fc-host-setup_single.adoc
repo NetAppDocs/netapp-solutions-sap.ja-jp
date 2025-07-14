@@ -68,16 +68,10 @@ mkfs.xfs FC5_log_mnt00001-vol
 mkfs.xfs /dev/mapper/svm1-FC5_shared
 ....
 
-NOTE: 複数ホストのコマンド例には、 2+1 のマルチホスト HANA システムが示されています。
-
-
 
 === マウントポイントを作成する
 
-必要なマウントポイントディレクトリを作成するには、次のいずれかの操作を行います。
-
-* シングルホストシステムの場合は、権限を設定し、データベースホストにマウントポイントを作成します。
-
+必要なマウント ポイント ディレクトリを作成し、データベース ホストの権限を設定します。
 
 ....
 sapcc-hana-tst:/ # mkdir -p /hana/data/FC5/mnt00001
@@ -91,21 +85,15 @@ sapcc-hana-tst:/ # chmod 777 /hana/shared
 
 === ファイルシステムをマウント
 
-/etc/fstab 構成ファイルを使用してシステムのブート中にファイル・システムをマウントするには ' 次の手順を実行します
+システム起動中にファイルシステムをマウントするには、  `/etc/fstab`設定ファイルに必要なファイルシステムを追加し、  `/etc/fstab`設定ファイル:
 
-* シングル・ホスト・システムの場合は ' 必要なファイル・システムを /etc/fstab 構成ファイルに追加します
-+
 ....
 # cat /etc/fstab
 /dev/mapper/hana-FC5_shared /hana/shared xfs defaults 0 0
 /dev/mapper/FC5_log_mnt00001-vol /hana/log/FC5/mnt00001 xfs relatime,inode64 0 0
 /dev/mapper/FC5_data_mnt00001-vol /hana/data/FC5/mnt00001 xfs relatime,inode64 0 0
 ....
-+
 
 NOTE: データ LUN とログ LUN の XFS ファイルシステムは 'relatim' および inode64' マウントオプションを使用してマウントする必要があります
 
-+
 ファイルシステムをマウントするには、  `mount –a`ホストでコマンドを実行します。
-
-

@@ -74,7 +74,7 @@ SAP HANAディザスタリカバリソリューションの詳細については
 
 次の図は、ローカルDRデータセンターへの同期SnapMirror Active Syncと、リモートDRデータセンターへのデータ複製に非同期SnapMirrorを使用する3サイトのディザスタリカバリソリューションを示しています。SnapMirrorActive Syncにより、サイト全体の障害発生時でもビジネスサービスは継続して稼働し、セカンダリコピー（RPO=0、RTO=0）を使用してアプリケーションを透過的にフェイルオーバーできます。SnapMirrorActive Syncでは、フェイルオーバーを開始するために手動による介入やカスタムスクリプトは必要ありません。ONTAP 9.15.1以降では、SnapMirrorアクティブ同期で対称アクティブ/アクティブ機能がサポートされます。対称アクティブ/アクティブ：双方向同期レプリケーションにより、保護されたLUNの両方のコピーからの読み取りおよび書き込みI/O処理を有効にし、両方のLUNコピーがローカルでI/O処理を処理できるようにします。
 
-詳細は以下をご覧ください。  https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["ONTAPでのSnapMirrorアクティブ同期の概要"] ..
+詳細については、を参照してください https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["ONTAPでのSnapMirrorアクティブ同期の概要"^]。
 
 非同期 SnapMirror レプリケーションの RTO は、主に DR サイトで HANA データベースを起動し、データをメモリにロードするのに必要な時間によって決まります。1000Mbps のスループットでデータが読み取られることを前提とし、 1TB のデータをロードするには約 18 分かかります。
 

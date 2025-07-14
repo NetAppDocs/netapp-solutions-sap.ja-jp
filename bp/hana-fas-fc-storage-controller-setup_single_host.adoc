@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: bp/hana-aff-fc-storage-controller-setup_single_host.html 
-keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
-summary: ここでは、ネットアップストレージシステムの構成について説明します。プライマリのインストールとセットアップは、対応する Data ONTAP のセットアップガイドおよび設定ガイドに従って実行する必要があります。 
+permalink: bp/hana-fas-fc-storage-controller-setup_single_host.html 
+keywords: storage, controller, setup, storage, efficiency volume, encryption, quality, configure, disk, connection, aggregate 
+summary: ここでは、ネットアップストレージシステムの構成について説明します。プライマリのインストールとセットアップは、対応する ONTAP のセットアップガイドおよび設定ガイドに従って実行する必要があります。 
 ---
 = シングルホスト
 :allow-uri-read: 
@@ -19,12 +19,12 @@ summary: ここでは、ネットアップストレージシステムの構成�
 
 == SAP HANA シングルホストシステムのボリュームと LUN の構成
 
-次の図は、 4 つのシングルホスト SAP HANA システムのボリューム構成を示しています。各 SAP HANA システムのデータボリュームとログボリュームは、異なるストレージコントローラに分散されます。たとえば、ボリューム「 ID1_data_mnt00001 」がコントローラ A で設定され、ボリューム「 ID1_log_mnt00001 」がコントローラ B で設定されているとします各ボリューム内で 1 つの LUN が構成されます。
+次の図は、 4 つのシングルホスト SAP HANA システムのボリューム構成を示しています。各SAP HANAシステムのデータボリュームとログボリュームは、異なるストレージコントローラに分散されます。たとえば、ボリュームは `SID1_data_mnt00001`コントローラAで構成され、ボリュームはコントローラBで構成され `SID1_log_mnt00001`ます。各ボリューム内には単一のLUNが構成されます。
 
 
-NOTE: HA ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。
+NOTE: ハイアベイラビリティ（ HA ）ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。
 
-image:saphana_aff_fc_image16a.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
+image:saphana_fas_fc_image18.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
 各 SAP HANA ホストには、データボリューム、ログボリューム、「 /hana/shared 」のボリュームが構成されています。次の表は、 4 台の SAP HANA シングルホストシステムを使用した構成例を示しています。
 
@@ -43,10 +43,10 @@ image:saphana_aff_fc_image16a.png["入力/出力ダイアログを示す図、�
 
 | システム SID4 のデータボリューム、ログボリューム、および共有ボリューム | ログボリューム： SID4_log_mnt00001 | – | 共有ボリューム： SID4_shared | データボリューム： SID4_data_mnt00001 
 |===
-次の表に、シングルホストシステムのマウントポイント構成例を示します。
+次の表に、シングルホストシステムのマウントポイント構成の例を示します。
 
 |===
-| LUN | SAP HANA ホストのマウントポイント | 注 
+| LUN | HANA ホストのマウントポイント | 注 
 
 
 | SID1_data_mnt00001 | /hana/data SID1/mnt00001 のように指定します | /etc/fstab エントリを使用してマウントされます 
@@ -75,7 +75,7 @@ NOTE: SAP HANA KPI を実現するために、複数の LUN で LVM を使用す
 
 | LVM ベースのシステムのデータ、ログ、および共有ボリューム | データボリューム： SID1_data_mnt00001 | 共有ボリューム： SID1_shared log2 ボリューム： SID1_log2_mnt00001 | data2 ボリューム： SID1_data2_mnt00001 | ログボリューム： SID1_log_mnt00001 
 |===
-次の表に示すように、 SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。
+SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。次の表に、 LVM を使用するシングルホストシステムのマウントポイントを示します。
 
 |===
 | 論理ボリューム / LUN | SAP HANA ホストのマウントポイント | 注 
@@ -109,7 +109,13 @@ NOTE: ここで説明する構成では ' ユーザ SID1adm のデフォルト�
 |===
 
 
-=== CLI を使用して LUN を作成し、LUN をイニシエータ グループにマッピングする
+=== LUN 、ボリュームを作成し、 LUN をイニシエータグループにマッピングします
+
+NetApp ONTAP System Managerを使用してストレージボリュームとLUNを作成し、それらをサーバとONTAP CLIのigroupにマッピングすることができます。このマニュアルでは、CLIの使用方法について説明します。
+
+
+
+=== CLI を使用して LUN 、ボリュームを作成し、 igroup に LUN をマッピングします
 
 このセクションでは、LVM と LVM ボリューム グループごとに 2 つの LUN を使用する SID FC5 の SAP HANA 単一ホスト システムに対して、ONTAP 9 のコマンド ラインを使用した構成例を示します。
 

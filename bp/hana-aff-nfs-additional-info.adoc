@@ -16,10 +16,10 @@ summary:
 [role="lead"]
 このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。
 
-* link:../index.html["SAP HANA ソフトウェアソリューション"]
-* link:../backup/hana-dr-sr-pdf-link.html["TR-4646 ：『 SAP HANA Disaster Recovery with Storage Replication 』"]
-* link:../backup/hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"]
-* link:../lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP System Copies Using the SnapCenter SAP HANA Plug-in』"]
+* link:../index.html["SAP HANA ソフトウェアソリューション"^]
+* link:../backup/hana-dr-sr-pdf-link.html["TR-4646 ：『 SAP HANA Disaster Recovery with Storage Replication 』"^]
+* link:../backup/hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]
+* link:../lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP System Copies Using the SnapCenter SAP HANA Plug-in』"^]
 * ネットアップドキュメントセンター
 +
 https://www.netapp.com/support-and-training/documentation/["https://www.netapp.com/support-and-training/documentation/"^]

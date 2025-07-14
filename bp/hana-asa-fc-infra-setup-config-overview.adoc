@@ -5,12 +5,13 @@ keywords:
 summary:  
 ---
 = インフラのセットアップと設定
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
-
-
-
-== インフラのセットアップと設定
 
 [role="lead"]
 以降のセクションでは、 SAP HANA インフラのセットアップと構成のガイドラインについて説明し、 SAP HANA システムのセットアップに必要なすべての手順について説明します。ここでは、次の設定例を使用します。

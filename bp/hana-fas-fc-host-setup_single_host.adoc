@@ -1,19 +1,19 @@
 ---
 sidebar: sidebar 
-permalink: bp/hana-aff-fc-host-setup_multi.html 
-keywords: multipathing, fcp, hba, configure 
-summary: ホストをセットアップする前に、ネットアップサポートサイトから NetApp SAN Host Utilities をダウンロードし、 HANA サーバにインストールしておく必要があります。ホスト・ユーティリティのマニュアルには、使用する FCP HBA に応じてインストールする必要がある追加ソフトウェアの情報が記載されています。 
+permalink: bp/hana-fas-fc-host-setup_single_host.html 
+keywords: configure, multipathing, create, lvm, volume, groups, logical, mount, points, file, systems 
+summary: また、使用している Linux バージョンに固有のマルチパス構成に関する情報も記載されています。 
 ---
-= 複数ホストの設定
+= 単一ホスト設定
 :allow-uri-read: 
 
 
 
 
-== 複数ホストの設定
+== 単一ホスト設定
 
 [role="lead"]
-この章では、2+1 SAP HANA マルチホストシステムのセットアップを例として説明します。
+この章では、SAP HANA 単一ホストのセットアップについて説明します。
 
 
 
@@ -24,27 +24,19 @@ summary: ホストをセットアップする前に、ネットアップサポ�
 ....
 pvcreate /dev/mapper/hana-FC5_data_mnt00001
 pvcreate /dev/mapper/hana-FC5_data2_mnt00001
-pvcreate /dev/mapper/hana-FC5_data_mnt00002
-pvcreate /dev/mapper/hana-FC5_data2_mnt00002
 pvcreate /dev/mapper/hana-FC5_log_mnt00001
 pvcreate /dev/mapper/hana-FC5_log2_mnt00001
-pvcreate /dev/mapper/hana-FC5_log_mnt00002
-pvcreate /dev/mapper/hana-FC5_log2_mnt00002
 ....
 . 各データパーティションとログパーティションのボリュームグループを作成します。
 +
 ....
 vgcreate FC5_data_mnt00001 /dev/mapper/hana-FC5_data_mnt00001 /dev/mapper/hana-FC5_data2_mnt00001
-vgcreate FC5_data_mnt00002 /dev/mapper/hana-FC5_data_mnt00002 /dev/mapper/hana-FC5_data2_mnt00002
 vgcreate FC5_log_mnt00001 /dev/mapper/hana-FC5_log_mnt00001 /dev/mapper/hana-FC5_log2_mnt00001
-vgcreate FC5_log_mnt00002 /dev/mapper/hana-FC5_log_mnt00002 /dev/mapper/hana-FC5_log2_mnt00002
 ....
 . データパーティションとログパーティションごとに論理ボリュームを作成します。ボリュームグループごとに使用されている LUN の数（この例では 2 つ）と同じストライプサイズを使用し、データの場合は 256K 、ログの場合は 64k を使用します。SAP では、ボリュームグループごとに 1 つの論理ボリュームのみがサポートされます。
 +
 ....
 lvcreate --extents 100%FREE -i 2 -I 256k --name vol FC5_data_mnt00001
-lvcreate --extents 100%FREE -i 2 -I 256k --name vol FC5_data_mnt00002
-lvcreate --extents 100%FREE -i 2 -I 64k --name vol FC5_log_mnt00002
 lvcreate --extents 100%FREE -i 2 -I 64k --name vol FC5_log_mnt00001
 ....
 . その他すべてのホストで、物理ボリューム、ボリュームグループ、およびボリュームグループをスキャンします。
@@ -68,25 +60,22 @@ vgchange -a y
 
 === ファイルシステムの作成
 
-すべてのデータおよびログ論理ボリュームに XFS ファイル システムを作成します。
+すべてのデータおよびログ論理ボリュームと hana 共有 LUN に XFS ファイル システムを作成します。
 
 ....
 mkfs.xfs FC5_data_mnt00001-vol
-mkfs.xfs FC5_data_mnt00002-vol
 mkfs.xfs FC5_log_mnt00001-vol
-mkfs.xfs FC5_log_mnt00002-vol
+mkfs.xfs /dev/mapper/svm1-FC5_shared
 ....
 
 
 === マウントポイントを作成する
 
-必要なマウント ポイント ディレクトリを作成し、すべてのワーカー ホストとスタンバイ ホストの権限を設定します。
+必要なマウント ポイント ディレクトリを作成し、データベース ホストの権限を設定します。
 
 ....
 sapcc-hana-tst:/ # mkdir -p /hana/data/FC5/mnt00001
 sapcc-hana-tst:/ # mkdir -p /hana/log/FC5/mnt00001
-sapcc-hana-tst:/ # mkdir -p /hana/data/FC5/mnt00002
-sapcc-hana-tst:/ # mkdir -p /hana/log/FC5/mnt00002
 sapcc-hana-tst:/ # mkdir -p /hana/shared
 sapcc-hana-tst:/ # chmod –R 777 /hana/log/FC5
 sapcc-hana-tst:/ # chmod –R 777 /hana/data/FC5
@@ -96,13 +85,15 @@ sapcc-hana-tst:/ # chmod 777 /hana/shared
 
 === ファイルシステムをマウント
 
-マウントするには `/hana/shared`システム起動時にファイルシステムを使用する `/etc/fstab`設定ファイルに、  `/hana/shared`ファイルシステムに `/etc/fstab`各ホストの構成ファイル。
+システム起動中にファイルシステムをマウントするには、  `/etc/fstab`設定ファイルに必要なファイルシステムを追加し、  `/etc/fstab`設定ファイル:
 
 ....
-sapcc-hana-tst:/ # cat /etc/fstab
-<storage-ip>:/hana_shared /hana/shared nfs rw,vers=3,hard,timeo=600, intr,noatime,nolock 0 0
+# cat /etc/fstab
+/dev/mapper/hana-FC5_shared /hana/shared xfs defaults 0 0
+/dev/mapper/FC5_log_mnt00001-vol /hana/log/FC5/mnt00001 xfs relatime,inode64 0 0
+/dev/mapper/FC5_data_mnt00001-vol /hana/data/FC5/mnt00001 xfs relatime,inode64 0 0
 ....
 
-NOTE: すべてのデータファイルシステムとログファイルシステムは、 SAP HANA ストレージコネクタを使用してマウントされます。
+NOTE: データ LUN とログ LUN の XFS ファイルシステムは 'relatim' および inode64' マウントオプションを使用してマウントする必要があります
 
-ファイルシステムをマウントするには、各ホストで「 mount – a 」コマンドを実行します。
+ファイルシステムをマウントするには、  `mount –a`ホストでコマンドを実行します。
