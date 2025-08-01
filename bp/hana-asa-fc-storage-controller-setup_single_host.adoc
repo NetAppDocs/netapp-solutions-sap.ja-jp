@@ -17,33 +17,9 @@ summary: ここでは、ネットアップストレージシステムの構成�
 
 
 
-== SAP HANA 単一ホストシステムの LUN 構成
-
-Linux LVM は、パフォーマンスを向上し、LUN サイズの制限に対処するために使用されています。次の表に示すように、 SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。
-
-|===
-| 論理ボリューム / LUN | SAP HANA ホストのマウントポイント | 注 
-
-
-| lv ： FC5_data_mnt0000 -vol | /hana/data FC5/mnt00001 のように指定します | /etc/fstab エントリを使用してマウントされます 
-
-
-| lv ： FC5_log_mnt00001 -vol | /hana/log/FC5/mnt00001 | /etc/fstab エントリを使用してマウントされます 
-
-
-| LUN：FC5_shared | /hana/shareed/FC5 | /etc/fstab エントリを使用してマウントされます 
-|===
-
-NOTE: 説明した構成では、  `/usr/sap/FC5`ユーザFC5admのデフォルトのホームディレクトリが格納されているディレクトリは、ローカルディスク上にあります。ディスクベースのレプリケーションによる災害復旧設定では、NetAppは、  `/usr/sap/FC5`すべてのファイルシステムが中央ストレージ上に存在するようにディレクトリを作成します。
-
-
-
 == LUN の作成とイニシエーター グループへの LUN のマッピング
 
-NetApp ONTAP System Managerを使用してストレージボリュームとLUNを作成し、それらをサーバとONTAP CLIのigroupにマッピングすることができます。このマニュアルでは、CLIの使用方法について説明します。
-
-
-NOTE: 「 anlun 」ツールは NetApp Host Utilities の一部であり、各 SAP HANA ホストにインストールする必要があります。詳細については、「 host_setup 」セクションを参照してください。
+NetApp ONTAP System Manager を使用してストレージ ボリュームと LUN を作成し、それらをサーバーの igroup とONTAP CLI にマップできます。
 
 
 
@@ -54,10 +30,10 @@ NOTE: 「 anlun 」ツールは NetApp Host Utilities の一部であり、各 S
 . すべての LUN を作成します。
 +
 ....
-lun create -path  FC5_data_mnt00001   -size 1t -ostype linux  -class regular
-lun create -path FC5_data2_mnt00001 -size 1t -ostype linux  -class regular
-lun create -path FC5_log_mnt00001 -size 260g -ostype linux  -class regular
-lun create -path FC5_log2_mnt00001 -size 260g -ostype linux  -class regular
+lun create -path  FC5_data_mnt00001_1 -size 1t -ostype linux  -class regular
+lun create -path FC5_data_mnt00001_2 -size 1t -ostype linux  -class regular
+lun create -path FC5_log_mnt00001_1 -size 260g -ostype linux  -class regular
+lun create -path FC5_log_mnt00001_2 -size 260g -ostype linux  -class regular
 lun create -path FC5_shared -size 260g -ostype linux  -class regular
 
 ....
@@ -69,10 +45,83 @@ lun igroup create -igroup HANA-FC5 -protocol fcp -ostype linux -initiator 100000
 . 作成したイニシエータグループにすべての LUN をマッピングします。
 +
 ....
-lun map -path FC5_data_mnt00001    -igroup HANA-FC5
-lun map -path FC5_data2_mnt00001  -igroup HANA-FC5
-lun map -path FC5_log_mnt00001  -igroup HANA-FC5
-lun map -path FC5_log2_mnt00001  -igroup HANA-FC5
-lun map -path FC5_shared  -igroup HANA-FC5
+lun map -path FC5_data_mnt00001_1 -igroup HANA-FC5
+lun map -path FC5_data_mnt00001_2 -igroup HANA-FC5
+lun map -path FC5_log_mnt00001_1 -igroup HANA-FC5
+lun map -path FC5_log_mnt00001_2 -igroup HANA-FC5
+lun map -path FC5_shared -igroup HANA-FC5
 ....
 
+
+
+
+=== GUIを使用してLUNを作成し、LUNをイニシエータグループにマッピングする
+
+このセクションでは、 `ONTAP System Manager` LVM を使用し、LVM ボリューム グループごとに 2 つの LUN を持つ SID FC5 の SAP HANA 単一ホスト システムの場合:
+
+. ログオン `ONTAP System Manager`ONTAPクラスタを選択し、 `Storage`左のメニューから。
++
+.. プレス `Add`
++
+image:saphana_asa_fc_image12.png["ONTAPシステムマネージャ - ストレージ"]
+
+
+
+. 選ぶ `More options`
++
+image:saphana_asa_fc_image13.png["ONTAPシステムマネージャ - ストレージの追加"]
+
+. 必要な情報を入力してください:
++
+.. データLUNの名前、例：.`FC5_data_mnt00001`
+.. LVMと組み合わせるLUNの数、例：2
+.. 各LUNのサイズ（例：1000 GB）
+.. 選ぶ `SCSI (FC or iSCSI)`
+.. 選ぶ `Linux`として `Host Operating system`
+.. 選ぶ `New host`のために `Host mapping`オプションで名前を指定します。例: `FC5_host`希望するイニシエーターを選択または追加します
+.. 保つ `Schedule snapshots`チェックなし
+.. プレス `Add`
++
+image:saphana_asa_fc_image14.png["ONTAPシステムマネージャ - データ LUN の作成"]
+
+
+
+. データLUNの作成に成功したら、ログLUNを作成します。 `Add`
++
+image:saphana_asa_fc_image15.png["ONTAP System Manager - ログLUNの作成"]
+
+. 必要な情報を入力してください:
++
+.. ログLUNの名前、例： `FC5_log_mnt00001`
+.. LVMと組み合わせるLUNの数、例：2
+.. 各LUNのサイズ（例：260 GB）
+.. 選ぶ `Linux`として `Host Operating system`
+.. 以前に作成したマッピングを選択する `FC5_host`のために `Host mapping`オプション
+.. プレス `Add`
++
+image:saphana_asa_fc_image16.png["ONTAP System Manager - ログLUNの作成"]
+
+
+
+. ログLUNの作成に成功したら、を押して共有LUNを作成します。 `Add`
++
+image:saphana_asa_fc_image17.png["ONTAPシステムマネージャ - 共有 LUN の作成"]
+
+. 必要な情報を入力してください:
++
+.. 共有LUNの名前、例：.`FC5_shared`
+.. LUNの数、例：1
+.. LUNのサイズ（例：520 GB）
+.. 選ぶ `Linux`として `Host Operating system`
+.. 以前に作成したマッピングを選択する `FC5_host`のために `Host mapping`オプション
+.. プレス `Add`
++
+image:saphana_asa_fc_image18.png["ONTAP System Manager - 共有LUNの作成"]
+
+
+
+
+
+SAP HANA 単一ホスト システムに必要なすべての LUN が作成されました。
+
+image:saphana_asa_fc_image19.png["ONTAPシステムマネージャ - LUN の概要"]

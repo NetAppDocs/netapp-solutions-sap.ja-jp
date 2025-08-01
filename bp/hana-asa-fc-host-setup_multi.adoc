@@ -17,27 +17,59 @@ summary: ホストをセットアップする前に、ネットアップサポ�
 
 
 
+== SAP HANA マルチホストシステムの LUN 構成
+
+Linux LVM は、パフォーマンスを向上し、LUN サイズの制限に対処するために使用されています。
+
+次の表に示すように、 SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。
+
+|===
+| 論理ボリューム（LV） | SAP HANA ホストのマウントポイント | 注 
+
+
+| lv ： FC5_data_mnt00001 -vol | /hana/data FC5/mnt00001 のように指定します | ストレージコネクタを使用してマウント 
+
+
+| lv ： FC5_log_mnt00001 -vol | /hana/log/FC5/mnt00001 | ストレージコネクタを使用してマウント 
+
+
+| lv ： FC5_data_mnt00002 -vol | /hana/data FC5/mnt00002 のように指定します | ストレージコネクタを使用してマウント 
+
+
+| lv ： FC5_log_mnt00002 -vol | /hana/log/FC5/mnt00002 | ストレージコネクタを使用してマウント 
+
+
+| 外部NFS共有: FC5_shared | /hana/shared にアクセスします | NFS と /etc/fstab のエントリを使用して、すべてのホストにマウントされます 
+|===
+
+NOTE: SAP HANAマルチホストシステムでは、  `/hana/shared`システムのすべてのホストに接続されたファイルシステム。通常、これはNFSサーバーによって提供されるNFS共有です。NetAppFASやAFFシステムなどの高可用性NFSサーバーの使用をお勧めします。また、Linuxホストに内蔵されているNFSサーバーを使用することもできます。
+
+
+NOTE: 説明した構成では、  `/usr/sap/FC5`ユーザーFC5admのデフォルトのホームディレクトリが格納されているディレクトリは、各HANAホストのローカルディスク上にあります。ディスクベースのレプリケーションによる災害復旧設定では、NetAppは4つの追加LUNを使用することを推奨しています。  `/usr/sap/FC5`各ホストにファイルシステムを配置して、各データベース ホストのすべてのファイルシステムが中央ストレージ上に存在するようにします。
+
+
+
 === LVM ボリュームグループと論理ボリュームを作成
 
 . すべての LUN を物理ボリュームとして初期化します。
 +
 ....
-pvcreate /dev/mapper/hana-FC5_data_mnt00001
-pvcreate /dev/mapper/hana-FC5_data2_mnt00001
-pvcreate /dev/mapper/hana-FC5_data_mnt00002
-pvcreate /dev/mapper/hana-FC5_data2_mnt00002
-pvcreate /dev/mapper/hana-FC5_log_mnt00001
-pvcreate /dev/mapper/hana-FC5_log2_mnt00001
-pvcreate /dev/mapper/hana-FC5_log_mnt00002
-pvcreate /dev/mapper/hana-FC5_log2_mnt00002
+pvcreate /dev/mapper/svm1-FC5_data_mnt00001_1
+pvcreate /dev/mapper/svm1-FC5_data_mnt00001_2
+pvcreate /dev/mapper/svm1-FC5_data_mnt00002_1
+pvcreate /dev/mapper/svm1-FC5_data_mnt00002_2
+pvcreate /dev/mapper/svm1-FC5_log_mnt00001_1
+pvcreate /dev/mapper/svm1-FC5_log_mnt00001_2
+pvcreate /dev/mapper/svm1-FC5_log_mnt00002_1
+pvcreate /dev/mapper/svm1-FC5_log_mnt00002_2
 ....
 . 各データパーティションとログパーティションのボリュームグループを作成します。
 +
 ....
-vgcreate FC5_data_mnt00001 /dev/mapper/hana-FC5_data_mnt00001 /dev/mapper/hana-FC5_data2_mnt00001
-vgcreate FC5_data_mnt00002 /dev/mapper/hana-FC5_data_mnt00002 /dev/mapper/hana-FC5_data2_mnt00002
-vgcreate FC5_log_mnt00001 /dev/mapper/hana-FC5_log_mnt00001 /dev/mapper/hana-FC5_log2_mnt00001
-vgcreate FC5_log_mnt00002 /dev/mapper/hana-FC5_log_mnt00002 /dev/mapper/hana-FC5_log2_mnt00002
+vgcreate FC5_data_mnt00001 /dev/mapper/svm1-FC5_data_mnt00001_1 /dev/mapper/svm1-FC5_data_mnt00001_2
+vgcreate FC5_data_mnt00002 /dev/mapper/svm1-FC5_data_mnt00002_1 /dev/mapper/svm1-FC5_data_mnt00002_2
+vgcreate FC5_log_mnt00001 /dev/mapper/svm1-FC5_log_mnt00001_1 /dev/mapper/svm1-FC5_log_mnt00001_2
+vgcreate FC5_log_mnt00002 /dev/mapper/svm1-FC5_log_mnt00002_1 /dev/mapper/svm1-FC5_log_mnt00002_2
 ....
 . データパーティションとログパーティションごとに論理ボリュームを作成します。ボリュームグループごとに使用されている LUN の数（この例では 2 つ）と同じストライプサイズを使用し、データの場合は 256K 、ログの場合は 64k を使用します。SAP では、ボリュームグループごとに 1 つの論理ボリュームのみがサポートされます。
 +

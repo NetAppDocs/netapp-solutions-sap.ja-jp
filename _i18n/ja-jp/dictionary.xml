@@ -865,20 +865,15 @@
   <block id="f26f6073b7776e8f86f6bf13d02a97ca" category="admonition">ここで説明する構成では ' ユーザ SID1adm のデフォルトのホーム・ディレクトリが格納されている /usr/sap/SID1 ディレクトリがローカル・ディスク上にありますディスク・ベースのレプリケーションを使用した災害復旧セットアップでは、すべてのファイル・システムが中央ストレージ上にあるように、 /usr/sap/SID1 ディレクトリの「 ID1_shared 」ボリューム内に追加の LUN を作成することを推奨します。</block>
   <block id="8d4e658f528a31efe4237fe11774716f" category="section-title">Linux LVM を使用した SAP HANA シングルホストシステムのボリュームと LUN の構成</block>
   <block id="4f2eb711021dab33e5ff7c3395979045" category="paragraph">Linux LVM を使用すると、パフォーマンスを向上させ、 LUN サイズの制限に対処できます。LVM ボリュームグループの各 LUN は、別のアグリゲートおよび別のコントローラに格納する必要があります。次の表に、ボリュームグループごとに 2 つの LUN を使用する例を示します。</block>
-  <block id="bf2b73e5a1069f54823f3690829c44f7" category="admonition">SAP HANA KPI を実現するために、複数の LUN で LVM を使用する必要はありません。1 つの LUN セットアップで必要な KPI を達成します。</block>
   <block id="50c8a736d0d7665eb46c9696d32e54b3" category="cell">LVM ベースのシステムのデータ、ログ、および共有ボリューム</block>
   <block id="e419668a145069bd5df27d1d94e5bf5a" category="cell">共有ボリューム： SID1_shared log2 ボリューム： SID1_log2_mnt00001</block>
   <block id="c5a46bab63449b2e1afaed056128e704" category="cell">data2 ボリューム： SID1_data2_mnt00001</block>
   <block id="f077106d32b9bc50fe9eeac1cd3d7c18" category="paragraph">次の表に示すように、 SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。</block>
   <block id="20c772a627871f53550c990cac40e436" category="cell">論理ボリューム / LUN</block>
-  <block id="4dbf191e4ed6b7c6ecc5f37903313222" category="cell">LV ： SID1_data_mnt0000_vol</block>
-  <block id="45cf28b4bb0bed9fa061ae20911813ad" category="cell">LV ： SID1_log_mnt00001-vol</block>
-  <block id="0a0eb6344c43262455dfef7dd783c9a2" category="cell">LUN ： SID1_shared</block>
   <block id="b25b558581b55b9f2fe2ef166b8c7153" category="section-title">SAP HANA マルチホストシステムのボリュームと LUN の構成</block>
   <block id="6b7ff1a28666a16440c8c6ea6637d7a5" category="paragraph">次の図は、 4+1 のマルチホスト SAP HANA システムのボリューム構成を示しています。各 SAP HANA ホストのデータボリュームとログボリュームは、異なるストレージコントローラに分散されます。たとえば、ボリューム「 `S ID_data_mnt00001 」はコントローラ A に設定され、ボリューム「 S ID_LOG_mnt00001 」はコントローラ B に設定されています各ボリュームに 1 つの LUN を設定します。</block>
   <block id="159562ba9c8d36ce5afba352e4de35a9" category="paragraph">「 /hana/shared 」ボリュームは、すべての HANA ホストからアクセスできる必要があり、 NFS を使用してエクスポートされます。「 /hana/shared 」ファイルシステムには特定のパフォーマンス KPI がありませんが、 10Gb のイーサネット接続を使用することを推奨します。</block>
   <block id="11862afda87479323583a609effa0913" category="admonition">HA ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。</block>
-  <block id="453b8497395d5bbd79a0c8e798f0c9cc" category="admonition">NetApp ASA AFF システムでは、 NFS をプロトコルとしてサポートしていません。「 /hana/shared 」ファイルシステムには、追加の AFF または FAS システムを使用することを推奨します。</block>
   <block id="f4674e3b297184ff65e01cfe3e66e78c" category="paragraph">各 SAP HANA ホストには、 1 個のデータボリュームと 1 個のログボリュームが作成されます。「 /hana/shared 」ボリュームは、 SAP HANA システムのすべてのホストで使用されます。次の表に、 4+1 のマルチホスト SAP HANA システムの構成例を示します。</block>
   <block id="8bb34960315f3235a2496b26df78d447" category="paragraph">次の表に、アクティブな SAP HANA ホストが 4 台あるマルチホストシステムの構成とマウントポイントを示します。</block>
   <block id="18eff1c18c750a16e21791332618bb66" category="cell">LUN またはボリューム</block>
@@ -896,18 +891,12 @@
   <block id="3e7047d2bf94461f14196805112df4f5" category="admonition">上記の構成では、ユーザ SIDadm のデフォルトのホームディレクトリが格納されている /usr/sap/SID のディレクトリは、各 HANA ホストのローカルディスクにあります。ディスク・ベースのレプリケーションを使用した災害復旧の設定では、各データベース・ホストが中央ストレージ上のすべてのファイル・システムを持つように、 /usr/sap/SID ファイル・システムの「 S ID_shared 」ボリュームに 4 つのサブディレクトリを追加作成することを推奨します。</block>
   <block id="c054b3fc8b39c77b600c774805522378" category="section-title">Linux LVM を使用した SAP HANA マルチホストシステムのボリュームと LUN の構成</block>
   <block id="fb98d6eb62d89d96b064be4fe17f583e" category="paragraph">Linux LVM を使用すると、パフォーマンスを向上させ、 LUN サイズの制限に対処できます。LVM ボリュームグループの各 LUN は、別のアグリゲートおよび別のコントローラに格納する必要があります。</block>
-  <block id="3ba3509b7579ef045ff4c77476c7cf11" category="admonition">SAP HANA KPI を実現するために LVM を使用して複数の LUN を組み合わせる必要はありません。1 つの LUN セットアップで必要な KPI を達成します。</block>
   <block id="f7be036cddf21af55fc52689e1f3055b" category="paragraph">次の表に、 2+1 の SAP HANA マルチホストシステムのボリュームグループあたり 2 つの LUN の例を示します。</block>
   <block id="4d9935e6cd83034a64b5ac62866a0738" category="cell">ログ 2 ボリューム： SID_log2_mnt00001</block>
   <block id="ce92b52ec6796984f134f3d663d31dd9" category="cell">ログ 2 ボリューム： SID_log2_mnt00002</block>
   <block id="120bb07a74c62db6e646c3e4c6894343" category="cell">論理ボリューム（ LV ）またはボリューム</block>
-  <block id="e0aca5a9c63604d53aca20804da97330" category="cell">lv ： SID_data_mnt00001-vol</block>
-  <block id="e865dd471095d94a2e4b63c8a0f33860" category="cell">lv ： SID_log_mnt00001-vol</block>
-  <block id="711212cf75d514aac51d33222c3265b1" category="cell">LV ： SID_data_mnt00002 -vol</block>
-  <block id="57d1d1afeed57e5be9d3694589233736" category="cell">lv ： SID_log_mnt00002 -vol</block>
   <block id="941ad2feba868268ee283fe1886c4440" category="paragraph">次の表に示すボリュームオプションは、すべての SVM で検証および設定する必要があります。</block>
   <block id="b9c48200eb9eba714e3c88803e97b4ce" category="section-title">LUN 、ボリュームを作成し、 LUN をイニシエータグループにマッピングします</block>
-  <block id="a86be254d15f1254d56b97c8755a5b77" category="admonition">「 anlun 」ツールは NetApp Host Utilities の一部であり、各 SAP HANA ホストにインストールする必要があります。詳細については、「 host_setup 」セクションを参照してください。</block>
   <block id="8c4751bd2d7d17062a8b536388ba69bc" category="section-title">CLI を使用して LUN 、ボリュームを作成し、 igroup に LUN をマッピングします</block>
   <block id="c48caf1c739d7975abd91d926cd56982" category="list-text">必要なボリュームをすべて作成します。</block>
   <block id="8e5c1549db5f0e31853b6809f7049388" category="list-text">すべての LUN を作成します。</block>
@@ -928,14 +917,10 @@
   <block id="bc7b122f8c7d1a7a700fe37744267ae2" category="inline-link-macro">ホストのセットアップ：</block>
   <block id="2c8d2683acd00fc6b7bdbecbc4077a74" category="admonition">ハイアベイラビリティ（ HA ）ペアのうち、 1 台のストレージコントローラのみを SAP HANA システムに使用する場合は、データボリュームとログボリュームを同じストレージコントローラに保存することもできます。</block>
   <block id="7a1a0bd259dd739b7d810124fe9f4440" category="paragraph">次の表に、シングルホストシステムのマウントポイント構成の例を示します。</block>
-  <block id="414644d9944d8acf448d00964757d116" category="admonition">SAP HANA KPI を実現するために、複数の LUN で LVM を使用する必要はありません。1 つの LUN セットアップで必要な KPI を達成します。</block>
-  <block id="6ca08fbeb2f69e5ac6d7d31de1c0d50e" category="paragraph">SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。次の表に、 LVM を使用するシングルホストシステムのマウントポイントを示します。</block>
   <block id="ebcead3815b9e992a87a9c31a4be99fe" category="paragraph">各 SAP HANA ホストには、 1 個のデータボリュームと 1 個のログボリュームが作成されます。「 /hana/shared 」ボリュームは、 SAP HANA システムのすべてのホストで使用されます。次の図は、 4+1 のマルチホスト SAP HANA システムの構成例を示しています。</block>
   <block id="47efb02d47f9965ca8839f52ecc182bc" category="paragraph">次の表に、アクティブな SAP HANA ホストが 4 台あるマルチホストシステムの構成とマウントポイントを示します。</block>
   <block id="415dc524f4e8d720ce545c8d6263459c" category="cell">LUN またはボリューム</block>
   <block id="ea15b968cdc22cb1b865eba6daa0eae0" category="paragraph">Linux LVM を使用すると、パフォーマンスを向上させ、 LUN サイズの制限に対処できます。LVM ボリュームグループの各 LUN は、別のアグリゲートおよび別のコントローラに格納する必要があります。次の表に、 2+1 の SAP HANA マルチホストシステムのボリュームグループあたり 2 つの LUN の例を示します。</block>
-  <block id="7e819a8bd73b862fc9b80deb044fa7da" category="admonition">SAP HANA KPI を実現するために LVM を使用して複数の LUN を組み合わせる必要はありません。1 つの LUN セットアップで必要な KPI を達成します。</block>
-  <block id="70993f32e0c2ae5000f9a5a9cbf641e4" category="paragraph">SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。</block>
   <block id="203165a49e3a391bdbc44e3a05d54279" category="cell">ONTAP 9</block>
   <block id="77656454768235b0e1954805bd92d9c9" category="section-title">CLI を使用して LUN 、ボリュームを作成し、 igroup に LUN をマッピングします</block>
   <block id="d21a66a2fd717a4acd6dd449ecac4839" category="list-text">システム FC5 に属するすべてのサーバの igroup を作成します。</block>
@@ -1296,8 +1281,6 @@
   <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">特許</block>
   <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">ネットアップが所有する特許の最新リストは、次のサイトで入手できます。</block>
   <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">プライバシーポリシー</block>
-  <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">オープンソース</block>
-  <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">通知ファイルには、ネットアップソフトウェアで使用されるサードパーティの著作権およびライセンスに関する情報が記載されています。</block>
   <block id="bca5b2fa001874580bf261991fd79806" category="cell">ONTAP 9.8 以降で NFSv4.1 の nconnect がサポートされるようになりました。新しいバージョンの SAP HANA がリリースされました</block>
   <block id="896435116179bed2dde76b00414b4fa5" category="cell">ネットアップストレージシステムが新しく追加されると、ホストネットワークの設定が変更されます。軽微な変更が</block>
   <block id="7e0efdf8314ae57608296d0f91d73af0" category="list-text">シングル・ホスト・システムの場合は '/hana/shared-volume をマウントし 'hared' サブディレクトリと usr-sap サブディレクトリを作成します</block>
@@ -5489,7 +5472,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="2ecd8267df97e61a6026b9d97834abe5" category="admonition">この<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>ツールはNetApp Host Utilitiesに含まれており、各SAP HANAホストにインストールする必要があります。詳細については、セクションを参照してください。<block ref="651d6af67f47799de3de7127400bd073" category="inline-link-macro-rx"></block></block>
   <block id="8db99fa5fe9e83e6fc301d2677a74c9e" category="summary">このセクションでは、複数のホストシステム用のLUNを作成する方法について説明します。</block>
   <block id="d5395e37adfb8bd3cabb8db1bdb0abee" category="paragraph">このセクションでは、SAP HANAマルチホストシステムに固有のNetAppストレージシステムの構成について説明します。</block>
-  <block id="b28af8f8515ecce98f0a5be7515b2b61" category="section-title">SAP HANA マルチホストシステムの LUN 構成</block>
   <block id="ca896343d41b326aec5877cfd4d956dd" category="paragraph">Linux LVM は、パフォーマンスを向上し、LUN サイズの制限に対処するために使用されています。</block>
   <block id="5e6b40484940ec07f5b5ecf3e4918dfc" category="cell">論理ボリューム（LV）</block>
   <block id="7cad490ec2fc5e1b8cbade09d487d514" category="cell">lv ： FC5_data_mnt00001 -vol</block>
@@ -5505,7 +5487,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="5b10d0b1272d218e55f6473abcfbae9d" category="admonition">説明した構成では、 <block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>ユーザーFC5admのデフォルトのホームディレクトリが格納されているディレクトリは、各HANAホストのローカルディスク上にあります。ディスクベースのレプリケーションによる災害復旧設定では、NetAppは4つの追加LUNを使用することを推奨しています。 <block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>各ホストにファイルシステムを配置して、各データベース ホストのすべてのファイルシステムが中央ストレージ上に存在するようにします。</block>
   <block id="d4f54d18b3b1b7422185c0c71038ff15" category="section-title">LUN の作成とイニシエーター グループへの LUN のマッピング</block>
   <block id="b54a0f5023cc826b59cab28cc23f22cc" category="section-title">CLI を使用して LUN を作成し、LUN をイニシエータ グループにマッピングする</block>
-  <block id="2d39c77b49ea3785a21a4c7b0c611e44" category="paragraph">このセクションでは、LVM を使用し、LVM ボリューム グループごとに 2 つの LUN を持つ FC5 を備えた 2+1 SAP HANA マルチホスト システムに対して ONTAP 9 のコマンド ラインを使用した構成例を示します。</block>
   <block id="cf92b7cb5d4dd0e7883961b1bc9e7ab9" category="paragraph">このセクションでは、SAP HANAシングルホストシステムに固有のNetAppストレージシステムの構成について説明します。</block>
   <block id="943a742a82131a53ada69df9430a1877" category="paragraph">Linux LVM は、パフォーマンスを向上し、LUN サイズの制限に対処するために使用されています。次の表に示すように、 SAP HANA ホストで、ボリュームグループと論理ボリュームを作成してマウントする必要があります。</block>
   <block id="f8f9e88eaa58d2028a8b1e060e5cf04d" category="cell">lv ： FC5_data_mnt0000 -vol</block>
@@ -5725,4 +5706,88 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="b46c19227accdcf131acd89ec837d719" category="list-text">の説明に従って、正しいディスク・シェルフ構成を確認します<block ref="03b6386ad6a1dc10d9baa30820f92e6f" category="inline-xref-macro-rx"></block>。</block>
   <block id="5fd1fe4406610035d26bddd7285e2208" category="list-text">セクションの説明に従って、アグリゲート内にボリュームとLUNを作成して構成します。 <block ref="5cdae6b5e4c2b7c1786a252c1b2db361" category="inline-link-macro-rx"></block>単一のホストまたはセクション内<block ref="576df1336ee1cb2a072bb64be834429d" category="inline-link-macro-rx"></block>複数のホストの場合</block>
   <block id="fe19c797763ffd518a9713847adadc9f" category="section-title">NVMeディスクシェルフ</block>
+  <block id="ea13b0292be295ca3a3610f1baba7af5" category="cell">ボリューム: FC5_shared</block>
+  <block id="74a45bc8a76dc8851afe39b96fb0a96a" category="admonition">説明した構成では、<block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>ユーザー FC5adm のデフォルトのホーム ディレクトリが格納されているディレクトリは、各 HANA ホストのローカル ディスク上にあります。ディスクベースのレプリケーションによる災害復旧設定では、 NetAppは、以下の4つの追加サブディレクトリを作成することを推奨しています。<block ref="9bfe65825cda87178edc3ba9f8299b5b" prefix=" " category="inline-code"></block>のボリューム<block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>ファイル システムを作成して、各データベース ホストのすべてのファイル システムを中央ストレージ上に配置します。</block>
+  <block id="731029fe8023134b7b2cfe0f6b60a062" category="paragraph">この章では、LINUX LVM を使用した SAP HANA 単一ホストのセットアップについて説明します。</block>
+  <block id="1347f8e1e71f136f4775e716ea4ffe79" category="cell">/hana/data/FC51/mnt00001</block>
+  <block id="8605d3de78deff9736f57392e34596e6" category="admonition">説明した構成では、<block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>ユーザー FC5adm のデフォルトのホーム ディレクトリが格納されているディレクトリは、ローカル ディスク上にあります。ディスクベースのレプリケーションによる災害復旧設定では、 NetAppは、<block ref="9bfe65825cda87178edc3ba9f8299b5b" prefix=" " category="inline-code"></block>のボリューム<block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>すべてのファイルシステムが中央ストレージ上に存在するようにディレクトリを作成します。</block>
+  <block id="96b45d8155e675bfeba1a557f8d2c076" category="admonition">NetApp ASAシステムは、プロトコルとして NFS をサポートしていません。  NetAppは、追加のAFFまたはFASシステムを使用することを推奨しています。<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>ファイルシステム。</block>
+  <block id="af7dc91d6c9878ceafb1b3fda7b49ff6" category="admonition">SAP HANA KPIを満たすために複数のLUNを組み合わせるためにLVMを使用する必要はありませんが、推奨されます。</block>
+  <block id="b4421a31caaf211d702cdbef54c45f59" category="admonition">SAP HANA KPI を満たすために複数の LUN で LVM を使用する必要はありませんが、使用することをお勧めします。</block>
+  <block id="c3b8b3942717ccdfa536ffb850c19eec" category="paragraph">NetApp ONTAP System Manager を使用してストレージ ボリュームと LUN を作成し、それらをサーバーの igroup とONTAP CLI にマップできます。</block>
+  <block id="67890e88e0e5160d6cb44b90f45ea61a" category="section-title">GUIを使用してLUNを作成し、LUNをイニシエータグループにマッピングする</block>
+  <block id="bc68290108b8ab51d23362d1aaf94562" category="paragraph">このセクションでは、<block ref="6ad5e0a20f49ad6a370454bb3afc9a9e" prefix=" " category="inline-code"></block> LVM を使用し、LVM ボリューム グループごとに 2 つの LUN を持つ SID FC5 の 2+1 SAP HANA マルチホスト システムの場合:</block>
+  <block id="7c626127bb2a06954519c34045e302b6" category="list-text">ログオン<block ref="6ad5e0a20f49ad6a370454bb3afc9a9e" prefix=" " category="inline-code"></block>ONTAPクラスタを選択し、<block ref="8c4aa541ee911e8d80451ef8cc304806" prefix=" " category="inline-code"></block>左のメニューから。</block>
+  <block id="caf7f785e92060870ad044cd4c58f8a5" category="list-text">プレス<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block></block>
+  <block id="e74f72bcf292db134a76557e398076c6" category="inline-image-macro">ONTAPシステムマネージャ - ストレージ</block>
+  <block id="b99cc12d14d7f93f9644ebbe4e251423" category="paragraph"><block ref="b99cc12d14d7f93f9644ebbe4e251423" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2f034fb82312475c2c86eaa7b37b2866" category="list-text">選ぶ<block ref="4dab36ac83853282fc0d7bae20c19e90" prefix=" " category="inline-code"></block></block>
+  <block id="28c9d0da97b681e3f4240f98eba3ef1f" category="inline-image-macro">ONTAPシステムマネージャ - ストレージの追加</block>
+  <block id="896e6fb48e70839293cee9df98db83d9" category="paragraph"><block ref="896e6fb48e70839293cee9df98db83d9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="06b97c41aa527667da7e7e745c867d3c" category="list-text">必要な情報を入力してください:</block>
+  <block id="07fdaa28fad4bbade25878098189637f" category="list-text">データLUNの名前、例：<block ref="0732d94c1b058c8ff29a0e7586908d15" prefix="." category="inline-code"></block></block>
+  <block id="a0a9fead14f8e9bd6beb766196fe2750" category="list-text">LVMと組み合わせるLUNの数、例：2</block>
+  <block id="fb963521d62e8baca5de6b2b0ffd1ccd" category="list-text">各LUNのサイズ（例：1000 GB）</block>
+  <block id="4d6cedb4bd1ccde77fefd2a974d71de0" category="list-text">選ぶ<block ref="b6af823402873717782ba4f4608767e7" prefix=" " category="inline-code"></block></block>
+  <block id="302ecbd4c9f6f6c0488e8731852f7154" category="list-text">選ぶ<block ref="edc9f0a5a5d57797bf68e37364743831" prefix=" " category="inline-code"></block>として<block ref="f707c24bf34b82cbda7ce1afab8b5e26" prefix=" " category="inline-code"></block></block>
+  <block id="ad87f81d298f3904424a68b483982bca" category="list-text">選ぶ<block ref="e906379c0f98afa688062e92ac0d94cb" prefix=" " category="inline-code"></block>のために<block ref="1ccf75762b2e153de8560735dcafec7b" prefix=" " category="inline-code"></block>オプションで名前を指定します。例:<block ref="7ec1cfc1baa5aeab43433af3f4c2d35a" prefix=" " category="inline-code"></block>希望するイニシエーターを選択または追加します</block>
+  <block id="59a31f7c91f0fb3d50c4d50c2dcae323" category="list-text">保つ<block ref="e31a3e7ac59a5476665c7f7c45e14c31" prefix=" " category="inline-code"></block>チェックなし</block>
+  <block id="8457eef1aadf48a34435b86b7aaa16f0" category="list-text">プレス<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block></block>
+  <block id="8784d5f647146dfe70b10b214a3a2fdd" category="inline-image-macro">ONTAPシステムマネージャ - データ LUN の作成</block>
+  <block id="f90a85d8f2219069e101b79e10ac325e" category="paragraph"><block ref="f90a85d8f2219069e101b79e10ac325e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="45d66fdb36c8c84bf6b708d035e41853" category="list-text">次のワーカーホストのデータLUNを作成するには、<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block></block>
+  <block id="02ed70f96574f1017b25ff4f367ac4ff" category="inline-image-macro">ONTAP System Manager - 追加のデータLUNを作成する</block>
+  <block id="ae58399fc2b6cdb9a23d039c605755e9" category="paragraph"><block ref="ae58399fc2b6cdb9a23d039c605755e9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c281fd6a54589cdc5d837aef73b36268" category="list-text">追加のデータLUNの名前、例：<block ref="6ce7d5981e394c99f64f1b0215329269" prefix=" " category="inline-code"></block></block>
+  <block id="5f62ac587839660fa2ea6a6c3b5d7999" category="list-text">以前に作成したマッピングを選択する<block ref="7ec1cfc1baa5aeab43433af3f4c2d35a" prefix=" " category="inline-code"></block>のために<block ref="1ccf75762b2e153de8560735dcafec7b" prefix=" " category="inline-code"></block>オプション</block>
+  <block id="4cbebe53efcb8e9b23e0f55ac0aa03e0" category="inline-image-macro">ONTAP System Manager - データLUNの作成</block>
+  <block id="f49ebf8541cfd6e434663646a0751828" category="paragraph"><block ref="f49ebf8541cfd6e434663646a0751828" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5d3d2618bef5d8e4c274a84e35aa6f58" category="list-text">追加のワーカーホストごとに手順4と5を繰り返します。</block>
+  <block id="07d3bacb52cc5cfae2b95ad38024bc61" category="list-text">データLUNの作成に成功したら、ログLUNを作成します。<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block></block>
+  <block id="14146bfdc8a39f564cd77fb78ac56230" category="inline-image-macro">ONTAP System Manager - ログLUNの作成</block>
+  <block id="54892c3762fa9e40f2abfb8ace716ce4" category="paragraph"><block ref="54892c3762fa9e40f2abfb8ace716ce4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="38d3bfe58a56c277581bf554d58567bb" category="list-text">LVMと組み合わせるログLUNの名前、例：<block ref="65c06cc2828e391723bfb5cf196d549d" prefix=" " category="inline-code"></block></block>
+  <block id="f2f463cdd25cba04bd03ae9c978fcf8a" category="list-text">各LUNのサイズ（例：260 GB）</block>
+  <block id="ec3ba9cd272dc2bace8316ea5b74f511" category="paragraph"><block ref="ec3ba9cd272dc2bace8316ea5b74f511" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0aecf7c695760ec27de2589c7174b43c" category="list-text">次のワーカーホストのログLUNを作成するには、<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block></block>
+  <block id="040534489cc3ab96d2b9c1a9b4dd3584" category="inline-image-macro">ONTAP System Manager - 追加のログLUNを作成する</block>
+  <block id="967b5bf37f794d92b79fc703d07d677a" category="paragraph"><block ref="967b5bf37f794d92b79fc703d07d677a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1460ee577c37a9641ceef15f4ebd5a99" category="list-text">追加のログLUNの名前、例：<block ref="e5a5a4aa7eb1d1dc60047ec06e0714ba" prefix=" " category="inline-code"></block></block>
+  <block id="530da82f791224fdf4ed02ce35f16033" category="paragraph"><block ref="530da82f791224fdf4ed02ce35f16033" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e77ae688820ea0899797f6e8a2fd2341" category="list-text">追加のワーカーホストごとに手順9と10を繰り返します。</block>
+  <block id="a7da894b87be1b2a1f2e6e550fbfae86" category="paragraph">SAP HANA マルチホスト システムに必要なすべての LUN が作成されました。</block>
+  <block id="a19492c01beba75d08e3918c3bad4afa" category="inline-image-macro">ONTAPシステムマネージャ - LUN の概要</block>
+  <block id="f71c442cde1008bd67ecfdb3508bb658" category="paragraph"><block ref="f71c442cde1008bd67ecfdb3508bb658" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6c4ed775692b60dfa35324a5b3f4d7bf" category="paragraph">このセクションでは、<block ref="6ad5e0a20f49ad6a370454bb3afc9a9e" prefix=" " category="inline-code"></block> LVM を使用し、LVM ボリューム グループごとに 2 つの LUN を持つ SID FC5 の SAP HANA 単一ホスト システムの場合:</block>
+  <block id="e37757a957452864d513d8119c467b6a" category="list-text">データLUNの名前、例：<block ref="0732d94c1b058c8ff29a0e7586908d15" prefix="." category="inline-code"></block></block>
+  <block id="ffbf4bb11063e63557383f1fa010045d" category="paragraph"><block ref="ffbf4bb11063e63557383f1fa010045d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fa118acc2526207f6cb46749535ef468" category="list-text">ログLUNの名前、例：<block ref="65c06cc2828e391723bfb5cf196d549d" prefix=" " category="inline-code"></block></block>
+  <block id="2faf52143dd721486f45c996e0ded500" category="paragraph"><block ref="2faf52143dd721486f45c996e0ded500" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0dde6a8a986ffedc56f4ed820236f7bb" category="list-text">ログLUNの作成に成功したら、を押して共有LUNを作成します。<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block></block>
+  <block id="b1cce5cd0b4d46f2a45882a434783853" category="inline-image-macro">ONTAPシステムマネージャ - 共有 LUN の作成</block>
+  <block id="17aee1cfb8dac57978b091627cecc5aa" category="paragraph"><block ref="17aee1cfb8dac57978b091627cecc5aa" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cd4fc94119743ee614fc111808abd9e5" category="list-text">共有LUNの名前、例：<block ref="9bfe65825cda87178edc3ba9f8299b5b" prefix="." category="inline-code"></block></block>
+  <block id="97bb7629e83ed16ce51e71ab96d81f22" category="list-text">LUNの数、例：1</block>
+  <block id="ac2b98385f9bdb4cda106d130486c553" category="list-text">LUNのサイズ（例：520 GB）</block>
+  <block id="e202505305253e821c52be15bf346b91" category="inline-image-macro">ONTAP System Manager - 共有LUNの作成</block>
+  <block id="bf816653c9d3731a9ca6adeba22f606f" category="paragraph"><block ref="bf816653c9d3731a9ca6adeba22f606f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a0e6aba914a6fff1219af2df9f67a134" category="paragraph">SAP HANA 単一ホスト システムに必要なすべての LUN が作成されました。</block>
+  <block id="53a66df77c3b6f05620f5351b866d122" category="paragraph"><block ref="53a66df77c3b6f05620f5351b866d122" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a390eaee29bd03c83e6cee2fc64b8974" category="paragraph">この章では、Linux LVM を使用した SAP HANA 単一ホストのセットアップについて説明します。</block>
+  <block id="f1facf724edfec93ca90bbae3b165c87" category="admonition">SAP HANA KPI を満たすために LVM を使用して複数の LUN を組み合わせる必要はありませんが、推奨されます。</block>
+  <block id="1f75ae545cb5470642699c7eb92843b0" category="admonition">SAP HANA KPIを満たすために複数のLUNでLVMを使用する必要はありませんが、推奨されます。</block>
+  <block id="cdaef5754ea3f6c219a21dfee90c7848" category="summary">このドキュメントでは、SAP HANA のバックアップとリカバリに焦点を当てています。</block>
+  <block id="495da755b58883e2ca5e4985ee3f602e" category="doc">SB-3965: SAP HANAのバックアップとリカバリ</block>
+  <block id="235cb526e2c6b642c718f0d78e3ae92e" category="section-title">課題</block>
+  <block id="3c4ac70408381221e011d1b8eb9ca8ce" category="paragraph">SAP HANA のバックアップおよびリストア操作では、組織は次の課題に直面します。• 本番環境の SAP システムでパフォーマンスの低下を伴う長時間のバックアップ操作• 長時間のリストアおよびリカバリ操作による許容できないシステムダウンタイム• アプリケーションの重要度によるバックアップウィンドウの短縮• 論理破損を軽減するための柔軟なソリューションの必要性</block>
+  <block id="34e74b1c7f4aad91715567cf698912f6" category="section-title">主要なソリューション・コンポーネント</block>
+  <block id="b230779de102682fe4be587788f9b085" category="paragraph">NetApp ONTAP ® データ管理ソフトウェアを実行するNetApp ® ストレージ ソリューションをNetApp SnapCenter ® データ保護ソフトウェアと組み合わせて使用すれば、これらすべての課題に対応できます。また、 ONTAPソフトウェアに含まれるNetApp Snapshot™ テクノロジーを使用すると、数秒以内にあらゆるサイズのデータセットのバックアップを作成したり、復元操作を実行したりできます。  SAP HANA は、有効なバックアップ操作としてストレージベースのスナップショット コピーの使用をサポートしています。</block>
+  <block id="07d632c80bac8a4755255f5e335d8974" category="inline-link-macro"><block ref="07d632c80bac8a4755255f5e335d8974" category="inline-link-rx"></block></block>
+  <block id="e3d55b357098828096098ba417d3c90c" category="paragraph"><block ref="e3d55b357098828096098ba417d3c90c" category="inline-link-macro-rx"></block></block>
+  <block id="9446c7c84986f94f08b68900006bb1e5" category="summary">このドキュメントでは、SAP HANA の災害復旧に焦点を当てています。</block>
+  <block id="bf6723a5d293af775d564a8960e50265" category="doc">SB-3968: SAP HANAの災害復旧</block>
+  <block id="24226245cbb8f6448d2fc2fad9d6d847" category="paragraph">IT 組織ではビジネス継続性が不可欠です。顧客がビジネスを遂行するために必要とするミッションクリティカルなアプリケーションに対して、高可用性サービスを提供できる必要があります。そうしないと、顧客の生産性は低下し、eコマース組織は収益に直接的な影響を受ける可能性があります。</block>
+  <block id="d9bb80ae32f686bbae368979a76f86d7" category="paragraph">NetApp は、IT 組織があらゆるビジネス ニーズに対応できるように災害復旧計画を構築または適応できるようにするためのテクノロジとツールの包括的なポートフォリオを開発しました。</block>
+  <block id="6a9c098947d8b811552347f2ed990ebd" category="inline-link-macro"><block ref="6a9c098947d8b811552347f2ed990ebd" category="inline-link-rx"></block></block>
+  <block id="702c9bfa6d3b8d8b923fbeba4db3625f" category="paragraph"><block ref="702c9bfa6d3b8d8b923fbeba4db3625f" category="inline-link-macro-rx"></block></block>
 </blocks>

@@ -97,9 +97,3 @@ host1 ...... WWPN:2100000e1e163701
 ....
 
 NOTE: この `sanlun`ツールはNetApp Host Utilitiesに含まれており、各SAP HANAホストにインストールする必要があります。詳細については、セクションを参照してください。link:hana-asa-fc-host-setup.html["ホストのセットアップ："]
-
-igroupは、ONTAPクラスタのCLIを使用して作成できます。
-
-....
-lun igroup create -igroup <igroup name> -protocol fcp -ostype linux -initiator <list of initiators> -vserver <SVM name>
-....

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: briefs/saphana-backup_pdf_link.html 
+keywords: sb-3965, sap, SAP HANA, Backup & Recovery 
+summary: このドキュメントでは、SAP HANA のバックアップとリカバリに焦点を当てています。 
+---
+= SB-3965: SAP HANAのバックアップとリカバリ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+
+
+== 課題
+
+SAP HANA のバックアップおよびリストア操作では、組織は次の課題に直面します。• 本番環境の SAP システムでパフォーマンスの低下を伴う長時間のバックアップ操作• 長時間のリストアおよびリカバリ操作による許容できないシステムダウンタイム• アプリケーションの重要度によるバックアップウィンドウの短縮• 論理破損を軽減するための柔軟なソリューションの必要性
+
+
+
+== 主要なソリューション・コンポーネント
+
+NetApp ONTAP ® データ管理ソフトウェアを実行するNetApp ® ストレージ ソリューションをNetApp SnapCenter ® データ保護ソフトウェアと組み合わせて使用すれば、これらすべての課題に対応できます。また、 ONTAPソフトウェアに含まれるNetApp Snapshot™ テクノロジーを使用すると、数秒以内にあらゆるサイズのデータセットのバックアップを作成したり、復元操作を実行したりできます。  SAP HANA は、有効なバックアップ操作としてストレージベースのスナップショット コピーの使用をサポートしています。
+
+link:https://www.netapp.com/pdf.html?item=/media/6997-sb-3965pdf.pdf["https://www.netapp.com/pdf.html?item=/media/6997-sb-3965pdf.pdf"]
