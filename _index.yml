@@ -1,6 +1,6 @@
 ---
 indexpage:
-  title: SAP Business Application と SAP HANA Database ソリューション
+  title: SAPビジネスアプリケーションとSAP HANAデータベースソリューション
   summary: ネットアップでは、 SAP と SAP HANA に関するテクニカルレポート、検証済みの設計、ビデオ、ブログ、解決策概要を幅広くご用意しています。
   lead: ネットアップでは、 SAP と SAP HANA に関するテクニカルレポート、検証済みの設計、ビデオ、ブログ、解決策概要を幅広くご用意しています。
   tiles:
@@ -64,3 +64,7 @@ indexpage:
       url: backup/snapcenter-ibm-db2.html
     - title: SAP MaxDBデータベースのSnapCenter統合
       url: backup/snapcenter-sap-maxdb.html
+  - title: FlexPod SAP ソリューション
+    links:
+    - title: FlexPod上の SAP の概要
+      url: https://docs.netapp.com/us-en/flexpod/ent-db/index.html

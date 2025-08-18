@@ -1,6 +1,6 @@
 ---
 settings:
-  name: NetApp Solutions SAP
+  name: NetApp solutions for SAP
   internal:
     pdf_enabled: true
   prod:
@@ -9,15 +9,16 @@ settings:
   langs: ja-jp,us-en,de-de,es-es,fr-fr,it-it,pt-br,ko-kr,zh-cn,zh-tw
 sidebar:
   entries:
-  - title: SAP ソリューション
+  - title: SAP向けソリューション
     url: "/index.html"
+  - title: 新機能
+    url: "/whats-new.html"
   - section: bp
   - section: backup
   - section: lifecycle
   - section: briefs
-  - title: FlexPod SAP ソリューション
-    url: https://docs.netapp.com/us-en/flexpod/ent-db/index.html
-  - title: ネットアップのソリューション
-    url: https://docs.netapp.com/us-en/netapp-solutions/
   - title: 法的通知
     url: "/legal-notices.html"
+product-family:
+  name: NetApp solutions
+  repo: netapp-solutions-family

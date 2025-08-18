@@ -939,7 +939,6 @@
   <block id="23c80196123eb12634dbeb70874872fe" category="list-text">マウントポイントを作成し、データベースホストに権限を設定します。</block>
   <block id="ab876b2fc77b49d4799c8317c49e7fdc" category="list-text">ファイルシステムをマウントし、「 mount – a 」コマンドを実行します。</block>
   <block id="cccc40b2b949eb5631f1a7625e3bbb28" category="paragraph">データボリュームパーティションをテナントデータベースに追加するには、テナントデータベースに対して次の SQL ステートメントを実行します。追加する LUN のパスはそれぞれ異なります。</block>
-  <block id="269e48a148be46c6e5fb065e74629d57" category="doc">SAP Business Application と SAP HANA Database ソリューション</block>
   <block id="f01120deea316d303519ad5ab689a57f" category="list-text">解決策概要</block>
   <block id="2f5f480c2cb54884152c412765dd0565" category="summary">効果的なディザスタリカバリ戦略を実装するには、必要なワークフローをテストする必要があります。テストでは、戦略が機能するかどうか、および内部ドキュメントで十分かどうかを検証し、管理者が必要な手順についてトレーニングできるようにします。</block>
   <block id="1135ff8da5df72747612faee39237919" category="doc">ディザスタリカバリのテスト</block>
@@ -1237,8 +1236,6 @@
   <block id="cfb95d4ab5955fc882056df6c5353ec9" category="paragraph">ソースボリュームからターゲットボリュームへのレプリケーションの更新が行われるたびに、前回と現在の更新の間に行われたすべてのブロックの変更がターゲットボリュームにレプリケートされます。これには、ソースボリュームで作成された Snapshot も含まれます。次のスクリーンショットは、ターゲットボリュームで使用可能な Snapshot を示しています。すでに説明したように、 AzAcSnap ツールによって作成される各スナップショットは、アプリケーションと整合性のある HANA データベースのイメージであり、セーブポイントまたはフォワードリカバリのいずれかを実行するために使用できます。</block>
   <block id="e8f1ac642d75f5f86a7154d6dd39a32e" category="admonition">ソースボリュームとターゲットボリュームに SnapMirror Snapshot コピーが作成され、再同期処理とレプリケーション更新処理にも使用されます。これらの Snapshot コピーは、 HANA データベースの観点からはアプリケーションと整合性がありません。 HANA のリカバリ処理には、 AzaCSsnap で作成されたアプリケーションと整合性のある Snapshot のみを使用できます。</block>
   <block id="39827364402eb7a6398af8c1194aa72d" category="doc">データ保護の概要</block>
-  <block id="677f2e7e550075f7bbbdac91e0918f2f" category="sidebar">SAP ソリューション</block>
-  <block id="fcf140abed196b8eba71c45f21312bce" category="sidebar">ネットアップのソリューション</block>
   <block id="cd47dd01745339787e4c7300389401f2" category="sidebar">ベストプラクティス</block>
   <block id="88aa48beec8729be73be99084cd76b79" category="sidebar">『 SAP HANA on NetApp AFF Systems with FCP Configuration Guide 』</block>
   <block id="a1893b920bc48a028abc56e282719481" category="sidebar">『 SAP HANA on NetApp AFF Systems with NFS Configuration Guide 』</block>
@@ -5790,4 +5787,27 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="d9bb80ae32f686bbae368979a76f86d7" category="paragraph">NetApp は、IT 組織があらゆるビジネス ニーズに対応できるように災害復旧計画を構築または適応できるようにするためのテクノロジとツールの包括的なポートフォリオを開発しました。</block>
   <block id="6a9c098947d8b811552347f2ed990ebd" category="inline-link-macro"><block ref="6a9c098947d8b811552347f2ed990ebd" category="inline-link-rx"></block></block>
   <block id="702c9bfa6d3b8d8b923fbeba4db3625f" category="paragraph"><block ref="702c9bfa6d3b8d8b923fbeba4db3625f" category="inline-link-macro-rx"></block></block>
+  <block id="225b42e7cb6036e97607adda6dcca1c3" category="summary">SAP 向けNetAppソリューションの資料に対する最近の変更のログ。</block>
+  <block id="4a2fff3ce5a292ada8e788cd34005db8" category="doc">NetApp仮想化ソリューションの新機能</block>
+  <block id="2ca0fa0a322d6c31c3d0906a34c85e6c" category="paragraph">SAP 向けソリューションの新機能について学びます。</block>
+  <block id="bab52961b58c502c7991d35556c25367" category="section-title">2025年8月18日</block>
+  <block id="47e26e0d5bbeef43c544dd9ae72e66b0" category="inline-link-macro">NetAppソリューションファミリー</block>
+  <block id="840125a006aee7dc0e8efd313e7b614e" category="paragraph">NetAppソリューションサイトは、<block ref="f083b096ae581e72c5ab727ef8bd5732" category="inline-link-macro-rx"></block>これには次のサイトが含まれます。</block>
+  <block id="e87298059f60b0844dc971f315184cf5" category="inline-link-macro">NetAppの人工知能ソリューション</block>
+  <block id="ac42ca0e1f789a8367b40d9824726778" category="list-text"><block ref="ac42ca0e1f789a8367b40d9824726778" category="inline-link-macro-rx"></block></block>
+  <block id="9cae574c1dc1ca50a949c1e889637ba7" category="inline-link-macro">NetAppコンテナソリューション</block>
+  <block id="31d1ae0120af1d791e4320e17eb10687" category="list-text"><block ref="31d1ae0120af1d791e4320e17eb10687" category="inline-link-macro-rx"></block></block>
+  <block id="3947417923606d3599bcba7a82f71f1b" category="inline-link-macro">NetAppデータ管理ソリューション</block>
+  <block id="56c054d4bb919790ebe189f7a7d11c3c" category="list-text"><block ref="56c054d4bb919790ebe189f7a7d11c3c" category="inline-link-macro-rx"></block></block>
+  <block id="9bb3e58246c5654a6d8e08a7bddd60ec" category="inline-link-macro">NetAppデータベースソリューション</block>
+  <block id="3e2420ab1ec1d6e02b32b017d3ba969a" category="list-text"><block ref="3e2420ab1ec1d6e02b32b017d3ba969a" category="inline-link-macro-rx"></block></block>
+  <block id="a37049a2a78422ac5627c7987db5c337" category="inline-link-macro">NetAppパブリックおよびハイブリッド クラウド ソリューション</block>
+  <block id="144417321224efbf0afc2ae665a84a46" category="list-text"><block ref="144417321224efbf0afc2ae665a84a46" category="inline-link-macro-rx"></block></block>
+  <block id="2729aba3baa90aaaed37b282e515f6e4" category="list-text">SAP向けNetAppソリューション</block>
+  <block id="4ead908c2ca3b4c7156e0e703642415d" category="inline-link-macro">NetApp仮想化ソリューション</block>
+  <block id="3100186c9f62cec85ac05309c5d10217" category="list-text"><block ref="3100186c9f62cec85ac05309c5d10217" category="inline-link-macro-rx"></block></block>
+  <block id="a96e55f331afdc0c9a301d1a5ad2c3db" category="sidebar">SAPビジネスアプリケーションとSAP HANAデータベースソリューション</block>
+  <block id="7caa0b3fa0fd74ced773a86b62850a8b" category="sidebar">FlexPod上の SAP の概要</block>
+  <block id="36211f481e2e2626220b1d9e8a3325bb" category="sidebar">SAP向けソリューション</block>
+  <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新機能</block>
 </blocks>
