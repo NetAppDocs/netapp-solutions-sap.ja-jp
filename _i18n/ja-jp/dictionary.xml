@@ -3181,15 +3181,12 @@
   <block id="e2aad9960e8d21643cd0c96d6d0231cc" category="cell">nfsvers = 3、nolock、</block>
   <block id="9bb4ef49da8c49be50e8756f6e99e5fa" category="cell">nfsvers = 4.1、ロック</block>
   <block id="dae81ce43b95196ee53c797d1ddda090" category="cell">nfsvers = 3、nolock</block>
-  <block id="fcb7778cf38a196128c87d1b6e20281e" category="paragraph">NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。</block>
-  <block id="326f77b6d7cda2b57e0f8e89a8f89959" category="admonition">NetApp AFF CシリーズにはNetApp ONTAP 9.13.1以降が必要です</block>
   <block id="f7d09d43174d21d3203d6472d2543dc2" category="section-title">NetAppボリュームとアグリゲートの暗号化</block>
   <block id="381cfdf4e70ff7173296a764c78e97ae" category="paragraph">SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption（NAE）の使用がサポートされています。</block>
   <block id="5d10dd356a9d8604eaed291a9dfeb67e" category="section-title">NetAppボリュームとアグリゲートの暗号化</block>
   <block id="2976619a79e897d24427ec6796aa4a70" category="paragraph">ホストの自動フェイルオーバーを備えたSAP HANAマルチホストシステムを使用している場合は、<block ref="46649585ec21482ae2e5fcac30c7dcae" prefix=" " category="inline-code"></block> 次の表を参照してください。
 これらのセクション内では、デフォルトの再試行間隔（10秒）を維持してください。</block>
   <block id="73d4ace7e434b8709f5a930ad845d6d6" category="paragraph">ホストの自動フェイルオーバーを備えたSAP HANAマルチホストシステムを使用している場合は、<block ref="46649585ec21482ae2e5fcac30c7dcae" prefix=" " category="inline-code"></block> 次の表を参照してください。これらのセクションでは、デフォルトの再試行間隔を 10 秒に設定します。</block>
-  <block id="ba7dc8a883957fda819c429f468dc4d0" category="admonition">NetApp AFFおよびASA CシリーズにはNetApp ONTAP 9.13.1以降が必要です</block>
   <block id="b5816060ccee493fc8a2946c9d33de20" category="paragraph">NetApp Snapshotテクノロジを使用すれば、データベースのバックアップを数分で作成できます。</block>
   <block id="5cd519503ff0d358e76b5be6e9b7d14e" category="paragraph">Snapshot コピーではストレージプラットフォーム上の物理データブロックは移動されないため、 Snapshot コピーの作成に要する時間はデータベースのサイズに左右されません。また、 Snapshot テクノロジを使用しても、稼働中の SAP システムのパフォーマンスには影響しません。そのため、対話形式またはバッチでのアクティビティのピーク期間を考慮せずに、 Snapshot コピーの作成をスケジュールできます。SAPとネットアップのお客様は、通常、複数のオンラインSnapshotバックアップを1日に行うようにスケジュールを設定します。たとえば、一般的には6時間おきにバックアップを作成します。作成されたSnapshotバックアップは、通常、長期間保持するために低コストのストレージに移動したり、削除される前にプライマリストレージシステムに3~5日間保持されています。</block>
   <block id="30fb58b3c8613fe4e4ee034a17cad743" category="paragraph">オンデマンドのSnapshotバックアップ処理とオンデマンドのブロック整合性チェック処理を作成できます。</block>
@@ -4299,9 +4296,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="9adaadfddff33c2daa546229f2809747" category="list-text">SAPインストールツールを使用して<block ref="b0aa3e7cad7b6222087aedbd4c799832" prefix=" " category="inline-code"></block>、いずれかのワーカーホストで次のコマンドを実行してインストールを開始します。オプションを使用し<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block>て<block ref="d6075976fde6718b25d21e4894d5d07d" prefix="(" category="inline-code"></block>、2番目のワーカーとスタンバイホストを追加し<block ref="7e4282317c0dcc7ce1f24f047b09f466" prefix="(" category="inline-code"></block>ます）。</block>
   <block id="dc6dd758c7cbed933fdee36ba03835f9" category="admonition">準備したファイルが格納されているディレクトリ<block ref="1611b9881f1a590d33bbbcfdd9c55ca7" prefix=" " category="inline-code"></block>は<block ref="1b723e0f23eac7863dadd5b0b02436e4" prefix="(" category="inline-code"></block>、CLIオプションに含まれてい<block ref="09c9689230344c41364f0fa22da928c6" prefix=" " category="inline-code"></block>ます）。</block>
   <block id="b5b2eafc66ebc94cfb50a26c15cf1f52" category="paragraph">SAPインストールツールを使用して<block ref="e57381f2a2aa941f8d88ba956c77d978" prefix=" " category="inline-code"></block>、いずれかのワーカーホストで次のコマンドを実行してインストールを開始します。オプションを使用し<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block>て、2番目のワーカー（sapc-hana-tst-06）とスタンバイホスト（sapc-hana-tst-07）を追加します。準備したファイルが格納されているディレクトリ<block ref="1611b9881f1a590d33bbbcfdd9c55ca7" prefix=" " category="inline-code"></block>は<block ref="1b723e0f23eac7863dadd5b0b02436e4" prefix="(" category="inline-code"></block>、CLIオプションに含まれてい<block ref="09c9689230344c41364f0fa22da928c6" prefix=" " category="inline-code"></block>ます）。使用する OS のバージョンによっては、 SAP HANA データベースをインストールする前に Phyton 2.7 をインストールする必要があります。</block>
-  <block id="1a808aae97e904d2d0d8b853c60fa475" category="list-text">AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A90、AFF A900、AFF A800</block>
-  <block id="19fe8eb256f35b3d5110d29e652ce432" category="list-text">AFF C250、AFF C30、AFF C400、AFF C60、AFF C800、AFF C80</block>
-  <block id="968cad2bf5c711dad5ccd0efa3e1ff9f" category="list-text">AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A900、AFF A90、AFF A800</block>
   <block id="54652d040ebb810c360684ca8e231a52" category="paragraph">NFS データストアまたは NFS を使用する VVol データストアもサポートされます。どちらの場合も、本番環境で使用するデータストアに格納する必要があるのは、 1 つの SAP HANA データボリュームまたはログボリュームだけです。</block>
   <block id="7d631f41ea82e4581ac749b6874d885a" category="paragraph">raw デバイスマッピング（ RDM ）、 FCP データストア、または FCP を使用する VVol データストアもサポートされます。どちらのデータストアオプションも、本番環境で使用するためにデータストアに格納する SAP HANA データボリュームまたはログボリュームは 1 つだけです。</block>
   <block id="efd1d0d586a27578c98f10496d441cd4" category="paragraph">NFS データストアと NFS を使用する VVol データストアもサポートされます。どちらの場合も、本番環境で使用するデータストアに格納する必要があるのは、 1 つの SAP HANA データボリュームまたはログボリュームだけです。</block>
@@ -5405,8 +5399,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="164fe74cfbca9ef543331e42b891cf2c" category="inline-image-macro">NetApp MetroCluster</block>
   <block id="e0688cb7d6291c05b4b81e03674d396f" category="summary">NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。このガイドでは、このプラットフォーム上の SAP HANA に関するベスト プラクティスについて説明します。</block>
   <block id="43af0fa315980d56444cafe5aa7da0d8" category="paragraph">NetApp AFF 製品ファミリーは、 TDI プロジェクトの SAP HANA との使用が認定されています。このガイドでは、FCP のこのプラットフォーム上の SAP HANA に関するベスト プラクティスについて説明します。</block>
-  <block id="f24901db79bd7adbcfdc97deb6526be7" category="list-text">ASA A250、ASA A400、ASA A800、ASA A900</block>
-  <block id="7165d8e624155bf7a4889b98927f605c" category="list-text">ASA C250、ASA C400、ASA C800</block>
   <block id="22b98f7a97d9cee874821e4b572b6c5d" category="inline-link-macro">FCP 搭載の NetApp ASA システム上の SAP HANA</block>
   <block id="8a3ac33050df8d373b59758f241b1e68" category="list-text"><block ref="8a3ac33050df8d373b59758f241b1e68" category="inline-link-macro-rx"></block></block>
   <block id="7f07617f785b58f6b368eb03e7188fdd" category="paragraph"><block ref="7f07617f785b58f6b368eb03e7188fdd" category="inline-image-macro-rx" type="image"></block></block>
@@ -5415,7 +5407,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="cd4edf52138d04dee0b63f481803c909" category="paragraph"><block ref="cd4edf52138d04dee0b63f481803c909" category="inline-image-macro-rx" type="image"></block></block>
   <block id="e86ef10a731bbc034f957525a4267b82" category="paragraph"><block ref="e86ef10a731bbc034f957525a4267b82" category="inline-image-macro-rx" type="image"></block></block>
   <block id="7ea917f7bcbac29ff77e06d916b6e4bf" category="summary">NetApp AFFシステム製品ファミリーは、TDI（Tailed Data Center Integration）プロジェクトにおけるSAP HANAとの連携が認定されています。このガイドでは、このプラットフォームにおけるSAP HANAのベストプラクティスを紹介します。</block>
-  <block id="33af92fae250bf5ae7bd6f087c68910d" category="paragraph">NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。このガイドでは、NFS 用のこのプラットフォーム上の SAP HANA のベスト プラクティスについて説明します。</block>
   <block id="8c1992cbbe373136f1e087b51b1fa92a" category="inline-link-macro">FCP 搭載の NetApp AFF システム上の SAP HANA</block>
   <block id="26e279412c39b8d78be1eba7d6340c48" category="list-text"><block ref="26e279412c39b8d78be1eba7d6340c48" category="inline-link-macro-rx"></block></block>
   <block id="c9baa6589eb03e3de8596468ec4d3113" category="inline-image-macro">SAP HANA ストレージのサイズ設定プロセス</block>
@@ -5810,4 +5801,7 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="7caa0b3fa0fd74ced773a86b62850a8b" category="sidebar">FlexPod上の SAP の概要</block>
   <block id="36211f481e2e2626220b1d9e8a3325bb" category="sidebar">SAP向けソリューション</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新機能</block>
+  <block id="11c46485b4b3a1ac8c78c2b4fab3494c" category="paragraph">NetApp AFF/ ASA A シリーズ製品ファミリは、カスタマイズされたデータセンター統合 (TDI) プロジェクトで SAP HANA と併用できることが認定されています。</block>
+  <block id="570cc63e0195f0a2bf35f6333e8c271b" category="list-text">AFF A20、AFF A30、AFF A50、AFF A70、AFF A90、AFF A1K</block>
+  <block id="650bbb24893f36d6991bb48ee757fff0" category="paragraph">NetApp AFF A シリーズ製品ファミリは、カスタマイズされたデータセンター統合 (TDI) プロジェクトで SAP HANA と併用できることが認定されています。このガイドでは、NFS 用のこのプラットフォーム上の SAP HANA のベスト プラクティスについて説明します。</block>
 </blocks>

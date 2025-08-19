@@ -22,18 +22,11 @@ Marco Schoen 、ネットアップ
 
 == はじめに
 
-NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。
+NetApp AFF/ ASA A シリーズ製品ファミリは、カスタマイズされたデータセンター統合 (TDI) プロジェクトで SAP HANA と併用できることが認定されています。
 
 この認定は、次のモデルで有効です。
 
-* AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A90、AFF A900、AFF A800
-* AFF C250、AFF C30、AFF C400、AFF C60、AFF C800、AFF C80
-* ASA A250、ASA A400、ASA A800、ASA A900
-* ASA C250、ASA C400、ASA C800
-+
-
-NOTE: NetApp AFFおよびASA CシリーズにはNetApp ONTAP 9.13.1以降が必要です
-
+* AFF A20、AFF A30、AFF A50、AFF A70、AFF A90、AFF A1K
 
 
 SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。

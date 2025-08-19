@@ -14,18 +14,13 @@ summary: NetApp AFFシステム製品ファミリーは、TDI（Tailed Data Cent
 
 
 [role="lead"]
-NetApp AFF AシリーズおよびAFF Cシリーズ製品ファミリーは、Tailored Data Center Integration（TDI；テーラードデータセンター統合）プロジェクトでSAP HANAとの使用が認定されています。このガイドでは、NFS 用のこのプラットフォーム上の SAP HANA のベスト プラクティスについて説明します。
+NetApp AFF A シリーズ製品ファミリは、カスタマイズされたデータセンター統合 (TDI) プロジェクトで SAP HANA と併用できることが認定されています。このガイドでは、NFS 用のこのプラットフォーム上の SAP HANA のベスト プラクティスについて説明します。
 
 Marco Schoen 、ネットアップ
 
 この認定は、次のモデルで有効です。
 
-* AFF A150、AFF A20、AFF A250、AFF A30、AFF A400、AFF A50、AFF A70、AFF A1K、AFF A900、AFF A90、AFF A800
-* AFF C250、AFF C30、AFF C400、AFF C60、AFF C800、AFF C80
-+
-
-NOTE: NetApp AFF CシリーズにはNetApp ONTAP 9.13.1以降が必要です
-
+* AFF A20、AFF A30、AFF A50、AFF A70、AFF A90、AFF A1K
 
 
 SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["認定およびサポートされている SAP HANA ハードウェアディレクトリ"^]。
