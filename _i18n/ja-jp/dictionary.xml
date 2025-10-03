@@ -3247,73 +3247,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="36098c0d1c3de71d8727b1543bace633" category="cell">2022年4月</block>
   <block id="95798f037b7bacec7599a19423a6bb64" category="cell">2018 年 2 月</block>
   <block id="8e070ffcf4d959eabcd3559b9bb17ec6" category="sidebar">追加情報 およびバージョン履歴の参照先</block>
-  <block id="2c7a6a1ad3b3855b3dd5766cc2c1b15c" category="summary">このセクションでは、BlueXPを使用してSAP HANAのバックアップをリストアする方法について説明します。</block>
-  <block id="8513aa8ec75c0057744a444420581eac" category="doc">SAP HANA BlueXPのバックアップのリストア</block>
-  <block id="630146410475bf00902dbc3588f48b64" category="paragraph">バックアップからのリストアは、オンプレミスのNetApp ONTAPベースのストレージシステムまたはクラウド内のNetApp CVOに対してのみ実行できます。リストアを実行するには、次の手順を実行します。</block>
-  <block id="ae9c703fb18f8c682d52518823ea9112" category="list-text">BlueXP UIで 、*[保護]  *&gt;  *[バックアップとリカバリ]*&gt;*[アプリケーション]*をクリックし、[ハイブリッド]を選択します。</block>
-  <block id="16365f9a8d0b7866f7271510a28d1db2" category="list-text">[Filter by]  *フィールドで、フィルタ* Type *を選択し 、ドロップダウンから * HANA *を選択します。</block>
-  <block id="47abe672471325a3aa63fcd85f6e3367" category="list-text">NAS環境の場合は、オブジェクトストアからリストアするボリュームのエクスポート先となるホストのFQDNまたはIPアドレスを指定します。</block>
-  <block id="831b20d8b0ff4f1e50aecadcdcdc885d" category="list-text">SAN環境の場合、オブジェクトストアからリストアするボリュームのLUNをマッピングするホストのイニシエータを指定します。</block>
-  <block id="eee7cd91c87d431eb526192fb8d8f8fa" category="list-text">スナップショットがアーカイブストレージにある場合は、アーカイブストレージからデータをリストアする優先度を選択します。</block>
-  <block id="c309fef296cf37f3a835cb24529d8905" category="list-text">ソースストレージに十分なスペースがないか、ソースストレージが停止している場合は 、*[ストレージの場所を変更]*を選択します。</block>
-  <block id="7d7bd9e2f6791a41e19d3f4c2cfbd112" category="list-text">[ストレージの場所の変更]*を選択した場合は、デスティネーションボリュームにサフィックスを追加できます。このチェックボックスをオンにしていない場合、デフォルトでは  デスティネーションボリュームに*_restore *が追加されます。  [次へ]*をクリックします。</block>
-  <block id="09fbcde15932165bde251a10dbf240e4" category="list-text">[ストレージの場所を変更]を選択した場合は、オブジェクトストアからリストアするデータを格納する代替ストレージの場所の詳細を[ストレージマッピング]ページで指定し、*[次へ]*をクリックします。</block>
-  <block id="e5c7ac753b7a6121d9687b3fc4c66f25" category="summary">このセクションでは、作業環境のセットアップ方法、SnapCenterの設定方法、およびBlueXPでSAP HANAバックアップを設定してアクティブ化する方法について説明します。</block>
-  <block id="bba044fc5fd2c6b6b93f83b61a607e30" category="doc">BlueXP Backup and Recovery for SAP HANAの設定</block>
-  <block id="84e76e0953f8a5f72d754729d1eaf1ae" category="section-title">BlueXPの作業環境の作成</block>
-  <block id="210e8952dc88c73e56d56a168cfe0616" category="list-text">左側のメニューで、*[ストレージ]*&gt;*[キャンバス]*&gt;*[マイ作業環境]を選択します。</block>
-  <block id="6689e50f5e4a08328fa676a7ebb07f17" category="section-title">オンプレミスのストレージシステムとオブジェクトストレージバケット間の関係を作成</block>
-  <block id="eab79ca7fb49f80130fae7b1656f7ebc" category="inline-link">Amazon S3のゲートウェイエンドポイント- Amazon Virtual Private Cloud</block>
-  <block id="4513d4d932152177142c02ca2a383afc" category="paragraph">最初のボリュームのバックアップを作成するには、次の手順を実行します。</block>
-  <block id="690e7cac4bb20bc16d03d9e8c2976d36" category="section-title">SnapCenterでのSAP HANAシステムリソースの設定</block>
-  <block id="522c073cfbc968ed21bb5b8292358b24" category="section-title">BlueXP作業環境へのSnapCenterの追加</block>
-  <block id="63cebe46588c644def8c8d7ad33d7579" category="list-text">左側のメニューで、*[保護]*-&gt;*[バックアップとリカバリ]*-&gt;*[アプリケーション]*を選択します。</block>
-  <block id="5a367c49e14aa13d1f3d9dbbc659e2ae" category="section-title">アプリケーションバックアップのバックアップポリシーの作成</block>
-  <block id="01f80398f488785a735c649b98cb461b" category="section-title">Cloud Backup for ApplicationsによるSAP HANAデータベースの保護</block>
-  <block id="a0e8aadf9440319ad134e14b8cd7944e" category="paragraph">環境によっては、SnapMirrorソースの既存のスケジュール設定を削除しなければならない場合があります。そのためには、ソースONTAPシステムで次のコマンドを実行します。_snapmirror modify -destination-path &lt;hana-cloud-svm&gt;：&lt;SID_data_mnt00001&gt;_ copy -schedule ""_。</block>
-  <block id="3b6e263c9f3e6b5ae82e2961e7499aa8" category="summary">このテクニカルレポートでは、NetApp BlueXP Backup NAD Recovery for Applicationを使用したSAP HANAのデータ保護のベストプラクティスを紹介します。このドキュメントでは、概念、構成に関する推奨事項、処理のワークフロー（設定、バックアップ処理など）について説明します。 およびリストア処理</block>
-  <block id="b9a6a76ee21e4b2e63f002e8171e92cb" category="doc">BlueXP Backup and Recovery for SAP HANA -バックアップ先としてのクラウドオブジェクトストレージ</block>
-  <block id="b5810ff76e2c858c26eb34fd554d4cd5" category="paragraph">このドキュメントでは、NetApp BlueXPを使用してオンプレミスからクラウドベースのオブジェクトストアへのデータ保護のためにSAP HANAをセットアップおよび設定する方法について説明します。このコースでは、解決策のBlueXPのバックアップとリカバリについて説明します。この解決策は、NetApp Snap Centerを使用してオンプレミスのSAP HANAバックアップ解決策を強化したもので、コスト効率に優れた方法でSAP HANAバックアップをクラウドベースのオブジェクトストレージに長期アーカイブできます。また、オブジェクトストレージをAWS Glacier/Deep Glacierなどのアーカイブストレージに階層化するオプションも用意されています。 Microsoft Azure Blob Archive、GCP Archive Storageの略。</block>
-  <block id="efabc7b5ad8cc75eaf149a7744db8028" category="inline-link">TR-4614：『SAP HANA backup and recovery with SnapCenter』（netapp.com）</block>
-  <block id="c81a8bcb625915f9445bc27152702a6c" category="section-title">BlueXPのバックアップとリカバリのアーキテクチャ</block>
-  <block id="b2bf2bbf7e6b4629b50b4af1483af0ba" category="section-title">インストールと設定の手順の概要</block>
-  <block id="f3cf1278a15cf0b578a48d8ef6a60523" category="inline-link">SnapCenterの設定（netapp.com）</block>
-  <block id="a63540c81089e8aba203a4ec3fca1e34" category="list-text">NetApp BlueXPコンポーネントのインストールと設定</block>
-  <block id="60cb8be07c4c55cabf60de71b7a9b4b2" category="paragraph">データ保護解決策の初期セットアップ時に1回実行する必要があります。</block>
-  <block id="d695b2f7d2eff56585ac33b59ae50cde" category="list-text">NetApp SnapCenterでの準備手順</block>
-  <block id="6d95f48ab62edee63c2cc9fda6615760" category="paragraph">保護が必要なSAP HANAデータベースごとに実行する必要があります。</block>
-  <block id="c24f27d2fb45abb4ddc4c6dac6b3f9b9" category="list-text">BlueXPのバックアップとリカバリの設定手順</block>
-  <block id="0e7839906008338e5f608eca614e1cc7" category="section-title">NetApp BlueXPハイブリッドアプリケーションバックアップのインストールと設定</block>
-  <block id="9293673edeb2321146de2dbe903787cc" category="inline-link">オンプレミスアプリケーションデータの保護| NetAppドキュメント</block>
-  <block id="1b21781469d6b56757c78d09d90f83be" category="paragraph">NetApp BlueXPのコンポーネントのインストールと設定については、を参照してください<block ref="36b413e5ecd6dd30fe4575aa917373d9" category="inline-link-rx"></block>。</block>
-  <block id="c3c6e6b1d05fc3c3c73b5ab9af3ea3ee" category="list-text">BlueXPにサインアップし、次のURLでNetAppアカウントを設定してください：<block ref="7dd2072632295c5a9abd61523c46bd40" category="inline-link-rx"></block>。</block>
-  <block id="44de63d2b4a3805e8a143a8425e912c6" category="inline-link">コネクタの詳細| NetAppのドキュメント</block>
-  <block id="bc9a4ad171b5071191568c8006c63dc6" category="list-text">BlueXP Connectorを環境に導入します。概要は、<block ref="a6131392110983029d1dff188cde678b" category="inline-link-rx"></block>。</block>
-  <block id="6691a23f272bb7c1d702c8963a326dc0" category="list-text">BlueXPでCloud Backupライセンスを追加/購入：<block ref="57c4a53c7a746551566c6506aa924ffc" category="inline-link-rx"></block>。</block>
-  <block id="d497834786aa54c08eaf2f867588d576" category="list-text">SnapCenterでSAP HANAシステムリソースを設定します。</block>
-  <block id="465f4a123cd3df663bb4b5d781e3755f" category="list-text">作業環境にSnap Centerを追加します。</block>
-  <block id="87a323c396d1f0b11c5c63017a081d0a" category="list-text">環境に応じたポリシーを作成します。</block>
-  <block id="a33d9e49823debc4eac9a3f6fed5ed4f" category="list-text">SAP HANAシステムを保護</block>
-  <block id="b1708148488f2ff73841c4df62f35be1" category="doc">追加情報とバージョン履歴</block>
-  <block id="5d2dace1bbb099eb2c0c668ec3e8c3b6" category="list-text">NetApp BlueXPバックアップ/リカバリの製品ドキュメント+
-<block ref="2337d886e4f2f876275339e16f80eafd" category="inline-link-rx"></block></block>
-  <block id="d7a15f16d93378f9428254d47703abd2" category="cell">2024年3月</block>
-  <block id="c9dd6bad4c7d561872f2e2d498a990bf" category="inline-link">Interoperability Matrix Tool （ IMT ）</block>
-  <block id="c5358f17fd6fd13a64169fc38a03495f" category="paragraph">を参照してください<block ref="2a186a9053db553d8a98e2d5f86d7002" category="inline-link-rx"></block> NetApp Support Siteで、本ドキュメントに記載されている製品や機能のバージョンがお客様の環境でサポートされるかどうかを確認してください。NetApp IMT には、ネットアップがサポートする構成を構築するために使用できる製品コンポーネントやバージョンが定義されています。サポートの可否は、お客様の実際のインストール環境が公表されている仕様に従っているかどうかによって異なります。</block>
-  <block id="ca996b238b1f32bd7d6b941eb3464b17" category="sidebar">BlueXP Backup and Recovery for SAP HANA -概要</block>
-  <block id="deac54b4ceeb072a80124bd022d78294" category="sidebar">SAP HANA BlueXPのバックアップのリストア</block>
-  <block id="1605c9a8e838f67f2b16a4053e1e045d" category="paragraph">このテクニカルレポートでは、AWS S3オブジェクトストレージを使用したBlueXPのSAP HANA向けバックアップ/リカバリ機能を使用して、オンプレミスのSnapCenterベースのSAP HANAバックアップ/リカバリ解決策を強化する方法のみを説明します。AWS S3ではなくMicrosoft AzureとGCPオブジェクトストレージを使用したセットアップと設定は似ていますが、本ドキュメントでは説明しません。</block>
-  <block id="dce65a9e030d5dbde345a046d948f2bf" category="paragraph">BlueXPのバックアップとリカバリは、NetAppオンプレミスストレージで実行されるアプリケーションにクラウドでデータ保護機能を提供するSaaS解決策です。NetAppストレージを使用して、アプリケーションと整合性のある効率的なポリシーベースのSAP HANA保護を実現します。さらに、BlueXPのバックアップとリカバリ機能では、一元的な管理と監視が可能になると同時に、アプリケーション固有のバックアップとリストア処理の管理もユーザに委譲できます。</block>
-  <block id="ef7bad3edebf99f3bb50f4d8bbaa37d6" category="paragraph">BlueXPのバックアップとリカバリは、NetApp BlueXP内でSaaSとして実行され、フレームワークとUIを活用します。BlueXP作業環境フレームワークを使用して、NetApp ONTAPベースのオンプレミスストレージとNetApp SnapCenterサーバのクレデンシャルを設定、管理します。</block>
-  <block id="284528a6422c1ab87246e51dcb6b3ae5" category="paragraph">BlueXP Connectorは、お客様の仮想ネットワーク内に導入する必要があります。サイト間VPN接続など、オンプレミス環境とクラウド環境を接続する必要があります。NetApp SaaSコンポーネントとお客様の環境の間の通信は、コネクタを介してのみ行われます。コネクタは、ONTAPおよびSnapCenter管理APIを使用してストレージ処理を実行しています。</block>
-  <block id="3df2c2f8f80654c02cea27e8354aee2a" category="paragraph">オンプレミスストレージとクラウドバケット間のデータ転送は、保存中のAES 256ビット暗号化、転送中のTLS / HTTPS暗号化、顧客管理キー（CMK）のサポートによってエンドツーエンドで保護されます。[+]
-バックアップされたデータは、書き換えや削除が不可能なWORM状態で保存できます。オブジェクトストレージからデータにアクセスする唯一の方法は、NetApp CVOを含むNetApp ONTAPベースのストレージにデータをリストアすることです。</block>
-  <block id="6cb139093b769a68f6abbb55400df4d8" category="list-text">オンプレミスストレージを追加して、BlueXPでNetAppオンプレミス環境とクラウドデスティネーションの作業環境を作成します。</block>
-  <block id="49d37c51268190a8f072cf6f400be18f" category="list-text">オンプレミスストレージの新しいオブジェクトストア関係をAWS S3バケットに作成します。</block>
-  <block id="6cf9c506a56175d20b049edfdc810cec" category="paragraph">社内ストレージシステムを作業環境に追加します。</block>
-  <block id="35fb81d7bc669beabd5887c5308a5374" category="paragraph">オンプレミスストレージとS3バケットの関係は、ボリュームのバックアップを作成するか、アプリケーションのバックアップをアクティブ化することで確立されます。既存のサイト間VPNを使用してオンプレミスからS3へデータを転送する場合は、VPCエンドポイントを使用する必要があるため、ボリュームバックアップを使用してオンプレミスストレージとS3バケット間の関係を作成する必要があります。[+]
-このドキュメントの作成時、アプリケーションバックアップワークフローでは、S3バケットにアクセスするためのVPCエンドポイントの選択は提案されていません。[+]
-を参照してください<block ref="7f3b31b88f0e42104578f538777bc3e6" category="inline-link-rx"></block> VPC内でS3のVPCエンドポイントをセットアップする方法</block>
   <block id="9c485d8d0a0f2d60633001b05d342eed" category="doc">『SAP HANA on NetApp FAS systems with NFS Configuration Guide』</block>
   <block id="b7bda169ccba06e8cbcf02ba0fab5928" category="doc">『SAP HANA on NetApp FAS Systems with Fibre Channel Protocol』構成ガイド</block>
   <block id="a56f5f8ccd94f38be4e8a0f1faf81823" category="doc">『SAP HANA on NetApp AFF Systems with NFS』-構成ガイド</block>
@@ -3816,45 +3749,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="5bf509e6d43ff3eb5c07c44c1546ab09" category="paragraph"><block ref="5bf509e6d43ff3eb5c07c44c1546ab09" category="inline-image-macro-rx" type="image"></block></block>
   <block id="55aab77fa5d7f50b7fbedbf0df160938" category="paragraph"><block ref="55aab77fa5d7f50b7fbedbf0df160938" category="inline-link-rx"></block></block>
   <block id="5455f48dc7894a1b2782bb01cf938a86" category="paragraph"><block ref="5455f48dc7894a1b2782bb01cf938a86" category="inline-link-rx"></block></block>
-  <block id="6e0b32969c38b1fb3a586b9c8bca6d29" category="inline-image-macro">hana-hycl-back-image2、width=624、height=316</block>
-  <block id="04c6fea5cff3e4aa7643ec678d204fdc" category="inline-image-macro">^ a b c d e text enth ä lt.Automatisch generierte Beschreibung、width=624、height=316</block>
-  <block id="e67b31693fccd64a3bacc0e55452cae2" category="inline-image-macro">hana-hycl-back-image5、width=624、height=316</block>
-  <block id="bea671570e246847e20efc713c53c69e" category="inline-image-macro">アイン・ビルト（Das Diagramm enth ä lt）とも呼ばれる。Automatisch generierte Beschreibung、width=624、height=316</block>
-  <block id="dd78ee4baa00b09244d3a2f25c867ae5" category="inline-image-macro">hana-hycl-back-image7、width=624、height=308</block>
-  <block id="271dec539afcefba0b81c99e084b109c" category="inline-image-macro">hana-hycl-back-image8、width=624、height=309</block>
-  <block id="b0ea90440a1c4c0ce85aa8e6a6798323" category="inline-image-macro">hana-hycl-back-image9、width=624、height=304</block>
-  <block id="16c981d74d1a7a65432b0b676f94b05d" category="inline-image-macro">hana-hycl-back-image10、width=624、height=307</block>
-  <block id="3fe7bd8162333cf5226079e598f88f63" category="inline-image-macro">hana-hycl-back-image12、width=624、height=305</block>
-  <block id="8de11028ada12771254470b000810e23" category="inline-image-macro">hana-hycl-back-image11、width=624、height=304</block>
-  <block id="eb54efc82bc89a6f6a8a311be7a01d24" category="inline-image-macro">Ein Bild, das Text, Software, Computersymbol, Webseite enth ä lt.Automatisch generierte Beschreibung、width=624、height=306</block>
-  <block id="75e71600dc8b519173f07bb53132cfea" category="inline-image-macro">hana-hycl-back-image14、width=624、height=306</block>
-  <block id="844815fed3e149f6fc8998b67459b8a9" category="inline-image-macro">hana-hycl-back-image15、width=624、height=304</block>
-  <block id="a8520b5a7e60b78ae1f8faf41e825735" category="inline-image-macro">hana-hycl-back-image16、width=624、height=304</block>
-  <block id="46694ff89d2e1049db53b085f808204b" category="inline-image-macro">hana-hycl-back-image17、width=624、height=304</block>
-  <block id="6b1682473b222d2b053e1f829a4dfa26" category="inline-image-macro">グラフィカルユーザインターフェイス、アプリケーション概要が自動的に生成される、幅= 604、高さ= 156</block>
-  <block id="ec949205c32b4dcbf3d33ae3d2653d23" category="list-text">SAP HANAシステムが格納されているSVM（この例ではHANA）がクラスタ経由で追加されているかどうかを確認します。SVMのみが追加されている場合は、クラスタを追加します。+<block ref="a21a8efefc66cab38c485ab2857055c4" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="fa2838d19a717f2eaaa40e2f1f725b14" category="inline-image-macro">グラフィカルユーザインターフェイス、アプリケーション概要が自動的に生成される、幅= 604、高さ= 140</block>
-  <block id="015b0ff295262d8372bb8eaf0e7007fa" category="inline-image-macro">hana-hycl-back-image20、width=167、height=167</block>
-  <block id="fc770d11db32177599ce06cc7a281439" category="inline-image-macro">グラフィカルユーザインターフェイス、アプリケーション概要が自動的に生成される、幅= 604、高さ= 215</block>
-  <block id="84c8d37516c033f0c33377c3d5233ad4" category="list-text">新しいポリシーをSAP HANAシステムに追加し、日次スケジュールを割り当てます。+<block ref="7adbf922feb3d32be59867cb2db85d53" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f306bf0a63220090651328d0787ebdef" category="inline-image-macro">グラフィカルユーザインターフェイス、アプリケーション、Teams概要が自動的に生成される、幅= 604、高さ= 193</block>
-  <block id="8b7d9c683eee25ba85d1f605aa5bfc73" category="list-text">設定された新しいバックアップは、定義されたスケジュールに従ってポリシーが実行されたあとに使用できるようになります。<block ref="4cdd66955f0a12d8fd4b6c1593da46ce" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="9a74817b35b4d995ea09e91b80d35939" category="inline-image-macro">hana-hycl-back-image23、width=624、height=316</block>
-  <block id="f1fa07b4f7836783fffe714d5a32befc" category="inline-image-macro">hana-hycl-back-image26、width=624、height=315</block>
-  <block id="4d57087fb6eb4ef48dd81d74b0599e61" category="inline-image-macro">hana-hycl-back-image27、width=624、height=316</block>
-  <block id="649a9b7aadbc8a5543b6a50f4b67635f" category="inline-image-macro">hana-hycl-back-image29、width=624、height=316</block>
-  <block id="349ab45b449e8c58be43aa51b5414b97" category="inline-image-macro">hana-hycl-back-image30、width=624、height=316</block>
-  <block id="62a3ac1a1f8d319fbc334f7bb626e92f" category="inline-image-macro">hana-hycl-back-image31、width=624、height=315</block>
-  <block id="56a584207272fdc3949d5cfbeddc6890" category="inline-image-macro">hana-hycl-back-image32、width=624、height=315</block>
-  <block id="76e2dedbbcb80bd757e7f109e362eddf" category="inline-image-macro">幅= 624、高さ= 316</block>
-  <block id="659017308b6b80ebac0dc21912936c14" category="inline-image-macro">幅= 624、高さ= 337</block>
-  <block id="a852f184953f796252263a558df2db56" category="inline-image-macro">hana-hycl-back-image37、width=624、height=316</block>
-  <block id="c7fbbf7c043fddfe22030f95f982786c" category="summary">このセクションでは、追加情報の参照先とバージョン履歴を示します。</block>
-  <block id="41bb765509308cdc44c413e512e52e34" category="inline-image-macro">Ein Bild, das Text, Screenshot, Diagramm, Kreis enth ä lt.Automatisch generierte Beschreibung、width=624、height=450</block>
-  <block id="796b2f89ad255115d9dff26e3177a467" category="paragraph"><block ref="796b2f89ad255115d9dff26e3177a467" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="7bff1872092b4daae129c007c84cd996" category="inline-image-macro">hana-hycl-back-image38、width=624、height=305</block>
-  <block id="a50aa712257968ee6554358d180aeec3" category="inline-image-macro">幅= 624、高さ= 308</block>
-  <block id="c2dc9045e50399390c48484b265865e6" category="inline-image-macro">hana-hycl-back-image41、width=624、height=309</block>
   <block id="607e9caaefc803f1d39242ad4334a766" category="paragraph"><block ref="607e9caaefc803f1d39242ad4334a766" category="inline-image-macro-rx" type="image"></block></block>
   <block id="46f88568036f8d70f81f56eb754440ba" category="paragraph"><block ref="46f88568036f8d70f81f56eb754440ba" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0e84b80d2a5f8afd1eeb5f706b957809" category="paragraph"><block ref="0e84b80d2a5f8afd1eeb5f706b957809" category="inline-image-macro-rx" type="image"></block></block>
@@ -4352,7 +4246,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="a1498fba486158dfd616e2bc1f205275" category="admonition">ディスクシェルフを追加しても、ストレージコントローラでサポートできるSAP HANAホストの最大数は増えません。</block>
   <block id="a2ef5d14ae5c3accf7291e39163d1ebd" category="paragraph">次の図に示すように、NS224 NVMeディスクシェルフは、コントローラごとに2つの100GbEポートで接続されます。各シェルフ内のディスクは、HAペアの両方のコントローラに均等に分散する必要があります。</block>
   <block id="ef8d203413a4aabe57527556e0ef5fcb" category="paragraph"><block ref="ef8d203413a4aabe57527556e0ef5fcb" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="5c93db5d513dfbb32e85b013261b5aa8" category="list-text">の説明に従って、正しいディスク・シェルフ構成を確認します<block ref="039cb3f1d3f19b24b2d3e1a57595e88d" category="inline-xref-macro-rx"></block>。</block>
   <block id="cf0ea9a7f661e4a10ff9e179d0893564" category="list-text">の説明に従って、必要なアグリゲートを作成して設定します<block ref="19f0aba2b822910f53ba3966ee7c8d59" category="inline-xref-macro-rx"></block>。</block>
   <block id="07701c9e659f97922638b5c031983241" category="list-text">の説明に従って、Storage Virtual Machine（SVM）を作成します<block ref="7c58f6887f41bcea1635c2c18a7a4529" category="inline-xref-macro-rx"></block>。</block>
   <block id="9a7dedbc9b05dfef2c16b4468bbc6d42" category="list-text">の説明に従って、論理インターフェイス（LIF）を作成します<block ref="fc903155b67a1626f9032f79a26da71f" category="inline-xref-macro-rx"></block>。</block>
@@ -5070,45 +4963,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="e34ce3b231903e44c3708a8295d4abc8" category="admonition">セカンダリポリシーのラベルは、ストレージレイヤのデータ保護設定の SnapMirror ラベルと同じにする必要があります。を参照してください。<block ref="9709887b2e10facf416fc3560603f9b8" category="inline-link-macro-rx"></block></block>
   <block id="f87531f2bfe441193671ca21c1af5569" category="paragraph">災害時のフェイルオーバーの場合は、レプリケーション関係を解除し、ボリュームを DR 本番用サーバにマウントして、 HANA データベースを最後の HANA セーブポイントにリカバリするか、レプリケートされたログバックアップを使用してフォワードリカバリでリカバリする必要があります。の章<block ref="e662c9f6046b2d69b33032921c282f16" category="inline-link-macro-rx"></block>では、必要な手順について説明します。</block>
   <block id="fd8ff870af3225045cae849a29ee9c7c" category="paragraph">各種の設定オプションの詳細については、の章を参照して<block ref="52361ff2780d39b847dad2f6438b837e" category="inline-link-macro-rx"></block>ください。</block>
-  <block id="e2a4d74d9da0f37cf75c01a592cccda1" category="list-text">+作業環境の追加*を押します。+<block ref="244734d9a715669af19beac37418cc69" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="487444cd9d2276bc7a0457c80118ecc8" category="list-text">[オンプレミス]を選択します。+<block ref="e2dbe10136eb44d00f6ea57dbc61dbf3" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="5f0bcbad0f64ed212671e0e94fe377d3" category="list-text">[オンプレミスのONTAPを検出]*を選択します。+<block ref="c373c9a6bc5f211b8506ef9fbccc4011" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="31b63ccfc00a87f4a0934a0009a846df" category="list-text">ONTAPクラスタのIPアドレスとパスワードを追加し、*[検出]*を押します。+<block ref="377b624e95c0a3e30f2686a4faa1ebed" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="e6906c1f38dbed8e1e05842ff6286585" category="list-text">これでONTAPクラスタが使用可能になります。+<block ref="f027fc2d9f697bc8a53fef90fc34acd6" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="fd13c146e0766b30e17141fd79e917bb" category="list-text">[保護]*から*[バックアップとリカバリ]*に移動し、*[ボリューム]*を選択します。+<block ref="37456cd827740a922e3efb17ffba4398" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="e8d6313bf00288819643ab8e400670ef" category="list-text">[Activate Backup]ボタンを押します。+<block ref="c372536652e895dd7d75f8a09398380b" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="d9a0e0cda5e1db18333387626bd238f4" category="list-text">目的のオンプレミスストレージシステムを選択し、*[バックアップのアクティブ化]*をクリックします。+<block ref="dec3e4e769c8ac62648df6cd1390fd33" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="5fad0330d15b001ea9ddb8076af3574f" category="list-text">[バックアップ]*を選択します。+<block ref="207e65c3d4a711c8387574765084cefe" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="63ba88b030ae789f4aed3eb5dd3f7963" category="list-text">SAP HANAデータファイルと同じSVMに格納されているボリュームを選択し、*[次へ]*を押します。この例では、/hana/sharedのボリュームが選択されています。+<block ref="4d3350cffa19f3cd959b7120cc46c077" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f807dc984612de42e2803ec8811279a4" category="list-text">既存のポリシーが存在する場合は、[続行]*をクリックします。+<block ref="0512ce0c50e2b38b84d08a2aeb441a14" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="2e6492f95475ccdc8c8633e4e3a777fa" category="list-text">[バックアップオプション]*にチェックを入れ、目的のバックアッププロバイダを選択します。この例ではAWSです。+既存のポリシーについては、このオプションをオンのままにします。+使用しないオプションのチェックを外します。+<block ref="076b2db5fd2dd85efd4b4ce9c10783e2" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="08c2b3c3f4b0a4da3e410a3d2c7a80b1" category="list-text">新しいバケットを作成するか、既存のバケットを選択します。AWSアカウント設定、regio、アクセスキー、シークレットキーを指定します。[次へ]*を押します。+<block ref="fcd2110b19ec8e0a5c1f57035990560a" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="bb7816e48b641793b34661b87a385315" category="list-text">オンプレミスストレージシステムの正しいIPspaceを選択し、* Privat Endpoint Configuration *を選択してS3のVPCエンドポイントを選択します。[次へ]*を押します。+<block ref="33e10a566213a6a475d417a3000cbf46" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="72811a0b1e049021699cde08c8d273a0" category="list-text">構成を確認し、*[バックアップのアクティブ化]*を押します。+<block ref="3d06d54330c9e8aa49ee9d5c2427605c" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="6ef4e48db7837bb4b18a4999b9b87f08" category="list-text">バックアップが開始されました。+<block ref="942d980a9dd4c5c16db513a30ca11cb8" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0fdd2ecdd94b659b9a48810552358736" category="list-text">daily、weekly、またはmonthlyスケジュールタイプでスケジュールポリシーを定義します。+<block ref="4053c2b580ac63fbd3aca168d4d20e18" category="inline-image-macro-rx" type="image"></block> <block ref="e4037ddbb5c26d524521d26f37ae8f52" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0df67991d6f19d68be5a1f806ea33ba8" category="list-text">プルダウンメニューから* Hybrid *を選択します。+<block ref="50b62de2b206c907297feb41ea8c584e" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="e168337ad80dacfb777dfb5b9d16d1b6" category="list-text">設定メニューで* SnapCenter Servers *を選択します。+<block ref="b8a08223f5755a38417573c44c7115d2" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="2d03f1780fa4abc5c29edf1a7376f442" category="list-text">SnapCenterサーバを登録します。+<block ref="dca8f8475b9f80caacbae88f15d95adf" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="a9288106bf9ce2dc4c764fab82260680" category="list-text">SnapCenterサーバのクレデンシャルを追加します。+<block ref="1f1add5901b34cb27bd11009a4bdf830" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ddc6a127dfd0f26869593648a25756a7" category="list-text">SnapCenterサーバが追加され、データが検出されます。+<block ref="5b4b1c8299226aa8a2b083d1352dba59" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c875706a996c5fcf3565a727ad698f17" category="list-text">検出ジョブが完了すると、SAP HANAシステムが使用可能になります。+<block ref="be655bf65dd56c79dc95dbfa07634cfc" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="74e83dca0aa27b732266bd94e5b121c7" category="list-text">設定メニューの*ポリシー*を選択します。+<block ref="e795cb19dc5cd5daf529720180130b91" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="6044544f3420c01cf19975ce598455f0" category="list-text">必要に応じて、[ポリシーの作成]*をクリックして新しいポリシーを作成します。+<block ref="d480fe1c409cf4f84bdc7ee238e839c8" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c5342b2db061cb16c3806776ac15c963" category="list-text">ポリシー名と目的のSnapMirrorラベルを指定し、必要なオプションを選択して*[作成]*を押します。+<block ref="bac41397b788aa7d17de3980c0ed6ddd" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="e645d4f0db4c9dbeb4ca23b11261a3f3" category="list-text">新しいポリシーが使用可能になります。+<block ref="449c23022bfb13eda82ce7584605e31e" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1ad5f9eb966551a1c729bc1bb9ae4549" category="list-text">SAP HANAシステムの*[バックアップのアクティブ化]*を選択します。+<block ref="5589cd08880f60d2123164b618a2d3e6" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="accd433ef37c2537a94a3c084d2f1907" category="list-text">前の手順で作成したポリシーを選択し、*[次へ]*をクリックします。+<block ref="91384b55a136ca1c585e2c2884eb4bca" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c9ad830bea03b11fd05ba79eaf0ec5f6" category="list-text">ストレージシステムとコネクタが事前に設定されているため、バックアップがアクティブ化されます。+<block ref="55f436d2fa7549d6372fa3c35565c4a4" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="cb0d8c7c771bfde22fa72cdc285079e2" category="list-text">ジョブが完了すると、システムが表示されます。+<block ref="88e6e4ade5b4c937312486c5dd3e1978" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="a2eb1ff416cbd26d08b23a37d3c82da7" category="list-text">しばらくすると、バックアップがSAP HANAシステムの詳細ビューに表示されます。+日次バックアップが翌日に表示されます。+<block ref="ac6a034c4eb3ed5655ae8237fc420fb0" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ddf969692f0e57fae57aaff1456799a0" category="list-text"><block ref="ddf969692f0e57fae57aaff1456799a0" category="inline-link-macro-rx"></block></block>
-  <block id="3c7416820648f591bb3fa1d31f7bcf03" category="paragraph">オンプレミスのSAP HANAバックアップ/リカバリソリューションのセットアップと構成については、を<block ref="159877d61f413e893b32f610f850cc28" category="inline-link-macro-rx"></block>参照してください。</block>
-  <block id="552f6a9485fc60bb7f55b449a97dc4e2" category="paragraph">必要なインストールと設定の手順は、3つの領域に分けることができます。+ NetApp Snap CenterでSAP HANAのバックアップ構成が設定されていることを前提条件としています。Snap Center for SAP HANAの最初のセットアップについては、を参照してください<block ref="df47df2d53579a5ed631e4604d5acca1" category="inline-link-macro-rx"></block>。</block>
-  <block id="c7ac945124ce2a979ffd642d40432d85" category="list-text">リストアするデータベースの*[詳細の表示]*をクリックします。+<block ref="acd713c1b2b085fc56261aa0cfad9c89" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="e60ebdb0aaaf0d4fb13bfd7d896cf8bf" category="list-text">目的のバックアップを選択し、[ストレージ][エクスポート]を選択します。+<block ref="b77d2ab3123688d838c2ad8eb51692dc" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f9435ac70c6aa2a726c5283ca2bb9bc7" category="list-text">必要なオプションを指定します。+<block ref="49dd4ae51b31524f137f2bd709126245" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="08862f459410ef47bf21a7834acd3afd" category="list-text">詳細を確認し、 *[リストア]*をクリックします。<block ref="552dceb28f1276cb45b6d2afff2ae744" category="inline-image-macro-rx" type="image"></block>++この処理では、指定したホストのリストアされたバックアップのストレージエクスポートのみが実行されます。ホストでファイルシステムを手動でマウントし、データベースを起動する必要があります。ボリュームを利用したあと、ストレージ管理者はONTAP クラスタからボリュームを削除できます。</block>
   <block id="cbfd61eacaaf6c950b89d6113ccfe679" category="paragraph"><block ref="cbfd61eacaaf6c950b89d6113ccfe679" category="inline-link-macro-rx"></block></block>
   <block id="3149d7f53627e7a4811812a5342ef935" category="paragraph"><block ref="3149d7f53627e7a4811812a5342ef935" category="inline-link-macro-rx"></block></block>
   <block id="aa00b093336debfc20dbc4fc69cb70d8" category="paragraph"><block ref="aa00b093336debfc20dbc4fc69cb70d8" category="inline-link-macro-rx"></block></block>
@@ -5313,7 +5167,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="e6b7e7bf86715e60d66e0c4fd326c955" category="paragraph">SnapCenterを使用したSAP HANAバックアップ/リカバリソリューションの詳細については、を参照してください<block ref="0a5fce897a9b356de9fbfc0e516c7392" category="inline-link-macro-rx"></block>。</block>
   <block id="5b30611fb0620adc53c494ca5e20e5d0" category="paragraph">SnapCenterを使用したSAP HANAディザスタリカバリソリューションの詳細については、を参照してください<block ref="9e073a57f7a3e69defc613fe0d2d690f" category="inline-link-macro-rx"></block>。</block>
   <block id="e409da5f49cbcd0d5f6f423a57a43e78" category="paragraph">ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションについては、を<block ref="d1b4413cecd0416bbd7ac40af6b252af" category="inline-link-macro-rx"></block>参照してください。</block>
-  <block id="a49d9f984a7158fad1ccd4db2fb62927" category="paragraph">特定のLUNの最大スループットとして1000MB/秒を使用することを推奨します。アプリケーションがより多くのスループットを必要とする場合は、LUNストライピングを備えた複数のLUNを使用して、必要な帯域幅を提供する必要があります。このガイドでは、セクションで、Linux LVMをベースとしたSAP HANAの例を紹介します<block ref="b31e32426f0cc5eb025339912edb2d91" category="inline-link-macro-rx"></block>。</block>
   <block id="60e3819e2b8858d6ed1ed9bf9b7ea912" category="paragraph"><block ref="60e3819e2b8858d6ed1ed9bf9b7ea912" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5f1ae89b567878eafdf31bc9d9aab95c" category="admonition">この<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>ツールはNetApp Host Utilitiesに含まれており、各SAP HANAホストにインストールする必要があります。詳細については、セクションを参照してください。<block ref="1970c05dedf021dcfe0fe0afe84eb11e" category="inline-link-macro-rx"></block></block>
   <block id="21a371be04b3decb0d2708ebbabb53cb" category="paragraph"><block ref="21a371be04b3decb0d2708ebbabb53cb" category="inline-image-macro-rx" type="image"></block></block>
@@ -5450,7 +5303,6 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="2a48b320782f505d499eb2656e4beeb6" category="paragraph">次の例は、 SID が FC5 の 2+1 マルチホストセットアップを示しています。</block>
   <block id="608ffc0c69fcd322ae0112af21ce3c4d" category="paragraph">SAP hdblcm インストール ツールを使用して、ワーカー ホストの 1 つで次のコマンドを実行してインストールを開始します。オプションを使用し<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block>て、2番目のワーカー（sapc-hana-tst-06）とスタンバイホスト（sapc-hana-tst-07）を追加します。</block>
   <block id="26b17225b626fb9238849fd60eabdf60" category="paragraph">+</block>
-  <block id="fbb87f9a8e02229a1bda368258b0705e" category="paragraph">特定のLUNの最大スループットとして1000MB/秒を使用することを推奨します。アプリケーションがより多くのスループットを必要とする場合は、LUNストライピングを備えた複数のLUNを使用して、必要な帯域幅を提供する必要があります。このガイドでは、セクションで、Linux LVMをベースとしたSAP HANAの例を紹介します<block ref="60502400ca116a44af7f5b80e6597e3d" category="inline-link-macro-rx"></block>。</block>
   <block id="6184bd9e1a3ce0ee5585d5645a62615e" category="list-text">セクション link:saphana-asa-fc-storage-controller-setup.html#initiator-groups の説明に従って、HANA サーバーのワールドワイド名 (WWN) を持つイニシエーター グループ (igroup) を作成します。 <block ref="a30a5bc4156d5efb64f9f758389889ed" category="inline-xref-macro-rx"></block> 。</block>
   <block id="5b1acf5a0d4700aa212fae66acc8c9da" category="inline-link-macro">SAP HANA 単一ホストシステムの LUN 構成</block>
   <block id="d8e1a4cd040958dd75d0dcc1425db696" category="inline-link-macro">SAP HANA マルチホストシステムの LUN 構成</block>
@@ -5804,4 +5656,11 @@ IBM Power上でのLinux用の中央プラグインの導入</block>
   <block id="11c46485b4b3a1ac8c78c2b4fab3494c" category="paragraph">NetApp AFF/ ASA A シリーズ製品ファミリは、カスタマイズされたデータセンター統合 (TDI) プロジェクトで SAP HANA と併用できることが認定されています。</block>
   <block id="570cc63e0195f0a2bf35f6333e8c271b" category="list-text">AFF A20、AFF A30、AFF A50、AFF A70、AFF A90、AFF A1K</block>
   <block id="650bbb24893f36d6991bb48ee757fff0" category="paragraph">NetApp AFF A シリーズ製品ファミリは、カスタマイズされたデータセンター統合 (TDI) プロジェクトで SAP HANA と併用できることが認定されています。このガイドでは、NFS 用のこのプラットフォーム上の SAP HANA のベスト プラクティスについて説明します。</block>
+  <block id="1fefbbe1f6719cf83eabfdf1a5ee8d0a" category="list-text">ディスクシェルフの構成が正しいことを確認してください。<block ref="4faed6de755c26533eccd0e0858cad65" category="inline-xref-macro-rx"></block> 。</block>
+  <block id="bd4e4c5c3d8d52054de3892b6f5dc693" category="paragraph">特定の LUN の最大スループットとして 1000 MB/秒を使用することをお勧めします。アプリケーションでより高いスループットが必要な場合は、LUN ストライピングを備えた複数の LUN を使用して必要な帯域幅を提供する必要があります。このガイドでは、Linux LVMベースのSAP HANAの例をセクションに示します。<block ref="e432b9ef93debe720a3ece302cbcca1c" category="inline-link-macro-rx"></block> 。</block>
+  <block id="b9ee3cd7dd759d764d0324a8cdadec91" category="paragraph">特定の LUN の最大スループットとして 1000 MB/秒を使用することをお勧めします。アプリケーションでより高いスループットが必要な場合は、LUN ストライピングを備えた複数の LUN を使用して必要な帯域幅を提供する必要があります。このガイドでは、Linux LVMベースのSAP HANAの例をセクションに示します。<block ref="ede92b3cf72760c585979de2c2a3139a" category="inline-link-macro-rx"></block> 。</block>
+  <block id="e95b75f557af9310f3d9c6299286a533" category="sidebar">ソリューションのリクエストとフィードバック</block>
+  <block id="22d04ecae9fae88d0b8d4548a46a545b" category="sidebar">リクエストの自動化</block>
+  <block id="776ab15fef436c9315c14738509d299e" category="sidebar">新しい解決策を提案する</block>
+  <block id="cfdaac8ef24ac5b2612570c34da00954" category="sidebar">ソリューションのフィードバックを提供する</block>
 </blocks>

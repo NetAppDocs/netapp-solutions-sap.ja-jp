@@ -55,7 +55,7 @@ lun modify -vserver <vserver name>  -path * -qos-policy-group  <policy-name>
 ....
 lun create -vserver <vserver_name> -path  /vol/<volume_name>/<lun_name>   -size <size> -ostype <e.g. linux>  -qos-policy-group <policy-name>
 ....
-特定のLUNの最大スループットとして1000MB/秒を使用することを推奨します。アプリケーションがより多くのスループットを必要とする場合は、LUNストライピングを備えた複数のLUNを使用して、必要な帯域幅を提供する必要があります。このガイドでは、セクションで、Linux LVMをベースとしたSAP HANAの例を紹介しますlink:hana-asa-fc-host-setup.html#create-lvm-volume-groups-and-logical-volumes["ホスト セットアップ"]。
+特定の LUN の最大スループットとして 1000 MB/秒を使用することをお勧めします。アプリケーションでより高いスループットが必要な場合は、LUN ストライピングを備えた複数の LUN を使用して必要な帯域幅を提供する必要があります。このガイドでは、Linux LVMベースのSAP HANAの例をセクションに示します。link:hana-asa-fc-host-setup.html["ホスト セットアップ"] 。
 
 
 NOTE: この制限は読み取りにも適用されます。そのため、SAP HANAデータベースの起動時間やバックアップに必要なSLAを満たす十分な数のLUNを使用します。

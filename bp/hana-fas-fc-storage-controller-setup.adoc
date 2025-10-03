@@ -69,7 +69,7 @@ lun modify -vserver <vserver name>  -path * -qos-policy-group  <policy-name>
 ....
 lun create -vserver <vserver_name> -path  /vol/<volume_name>/<lun_name>   -size <size> -ostype <e.g. linux>  -qos-policy-group <policy-name>
 ....
-特定のLUNの最大スループットとして1000MB/秒を使用することを推奨します。アプリケーションがより多くのスループットを必要とする場合は、LUNストライピングを備えた複数のLUNを使用して、必要な帯域幅を提供する必要があります。このガイドでは、セクションで、Linux LVMをベースとしたSAP HANAの例を紹介しますlink:hana-fas-fc-host-setup.html#create-lvm-volume-groups-and-logical-volumes["ホスト セットアップ"]。
+特定の LUN の最大スループットとして 1000 MB/秒を使用することをお勧めします。アプリケーションでより高いスループットが必要な場合は、LUN ストライピングを備えた複数の LUN を使用して必要な帯域幅を提供する必要があります。このガイドでは、Linux LVMベースのSAP HANAの例をセクションに示します。link:hana-fas-fc-host-setup.html["ホスト セットアップ"] 。
 
 
 NOTE: この制限は読み取りにも適用されます。そのため、SAP HANAデータベースの起動時間やバックアップに必要なSLAを満たす十分な数のLUNを使用します。
@@ -93,13 +93,17 @@ FabricPool は、ログバックアップを別のストレージ階層に移動
 
 以下に、必要なストレージ構成手順の概要を示します。各手順の詳細については、以降のセクションで説明します。これらの手順を開始する前に、ストレージハードウェアのセットアップ、 ONTAP ソフトウェアのインストール、およびストレージ FCP ポートと SAN ファブリックの接続を完了してください。
 
-. の説明に従って、正しいディスク・シェルフ構成を確認します<<ディスクシェルフの接続>>。
+. ディスクシェルフの構成が正しいことを確認してください。<<ディスクシェルフ接続>> 。
 . の説明に従って、必要なアグリゲートを作成して設定します<<アグリゲートの構成>>。
 . の説明に従って、Storage Virtual Machine（SVM）を作成します<<Storage Virtual Machine の設定>>。
 . の説明に従って、論理インターフェイス（LIF）を作成します<<論理インターフェイスの構成>>。
 . 「link：hana-fas-fc-storage-controller-setup.html# initiator-groups」の説明に従って、HANAサーバのWorld Wide Name（WWN；ワールドワイド名）を含むイニシエータグループ（igroup）<<イニシエータグループ>>を作成します。
 . セクションの説明に従って、アグリゲート内にボリュームとLUNを作成して構成します。 link:hana-fas-fc-storage-controller-setup_single_host.html["単一ホスト設定"]単一のホストまたはセクション内link:hana-fas-fc-storage-controller-setup_multiple_hosts.html["複数ホストのセットアップ"]複数のホストの場合
 
+
+
+
+== ディスクシェルフ接続
 
 HDD を使用すると、次の図に示すように、 1 つの SAS スタックに最大 2 台の DS2246 ディスクシェルフまたは 4 台の DS224C ディスクシェルフを接続することで、 SAP HANA ホストに必要なパフォーマンスを実現できます。各シェルフ内のディスクは、 HA ペアの両方のコントローラに均等に分散する必要があります。
 
