@@ -1,0 +1,338 @@
+---
+sidebar: sidebar 
+permalink: bp/kvm-hana-network.html 
+keywords: Ethernet,KVM, SAP HANA, tailored data center integration,  NFS 
+summary: このガイドでは、 NetAppストレージを使用して SUSE KVM for SAP HANA を構成する方法について説明します。 
+---
+= イーサネットネットワークの設定
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+このセクションでは、 NetAppストレージを使用して SUSE KVM for SAP HANA で SR-IOV を構成する方法について説明します。
+
+
+
+== SR-IOVのセットアップ
+
+この部分では、Mellanox Connect-X NIC を使用して SR-IOV を設定する方法を示します。これは、 https://enterprise-support.nvidia.com/s/article/HowTo-Configure-SR-IOV-for-ConnectX-4-ConnectX-5-ConnectX-6-with-KVM-Ethernet["NVIDIAエンタープライズ サポート ポータル | KVM (イーサネット) を使用して ConnectX-4/ConnectX-5/ConnectX-6 の SR-IOV を構成する方法"] 。  SUSE SAP HANA KVM ガイドでは、INTEL NIC に基づいてこれを説明しています。  + 2 つの物理ポートをトランク/ボンドとして組み合わせて冗長イーサネット接続を使用することをお勧めします。  VM に割り当てられた仮想ポート (VF) も VM 内でトランクされる必要があります。
+
+image:kvm-hana-image1.png["幅=493、高さ=409"]
+
+前提条件：
+
+* KVMがインストールされている
+* SR-IOVはサーバーのBIOSで有効化されています
+* PCIパススルーは、ブートローダーのオプションとして「intel_iommu=on」と「iommu=pt」を追加することで有効になります。
+* 最新の MLNX_OFED ドライバーが KVM ホストと VM にインストールされています。
+
+
+
+
+== SR-IOVを有効にしてVFの数を設定する
+
+この章では、SR-IOV 機能が有効になり、物理ポートあたりの VF (仮想インターフェイス) の最大数がアダプタ ファームウェアで設定され、物理ポート (100GbE) あたりの使用済み VF の数 (この例では 4) が設定されます。
+
+
+NOTE: VM に割り当てられた各 VF には、少なくとも 10Gbit/s の帯域幅が必要です。たとえば、25GbE 物理ポートに 2 つの VF を追加して割り当てないでください。
+
+. MFT (Mellanox ファームウェア ツール) を実行します。
+
+
+....
+# mst start
+Starting MST (Mellanox Software Tools) driver set
+Loading MST PCI module – Success
+Loading MST PCI configuration module – Success
+Create devices
+Unloading MST PCI module (unused) – Success
+....
+. デバイスを見つけます:
+
+
+....
+# mst status
+MST modules:
+------------
+MST PCI module is not loaded
+MST PCI configuration module loaded
+
+MST devices:
+
+------------
+
+/dev/mst/mt4125_pciconf0 - PCI configuration cycles access.
+domain:bus:dev.fn=0000:ab:00.0 addr.reg=88 data.reg=92 cr_bar.gw_offset=-1
+
+Chip revision is: 00
+....
+. デバイスのステータスを確認します。
+
+
+....
+mlxconfig -d /dev/mst/mt4125_pciconf0 q |grep -e SRIOV_EN -e NUM_OF_VFS
+NUM_OF_VFS 8
+SRIOV_EN True(1)_
+....
+. 必要に応じて、SR-IOV を有効にします。
+
+
+....
+mlxconfig -d /dev/mst/mt4125_pciconf0 set SRIOV_EN=1
+....
+. VF の最大量を設定します。
+
+
+....
+mlxconfig -d /dev/mst/mt4125_pciconf0 set  NUM_OF_VFS=4
+....
+. 機能を有効にする必要があった場合、または最大 VF の量が変更された場合は、サーバーを再起動します。
+
+
+
+
+=== 仮想インターフェースの作成
+
+このセクションでは、物理ポートごとに 4 つの VF が作成されます。
+
+. デバイスを見つける:
+
+
+....
+# ibstat
+
+CA 'mlx5_0'
+CA type: MT4125
+Number of ports: 1
+Firmware version: 22.36.1010
+Hardware version: 0
+Node GUID: 0xa088c20300a6f6fc
+System image GUID: 0xa088c20300a6f6fc
+Port 1:
+State: Active
+Physical state: LinkUp
+Rate: 100
+Base lid: 0
+LMC: 0
+SM lid: 0
+Capability mask: 0x00010000
+Port GUID: 0xa288c2fffea6f6fd
+Link layer: Ethernet
+CA 'mlx5_1'
+CA type: MT4125
+Number of ports: 1
+Firmware version: 22.36.1010
+Hardware version: 0
+Node GUID: 0xa088c20300a6f6fd
+System image GUID: 0xa088c20300a6f6fc
+Port 1:
+State: Active
+Physical state: LinkUp
+Rate: 100
+Base lid: 0
+LMC: 0
+SM lid: 0
+Capability mask: 0x00010000
+Port GUID: 0xa288c2fffea6f6fd
+Link layer: Ethernet
+....
+. 結合が作成されている場合、出力は次のようになります。
+
+
+....
+# ibstat
+CA 'mlx5_bond_0'
+CA type: MT4125
+Number of ports: 1
+Firmware version: 22.36.1010
+Hardware version: 0
+Node GUID: 0xa088c20300a6f6fc
+System image GUID: 0xa088c20300a6f6fc
+Port 1:
+State: Active
+Physical state: LinkUp
+Rate: 100
+Base lid: 0
+LMC: 0
+SM lid: 0
+Capability mask: 0x00010000
+Port GUID: 0xa288c2fffea6f6fc
+Link layer: Ethernet
+#:/etc/sysconfig/network # cat /sys/class/infiniband/mlx5_bond_0/device/
+aerdevcorrectable iommugroup/ resetmethod
+aerdevfatal irq resource
+aerdevnonfatal link/ resource0
+arienabled localcpulist resource0wc
+brokenparitystatus localcpus revision
+class maxlinkspeed rom
+config maxlinkwidth sriovdriversautoprobe
+consistentdmamaskbits mlx5_core.eth.0/ sriovnumvfs
+urrentlinkspeed mlx5_core.rdma.0/ sriovoffset
+currentlinkwidth modalias sriovstride
+d3coldallowed msibus sriovtotalvfs
+device msiirqs/ sriovvfdevice
+dmamaskbits net/ sriovvftotalmsix
+driver/ numanode subsystem/
+driveroverride pools subsystemdevice
+enable power/ subsystemvendor
+firmwarenode/ powerstate uevent
+infiniband/ ptp/ vendor
+infinibandmad/ remove vpd
+infinibandverbs/ rescan
+iommu/ reset
+....
+....
+# ibdev2netdev
+mlx5_0 port 1 ==> eth4 (Up)
+mlx5_1 port 1 ==> eth5 (Up)
+....
+. ファームウェアで許可され構成されている VF の合計を取得します。
+
+
+....
+# cat /sys/class/net/eth4/device/sriov_totalvfs
+4
+# cat /sys/class/net/eth5/device/sriov_totalvfs
+4
+....
+. このデバイス上の現在の VF の数を取得します。
+
+
+....
+# cat /sys/class/infiniband/mlx5_0/device/sriov_numvfs
+0
+# cat /sys/class/infiniband/mlx5_1/device/sriov_numvfs
+0
+....
+. 必要な VF の数を設定します。
+
+
+....
+# echo 4 > /sys/class/infiniband/mlx5_0/device/sriov_numvfs
+# echo 4 > /sys/class/infiniband/mlx5_1/device/sriov_numvfs
+....
+
+NOTE: すでに 2 つのポートを使用してボンドを構成している場合は、ボンドに対して最初のコマンドを実行する必要があります。
+
+....
+# echo 4 > /sys/class/infiniband/mlx5_bond_0/device/sriov_numvfs
+....
+. PCI バスを確認します。
+
+
+....
+# lspci -D | grep Mellanox
+
+0000:ab:00.0 Ethernet controller: Mellanox Technologies MT2892 Family [ConnectX-6 Dx]
+0000:ab:00.1 Ethernet controller: Mellanox Technologies MT2892 Family [ConnectX-6 Dx]
+0000:ab:00.2 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
+0000:ab:00.3 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
+0000:ab:00.4 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
+0000:ab:00.5 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
+0000:ab:01.2 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
+0000:ab:01.3 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
+0000:ab:01.4 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
+0000:ab:01.5 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
+....
+....
+# ibdev2netdev -v
+
+0000:ab:00.0 mlx5_0 (MT4125 - 51TF3A5000XV3) Mellanox ConnectX-6 Dx 100GbE QSFP56 2-port PCIe 4 Ethernet Adapter fw 22.36.1010 port 1 (ACTIVE) ==> eth4 (Up)
+0000:ab:00.1 mlx5_1 (MT4125 - 51TF3A5000XV3) Mellanox ConnectX-6 Dx 100GbE QSFP56 2-port PCIe 4 Ethernet Adapter fw 22.36.1010 port 1 (ACTIVE) ==> eth6 (Up)
+0000:ab:00.2 mlx523 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth6 (Down)
+0000:ab:00.3 mlx5_3 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth7 (Down)
+0000:ab:00.4 mlx5_4 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth8 (Down)
+0000:ab:00.5 mlx5_5 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth9 (Down)
+0000:ab:01.2 mlx5_6 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth10 (Down)
+0000:ab:01.3 mlx5_7 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth11 (Down)
+0000:ab:01.4 mlx5_8 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth12 (Down)
+0000:ab:01.5 mlx5_9 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth13 (Down)
+....
+. IP ツールを使用して VF の構成を確認します。
+
+
+....
+# ip link show
+…
+6: eth4: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 9000 qdisc mq master bond0 state UP mode DEFAULT group default qlen 1000
+
+link/ether a0:88:c2:a6:f6:fd brd ff:ff:ff:ff:ff:ff permaddr a0:88:c2:a6:f6:fc
+vf 0 link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking off, link-state auto, trust off, query_rss off
+vf 1 link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking off, link-state auto, trust off, query_rss off
+vf 2 link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking off, link-state auto, trust off, query_rss off
+vf 3 link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking off, link-state auto, trust off, query_rss off
+
+altname enp171s0f0np0
+altname ens3f0np0
+
+7: eth5: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 9000 qdisc mq master bond0 state UP mode DEFAULT group default qlen 1000
+
+link/ether a0:88:c2:a6:f6:fd brd ff:ff:ff:ff:ff:ff
+vf 0 link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking off, link-state auto, trust off, query_rss off
+vf 1 link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking off, link-state auto, trust off, query_rss off
+vf 2 link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking off, link-state auto, trust off, query_rss off
+vf 3 link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking off, link-state auto, trust off, query_rss off
+
+altname enp171s0f1np1
+altname ens3f1np1
+…
+....
+
+
+=== 起動中にVFを有効にする
+
+上記の構成は再起動すると保持されません。  + これを永続化するには、次の内容を含む _systemd_ ユニット ファイル _/etc/systemd/system/after.local_ を作成する必要があります。
+
+....
+[Unit]
+Description=/etc/init.d/after.local Compatibility
+After=libvirtd.service Requires=libvirtd.service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/init.d/after.local
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+....
+その後、スクリプト _/etc/init.d/after.local_ を作成します。
+
+....
+#! /bin/sh
+#
+#
+# ...
+echo 4 > /sys/class/infiniband/mlx5_bond_0/device/sriov_numvfs
+echo 4 > /sys/class/infiniband/mlx5_1/device/sriov_numvfs
+....
+作成したら、ファイルが実行できることを確認します。
+
+....
+# cd /etc/init.d/
+# chmod 750 after.local
+....
+
+
+== VMに仮想インターフェースを割り当てる
+
+この章では、_virt-manager_を使用してVMに仮想インターフェースを割り当てる方法について説明します。
+
+. virt-manager を起動します。+ image:kvm-hana-image2.png["幅=601、高さ=385"]
+. 目的の VM を開きます。+ image:kvm-hana-image3.png["幅=300、高さ=385"]
+. 「ハードウェアの追加」を押します。+ image:kvm-hana-image4.png["Virtmanager ハードウェアの追加、幅=601、高さ=443"]
+. PCI ホスト デバイスのリストから最初の物理ポートから目的の仮想 NIC を選択し、[完了] を押します。 + この例では、0000.AB:00:2 - 0000.AB:00:4 は最初の物理ポートに属し、0000.AB:01:2 - 0000.AB:01:4 は 2 番目の物理ポートに属します。+ image:kvm-hana-image5.png["幅=601、高さ=442"]
+. PCI ホスト デバイスのリストから次の仮想 NIC ポートを選択し、2 番目の物理ポートの仮想ポートを使用して [完了] を押します。+ image:kvm-hana-image6.png["幅=601、高さ=441"]
+. その後、仮想インターフェースが VM に割り当てられ、VM を起動できるようになります。+ image:kvm-hana-image7.png["幅=601、高さ=443"]
+
+
+
+
+== VM内のネットワークインターフェースの構成
+
+VM にログインし、2 つの VF をボンドとして構成します。モード0またはモード2のいずれかを選択します。 LACP は物理ポートでのみ使用できるため、LACP を使用しないでください。下の図は、YAST を使用したモード 2 構成を示しています。  + +image:kvm-hana-image8.png["幅=601、高さ=335"]

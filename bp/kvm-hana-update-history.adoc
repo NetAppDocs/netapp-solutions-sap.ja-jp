@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: bp/kvm-hana-update-history.html 
+keywords:  
+summary:  
+---
+= 履歴を更新します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+この解決策の初版以降には、次の技術的な変更が加えられています。
+
+[cols="25,50"]
+|===
+| 日付 | 概要を更新します 
+
+
+| 2025年10月 | 初版 
+|===

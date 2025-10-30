@@ -187,3 +187,15 @@ entries:
     url: "/bp/hana-fas-fc-additional-info.html"
   - title: 履歴を更新します
     url: "/bp/hana-fas-fc-update-history.html"
+- title: SUSE KVM とNetAppストレージを搭載した SAP HANA
+  entries:
+  - title: はじめに
+    url: "/bp/kvm-hana-introduction.html"
+  - title: イーサネットネットワークの設定
+    url: "/bp/kvm-hana-network.html"
+  - title: ファイバーチャネルネットワークの構成
+    url: "/bp/kvm-hana-fcn.html"
+  - title: ストレージの接続
+    url: "/bp/kvm-hana-storage.html"
+  - title: 履歴を更新します
+    url: "/bp/kvm-hana-update-history.html"
