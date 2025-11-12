@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: bp/kvm-hana-fcn.html 
-keywords: fibre channel,KVM, SAP HANA, tailored data center integration, FCP 
-summary: このガイドでは、 NetAppストレージを使用して SUSE KVM for SAP HANA を構成する方法について説明します。 
+keywords: fibre channel,KVM, SAP HANA, FCP, HBA, PCI passthrough, storage 
+summary: 物理 HBA ポートを PCI デバイスとして VM に割り当てて、SUSE KVM 上の SAP HANA 用のファイバー チャネル ネットワークを構成します。異なるファブリック スイッチに接続された 2 つの物理ポートを使用して、冗長 FCP 接続を設定します。 
 ---
-= ファイバーチャネルネットワークの構成
+= SUSE KVM 上の SAP HANA 用のファイバーチャネル ネットワークを構成する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,25 +14,49 @@ summary: このガイドでは、 NetAppストレージを使用して SUSE KVM 
 
 
 [role="lead"]
-このセクションでは、 NetAppストレージを使用して SUSE KVM for SAP HANA で FCP を構成する方法について説明します。
+物理 HBA ポートを PCI デバイスとして VM に割り当てて、SUSE KVM 上の SAP HANA 用のファイバー チャネル ネットワークを構成します。異なるファブリック スイッチに接続された 2 つの物理ポートを使用して、冗長 FCP 接続を設定します。
+
+
+NOTE: 次の手順は、ストレージ プロトコルとして FCP が使用されている場合にのみ必要です。  NFS を使用する場合、これらの手順は必要ありません。
+
+.タスク概要
+FCP には SR-IOV と同等の機能は存在しないため、物理 HBA ポートを VM に直接割り当てます。冗長性を確保するために、異なるファブリックに接続された 2 つの物理ポートを使用します。
+
+
+NOTE: 物理ポートは 1 つの VM にのみ割り当てることができます。
+
+.手順
+. virt-managerを起動します。
++
+image:kvm-hana-image2.png["幅=601、高さ=385"]
+
+. 目的の VM を開きます。image:kvm-hana-image3.png["幅=601、高さ=385"]
+. *ハードウェアの追加*を選択します。
++
+image:kvm-hana-image4.png["Virtmanager ハードウェアの追加、幅=601、高さ=443"]
+
+. PCI ホスト デバイスのリストから目的の HBA ポートを選択し、[完了] を押します。
++
+この例では 0000.A2:00:0 です。
+
++
+image:kvm-hana-image9.png["幅=601、高さ=441"]
+
+. 2 番目のファブリックに属する PCI ホスト デバイスのリストから目的の HBA ポートを選択し、[完了] を押します。この例では 0000.A2:00:1 です。
++
+image:kvm-hana-image10.png["幅=601、高さ=441"]
+
+. その後、物理 HBA ポートが VM に割り当てられ、VM を起動できるようになります。
++
+image:kvm-hana-image11.png["幅=601、高さ=441"]
+
++
+物理ポートは VM に渡されるため、VM 内で追加の準備は必要ありません。
 
 
 
-== VMにFCPポートを割り当てる
-
-FCP には SR-IOV のような類似の機能がないため、物理 HBA ポートを VM に割り当てる必要があります。異なるファブリックに接続された 2 つの物理ポートを使用する必要があります。
 
 
-NOTE: 物理ポートは 1 つの VM にのみ割り当てる必要があります。
+== 次の手順
 
-これには、次の手順を実行します。
-
-. _virt-manager_ を起動します。+image:kvm-hana-image2.png["幅=601、高さ=385"]
-. 目的の VM を開きます。+ image:kvm-hana-image3.png["幅=601、高さ=385"]
-. 「ハードウェアの追加」を押します。+ image:kvm-hana-image4.png["Virtmanager ハードウェアの追加、幅=601、高さ=443"]
-. PCI ホスト デバイスのリストから目的の HBA ポートを選択し、[完了] を押します。 + この例では 0000.A2:00:0 です。+ image:kvm-hana-image9.png["幅=601、高さ=441"]
-. 2 番目のファブリックに属する PCI ホスト デバイスのリストから目的の HBA ポートを選択し、[完了] を押します。この例では 0000.A2:00:1 です。+ image:kvm-hana-image10.png["幅=601、高さ=441"]
-. その後、物理 HBA ポートが VM に割り当てられ、VM を起動できるようになります。+ image:kvm-hana-image11.png["幅=601、高さ=441"]
-
-
-物理ポートは VM に渡されているため、追加の準備は必要ありません。
+ファイバーチャネルネットワークを構成したら、link:kvm-hana-storage.html["SAP HANA 用にNetAppストレージを構成する"] 。

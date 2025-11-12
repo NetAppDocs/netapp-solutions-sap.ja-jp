@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: bp/kvm-hana-requirements.html 
+keywords: requirements,KVM, SAP HANA, tailored data center integration, FCP, NFS, prerequisites 
+summary: SR-IOV ネットワーク インターフェイスと NFS または FCP ストレージ プロトコルを備えたNetAppストレージを使用して、SUSE KVM に SAP HANA シングル ホストを展開するための要件を確認します。 
+---
+= NetAppストレージを使用した SUSE KVM 上の SAP HANA の導入要件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SR-IOV ネットワーク インターフェイスと NFS または FCP ストレージ プロトコルを備えたNetAppストレージを使用して、SUSE KVM に SAP HANA シングル ホストを展開するための要件を確認します。
+
+導入には、認定された SAP HANA サーバー、 NetAppストレージ システム、SR-IOV 対応ネットワーク アダプター、および KVM ホストとして SUSE Linux Enterprise Server for SAP Applications が必要です。
+
+
+
+== インフラストラクチャ要件
+
+次のコンポーネントと構成が適切であることを確認してください。
+
+* 認定された SAP HANA サーバーとNetAppストレージ システム。参照 https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN["SAP HANA ハードウェア ディレクトリ"^]利用可能なオプション:
+* KVM ホストとしての SUSE Linux Enterprise Server for SAP Applications 15 SP5/SP6
+* NFS および/または FCP トラフィック用に構成されたストレージ仮想マシン (SVM) を備えたNetApp ONTAPストレージ システム
+* NFS および FCP トラフィック用の適切なネットワーク上に作成された論理インターフェイス (LIF)
+* SR-IOV対応ネットワークアダプタ（例：Mellanox ConnectXシリーズ）
+* FCP ストレージ アクセス用のファイバー チャネル HBA アダプター
+* 必要なVLANとネットワークセグメントをサポートするネットワークインフラストラクチャ
+* VMの構成 https://documentation.suse.com/sbp/sap-15/pdf/SBP-SLES4SAP-HANAonKVM-SLES15SP5_en.pdf["KVM 上の SAP HANA に関する SUSE ベストプラクティス"^]
+
+
+
+
+== 重要な考慮事項
+
+* SAP HANA ネットワーク通信および NFS を使用したストレージ アクセスには、SR-IOV を使用する必要があります。VM に割り当てられた各仮想機能 (VF) には、少なくとも 10 Gbit/s の帯域幅が必要です。
+* FCP LUN を使用するには、物理 FCP HBA ポートを PCI デバイスとして VM に割り当てる必要があります。物理ポートは 1 つの VM にのみ割り当てることができます。
+* この構成では、SAP HANA マルチホスト システムはサポートされていません。
+
+
+
+
+== その他のリソース
+
+* サポートされているCPUアーキテクチャや制限事項などの最新情報については、SAPノートを参照してください。 https://me.sap.com/notes/3538596["3538596 - SUSE KVM 仮想化と SLES 15 SP5 を使用した SAP HANA - SAP for Me"] 。
+* ONTAPストレージシステムの設定については、 https://docs.netapp.com/us-en/ontap["ONTAP 9 ドキュメント"] 。
+* NetAppシステムでのSAP HANAストレージ構成については、 https://docs.netapp.com/us-en/netapp-solutions-sap/["NetApp SAP ソリューションのドキュメント"] 。
+
+
+
+
+== 次の手順
+
+展開要件を確認した後、link:kvm-hana-network.html["SR-IOV ネットワークインターフェースを構成する"] 。

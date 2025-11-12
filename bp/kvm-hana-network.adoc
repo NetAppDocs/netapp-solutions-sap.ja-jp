@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: bp/kvm-hana-network.html 
-keywords: Ethernet,KVM, SAP HANA, tailored data center integration,  NFS 
-summary: このガイドでは、 NetAppストレージを使用して SUSE KVM for SAP HANA を構成する方法について説明します。 
+keywords: SR-IOV,KVM, SAP HANA, Mellanox, virtual functions, network configuration, NFS 
+summary: Mellanox ConnectX NIC を使用して、SUSE KVM for SAP HANA 上の SR-IOV ネットワーク インターフェイスを構成します。仮想機能を設定し、VM に割り当て、冗長ネットワーク接続を構成して、最適なパフォーマンスとストレージ アクセスを実現します。 
 ---
-= イーサネットネットワークの設定
+= SUSE KVM 上の SAP HANA 用の SR-IOV ネットワーク インターフェースを構成する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,17 +14,22 @@ summary: このガイドでは、 NetAppストレージを使用して SUSE KVM 
 
 
 [role="lead"]
-このセクションでは、 NetAppストレージを使用して SUSE KVM for SAP HANA で SR-IOV を構成する方法について説明します。
+SUSE KVM for SAP HANA で SR-IOV ネットワーク インターフェイスを構成します。仮想機能 (VF) を設定し、VM に割り当て、最適なパフォーマンスとストレージ アクセスを実現するために冗長ネットワーク接続を構成します。
 
 
 
-== SR-IOVのセットアップ
+== ステップ1: SR-IOVのセットアップ
 
-この部分では、Mellanox Connect-X NIC を使用して SR-IOV を設定する方法を示します。これは、 https://enterprise-support.nvidia.com/s/article/HowTo-Configure-SR-IOV-for-ConnectX-4-ConnectX-5-ConnectX-6-with-KVM-Ethernet["NVIDIAエンタープライズ サポート ポータル | KVM (イーサネット) を使用して ConnectX-4/ConnectX-5/ConnectX-6 の SR-IOV を構成する方法"] 。  SUSE SAP HANA KVM ガイドでは、INTEL NIC に基づいてこれを説明しています。  + 2 つの物理ポートをトランク/ボンドとして組み合わせて冗長イーサネット接続を使用することをお勧めします。  VM に割り当てられた仮想ポート (VF) も VM 内でトランクされる必要があります。
+仮想機能の作成を可能にするために、アダプタ ファームウェアで SR-IOV 機能を有効にして構成します。
+
+この手順は、 https://enterprise-support.nvidia.com/s/article/HowTo-Configure-SR-IOV-for-ConnectX-4-ConnectX-5-ConnectX-6-with-KVM-Ethernet["NVIDIAエンタープライズ サポート ポータル | KVM (イーサネット) を使用して ConnectX-4/ConnectX-5/ConnectX-6 の SR-IOV を構成する方法"] 。SUSE SAP HANA KVM ガイドでは、INTEL NIC に基づいてこれを説明しています。
+
+2 つの物理ポートをトランク/ボンドとして組み合わせて冗長イーサネット接続を使用することをお勧めします。VM に割り当てられた仮想ポート (VF) も VM 内でトランクされる必要があります。
 
 image:kvm-hana-image1.png["幅=493、高さ=409"]
 
-前提条件：
+.開始する前に
+次の前提条件が満たされていることを確認してください。
 
 * KVMがインストールされている
 * SR-IOVはサーバーのBIOSで有効化されています
@@ -33,17 +38,11 @@ image:kvm-hana-image1.png["幅=493、高さ=409"]
 
 
 
+NOTE: VM に割り当てられた各 VF には、少なくとも 10 Gbit/s の帯域幅が必要です。  25GbE 物理ポートに対して 2 つ以上の VF を作成して割り当てないでください。
 
-== SR-IOVを有効にしてVFの数を設定する
-
-この章では、SR-IOV 機能が有効になり、物理ポートあたりの VF (仮想インターフェイス) の最大数がアダプタ ファームウェアで設定され、物理ポート (100GbE) あたりの使用済み VF の数 (この例では 4) が設定されます。
-
-
-NOTE: VM に割り当てられた各 VF には、少なくとも 10Gbit/s の帯域幅が必要です。たとえば、25GbE 物理ポートに 2 つの VF を追加して割り当てないでください。
-
+.手順
 . MFT (Mellanox ファームウェア ツール) を実行します。
-
-
++
 ....
 # mst start
 Starting MST (Mellanox Software Tools) driver set
@@ -53,8 +52,7 @@ Create devices
 Unloading MST PCI module (unused) – Success
 ....
 . デバイスを見つけます:
-
-
++
 ....
 # mst status
 MST modules:
@@ -72,22 +70,19 @@ domain:bus:dev.fn=0000:ab:00.0 addr.reg=88 data.reg=92 cr_bar.gw_offset=-1
 Chip revision is: 00
 ....
 . デバイスのステータスを確認します。
-
-
++
 ....
 mlxconfig -d /dev/mst/mt4125_pciconf0 q |grep -e SRIOV_EN -e NUM_OF_VFS
 NUM_OF_VFS 8
 SRIOV_EN True(1)_
 ....
 . 必要に応じて、SR-IOV を有効にします。
-
-
++
 ....
 mlxconfig -d /dev/mst/mt4125_pciconf0 set SRIOV_EN=1
 ....
 . VF の最大量を設定します。
-
-
++
 ....
 mlxconfig -d /dev/mst/mt4125_pciconf0 set  NUM_OF_VFS=4
 ....
@@ -96,13 +91,13 @@ mlxconfig -d /dev/mst/mt4125_pciconf0 set  NUM_OF_VFS=4
 
 
 
-=== 仮想インターフェースの作成
+== ステップ2: 仮想インターフェースを作成する
 
-このセクションでは、物理ポートごとに 4 つの VF が作成されます。
+SR-IOV 機能を有効にするには、物理ネットワーク ポート上に仮想機能 (VF) を作成します。このステップでは、物理ポートごとに 4 つの VF が作成されます。
 
+.手順
 . デバイスを見つける:
-
-
++
 ....
 # ibstat
 
@@ -141,9 +136,10 @@ Capability mask: 0x00010000
 Port GUID: 0xa288c2fffea6f6fd
 Link layer: Ethernet
 ....
-. 結合が作成されている場合、出力は次のようになります。
++
+結合が作成されている場合、出力は次のようになります。
 
-
++
 ....
 # ibstat
 CA 'mlx5_bond_0'
@@ -186,14 +182,14 @@ infinibandmad/ remove vpd
 infinibandverbs/ rescan
 iommu/ reset
 ....
++
 ....
 # ibdev2netdev
 mlx5_0 port 1 ==> eth4 (Up)
 mlx5_1 port 1 ==> eth5 (Up)
 ....
 . ファームウェアで許可され構成されている VF の合計を取得します。
-
-
++
 ....
 # cat /sys/class/net/eth4/device/sriov_totalvfs
 4
@@ -201,8 +197,7 @@ mlx5_1 port 1 ==> eth5 (Up)
 4
 ....
 . このデバイス上の現在の VF の数を取得します。
-
-
++
 ....
 # cat /sys/class/infiniband/mlx5_0/device/sriov_numvfs
 0
@@ -210,21 +205,20 @@ mlx5_1 port 1 ==> eth5 (Up)
 0
 ....
 . 必要な VF の数を設定します。
-
-
++
 ....
 # echo 4 > /sys/class/infiniband/mlx5_0/device/sriov_numvfs
 # echo 4 > /sys/class/infiniband/mlx5_1/device/sriov_numvfs
 ....
++
+*これらの 2 つのポートを使用してボンドをすでに構成している場合*、最初のコマンドをボンドに対して実行する必要があります。
 
-NOTE: すでに 2 つのポートを使用してボンドを構成している場合は、ボンドに対して最初のコマンドを実行する必要があります。
-
++
 ....
 # echo 4 > /sys/class/infiniband/mlx5_bond_0/device/sriov_numvfs
 ....
 . PCI バスを確認します。
-
-
++
 ....
 # lspci -D | grep Mellanox
 
@@ -239,6 +233,7 @@ NOTE: すでに 2 つのポートを使用してボンドを構成している�
 0000:ab:01.4 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
 0000:ab:01.5 Ethernet controller: Mellanox Technologies ConnectX Family mlx5Gen Virtual Function
 ....
++
 ....
 # ibdev2netdev -v
 
@@ -254,8 +249,7 @@ NOTE: すでに 2 つのポートを使用してボンドを構成している�
 0000:ab:01.5 mlx5_9 (MT4126 - NA) fw 22.36.1010 port 1 (DOWN ) ==> eth13 (Down)
 ....
 . IP ツールを使用して VF の構成を確認します。
-
-
++
 ....
 # ip link show
 …
@@ -284,10 +278,14 @@ altname ens3f1np1
 ....
 
 
-=== 起動中にVFを有効にする
 
-上記の構成は再起動すると保持されません。  + これを永続化するには、次の内容を含む _systemd_ ユニット ファイル _/etc/systemd/system/after.local_ を作成する必要があります。
 
+== ステップ3: 起動時にVFを有効にする
+
+systemd サービスと起動スクリプトを作成して、システムの再起動後も VF 設定が保持されるように構成します。
+
+. systemdユニットファイルを作成する `/etc/systemd/system/after.local`以下の内容です:
++
 ....
 [Unit]
 Description=/etc/init.d/after.local Compatibility
@@ -301,8 +299,8 @@ RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
 ....
-その後、スクリプト _/etc/init.d/after.local_ を作成します。
-
+. スクリプト _/etc/init.d/after.local_ を作成します。
++
 ....
 #! /bin/sh
 #
@@ -311,28 +309,53 @@ WantedBy=multi-user.target
 echo 4 > /sys/class/infiniband/mlx5_bond_0/device/sriov_numvfs
 echo 4 > /sys/class/infiniband/mlx5_1/device/sriov_numvfs
 ....
-作成したら、ファイルが実行できることを確認します。
-
+. ファイルが実行可能であることを確認します。
++
 ....
 # cd /etc/init.d/
 # chmod 750 after.local
 ....
 
 
-== VMに仮想インターフェースを割り当てる
 
-この章では、_virt-manager_を使用してVMに仮想インターフェースを割り当てる方法について説明します。
 
-. virt-manager を起動します。+ image:kvm-hana-image2.png["幅=601、高さ=385"]
-. 目的の VM を開きます。+ image:kvm-hana-image3.png["幅=300、高さ=385"]
-. 「ハードウェアの追加」を押します。+ image:kvm-hana-image4.png["Virtmanager ハードウェアの追加、幅=601、高さ=443"]
-. PCI ホスト デバイスのリストから最初の物理ポートから目的の仮想 NIC を選択し、[完了] を押します。 + この例では、0000.AB:00:2 - 0000.AB:00:4 は最初の物理ポートに属し、0000.AB:01:2 - 0000.AB:01:4 は 2 番目の物理ポートに属します。+ image:kvm-hana-image5.png["幅=601、高さ=442"]
-. PCI ホスト デバイスのリストから次の仮想 NIC ポートを選択し、2 番目の物理ポートの仮想ポートを使用して [完了] を押します。+ image:kvm-hana-image6.png["幅=601、高さ=441"]
+== ステップ4: VMに仮想インターフェースを割り当てる
+
+_virt-manager_ を使用して、作成した仮想機能を PCI ホストデバイスとして SAP HANA VM に割り当てます。
+
+. virt-manager を起動します。
++
+image:kvm-hana-image2.png["幅=601、高さ=385"]
+
+. 目的の VM を開きます。
++
+image:kvm-hana-image3.png["幅=300、高さ=385"]
+
+. *ハードウェアの追加*を選択します。+ image:kvm-hana-image4.png["Virtmanager ハードウェアの追加、幅=601、高さ=443"]
+. PCI ホスト デバイスのリストから最初の物理ポートから目的の仮想 NIC を選択し、[完了] を押します。
++
+この例では、0000.AB:00:2 - 0000.AB:00:4 は最初の物理ポートに属し、0000.AB:01:2 - 0000.AB:01:4 は 2 番目の物理ポートに属します。
+
++
+image:kvm-hana-image5.png["幅=601、高さ=442"]
+
+. PCI ホスト デバイスのリストから次の仮想 NIC ポートを選択し、2 番目の物理ポートの仮想ポートを使用して、[完了] を選択します。
++
+image:kvm-hana-image6.png["幅=601、高さ=441"]
+
 . その後、仮想インターフェースが VM に割り当てられ、VM を起動できるようになります。+ image:kvm-hana-image7.png["幅=601、高さ=443"]
 
 
 
 
-== VM内のネットワークインターフェースの構成
+== ステップ5: VM内のネットワークインターフェースを構成する
 
-VM にログインし、2 つの VF をボンドとして構成します。モード0またはモード2のいずれかを選択します。 LACP は物理ポートでのみ使用できるため、LACP を使用しないでください。下の図は、YAST を使用したモード 2 構成を示しています。  + +image:kvm-hana-image8.png["幅=601、高さ=335"]
+VM にログインし、2 つの VF をボンドとして構成します。モード0またはモード2のいずれかを選択します。LACP は物理ポートでのみ使用できるため、LACP を使用しないでください。下の図は、YAST を使用したモード 2 構成を示しています。
+
+image:kvm-hana-image8.png["幅=601、高さ=335"]
+
+
+
+== 次の手順
+
+SR-IOVネットワークインターフェースを設定したら、link:kvm-hana-fcn.html["ファイバーチャネルネットワークを構成する"]ストレージプロトコルとして FCP を使用する場合。

@@ -15,6 +15,14 @@ SAP 向けソリューションの新機能について学びます。
 
 
 
+== 2025年11月12日
+
+新しい解決策link:https://docs.netapp.com/us-en/netapp-solutions-sap/bp/kvm-hana-introduction.html["SUSE KVM とNetAppストレージを搭載した SAP HANA"^]:
+
+SR-IOV ネットワーク インターフェイスと NFS または FCP ストレージ アクセスを備えたNetAppストレージを使用して、SUSE KVM 上に SAP HANA シングル ホストをデプロイします。
+
+
+
 == 2025年8月18日
 
 NetAppソリューションサイトは、link:https://docs.netapp.com/us-en/netapp-solutions-family/index.html["NetAppソリューションファミリー"^]これには次のサイトが含まれます。

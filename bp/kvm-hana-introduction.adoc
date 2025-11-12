@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: bp/kvm-hana-introduction.html 
-keywords: introduction,KVM, SAP HANA, tailored data center integration, FCP, NFS 
-summary: このガイドでは、 NetAppストレージを使用して SUSE KVM for SAP HANA を構成する方法について説明します。 
+keywords: introduction,KVM, SAP HANA, tailored data center integration, FCP, NFS, workflow, deployment 
+summary: SR-IOV ネットワーク インターフェイスと NFS または FCP ストレージ アクセスを備えたNetAppストレージを使用して、SUSE KVM 上に SAP HANA シングル ホストをデプロイします。このワークフローに従って仮想インターフェースを構成し、VM に割り当て、最適なパフォーマンスを得るためにストレージ接続を設定します。 
 ---
-= SUSE KVM とNetAppストレージを搭載した SAP HANA
+= SR-IOV と NFS を使用して、 NetAppストレージを搭載した SUSE KVM に SAP HANA を導入する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,27 +14,26 @@ summary: このガイドでは、 NetAppストレージを使用して SUSE KVM 
 
 
 [role="lead"]
-このガイドでは、 NetAppストレージを使用して SUSE KVM for SAP HANA を構成する方法について説明します。
+SR-IOV ネットワーク インターフェイスと NFS または FCP ストレージ アクセスを備えたNetAppストレージを使用して、SUSE KVM 上に SAP HANA シングル ホストをデプロイします。このワークフローに従って仮想インターフェースを構成し、VM に割り当て、最適なパフォーマンスを得るためにストレージ接続を設定します。
 
-Marco Schoen 、ネットアップ
+KVM 仮想化上の SAP HANA の概要については、SUSE のドキュメントを参照してください。 https://documentation.suse.com/sbp/sap-15/pdf/SBP-SLES4SAP-HANAonKVM-SLES15SP5_en.pdf["KVM 上の SAP HANA に関する SUSE ベストプラクティス"] 。
 
+image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:kvm-hana-requirements.html["構成要件を確認する"]
 
+[role="quick-margin-para"]
+SR-IOV とストレージ プロトコルを備えたNetAppストレージを使用して SUSE KVM に SAP HANA を導入するための主な要件を確認します。
 
-== はじめに
+image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:kvm-hana-network.html["SR-IOV ネットワークインターフェースを構成する"]
 
-このドキュメントでは、 NetAppストレージを使用して SUSE KVM に導入された SAP HANA シングルホストに必要な追加手順について説明します。これは、 https://documentation.suse.com/sbp/sap-15/pdf/SBP-SLES4SAP-HANAonKVM-SLES15SP5_en.pdf["KVM 上の SAP HANA に関する SUSE ベストプラクティス"] 。
+[role="quick-margin-para"]
+KVM ホストで SR-IOV (シングル ルート I/O 仮想化) を設定し、ネットワーク通信とストレージ アクセス用の仮想インターフェイスを VM に割り当てます。
 
-主に、KVM ホスト上で SR-IOV (シングル ルート I/O 仮想化) 用のネットワーク インターフェイスを構成する方法、これらの仮想インターフェイス (VF) を VM に割り当てる方法、および NFS を使用して SAP HANA のストレージにアクセスするために VM 内のインターフェイスを構成する方法を説明します。さらに、VM 内で SAP HANA を使用するために FCP を設定する方法についても説明します。
+image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:kvm-hana-fcn.html["ファイバーチャネルネットワークを構成する"]
 
+[role="quick-margin-para"]
+FCP LUN を SAP HANA で使用するために、物理 FCP HBA ポートを PCI デバイスとして VM に割り当てます。
 
-NOTE: SAP HANA ネットワーク通信および NFS を使用したストレージ アクセスには、SR-IOV を使用する必要があります。  FCP LUN を使用するには、物理 FCP HBA ポートを PCI デバイスとして VM に割り当てる必要があります。  SAP HANA マルチホスト システムはサポートされていません。
+image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:kvm-hana-storage.html["SAP HANA 用のNetAppストレージを構成する"]
 
-
-
-== 前提条件
-
-このガイドは、KVM ホストとしての Linux Enterprise Server for SAP Applications 15 SP5/SP6 に有効です。 + 認定された SAP HANA サーバーとNetAppストレージを使用する必要があります。利用可能なオプションについては、SAP HANAハードウェアディレクトリを確認してください。 https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN[]
-
-KVMホストとVMのセットアップと構成は、 https://documentation.suse.com/sbp/sap-15/pdf/SBP-SLES4SAP-HANAonKVM-SLES15SP5_en.pdf["KVM 上の SAP HANA に関する SUSE ベストプラクティス"] 。
-
-サポートされているCPUアーキテクチャや制限事項などの最新情報については、SAP Note + を参照してください。https://me.sap.com/notes/3538596["3538596 - SUSE KVM 仮想化と SLES 15 SP5 を使用した SAP HANA - SAP for Me"]
+[role="quick-margin-para"]
+SAP HANA データベース ファイル用に、VM とNetAppストレージ システム間の NFS または FCP ストレージ接続を設定します。

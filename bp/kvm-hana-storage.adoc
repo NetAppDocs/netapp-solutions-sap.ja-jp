@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: bp/kvm-hana-storage.html 
-keywords: NetApp storage, KVM, SAP HANA, tailored data center integration, NFS, FCP 
-summary: このガイドでは、 NetAppストレージを使用して SUSE KVM for SAP HANA を構成する方法について説明します。 
+keywords: NetApp storage, KVM, SAP HANA, NFS, FCP, ONTAP, storage configuration 
+summary: NFS または FCP プロトコルを使用して、SUSE KVM 上の SAP HANA 用のNetAppストレージを構成します。最適なデータベース パフォーマンスを実現するために、VM とNetApp ONTAPシステム間のストレージ接続を設定します。 
 ---
-= SAP HANA 用の KVM VM にストレージを接続する
+= SUSE KVM 上の SAP HANA 用NetAppストレージを構成する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,4 +14,41 @@ summary: このガイドでは、 NetAppストレージを使用して SUSE KVM 
 
 
 [role="lead"]
-VM が正常に構成されると、VM 内からストレージを接続できるようになります。  + NFSの場合は、 https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-aff-nfs-introduction.html["『SAP HANA on NetApp AFF Systems with NFS』-構成ガイド"] FCPの場合は、 https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-aff-fc-introduction.html["『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください"]ガイドまたは https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["『 SAP HANA on NetApp ASA Systems with Fibre Channel Protocol 』を参照してください"]使用するストレージ製品に応じたガイド。
+NFS または FCP プロトコルを使用して、SUSE KVM 上の SAP HANA 用のNetAppストレージを構成します。最適なデータベース パフォーマンスを実現するために、VM とNetApp ONTAPシステム間のストレージ接続を設定します。
+
+SR-IOV ネットワーク インターフェイスまたは FCP HBA ポートを使用して VM を構成した後、VM 内からストレージ アクセスを構成します。選択したストレージ プロトコルに基づいて適切なNetApp SAP HANA 構成ガイドを使用します。
+
+
+
+== SAP HANA 用の NFS ストレージを構成する
+
+SAP HANA ストレージに NFS プロトコルを使用する場合は、以前に作成した SR-IOV ネットワーク インターフェイスを使用します。
+
+包括的な設定手順に従ってください。 https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-aff-nfs-introduction.html["『SAP HANA on NetApp AFF Systems with NFS』-構成ガイド"] 。
+
+KVM 環境の主な構成上の考慮事項:
+
+* ネットワークトラフィック用に事前に構成されたSR-IOV仮想機能（VF）を使用する
+* 冗長性のためにVM内でネットワークボンディングを構成する
+* VMとNetAppストレージSVM間の適切なネットワーク切り替えを確保する
+* SAP HANA 構成ガイドに従って、ストレージ コントローラーと VM を構成します。
+
+
+
+
+== SAP HANA 用の FCP ストレージを構成する
+
+FCP プロトコルを SAP HANA ストレージに使用する場合は、VM に割り当てられた物理 HBA ポートを PCI デバイスとして使用します。
+
+NetAppストレージ システムに基づいて適切な構成ガイドを選択します。
+
+* NetApp AFFシステムの場合: https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-aff-fc-introduction.html["『 SAP HANA on NetApp AFF Systems with Fibre Channel Protocol 』を参照してください"]
+* NetApp ASAシステムの場合: https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["『 SAP HANA on NetApp ASA Systems with Fibre Channel Protocol 』を参照してください"]
+
+
+KVM 環境の主な構成上の考慮事項:
+
+* PCIパススルー経由でVMに割り当てられた物理HBAポートを使用する
+* ファブリックスイッチ間の冗長性を確保するために、VM内でマルチパスを構成する
+* SAP HANA 構成ガイドに従ってストレージ コントローラと VM を構成します。
+
