@@ -4,7 +4,7 @@ permalink: whats-new.html
 keywords: 'netapp, solutions, sap, sap hana, what"s new, updates, change log' 
 summary: SAP 向けNetAppソリューションの資料に対する最近の変更のログ。 
 ---
-= NetApp仮想化ソリューションの新機能
+= SAP向けNetAppソリューションの新機能
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
