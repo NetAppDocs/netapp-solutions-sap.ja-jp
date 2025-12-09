@@ -2,6 +2,38 @@
 section: backup
 title: バックアップ、リストア、ディザスタリカバリ
 entries:
+- title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
+  entries:
+  - title: 解決策の概要
+    url: "/backup/hana-sc-generic-scope.html"
+  - title: SAP HANAデータ保護
+    url: "/backup/hana-sc-generic-overview-dp.html"
+  - title: SnapCenter アーキテクチャ
+    url: "/backup/hana-sc-generic-sc-architecture.html"
+  - title: SAP HANA バックアップ ソリューション向けSnapCenter
+    url: "/backup/hana-sc-generic-sc-backup-solution.html"
+  - title: SnapCenterでサポートされている構成
+    url: "/backup/hana-sc-generic-sc-supported-configs.html"
+  - title: 概念とベストプラクティス
+    url: "/backup/hana-sc-generic-concepts.html"
+  - title: SnapCenter構成の概要
+    url: "/backup/hana-sc-generic-sc-config-overview.html"
+  - title: SnapCenter の初期設定
+    url: "/backup/hana-sc-generic-sc-initial-config.html"
+  - title: SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成
+    url: "/backup/hana-sc-generic-sc-resource-config.html"
+  - title: データボリューム以外のバックアップ用の SnapCenter リソース固有の設定
+    url: "/backup/hana-sc-generic-sc-config-non-data-vols.html"
+  - title: 中央プラグインホスト構成
+    url: "/backup/hana-sc-generic-central-plugin.html"
+  - title: SAP HANA スナップショットバックアップ操作
+    url: "/backup/hana-sc-generic-backup-operations.html"
+  - title: SnapCenterによるブロック整合性チェック
+    url: "/backup/hana-sc-generic-block-check.html"
+  - title: SnapCenterによる復元とリカバリ
+    url: "/backup/hana-sc-generic-restore.html"
+  - title: 高度な設定と調整
+    url: "/backup/hana-sc-generic-advanced-config.html"
 - title: Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ
   entries:
   - title: 概要
@@ -34,36 +66,6 @@ entries:
       url: "/backup/fsxn-restore-recover-from-secondary-storage.html"
   - title: 追加情報の参照先
     url: "/backup/fsxn-additional-info.html"
-- title: SnapCenter を使用した SAP HANA のバックアップとリカバリ
-  entries:
-  - title: 概要
-    url: "/backup/hana-br-scs-overview.html"
-  - title: SnapCenter アーキテクチャ
-    url: "/backup/hana-br-scs-snapcenter-architecture.html"
-  - title: SnapCenter SAP HANA Backup 解決策 の略
-    url: "/backup/hana-br-scs-snapcenter-backup.html"
-  - title: SnapCenter の概念とベストプラクティス
-    url: "/backup/hana-br-scs-concepts-best-practices.html"
-  - title: このレポートで使用するラボのセットアップ
-    url: "/backup/hana-br-scs-lab-setup.html"
-  - title: SnapCenter 構成
-    url: "/backup/hana-br-scs-snapcenter-config.html"
-  - title: SnapCenter の初期設定
-    url: "/backup/hana-br-scs-snapcenter-initial-config.html"
-  - title: SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成
-    url: "/backup/hana-br-scs-resource-config-hana-database-backups.html"
-  - title: データボリューム以外のバックアップ用の SnapCenter リソース固有の設定
-    url: "/backup/hana-br-scs-resource-specific-config-non-data-volume-backups.html"
-  - title: データベースのバックアップ
-    url: "/backup/hana-br-scs-database-backups.html"
-  - title: ブロック整合性チェック
-    url: "/backup/hana-br-scs-block-integrity-check.html"
-  - title: リストアとリカバリ
-    url: "/backup/hana-br-scs-restore-recovery.html"
-  - title: 高度な設定と調整
-    url: "/backup/hana-br-scs-advanced-config-tuning.html"
-  - title: 追加情報およびバージョン履歴の参照先
-    url: "/backup/hana-br-scs-additional-info.html"
 - title: SnapCenter、SnapMirror Active Sync、VMware Metro Storage ClusterによるSAP HANAのデータ保護と高可用性
   entries:
   - title: 本ドキュメントの内容

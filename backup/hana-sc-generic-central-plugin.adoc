@@ -1,0 +1,119 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-central-plugin.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= SAP HANA 用のSnapCenterセントラル プラグイン ホストを構成する
+:allow-uri-read: 
+
+
+[role="lead"]
+SAP HANA マルチホスト システムまたは IBM Power 上の HANA システムをサポートするには、 SnapCenter HANA プラグインを中央ホストに導入します。この手順には、Windows または Linux ホストへのプラグインのインストール、SAP HANA hdbsql クライアントの構成、保護された各 HANA システムのユーザー ストア キーの設定が含まれます。
+
+議論したように link:hana-sc-generic-concepts.html#deployment-options-for-snapcenter-plug-in-for-sap-hana["SAP HANA 向けSnapCenterプラグインの導入オプション"]HANA プラグインは、HANA データベースの外部に導入して、SAP HANA の複数のホスト システムまたは IBM Power 環境上の SAP HANA に必要な中央プラグイン構成をサポートできます。
+
+中央プラグイン ホストは任意の Windows ホストまたは Linux ホストにすることができますが、通常はSnapCenterサーバー自体が中央プラグイン ホストとして使用されます。
+
+中央プラグイン ホストの構成は、次の手順で構成されます。
+
+* SnapCenter HANAプラグインの導入
+* SAP HANA hdbsql クライアントのインストールと構成
+* 中央プラグインホストによって保護されている各 HANA システムの SAP HANA ユーザーストア構成
+
+
+
+
+== SnapCenter HANAプラグインの導入
+
+ホストの要件は次の通りです。 https://docs.netapp.com/us-en/snapcenter/protect-hana/reference_host_requirements_to_install_snapcenter_plug_in_package_for_linux.html["SnapCenter Plug-ins Package for Linuxをインストールするホストの要件"]。
+
+中央プラグイン ホストがホストとして追加され、SAP HANA プラグインがホストにインストールされます。以下のスクリーンショットは、Windows 上で実行されているSnapCenterサーバーへのプラグインの展開を示しています。
+
+. Hosts に移動し、 Add をクリックします。
+. 必要なホスト情報を指定します。Submit をクリックします。
+
+
+image:hana-sc-generic-image-060.png["幅=601、高さ=166"]
+
+
+
+== SAP HANA hdbsql クライアントソフトウェアのインストールと設定
+
+SAP HANA hdbsql クライアント ソフトウェアは、SAP HANA プラグインがインストールされているホストと同じホストにインストールする必要があります。ソフトウェアは以下からダウンロードできます。 https://support.sap.com/en/index.html["SAP サポートポータル"]。
+
+HANA リソース構成中に構成された hdbsql OS ユーザーは、hdbsql 実行可能ファイルを実行できる必要があります。hdbsql 実行可能ファイルへのパスは、hana.properties ファイルまたは OS ユーザーの検索パス パラメーター (%PATH%、$PATH) で設定する必要があります。
+
+Windows 上の中央プラグイン ホスト:
+
+....
+C:\More C:\Program Files\NetApp\SnapCenter\Snapcenter Plug-in Creator\etc\hana.properties
+
+HANA_HDBSQL_CMD=C:\\Program Files\\sap\\hdbclient\\hdbsql.exe
+....
+Linux 上の中央プラグインホスト:
+
+....
+cat /opt/NetApp/snapcenter/scc/etc/hana.properties
+
+HANA_HDBSQL_CMD=/usr/sap/hdbclient/hdbsql
+....
+
+
+== 中央プラグインホストのSAP HANAユーザーストア構成
+
+中央プラグイン ホストによって管理される HANA システムごとに、SAP HANA ユーザー ストア キーを構成する必要があります。中央プラグインホストでキーを設定する前に、データベースユーザーを以下の説明に従って作成する必要があります。 link:hana-sc-generic-sc-resource-config.html#sap-hana-backup-user-and-sap-hana-user-store-configuration["SAP HANA バックアップユーザーと SAP HANA ユーザーストアの構成"]。
+
+SAP HANA プラグインと SAP hdbsql クライアントが Windows にインストールされている場合、ローカル システム ユーザーが hdbsql コマンドを実行し、リソース構成でデフォルトに設定されます。システム ユーザーはログオン ユーザーではないため、SAP HANA ユーザー ストアの構成は、-u <ユーザー> オプションを使用して別のユーザーで実行する必要があります。
+
+....
+hdbuserstore.exe -u SYSTEM set <key> <host>:<port> <database user> <password>
+....
+SAP HANA の複数ホスト設定では、すべてのホストの SAP HANA ユーザー ストア キーを構成する必要があります。SnapCenter は、提供された各キーを使用してデータベースに接続しようとするため、システム データベース (HANA ネーム サーバー) の別のホストへのフェイルオーバーとは独立して動作できます。すべてのワーカーとスタンバイ ホストに対して SAP HANA ユーザー ストア キーが構成されています。HANA データベース ユーザー (この例では SNAPCENTER) は、システム データベースで構成されているユーザーです。
+
+....
+
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST1 hana-4:30013 SNAPCENTER password
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST2 hana-5:30013 SNAPCENTER password
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST3 hana-6:30013 SNAPCENTER password
+C:\Program Files\sap\hdbclient>hdbuserstore.exe -u SYSTEM list
+DATA FILE : C:\ProgramData\.hdb\SNAPCENTER-61\S-1-5-18\SSFS_HDB.DAT
+KEY FILE : C:\ProgramData\.hdb\SNAPCENTER-61\S-1-5-18\SSFS_HDB.KEY
+KEY MS1KEYHOST1
+ENV : hana-4:30013
+USER: SNAPCENTER
+KEY MS1KEYHOST2
+ENV : hana-5:30013
+USER: SNAPCENTER
+KEY MS1KEYHOST3
+ENV : hana-6:30013
+USER: SNAPCENTER
+KEY SS2KEY
+ENV : hana-3:30013
+USER: SNAPCENTER
+
+C:\Program Files\sap\hdbclient>
+
+....
+
+
+== HANA 手動リソース構成
+
+リソース ビューの [追加] ボタンをクリックすると、手動で構成された HANA システム リソースがSnapCenterに作成されます。
+
+image:hana-sc-generic-image-061.png["幅=601、高さ=189"]
+
+次の画面では、いくつかのシステムパラメータを指定する必要があります。
+
+* プラグインホスト: 中央プラグインホストを選択する必要があります
+* SAP HANA ユーザー ストア キー: 単一ホスト HANA システムの場合、中央プラグイン ホストで準備されたキー名を指定する必要があります。複数ホストの HANA システムの場合、システムのすべてのキーのコンマ区切りリストを提供する必要があります。
+* HDBSQL OS ユーザー: 中央プラグイン ホストが Windows 上で実行されている場合、ユーザーは SYSTEM ユーザーとして事前選択されます。それ以外の場合は、SAP HANA ユーザー ストア キーに使用されているユーザーを提供する必要があります。
+
+
+image:hana-sc-generic-image-062.png["幅=384、高さ=357"]
+
+次のステップとして、ストレージ フットプリントを構成する必要があります。HANA システムに属するすべてのONTAPまたは ANF ボリュームをここに追加する必要があります。
+
+image:hana-sc-generic-image-063.png["幅=385、高さ=359"]
+
+リソース保護の構成は、自動検出された HANA システムと同じ方法で実行できるようになりました。

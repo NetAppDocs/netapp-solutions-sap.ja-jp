@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-advanced-config.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= SAP HANA の高度なSnapCenterオプションを構成する
+:allow-uri-read: 
+
+
+[role="lead"]
+ゲスト内 NFS マウントの VMware 警告メッセージの抑制、自動ログ バックアップ ハウスキーピングの無効化、HANA データベース接続の SSL 暗号化の有効化など、SAP HANA 環境向けの高度なSnapCenter設定を構成します。
+
+
+
+== 仮想化環境とゲスト内マウントに関する警告メッセージ
+
+たとえば、NFS ゲスト内マウントを使用して VMware を使用する場合、 SnapCenter はSnapCenter VMware プラグインを使用する必要があるという警告メッセージを発行します。VMWare プラグインはゲスト内マウントには必要ないため、警告メッセージは無視してオフにすることができます。この警告を抑制するようにSnapCenterを構成するには、次の構成を適用する必要があります。
+
+. [ 設定 ] タブで、 [ グローバル設定 ] を選択します。
+. ハイパーバイザー設定で、すべてのホストに対して VM に iSCSI Direct Attached Disks または NFS を選択し、設定を更新します。
+
+
+image:hana-sc-generic-image-134.png["幅=601、高さ=176"]
+
+
+
+== ログバックアップの自動削除を非アクティブ化します
+
+ログ バックアップ ハウスキーピングはデフォルトで有効になっていますが、HANA プラグイン ホスト レベルで無効にすることができます。PowerShell コマンドを使用します:
+
+コマンド Set- SmConfigSettings -Plugin - HostName <pluginhostname> - PluginCode hana - configSettings @{"LOG_CLEANUP_DISABLE" = "Y"} は、この SAP HANA ホストのログ バックアップ ハウスキーピングを無効にします。
+
+
+
+== HANA データベースとのセキュアな通信を有効にします
+
+HANA データベースが安全な通信で構成されている場合、 SnapCenterによって実行される hdbsql コマンドでは追加のコマンドライン オプションを使用する必要があります。
+
+SSL 通信を構成するためのさまざまなオプションがあります。デフォルトでは、 SnapCenter は-e ssltrustcert hdbsql コマンドライン オプションを使用します。このオプションを使用すると、サーバー証明書の検証なしの SSL 通信が実行され、SSL が有効になっていない HANA システムでもこのオプションは機能します。
+
+サーバー側および/またはクライアント側で証明書の検証が必要な場合は、異なる hdbsql コマンドライン オプションが必要になり、SAP HANA セキュリティ ガイドの説明に従って PSE 環境を適宜構成する必要があります。
+
+これは、必要なオプションを使用して hdbsql を呼び出すラッパー スクリプトを使用することで実現できます。hana.properties ファイルで hdbsql 実行可能ファイルを構成する代わりに、ラッパー スクリプトが追加されます。
+
+....
+
+HANA_HDBSQL_CMD = /usr/sap/SM1/HDB12/exe/hdbsqls
+....
+ラッパー スクリプト hdbsqls は、必要なコマンド ライン オプションを使用して hdbsql を呼び出します。
+
+....
+#/bin/bash
+/usr/sap/SM1/HDB12/exe/hdbsql <command line options> $*
+....
+
+
+== HANA プラグインホストで自動検出を無効にします
+
+HANA プラグイン ホストで自動検出を無効にするには、次の手順を実行します。
+
+. SnapCenterサーバーで PowerShell を開きます。Open-SmConnection コマンドを実行してSnapCenter Server に接続し、開いたログイン ウィンドウでユーザー名とパスワードを指定します。
+. 自動検出を無効にするには、Set-SmConfigSettings コマンドを実行します。
+
+
+HANA ホスト hana-2 の場合、コマンドは次のようになります。
+
+....
+
+PS C:\Users\administrator.SAPCC> Set-SmConfigSettings -Agent -Hostname hana-2 -configSettings @{"DISABLE_AUTO_DISCOVERY"="true"}
+
+Name Value
+
+---- -----
+
+DISABLE_AUTO_DISCOVERY true
+
+PS C:\Users\administrator.SAPCC>
+
+Verify the configuration by running the Get- SmConfigSettings command.
+
+PS C:\Users\administrator.SAPCC> Get-SmConfigSettings -Agent -Hostname hana-2 -key all
+
+Key: CUSTOMPLUGINS_OPERATION_TIMEOUT_IN_MSEC Value: 3600000 Details: Plug-in API operation Timeout
+
+Key: CUSTOMPLUGINS_HOSTAGENT_TO_SERVER_TIMEOUT_IN_SEC Value: 1800 Details: Web Service API Timeout
+
+Key: CUSTOMPLUGINS_ALLOWED_CMDS Value: *; Details: Allowed Host OS Commands
+
+Key: DISABLE_AUTO_DISCOVERY Value: true Details:
+
+Key: PORT Value: 8145 Details: Port for server communication
+
+PS C:\Users\administrator.SAPCC>
+
+....
+構成はホスト上のエージェント構成ファイルに書き込まれ、 SnapCenter によるプラグインのアップグレード後も引き続き使用できます。
+
+....
+
+hana-2:/opt/NetApp/snapcenter/scc/etc # cat /opt/NetApp/snapcenter/scc/etc/agent.properties | grep DISCOVERY
+DISABLE_AUTO_DISCOVERY = true
+hana-2:/opt/NetApp/snapcenter/scc/etc #
+....

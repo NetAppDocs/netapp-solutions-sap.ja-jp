@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-scope.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= ONTAP、 Azure NetApp Files、FSx for ONTAP全体でSnapCenterを使用して SAP HANA システムを保護します
+:allow-uri-read: 
+
+
+[role="lead"]
+スナップショットベースのバックアップとデータ レプリケーションを使用して、 NetApp SnapCenterで SAP HANA システムを保護します。このソリューションでは、バックアップ戦略、整合性チェック、リカバリワークフローなど、 ONTAP AFFおよびASAシステム、 Azure NetApp Files、 Amazon FSx for ONTAP上の SAP HANA システムのSnapCenter構成と運用のベストプラクティスについて説明します。
+
+作成者：Nils Bauer、NetApp
+
+SAP システム更新操作と SAP HANA システムレプリケーションに関する追加のユースケース固有の詳細は、以下を参照してください。
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sr-scs-system-replication-overview.html["『SAP HANA System Replication - Backup and Recovery with SnapCenter』"]
+
+
+SnapCenterデータ保護とNetApp SnapMirrorアクティブ同期を組み合わせるためのベストプラクティスについては、以下で説明します。
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-scope.html["SnapCenter SnapMirror Active Sync と VMware Metro Storage Cluster による SAP HANA のデータ保護と高可用性"]
+
+
+プラットフォーム固有のベストプラクティスに関する追加ドキュメントは、以下から入手できます。
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmfs-asar2-scope.html["VMware VMFSおよびNetApp ASAシステムを使用したSnapCenterによるSAP HANAデータ保護"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/fsxn-overview.html["Amazon FSX上のSAP HANA for NetApp ONTAP - SnapCenter を使用したバックアップとリカバリ"]
+* https://techcommunity.microsoft.com/blog/sapapplications/sap-hana-data-protection-on-azure-netapp-files-with-snapcenter/3510031["『SAP HANA data protection on Azure NetApp Files with SnapCenter』（ブログとビデオ）"]
+* https://techcommunity.microsoft.com/blog/sapapplications/sap-system-refresh-and-cloning-operations-on-azure-netapp-files-with-snapcenter/4356389["『SAP System Refresh and Cloning operations on Azure NetApp Files with SnapCenter』（ブログとビデオ）"]
+

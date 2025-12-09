@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-sc-config-overview.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= SAP HANA環境向けのSnapCenterの構成について学習します
+:allow-uri-read: 
+
+
+[role="lead"]
+共有リソース (資格情報、ストレージ システム、ポリシー) の初期構成と、個々の HANA システムのリソース固有の構成 (ホストの展開、自動検出、保護設定) の 2 段階のSnapCenterを使用して、SAP HANA 環境向けに SnapCenter を構成します。
+
+複数の HANA システムを備えた SAP HANA 環境のSnapCenter構成は、主に次の 2 つの領域に分けられます。
+
+* 初期設定
++
+** 資格情報、ストレージ、およびポリシーの構成。+ これらの設定またはリソースは通常、複数の HANA システムによって消費されます。
+
+
+* HANAリソース固有の構成
++
+** ホスト、HANA、およびリソース保護の構成は、各 HANA システムごとに個別に実行する必要があります。
+
+
+
+
+下の図は、さまざまな構成コンポーネントとそれらの依存関係を示しています。
+
+すべての構成手順については、次のトピックで詳しく説明します。
+
+
+NOTE: このドキュメントの説明とスクリーンショットは、 SnapCenterによって自動検出された HANA システムに基づいています。中央プラグインホストを使用して手動で構成されたリソースの追加または異なる構成手順については、以下で説明します。 link:hana-sc-generic-central-plugin.html["中央プラグインホスト構成"]。
+
+image:hana-sc-generic-image-016.png["幅=601、高さ=319"]

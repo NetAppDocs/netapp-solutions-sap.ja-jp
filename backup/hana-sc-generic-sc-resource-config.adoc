@@ -1,0 +1,207 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-sc-resource-config.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= 個々のSAP HANAデータベースのSnapCenterリソースを構成する
+:allow-uri-read: 
+
+
+[role="lead"]
+バックアップ ユーザーとユーザー ストア キーを作成し、セカンダリ バックアップのストレージ レプリケーションを設定し、自動検出用の HANA プラグインを展開し、ポリシーとスケジュールを使用してリソース保護を構成することで、 SnapCenterで個々の SAP HANA データベースを構成します。
+
+SnapCenterでの HANA データベースの構成は、次の手順で行います。
+
+. SnapCenterバックアップユーザーはHANAシステムデータベースに設定され、SAP HANAユーザーストアキーはHANAデータベースホストに設定されている必要があります。
+. セカンダリストレージへのデータレプリケーションが必要な場合は、HANAデータボリュームのONTAPストレージレプリケーションを構成する必要があります。
+. SnapCenter HANAプラグインは、HANAデータベースホストに導入する必要があります。
++
+.. 自動検出プロセスが開始されます
+.. SAP HANAユーザーストアキーはSnapCenterで設定する必要があります
+.. 自動検出の第2フェーズが開始され、 SnapCenterによってHANAリソースが自動的に追加されます。
+
+
+. 新しく追加されたHANAリソースに対してHANAリソース保護を構成する必要があります
+
+
+前のトピックで説明したSnapCenterの初期構成 link:hana-sc-generic-initial.html["SnapCenter の初期設定"] HANA データベース リソースの構成には資格情報、ストレージ システム、およびポリシーが必要になるため、最初に実行する必要があります。以下の図は、手順と依存関係をまとめたものです。
+
+下の図は、さまざまな構成コンポーネントと依存関係を視覚化したものです。
+
+image:hana-sc-generic-image-041.png["幅=601、高さ=315"] 次のセクションでは、必要な構成手順について詳しく説明します。
+
+
+
+== SAP HANA バックアップユーザーと SAP HANA ユーザーストアの構成
+
+NetApp、 SnapCenterを使用してバックアップ操作を実行するために、HANA データベースに専用のユーザーを構成することを推奨しています。2 番目のステップとして、このバックアップ ユーザーに対して SAP HANA ユーザー ストア キーが設定され、 SnapCenter設定で SAP HANA ユーザー ストア キーが提供されます。
+
+次の図は、バックアップ ユーザー (この例では SNAPCENTER) を作成できる SAP HANA Studio を示しています。
+
+
+NOTE: バックアップ ユーザーには、バックアップ管理者、カタログ読み取り、データベース バックアップ管理者、およびデータベース回復オペレーターの権限を設定する必要があります。
+
+
+NOTE: システム データベースとテナント データベースのすべてのバックアップ コマンドはシステム データベース経由で実行されるため、バックアップ ユーザーはシステム データベースに作成する必要があります。
+
+image:hana-sc-generic-image-042.png["幅=601、高さ=382"]
+
+
+
+=== HANA データベース ホスト上の SAP HANA ユーザー ストア構成
+
+SnapCenter は、<sid>adm ユーザーを使用して HANA データベースと通信します。したがって、SAP HANA ユーザー ストア キーは、データベース ホスト上の <sid>adm ユーザーを使用して構成する必要があります。
+
+hdbuserstore set <キー名> <ホスト>:<ポート> <データベースユーザー> <パスワード>
+
+SAP HANA MDC システムの場合、HANA システム データベースのポートは 3<instanceNo>13 です。
+
+
+
+=== SAP HANA ユーザーストアの構成例
+
+出力には、インスタンス番号 = 00 の HANA システム用に構成されたキー SS1KEY が表示されます。
+
+....
+ss1adm@hana-1:/usr/sap/SS1/HDB00> hdbuserstore list
+DATA FILE : /usr/sap/SS1/home/.hdb/hana-1/SSFS_HDB.DAT
+KEY FILE : /usr/sap/SS1/home/.hdb/hana-1/SSFS_HDB.KEY
+KEY SS1SAPDBCTRL
+ENV : hana-1:30013
+USER: SAPDBCTRL
+KEY SS1KEY
+ENV : hana-1:30013
+USER: SNAPCENTER
+KEY SYSTEMKEY
+ENV : hana-1:30013
+USER: SYSTEM
+ACTIVE RECORDS : 10
+DELETED RECORDS : 15
+NUMBER OF COMPLETE KEY: 3
+Operation succeed.
+ss1adm@hana-1:/usr/sap/SS1/HDB00>
+....
+出力には、インスタンス番号 = 12 の HANA システム用に構成されたキー SM1KEY が表示されます。
+
+....
+sm1adm@hana-2:/usr/sap/SM1/HDB12> hdbuserstore list
+DATA FILE : /usr/sap/SM1/home/.hdb/hana-2/SSFS_HDB.DAT
+KEY FILE : /usr/sap/SM1/home/.hdb/hana-2/SSFS_HDB.KEY
+KEY SM1SAPDBCTRL
+ENV : hana-2:31213
+USER: SAPDBCTRL
+KEY SM1KEY
+ENV : hana-2:31213
+USER: SNAPCENTER
+ACTIVE RECORDS : 7
+DELETED RECORDS : 9
+NUMBER OF COMPLETE KEY: 2
+Operation succeed.
+sm1adm@hana-2:/usr/sap/SM1/HDB12>
+....
+
+
+== ストレージレプリケーション構成
+
+SnapCenter でレプリケーションの更新を管理するには、データ保護関係および最初のデータ転送の設定を実行する必要があります。
+
+次のスクリーンショットは、 ONTAPシステム マネージャを使用した構成を示しています。FSx for ONTAPシステムの場合、レプリケーションはONTAP CLIを使用して実行する必要があります。 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/fsxn-backup-replication-with-snapvault-overview.html["概要- SnapVault によるバックアップレプリケーション"]。
+
+次の図は、SAP HANA システム SS1 のデータボリュームに対して構成された保護関係を示しています。この例では、SVM hana-primary のソース ボリューム SS1_data_mnt00001 が、SVM hana-backup とターゲット ボリューム SS1_data_mnt00001_dst に複製されます。
+
+image:hana-sc-generic-image-043.png["幅=601、高さ=183"]
+
+次の図は、このラボ セットアップ用に作成された保護ポリシーを示しています。保護関係に使用される保護ポリシーは、 SnapMirrorラベルと、セカンダリ ストレージでのバックアップの保持を定義します。この例では、使用されているラベルは Daily で、保持期間は 5 に設定されています。
+
+
+NOTE: レプリケーション ポリシーのSnapMirrorラベルは、 SnapCenterポリシー構成で定義されたラベルと一致する必要があります。
+
+
+NOTE: SnapCenter は、以前に作成されたアプリケーション整合性スナップショットに基づいて、バックアップ操作の一部としてSnapVault の更新をトリガーするため、関係のスケジュールは [なし] に設定する必要があります。
+
+
+NOTE: セカンダリ バックアップ ストレージでのバックアップの保持はポリシーで定義され、 ONTAPによって制御されます。
+
+image:hana-sc-generic-image-044.png["幅=601、高さ=180"]
+
+
+
+== ANFバックアップ構成
+
+ANF バックアップには特別な準備は必要ありません。ANF バックアップが有効になっている最初のバックアップが実行されるとすぐに、 SnapCenterによって snapcenter-vault という名前の Azure バックアップ ボールトが作成されます。このバックアップ ボールトは、 SnapCenterによって実行される後続のすべての ANF バックアップ操作で使用されます。
+
+image:hana-sc-generic-image-045.png["幅=601、高さ=227"]
+
+
+
+== SAP HANA向けSnapCenterプラグインの導入
+
+ホストの要件は次の通りです。 https://docs.netapp.com/us-en/snapcenter/protect-hana/reference_host_requirements_to_install_snapcenter_plug_in_package_for_linux.html["SnapCenter Plug-ins Package for Linuxをインストールするホストの要件"]。
+
+HANA プラグインの展開は、 SnapCenter UI の [ホスト] セクションにある [追加] ボタンをクリックすることで実行されます。
+
+image:hana-sc-generic-image-046.png["幅=601、高さ=145"]
+
+「ホストの追加」画面で、デプロイ プロセスに使用するホストの種類と名前、および資格情報を入力する必要があります。さらに、SAP HANA プラグインを選択する必要があります。[送信] をクリックすると、デプロイメント プロセスが開始されます。
+
+
+NOTE: この説明では、新しいホストを追加せず、 SnapCenter内の既存のホストの構成を示します。
+
+image:hana-sc-generic-image-047.png["幅=601、高さ=154"]
+
+
+
+== HANA自動検出
+
+HANA プラグインの展開が完了すると、自動検出プロセスが開始されます。最初のフェーズでは、基本設定のみが検出され、 SnapCenter新しいリソースが作成され、UI のリソース セクションに赤い南京錠でマークされてリストされます。
+
+image:hana-sc-generic-image-048.png["幅=601、高さ=169"]
+
+リソースをクリックすると、この HANA データベースの SAP HANA ユーザー ストア キーの入力を求められます。
+
+image:hana-sc-generic-image-049.png["幅=316、高さ=180"]
+
+キーが提供された後、自動検出プロセスの第 2 フェーズが開始されます。自動検出プロセスでは、HANA システム内のすべてのテナント データベース、ログおよびカタログのバックアップ構成の詳細、および HANA システム レプリケーション ロールが検出されます。さらに、ストレージ フットプリントの詳細が自動的に検出されます。これらの設定は、リソースを選択して「詳細」ボタンをクリックすることで確認できます。
+
+
+NOTE: この自動検出プロセスはバックアップ操作ごとに実行されるため、バックアップ操作に関連する HANA システムに加えられた変更が自動的に検出されます。
+
+image:hana-sc-generic-image-050.png["幅=601、高さ=219"]
+
+
+
+== リソース保護の設定
+
+自動検出プロセスが完了した後、リソースをクリックすると、リソース保護構成画面が開きます。このドキュメントのスクリーンショットは、既存のリソースの保護構成を示しています。
+
+スナップショットのカスタム名形式を構成します。NetApp、どのバックアップがどのポリシーとスケジュール タイプで作成されたかを簡単に識別できるように、カスタム スナップショット名を使用することを推奨しています。
+
+次の図に示す構成では、バックアップ名と Snapshot コピー名の形式は次のとおりです。
+
+* スケジュールされた1時間ごとのバックアップ: + SnapCenter_<ホスト名>_LocalSnap_Hourly_<タイムスタンプ>
+* スケジュールされた毎日のバックアップ: + SnapCenter_<ホスト名>_LocalSnapAndSnapVault_Daily_<タイムスタンプ>
+
+
+image:hana-sc-generic-image-051.png["幅=601、高さ=294"]
+
+次の画面では、バックアップ ワークフローのさまざまなステップで実行されるスクリプトを設定できます。
+
+image:hana-sc-generic-image-052.png["幅=601、高さ=294"]
+
+これで、ポリシーがリソースに添付され、スケジュールが定義されます。
+
+この例では、
+
+* 毎週日曜日にブロック整合性チェックを実施
+* 4時間ごとのローカルスナップショットバックアップ
+* 毎日1回のSnapVaultレプリケーションによるスナップショットバックアップ
+
+
+image:hana-sc-generic-image-053.png["幅=601、高さ=294"]
+
+電子メール通知を設定できます。
+
+image:hana-sc-generic-image-054.png["幅=601、高さ=294"]
+
+リソース保護の構成が完了すると、定義された設定に従ってスケジュールされたバックアップが実行されます。
