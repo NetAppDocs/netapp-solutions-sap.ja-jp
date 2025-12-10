@@ -104,7 +104,7 @@ MDCの複数のテナント
 * ONTAP 9.14P1
 
 
-すべてのSAP HANAシステムは、構成ガイドに基づいて設定する必要がありますlink:../bp/hana-aff-nfs-introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。SnapCenterとSAP HANAのリソースは、ベストプラクティスガイドに基づいて設定されましたlink:../backup/hana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]。
+すべてのSAP HANAシステムは、構成ガイドに基づいて構成する必要があります。 link:../bp/hana-aff-nfs-introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。SnapCenterとSAP HANAリソースはベストプラクティスガイドに基づいて構成されました。 link:../backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]。
 
 image:sc-copy-clone-image16.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 
@@ -115,7 +115,7 @@ image:sc-copy-clone-image16.png["入力/出力ダイアログを示す図、ま�
 最初のステップとして、ターゲットのSAP HANAシステムがSnapCenter内で設定されている必要があります。
 
 . SAP HANAターゲットシステムのインストール
-. SnapCenterでのSAP HANAシステムの構成（を参照）link:../backup/hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"]
+. SnapCenterでのSAP HANAシステムの構成は、 link:../backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]
 +
 .. SnapCenterバックアップ処理用のSAP HANAデータベースユーザの設定このユーザは、ソースシステムとターゲットシステムで同一である必要があります。
 .. 上記のバックアップユーザを使用した<sid> admのhdbuserstoreキーの設定。リカバリに自動スクリプトを使用する場合は、キー名を<SID>キーにする必要があります。

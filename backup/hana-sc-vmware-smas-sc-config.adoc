@@ -16,7 +16,7 @@ summary:
 [role="lead"]
 本ドキュメントの冒頭で説明したように、VMwareとVMFSおよびSnapMirrorのアクティブ同期を使用するHANA環境のベストプラクティスを紹介することを目的としています。ここでは、この特定のソリューションに関連する詳細と重要な手順についてのみ説明します。SnapCenterの一般的な概念については説明しません。SnapCenterに関するこれらの概念およびその他の追加情報については、次のサイトを参照してください。
 
-link:hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"]
+link:hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]
 
 link:hana-sr-scs-system-replication-overview.html["TR-4719 ：『 SAP HANA System Replication - Backup and Recovery with SnapCenter 』"]
 

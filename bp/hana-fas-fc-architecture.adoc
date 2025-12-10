@@ -58,7 +58,7 @@ image:saphana_asa_fc_image5a.png["SnapCenterの概要"]
 * ブロックの変更に基づいて、スペース効率と帯域幅効率に優れたセカンダリストレージへのレプリケーションを実行します
 
 
-SnapCenterを使用したSAP HANAバックアップ/リカバリソリューションの詳細については、を参照してくださいlink:../backup/hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]。
+SnapCenterを使用したSAP HANAバックアップおよびリカバリソリューションの詳細については、以下を参照してください。 link:../backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"^]。
 
 
 

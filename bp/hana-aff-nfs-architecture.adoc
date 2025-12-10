@@ -61,7 +61,7 @@ image:saphana_asa_fc_image5a.png["SnapCenterの概要"]
 
 
 
-NOTE: SAP HANAのバックアップとリカバリのソリューションの詳細については、を参照してくださいlink:../backup/hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"^]。
+NOTE: SAP HANAのバックアップおよびリカバリソリューションの詳細については、以下を参照してください。 link:../backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"^]。
 
 
 

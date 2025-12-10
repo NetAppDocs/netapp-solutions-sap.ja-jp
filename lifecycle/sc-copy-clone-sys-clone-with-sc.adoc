@@ -63,7 +63,7 @@ image:sc-copy-clone-image9.png["入力/出力ダイアログを示す図、ま�
 * ONTAP 9.7P7.
 
 
-すべてのSAP HANAシステムは、構成ガイドに基づいて設定する必要がありますlink:../bp/hana-aff-nfs-introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。SnapCenterとSAP HANAのリソースは、ベストプラクティスガイドに基づいて設定されましたlink:../backup/hana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]。
+すべてのSAP HANAシステムは、構成ガイドに基づいて構成する必要があります。 link:../bp/hana-aff-nfs-introduction.html["NFSを使用したNetApp AFF システムでのSAP HANA"]。SnapCenterとSAP HANAリソースはベストプラクティスガイドに基づいて構成されました。 link:../backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]。
 
 image:sc-copy-clone-image41.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"]
 

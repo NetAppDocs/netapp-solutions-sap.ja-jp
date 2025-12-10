@@ -84,7 +84,7 @@ SAP HANA データベースのストレージベースの Snapshot バックア�
 
 == 本ドキュメントの内容
 
-このドキュメントでは、ONTAP 用FSXでシングルテナントを使用するSAP HANA MDCシングルホストシステムの最も一般的なSnapCenter 構成オプションについて説明します。その他の構成オプションも使用できます。また、場合によっては、複数ホストシステムの場合など、特定のSAP HANAシステムに必要な構成オプションもあります。その他の設定オプションの詳細については、を参照してくださいlink:hana-br-scs-concepts-best-practices.html["SnapCenter の概念とベストプラクティス（netapp.com）"^]。
+このドキュメントでは、FSx for ONTAP上の単一テナントを持つ SAP HANA MDC 単一ホスト システムの最も一般的なSnapCenter構成オプションについて説明します。その他の構成オプションも可能であり、場合によっては、複数のホスト システムなど、特定の SAP HANA システムで必要になることがあります。その他の設定オプションの詳細については、 link:hana-sc-generic-concepts.html["SnapCenter の概念とベストプラクティス（netapp.com）"^]。
 
 このドキュメントでは、Amazon Web Services（AWS）コンソールとFSX for ONTAP CLIを使用して、ストレージレイヤで必要な設定手順を実行します。また、NetApp Cloud Managerを使用してONTAP 向けのFSXを管理することもできますが、これは本ドキュメントの対象外です。ONTAP でのFSXに対するNetApp Cloud Managerの使用については、を参照してください https://docs.netapp.com/us-en/occm/concept_fsx_aws.html["Amazon FSX for ONTAP （netapp.com）の詳細"^]。
 

@@ -16,7 +16,7 @@ summary:
 [role="lead"]
 このドキュメントに記載されている情報の詳細については、次のドキュメントを参照してください。
 
-* link:hana-br-scs-overview.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]
+* link:hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]
 * link:../lifecycle/sc-copy-clone-introduction.html["SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化"]
 * SAP HANA Disaster Recovery with Storage Replication 』を参照してください
 +

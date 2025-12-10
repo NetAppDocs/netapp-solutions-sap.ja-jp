@@ -167,8 +167,8 @@ hana-1:/install #
 hana-1:/ # mkdir -p /hana/data/SMA/mnt00001
 hana-1:/ # mkdir -p /hana/log/SMA/mnt00001
 hana-1:/ # mkdir -p /hana/shared
-hana-1:/ # chmod –R 777 /hana/log/SMA
-hana-1:/ # chmod –R 777 /hana/data/SMA
+hana-1:/ # chmod -R 777 /hana/log/SMA
+hana-1:/ # chmod -R 777 /hana/data/SMA
 hana-1:/ # chmod -R 777 /hana/shared
 ....
 
@@ -234,7 +234,7 @@ NOTE: ここで説明した設定では、OS VMDK上に/usr/sap/smaディレク�
 
 システムデータベースユーザのユーザストアを作成し、SnapCenterで使用する必要があります。通信ポートに応じてHANAインスタンス番号を設定する必要があります。セットアップでは、インスタンス番号「00」が使用されます。
 
-詳細については、を参照してください。link:hana-br-scs-resource-config-hana-database-backups.html#sap-hana-backup-user-and-hdbuserstore-configuration["SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成"]
+より詳しい説明は以下をご覧ください。 link:hana-sc-generic-sc-resource-config.html#sap-hana-backup-user-and-sap-hana-user-store-configuration["SAP HANA データベースのバックアップ用の SnapCenter リソース固有の構成"]
 
 ....
 smaadm@hana-1:/usr/sap/SMA/HDB00> hdbuserstore set SMAKEY hana-1:30013 SNAPCENTER <password>

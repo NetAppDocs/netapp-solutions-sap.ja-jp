@@ -15,7 +15,7 @@ HANA のベストプラクティス:
 
 SnapCenter ：
 
-* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-br-scs-overview.html["TR-4614 ：『 SAP HANA Backup and Recovery with SnapCenter 』"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]
 * https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sr-scs-system-replication-overview.html["TR-4719 ：『 SAP HANA System Replication - Backup and Recovery with SnapCenter 』"]
 * https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』"]
 * https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-scope.html["SnapCenter SnapMirror Active Sync と VMware Metro Storage Cluster による SAP HANA のデータ保護と高可用性"]
