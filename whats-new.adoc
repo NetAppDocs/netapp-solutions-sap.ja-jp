@@ -15,6 +15,14 @@ SAP 向けソリューションの新機能について学びます。
 
 
 
+== 2026年2月26日
+
+ローカル セキュア ストア（LSS）を使用したSAP HANAボリューム暗号化に対応するソリューションに更新 https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化"]しました。
+
+ローカル セキュア ストア（LSS）を使用した SAP HANA ボリューム暗号化と新しくサポートされる構成をカバーするソリューションに更新 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]しました。
+
+
+
 == 2025年12月2日
 
 新しい解決策:link:https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"^]

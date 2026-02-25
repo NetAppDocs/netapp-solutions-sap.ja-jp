@@ -4,7 +4,7 @@ permalink: lifecycle/lama-ansible-introduction.html
 keywords: tr4953, introduction, 4953, clone, copy, refresh automation 
 summary: SAP Landscape Management（LaMa）を使用すると、SAPシステム管理者は、SAPシステムのエンドツーエンドのクローニング、コピー、更新などのSAPシステム運用を自動化できます。 
 ---
-= TR-4953：『NetApp SAP Landscape Management Integration using Ansible』
+= Ansibleを使用したNetApp SAP Landscape Managementの統合
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
