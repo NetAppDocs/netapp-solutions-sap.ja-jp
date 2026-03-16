@@ -36,6 +36,14 @@ SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption
 
 
 
+== ONTAP自律型ランサムウェア対策
+
+ONTAP Autonomous Ransomware Protectionで作成されたスナップショットは、SAP HANAデータベースのフォワードリカバリには使用できません。したがって、SAP HANAのデータボリュームおよびログボリュームには使用することは推奨されず、これらのボリュームでは無効にする必要があります。ランサムウェア対策には、改ざん防止スナップショットを使用したSnapCenterベースのデータ保護を使用してください（link:../backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]）。ONTAP Autonomous Ransomware Protectionは、/hana/sharedなどの他のボリュームには有効な場合があります。
+
+ONTAP クラスタのボリューム作成時にこの機能の自動有効化を無効にすることは可能ですが、デフォルト設定のままにしておき、この機能が不要なボリュームでは無効にすることをお勧めします。
+
+
+
 == Quality of Service の略
 
 QoS を使用すると、特定の SAP HANA システムやその他のアプリケーションの共有使用コントローラにおけるストレージスループットを制限できます。1 つのユースケースとして、開発システムとテストシステムのスループットを制限し、混在環境で本番システムに影響を与えないようにすることが挙げられます。
@@ -175,6 +183,9 @@ image:saphana_aff_nfs_image16a.png["ボリューム構成SAP HANAシングルホ
 |===
 次の表に、シングルホストシステムのマウントポイント構成例を示します。「 idadm 」ユーザのホーム・ディレクトリを中央ストレージに配置するには、「 /usr/sap/SID 」ファイル・システムを「 S ID_SHARED 」ボリュームからマウントする必要があります。
 
+
+NOTE: SAP Local Secure Storeサービス（LSS）を使用する場合、 `/lss/shared/SID`ディレクトリ（LSSのデフォルトのインストールディレクトリ）は、ローカルディスク上にあります。ディスクベースのレプリケーションを使用した災害復旧設定では、NetAppは、すべてのファイルシステムが中央ストレージ上に存在するように、 `SID_shared`ボリューム内に `/lss/shared/SID`ディレクトリ用のディレクトリを作成することを推奨します。
+
 |===
 | ジャンクションパス | ディレクトリ | HANA ホストのマウントポイント 
 
@@ -185,7 +196,7 @@ image:saphana_aff_nfs_image16a.png["ボリューム構成SAP HANAシングルホ
 | SID_log_mnt00001 |  | /hana/log/sid/mnt00001 
 
 
-| SID_shared | usr - SAP 共有 | /usr/sap/SID /hana/shareed/ 
+| SID共有 | usr-sap＋共有＋lss-共有 | /usr/sap/SID + /hana/shared + /lss/shared/SID 
 |===
 
 
@@ -223,6 +234,9 @@ image:saphana_aff_nfs_image17a.png["ボリューム構成SAP HANAマルチホス
 |===
 次の表に、アクティブな SAP HANA ホストが 4 台あるマルチホストシステムの構成とマウントポイントを示します。各ホストの 'idadm' ユーザのホーム・ディレクトリを中央ストレージに配置するために '/usr/sap/SID' ファイル・システムは 'S ID_SHARED' ボリュームからマウントされます
 
+
+NOTE: SAP Local Secure Storeサービス（LSS）を使用する場合、 `/lss/shared/SID`ディレクトリはすべてのホストでアクセス可能でなければなりません。NetAppは、 `SID_shared`ボリューム内に `/lss/shared/SID`ディレクトリ用のディレクトリを作成することを推奨します。
+
 |===
 | ジャンクションパス | ディレクトリ | SAP HANA ホストのマウントポイント | 注 
 
@@ -254,6 +268,9 @@ image:saphana_aff_nfs_image17a.png["ボリューム構成SAP HANAマルチホス
 | SID_shared | 共有 | /hana/shared-SID を指定します | すべてのホストにマウントされています 
 
 
+| SID_shared | lss-shared | /lss/shared/SID | すべてのホストにマウントされています 
+
+
 | SID_shared | usr-sap-host1 | /usr/sap/SID | ホスト 1 にマウントされています 
 
 
@@ -281,7 +298,10 @@ image:saphana_aff_nfs_image17a.png["ボリューム構成SAP HANAマルチホス
 | Snapshot ディレクトリの可視化を無効にします | vol modify -vserver <vserver-name> -volume <volname> -snapdir-access false 
 
 
-| Snapshot コピーの自動作成を無効にする | vol modify – vserver <vserver-name> -volume <volname> -snapshot-policy none と指定します 
+| Snapshot コピーの自動作成を無効にする | vol modify -vserver <vserver-name> -volume <volname> -snapshot-policy none 
+
+
+| SID_sharedボリュームを除き、ランサムウェア対策を無効にします | vol modify -vserver <vserver-name> -volume <volname> -anti-ransomware-state disabled 
 
 
 | SID_shared ボリュームを除くアクセス時間の更新を無効にします | advanced 権限レベルの vol modify -vserver <vserver-name> -volume <volname> -atime-update false set admin を設定します 

@@ -36,6 +36,14 @@ SAP HANAでは、NetApp Volume Encryption（NVE）とNetApp Aggregate Encryption
 
 
 
+== ONTAP自律型ランサムウェア対策
+
+ONTAP Autonomous Ransomware Protectionで作成されたスナップショットは、SAP HANAデータベースのフォワードリカバリには使用できません。したがって、SAP HANAのデータボリュームおよびログボリュームには使用することは推奨されず、これらのボリュームでは無効にする必要があります。ランサムウェア対策として、改ざん防止スナップショットを用いたSnapCenterベースのデータ保護を使用してください。link:../backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"] ONTAP Autonomous Ransomware Protectionは、/hana/sharedなどの他のボリュームには有効な場合があります。
+
+ONTAP クラスタのボリューム作成時にこの機能の自動有効化を無効にすることは可能ですが、デフォルト設定のままにしておき、この機能が不要なボリュームでは無効にすることをお勧めします。
+
+
+
 == Quality of Service の略
 
 QoSを使用すると、共有コントローラ上の特定のSAP HANAシステムまたはSAP以外のアプリケーションのストレージスループットを制限できます。

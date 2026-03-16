@@ -488,9 +488,7 @@
   <block id="82740b25df395d68a79118ebc5c4da80" category="section-title">Red Hat Enterprise Linux 7.2 以降の構成パラメータ</block>
   <block id="c2e770dd6d768668395e4b8d3b9291d1" category="paragraph">Red Hat Enterprise Linux 7.2 以降では、 /etc/sysctl.d` ディレクトリにある構成ファイルでカーネルパラメータを設定する必要があります。たとえば '91-NetApp-/hana.conf という名前の構成ファイルを作成する必要があります</block>
   <block id="4142bd640477d1c4292c7fcbb3bb1f57" category="section-title">/hana/shared ボリュームにサブディレクトリを作成します</block>
-  <block id="67435e0588f5cb039a7fb0f4578e90a7" category="admonition">以下の例は、 SID=NF2 の SAP HANA データベースを示しています。</block>
   <block id="73534bc746cc8b23b1e96428d64fb98d" category="paragraph">必要なサブディレクトリを作成するには、次のいずれかの操作を行います。</block>
-  <block id="4dedcda7bf51022c092ff39d3a6d5686" category="list-text">マルチ・ホスト・システムの場合は '/hana/shared-volume をマウントし ' 各ホストの 'hared' サブディレクトリと 'usr-sap' サブディレクトリを作成します</block>
   <block id="d434026f127f46b1327fb139872c6f31" category="list-text">マルチホストシステムの場合は、マウントポイントを作成し、すべてのワーカーホストとスタンバイホストに権限を設定します。</block>
   <block id="456f14e4dccd61c74e863ee833a9ca13" category="paragraph">以下のコマンド例は、 2+1 のマルチホスト HANA システムを示しています。</block>
   <block id="436b2f88b88434a5965be45b319737cd" category="paragraph">NFS のバージョンと ONTAP のリリースに応じて、異なるマウントオプションを使用する必要があります。次のファイルシステムをホストにマウントする必要があります。</block>
@@ -517,9 +515,7 @@
   <block id="54b941646e65c3622af659cd9d965169" category="cell">ONTAP 8 での NFS 転送サイズ</block>
   <block id="1017e4c4798ba77b88c85f3b8c6fdf03" category="cell">rw 、 bg 、 hard 、 timeo = 600 、 noatime 、</block>
   <block id="7d7894f31c9b83146d2bc22185ed5db0" category="cell">rsize=65536 、 wsize=65536 、</block>
-  <block id="ae2c578e6abfee06e6c468fd4e7cb392" category="paragraph">/etc/fstab 構成ファイルを使用してシステムのブート中にファイル・システムをマウントするには ' 次の手順を実行します</block>
   <block id="f731bd3074578aba0a3c1b5ab0ca78ee" category="list-text">必要なファイル・システムを /etc/fstab 構成ファイルに追加します</block>
-  <block id="aff8bbab4f16423ec5907aed644aead6" category="list-text">Run `ount – a を実行して、すべてのホストのファイルシステムをマウントします。</block>
   <block id="2555851d01cabd281a371497bed0a9a9" category="list-text">必要なファイル・システムを ' すべてのホスト上の /etc/fstab 構成ファイルに追加します</block>
   <block id="019dc6de8e76037cb2c701eebcc7885a" category="summary">このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。</block>
   <block id="e34a4f0f85c6affc800c8d9647e17923" category="summary">このセクションでは、シングルホストシステムとマルチホストシステムに SAP HANA ソフトウェアをインストールするためのシステムの構成方法について説明します。</block>
@@ -577,7 +573,6 @@
   <block id="5722c99f4a5680ae1ee34f95cc81e80c" category="paragraph">物理インターフェイスごとのデータボリュームマウントとログボリュームマウントの最大数を次の表に示します。</block>
   <block id="36913193033e347ca8ec536cf018744d" category="admonition">データボリュームとログボリュームが同じコントローラに格納されている場合は、サーバからストレージへのアクセスに、 2 つの異なる LIF を使用して実行する必要があります。 1 つはデータボリュームにアクセスする LIF 、もう 1 つはログボリュームにアクセスする LIF です。</block>
   <block id="34a9cf7a71d5de61eb0516df58caeb4d" category="paragraph">各 SAP HANA ホストには、データボリューム、ログボリューム、「 /hana/shared 」のボリュームが構成されています。次の表は、シングルホスト SAP HANA システムの構成例を示しています。</block>
-  <block id="7a2dcccea93b2a3993b37840c369bf46" category="cell">/usr/sap/SID /hana/shareed/</block>
   <block id="08ddf4f39e81c4a0e663d6db2274b8d0" category="cell">アグリゲート 1 ：コントローラ A</block>
   <block id="4991d6ed5c177c09528f1b08e62e870b" category="cell">コントローラ A のアグリゲート 2</block>
   <block id="70ea877d22047c4d7b3160f2dfbb602e" category="cell">コントローラ B のアグリゲート 1</block>
@@ -634,7 +629,6 @@
   <block id="179a425489e8da15ef704b42e37645c8" category="section-title">Red Hat Enterprise Linux 7.2 以降の構成パラメータ</block>
   <block id="e19cf298e039e5acff1dbe7e98090d84" category="paragraph">SAP HANA で生成されるワークロードに合わせて、各 SAP HANA ホストで追加のカーネルパラメータと構成パラメータを調整する必要があります。</block>
   <block id="5491b828c5fede318e582fdb0621d64f" category="paragraph">Red Hat Enterprise Linux 7.2 以降では、 /etc/sysctl.d` ディレクトリにある構成ファイルでカーネルパラメータを設定する必要があります。たとえば、「 91-NetApp-/hana.conf 」という名前の構成ファイルを作成する必要があります。</block>
-  <block id="b57aa9745ef1f47f50b9a81013b110fc" category="admonition">次の例は、 SID=NF2 の SAP HANA データベースを示しています。</block>
   <block id="efa2100424814ed736c66e231fca168e" category="paragraph">次の表に、シングルホストデータベースとマルチホスト SAP HANA データベースの異なるファイルシステムに使用する必要がある NFS のバージョンを示します。</block>
   <block id="2f47d7fd74fc1974289ac9986bf3aadc" category="admonition">SAP LaMa では、 /usr/sap/SID ディレクトリをローカルにする必要があります。したがって、 SAP LaMa を使用している場合は、 /usr/sap/SID の NFS ボリュームをマウントしないでください。</block>
   <block id="2d10c7ea8ceb7d4d67cf331de62acb84" category="paragraph">NFSv3 では、ソフトウェアまたはサーバに障害が発生した場合に NFS ロックのクリーンアップ処理が行われないようにするため、 NFS ロックをオフにする必要があります。</block>
@@ -909,7 +903,6 @@
   <block id="ebcead3815b9e992a87a9c31a4be99fe" category="paragraph">各 SAP HANA ホストには、 1 個のデータボリュームと 1 個のログボリュームが作成されます。「 /hana/shared 」ボリュームは、 SAP HANA システムのすべてのホストで使用されます。次の図は、 4+1 のマルチホスト SAP HANA システムの構成例を示しています。</block>
   <block id="47efb02d47f9965ca8839f52ecc182bc" category="paragraph">次の表に、アクティブな SAP HANA ホストが 4 台あるマルチホストシステムの構成とマウントポイントを示します。</block>
   <block id="415dc524f4e8d720ce545c8d6263459c" category="cell">LUN またはボリューム</block>
-  <block id="ea15b968cdc22cb1b865eba6daa0eae0" category="paragraph">Linux LVM を使用すると、パフォーマンスを向上させ、 LUN サイズの制限に対処できます。LVM ボリュームグループの各 LUN は、別のアグリゲートおよび別のコントローラに格納する必要があります。次の表に、 2+1 の SAP HANA マルチホストシステムのボリュームグループあたり 2 つの LUN の例を示します。</block>
   <block id="203165a49e3a391bdbc44e3a05d54279" category="cell">ONTAP 9</block>
   <block id="77656454768235b0e1954805bd92d9c9" category="section-title">CLI を使用して LUN 、ボリュームを作成し、 igroup に LUN をマッピングします</block>
   <block id="d21a66a2fd717a4acd6dd449ecac4839" category="list-text">システム FC5 に属するすべてのサーバの igroup を作成します。</block>
@@ -1266,7 +1259,6 @@
   <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">プライバシーポリシー</block>
   <block id="bca5b2fa001874580bf261991fd79806" category="cell">ONTAP 9.8 以降で NFSv4.1 の nconnect がサポートされるようになりました。新しいバージョンの SAP HANA がリリースされました</block>
   <block id="896435116179bed2dde76b00414b4fa5" category="cell">ネットアップストレージシステムが新しく追加されると、ホストネットワークの設定が変更されます。軽微な変更が</block>
-  <block id="7e0efdf8314ae57608296d0f91d73af0" category="list-text">シングル・ホスト・システムの場合は '/hana/shared-volume をマウントし 'hared' サブディレクトリと usr-sap サブディレクトリを作成します</block>
   <block id="c578586071a895e1a24fdb22dd828e77" category="paragraph">一般的な最小構成は、次のポリシーで構成されます。</block>
   <block id="f6a738f75f76f62a241636eca02cd87d" category="doc">バージョン履歴</block>
   <block id="8002bc13927c65b5f265b031079ce1d4" category="cell">ドキュメントのバージョン履歴</block>
@@ -1528,8 +1520,6 @@
   <block id="8e473bb8179de06c9675fded85db8531" category="paragraph">SAP HANA の容量要件の詳細な概要については、を参照してください<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> ホワイトペーパー。</block>
   <block id="0b65064648e048922c198e4d6e2cafc1" category="admonition">各データボリュームを接続するために異なるストレージ仮想インターフェイスを使用して、ボリュームごとに異なる TCP セッションを使用するか、使用している OS で利用可能な場合は nConnect マウントオプションを使用します。</block>
   <block id="4a09ae73b23148acb0508b47589e3623" category="cell">rsize=1048576 、 wsize=262144 、</block>
-  <block id="f9d7623ba6cc83509340e737618f63c2" category="paragraph">次の例は、 SID=NF2 で、 NFSv3 を使用し、書き込みの場合は NFS 転送サイズが 1MB 、読み取りの場合は 256K の、シングルホスト SAP HANA データベースを示しています。</block>
-  <block id="b6002aa673859c29cc8fc6915c01cf54" category="paragraph">次の例は、 SID=NF2 で、データファイルシステムとログファイルシステムに NFSv4.1 を使用し、「 /hana/shared 」ファイルシステムと「 /usr/sap/nf2 」ファイルシステムに NFSv3 を使用する、マルチホスト SAP HANA データベースを示しています。書き込みでは、読み取りの場合は 1MB 、書き込みの場合は 256K の NFS 転送サイズが使用されます。</block>
   <block id="4ba3e1c058ef7fff97064b76f2483b24" category="paragraph">SAP HANA の容量要件の詳細な概要については、を参照してください<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> ホワイトペーパーを添付。</block>
   <block id="45bb1f13b573370e5659e113eaa6e2a7" category="paragraph">本ドキュメントでは、 NFS バージョン 3 （ NFSv3 ）プロトコルまたは NFS バージョン 4 （ NFSv4.1 ）プロトコルの ONTAP 設定要件について説明します。</block>
   <block id="bc3bbc9b5df10cfc4c9d9747e9b15e4f" category="paragraph">SAP HANA 向けのネットアップ認定ストレージソリューションの一覧については、を参照してください<block ref="2585df8f0f74fb3d91dc9a930fa3213b" category="inline-link-rx"></block>。</block>
@@ -4379,8 +4369,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="31dad34440bb6733bc03eadd388195f9" category="cell">/hana/data FC5/mnt00002 のように指定します</block>
   <block id="7ee7f8e2c85175d00eefd856f485ae00" category="cell">lv ： FC5_log_mnt00002 -vol</block>
   <block id="6d32edddb8a4b0a8c803f59c2cd3cdf1" category="cell">/hana/log/FC5/mnt00002</block>
-  <block id="44cc7dc291b1a462651371e51bb9fa0f" category="cell">外部NFS共有: FC5_shared</block>
-  <block id="cef7183e022592f117a580def3299e72" category="admonition">SAP HANAマルチホストシステムでは、 <block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>システムのすべてのホストに接続されたファイルシステム。通常、これはNFSサーバーによって提供されるNFS共有です。NetAppFASやAFFシステムなどの高可用性NFSサーバーの使用をお勧めします。また、Linuxホストに内蔵されているNFSサーバーを使用することもできます。</block>
   <block id="5b10d0b1272d218e55f6473abcfbae9d" category="admonition">説明した構成では、 <block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>ユーザーFC5admのデフォルトのホームディレクトリが格納されているディレクトリは、各HANAホストのローカルディスク上にあります。ディスクベースのレプリケーションによる災害復旧設定では、NetAppは4つの追加LUNを使用することを推奨しています。 <block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>各ホストにファイルシステムを配置して、各データベース ホストのすべてのファイルシステムが中央ストレージ上に存在するようにします。</block>
   <block id="d4f54d18b3b1b7422185c0c71038ff15" category="section-title">LUN の作成とイニシエーター グループへの LUN のマッピング</block>
   <block id="b54a0f5023cc826b59cab28cc23f22cc" category="section-title">CLI を使用して LUN を作成し、LUN をイニシエータ グループにマッピングする</block>
@@ -4599,7 +4587,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="731029fe8023134b7b2cfe0f6b60a062" category="paragraph">この章では、LINUX LVM を使用した SAP HANA 単一ホストのセットアップについて説明します。</block>
   <block id="1347f8e1e71f136f4775e716ea4ffe79" category="cell">/hana/data/FC51/mnt00001</block>
   <block id="8605d3de78deff9736f57392e34596e6" category="admonition">説明した構成では、<block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>ユーザー FC5adm のデフォルトのホーム ディレクトリが格納されているディレクトリは、ローカル ディスク上にあります。ディスクベースのレプリケーションによる災害復旧設定では、 NetAppは、<block ref="9bfe65825cda87178edc3ba9f8299b5b" prefix=" " category="inline-code"></block>のボリューム<block ref="ea6f2eb226c57300be10268ea33e50e3" prefix=" " category="inline-code"></block>すべてのファイルシステムが中央ストレージ上に存在するようにディレクトリを作成します。</block>
-  <block id="96b45d8155e675bfeba1a557f8d2c076" category="admonition">NetApp ASAシステムは、プロトコルとして NFS をサポートしていません。  NetAppは、追加のAFFまたはFASシステムを使用することを推奨しています。<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>ファイルシステム。</block>
   <block id="af7dc91d6c9878ceafb1b3fda7b49ff6" category="admonition">SAP HANA KPIを満たすために複数のLUNを組み合わせるためにLVMを使用する必要はありませんが、推奨されます。</block>
   <block id="b4421a31caaf211d702cdbef54c45f59" category="admonition">SAP HANA KPI を満たすために複数の LUN で LVM を使用する必要はありませんが、使用することをお勧めします。</block>
   <block id="c3b8b3942717ccdfa536ffb850c19eec" category="paragraph">NetApp ONTAP System Manager を使用してストレージ ボリュームと LUN を作成し、それらをサーバーの igroup とONTAP CLI にマップできます。</block>
@@ -4634,7 +4621,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="07d3bacb52cc5cfae2b95ad38024bc61" category="list-text">データLUNの作成に成功したら、ログLUNを作成します。<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block></block>
   <block id="14146bfdc8a39f564cd77fb78ac56230" category="inline-image-macro">ONTAP System Manager - ログLUNの作成</block>
   <block id="54892c3762fa9e40f2abfb8ace716ce4" category="paragraph"><block ref="54892c3762fa9e40f2abfb8ace716ce4" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="38d3bfe58a56c277581bf554d58567bb" category="list-text">LVMと組み合わせるログLUNの名前、例：<block ref="65c06cc2828e391723bfb5cf196d549d" prefix=" " category="inline-code"></block></block>
   <block id="f2f463cdd25cba04bd03ae9c978fcf8a" category="list-text">各LUNのサイズ（例：260 GB）</block>
   <block id="ec3ba9cd272dc2bace8316ea5b74f511" category="paragraph"><block ref="ec3ba9cd272dc2bace8316ea5b74f511" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0aecf7c695760ec27de2589c7174b43c" category="list-text">次のワーカーホストのログLUNを作成するには、<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block></block>
@@ -5843,4 +5829,70 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="56a5c925d77740ea69d50272863f3f75" category="section-title">2026年2月26日</block>
   <block id="7dad4c0ee446a92530a257db0791c76e" category="paragraph">ローカル セキュア ストア（LSS）を使用したSAP HANAボリューム暗号化に対応するソリューションに更新<block ref="c3708ebf567e377ab7439ca8121b298b" category="inline-link-rx"></block>しました。</block>
   <block id="b0b371f39676ba260f78c6fc42cd0308" category="paragraph">ローカル セキュア ストア（LSS）を使用した SAP HANA ボリューム暗号化と新しくサポートされる構成をカバーするソリューションに更新<block ref="047d8918c69d98d218dfb2d8e936ae4c" category="inline-link-rx"></block>しました。</block>
+  <block id="6abba955e8b19f1de497e7dffab9251a" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリはすべてのホストからアクセス可能である必要があります。NetAppでは、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用のボリュームを作成し、NFSを使用してすべてのホストにマウントすることを推奨しています。</block>
+  <block id="fd4003edaa3f81dc91905cd394448d22" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、LSSのデフォルトのインストールディレクトリである<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリは、ローカルディスク上にあります。ディスクベースのレプリケーションを使用した災害復旧設定では、NetAppは、すべてのファイルシステムが中央ストレージ上に存在するように、<block ref="ab07e4bbf6e507a26a731683320de6e3" prefix=" " category="inline-code"></block>ボリューム内に<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用の追加のLUNを作成することを推奨します。</block>
+  <block id="26614a7649b9605c8e9b89f419dcbbc9" category="section-title">ONTAP自律型ランサムウェア対策</block>
+  <block id="88d57ef62d73e184723a681269640515" category="paragraph">ONTAP Autonomous Ransomware Protectionで作成されたスナップショットは、SAP HANAデータベースのフォワードリカバリには使用できません。したがって、SAP HANAのデータボリュームおよびログボリュームには使用することは推奨されず、これらのボリュームでは無効にする必要があります。ランサムウェア対策として、改ざん防止スナップショットを用いたSnapCenterベースのデータ保護を使用してください。<block ref="f7a9a89a273a9d57fcd022d94d56f53f" category="inline-link-macro-rx"></block> ONTAP Autonomous Ransomware Protectionは、/hana/sharedなどの他のボリュームには有効な場合があります。</block>
+  <block id="cd24d7da1b8ee6e375962e161af1c899" category="paragraph">ONTAP クラスタのボリューム作成時にこの機能の自動有効化を無効にすることは可能ですが、デフォルト設定のままにしておき、この機能が不要なボリュームでは無効にすることをお勧めします。</block>
+  <block id="f142ca5f8fc4ad82d3c9a25e62538498" category="admonition">NetApp ASAシステムはNFSをプロトコルとしてサポートしていません。NetAppでは、<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>および<block ref="6a2045342e385b7ce35428d8aab5be27" prefix=" " category="inline-code"></block>ファイルシステムに追加のAFFまたはFASシステムを使用することを推奨しています。</block>
+  <block id="0e3955f50c51a60e9df91a2e151d50d9" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリはすべてのホストからアクセス可能である必要があります。NetAppでは、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用のボリュームを作成し、NFSを使用してすべてのホストにマウントすることを推奨しています。</block>
+  <block id="067545c231b0b26bac61a3124245e16d" category="paragraph">LVMボリュームグループのLUNは、異なるアグリゲート内、かつ異なるコントローラに格納する必要があります。次の表は、2+1 SAP HANAマルチホストシステムのボリュームグループあたり2つのLUNの例を示しています。</block>
+  <block id="12e9e557c1c029e6aafa6564f0f21ef8" category="cell">SID_sharedボリュームを除き、ランサムウェア対策を無効にします</block>
+  <block id="3ae79969356e4b645267c0cd2017a473" category="cell">vol modify -vserver &lt;vserver-name&gt; -volume &lt;volname&gt; -anti-ransomware-state disabled</block>
+  <block id="3bf8d6be05d956fede1cf634ede69f84" category="admonition">以下の例では、ボリューム作成時にこれらのオプションを設定しています</block>
+  <block id="001d61e98da450396ceb3d66e2d75ae7" category="cell">vol modify -vserver &lt;vserver-name&gt; -volume &lt;volname&gt; -snapshot-policy none</block>
+  <block id="58cd7dc403225c3fae0f809947405f7a" category="admonition">以下の例は、LSSを使用するSID=NF2のSAP HANAデータベースを示しています。</block>
+  <block id="021cec2f2ae89f6cd58d5c43fdbce31c" category="list-text">シングルホストシステムの場合は、<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>ボリュームをマウントし、<block ref="9e81e7b963c71363e2fb3eefcfecfc0e" prefix=" " category="inline-code"></block>、<block ref="5aac74b892b1c8416fe50a1ce9cc2c71" prefix=" " category="inline-code"></block>、および<block ref="0d24115d39c3b819064955cf824ba7ec" prefix=" " category="inline-code"></block>サブディレクトリを作成します。</block>
+  <block id="cdc81112c5a6aa3638a4bc33f0a0df92" category="list-text">マルチホストシステムの場合は、<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>ボリュームをマウントし、各ホストの<block ref="9e81e7b963c71363e2fb3eefcfecfc0e" prefix=" " category="inline-code"></block>、<block ref="5aac74b892b1c8416fe50a1ce9cc2c71" prefix=" " category="inline-code"></block>、および<block ref="0d24115d39c3b819064955cf824ba7ec" prefix=" " category="inline-code"></block>サブディレクトリを作成します。</block>
+  <block id="e9df1c5500993329ea1c3572ae534967" category="list-text"><block ref="6a2045342e385b7ce35428d8aab5be27" prefix="" category="inline-code"></block></block>
+  <block id="6a2045342e385b7ce35428d8aab5be27" category="cell">/lss/shared</block>
+  <block id="d5f4ae60785555540242e42c7b3997e6" category="list-text"><block ref="9f7a2b0acd2325ca01c92df6a9e32ef7" prefix=" " category="inline-code"></block>を実行して、すべてのホストにファイルシステムをマウントします。</block>
+  <block id="447186ce0957b457e38b60ad6935bf17" category="paragraph">次の例では、データおよびログファイルシステムにNFSv4.1を使用し、<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>、<block ref="6a2045342e385b7ce35428d8aab5be27" prefix=" " category="inline-code"></block>、および<block ref="68727786e22b015e3091f141273c8e9a" prefix=" " category="inline-code"></block>ファイルシステムにNFSv3を使用するSID=NF2のマルチホストSAP HANAデータベースを示しています。読み取りには1MB、書き込みには256kのNFS転送サイズが使用されます。</block>
+  <block id="68bb0afd9f75db09a9936329013b7f31" category="paragraph">ONTAP Autonomous Ransomware Protectionで作成されたスナップショットは、SAP HANAデータベースのフォワードリカバリには使用できません。したがって、SAP HANAのデータボリュームおよびログボリュームには使用することは推奨されず、これらのボリュームでは無効にする必要があります。ランサムウェア対策には、改ざん防止スナップショットを使用したSnapCenterベースのデータ保護を使用してください（<block ref="f7a9a89a273a9d57fcd022d94d56f53f" category="inline-link-macro-rx"></block>）。ONTAP Autonomous Ransomware Protectionは、/hana/sharedなどの他のボリュームには有効な場合があります。</block>
+  <block id="d68a9cc1ad57a1b45c718a98cf06c5e8" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ（LSSのデフォルトのインストールディレクトリ）は、ローカルディスク上にあります。ディスクベースのレプリケーションを使用した災害復旧設定では、NetAppは、すべてのファイルシステムが中央ストレージ上に存在するように、<block ref="07fe7fc9aa3cd33458708758a4a5854e" prefix=" " category="inline-code"></block>ボリューム内に<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用のディレクトリを作成することを推奨します。</block>
+  <block id="5343b98bc4bd7ff24e4885d18da21133" category="cell">SID共有</block>
+  <block id="8c60f3bdaf864f1378bf15bdbf286234" category="cell">usr-sap＋共有＋lss-共有</block>
+  <block id="c4fb2c28012cba7a96234792c8a571ee" category="cell">/usr/sap/SID + /hana/shared + /lss/shared/SID</block>
+  <block id="d8c3aafaff42f2496baa3efed098ed54" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリはすべてのホストでアクセス可能でなければなりません。NetAppは、<block ref="07fe7fc9aa3cd33458708758a4a5854e" prefix=" " category="inline-code"></block>ボリューム内に<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用のディレクトリを作成することを推奨します。</block>
+  <block id="5aac74b892b1c8416fe50a1ce9cc2c71" category="cell">lss-shared</block>
+  <block id="1d7604fd1dd9d655c19ff0843bcd1cab" category="cell">/lss/shared/SID</block>
+  <block id="beee35b505dad80cd7cd18e197637511" category="cell">vol modify -vserver &lt;vserver-name&gt; -volume &lt;volname&gt; -snapshot-policy none</block>
+  <block id="407bb1f33718ec45fa319cb50fcc7b97" category="cell">外部NFS共有：+ FC5_shared</block>
+  <block id="d21241ce24640b5a4bf00766df44b91d" category="admonition">SAP HANAマルチホストシステムでは、<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>ファイルシステムと、SAP Local Secure Storeサービス（LSS）が使用されている場合は<block ref="6a2045342e385b7ce35428d8aab5be27" prefix=" " category="inline-code"></block>ファイルシステムが、システムのすべてのホストに接続されている必要があります。通常、これはNFSサーバによって提供されるNFS共有です。高可用性NFSサーバ（NetApp FASまたはAFFシステムなど）を使用することをお勧めします。別の選択肢として、LINUXホストの組み込みNFSサーバを使用することもできます。</block>
+  <block id="64981b526d5b35ac09f02c48453d6f35" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ（LSSのデフォルトのインストールディレクトリ）は、ローカルディスク上にあります。ディスクベースのレプリケーションを使用した災害復旧設定では、NetAppは、すべてのファイルシステムが中央ストレージ上に存在するように、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用の追加のLUNを作成することを推奨します。</block>
+  <block id="12ccabf84c21c14e6551f42509f3b977" category="section-title">LUNの概要</block>
+  <block id="0b37ec6af096731a213f36e2166d3d2a" category="paragraph">以下の表は、2+1構成のマルチホストSAP HANAシステムのLUN構成を示しています。</block>
+  <block id="7b3c6a2d089eb1b6f8959e7e61a50c07" category="cell">LUN</block>
+  <block id="04c7f125503417660995afc6fa1421d7" category="cell">LVM論理ボリューム</block>
+  <block id="41384d57430dc5ab72f37f393655f8bc" category="cell">データホスト1</block>
+  <block id="f6e0235f101367ef53495d79d7a3d70d" category="cell">FC5_data_mnt00001_1 FC5_data_mnt00001_2</block>
+  <block id="1f0d31288f476cfe2e133221414df507" category="cell">FC5_data_mnt00001-vol</block>
+  <block id="3970fc12a56316e6f6e9db16a426efc0" category="cell">データホスト 2</block>
+  <block id="2aca948cce804cc9664e0462a0046129" category="cell">FC5_data_mnt00002_1 FC5_data_mnt00002_2</block>
+  <block id="0d0b488fab32fe772633ff5e38511cb6" category="cell">FC5_data_mnt00002-vol</block>
+  <block id="32911bfac2fea6da30105fbc8be0e921" category="cell">ログホスト1</block>
+  <block id="4a10ff90e91f48e6f669846ec3087266" category="cell">FC5_log_mnt00001_1 FC5_log_mnt00001_2</block>
+  <block id="c97584592958ee2c6a93761573a5c46a" category="cell">FC5_log_mnt00001-vol</block>
+  <block id="6a1061f578bdc6ce815ed84151eb9709" category="cell">ログホスト2</block>
+  <block id="c6cf4a33a26a4900a2a6d9aa56ee9b36" category="cell">FC5_log_mnt00002_1 FC5_log_mnt00002_2</block>
+  <block id="18efe4d83c560f2432eaf2f599628297" category="cell">FC5_log_mnt00002-vol</block>
+  <block id="252d3743e15f6d6f4bd2f5d442a8e00d" category="admonition">/hana/sharedボリュームはすべてのSAP HANAホストからアクセス可能である必要があり、そのため通常はNFSを使用してエクスポートされます。NetApp ASAシステムはNFSをプロトコルとしてサポートしていないため、NetAppでは/hana/sharedファイルシステム用に追加のAFFまたはFASシステムを使用することを推奨しています。</block>
+  <block id="7cc6c30a9b9935b1520035dedaab2e46" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリはすべてのホストからアクセス可能である必要があり、そのため通常はNFSを使用してエクスポートされます。NetApp ASAシステムはNFSをプロトコルとしてサポートしていないため、NetAppでは/lss/shared ファイルシステム用に追加のAFFまたはFASシステムを使用することを推奨しています。</block>
+  <block id="cff8c0860eb3aaa9d990b85bb767bc29" category="admonition">GUIを使用して、これらのLUNの自律型ランサムウェア対策を無効にします</block>
+  <block id="ab1010420f90f8dbe2a9fd15c5bdd149" category="list-text">LVMと結合するログLUNの名前。例：<block ref="65c06cc2828e391723bfb5cf196d549d" prefix=" " category="inline-code"></block></block>
+  <block id="c3910183d4d4e0f43b4acfa76737f1e8" category="section-title">すべてのデータおよびログ LUN に対して Autonomous Ransomware Protection を無効にする</block>
+  <block id="e8746ab7bcc4ca7345212370e6e8e9b1" category="paragraph">各データLUNおよびログLUNのコンテキストメニューを開き、ランサムウェア対策を無効にします</block>
+  <block id="c728a7ce0a9bfb9c44b3c4ae50dd6577" category="paragraph"><block ref="c728a7ce0a9bfb9c44b3c4ae50dd6577" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="72d03a30fdf7d7305becff30d809d139" category="paragraph">以下の表は、シングルホストSAP HANAシステムのLUN構成を示しています。</block>
+  <block id="f6068daa29dbb05a7ead1e3b5a48bbee" category="cell">データ</block>
+  <block id="ce0be71e33226e4c1db2bcea5959f16b" category="cell">ログ</block>
+  <block id="a6156ea9d66fef24e87e841fbabf7cca" category="cell">共有</block>
+  <block id="9bfe65825cda87178edc3ba9f8299b5b" category="cell">FC5_shared</block>
+  <block id="26f38965a7bce5fc6004dbd78b9e4788" category="admonition">上記の構成では、ユーザSID1admのデフォルトのホームディレクトリが格納されている<block ref="1c6e4d45ea710f75ef527bf5644cf69e" prefix=" " category="inline-code"></block>ディレクトリは、ローカルディスク上にあります。ディスクベースのレプリケーションを使用したディザスタリカバリ設定では、NetAppは、すべてのファイルシステムが中央ストレージ上に配置されるように、<block ref="1c6e4d45ea710f75ef527bf5644cf69e" prefix=" " category="inline-code"></block>ディレクトリ用の追加のLUNを作成することを推奨しています。</block>
+  <block id="4a95172eb256f511fef386008c699e6e" category="paragraph"><block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>ボリュームはすべてのHANAホストからアクセス可能である必要があるため、NFSを使用してエクスポートされます。<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>ファイルシステムに特定のパフォーマンスKPIはありませんが、NetAppでは10Gbイーサネット接続の使用を推奨します。</block>
+  <block id="1946f3132a161c2002c2a7d1ef4fc6ac" category="admonition">これらの例は、LSSを使用するSID=NF2のSAP HANAデータベースを示しています。</block>
+  <block id="eccd23339a640cd644c7eb79a2dc7915" category="paragraph">次の例では、データおよびログファイルシステムにNFSv4.1を使用し、<block ref="b61595b5b7b716bd6b8bd21e4fa4a3bf" prefix=" " category="inline-code"></block>、<block ref="6a2045342e385b7ce35428d8aab5be27" prefix=" " category="inline-code"></block>、および<block ref="68727786e22b015e3091f141273c8e9a" prefix=" " category="inline-code"></block>ファイルシステムにNFSv3を使用するSID=NF2のマルチホストSAP HANAデータベースを示しています。読み取りには1MB、書き込みには256kのNFS転送サイズが使用されます。</block>
+  <block id="3d4f8b4b1b1faa02f0aa9e9f49fe9088" category="paragraph">ONTAP自律型ランサムウェア対策機能によって作成されたスナップショットは、SAP HANAデータベースのフォワードリカバリには使用できません。したがって、SAP HANAのデータボリュームおよびログボリュームには使用することは推奨されず、これらのボリュームでは無効にする必要があります。ランサムウェア対策として、改ざん防止スナップショットを用いたSnapCenterベースのデータ保護を使用してください：<block ref="f7a9a89a273a9d57fcd022d94d56f53f" category="inline-link-macro-rx"></block>。ONTAP自律型ランサムウェア対策は、/hana/sharedなどの他のボリュームには有効かもしれません。</block>
+  <block id="5c9e36a122daafc35d852512bd535596" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ（LSSのデフォルトのインストールディレクトリ）はローカルディスク上にあります。ディスクベースのレプリケーションを使用した災害復旧設定では、NetAppは、すべてのファイルシステムが中央ストレージ上に存在するように、<block ref="07fe7fc9aa3cd33458708758a4a5854e" prefix=" " category="inline-code"></block>ボリューム内に<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用のディレクトリを作成することを推奨します。</block>
+  <block id="3ee7f42a5f57f42357faa6066ecfb5d8" category="cell">/lss/shared/</block>
 </blocks>
