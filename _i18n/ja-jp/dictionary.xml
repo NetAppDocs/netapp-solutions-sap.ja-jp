@@ -713,8 +713,6 @@
   <block id="10fba2fd8d2b0860517a92eefbfce26b" category="paragraph">SAP HANA マルチホスト環境では、 SAP HANA ホストのフェイルオーバー時にフェンシングを提供するために、標準の SAP HANA ストレージコネクタが使用されます。オペレーティングシステムの構成ガイドラインと、 HANA 固有の Linux カーネルの依存関係については、必ず該当する SAP ノートを参照してください。詳細については、を参照してください<block ref="362348e4aadbc3b1dc4fa3ddcce8fb65" category="inline-link-rx"></block>。</block>
   <block id="c28f239d8c4b11cfe19d1dcf078100b9" category="section-title">SAP HANA テーラードデータセンター統合</block>
   <block id="e13ebe7bf91deecb41098f3561e752bf" category="paragraph">NetApp AFF ストレージシステムは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、アーキテクチャの概要を示します。</block>
-  <block id="14a31d6554fa48b10cc86d1aaf656a07" category="inline-link">『 SAP HANA Tailored Data Center Integration Frequently Asked Questions 』</block>
-  <block id="9282f2106e2ecc166cf241e78c58163e" category="list-text"><block ref="9282f2106e2ecc166cf241e78c58163e" category="inline-link-rx"></block></block>
   <block id="0efd230d120bc177f0918dac852f2cf2" category="list-text">SAP HANA 向け SAP 認定エンタープライズストレージハードウェア</block>
   <block id="3710f13cc62644ea40b0af38f0b1198e" category="paragraph"><block ref="3710f13cc62644ea40b0af38f0b1198e" category="inline-link-rx"></block></block>
   <block id="c54847a2046020d06d345fd8b61fc169" category="list-text">ネットアップドキュメントセンター</block>
@@ -2905,8 +2903,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="0a961d2cbb588be1d5a93b4774cf6ef1" category="cell">新しいストレージシステム（AFF Aシリーズ）</block>
   <block id="f31f11743f1dfba18e9f008e2956d24e" category="cell">2024年9月</block>
   <block id="e4a9c264a13e2ec5faac7a73cf8d0e8c" category="cell">マイナーアップデート</block>
-  <block id="44fee80ab2b2a3105ec17b94b206cc8f" category="inline-link"><block ref="44fee80ab2b2a3105ec17b94b206cc8f" category="inline-link-rx"></block></block>
-  <block id="55162df4eaa40993b4b04219f5dd5e87" category="paragraph"><block ref="55162df4eaa40993b4b04219f5dd5e87" category="inline-link-rx"></block></block>
   <block id="e5e2a6bf28307550240d9ed91bbb0fa0" category="paragraph"><block ref="e5e2a6bf28307550240d9ed91bbb0fa0" category="inline-link-rx"></block></block>
   <block id="a36cfc2690f8671748f584abb16bdd04" category="cell">新しいストレージシステム</block>
   <block id="0fba9f2a3fbb4cfbaed44806cd9933a2" category="cell">新しいストレージシステム（ASA Aシリーズ）</block>
@@ -5895,4 +5891,8 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="3d4f8b4b1b1faa02f0aa9e9f49fe9088" category="paragraph">ONTAP自律型ランサムウェア対策機能によって作成されたスナップショットは、SAP HANAデータベースのフォワードリカバリには使用できません。したがって、SAP HANAのデータボリュームおよびログボリュームには使用することは推奨されず、これらのボリュームでは無効にする必要があります。ランサムウェア対策として、改ざん防止スナップショットを用いたSnapCenterベースのデータ保護を使用してください：<block ref="f7a9a89a273a9d57fcd022d94d56f53f" category="inline-link-macro-rx"></block>。ONTAP自律型ランサムウェア対策は、/hana/sharedなどの他のボリュームには有効かもしれません。</block>
   <block id="5c9e36a122daafc35d852512bd535596" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ（LSSのデフォルトのインストールディレクトリ）はローカルディスク上にあります。ディスクベースのレプリケーションを使用した災害復旧設定では、NetAppは、すべてのファイルシステムが中央ストレージ上に存在するように、<block ref="07fe7fc9aa3cd33458708758a4a5854e" prefix=" " category="inline-code"></block>ボリューム内に<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用のディレクトリを作成することを推奨します。</block>
   <block id="3ee7f42a5f57f42357faa6066ecfb5d8" category="cell">/lss/shared/</block>
+  <block id="e72900b6484d9e136f9baaf67301d38d" category="paragraph"><block ref="8878a31e958f2f4fbc2f0cb5299a88fc" category="inline-link-rx"></block>]</block>
+  <block id="b0b3e68761dd70d0fa49b725910dc993" category="list-text">SAP HANAテーラード データセンター統合</block>
+  <block id="37716fa00dd641976ad10af0418c9f93" category="inline-link">SAP HANAテーラード データセンター統合</block>
+  <block id="74e5a15645e2d65a375593199e01c962" category="list-text"><block ref="74e5a15645e2d65a375593199e01c962" category="inline-link-rx"></block></block>
 </blocks>
