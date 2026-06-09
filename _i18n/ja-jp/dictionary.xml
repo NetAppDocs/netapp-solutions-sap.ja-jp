@@ -180,7 +180,6 @@
   <block id="912023f4eba0bf223e908e20d22ff92f" category="paragraph">以降のセクションでは、 SAP HANA インフラのセットアップと構成のガイドラインについて説明し、 SAP HANA システムのセットアップに必要なすべての手順について説明します。ここでは、次の設定例を使用します。</block>
   <block id="4bb047f8c530785002e490ef17fa725e" category="doc">追加情報の参照先</block>
   <block id="345245c83d2b2c4c2a5eb9f2887da627" category="paragraph">このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。</block>
-  <block id="06ad3435fb38e020aa7a36d8924c9f5c" category="inline-link"><block ref="06ad3435fb38e020aa7a36d8924c9f5c" category="inline-link-rx"></block></block>
   <block id="6137d44b5191549a06e7bea8ffd942d3" category="inline-link"><block ref="6137d44b5191549a06e7bea8ffd942d3" category="inline-link-rx"></block></block>
   <block id="3a8abeead42ccd286a7d0cbd4af82313" category="cell">2014年4月</block>
   <block id="862ad23f517c987dec375a134fc0d5c0" category="cell">初版</block>
@@ -714,7 +713,6 @@
   <block id="c28f239d8c4b11cfe19d1dcf078100b9" category="section-title">SAP HANA テーラードデータセンター統合</block>
   <block id="e13ebe7bf91deecb41098f3561e752bf" category="paragraph">NetApp AFF ストレージシステムは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、アーキテクチャの概要を示します。</block>
   <block id="0efd230d120bc177f0918dac852f2cf2" category="list-text">SAP HANA 向け SAP 認定エンタープライズストレージハードウェア</block>
-  <block id="3710f13cc62644ea40b0af38f0b1198e" category="paragraph"><block ref="3710f13cc62644ea40b0af38f0b1198e" category="inline-link-rx"></block></block>
   <block id="c54847a2046020d06d345fd8b61fc169" category="list-text">ネットアップドキュメントセンター</block>
   <block id="1f97b7a68d0268791593f9152a2471f4" category="list-text">SAP HANA ソフトウェアソリューション</block>
   <block id="02e9c064fb16f4d7c921173e0ea3e1d4" category="summary">SAP HANA ホストは、冗長 10GbE 以上のネットワークインフラを使用して、ストレージコントローラに接続されます。SAP HANA ホストとストレージコントローラ間のデータ通信は、 NFS プロトコルに基づいています。スイッチまたはネットワークインターフェイスカード（ NIC ）の障害に備え、耐障害性に優れた SAP HANA ホスト / ストレージ接続を実現するには、冗長スイッチングインフラが必要です。</block>
@@ -5891,8 +5889,11 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="3d4f8b4b1b1faa02f0aa9e9f49fe9088" category="paragraph">ONTAP自律型ランサムウェア対策機能によって作成されたスナップショットは、SAP HANAデータベースのフォワードリカバリには使用できません。したがって、SAP HANAのデータボリュームおよびログボリュームには使用することは推奨されず、これらのボリュームでは無効にする必要があります。ランサムウェア対策として、改ざん防止スナップショットを用いたSnapCenterベースのデータ保護を使用してください：<block ref="f7a9a89a273a9d57fcd022d94d56f53f" category="inline-link-macro-rx"></block>。ONTAP自律型ランサムウェア対策は、/hana/sharedなどの他のボリュームには有効かもしれません。</block>
   <block id="5c9e36a122daafc35d852512bd535596" category="admonition">SAP Local Secure Storeサービス（LSS）を使用する場合、<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ（LSSのデフォルトのインストールディレクトリ）はローカルディスク上にあります。ディスクベースのレプリケーションを使用した災害復旧設定では、NetAppは、すべてのファイルシステムが中央ストレージ上に存在するように、<block ref="07fe7fc9aa3cd33458708758a4a5854e" prefix=" " category="inline-code"></block>ボリューム内に<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block>ディレクトリ用のディレクトリを作成することを推奨します。</block>
   <block id="3ee7f42a5f57f42357faa6066ecfb5d8" category="cell">/lss/shared/</block>
-  <block id="e72900b6484d9e136f9baaf67301d38d" category="paragraph"><block ref="8878a31e958f2f4fbc2f0cb5299a88fc" category="inline-link-rx"></block>]</block>
   <block id="b0b3e68761dd70d0fa49b725910dc993" category="list-text">SAP HANAテーラード データセンター統合</block>
   <block id="37716fa00dd641976ad10af0418c9f93" category="inline-link">SAP HANAテーラード データセンター統合</block>
   <block id="74e5a15645e2d65a375593199e01c962" category="list-text"><block ref="74e5a15645e2d65a375593199e01c962" category="inline-link-rx"></block></block>
+  <block id="44fee80ab2b2a3105ec17b94b206cc8f" category="inline-link"><block ref="44fee80ab2b2a3105ec17b94b206cc8f" category="inline-link-rx"></block></block>
+  <block id="55162df4eaa40993b4b04219f5dd5e87" category="paragraph"><block ref="55162df4eaa40993b4b04219f5dd5e87" category="inline-link-rx"></block></block>
+  <block id="9b3c3b7775f8b0fe4b367630784b02be" category="inline-link"><block ref="9b3c3b7775f8b0fe4b367630784b02be" category="inline-link-rx"></block></block>
+  <block id="09e3bfa407b8475f684f4afa0d1a65d0" category="paragraph"><block ref="09e3bfa407b8475f684f4afa0d1a65d0" category="inline-link-rx"></block></block>
 </blocks>
