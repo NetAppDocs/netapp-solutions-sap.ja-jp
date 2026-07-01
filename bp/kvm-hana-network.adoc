@@ -14,7 +14,7 @@ summary: Mellanox ConnectX NIC を使用して、SUSE KVM for SAP HANA 上の SR
 
 
 [role="lead"]
-SUSE KVM for SAP HANA で SR-IOV ネットワーク インターフェイスを構成します。仮想機能 (VF) を設定し、VM に割り当て、最適なパフォーマンスとストレージ アクセスを実現するために冗長ネットワーク接続を構成します。
+SUSE KVM for SAP HANA上でSR-IOVネットワークインターフェースを設定します。仮想機能（VF）を設定し、VMに割り当て、最適なパフォーマンスとストレージ アクセスのために冗長ネットワーク接続を構成します。ブリッジネットワークもサポートされています。
 
 
 

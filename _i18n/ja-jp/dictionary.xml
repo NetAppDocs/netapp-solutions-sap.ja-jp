@@ -4693,7 +4693,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="c0a3ca4d6887eb5487746b7fd52fe4ea" category="inline-image-macro">幅=601、高さ=441</block>
   <block id="5d9becebd742ba55a338e721cb4098bc" category="doc">SUSE KVM とNetAppストレージを搭載した SAP HANA</block>
   <block id="0a2894548989381718d6bc91587921e8" category="inline-link">KVM 上の SAP HANA に関する SUSE ベストプラクティス</block>
-  <block id="2cfc5ea27e5946f6879fde36c69e3ec6" category="inline-link">3538596 - SUSE KVM 仮想化と SLES 15 SP5 を使用した SAP HANA - SAP for Me</block>
   <block id="15ddad260ba43b42e35fa929f499221f" category="inline-link">NVIDIAエンタープライズ サポート ポータル | KVM (イーサネット) を使用して ConnectX-4/ConnectX-5/ConnectX-6 の SR-IOV を構成する方法</block>
   <block id="6b02943983965065df18dd4bfa58b5f0" category="inline-image-macro">幅=493、高さ=409</block>
   <block id="78c43044658ad43ea5759ac7d4d547e3" category="paragraph"><block ref="78c43044658ad43ea5759ac7d4d547e3" category="inline-image-macro-rx" type="image"></block></block>
@@ -4745,7 +4744,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="b04f5fdeaf8c08267bf339c96ea39e88" category="paragraph">ファイバーチャネルネットワークを構成したら、<block ref="ae7fcde62644d7c2cce7447887af291a" category="inline-link-macro-rx"></block> 。</block>
   <block id="eedf6199d892536e90e4f5f5e9aeead0" category="summary">SR-IOV ネットワーク インターフェイスと NFS または FCP ストレージ アクセスを備えたNetAppストレージを使用して、SUSE KVM 上に SAP HANA シングル ホストをデプロイします。このワークフローに従って仮想インターフェースを構成し、VM に割り当て、最適なパフォーマンスを得るためにストレージ接続を設定します。</block>
   <block id="b2b3540e7a5adcde33ace97349e2560a" category="doc">SR-IOV と NFS を使用して、 NetAppストレージを搭載した SUSE KVM に SAP HANA を導入する</block>
-  <block id="0e271a63b035a81107076af36774e567" category="paragraph">KVM 仮想化上の SAP HANA の概要については、SUSE のドキュメントを参照してください。<block ref="23bdf6475773b02163c12d0b92b72377" category="inline-link-rx"></block> 。</block>
   <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">1</block>
   <block id="a83565177e04591255a835fde719da37" category="inline-link-macro">構成要件を確認する</block>
   <block id="ce32521677a8f52f50fefa7a065fa3bc" category="paragraph"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="d33d8d02b4f9bbbf424db99eecbc1fd5" category="inline-link-macro-rx"></block></block>
@@ -4764,7 +4762,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="eaa946087d06ee1fee769e3564e0e00a" category="paragraph">SAP HANA データベース ファイル用に、VM とNetAppストレージ システム間の NFS または FCP ストレージ接続を設定します。</block>
   <block id="46086226fd4f9834e26bad399e56adba" category="summary">Mellanox ConnectX NIC を使用して、SUSE KVM for SAP HANA 上の SR-IOV ネットワーク インターフェイスを構成します。仮想機能を設定し、VM に割り当て、冗長ネットワーク接続を構成して、最適なパフォーマンスとストレージ アクセスを実現します。</block>
   <block id="1a4209a0d3141f25300c6ebecb02b5ca" category="doc">SUSE KVM 上の SAP HANA 用の SR-IOV ネットワーク インターフェースを構成する</block>
-  <block id="64a9f5744e810899375650d8c2d3fec9" category="paragraph">SUSE KVM for SAP HANA で SR-IOV ネットワーク インターフェイスを構成します。仮想機能 (VF) を設定し、VM に割り当て、最適なパフォーマンスとストレージ アクセスを実現するために冗長ネットワーク接続を構成します。</block>
   <block id="3e8724f246e16510aad52dd9ecb49a3d" category="section-title">ステップ1: SR-IOVのセットアップ</block>
   <block id="6b314738afe5bc77a71fceeb84ceb155" category="paragraph">仮想機能の作成を可能にするために、アダプタ ファームウェアで SR-IOV 機能を有効にして構成します。</block>
   <block id="b99f7ff8b05c08aee442951722cb0edf" category="paragraph">この手順は、<block ref="e682021759c826481e76b33aabbf6839" category="inline-link-rx"></block> 。SUSE SAP HANA KVM ガイドでは、INTEL NIC に基づいてこれを説明しています。</block>
@@ -4809,13 +4806,10 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="d7c7e191ee6d1a797e5df384683aea38" category="list-text">SR-IOV対応ネットワークアダプタ（例：Mellanox ConnectXシリーズ）</block>
   <block id="d2e6b4405b465bc9b022aac442b1b10a" category="list-text">FCP ストレージ アクセス用のファイバー チャネル HBA アダプター</block>
   <block id="f31568af9160e2aa82d3db92980e5c3e" category="list-text">必要なVLANとネットワークセグメントをサポートするネットワークインフラストラクチャ</block>
-  <block id="eeb238b1c48c2357fe3444616c9ebced" category="list-text">VMの構成<block ref="8185340d5b69ab85cc184c018157df93" category="inline-link-rx"></block></block>
   <block id="50a1170f516bd7e65549254bce84c24c" category="section-title">重要な考慮事項</block>
-  <block id="a738c5891f5961226a6dde61f1afbb37" category="list-text">SAP HANA ネットワーク通信および NFS を使用したストレージ アクセスには、SR-IOV を使用する必要があります。VM に割り当てられた各仮想機能 (VF) には、少なくとも 10 Gbit/s の帯域幅が必要です。</block>
   <block id="5978d0cfedef13194dff39678fea0182" category="list-text">FCP LUN を使用するには、物理 FCP HBA ポートを PCI デバイスとして VM に割り当てる必要があります。物理ポートは 1 つの VM にのみ割り当てることができます。</block>
   <block id="39f701bd19a2da681aadb2c2080ee6ac" category="list-text">この構成では、SAP HANA マルチホスト システムはサポートされていません。</block>
   <block id="8cd58c89ff3d51a256ecfe3fe8bab20f" category="section-title">その他のリソース</block>
-  <block id="eaba74287739b947e76e82a1d0b0b128" category="list-text">サポートされているCPUアーキテクチャや制限事項などの最新情報については、SAPノートを参照してください。<block ref="7da6a569286eed69a835786cc64ede56" category="inline-link-rx"></block> 。</block>
   <block id="c09b5be4c2da04f4040eef1878f258aa" category="inline-link">ONTAP 9 ドキュメント</block>
   <block id="9a421dce29a43d6aa8fe214499fe1e4a" category="list-text">ONTAPストレージシステムの設定については、<block ref="6f483b863c5185fefdfed5a5dff0efff" category="inline-link-rx"></block> 。</block>
   <block id="1d3f77b304dcdf504c9e8550fc7801e7" category="inline-link">NetApp SAP ソリューションのドキュメント</block>
@@ -4842,7 +4836,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="5f05fd970d378d7b908fd310167d1342" category="list-text">ファブリックスイッチ間の冗長性を確保するために、VM内でマルチパスを構成する</block>
   <block id="b3529caae24ec3b6317fed33b199fc17" category="list-text">SAP HANA 構成ガイドに従ってストレージ コントローラと VM を構成します。</block>
   <block id="57e1771ce1e6d595e42a3b886ca50109" category="cell">2025年11月</block>
-  <block id="08fc16a4a36250041009c3c33c9c9388" category="cell">レイアウトを更新しました。</block>
   <block id="ba6af9e4a46c6c9c5542891d417327e8" category="section-title">2025年11月12日</block>
   <block id="1ae3ab0d4dcb2d1a3eb0edf2e52ce3a2" category="paragraph">新しい解決策<block ref="2c0446aa059b701d9c0d685bc6675dbe" category="inline-link-macro-rx"></block>:</block>
   <block id="c91527b6024ce916ee9e7634580b91cf" category="paragraph">SR-IOV ネットワーク インターフェイスと NFS または FCP ストレージ アクセスを備えたNetAppストレージを使用して、SUSE KVM 上に SAP HANA シングル ホストをデプロイします。</block>
@@ -5896,4 +5889,13 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="09e3bfa407b8475f684f4afa0d1a65d0" category="paragraph"><block ref="09e3bfa407b8475f684f4afa0d1a65d0" category="inline-link-rx"></block></block>
   <block id="5f3a885afe628dc765db372d552dfc3f" category="inline-link-macro"><block ref="5f3a885afe628dc765db372d552dfc3f" category="inline-link-rx"></block></block>
   <block id="2deb8c2352bb64efaab57e5552bc808d" category="paragraph"><block ref="2deb8c2352bb64efaab57e5552bc808d" category="inline-link-macro-rx"></block></block>
+  <block id="917f9e6cc78a34f25bcca44ee758fdfd" category="paragraph">SAP HANA on KVM仮想化の概要については、SUSEのドキュメントを参照してください：<block ref="07290f5e8fedcd643d91fbceebffb3f1" category="inline-link-rx"></block>。</block>
+  <block id="6ae55f1d87d24ddbfbd0d6c2cbd52508" category="paragraph">SUSE KVM for SAP HANA上でSR-IOVネットワークインターフェースを設定します。仮想機能（VF）を設定し、VMに割り当て、最適なパフォーマンスとストレージ アクセスのために冗長ネットワーク接続を構成します。ブリッジネットワークもサポートされています。</block>
+  <block id="11b12737d363a1c1fc891c84c512bfe8" category="list-text">VMは<block ref="84f9f0cb560c07061eb0a9c9983073cf" category="inline-link-rx"></block>に従って構成されています</block>
+  <block id="88bfc74e7f9daec3034975bb2ccf2c26" category="list-text">SR-IOVは、SAP HANAネットワーク通信および可能であればNFSを使用したストレージ アクセスに使用しますが、ブリッジネットワークもサポートされています。VMに割り当てられる各仮想機能（VF）には、少なくとも10 Gbit/sの帯域幅が必要です。</block>
+  <block id="ae19611463c7931f079137442f375669" category="inline-link">3741904 - SUSE KVM仮想化環境におけるSAP HANA（SLES 15 SP7使用） - SAP for Me</block>
+  <block id="cfe5524e84c4886ba33731b20fe14a28" category="list-text">サポートされているCPUアーキテクチャや制限事項などの最新情報については、SAP Note<block ref="814684ca8fb6c36f22754431c3a4a6ca" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="a28cf561c8f701ff19b2c0c69e0dfc34" category="cell">レイアウトの更新</block>
+  <block id="c21446b3ecfb30ed6c2760d686bd4578" category="cell">2026年6月</block>
+  <block id="ac644778c82f08cf6b78f5b122e0d378" category="cell">SUSE SLES 15SP7 アップデート</block>
 </blocks>

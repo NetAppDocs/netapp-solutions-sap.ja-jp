@@ -16,7 +16,7 @@ summary: SR-IOV ネットワーク インターフェイスと NFS または FCP
 [role="lead"]
 SR-IOV ネットワーク インターフェイスと NFS または FCP ストレージ アクセスを備えたNetAppストレージを使用して、SUSE KVM 上に SAP HANA シングル ホストをデプロイします。このワークフローに従って仮想インターフェースを構成し、VM に割り当て、最適なパフォーマンスを得るためにストレージ接続を設定します。
 
-KVM 仮想化上の SAP HANA の概要については、SUSE のドキュメントを参照してください。 https://documentation.suse.com/sbp/sap-15/pdf/SBP-SLES4SAP-HANAonKVM-SLES15SP5_en.pdf["KVM 上の SAP HANA に関する SUSE ベストプラクティス"] 。
+SAP HANA on KVM仮想化の概要については、SUSEのドキュメントを参照してください： https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP7/["KVM 上の SAP HANA に関する SUSE ベストプラクティス"]。
 
 image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:kvm-hana-requirements.html["構成要件を確認する"]
 
