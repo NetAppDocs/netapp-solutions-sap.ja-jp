@@ -41,6 +41,7 @@ image:saphana-sr-scs-image29.png["入力/出力ダイアログを示す図、ま
 
 
 
+[[snapcenter-configuration]]
 == SnapCenter 構成
 
 次の図は、ラボでのセットアップと必要な SnapCenter 構成の概要を示しています。
@@ -73,6 +74,7 @@ image:saphana-sr-scs-image33.png["入力/出力ダイアログを示す図、ま
 
 
 
+[[snapcenter-backup-operation]]
 == SnapCenter バックアップ処理
 
 バックアップ処理が通常どおり実行されるようになりました。不要なデータバックアップとログバックアップの削除は、プライマリまたはセカンダリの SAP HANA ホストとは無関係に実行されます。
@@ -96,6 +98,7 @@ image:saphana-sr-scs-image36.png["入力/出力ダイアログを示す図、ま
 
 
 
+[[restore-and-recovery]]
 == リストアとリカバリ
 
 前述したように、必要なリストア処理を定義するために、選択したバックアップの作成先を特定できる必要があります。SAP HANA データベースがオンラインのままの場合は、 SAP HANA Studio を使用して、バックアップが作成されたホストを特定できます。データベースがオフラインの場合、情報は SnapCenter バックアップジョブログでのみ確認できます。
@@ -124,6 +127,7 @@ image:saphana-sr-scs-image38.png["入力/出力ダイアログを示す図、ま
 
 
 
+[[snapcenter-restore-of-the-valid-backup-only]]
 === 有効なバックアップの SnapCenter リストアのみを実行してください
 
 次の図に、このセクションで説明するリストアとリカバリのシナリオの概要を示します。
@@ -167,6 +171,7 @@ image:saphana-sr-scs-image44.png["入力/出力ダイアログを示す図、ま
 
 
 
+[[snapcenter-restore-of-valid-backup-and-crash-image]]
 === 有効なバックアップとクラッシュイメージの SnapCenter リストア
 
 次の図に、このセクションで説明するリストアとリカバリのシナリオの概要を示します。

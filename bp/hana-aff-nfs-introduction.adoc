@@ -72,6 +72,7 @@ NOTE: オペレーティングシステムの構成ガイドラインと、 HANA
 
 
 
+[[sap-hana-tailored-data-center-integration]]
 == SAP HANA テーラードデータセンター統合
 
 NetApp AFF ストレージコントローラは、 NFS （ NAS ）プロトコルと FC （ SAN ）プロトコルの両方を使用した SAP HANA TDI プログラムで認定されています。これらは、シングルホスト構成とマルチホスト構成のどちらでも、 SAP Business Suite on HANA 、 S/4HANA 、 BW/4HANA 、 SAP Business Warehouse on HANA など、最新の SAP HANA シナリオに導入できます。SAP HANA との使用が認定されているサーバは、ネットアップ認定のストレージソリューションと組み合わせることができます。次の図に、 SAP HANA TDI のアーキテクチャの概要を示します。
@@ -85,6 +86,7 @@ image:saphana_aff_nfs_image1.png["入力/出力ダイアログを示す図、ま
 
 
 
+[[sap-hana-using-vmware-vsphere]]
 == VMware vSphere を使用した SAP HANA
 
 ストレージを仮想マシン（ VM ）に接続する方法はいくつかあります。推奨される方法は、ストレージボリュームと NFS をゲストオペレーティングシステムから直接接続することです。このオプションを使用しても、ホストとストレージの構成が物理ホストと VM で同じになることはありません。

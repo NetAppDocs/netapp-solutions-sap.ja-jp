@@ -20,6 +20,7 @@ summary:
 
 
 
+[[scope-of-this-document]]
 == 本ドキュメントの内容
 
 これは、環境全体を構成するためのステップバイステップのガイドではありませんが、次のような VMFS 上のSnapCenterおよび HANA に固有の詳細に重点を置いています。

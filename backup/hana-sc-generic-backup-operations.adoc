@@ -27,6 +27,7 @@ SnapCenter は次のバックアップ操作をサポートしています。
 
 
 
+[[sap-hana-snapshot-backups-in-snapcenter]]
 == SnapCenterでの SAP HANA スナップショットのバックアップ
 
 SnapCenterリソース トポロジには、 SnapCenterによって作成されたバックアップのリストが表示されます。次の図は、プライマリ ストレージで使用可能なバックアップを示しており、最新のバックアップが強調表示されています。
@@ -43,6 +44,7 @@ image:hana-sc-generic-image-066.png["幅=601、高さ=293"]
 
 
 
+[[sap-hana-snapshot-backups-in-sap-hana-studio]]
 == SAP HANA Studio での SAP HANA スナップショット バックアップ
 
 SAP HANA MDC システムのストレージ スナップショットを使用してバックアップを実行すると、データ ボリュームのスナップショット コピーが作成されます。このデータ ボリュームには、システム データベースのデータとすべてのテナント データベースのデータが含まれます。この物理アーキテクチャを反映するために、SAP HANA は、 SnapCenter がスナップショット バックアップをトリガーするたびに、システム データベースとすべてのテナント データベースを組み合わせた内部データベース スナップショットを内部的に実行します。その結果、SAP HANA バックアップ カタログに、システム データベース用に 1 つ、テナント データベースごとに 1 つ、合計 2 つの個別のバックアップ エントリが作成されます。
@@ -58,6 +60,7 @@ NOTE: SnapCenter は自身のバックアップのみを認識します。たと
 
 
 
+[[sap-hana-snapshot-backups-on-storage-layer]]
 == ストレージ層でのSAP HANAスナップショットバックアップ
 
 ストレージ層のバックアップを表示するには、 NetApp System Manager を使用してデータベース ボリュームを選択します。次のスクリーンショットは、プライマリ ストレージのデータベース ボリューム SS1_data_mnt00001 の利用可能なバックアップを示しています。強調表示されたバックアップは、前の画像のSnapCenterと SAP HANA Studio に表示されたバックアップであり、同じ命名規則が適用されます。
@@ -70,6 +73,7 @@ image:hana-sc-generic-image-070.png["幅=601、高さ=294"]
 
 
 
+[[sap-hana-snapshot-backups-with-anf]]
 == ANF を使用した SAP HANA スナップショット バックアップ
 
 次のスクリーンショットは、Azure NetApp Filesを使用した HANA システムのトポロジ ビューを示しています。この HANA システムでは、ローカル スナップショット バックアップと、ANF バックアップを使用したバックアップ レプリケーションが構成されています。
@@ -90,6 +94,7 @@ image:hana-sc-generic-image-074.png["幅=601、高さ=216"]
 
 
 
+[[snapshot-backups-of-non-data-volumes]]
 == 非データボリュームのスナップショットバックアップ
 
 SnapCenterリソース トポロジには、非データ ボリュームのバックアップのリストが表示されます。次の図には、HANA 共有ボリュームのバックアップがリストされています。
@@ -98,6 +103,7 @@ image:hana-sc-generic-image-075.png["幅=601、高さ=294"]
 
 
 
+[[backup-workflow-for-hana-database-backups]]
 == HANA データベース バックアップのバックアップ ワークフロー
 
 HANA データベース スナップショット バックアップのバックアップ ワークフローは、主に 3 つのセクションで構成されます。
@@ -147,6 +153,7 @@ image:hana-sc-generic-image-076.png["幅=339、高さ=475"]
 
 
 
+[[backup-workflow-for-non-data-volumes]]
 == 非データボリュームのバックアップワークフロー
 
 非データ ボリュームの場合、バックアップ ワークフローはスナップショット操作と保持管理操作で構成されます。
@@ -155,6 +162,7 @@ image:hana-sc-generic-image-077.png["幅=329、高さ=404"]
 
 
 
+[[cleanup-of-secondary-backups]]
 == セカンダリバックアップのクリーンアップ
 
 記載の通り link:hana-sc-generic-concepts.html#retention-management-of-backups-at-the-secondary-storage-snapvault["セカンダリバックアップの保持管理"]セカンダリ バックアップ ストレージへのデータ バックアップの保持管理はONTAPによって処理されます。SnapCenter は、毎週のデフォルト スケジュールでクリーンアップ ジョブを実行して、 ONTAP がセカンダリ バックアップ ストレージのバックアップを削除したかどうかを定期的に確認します。
@@ -169,6 +177,7 @@ image:hana-sc-generic-image-079.png["幅=267、高さ=330"]
 
 
 
+[[change-the-frequency-of-the-snapcenter-cleanup-job]]
 === SnapCenter クリーンアップジョブの頻度を変更します
 
 SnapCenter は、デフォルトで毎週すべてのリソースに対してクリーンアップ ジョブ SnapCenter_RemoveSecondaryBackup を実行します。これは、 SnapCenter PowerShell コマンドレットを使用して変更できます。
@@ -233,6 +242,7 @@ image:hana-sc-generic-image-080.png["幅=601、高さ=257"]
 
 
 
+[[manual-refresh-on-resource-level]]
 === リソースレベルの手動更新
 
 必要に応じて、リソースのトポロジ ビューでセカンダリ バックアップの手動クリーンアップを実行することもできます。次のスクリーンショットに示すように、セカンダリ バックアップを選択すると、 SnapCenter はセカンダリ バックアップ ストレージ上のバックアップを表示します。SnapCenter は、[更新] アイコンを使用してクリーンアップ操作を実行し、このリソースのバックアップを同期します。

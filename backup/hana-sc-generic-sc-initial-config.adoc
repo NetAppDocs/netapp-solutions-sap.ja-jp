@@ -45,10 +45,12 @@ image:hana-sc-generic-image-017.png["幅=601、高さ=158"]
 
 
 
+[[credentials-configuration]]
 == クレデンシャルの設定
 
 
 
+[[credentials-for-hana-plug-in-deployment]]
 === HANAプラグインのデプロイメントの資格情報
 
 資格情報は、[設定] セクションで [資格情報] タブを選択して構成されます。+ アイコンをクリックすると資格情報を追加できます。
@@ -61,6 +63,7 @@ image:hana-sc-generic-image-019.png["幅=287、高さ=247"]
 
 
 
+[[credentials-for-azure-netapp-files]]
 === Azure NetApp Filesの資格情報
 
 Azure サービス プリンシパルを準備する必要があります。これにより、 SnapCenter はANF ボリュームに対して必要な操作を実行できるようになります。以下の例は、含める必要のある最小限の権限を示しています。
@@ -155,10 +158,12 @@ image:hana-sc-generic-image-021.png["幅=252、高さ=246"]
 
 
 
+[[storage-system-configuration]]
 == ストレージシステムの構成：
 
 
 
+[[ontap-systems-and-fsx-for-ontap]]
 === ONTAPシステムとONTAP用 FSx
 
 ONTAPシステムまたは FSx for ONTAPは、クラスタの資格情報または必要な各 SVM の資格情報を提供することでSnapCenterに追加できます。クラスターの資格情報が提供されると、クラスターのすべての SVM がSnapCenterに追加されます。
@@ -188,6 +193,7 @@ image:hana-sc-generic-image-024.png["幅=331、高さ=199"]
 
 
 
+[[azure-netapp-files]]
 === Azure NetApp Files
 
 ANF 資格情報が構成されたら、ANF NetAppアカウントをSnapCenterに追加できます。NetAppアカウントは、ストレージ システム セクションで、 Azure NetApp Filesタブを選択して構成されます。+ アイコンをクリックすると、新しいNetAppアカウントが追加されます。
@@ -200,12 +206,14 @@ image:hana-sc-generic-image-026.png["幅=401、高さ=176"]
 
 
 
+[[storage-configuration-when-using-snapmirror-active-sync]]
 === SnapMirrorアクティブ同期を使用する場合のストレージ構成
 
 具体的なストレージ構成手順については、以下を参照してください。 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-sc-config.html#add-storage-systems["SnapMirrorアクティブ同期を使用したスト​​レージ構成"]。
 
 
 
+[[policies-configuration]]
 == ポリシー設定
 
 セクションで説明したように、データ保護戦略ポリシーは通常、リソースとは独立して構成され、複数の SAP HANA システムに使用できます。
@@ -232,6 +240,7 @@ image:hana-sc-generic-image-028.png["幅=601、高さ=138"]
 
 
 
+[[snapshot-backups-with-ontap-systems-and-fsx-for-ontap]]
 === ONTAPシステムと FSx for ONTAPによるスナップショット バックアップ
 
 ONTAPシステムまたは FSx for ONTAPのスナップショット バックアップ ポリシーでは、ローカル スナップショットをレプリケーションまたはスナップショット ロック (改ざん防止スナップショット) 操作と組み合わせることができます。この例では、 SnapVaultを使用してセカンダリ ストレージにレプリケーションするポリシーを示します。
@@ -263,6 +272,7 @@ image:hana-sc-generic-image-032.png["幅=385、高さ=119"]
 
 
 
+[[snapshot-backups-with-azure-netapp-files]]
 === Azure NetApp Filesによるスナップショット バックアップ
 
 Azure NetApp Filesのスナップショット バックアップ ポリシーでは、ローカル スナップショットと ANF バックアップを組み合わせて、スナップショット データを Azure BLOB に複製することができます。この例では、ANF バックアップを使用したレプリケーションに使用されるポリシーを示します。
@@ -292,6 +302,7 @@ image:hana-sc-generic-image-036.png["幅=376、高さ=138"]
 
 
 
+[[block-integrity-check-operations-for-all-platforms]]
 === すべてのプラットフォームの整合性チェック操作をブロックする
 
 
@@ -328,6 +339,7 @@ image:hana-sc-generic-image-040.png["幅=366、高さ=101"]
 
 
 
+[[policy-configuration-when-using-snapmirror-active-sync]]
 === SnapMirror Active Sync を使用する場合のポリシー設定
 
 具体的なポリシー設定手順については、ドキュメントに記載されています。 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-sc-config.html#policy-configuration["ポリシー構成SnapMirrorアクティブ同期"]。

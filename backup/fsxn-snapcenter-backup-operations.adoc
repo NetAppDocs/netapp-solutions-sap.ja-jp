@@ -18,6 +18,7 @@ summary: ここでは、オンデマンドのSnapshotバックアップの作成
 
 
 
+[[create-an-on-demand-snapshot-backup]]
 == オンデマンドのSnapshotバックアップを作成します
 
 オンデマンドのSnapshotバックアップを作成するには、次の手順を実行します。
@@ -78,6 +79,7 @@ sapcc-hana-svm::>
 ....
 
 
+[[create-an-on-demand-block-integrity-check-operation]]
 == オンデマンドのブロック整合性チェック処理を作成する
 
 ポリシーBlockIntegrityCheckを選択すると、Snapshotバックアップジョブと同様にオンデマンドでブロック整合性チェック処理が実行されます。このポリシーを使用してバックアップをスケジュールすると、 SnapCenter によってシステムデータベースとテナントデータベース用の標準の SAP HANA ファイルバックアップが作成されます。

@@ -2830,7 +2830,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="c877627d59d4aabd928b804662a092c9" category="list-text">更新処理後も古いターゲットデータボリュームは引き続き存在するため、ONTAP System Managerなどを使用して手動で削除する必要があります。</block>
   <block id="b15c25b8eded6042b31638d675f46bbb" category="paragraph">画面出力には、PowerShellスクリプトclone–delete.ps1が実行されたことが示されています。</block>
   <block id="c02f461d6bc735814c693a2961f876d0" category="admonition">システムを別のSnapshotバックアップにリセットする必要がある場合は、手順6と手順4で十分です。SAP HANA共有ボリュームは引き続きマウントできます。</block>
-  <block id="3a76181089e0a4d1760e6aee32bf113f" category="list-text">SAP HANAデータボリュームのSnapCenterクローン削除ワークフロー（データベースのシャットダウンを含む）。</block>
   <block id="5c1f104318aa49fc440eebd55451b8ee" category="list-text">ここで説明するワークフローは、シングルホストのSAP HANA MDCシステムに対して有効です。複数のホストシステムはサポートされません。</block>
   <block id="db2df21a0523790017cef08c7f5c3eaa" category="list-text">自動スクリプトを実行するには、SnapCenter SAP HANAプラグインをターゲットホストに導入する必要があります。</block>
   <block id="679aaef31443a5734d1e57a79b042625" category="list-text">NFSのワークフローが検証されました。SAP HANA共有ボリュームのマウントに使用される自動化で<block ref="9042a1dcfe3f159e3f1da35f8f9052d7" prefix=" " category="inline-code"></block>は、FCPはサポートされません。この手順は、手動で実行するか、スクリプトを拡張して実行する必要があります。</block>
@@ -5898,4 +5897,9 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="a28cf561c8f701ff19b2c0c69e0dfc34" category="cell">レイアウトの更新</block>
   <block id="c21446b3ecfb30ed6c2760d686bd4578" category="cell">2026年6月</block>
   <block id="ac644778c82f08cf6b78f5b122e0d378" category="cell">SUSE SLES 15SP7 アップデート</block>
+  <block id="e06fdb15754bae3bee4e6e049930207a" category="paragraph">システムが不要になった場合は、以下の手順でクリーンアップ処理を実行します。</block>
+  <block id="5eea4d822d88acd321dd20b3ecfeb0dc" category="list-text">SAP HANAデータボリュームのクローン削除ワークフロー（データベースのシャットダウンを含む）のSnapCenterワークフローを実行します。</block>
+  <block id="caa5de93118549a4fb1b814eeb2f5544" category="paragraph">SnapCenter のクローン削除ワークフローは、デフォルトでは<block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block>エントリを削除しません。</block>
+  <block id="8bfab5683aa400a8bc0f218a12d430e9" category="paragraph">クローン削除処理中に<block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block>エントリが自動的に削除されるようにするには、まずクローンを復元して自動検出リソースにする必要があります。この手順を実行しない場合、<block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block>エントリは自動的に削除されないため、手動で削除する必要があります。</block>
+  <block id="c18615d685f179944bb9c594c9e6c732" category="list-text">SAP HANA共有ボリュームのSnapCenterクローン削除ワークフローを実行します。</block>
 </blocks>

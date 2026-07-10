@@ -57,6 +57,7 @@ image:kvm-hana-image11.png["幅=601、高さ=441"]
 
 
 
+[[whats-next]]
 == 次の手順
 
 ファイバーチャネルネットワークを構成したら、link:kvm-hana-storage.html["SAP HANA 用にNetAppストレージを構成する"] 。

@@ -13,6 +13,7 @@ summary:
 
 
 
+[[warning-message-with-virtualized-environments-and-in-guest-mounts]]
 == 仮想化環境とゲスト内マウントに関する警告メッセージ
 
 たとえば、NFS ゲスト内マウントを使用して VMware を使用する場合、 SnapCenter はSnapCenter VMware プラグインを使用する必要があるという警告メッセージを発行します。VMWare プラグインはゲスト内マウントには必要ないため、警告メッセージは無視してオフにすることができます。この警告を抑制するようにSnapCenterを構成するには、次の構成を適用する必要があります。
@@ -25,6 +26,7 @@ image:hana-sc-generic-image-134.png["幅=601、高さ=176"]
 
 
 
+[[deactivate-automated-log-backup-housekeeping]]
 == ログバックアップの自動削除を非アクティブ化します
 
 ログ バックアップ ハウスキーピングはデフォルトで有効になっていますが、HANA プラグイン ホスト レベルで無効にすることができます。PowerShell コマンドを使用します:
@@ -33,6 +35,7 @@ image:hana-sc-generic-image-134.png["幅=601、高さ=176"]
 
 
 
+[[enable-secure-communication-to-hana-database]]
 == HANA データベースとのセキュアな通信を有効にします
 
 HANA データベースが安全な通信で構成されている場合、 SnapCenterによって実行される hdbsql コマンドでは追加のコマンドライン オプションを使用する必要があります。
@@ -55,6 +58,7 @@ HANA_HDBSQL_CMD = /usr/sap/SM1/HDB12/exe/hdbsqls
 ....
 
 
+[[disable-auto-discovery-on-the-hana-plug-in-host]]
 == HANA プラグインホストで自動検出を無効にします
 
 HANA プラグイン ホストで自動検出を無効にするには、次の手順を実行します。

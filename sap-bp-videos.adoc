@@ -18,4 +18,5 @@ SAP Configuration Best Practices に記載されたビデオとデモの概要
 
 
 
+[[sap-configuration-best-practices-videos-and-demos]]
 == SAP Configuration Best Practices ビデオおよびデモをご覧ください

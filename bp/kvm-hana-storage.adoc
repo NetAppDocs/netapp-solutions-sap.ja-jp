@@ -20,6 +20,7 @@ SR-IOV ネットワーク インターフェイスまたは FCP HBA ポートを
 
 
 
+[[configure-nfs-storage-for-sap-hana]]
 == SAP HANA 用の NFS ストレージを構成する
 
 SAP HANA ストレージに NFS プロトコルを使用する場合は、以前に作成した SR-IOV ネットワーク インターフェイスを使用します。
@@ -36,6 +37,7 @@ KVM 環境の主な構成上の考慮事項:
 
 
 
+[[configure-fcp-storage-for-sap-hana]]
 == SAP HANA 用の FCP ストレージを構成する
 
 FCP プロトコルを SAP HANA ストレージに使用する場合は、VM に割り当てられた物理 HBA ポートを PCI デバイスとして使用します。

@@ -24,6 +24,7 @@ SnapMirrorの設定オプションに関する追加情報 については、ONT
 
 
 
+[[peer-fsx-for-ontap-file-systems]]
 == ONTAP ファイルシステム用のピアFSX
 
 ....
@@ -74,6 +75,7 @@ FsxId05f7f00af49dc7a3e    1-80-000011           Available      ok
 ....
 
 
+[[peer-svms]]
 == SVMをピアリング
 
 ....
@@ -96,6 +98,7 @@ sapcc-backup-target-zone5
 ....
 
 
+[[create-a-target-volume]]
 == ターゲットボリュームを作成します
 
 レプリケーションターゲットとしてフラグを設定するには、「dp」タイプのターゲットボリュームを作成する必要があります。
@@ -106,6 +109,7 @@ FsxId05f7f00af49dc7a3e::> volume create -vserver sapcc-backup-target-zone5  -vol
 ....
 
 
+[[create-a-snapmirror-policy]]
 == SnapMirror ポリシーを作成する
 
 SnapMirrorポリシーと追加ルールで保持とSnapMirrorラベルを定義し、レプリケートするSnapshotを特定します。あとでSnapCenter ポリシーを作成するときは、同じラベルを使用する必要があります。
@@ -127,6 +131,7 @@ FsxId00fa9e3c784b6abbb
 ....
 
 
+[[create-snapmirror-relationship]]
 == SnapMirror関係を作成
 
 これで、ソースボリュームとターゲットボリュームの関係に加え、XDPタイプと前の手順で作成したポリシーが定義されます。
@@ -137,6 +142,7 @@ Operation succeeded: snapmirror create for the relationship with destination "sa
 ....
 
 
+[[initialize-snapmirror]]
 == SnapMirrorを初期化
 
 このコマンドを使用すると、最初のレプリケーションが開始されます。これは、ソースボリュームからターゲットボリュームへのすべてのデータのフル転送です。

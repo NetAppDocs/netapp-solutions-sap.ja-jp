@@ -20,6 +20,7 @@ image:sc-saphana-vmware-smas-image31.png["説明している内容を示す図"]
 
 
 
+[[topology-view]]
 == [Topology]ビュー
 
 トポロジビュー内のSnapCenterには、ソースとデスティネーションの両方のストレージクラスタのバックアップが表示されます。
@@ -34,6 +35,7 @@ image:sc-saphana-vmware-smas-image34.png["説明している内容を示す図"]
 
 
 
+[[snapshots-at-storage-systems]]
 == ストレージシステムにSnapshotを作成
 
 SnapCenterで作成されたSnapshotバックアップは、両方のストレージシステムの両方のHANAデータボリュームで使用できます。ONTAPでは、整合グループレベルで追加のSnapshotが作成され、他のすべてのHANAボリュームでも使用できます。

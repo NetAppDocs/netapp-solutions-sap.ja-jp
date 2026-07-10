@@ -24,6 +24,7 @@ image:sc-saphana-vmware-smas-image1.png["説明している内容を示す図"]
 
 
 
+[[software-versions]]
 == ソフトウェアバージョン
 
 [cols="50%,50%"]

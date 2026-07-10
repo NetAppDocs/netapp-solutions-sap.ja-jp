@@ -40,6 +40,7 @@ link:hana-sr-scs-system-replication-overview.html["SnapCenterによるバック�
 
 
 
+[[version-history]]
 == バージョン履歴
 
 |===

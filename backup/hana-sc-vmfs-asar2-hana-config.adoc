@@ -15,6 +15,7 @@ summary:
 
 
 
+[[configure-snapcenter-database-user]]
 == SnapCenterデータベースユーザーを構成する
 
 システムデータベースユーザのユーザストアを作成し、SnapCenterで使用する必要があります。
@@ -23,6 +24,7 @@ image:sc-hana-asrr2-vmfs-image8.png["説明している内容を示す図"]
 
 
 
+[[configure-hdb-userstore-key]]
 == HDBユーザーストアキーを設定する
 
 ユーザーvfsadmのユーザーストアキーを作成する必要があります。ポート通信のために、HANAインスタンス番号を適切に設定する必要があります。セットアップでは、インスタンス番号「45」が使用されます。
