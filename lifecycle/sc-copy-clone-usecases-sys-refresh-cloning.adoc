@@ -59,6 +59,6 @@ SnapMirrorを使用したストレージレプリケーションでは、RTOとR
 
 image:sc-copy-clone-image6.png["入力/出力ダイアログを示す図、または書き込まれた内容を表す図"] 詳細な手順については、テクニカルレポートを参照してください。
 
-https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf["SAP HANA Disaster Recovery with Storage Replication 』を参照してください"]
+https://www.netapp.com/pdf.html?item=/media/8584-tr4646.pdf["SAP HANA Disaster Recovery with Storage Replication 』を参照してください"]
 
 link:../backup/hana-dr-anf-data-protection-overview.html["Azure NetApp Filesを使用したSAP HANA向けディザスタリカバリ"]

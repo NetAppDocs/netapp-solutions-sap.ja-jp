@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-bare-metal-asar2-additional-info.html 
+keywords: SAP HANA, SnapCenter, backup and recovery 
+summary:  
+---
+= 追加情報とバージョン履歴
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+本章では、この解決策に関連する追加リソースへのリンクを提供します。
+
+HANA のベストプラクティス:
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["『 SAP HANA on NetApp ASA Systems with Fibre Channel Protocol 』を参照してください"]
+
+
+SnapCenter ：
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-generic-scope.html["ONTAP、Azure NetApp Files、およびFSx for ONTAPにわたるSnapCenterによるSAP HANAシステムの保護"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sr-scs-system-replication-overview.html["『SAP HANA System Replication - Backup and Recovery with SnapCenter』"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化"]
+* https://docs.netapp.com/us-en/snapcenter/index.html["SnapCenter ソフトウェアのドキュメント"]
+
+
+バージョン履歴：
+
+[cols="35%,31%,34%"]
+|===
+| バージョン | 日付 | コメント 
+
+
+| バージョン 1.0 以降 | 08/2026 | 初版 
+|===

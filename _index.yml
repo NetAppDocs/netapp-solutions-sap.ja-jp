@@ -18,6 +18,8 @@ indexpage:
       url: bp/hana-fas-fc-introduction.html
   - title: オンプレミスのSAP HANA
     links:
+    - title: ベアメタル サーバーおよび NetApp ASA システム上で稼働する SnapCenter を使用した SAP HANA データ保護
+      url: backup/hana-sc-bare-metal-asar2-scope.html
     - title: SnapCenter、SnapMirror Active Sync、VMware Metro Storage ClusterによるSAP
         HANAのデータ保護と高可用性
       url: backup/hana-sc-vmware-smas-scope.html

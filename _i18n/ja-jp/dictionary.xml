@@ -1232,12 +1232,8 @@
   <block id="bb8cd3f7aec777de29cee988f4ade068" category="paragraph">ネットアップ Nils Bauer</block>
   <block id="1b957531101399d0f744aec724e69fa1" category="summary">ネットアップは、 SAP Landscape Management （ SAP LaMa ）など、 SAP 管理者が日々の運用で使用するツールに完全に統合されたライフサイクル管理解決策を提供することで、機能の実装が遅いという課題や、自動化の欠如、生産性の低下に対処しています。プリプロセスからポストプロセスまで、プロビジョニングのワークフローを簡易化することを目的としています。本番用システムのコピーを作成するために必要なソフトウェアレイヤとストレージレイヤのタスクもすべて含みます。この解決策を使用すると、管理者はマウスを数回クリックするだけで開発およびテスト環境を作成できるため、ライフサイクル管理が向上します。</block>
   <block id="643fa590028dacc026f165afdf4fb795" category="doc">SB-3978 ：『 Lifecycle Management for SAP HANA 』</block>
-  <block id="2302484597c5b4089c4a24a850b7f489" category="inline-link-macro"><block ref="2302484597c5b4089c4a24a850b7f489" category="inline-link-rx"></block></block>
-  <block id="33876e03541db5898b573e9322b655e7" category="paragraph"><block ref="33876e03541db5898b573e9322b655e7" category="inline-link-macro-rx"></block></block>
   <block id="7b84e8d1abd1ca9b58ab3e77d620c832" category="summary">TR-4711 は、 Commvault IntelliSnap Snapshot 管理テクノロジとネットアップの Snapshot テクノロジを含む、ネットアップと Commvault 解決策 for SAP HANA の設計をまとめたものです。解決策は、ネットアップストレージと Commvault データ保護スイートを基盤としています。</block>
   <block id="8132c1d54d27cf7a67ac0e563e82c329" category="summary">TR-4646 では、 SAP HANA 向けのディザスタリカバリ保護オプションの概要を説明しています。詳細なセットアップ情報、および同期および非同期の NetApp SnapMirror ストレージレプリケーションをベースとした 3 サイトディザスタリカバリ解決策のユースケース概要が含まれます。説明されている解決策では、データベースの整合性を管理するために、 NetApp SnapCenter と SAP HANA プラグインを使用します。</block>
-  <block id="c79cdf002876c8be8a196f93f344a33f" category="inline-link-macro"><block ref="c79cdf002876c8be8a196f93f344a33f" category="inline-link-rx"></block></block>
-  <block id="d925ae253e076ec94fce589bf0750a31" category="paragraph"><block ref="d925ae253e076ec94fce589bf0750a31" category="inline-link-macro-rx"></block></block>
   <block id="e12451ca8917b29faae9e966a7ef40f6" category="summary">TR-4719 は、 SAP HANA システムレプリケーション環境で、 NetApp SnapCenter テクノロジと SAP HANA プラグインを使用したバックアップとリカバリの方法を説明しています。</block>
   <block id="ef5cc7c8780ee87a124c0fd66dd44867" category="doc">TR-4719 ：『 SAP HANA System Replication - Backup and Recovery with SnapCenter 』</block>
   <block id="1a7acb5247a596ecf14f6381a5824bd7" category="inline-link-macro"><block ref="1a7acb5247a596ecf14f6381a5824bd7" category="inline-link-rx"></block></block>
@@ -1537,7 +1533,6 @@
   <block id="e1147a04a00490e6c50fca223d7f0bbc" category="list-text">[ 概要 ] ページで、 [ 完了 ] をクリックします。</block>
   <block id="26e2418d177df1dddb008e455ce28752" category="doc">SnapCenter アーキテクチャ</block>
   <block id="4a8478781fce30dd0844fa495323657c" category="section-title">SnapCenter コンポーネント</block>
-  <block id="1911e0ada44759ee3994a93b354b6e23" category="inline-link"><block ref="1911e0ada44759ee3994a93b354b6e23" category="inline-link-rx"></block></block>
   <block id="532841fbf704673d5f6dc65db8d8cf66" category="inline-link"><block ref="532841fbf704673d5f6dc65db8d8cf66" category="inline-link-rx"></block></block>
   <block id="ea97f578f1fa3dc5c59fcebd659118ba" category="section-title">リストアとリカバリの自動化</block>
   <block id="4344ed84200b3882e693332ce520922b" category="paragraph">リストア処理とリカバリ処理の自動化は、次の手順で実行できます。</block>
@@ -1884,7 +1879,6 @@
   <block id="ec5c19062711162507c65806ea542ac5" category="paragraph">これで新しいSnapCenter ポリシーが設定されました。</block>
   <block id="2c0b1092a288f5d67050f3fbf404d5f8" category="list-text">『FSX for NetApp ONTAP user guide—What is Amazon FSX for NetApp ONTAP ？』</block>
   <block id="d82c21a48349085e4fd93fb6712e3789" category="paragraph"><block ref="d82c21a48349085e4fd93fb6712e3789" category="inline-link-rx"></block></block>
-  <block id="3306e00cec668497714eaadcd7aa6ac8" category="list-text">SnapCenter のリソースページ</block>
   <block id="7608e75619cff3eeb4e8bce40481b456" category="list-text">SnapCenter ソフトウェアのドキュメント</block>
   <block id="7a3492bffc26e95ce3669b39a1f14422" category="list-text">TR-4667：『Automating SAP HANA System Copy and Clone Operations with SnapCenter 』</block>
   <block id="baaebabde318c3efac57f4b4eaf80541" category="summary">NetApp Snapshotテクノロジを使用すれば、データベースのバックアップを数分で作成できます。Snapshot コピーではストレージプラットフォーム上の物理データブロックは移動されないため、 Snapshot コピーの作成に要する時間はデータベースのサイズに左右されません。</block>
@@ -2898,7 +2892,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="0a961d2cbb588be1d5a93b4774cf6ef1" category="cell">新しいストレージシステム（AFF Aシリーズ）</block>
   <block id="f31f11743f1dfba18e9f008e2956d24e" category="cell">2024年9月</block>
   <block id="e4a9c264a13e2ec5faac7a73cf8d0e8c" category="cell">マイナーアップデート</block>
-  <block id="e5e2a6bf28307550240d9ed91bbb0fa0" category="paragraph"><block ref="e5e2a6bf28307550240d9ed91bbb0fa0" category="inline-link-rx"></block></block>
   <block id="a36cfc2690f8671748f584abb16bdd04" category="cell">新しいストレージシステム</block>
   <block id="0fba9f2a3fbb4cfbaed44806cd9933a2" category="cell">新しいストレージシステム（ASA Aシリーズ）</block>
   <block id="5e8f0f670e38fbdf628b0883f946934f" category="inline-image-macro">入力/出力ダイアログを示す図、または書き込まれた内容を表す図</block>
@@ -2997,7 +2990,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="14397cf778300a82704513944fe2f1ec" category="paragraph"><block ref="14397cf778300a82704513944fe2f1ec" category="inline-image-macro-rx" type="image"></block></block>
   <block id="9e6a6eb10efdb10620a6a3d4bdeb2b88" category="paragraph"><block ref="9e6a6eb10efdb10620a6a3d4bdeb2b88" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5bf509e6d43ff3eb5c07c44c1546ab09" category="paragraph"><block ref="5bf509e6d43ff3eb5c07c44c1546ab09" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="55aab77fa5d7f50b7fbedbf0df160938" category="paragraph"><block ref="55aab77fa5d7f50b7fbedbf0df160938" category="inline-link-rx"></block></block>
   <block id="5455f48dc7894a1b2782bb01cf938a86" category="paragraph"><block ref="5455f48dc7894a1b2782bb01cf938a86" category="inline-link-rx"></block></block>
   <block id="170e3ae89d6261851ff484a8e771649e" category="paragraph">執筆者：NetAppのMarco Schoen氏、Commvault SystemsのTristan Daude博士</block>
   <block id="477777d7db9a7b53d5e478c5db17b758" category="paragraph">このドキュメントでは、SAP HANAを使用したANFのクロスリージョンレプリケーションについて説明します。</block>
@@ -3370,8 +3362,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="ef1fb8d9c97217ef2fbf941299c08adf" category="paragraph">SnapMirrorアクティブ同期：</block>
   <block id="32e3115035ed1831322c88ce03af5c52" category="inline-link">ONTAPでのSnapMirrorアクティブ同期の概要</block>
   <block id="9f090056bc76628ad2a8b94b102aa48c" category="paragraph"><block ref="9f090056bc76628ad2a8b94b102aa48c" category="inline-link-rx"></block></block>
-  <block id="e4004172088b034dfe07abe579273b06" category="inline-link">NetApp ONTAPとNetApp SnapMirrorは、VMware vSphere Metro Storage Cluster（vMSC）とアクティブに同期されます。</block>
-  <block id="44d0d1ca42daaecc86f8bb55519f9ec5" category="paragraph"><block ref="44d0d1ca42daaecc86f8bb55519f9ec5" category="inline-link-rx"></block></block>
   <block id="34fd97d0487efaacb8dc98024d287c11" category="inline-link">SnapMirrorアクティブ同期を使用したVMware vSphere Metroストレージクラスタ</block>
   <block id="d5ad3267276646604ba509767a3d16f2" category="paragraph"><block ref="d5ad3267276646604ba509767a3d16f2" category="inline-link-rx"></block></block>
   <block id="58486898b4fe52f80d7a134d74186a4c" category="inline-link">VMware vSphere Metro Storage Cluster （ vMSC ）</block>
@@ -4540,7 +4530,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="087870f30d860ffeb01eac4f727d6656" category="section-title">SnapCenter for VMware vSphere プラグイン</block>
   <block id="5e9bba71efcdfbbed1dcf18802f8a227" category="sidebar">SnapCenter のリストア処理とリカバリ処理</block>
   <block id="743ac471396f82caf85eeeeac51160f8" category="sidebar">SAP システムの更新</block>
-  <block id="3a499e89a73d22ba78550fb47f2e0c88" category="sidebar">追加情報とバージョン履歴</block>
   <block id="000c450c2b1b3fbe68fc0d1893fb42e7" category="list-text">追加のLUNのマルチパスを設定します。 <block ref="5dbefb7618e64c1782ebe16427fe0a08" category="inline-link-macro-rx"></block> 。</block>
   <block id="6089175223f03bbb436ea3677ff5d54e" category="paragraph"><block ref="6089175223f03bbb436ea3677ff5d54e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="3082ebb564b0862e5b62f45e9c7f2918" category="paragraph"><block ref="3082ebb564b0862e5b62f45e9c7f2918" category="inline-image-macro-rx" type="image"></block></block>
@@ -4647,14 +4636,10 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="3c4ac70408381221e011d1b8eb9ca8ce" category="paragraph">SAP HANA のバックアップおよびリストア操作では、組織は次の課題に直面します。• 本番環境の SAP システムでパフォーマンスの低下を伴う長時間のバックアップ操作• 長時間のリストアおよびリカバリ操作による許容できないシステムダウンタイム• アプリケーションの重要度によるバックアップウィンドウの短縮• 論理破損を軽減するための柔軟なソリューションの必要性</block>
   <block id="34e74b1c7f4aad91715567cf698912f6" category="section-title">主要なソリューション・コンポーネント</block>
   <block id="b230779de102682fe4be587788f9b085" category="paragraph">NetApp ONTAP ® データ管理ソフトウェアを実行するNetApp ® ストレージ ソリューションをNetApp SnapCenter ® データ保護ソフトウェアと組み合わせて使用すれば、これらすべての課題に対応できます。また、 ONTAPソフトウェアに含まれるNetApp Snapshot™ テクノロジーを使用すると、数秒以内にあらゆるサイズのデータセットのバックアップを作成したり、復元操作を実行したりできます。  SAP HANA は、有効なバックアップ操作としてストレージベースのスナップショット コピーの使用をサポートしています。</block>
-  <block id="07d632c80bac8a4755255f5e335d8974" category="inline-link-macro"><block ref="07d632c80bac8a4755255f5e335d8974" category="inline-link-rx"></block></block>
-  <block id="e3d55b357098828096098ba417d3c90c" category="paragraph"><block ref="e3d55b357098828096098ba417d3c90c" category="inline-link-macro-rx"></block></block>
   <block id="9446c7c84986f94f08b68900006bb1e5" category="summary">このドキュメントでは、SAP HANA の災害復旧に焦点を当てています。</block>
   <block id="bf6723a5d293af775d564a8960e50265" category="doc">SB-3968: SAP HANAの災害復旧</block>
   <block id="24226245cbb8f6448d2fc2fad9d6d847" category="paragraph">IT 組織ではビジネス継続性が不可欠です。顧客がビジネスを遂行するために必要とするミッションクリティカルなアプリケーションに対して、高可用性サービスを提供できる必要があります。そうしないと、顧客の生産性は低下し、eコマース組織は収益に直接的な影響を受ける可能性があります。</block>
   <block id="d9bb80ae32f686bbae368979a76f86d7" category="paragraph">NetApp は、IT 組織があらゆるビジネス ニーズに対応できるように災害復旧計画を構築または適応できるようにするためのテクノロジとツールの包括的なポートフォリオを開発しました。</block>
-  <block id="6a9c098947d8b811552347f2ed990ebd" category="inline-link-macro"><block ref="6a9c098947d8b811552347f2ed990ebd" category="inline-link-rx"></block></block>
-  <block id="702c9bfa6d3b8d8b923fbeba4db3625f" category="paragraph"><block ref="702c9bfa6d3b8d8b923fbeba4db3625f" category="inline-link-macro-rx"></block></block>
   <block id="225b42e7cb6036e97607adda6dcca1c3" category="summary">SAP 向けNetAppソリューションの資料に対する最近の変更のログ。</block>
   <block id="2ca0fa0a322d6c31c3d0906a34c85e6c" category="paragraph">SAP 向けソリューションの新機能について学びます。</block>
   <block id="bab52961b58c502c7991d35556c25367" category="section-title">2025年8月18日</block>
@@ -5808,7 +5793,6 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="0efcefbaac1272d75fa3f95b9712d630" category="paragraph">システムデータベース：</block>
   <block id="8c87d36e58a14d731d3cb35d037718d8" category="paragraph">テナントデータベース：</block>
   <block id="02fd0d0d93ba9f1705c5a633970698b9" category="paragraph">論理的な破損は、ソフトウェア エラー、人為的エラー、または妨害行為によって発生する可能性があります。残念ながら、論理的な破損は、標準的な高可用性および災害復旧ソリューションでは対処できないことがよくあります。その結果、論理破損が発生したレイヤー、アプリケーション、ファイル システム、またはストレージによっては、最大ダウンタイムとデータ損失の要件を満たせない場合があります。</block>
-  <block id="411b1ca4cfe8073933ca1284bac60213" category="paragraph"><block ref="411b1ca4cfe8073933ca1284bac60213" category="inline-link-rx"></block></block>
   <block id="ea7fdceccfe7d9332d70547a6be7cf72" category="paragraph"><block ref="ea7fdceccfe7d9332d70547a6be7cf72" category="inline-link-macro-rx"></block></block>
   <block id="56a5c925d77740ea69d50272863f3f75" category="section-title">2026年2月26日</block>
   <block id="7dad4c0ee446a92530a257db0791c76e" category="paragraph">ローカル セキュア ストア（LSS）を使用したSAP HANAボリューム暗号化に対応するソリューションに更新<block ref="c3708ebf567e377ab7439ca8121b298b" category="inline-link-rx"></block>しました。</block>
@@ -5902,4 +5886,108 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="caa5de93118549a4fb1b814eeb2f5544" category="paragraph">SnapCenter のクローン削除ワークフローは、デフォルトでは<block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block>エントリを削除しません。</block>
   <block id="8bfab5683aa400a8bc0f218a12d430e9" category="paragraph">クローン削除処理中に<block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block>エントリが自動的に削除されるようにするには、まずクローンを復元して自動検出リソースにする必要があります。この手順を実行しない場合、<block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block>エントリは自動的に削除されないため、手動で削除する必要があります。</block>
   <block id="c18615d685f179944bb9c594c9e6c732" category="list-text">SAP HANA共有ボリュームのSnapCenterクローン削除ワークフローを実行します。</block>
+  <block id="9d1408a757e9069797cf7beab6881e23" category="inline-link-macro"><block ref="9d1408a757e9069797cf7beab6881e23" category="inline-link-rx"></block></block>
+  <block id="fbf1e5a8081f7fc23d2d5271b50d8792" category="paragraph"><block ref="fbf1e5a8081f7fc23d2d5271b50d8792" category="inline-link-macro-rx"></block></block>
+  <block id="fba71cc250d7d1a7df4fd50e90fab5e3" category="paragraph">本章では、この解決策に関連する追加リソースへのリンクを提供します。</block>
+  <block id="7912a6ea019693a170bbf40a62a72e9f" category="list-text"><block ref="7912a6ea019693a170bbf40a62a72e9f" category="inline-link-rx"></block></block>
+  <block id="60cfba11af764b91802636a5bffeb222" category="inline-link">ONTAP、Azure NetApp Files、およびFSx for ONTAPにわたるSnapCenterによるSAP HANAシステムの保護</block>
+  <block id="928d3b07164bc787951a0af9883e6bc3" category="list-text"><block ref="804a70f1f58a8d76d7850abbe1f47e1e" category="inline-link-rx"></block></block>
+  <block id="f754d929fae407f5c8d867af7641e060" category="cell">08/2026</block>
+  <block id="b88081ecae2714a1f990a3844a1ca60d" category="paragraph">本章では、このソリューションドキュメントで使用される SAP HANA システム BM1 の具体的なインストールおよび構成について説明します。HANA システム QM1 も同様の方法で導入されました。</block>
+  <block id="5fe2c5d2c4ab7cedc213ca5c68b05330" category="paragraph">その他の一般的な導入情報とベストプラクティスについては、<block ref="5888c0fcaa90f43e1381a41ee8a6b7b6" category="inline-link-rx"></block>をご覧ください。</block>
+  <block id="6f7e25b2593ffdea51a1764f1fdcef78" category="paragraph">以下のスクリーンショットは、ストレージ ユニット BM1++_++data++_++mnt00001 の作成を示しています。HANA ログおよび共有用のストレージ ユニットも同様の方法で作成されています。</block>
+  <block id="181373e23754fc92ef40c43618103a70" category="paragraph"><block ref="181373e23754fc92ef40c43618103a70" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2243d8c4509f2941e2d63fedd009f4e0" category="inline-link-macro">HANAホスト構成</block>
+  <block id="2e626f2495c3cf150ebe609448c25678" category="paragraph">HANAホストFCPアダプタのWWPNは、NetAppホストユーティリティの一部であるsanlunコマンドを使用して一覧表示できます。詳細については、<block ref="b77d6bd40a846ccc7ca1a7a06570d692" category="inline-link-macro-rx"></block>章を参照してください。</block>
+  <block id="b34f9895408cab6e676ce498e645ec3d" category="inline-image-macro">width=601,height=320</block>
+  <block id="94a650aaa1bb03432a6203a1e23f10fa" category="paragraph"><block ref="94a650aaa1bb03432a6203a1e23f10fa" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f0f72d91e0604a056769a0193392528b" category="paragraph">「追加」をクリックして、ストレージユニットを作成します。</block>
+  <block id="e36f02d14e3a78adbae48b28c37d2692" category="paragraph"><block ref="e36f02d14e3a78adbae48b28c37d2692" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1eded785990201ae1e7f340804d72ed1" category="paragraph">このスクリーンショットは、HANAシステムBM1用に作成された3つのストレージユニットを示しています。</block>
+  <block id="89132c66b0273f0a29d9193cf0702f16" category="paragraph"><block ref="89132c66b0273f0a29d9193cf0702f16" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e026d341645671586b9ce55ee09aa6ff" category="paragraph">ホストを設定する前に、NetApp SAN ホストユーティリティを<block ref="b5521980cacd8acc0482c24b2751e3c6" category="inline-link-rx"></block>サイトからダウンロードし、HANA サーバーにインストールする必要があります。ホストユーティリティのドキュメントには、使用する FCP HBA に応じてインストールする必要のある追加ソフトウェアに関する情報が記載されています。</block>
+  <block id="eab12b4f6e78f007ba9c2c8c7b1a0186" category="paragraph">NetApp SANホストユーティリティを使用して、ストレージシステム上でホストマッピングを設定するために必要なホストアダプタのWWPNを取得することもできます。</block>
+  <block id="2be6edbbf8bc654c3c0bfd578455c69d" category="section-title">マルチパス構成</block>
+  <block id="eb5f11d29c534fdaee78618f730d19fb" category="list-text">各サーバーでLinuxのrescan-scsi-bus.sh -aコマンドを実行して、新しいLUNを検出します。</block>
+  <block id="217308982fdfe3d7361a64c05fd7c019" category="list-text">sanlun lun show コマンドを実行し、必要なすべての LUN が表示されていることを確認してください。出力には、LUN とそれに対応するデバイスファイルに、ホストからストレージコントローラへの 4 つの FC パスがあることが示されています。</block>
+  <block id="be2a13eb2b54304d53b799418e936343" category="list-text">デバイスファイル名のワールドワイド識別子（WWID）を取得するには、multipath -r コマンドと multipath -ll コマンドを実行します。</block>
+  <block id="4a5796bc43390ec85030f36cad92be8a" category="list-text">/etc/multipath.conf ファイルを編集し、WWID とエイリアス名を追加します。</block>
+  <block id="d49a21e46543119b2dab3af45da1e584" category="list-text">デバイスマップを再読み込みするには、multipath -r コマンドを実行してください。</block>
+  <block id="2e4b99a5da4c365f80291acf83f25625" category="list-text">multipath -ll コマンドを実行して、すべての LUN、エイリアス名、およびストレージ パスを一覧表示し、構成を確認します。</block>
+  <block id="db5efbe05d05de40804ba94195f74393" category="section-title">ホストファイルシステム構成</block>
+  <block id="8d4f66e6bde210b4bbcbec584cd88566" category="admonition">上記の設定では、/usr/sap/BM1 ディレクトリは OS ディスク上に保存されます。/usr/sap/BM1 を別のディスクに保存する場合は、ストレージシステムに追加の LUN を設定する必要があります。</block>
+  <block id="fd43d830bdb4e388d4c9d3238d8db821" category="paragraph">下の図は、使用した実験設備の概要を示しています。2つのシングルホスト HANA MDC システムを使用して、さまざまな操作を実証します。HANA システム BM1 はバックアップ、リストア、リカバリ操作を実行するために指定されており、HANA システム QM1 は SAP システムリフレッシュ操作のターゲットシステムとして機能します。HANA システムは 2 台のベアメタルサーバーに導入されており、ストレージ側では 2 台の ASA A30 2 ノードクラスタが使用されています。最初のクラスターは HANA システムのすべてのストレージユニットをホストし、2 番目のクラスターはバックアップレプリケーションのターゲットとして使用されます。</block>
+  <block id="1413de5fa63eb0786c0adaaa425315a9" category="paragraph"><block ref="1413de5fa63eb0786c0adaaa425315a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="aaf58e5a5445d876b8f7b0fe22b5afbf" category="cell">9.19.1</block>
+  <block id="b9f16534f2b2bafc42883e1f3157014a" category="cell">SLES 15 SP7</block>
+  <block id="4dd5a41036da7fb1df274a1b9fafae33" category="cell">HANA</block>
+  <block id="268a6971497141d3f068e24521aec931" category="cell">2.0 revision 89</block>
+  <block id="3e7e96fad5e237fb2d5a081c6cb11212" category="cell">6.2.2</block>
+  <block id="dc9c4db78e29038229eda79cb4fb3a62" category="doc">SnapCenter の操作</block>
+  <block id="cf222679af586f2f6fcef36213402eb3" category="paragraph">この章では、SnapCenter を使用したバックアップ、リストア、リカバリ、SAP システムの更新、および非同期レプリケーション操作について説明します。</block>
+  <block id="fc257548c9d0dd5a5cc664774b7e659c" category="paragraph">バックアップ操作は、<block ref="b58105cf256232f10befd13824eb8fbd" category="inline-link-rx"></block>に記載されているのと同じ方法で実行されます。</block>
+  <block id="6ce0091e478ffaede7916f5983a47e11" category="admonition">ストレージユニットに整合性グループが設定されていない場合、SnapCenter は最初の Snapshot バックアップ操作で整合性グループと子整合性グループを作成します。次に、HANA データストレージが子整合性グループに割り当てられます。SnapCenter の Snapshot バックアップは、子整合性グループ内に一覧表示されます。</block>
+  <block id="9cf18086f625ef5df5144a31dc5fbea3" category="inline-image-macro">width=601,height=191</block>
+  <block id="79ba06e59598bce5953dac5bf2051a80" category="paragraph"><block ref="79ba06e59598bce5953dac5bf2051a80" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a76982505db7be9c1561069a79abf435" category="inline-image-macro">width=601,height=205</block>
+  <block id="00f6780c2555a0936eb72dcc73e9a806" category="paragraph"><block ref="00f6780c2555a0936eb72dcc73e9a806" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="512011d5b74ed22c82bf2dd87d933b45" category="paragraph">復元および復旧操作は、前述の方法と同様に実行されます<block ref="66e2e60033c47c8fe627c71a834090ce" category="inline-link-rx"></block>。</block>
+  <block id="6b2c568c43233dc04f1da2fa10845e34" category="section-title">非同期ストレージ レプリケーション</block>
+  <block id="b12bdbebdc2b957e89692a4ac0bfe43a" category="paragraph">HANAデータボリュームについては、非同期ストレージ レプリケーションが設定されています。</block>
+  <block id="f1929b21af7705b79eccced6f3001dea" category="paragraph"><block ref="f1929b21af7705b79eccced6f3001dea" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="310400b0b4a3a418d6d86450884f9780" category="paragraph">レプリケーションは MirrorAndVault ポリシーで設定されています。</block>
+  <block id="f65d14dd831dcce421764471da054aa6" category="inline-image-macro">width=601,height=206</block>
+  <block id="c4c8c63932d27f8c3250f467fcd26fa6" category="paragraph"><block ref="c4c8c63932d27f8c3250f467fcd26fa6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fb0e1e71df602c6e2ed1c6728be93efe" category="paragraph">MirrorAndVaultポリシーには、さまざまなSnapMirrorラベルと保持期間が含まれています。</block>
+  <block id="bda6dbadb0f513f5218f10abf7195c62" category="inline-image-macro">width=601,height=235</block>
+  <block id="bf306170d819e7c3313e91938ba23611" category="paragraph"><block ref="bf306170d819e7c3313e91938ba23611" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="59e89217d1f7ec869277e9af1d3ddd18" category="paragraph">SnapCenterで、ONTAPのMirrorAndVaultポリシーのSnapMirrorラベル「daily」に一致するポリシーが構成されています。</block>
+  <block id="f13df62a1916288c276f504297f42831" category="inline-image-macro">width=378,height=354</block>
+  <block id="00f88ef02fe4c0a8c575a513eec00d7e" category="paragraph"><block ref="00f88ef02fe4c0a8c575a513eec00d7e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5faf148cadf753c102f515fcf70f82f9" category="paragraph">ONTAP MirrorAndVault ポリシーを使用する場合、Snapshot バックアップはターゲット ストレージに一度しか存在しないにもかかわらず、SnapCenter では Vault と Mirror のコピーが別々に表示されます。</block>
+  <block id="d8ccdfcfedcf950d141658f96224da27" category="paragraph"><block ref="d8ccdfcfedcf950d141658f96224da27" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f3fbac44c3d690f9cb32b8c84c98b9bf" category="paragraph">SnapCenter を使用した SAP システムの更新およびクローニング操作の詳細については、<block ref="c3708ebf567e377ab7439ca8121b298b" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="96b8c3cfc88602d57e00e31f795909a5" category="section-title">SnapCenter ワークフロー</block>
+  <block id="884e6feda877b79be06e0b21fb7ba23b" category="paragraph">操作の詳細と前提条件については、<block ref="2997ff14a5f91e8cb6ac3a5e838cbf44" category="inline-link-rx"></block>に記載されています。具体的には、最初の更新/クローン操作を実行する前に、ターゲットシステムを SnapCenter に追加する必要があります。</block>
+  <block id="a44a87fa875df86dc018e5fad20a8969" category="paragraph">クローン作成ワークフローの最初のステップでは、ターゲットホストとターゲットSIDを指定する必要があります。</block>
+  <block id="bf631e62061aadc0780364c8629bf104" category="inline-image-macro">width=333,height=313</block>
+  <block id="4bb56f1b7bfc0841e871324869b2461f" category="paragraph"><block ref="4bb56f1b7bfc0841e871324869b2461f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dc844487eb5e6912e10ffcdeb0db6b58" category="paragraph">プロトコルの選択は「FCP」でなければなりません。</block>
+  <block id="18f2a59240825d4c3d3982c7f7c6d210" category="inline-image-macro">width=334,height=312</block>
+  <block id="79459453d7ce4eea71ad3c2500ddf454" category="paragraph"><block ref="79459453d7ce4eea71ad3c2500ddf454" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="144fca8386a43e261ab72b107b422397" category="paragraph">必要に応じて、sc-system-refresh.sh スクリプトを追加することで、復旧操作を自動化できます。</block>
+  <block id="6f9579dcced83f5ab7f3fb18d64f963a" category="inline-image-macro">width=352,height=331</block>
+  <block id="47738e1b349d4c4de3f7fa47efb8248d" category="paragraph"><block ref="47738e1b349d4c4de3f7fa47efb8248d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4aab671e038be0d155852633c46a2803" category="paragraph">以下のスクリーンショットは、クローン作成ワークフローのジョブログを示しています。</block>
+  <block id="a74716b6cfdeb6de488dc178eb7fab64" category="inline-image-macro">width=379,height=468</block>
+  <block id="1aefc8acecb8ca8d5a4b71e8ada504b8" category="paragraph"><block ref="1aefc8acecb8ca8d5a4b71e8ada504b8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8a2ac840f78e7d6f1289a33914b99885" category="paragraph">以下の出力は、sc-system-refresh.sh スクリプトのログファイルを示しています。</block>
+  <block id="49ea6572c02d426caf6ed4a9d7e1c224" category="section-title">ストレージビュー</block>
+  <block id="e7203d350029cf0e6540cf4d9593f079" category="paragraph">ストレージ レイヤでは、FlexCloneボリュームが作成され、ターゲットホストにマッピングされました。</block>
+  <block id="cf29ceec036428af03682ca211e04807" category="inline-image-macro">width=601,height=295</block>
+  <block id="f04e7ed0a367cf04e9044498415aa805" category="paragraph"><block ref="f04e7ed0a367cf04e9044498415aa805" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4e1a05d9f0bbe4014d12b951157de8ca" category="paragraph"><block ref="4e1a05d9f0bbe4014d12b951157de8ca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6de17a2d8dca6c7fc4a6d5b47e8fdd83" category="section-title">ホストビュー</block>
+  <block id="acf2994852bd4b04e16be66bfa221852" category="paragraph">ホスト側では新しいFlexCloneボリュームが検出され、マウントされました。</block>
+  <block id="4e1c0112e7e27e6f70e64692bf2a46b3" category="doc">ベアメタル サーバーおよび NetApp ASA システム上で稼働する SnapCenter を使用した SAP HANA データ保護</block>
+  <block id="4f53c8764978efc7e04ccf5eca9a2dff" category="paragraph">本書では、NetApp ASAシステムにデータを格納し、X64ベアメタル サーバで実行されているHANAシステム向けに、SnapCenterを使用したデータ保護のベスト プラクティスについて説明します。</block>
+  <block id="d2f7d32c4d8c10fa202de66471914177" category="paragraph">本書は環境全体を構成するためのステップバイステップのガイドではなく、ベアメタル サーバーを NetApp ASA ストレージ システムに接続した SnapCenter および HANA に特化した詳細に焦点を当てています。</block>
+  <block id="2003f744581b30fdfdc3025618263450" category="list-text">SAP HANAシステムのセットアップ</block>
+  <block id="8200552a5d7fa999d46a29d4bc8985d1" category="list-text">特定のSnapCenter設定</block>
+  <block id="5e70357dec520255b41d23b97e3c4d6d" category="list-text">SnapCenter のバックアップ、リストア、およびリカバリ操作の詳細</block>
+  <block id="0f135e62f6cfd5d495df5aec6e12f852" category="list-text">SnapCenter SAP システム更新操作の詳細</block>
+  <block id="0f68b904e33d9ac04605aecc958bcf52" category="inline-link-macro">その他の情報</block>
+  <block id="2e0d7bb1690285b33309213b7b97c622" category="paragraph">詳細情報および詳細な設定手順については、<block ref="0d570cdc19f454db1ceb6d65aba93fe2" category="inline-link-macro-rx"></block>章に記載されているドキュメントを参照してください。</block>
+  <block id="a61723211ec45014f02ec9920daaef26" category="paragraph"><block ref="a61723211ec45014f02ec9920daaef26" category="inline-link-rx"></block></block>
+  <block id="590403e24af81b2be2c1d9abb8663627" category="inline-link-macro"><block ref="590403e24af81b2be2c1d9abb8663627" category="inline-link-rx"></block></block>
+  <block id="8f790e9f9bdd4ea835cccd0f35081a83" category="paragraph"><block ref="8f790e9f9bdd4ea835cccd0f35081a83" category="inline-link-macro-rx"></block></block>
+  <block id="fa1c65a872b9ca230975b3c2b7de8866" category="inline-link-macro"><block ref="fa1c65a872b9ca230975b3c2b7de8866" category="inline-link-rx"></block></block>
+  <block id="6c52a11ec179c9b0dce7aec85aa5f16b" category="paragraph"><block ref="6c52a11ec179c9b0dce7aec85aa5f16b" category="inline-link-macro-rx"></block></block>
+  <block id="452dc078c2039ad92c2da2058afb9627" category="inline-link-macro"><block ref="452dc078c2039ad92c2da2058afb9627" category="inline-link-rx"></block></block>
+  <block id="9f9b969c1fb521eeb60afd916d299ec9" category="paragraph"><block ref="9f9b969c1fb521eeb60afd916d299ec9" category="inline-link-macro-rx"></block></block>
+  <block id="4b4d55bb27bec5759e7aab4dfc59c7a2" category="paragraph"><block ref="4b4d55bb27bec5759e7aab4dfc59c7a2" category="inline-link-rx"></block></block>
+  <block id="90af59cf899c13071304f737b8b45d68" category="section-title">2026年8月5日</block>
+  <block id="a8b91b41f89181ec38a97b7e6940398a" category="inline-link">NetApp SnapCenter ベアメタルサーバー上の NetApp ASA システムを使用した SAP HANA 向け</block>
+  <block id="6c6d709c806fd2c237a28a9dedbceedc" category="paragraph">新しいソリューション<block ref="87909c917dfc6a157b3191955e2fd2bf" category="inline-link-rx"></block>は、NetApp SnapCenterを使用したSAP HANAデータ保護のベストプラクティスを提供します。ベアメタルサーバーを使用したONTAP ASAシステム上のSAP HANAシステムを保護するためのSnapCenterの構成および運用ガイドラインを網羅しています。</block>
+  <block id="5e8a88c8a8066d604cea2cd759db882b" category="sidebar">ベアメタル サーバーと NetApp ASA システムを使用した SnapCenter による SAP HANA データ保護</block>
 </blocks>

@@ -27,4 +27,4 @@ SAP HANA のバックアップおよびリストア操作では、組織は次�
 
 NetApp ONTAP ® データ管理ソフトウェアを実行するNetApp ® ストレージ ソリューションをNetApp SnapCenter ® データ保護ソフトウェアと組み合わせて使用すれば、これらすべての課題に対応できます。また、 ONTAPソフトウェアに含まれるNetApp Snapshot™ テクノロジーを使用すると、数秒以内にあらゆるサイズのデータセットのバックアップを作成したり、復元操作を実行したりできます。  SAP HANA は、有効なバックアップ操作としてストレージベースのスナップショット コピーの使用をサポートしています。
 
-link:https://www.netapp.com/pdf.html?item=/media/6997-sb-3965pdf.pdf["https://www.netapp.com/pdf.html?item=/media/6997-sb-3965pdf.pdf"]
+link:https://www.netapp.com/pdf.html?item=/media/6997-sb-3965.pdf["https://www.netapp.com/pdf.html?item=/media/6997-sb-3965.pdf"]

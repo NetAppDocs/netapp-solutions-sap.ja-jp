@@ -92,6 +92,18 @@ entries:
     url: "/backup/hana-sc-vmware-smas-failover-scenarios.html"
   - title: 追加情報とバージョン履歴
     url: "/backup/hana-sc-vmware-smas-additional-info.html"
+- title: ベアメタル サーバーと NetApp ASA システムを使用した SnapCenter による SAP HANA データ保護
+  entries:
+  - title: 本ドキュメントの内容
+    url: "/backup/hana-sc-bare-metal-asar2-scope.html"
+  - title: このドキュメントで使用したラボのセットアップ
+    url: "/backup/hana-sc-bare-metal-asar2-lab-setup.html"
+  - title: HANAシステムのプロビジョニングとインストール
+    url: "/backup/hana-sc-bare-metal-asar2-hana-provisioning.html"
+  - title: SnapCenter の操作
+    url: "/backup/hana-sc-bare-metal-asar2-sc-operations.html"
+  - title: 追加情報とバージョン履歴
+    url: "/backup/hana-sc-bare-metal-asar2-additional-info.html"
 - title: VMware VMFSおよびNetApp ASAシステムを使用したSnapCenterによるSAP HANAデータ保護
   entries:
   - title: 本ドキュメントの内容

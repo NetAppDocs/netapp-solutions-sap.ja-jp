@@ -27,4 +27,4 @@ IT 組織ではビジネス継続性が不可欠です。顧客がビジネス�
 
 NetApp は、IT 組織があらゆるビジネス ニーズに対応できるように災害復旧計画を構築または適応できるようにするためのテクノロジとツールの包括的なポートフォリオを開発しました。
 
-link:https://www.netapp.com/pdf.html?item=/media/6998-sb-3968pdf.pdf["https://www.netapp.com/pdf.html?item=/media/6998-sb-3968pdf.pdf"]
+link:https://www.netapp.com/pdf.html?item=/media/6998-sb-3968.pdf["https://www.netapp.com/pdf.html?item=/media/6998-sb-3968.pdf"]
