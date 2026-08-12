@@ -1,0 +1,141 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-smas-introduction.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery, SnapMirror active sync, symmetric active-active, NetApp ASA R2 
+summary:  
+---
+= NetApp ASA R2上のVMware VMFSおよびSnapMirror active syncを使用したSnapCenterによるSAP HANAデータ保護
+:allow-uri-read: 
+
+
+[role="lead"]
+本書では、対称型アクティブ / アクティブ構成で SnapMirror active syncを使用する NetApp ASAr2システムに格納されたLUNとVMFSを使用するデータストアを備えた、VMware上で実行されるHANAシステム向けに、SnapCenterを使用したデータ保護のベスト プラクティスについて説明します。本書では、ソリューション アーキテクチャ、必要なソフトウェア バージョン、および対象読者の概要について説明します。また、アプリケーション整合性のあるバックアップおよびリカバリ処理を実現するための、SnapCenterとSAP HANAおよびONTAPの統合についても説明します。
+
+
+
+[[introduction]]
+== はじめに
+
+SAP HANAは、高い可用性、耐障害性、およびアプリケーション整合性のあるデータ保護を必要とするビジネス クリティカルなプラットフォームです。実稼働SAP HANA環境では、ストレージの可用性および復元／回復機能は、ダウンタイムを最小限に抑え、障害から保護し、論理的または運用上の問題からの迅速な復旧をサポートするように設計する必要があります。
+
+本書では、VMware vSphere環境において、**NetApp SnapCenter**、**NetApp SnapMirror active sync**、および**NetApp ASAストレージ システム**を使用してSAP HANAデータ保護を実装する方法について説明します。この解決策は**対称アクティブ / アクティブ構成**に基づいており、SnapMirror active syncを使用して2つのONTAPストレージ クラスター間でSAP HANAストレージが同期レプリケーションされます。この構成により、両方のサイトからレプリケートされたストレージへの継続的なホスト アクセスが可能になり、高可用性シナリオの自動フェイルオーバーがサポートされます。
+
+このドキュメントでは、VMware ESXi ホストに LUN として提示される SAP HANA ストレージ ボリュームの構成、SAP HANA システム用の VMFS データストアの作成、およびアプリケーション整合性のあるバックアップとリカバリ操作のための SAP HANA データベースの SnapCenter への統合に焦点を当てています。
+
+
+
+[[intended-audience]]
+=== 対象読者
+
+このドキュメントは、NetApp ストレージ上の SAP HANA 環境の設計、展開、および保護を担当するストレージ管理者、VMware 管理者、SAP Basis 管理者、およびインフラストラクチャ アーキテクトを対象としています。
+
+読者は以下の基本的な事項を理解している必要があります：
+
+* SAP HANA の管理。
+* VMware vSphere および VMFS データストアの管理。
+* ONTAP System Manager。
+* LUN、イニシエータ、WWPN、ホストマッピングなどの SAN の概念。
+* NetApp SnapMirror、SnapVault、および整合グループ。
+* NetApp SnapCenterのバックアップとリカバリの概念。
+
+
+
+
+[[solution-overview]]
+=== 解決策の概要
+
+このソリューションは、以下の NetApp および VMware テクノロジーを組み合わせたものです：
+
+* **NetApp ASA ストレージ システム** （SANベースのブロック ストレージ アクセス用）
+* **ONTAP consistency groups**は、SAP HANA関連のストレージユニットを単一の保護されたエンティティとして管理します。
+* **SnapMirror アクティブ同期** （**AutomatedFailOverDuplex** モード）で、対称的なアクティブ / アクティブ同期レプリケーションを提供します。
+* ONTAP Mediator のセットアップと設定
+* **VMware vSphere および VMFS データストア**：SAP HANA 仮想マシンとそのデータ、ログ、共有、およびオペレーティングシステムディスクをホストするためのものです。
+* **NetApp SnapCenter サーバ、SnapCenter SAP HANA および VMware vSphere 用エージェントとプラグイン** アプリケーションと整合性のあるスナップショットバックアップを作成します。
+* **SnapMirror および SnapVault レプリケーション**：セカンダリ システムへの追加の非同期レプリケーションによるバックアップ。
+
+
+このアーキテクチャでは、SAP HANAのデータ、ログ、共有ボリューム、およびオペレーティングシステムボリューム用に専用のLUNが作成されます。これらのLUNはVMware ESXiホストにマッピングされ、VMFSデータストアの作成に使用されます。SAP HANA仮想マシンは、対応するデータストア上に配置された個別の仮想ディスクを使用します。
+
+image:hana-sc-vmfs-asar2-smas-image-001.png["画像"]
+
+SAP HANA のデータ、ログ、および共有ストレージユニットは、ONTAP 整合性グループにグループ化され、SnapMirror アクティブ同期で保護されます。これにより、SAP HANA のストレージ レイアウトが、参加している ONTAP クラスター全体で一貫してレプリケートされます。オプションとして、オペレーティングシステムのデータストアも同じ方法で保護できます。
+
+
+
+[[snapmirror-active-sync-for-sap-hana]]
+=== SnapMirror Active Sync（SAP HANA向け）
+
+SnapMirrorアクティブ同期（SMas）は、2つのONTAPクラスター間でデータを同期的にレプリケートすることで、ビジネス継続性を実現します。対称的なアクティブ / アクティブ構成では、どちらのストレージサイトも、レプリケートされたLUNへのアクティブなアクセスを提供できます。これにより、ストレージシステムまたはサイトのいずれかが利用不能になった場合でも、VMwareおよびSAP HANA環境は引き続き動作できます。
+
+SAP HANAワークロードの場合、これにより次のメリットが得られます：
+
+* SAP HANAストレージの同期レプリケーション。
+* ONTAP 整合グループを使用したアプリケーション整合性のある保護。
+* SnapMirror アクティブ同期を使用した自動フェイルオーバー。
+* SAN に接続された VMware ESXi ホストのアクティブ / アクティブ アクセス パス。
+* ストレージまたはサイト障害が発生した場合の復旧時間の短縮。
+* ONTAP System Manager と SnapCenter を使用した管理の簡素化。
+
+
+このドキュメントの構成では、**AutomatedFailOverDuplex** ポリシーを使用して、SnapMirror アクティブ同期のアクティブ / アクティブ動作を有効にします。
+
+image:hana-sc-vmfs-asar2-smas-image-002.png["画像"]
+
+
+
+[[snapcenter-integration]]
+=== SnapCenter 統合
+
+SnapCenter は、SAP HANA アプリケーションと整合性のあるバックアップを管理するために使用されます。SAP HANA システムが展開された後、SAP HANA 用 SnapCenter プラグインが SAP HANA ホストにインストールされます。専用の SAP HANA データベースユーザーとセキュアユーザーストアキーが作成され、SnapCenter が SAP HANA データベースと通信できるようになります。
+
+SnapCenter のバックアップポリシーは、さまざまな保護要件に合わせて設定されます。例えば、頻繁なローカル Snapshot コピーと SnapMirror アクティブ同期の認識には時間単位のポリシーを使用し、長期的なバックアップ保持のために非同期の SnapVault または MirrorAndVault の宛先を更新するには日次ポリシーを使用できます。
+
+SnapCenterをSAP HANAおよびONTAPと統合することで、このソリューションは以下を提供します：
+
+* アプリケーション整合性のある SAP HANA スナップショット バックアップ。
+* ポリシーに基づいたバックアップスケジューリング。
+* スナップショットおよびログバックアップの保持管理。
+* SnapMirror と SnapVault の更新オーケストレーション。
+* 一元化されたバックアップ監視および管理。
+* 簡素化された復元および復旧ワークフロー。
+
+
+image:hana-sc-vmfs-asar2-smas-image-003.png["画像"]
+
+
+
+[[document-scope]]
+=== 文書の範囲
+
+このドキュメントでは、以下のタスクに関する設定手順の例を段階的に説明します：
+
+. NetApp ASAストレージでのLUNの作成。
+. VMware ESXi ホストのホストアクセスの設定。
+. ONTAP 整合グループの作成。
+. SnapMirror のアクティブ / アクティブ モードでのアクティブ同期を有効化しています。
+. ONTAP Mediator のインストールと設定
+. バックアップ目的のための追加の非同期レプリケーションの設定。
+. VMware VMFS データストアの作成。
+. SAP HANA仮想マシンのデプロイ。
+. オペレーティングシステムとSAP HANAをインストールします。
+. ONTAP ストレージシステムを SnapCenter に追加する。
+. SnapCenter バックアップ ポリシーの作成。
+. SAP HANAデータベースユーザーをSnapCenter用に作成する。
+. SAP HANA のセキュアユーザーストアキーを設定します。
+. SAP HANAシステムをSnapCenterに登録する。
+. SAP HANAのバックアップのスケジュール設定と実行。
+
+
+これらの手順は実装ガイドとして提供されており、特定のお客様環境、命名規則、ネットワーク設計、ストレージ レイアウト、および SAP のサイジング要件に合わせて調整する必要があります。
+
+
+
+[[architecture-summary]]
+=== アーキテクチャ概要
+
+大まかに言うと、このソリューションは、ASAストレージを使用する2つのNetApp ONTAPクラスターで構成され、SANを介してVMware ESXiホストに接続されています。SAP HANAはVMware仮想マシン内で動作します。SAP HANAオペレーティングシステム、データボリューム、ログボリューム、および共有ボリュームには、それぞれ別のデータストアが使用されます。
+
+SAP HANA関連のストレージユニットは、ONTAPの整合グループを通じてSnapMirrorアクティブ同期によって保護されています。これにより、データ、ログ、および共有ボリュームが同時にレプリケートされ、書き込み順序の一貫性が維持されることが保証されます。SnapCenterは、SAP HANA対応バックアップを作成し、必要なONTAPスナップショットおよびレプリケーション操作をトリガーするために使用されます。
+
+この組み合わせにより、NetApp ASA ストレージを使用する VMware 上で実行される SAP HANA ワークロードに対して、可用性が高く運用効率に優れたデータ保護ソリューションを実現します。

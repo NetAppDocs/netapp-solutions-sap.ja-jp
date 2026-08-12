@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-smas-add_info.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery, SnapMirror active sync, symmetric active-active, NetApp ASA R2 
+summary:  
+---
+= その他の情報
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+
+
+[[additional-information]]
+== *追加情報*
+
+[role="lead"]
+この記事では、このソリューションに関連するその他のリソースへのリンクを示します。
+
+*SAP HANA のベストプラクティス*
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["『 SAP HANA on NetApp ASA Systems with Fibre Channel Protocol 』を参照してください"]です。
+
+
+*SnapCenter*
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-generic-scope.html["SnapCenter を使用した SAP HANA のバックアップとリカバリ"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sr-scs-system-replication-overview.html["『SAP HANA System Replication - Backup and Recovery with SnapCenter』"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-scope.html["SnapCenter SnapMirror Active Sync と VMware Metro Storage Cluster による SAP HANA のデータ保護と高可用性"]
+* https://docs.netapp.com/us-en/snapcenter/index.html["SnapCenter ソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/snapcenter/protect-hana/concept_snapcenter_plug_in_for_sap_hana_database_overview.html["SnapCenter Plug-in for SAP HANA の概要"]
+* https://docs.netapp.com/us-en/snapcenter/protect-hana/task_add_hosts_and_install_plug_in_packages_on_remote_hosts_sap_hana.html["ホストを追加して SnapCenter プラグイン パッケージをインストールする"]
+
+
+*NetApp ASA ストレージ システム* （SANベースのブロック ストレージ アクセス用）
+
+* https://docs.netapp.com/us-en/ontap-systems/asa-r2/index.html["NetApp ASA R2 システムドキュメント"]
+* https://docs.netapp.com/us-en/ontap/san-admin/index.html["ONTAP SAN 管理"]
+
+
+*ONTAP consistency groups* を使用して、SAP HANA 関連のストレージ ユニットを単一の保護対象エンティティとして管理します。
+
+* https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["ONTAP consistency groupの概要"]
+
+
+*SnapMirror アクティブ同期* （*AutomatedFailOverDuplex* モード）による対称アクティブ / アクティブ同期レプリケーション
+
+* https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["SnapMirrorアクティブ同期の概要"]
+* https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/architecture-concept.html["SnapMirrorアクティブ同期アーキテクチャ"]
+
+
+*ONTAP Mediator* のセットアップと構成
+
+* https://docs.netapp.com/us-en/ontap/mediator/index.html["ONTAP Mediator ドキュメント"]
+* https://docs.netapp.com/us-en/ontap/mediator/workflow-summary.html["ONTAPメディエーターをインストールまたはアップグレードする"]
+
+
+*SnapMirror および SnapVault レプリケーション* （セカンダリ システムへの非同期バックアップレプリケーション用）
+
+* https://docs.netapp.com/us-en/ontap/data-protection/index.html["ONTAPデータ保護ドキュメント"]
+* https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-replication-concept.html["SnapMirror レプリケーションの概要"]
+* https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-disaster-recovery-concept.html["SnapVault アーカイブ／ボールトの保護に関する概念"] ++|++
+
+
+*VMware vSphere と VMFS データストア（SAP HANA VM ディスクのホスト用）*
+
+* https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere と ONTAP のドキュメント"]
+* https://docs.netapp.com/us-en/ontap-tools-vmware-vsphere/["ONTAP tools for VMware vSphereのドキュメント"]
+

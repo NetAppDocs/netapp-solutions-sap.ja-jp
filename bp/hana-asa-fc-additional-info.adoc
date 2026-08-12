@@ -5,13 +5,13 @@ keywords:
 summary:  
 ---
 = 追加情報の参照先
-:hardbreaks:
 :allow-uri-read: 
-:nofooter: 
-:icons: font
-:linkattrs: 
-:imagesdir: ../media/
 
+
+
+
+[[where-to-find-additional-information]]
+== 追加情報の参照先
 
 [role="lead"]
 このドキュメントに記載されている情報の詳細については、以下のドキュメントや Web サイトを参照してください。

@@ -15,10 +15,17 @@ SAP 向けソリューションの新機能について学びます。
 
 
 
+[[12-august-2026]]
+== 2026年8月12日
+
+新規解決策 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmfs-asar2-smas-introduction.html["NetApp ASA R2上のVMware VMFSおよびSnapMirror active syncを使用したSnapCenterによるSAP HANAデータ保護"^]。VMFSを使用するデータストアと、SnapMirror active syncを使用するNetApp ASAr2システム上に格納されたLUNを備えたVMware上で実行されているHANAシステムを対象に、SnapCenterを使用したデータ保護のベストプラクティスについて本書で説明します。
+
+
+
 [[05-august-2026]]
 == 2026年8月5日
 
-新しいソリューション https://review.docs.netapp.com/us-en/netapp-solutions-sap_hana-sc-bare-metal-asar2/backup/hana-sc-bare-metal-asar2-scope.html["NetApp SnapCenter ベアメタルサーバー上の NetApp ASA システムを使用した SAP HANA 向け"^]は、NetApp SnapCenterを使用したSAP HANAデータ保護のベストプラクティスを提供します。ベアメタルサーバーを使用したONTAP ASAシステム上のSAP HANAシステムを保護するためのSnapCenterの構成および運用ガイドラインを網羅しています。
+新しいソリューション https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-bare-metal-asar2-scope.html["NetApp SnapCenter ベアメタルサーバー上の NetApp ASA システムを使用した SAP HANA 向け"^]は、NetApp SnapCenterを使用したSAP HANAデータ保護のベストプラクティスを提供します。ベアメタルサーバーを使用したONTAP ASAシステム上のSAP HANAシステムを保護するためのSnapCenterの構成および運用ガイドラインを網羅しています。
 
 
 

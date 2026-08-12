@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-smas-vmware_config.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery, SnapMirror active sync, symmetric active-active, NetApp ASA R2 
+summary:  
+---
+= VMware構成データストアとVMの作成
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+
+
+[[vmware-configuration-datastore-and-vm-creation]]
+== VMware構成データストアとVMの作成
+
+[role="lead"]
+SAP HANAで使用するVM用に、以前に作成したLUNを使用してデータストアを作成し、その後、これらのデータストアを使用してVMを作成します。
+
+各LUNは1つのデータストアに使用されるため、データ、ログ、共有、およびOS用のデータストアが作成されます。
+
+
+
+[[datastore-creation]]
+=== データストアの作成
+
+. vSphereクライアントにログオンし、データストアタブに移動します。データセンターのコンテキストメニューから「ストレージ」→「新しいデータストア…」を選択します。image:hana-sc-vmfs-asar2-smas-image-024.png["画像"]
+. データストアの種類として「VMFS」を選択してください。+ image:hana-sc-vmfs-asar2-smas-image-025.png["画像"]
+. SAP HANAデータファイルを格納するデータストアの名前を指定し、以前に作成したストレージユニット（LUN）を選択してください。+ image:hana-sc-vmfs-asar2-smas-image-026.png["画像"]
+. 最新のVMFSバージョンを選択してください。+ image:hana-sc-vmfs-asar2-smas-image-027.png["画像"]
+. パーティションには利用可能なスペースをすべて使用してください。デフォルト設定のままにしてください。+ image:hana-sc-vmfs-asar2-smas-image-028.png["画像"]
+. 概要を確認し、「完了」を押してください。+ image:hana-sc-vmfs-asar2-smas-image-029.png["画像"]
+. ログ、共有、およびOSのデータストアについても、上記の手順を繰り返してください。+ image:hana-sc-vmfs-asar2-smas-image-030.png["画像"]
+
+
+
+
+[[vm-creation]]
+=== VMの作成
+
+. すべてのデータストアが作成されたら、「VMとテンプレート」タブに移動します。データセンターのコンテキストメニューから「新しい仮想マシン…」を選択してください。+ image:hana-sc-vmfs-asar2-smas-image-031.png["画像"]
+. VMを作成する方法を選択してください。この例では、「新しい仮想マシンを作成する」ワークフローを使用します。+ image:hana-sc-vmfs-asar2-smas-image-032.png["画像"]
+. VM名を入力し、データセンターを選択してください。+ image:hana-sc-vmfs-asar2-smas-image-033.png["画像"]
+. お使いのコンピューターハードウェアを選択してください + image:hana-sc-vmfs-asar2-smas-image-034.png["画像"]
+. 以前に作成したOSデータストアを選択してください。+ image:hana-sc-vmfs-asar2-smas-image-035.png["画像"]
+. 目的の仮想マシンを選択してください。+ image:hana-sc-vmfs-asar2-smas-image-036.png["画像"]
+. SAP HANAシステムで使用されているOSバージョンを選択してください。この例では、SUSE Linux Enterprise (SLES) 15 を使用しています。+ image:hana-sc-vmfs-asar2-smas-image-037.png["画像"]
+. 必要なCPUとメモリを使用して仮想マシンを構成します。OS用のハードディスクの他に、以前に作成したデータストアを使用して、データ、ログ、および共有用の追加ディスクを追加します。+ image:hana-sc-vmfs-asar2-smas-image-038.png["画像"]
+. OSインストール用のISOファイルをDVDドライブとして接続し、「電源投入時に接続」にチェックを入れてください。+ image:hana-sc-vmfs-asar2-smas-image-039.png["画像"]
+. 「詳細パラメータ」タブ内で、属性「disk.EnableUUID」を追加し、値を「True」に設定します。これにより、SnapCenterが後でディスクの詳細を検出できるようになります。+ image:hana-sc-vmfs-asar2-smas-image-040.png["画像"]
+. 設定を確認し、「完了」を押して新しい VM を作成します。+ image:hana-sc-vmfs-asar2-smas-image-041.png["画像"]
+. 新しい仮想マシンを起動します。+ image:hana-sc-vmfs-asar2-smas-image-042.png["画像"]
+. コンソールに接続し、SAPのガイドラインに従ってオペレーティングシステムをインストールしてください。+ image:hana-sc-vmfs-asar2-smas-image-043.png["画像"]
+. OSのインストール後、SAP HANAシステムをインストールしてください。/hana/data、/hana/log、および/hana/sharedディレクトリには専用ディスクを使用してください。
+

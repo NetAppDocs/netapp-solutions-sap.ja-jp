@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: briefs/saphana-backup_pdf_link.html 
-keywords: sb-3965, sap, SAP HANA, Backup & Recovery 
+keywords: sb-3965, sap, SAP HANA, Backup and Recovery 
 summary: このドキュメントでは、SAP HANA のバックアップとリカバリに焦点を当てています。 
 ---
 = SB-3965: SAP HANAのバックアップとリカバリ

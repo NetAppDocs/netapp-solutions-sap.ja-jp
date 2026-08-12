@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-smas-config_asar2.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery, SnapMirror active sync, symmetric active-active, NetApp ASA R2 
+summary:  
+---
+= ONTAP ASA R2 システムの設定
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+
+
+[[configuring-ontap-asa-r2-systems]]
+== ONTAP ASA R2 システムの設定
+
+[role="lead"]
+この章では、SAP HANA システムに必要な LUN を作成する方法、アクティブ / アクティブモードで SMas を使用してレプリケーションを設定する方法、および ONTAP Mediator をインストールして設定する方法について説明します。
+
+
+
+[[creating-luns]]
+=== LUNの作成
+
+この章では、NetApp ASA R2 ストレージ システムの ONTAP System Manager を使用して SAP HANA 用の LUN を作成する方法について説明します。
+
+. ASA R2 ストレージクラスターの ONTAP System Manager にログインする + image:hana-sc-vmfs-asar2-smas-image-004.jpeg["画像"]
+. ダッシュボードが表示されます + image:hana-sc-vmfs-asar2-smas-image-005.png["画像"]
+. 左側のメニューから「Hosts」を選択し、「+ Add」をクリックします。image:hana-sc-vmfs-asar2-smas-image-006.png["画像"]
+. VMware ESXi に名前を付け、「新しいホスト」オプションにチェックを入れ、必要に応じて「ホストの近接性を構成する」にチェックを入れます。クラスタに属する ESXi ホストの HBA のワールドワイドポート名（WWPN）を選択または指定し、必要に応じて近接性を設定します。+ 「追加」をクリックします。+ image:hana-sc-vmfs-asar2-smas-image-007.png["画像"]
+. ホストは正常に定義されました。+ image:hana-sc-vmfs-asar2-smas-image-008.png["画像"]
+. 左側のメニューから「ストレージ」を選択し、「+追加」をクリックします。image:hana-sc-vmfs-asar2-smas-image-009.png["画像"]
+. SAP HANAデータボリューム用のデータストアLUNを作成する image:hana-sc-vmfs-asar2-smas-image-010.png["画像"]
+. SAP HANAログボリューム用のデータストアLUNを作成するimage:hana-sc-vmfs-asar2-smas-image-011.png["画像"]
+. SAP HANA共有ボリューム用のデータストアLUNを作成する image:hana-sc-vmfs-asar2-smas-image-012.png["画像"]
+. SAP HANA OS + image:hana-sc-vmfs-asar2-smas-image-013.png["画像"] 用のデータストア LUN を作成します。
+. 各データストアに必要なすべての LUN が作成されました + image:hana-sc-vmfs-asar2-smas-image-014.png["画像"]
+
+
+
+
+[[setting-up-the-replication]]
+=== レプリケーションの設定
+
+LUNが作成されたら、対称アクティブ / アクティブモードでのSMasを使用したレプリケーションと、バックアップ先としての非同期SnapVault/SnapMirrorレプリケーションが設定されます。非同期レプリケーションはオプションですが、追加のバックアップをより長期間、第3のストレージ システムに保存することができます。
+
+. ONTAP System Manager の左側のメニューから「Protection」内の「Consistency groups」を選択し、「Using existing storage units」で新しい整合性グループを「+ add」します + image:hana-sc-vmfs-asar2-smas-image-015.png["画像"]
+. SAP HANA ストレージユニットに使用する整合性グループの名前を指定し、レプリケーションタイプとして「SAP HANA」を選択し、データ、ログ、および共有のストレージユニットを選択します。+ 「リモート クラスターに複製する」にチェックを入れ、目的のリモート クラスターと SVM を選択します。「AutomatedFailOverDuplex」を選択して、SMAS のアクティブ / アクティブを設定します。レプリケート ホストにチェックを入れます。必要に応じて、近接設定を定義します。+ image:hana-sc-vmfs-asar2-smas-image-016.png["画像"]
+. VMファイルのデータストアに使用されるストレージユニットについても、前の手順を繰り返してください。+ image:hana-sc-vmfs-asar2-smas-image-017.png["画像"]
+. SMAS保護付きの整合性グループが正常に作成されました + image:hana-sc-vmfs-asar2-smas-image-018.png["画像"]
+. バックアップ目的のために、追加で非同期レプリケーションを作成します。SAP HANA データベースの Consistency グループのコンテキスト メニューから「保護」を選択します。+ image:hana-sc-vmfs-asar2-smas-image-019.png["画像"]
+. 「別のクラスターに複製する」のチェックボックスをオンにし、目的のリモートクラスターとSVMを選択し、レプリケーションポリシー「MirrorAndVault」を選択します。+ image:hana-sc-vmfs-asar2-smas-image-020.png["画像"]
+. SAP HANA データベースの非同期レプリケーションが設定されました。必要に応じて、VM の OS データストア LUN についても同様の手順を繰り返してください。+ image:hana-sc-vmfs-asar2-smas-image-018.png["画像"]
+
+
+
+
+[[ontap-mediator]]
+=== ONTAP Mediator
+
+ONTAP Mediator を https://docs.netapp.com/us-en/ontap/mediator/#installation-and-upgrade-considerations["ONTAPメディエーターをインストールまたはアップグレードする"]ガイドに従ってインストールします。+ HTTPS のみのオプションで SMas には十分です。+ インストールが完了したら、証明書ファイル _/opt/netapp/lib/ontap++_++mediator/ontap++_++mediator/server++_++config/intermediate.crt_ の内容をコピーします。
+
+ONTAP クラスタでメディエーターを設定します：
+
+. ONTAP System Manager にログオンし、「Protection」→「Overview」に移動して、「Add a mediator」を選択します。image:hana-sc-vmfs-asar2-smas-image-021.png["画像"]
+. 以前にインストールしたメディエーターの情報を入力してください。証明書ファイルの内容を証明書セクションに貼り付けてください。「追加」を押してください。image:hana-sc-vmfs-asar2-smas-image-022.png["画像"]
+. ONTAP メディエーターが正常に追加されました。image:hana-sc-vmfs-asar2-smas-image-023.png["画像"]
+

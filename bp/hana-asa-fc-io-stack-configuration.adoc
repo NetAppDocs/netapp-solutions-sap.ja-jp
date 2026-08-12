@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: bp/hana-asa-fc-io-stack-configuration.html 
-keywords: io, i/o, stack, configuration, database 
-summary: SAP HANA 1.0 SPS10 以降、 I/O 動作を調整し、使用中のファイルシステムとストレージシステムのデータベースを最適化するためのパラメータが導入されています。 
+keywords: io, io-stack, configuration, database 
+summary: SAP HANA 1.0 SPS10以降、SAPはIO動作を調整し、使用するファイルおよびストレージシステムに合わせてデータベースを最適化するためのパラメータを導入しました。 
 ---
 = SAP HANA の I/O スタック構成
 :allow-uri-read: 
@@ -13,6 +13,7 @@ summary: SAP HANA 1.0 SPS10 以降、 I/O 動作を調整し、使用中のフ�
 [[io-stack-configuration-for-sap-hana]]
 == SAP HANA の I/O スタック構成
 
+[role="lead"]
 SAP HANA 1.0 SPS10 以降、 I/O 動作を調整し、使用中のファイルシステムとストレージシステムのデータベースを最適化するためのパラメータが導入されています。
 
 ネットアップは、最適な値を定義するため、パフォーマンステストを実施しました。次の表に、パフォーマンステストから推定した最適な値を示します。

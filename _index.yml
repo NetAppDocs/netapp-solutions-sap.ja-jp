@@ -16,6 +16,8 @@ indexpage:
       url: bp/hana-fas-nfs-introduction.html
     - title: "『SAP HANA on NetApp FAS Systems with Fibre Channel Protocol』構成ガイド"
       url: bp/hana-fas-fc-introduction.html
+    - title: SUSE KVM とNetAppストレージを搭載した SAP HANA
+      url: "/bp/kvm-hana-introduction.html"
   - title: オンプレミスのSAP HANA
     links:
     - title: ベアメタル サーバーおよび NetApp ASA システム上で稼働する SnapCenter を使用した SAP HANA データ保護
@@ -25,6 +27,9 @@ indexpage:
       url: backup/hana-sc-vmware-smas-scope.html
     - title: VMware VMFSおよびNetApp ASAシステムを使用したSnapCenterによるSAP HANAデータ保護
       url: backup/hana-sc-vmfs-asar2-scope.html
+    - title: NetApp ASA R2上のVMware VMFSおよびSnapMirror active syncを使用したSnapCenterによるSAP
+        HANAデータ保護
+      url: "/backup/hana-sc-vmfs-asar2-smas-introduction.html"
     - title: SAP HANA Disaster Recovery with Storage Replication 』を参照してください
       url: backup/hana-dr-sr-pdf-link.html
     - title: LSCおよびSnapCenter でSAP HANAシステムが更新されます
