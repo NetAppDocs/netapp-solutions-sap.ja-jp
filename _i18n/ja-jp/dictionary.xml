@@ -6228,4 +6228,9 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="e7fce6efbbfa47cad3d6d62bbaf91452" category="paragraph">新規解決策<block ref="ddc486d09dd6bdaddbb379506389ee5b" category="inline-link-rx"></block>。VMFSを使用するデータストアと、SnapMirror active syncを使用するNetApp ASAr2システム上に格納されたLUNを備えたVMware上で実行されているHANAシステムを対象に、SnapCenterを使用したデータ保護のベストプラクティスについて本書で説明します。</block>
   <block id="ee5bad12c036fd3375e857e834c5b014" category="paragraph">新しいソリューション<block ref="5d63f7ef6c292c23c51e2512d87ed65d" category="inline-link-rx"></block>は、NetApp SnapCenterを使用したSAP HANAデータ保護のベストプラクティスを提供します。ベアメタルサーバーを使用したONTAP ASAシステム上のSAP HANAシステムを保護するためのSnapCenterの構成および運用ガイドラインを網羅しています。</block>
   <block id="33213c577fd73208a57eaf90c9296037" category="sidebar">VMware構成 - データストアとVMの作成</block>
+  <block id="64500d2f1eb952270058fcdc56fc55cb" category="section-title">SnapMirror NAS 向けアクティブ シンク</block>
+  <block id="6213cd9f309a0bac74202500f3d95388" category="paragraph">NetApp SnapMirror NFSv4.1 経由の SAP HANA を使用した NAS のアクティブ同期は、2 つの ONTAP クラスター間の SVM ミラーリングに基づいています。このアーキテクチャは、NAS データと関連する SVM 構成の両方を同期レプリケーションすることで、ミッションクリティカルな SAP HANA ワークロードに対して継続的な可用性とゼロ RPO 保護を提供します。</block>
+  <block id="a4c2f2f16b272c4054a8e3cd554f5fa0" category="paragraph">SVMレプリケーションを使用することで、ボリューム、論理インターフェース、エクスポートポリシー、NFS設定、アクセス構成といった主要なNASコンポーネントがセカンダリサイトにミラーリングされます。これにより、運用上の複雑さが軽減され、プライマリサイトまたはストレージシステムが利用不能になった場合でも、セカンダリ環境が迅速に引き継ぐことが可能になります。</block>
+  <block id="334c73889c7cb1cdbc6f31b27820c9a9" category="paragraph">ONTAP Mediatorは、参加しているONTAPシステムを監視し、障害発生時のクォーラム決定をサポートします。スプリットブレイン状態を防ぎ、制御されたフェイルオーバー動作を可能にします。SnapMirror NAS向けアクティブ同期とONTAP Mediatorを組み合わせることで、高可用性、同期レプリケーション、および強固なリカバリ目標を必要とするSAP HANA環境に対して、回復力のあるストレージ基盤を提供します。</block>
+  <block id="201a54a995825f338ef39a67ad865244" category="paragraph"><block ref="201a54a995825f338ef39a67ad865244" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>

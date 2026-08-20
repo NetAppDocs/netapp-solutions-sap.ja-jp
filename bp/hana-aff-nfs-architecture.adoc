@@ -96,6 +96,18 @@ image:saphana_aff_nfs_image7b.png["NetApp SnapMirror"]
 
 
 
+==== SnapMirror NAS 向けアクティブ シンク
+
+NetApp SnapMirror NFSv4.1 経由の SAP HANA を使用した NAS のアクティブ同期は、2 つの ONTAP クラスター間の SVM ミラーリングに基づいています。このアーキテクチャは、NAS データと関連する SVM 構成の両方を同期レプリケーションすることで、ミッションクリティカルな SAP HANA ワークロードに対して継続的な可用性とゼロ RPO 保護を提供します。
+
+SVMレプリケーションを使用することで、ボリューム、論理インターフェース、エクスポートポリシー、NFS設定、アクセス構成といった主要なNASコンポーネントがセカンダリサイトにミラーリングされます。これにより、運用上の複雑さが軽減され、プライマリサイトまたはストレージシステムが利用不能になった場合でも、セカンダリ環境が迅速に引き継ぐことが可能になります。
+
+ONTAP Mediatorは、参加しているONTAPシステムを監視し、障害発生時のクォーラム決定をサポートします。スプリットブレイン状態を防ぎ、制御されたフェイルオーバー動作を可能にします。SnapMirror NAS向けアクティブ同期とONTAP Mediatorを組み合わせることで、高可用性、同期レプリケーション、および強固なリカバリ目標を必要とするSAP HANA環境に対して、回復力のあるストレージ基盤を提供します。
+
+image:saphana_aff_nfs_image6.png["NetApp SnapMirrorアクティブ同期"]
+
+
+
 [[storage-replication-based-on-metrocluster]]
 === MetroCluster に基づくストレージレプリケーション
 
