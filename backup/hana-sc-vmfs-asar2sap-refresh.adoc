@@ -8,6 +8,7 @@ summary:
 :allow-uri-read: 
 
 
+[role="lead"]
 SnapCenterを使用したSAPシステムリフレッシュ操作の詳細情報については、 https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["SnapCenter を使用して SAP HANA システムのコピーおよびクローン処理を自動化"]を参照してください。
 
 2番目のHANAシステムのQFSは、第1章で説明したのと同じ方法でプロビジョニングされています。 link:hana-sc-vmfs-asar2-hana-prov.html["「HANAシステムのプロビジョニングとインストール」"] 。

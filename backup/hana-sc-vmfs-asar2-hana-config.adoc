@@ -13,6 +13,9 @@ summary:
 :imagesdir: ../media/
 
 
+[role="lead"]
+SnapCenterがHANAシステムとの通信に使用するSAP HANAデータベースユーザーとhdbユーザーストアキーを設定します。
+
 
 
 [[configure-snapcenter-database-user]]

@@ -6233,4 +6233,9 @@ nfs modify -vserver hana-v4.x -session-num-slots &lt;value&gt;
   <block id="a4c2f2f16b272c4054a8e3cd554f5fa0" category="paragraph">SVMレプリケーションを使用することで、ボリューム、論理インターフェース、エクスポートポリシー、NFS設定、アクセス構成といった主要なNASコンポーネントがセカンダリサイトにミラーリングされます。これにより、運用上の複雑さが軽減され、プライマリサイトまたはストレージシステムが利用不能になった場合でも、セカンダリ環境が迅速に引き継ぐことが可能になります。</block>
   <block id="334c73889c7cb1cdbc6f31b27820c9a9" category="paragraph">ONTAP Mediatorは、参加しているONTAPシステムを監視し、障害発生時のクォーラム決定をサポートします。スプリットブレイン状態を防ぎ、制御されたフェイルオーバー動作を可能にします。SnapMirror NAS向けアクティブ同期とONTAP Mediatorを組み合わせることで、高可用性、同期レプリケーション、および強固なリカバリ目標を必要とするSAP HANA環境に対して、回復力のあるストレージ基盤を提供します。</block>
   <block id="201a54a995825f338ef39a67ad865244" category="paragraph"><block ref="201a54a995825f338ef39a67ad865244" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4b516344ad0bee38d9cb77420d3090f1" category="paragraph">関連するSAP HANA、SnapCenter、およびNetAppのドキュメントへのリンクを参照し、このソリューションのバージョン履歴を確認してください。</block>
+  <block id="d86efceb79b2224e96602b9a52811721" category="paragraph">SnapCenterがHANAシステムとの通信に使用するSAP HANAデータベースユーザーとhdbユーザーストアキーを設定します。</block>
+  <block id="2d56321b4b08c798784701897164d4a4" category="paragraph">VMware VMFSデータストアを使用するSAP HANAシステムを保護するために、前提条件を確認し、SnapCenterを設定します。</block>
+  <block id="07112221fd2661fd0e95645b350bce7c" category="paragraph">NetApp ONTAPストレージ、Snapshotテクノロジ、およびSnapCenter softwareを使用して、本番環境のパフォーマンスに影響を与えることなく、あらゆる規模のSAP HANAデータベースを数秒でバックアップおよびリストアします。</block>
+  <block id="9418552ef4445215e623a2257da09813" category="paragraph">NetAppのテクノロジとツールのポートフォリオを使用して、ミッションクリティカルなSAP HANAアプリケーションの可用性を維持する災害復旧計画を構築または改訂します。</block>
 </blocks>

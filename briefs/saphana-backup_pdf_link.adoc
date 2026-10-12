@@ -13,6 +13,9 @@ summary: このドキュメントでは、SAP HANA のバックアップとリ�
 :imagesdir: ../media/
 
 
+[role="lead"]
+NetApp ONTAPストレージ、Snapshotテクノロジ、およびSnapCenter softwareを使用して、本番環境のパフォーマンスに影響を与えることなく、あらゆる規模のSAP HANAデータベースを数秒でバックアップおよびリストアします。
+
 
 
 [[the-challenge]]

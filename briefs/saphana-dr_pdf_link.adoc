@@ -13,6 +13,9 @@ summary: このドキュメントでは、SAP HANA の災害復旧に焦点を�
 :imagesdir: ../media/
 
 
+[role="lead"]
+NetAppのテクノロジとツールのポートフォリオを使用して、ミッションクリティカルなSAP HANAアプリケーションの可用性を維持する災害復旧計画を構築または改訂します。
+
 
 
 [[the-challenge]]

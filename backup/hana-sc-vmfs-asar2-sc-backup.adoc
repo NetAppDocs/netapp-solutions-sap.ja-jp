@@ -13,6 +13,7 @@ summary:
 :imagesdir: ../media/
 
 
+[role="lead"]
 VMFS を使用する VMware に固有のものはありません。
 
 image:sc-hana-asrr2-vmfs-image18.png["説明している内容を示す図"]

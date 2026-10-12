@@ -8,6 +8,7 @@ summary:
 :allow-uri-read: 
 
 
+[role="lead"]
 VMFS/VMDK のSnapCenterに保存された仮想リソースの場合、復元操作は常にクローン、マウント、コピー操作によって実行されます。
 
 . SnapCenterは選択したスナップショットに基づいてストレージクローンを作成します

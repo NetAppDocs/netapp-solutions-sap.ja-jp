@@ -13,6 +13,9 @@ summary:
 :imagesdir: ../media/
 
 
+[role="lead"]
+VMware VMFSデータストアを使用するSAP HANAシステムを保護するために、前提条件を確認し、SnapCenterを設定します。
+
 
 
 [[pre-requisites]]

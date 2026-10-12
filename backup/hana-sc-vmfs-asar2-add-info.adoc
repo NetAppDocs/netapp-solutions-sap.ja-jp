@@ -8,6 +8,9 @@ summary:
 :allow-uri-read: 
 
 
+[role="lead"]
+関連するSAP HANA、SnapCenter、およびNetAppのドキュメントへのリンクを参照し、このソリューションのバージョン履歴を確認してください。
+
 HANA のベストプラクティス:
 
 * https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["『 SAP HANA on NetApp ASA Systems with Fibre Channel Protocol 』を参照してください"]です。
